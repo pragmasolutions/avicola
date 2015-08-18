@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Web", "Avicola.Web\Avicola.Web.csproj", "{D7196523-A45A-470B-88A1-C6A207FD3BF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Sales.Win", "Avicola.Sales.Win\Avicola.Sales.Win.csproj", "{417C5260-E088-4CB8-BE01-C42DE91640D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Office.Win", "Avicola.Office.Win\Avicola.Office.Win.csproj", "{6C9DC708-F7F9-469A-AAA3-C626FC7AAB83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Deposit.Win", "Avicola.Deposit.Win\Avicola.Deposit.Win.csproj", "{127ED51A-90CA-43F6-8A9A-9F74E178E07C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Office.Dashboard.Web", "Avicola.Office.Dashboard.Web\Avicola.Office.Dashboard.Web.csproj", "{BDBC44B5-7E12-40D4-A218-89E642489CB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Deposit.Dashboard.Web", "Avicola.Deposit.Dashboard.Web\Avicola.Deposit.Dashboard.Web.csproj", "{6E2D731A-8EB8-40C6-8A5F-CD931FCBD7D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7196523-A45A-470B-88A1-C6A207FD3BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7196523-A45A-470B-88A1-C6A207FD3BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7196523-A45A-470B-88A1-C6A207FD3BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7196523-A45A-470B-88A1-C6A207FD3BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417C5260-E088-4CB8-BE01-C42DE91640D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417C5260-E088-4CB8-BE01-C42DE91640D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417C5260-E088-4CB8-BE01-C42DE91640D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417C5260-E088-4CB8-BE01-C42DE91640D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C9DC708-F7F9-469A-AAA3-C626FC7AAB83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9DC708-F7F9-469A-AAA3-C626FC7AAB83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9DC708-F7F9-469A-AAA3-C626FC7AAB83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9DC708-F7F9-469A-AAA3-C626FC7AAB83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDBC44B5-7E12-40D4-A218-89E642489CB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDBC44B5-7E12-40D4-A218-89E642489CB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDBC44B5-7E12-40D4-A218-89E642489CB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDBC44B5-7E12-40D4-A218-89E642489CB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E2D731A-8EB8-40C6-8A5F-CD931FCBD7D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E2D731A-8EB8-40C6-8A5F-CD931FCBD7D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E2D731A-8EB8-40C6-8A5F-CD931FCBD7D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E2D731A-8EB8-40C6-8A5F-CD931FCBD7D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
