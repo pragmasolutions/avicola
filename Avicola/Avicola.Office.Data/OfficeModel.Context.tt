@@ -2,7 +2,7 @@
 <#@ include file="EF6.Utility.CS.ttinclude"#><#@
  output extension=".cs"#><#
 
-const string inputFile = @"OfficeModel.edmx";
+const string inputFile = @"../Avicola.Office.Data/OfficeModel.edmx";
 var textTransform = DynamicTextTransformation.Create(this);
 var code = new CodeGenerationTools(this);
 var ef = new MetadataTools(this);
@@ -28,11 +28,12 @@ if (container == null)
 //------------------------------------------------------------------------------
 
 <#
-
 var codeNamespace = code.VsNamespaceSuggestion();
 if (!String.IsNullOrEmpty(codeNamespace))
 {
 #>
+using Avicola.Office.Entities;
+
 namespace <#=code.EscapeNamespace(codeNamespace)#>
 {
 <#

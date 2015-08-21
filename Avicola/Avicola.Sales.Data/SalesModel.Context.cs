@@ -7,7 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Avicola.Sales.Entities
+using Avicola.Sales.Entities;
+
+namespace Avicola.Sales.Data
 {
     using System;
     using System.Data.Entity;

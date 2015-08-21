@@ -7,7 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Avicola.Office.Entities
+using Avicola.Office.Entities;
+
+namespace Avicola.Office.Data
 {
     using System;
     using System.Data.Entity;

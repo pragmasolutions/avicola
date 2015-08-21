@@ -83,6 +83,7 @@
     <None Include="SalesModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SalesModel.cs</LastGenOutput>
+      <CustomToolNamespace>Avicola.Sales.Entities</CustomToolNamespace>
     </None>
   </ItemGroup>
   <ItemGroup>

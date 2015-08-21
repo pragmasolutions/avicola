@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -52,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IOfficeUow.cs" />
     <Compile Include="OfficeModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -62,13 +64,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OfficeModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="OfficeEntities.cs" />
+    <Compile Include="OfficeUow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="OfficeModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OfficeModel.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Avicola.Office.Entities</CustomToolNamespace>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
@@ -77,7 +80,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>OfficeModel.Context.cs</LastGenOutput>
       <DependentUpon>OfficeModel.edmx</DependentUpon>
-      <CustomToolNamespace>Avicola.Office.Entities</CustomToolNamespace>
     </None>
     <None Include="OfficeModel.edmx.diagram">
       <DependentUpon>OfficeModel.edmx</DependentUpon>
@@ -91,6 +93,14 @@
     <ProjectReference Include="..\Avicola.Office.Entities\Avicola.Office.Entities.csproj">
       <Project>{37f66cd2-c14c-4273-b4c2-09e434f63a7d}</Project>
       <Name>Avicola.Office.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Data.EntityFramework\Framework.Data.EntityFramework.csproj">
+      <Project>{20259eaa-c937-4bf2-913a-f4531796fe5b}</Project>
+      <Name>Framework.Data.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
+      <Project>{cb41f702-99fb-49ae-8bc0-1b7f0193efab}</Project>
+      <Name>Framework.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
