@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="a0687dd4-cbeb-430b-9e7d-29dcfcafbd61" ChangeDateTime="08/21/2015 00:26:16">
+    <Property Name="ElementName" Value="[dbo].[FK_BatchVaccine_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[BatchVaccine]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_BatchVaccine_Vaccine]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6612fe62-d9fb-49a6-b70e-a9b903c0c43a" ChangeDateTime="08/21/2015 00:30:46">
+    <Property Name="ElementName" Value="[dbo].[FK_StandardGeneticLine_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[StandardGeneticLine]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_StandardGeneticLine_GeneticLine]" />
+  </Operation>
+</Operations>
