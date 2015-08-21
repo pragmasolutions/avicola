@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f297ae70f5784be29ffde3d0b0e6aa3d" Name="Diagram1">
+        <EntityTypeShape EntityType="Avicola.SalesModel.Client" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Deposit" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Driver" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Product" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Provider" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Shift" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Stock" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.StockEntry" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Truck" Width="1.5" PointX="5.75" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Stock_Deposit" ManuallyRouted="false" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Driver_Truck" ManuallyRouted="false" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Stock_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_StockEntry_Provider" ManuallyRouted="false" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_StockEntry_Shift" ManuallyRouted="false" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_StockEntry_Stock" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Order" Width="1.5" PointX="10.25" PointY="3.125" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.OrderStatus" Width="1.5" PointX="8" PointY="10" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Order_Client" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Order_Driver" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Order_OrderStatus" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Order_Truck" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

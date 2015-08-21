@@ -71,11 +71,14 @@
     <Build Include="dbo\Tables\Shift.sql" />
     <Build Include="dbo\Tables\Stock.sql" />
     <Build Include="dbo\Tables\StockEntry.sql" />
+    <Build Include="dbo\Tables\Order.sql" />
+    <Build Include="dbo\Tables\OrderStatus.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReferenceData\Product.Data.sql" />
     <None Include="ReferenceData\Shifts.Data.sql" />
     <None Include="Avicola.Sales.Database.publish.xml" />
+    <None Include="ReferenceData\OrderStatus.Data.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="ReferenceData\Script.PostDeployment.sql" />
