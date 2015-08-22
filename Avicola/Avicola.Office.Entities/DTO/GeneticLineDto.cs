@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Avicola.Office.Entities.DTO
 {
-    public class GeneticLineDto : IMapFrom<GeneticLineDto>
+    public class GeneticLineDto : IMapFrom<GeneticLine>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

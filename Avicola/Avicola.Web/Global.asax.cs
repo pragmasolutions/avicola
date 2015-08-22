@@ -17,7 +17,7 @@ namespace Avicola.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            
             ModelBinderProviders.BinderProviders.Add(new EFModelBinderProvider());
             ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
             ModelBinders.Binders.Add(typeof(DateTime?), new NullableDateTimeModelBinder());

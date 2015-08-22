@@ -45,7 +45,7 @@ namespace Avicola.Web.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                RegisterServices(kernel);
+                IoCConfig.Config(kernel);
                 return kernel;
             }
             catch
