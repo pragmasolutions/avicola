@@ -7,6 +7,7 @@
 	[Maples] [int] NOT NULL,
 	[Eggs] [int] NOT NULL,
 	[ProviderId] [uniqueidentifier] NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_StockEntry] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

@@ -1,0 +1,12 @@
+﻿@using Avicola.Office.Entities
+@using Framework.Common.Web.Extensions
+@model Guid?
+@{
+    var list = new List<KeyValuePair<Guid, string>>
+    {
+        new KeyValuePair<Guid, string>(DataLoadType.DAYLY, "Diariamente") ,
+        new KeyValuePair<Guid, string>(DataLoadType.WEEKLY, "Semanalmente") 
+    };
+}
+
+@Html.DropDownList("", new SelectList(list, "Key", "Value", Model), "Seleccione Tipo", new { @class = "form-control select2-control" })

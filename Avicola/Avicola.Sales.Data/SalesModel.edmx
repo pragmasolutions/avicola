@@ -10,6 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Tel1" Type="varchar" MaxLength="20" />
           <Property Name="Tel2" Type="varchar" MaxLength="20" />
@@ -19,6 +20,7 @@
           <Property Name="WebSite" Type="varchar" MaxLength="1000" />
           <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Deposit">
           <Key>
@@ -27,12 +29,14 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Driver">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Tel1" Type="varchar" MaxLength="20" />
           <Property Name="Tel2" Type="varchar" MaxLength="20" />
@@ -40,6 +44,7 @@
           <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="TruckId" Type="uniqueidentifier" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -53,6 +58,7 @@
           <Property Name="DispatchedDate" Type="datetime2" Precision="7" />
           <Property Name="TruckId" Type="uniqueidentifier" />
           <Property Name="DriverId" Type="uniqueidentifier" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -60,6 +66,8 @@
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -68,12 +76,14 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Provider">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Tel1" Type="varchar" MaxLength="20" />
           <Property Name="Tel2" Type="varchar" MaxLength="20" />
@@ -83,13 +93,16 @@
           <Property Name="WebSite" Type="varchar" MaxLength="1000" />
           <Property Name="Address" Type="varchar" MaxLength="200" />
           <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Shift">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -102,6 +115,7 @@
           <Property Name="CurrentBoxes" Type="int" Nullable="false" />
           <Property Name="CurrentMaples" Type="int" Nullable="false" />
           <Property Name="CurrentEggs" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StockEntry">
           <Key>
@@ -115,6 +129,7 @@
           <Property Name="Maples" Type="int" Nullable="false" />
           <Property Name="Eggs" Type="int" Nullable="false" />
           <Property Name="ProviderId" Type="uniqueidentifier" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Truck">
           <Key>
@@ -124,6 +139,7 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="NumberPlate" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Driver_Truck">
           <End Role="Truck" Type="Self.Truck" Multiplicity="0..1" />
@@ -317,6 +333,8 @@
           <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Avicola.SalesModel.FK_Order_Client" FromRole="Client" ToRole="Order" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="Deposit">
           <Key>
@@ -326,6 +344,7 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK_Stock_Deposit" FromRole="Deposit" ToRole="Stock" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Driver">
           <Key>
@@ -341,6 +360,8 @@
           <Property Name="TruckId" Type="Guid" />
           <NavigationProperty Name="Truck" Relationship="Self.FK_Driver_Truck" FromRole="Driver" ToRole="Truck" />
           <NavigationProperty Name="Orders" Relationship="Avicola.SalesModel.FK_Order_Driver" FromRole="Driver" ToRole="Order" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -350,6 +371,7 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK_Stock_Product" FromRole="Product" ToRole="Stock" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Provider">
           <Key>
@@ -366,14 +388,18 @@
           <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="StockEntries" Relationship="Self.FK_StockEntry_Provider" FromRole="Provider" ToRole="StockEntry" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="Shift">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="StockEntries" Relationship="Self.FK_StockEntry_Shift" FromRole="Shift" ToRole="StockEntry" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -389,6 +415,7 @@
           <NavigationProperty Name="Deposit" Relationship="Self.FK_Stock_Deposit" FromRole="Stock" ToRole="Deposit" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Stock_Product" FromRole="Stock" ToRole="Product" />
           <NavigationProperty Name="StockEntries" Relationship="Self.FK_StockEntry_Stock" FromRole="Stock" ToRole="StockEntry" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="StockEntry">
           <Key>
@@ -405,6 +432,7 @@
           <NavigationProperty Name="Provider" Relationship="Self.FK_StockEntry_Provider" FromRole="StockEntry" ToRole="Provider" />
           <NavigationProperty Name="Shift" Relationship="Self.FK_StockEntry_Shift" FromRole="StockEntry" ToRole="Shift" />
           <NavigationProperty Name="Stock" Relationship="Self.FK_StockEntry_Stock" FromRole="StockEntry" ToRole="Stock" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Truck">
           <Key>
@@ -416,6 +444,7 @@
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Drivers" Relationship="Self.FK_Driver_Truck" FromRole="Truck" ToRole="Driver" />
           <NavigationProperty Name="Orders" Relationship="Avicola.SalesModel.FK_Order_Truck" FromRole="Truck" ToRole="Order" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Stock_Deposit">
           <End Role="Deposit" Type="Self.Deposit" Multiplicity="1" />
@@ -558,6 +587,7 @@
           <NavigationProperty Name="Driver" Relationship="Avicola.SalesModel.FK_Order_Driver" FromRole="Order" ToRole="Driver" />
           <NavigationProperty Name="OrderStatu" Relationship="Avicola.SalesModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatu" />
           <NavigationProperty Name="Truck" Relationship="Avicola.SalesModel.FK_Order_Truck" FromRole="Order" ToRole="Truck" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -566,6 +596,8 @@
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="Avicola.SalesModel.FK_Order_OrderStatus" FromRole="OrderStatu" ToRole="Order" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Order_Client">
           <End Type="Avicola.SalesModel.Client" Role="Client" Multiplicity="1" />
@@ -624,6 +656,8 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Tel1" ColumnName="Tel1" />
@@ -640,6 +674,7 @@
           <EntitySetMapping Name="Deposits">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Deposit">
               <MappingFragment StoreEntitySet="Deposit">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -649,6 +684,8 @@
           <EntitySetMapping Name="Drivers">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Driver">
               <MappingFragment StoreEntitySet="Driver">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Tel1" ColumnName="Tel1" />
@@ -663,6 +700,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -672,6 +710,8 @@
           <EntitySetMapping Name="Providers">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Provider">
               <MappingFragment StoreEntitySet="Provider">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Tel1" ColumnName="Tel1" />
@@ -688,6 +728,8 @@
           <EntitySetMapping Name="Shifts">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Shift">
               <MappingFragment StoreEntitySet="Shift">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -696,6 +738,7 @@
           <EntitySetMapping Name="Stocks">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Stock">
               <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="DepositId" ColumnName="DepositId" />
@@ -709,6 +752,7 @@
           <EntitySetMapping Name="StockEntries">
             <EntityTypeMapping TypeName="Avicola.SalesModel.StockEntry">
               <MappingFragment StoreEntitySet="StockEntry">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
@@ -723,6 +767,7 @@
           <EntitySetMapping Name="Trucks">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Truck">
               <MappingFragment StoreEntitySet="Truck">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="NumberPlate" ColumnName="NumberPlate" />
@@ -733,6 +778,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="TruckId" ColumnName="TruckId" />
                 <ScalarProperty Name="DispatchedDate" ColumnName="DispatchedDate" />
@@ -747,6 +793,8 @@
           <EntitySetMapping Name="OrderStatuses">
             <EntityTypeMapping TypeName="Avicola.SalesModel.OrderStatus">
               <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

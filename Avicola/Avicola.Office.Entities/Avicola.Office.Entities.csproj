@@ -55,6 +55,7 @@
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\GeneticLineDto.cs" />
+    <Compile Include="Extensions\DataLoadType.cs" />
     <Compile Include="Extensions\BatchObservation.cs" />
     <Compile Include="Extensions\BatchVaccine.cs" />
     <Compile Include="Extensions\FoodClass.cs" />
@@ -112,6 +113,10 @@
     <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
       <Project>{492b8264-0c10-4afe-a15f-8a82e60ade68}</Project>
       <Name>Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
+      <Project>{cb41f702-99fb-49ae-8bc0-1b7f0193efab}</Project>
+      <Name>Framework.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -48,6 +48,17 @@
     <Compile Include="Driver.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Deposit.cs" />
+    <Compile Include="Extensions\Driver.cs" />
+    <Compile Include="Extensions\Order.cs" />
+    <Compile Include="Extensions\OrderStatus.cs" />
+    <Compile Include="Extensions\Product.cs" />
+    <Compile Include="Extensions\Provider.cs" />
+    <Compile Include="Extensions\Shift.cs" />
+    <Compile Include="Extensions\Stock.cs" />
+    <Compile Include="Extensions\StockEntry.cs" />
+    <Compile Include="Extensions\Truck.cs" />
+    <Compile Include="Extensions\Client.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
@@ -88,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
+      <Project>{cb41f702-99fb-49ae-8bc0-1b7f0193efab}</Project>
+      <Name>Framework.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Avicola.Data.Common.Interfaces
+namespace Framework.Data.Interfaces
 {
     public interface IEntity
     {

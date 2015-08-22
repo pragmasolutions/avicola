@@ -212,6 +212,7 @@
     <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\StandardController.cs" />
     <Compile Include="Controllers\GeneticLineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -219,6 +220,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Standards\StandardForm.cs" />
+    <Compile Include="Models\Standards\StandardListFiltersModel.cs" />
+    <Compile Include="Models\Standards\StandardListModel.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineListFiltersModel.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineListModel.cs" />
@@ -365,6 +369,13 @@
     <Content Include="Views\Shared\DisplayTemplates\MultilineText.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Object.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataLoadTypeId.cshtml" />
+    <Content Include="Views\Standard\_Filters.cshtml" />
+    <Content Include="Views\Standard\Create.cshtml" />
+    <Content Include="Views\Standard\Detail.cshtml" />
+    <Content Include="Views\Standard\Edit.cshtml" />
+    <Content Include="Views\Standard\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DataLoadTypeId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

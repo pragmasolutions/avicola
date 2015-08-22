@@ -8,6 +8,7 @@
     [DispatchedDate] DATETIME2 NULL, 
     [TruckId] UNIQUEIDENTIFIER NULL, 
     [DriverId] UNIQUEIDENTIFIER NULL, 
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_Order_Client] FOREIGN KEY ([ClientId]) REFERENCES [Client]([Id]), 
     CONSTRAINT [FK_Order_OrderStatus] FOREIGN KEY ([OrderStatusId]) REFERENCES [OrderStatus]([Id]), 
     CONSTRAINT [FK_Order_Truck] FOREIGN KEY ([TruckId]) REFERENCES [Truck]([Id]), 

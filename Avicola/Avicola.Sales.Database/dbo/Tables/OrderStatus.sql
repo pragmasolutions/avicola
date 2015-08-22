@@ -1,5 +1,8 @@
 ﻿CREATE TABLE [dbo].[OrderStatus]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
-    [Name] VARCHAR(50) NOT NULL
+    [Name] VARCHAR(50) NOT NULL,
+	[CreatedDate] DATETIME2(7) NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0
 )
+

@@ -6,6 +6,7 @@
 	[CurrentBoxes] [int] NOT NULL,
 	[CurrentMaples] [int] NOT NULL,
 	[CurrentEggs] [int] NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Stock] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

@@ -4,6 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 using Framework.Data.Helpers;
+using Framework.Data.Interfaces;
 using Framework.Data.Repository;
 
 namespace Framework.Data.EntityFramework.Repository
@@ -12,7 +13,7 @@ namespace Framework.Data.EntityFramework.Repository
     /// The EF-dependent, generic repository for data access
     /// </summary>
     /// <typeparam name="T">Type of entity for this Repository.</typeparam>
-    public class EFRepository<T> : EFBaseRepository, IRepository<T> where T : class
+    public class EFRepository<T> : EFBaseRepository, IRepository<T> where T : class, IEntity
     {
         public EFRepository(DbContext dbContext)
             : base(dbContext)
@@ -52,7 +53,7 @@ namespace Framework.Data.EntityFramework.Repository
         {
             PagedResultList<T> result = new PagedResultList<T>();
 
-            var data = DbSet.Where(x => true);
+            var data = DbSet.Where(x => !x.IsDeleted);
             int totalRecords = data.Count();
 
             foreach (var include in includes)
@@ -80,7 +81,7 @@ namespace Framework.Data.EntityFramework.Repository
         {
             PagedResultList<T> result = new PagedResultList<T>();
 
-            var data = DbSet.Where(x => true);
+            var data = DbSet.Where(x => !x.IsDeleted);
             int totalRecords = data.Count(whereClause);
 
             foreach (var include in includes)
@@ -117,6 +118,10 @@ namespace Framework.Data.EntityFramework.Repository
         public virtual void Add(T entity)
         {
             DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+            entity.CreatedDate = DateTime.Now;
+            entity.IsDeleted = false;
+            entity.Id = Guid.NewGuid();
+
             if (dbEntityEntry.State != EntityState.Detached)
             {
                 dbEntityEntry.State = EntityState.Added;
@@ -140,15 +145,8 @@ namespace Framework.Data.EntityFramework.Repository
         public virtual void Delete(T entity)
         {
             DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
-            if (dbEntityEntry.State != EntityState.Deleted)
-            {
-                dbEntityEntry.State = EntityState.Deleted;
-            }
-            else
-            {
-                DbSet.Attach(entity);
-                DbSet.Remove(entity);
-            }
+            entity.IsDeleted = true;
+            Edit(entity);
         }
 
         public virtual void Delete(Guid id)

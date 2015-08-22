@@ -22,6 +22,7 @@ namespace Avicola.Sales.Entities
         public int Maples { get; set; }
         public int Eggs { get; set; }
         public Nullable<System.Guid> ProviderId { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Provider Provider { get; set; }
         public virtual Shift Shift { get; set; }

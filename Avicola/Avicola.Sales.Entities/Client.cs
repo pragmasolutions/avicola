@@ -30,6 +30,8 @@ namespace Avicola.Sales.Entities
         public string WebSite { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
+        public bool IsDeleted { get; set; }
+        public System.DateTime CreatedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

@@ -2,6 +2,7 @@
 	[Id] [uniqueidentifier] NOT NULL,
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[Name] [varchar](100) NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Deposit] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

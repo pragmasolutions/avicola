@@ -3,6 +3,7 @@
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[NumberPlate] [varchar](10) NOT NULL,
 	[Description] [varchar](250) NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Truck] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

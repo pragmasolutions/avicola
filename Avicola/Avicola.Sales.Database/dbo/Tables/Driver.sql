@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [dbo].[Driver](
 	[Id] [uniqueidentifier] NOT NULL,
+	[CreatedDate] DATETIME2(7) NOT NULL,
 	[Name] [varchar](200) NOT NULL,
 	[Tel1] [varchar](20) NULL,
 	[Tel2] [varchar](20) NULL,
@@ -7,6 +8,7 @@
 	[Address] [varchar](200) NOT NULL,
 	[City] [varchar](100) NOT NULL,
 	[TruckId] [uniqueidentifier] NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Driver] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
