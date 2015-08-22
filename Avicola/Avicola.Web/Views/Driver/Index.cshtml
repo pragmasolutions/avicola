@@ -1,0 +1,45 @@
+﻿@using Framework.Common.Web.Helpers;
+@using PagedList.Mvc;
+@model Avicola.Web.Models.DriverListModel
+
+<br/>
+@Html.ActionLink("Crear Conductor", "Create", "Driver", htmlAttributes: new { @class = "btn btn-primary" })
+
+
+@Html.FilterButton()
+
+<div class="spacer">
+</div>
+
+@Html.Partial("_Filters", Model.Filters)
+
+<div class="spacer">
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tel 1</th>
+            <th>Tel 2</th>
+            <th>Célular</th>
+            <th>Dirección</th>
+            <th>Localidad</th>
+        </tr>
+    </thead>
+    <tbody class="row-link" data-link="row">
+        @foreach (var driver in Model.List)
+        {
+            <tr>
+                <td>@Html.ActionLink(driver.Name, "Detail", "Driver", routeValues: new { driver.Id }, htmlAttributes: null)</td>
+                <td>@driver.Tel1</td>
+                <td>@driver.Tel2</td>
+                <td>@driver.CellPhone</td>
+                <td>@driver.Address</td>
+                <td>@driver.City</td>
+                <td>@driver.TruckNumberPlate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model.List, page => Url.Action("Index", Model.Filters.GetRouteValues(page)))

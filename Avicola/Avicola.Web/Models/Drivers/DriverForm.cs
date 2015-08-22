@@ -5,7 +5,7 @@ using AutoMapper;
 using Avicola.Sales.Entities;
 using Framework.Common.Mapping;
 
-namespace Avicola.Web.Models.Drivers
+namespace Avicola.Web.Models
 {
     public class DriverForm : IMapFrom<Driver>
     {

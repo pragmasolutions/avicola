@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Avicola.Office.Entities.DTO;
-using Avicola.Office.Services.Interfaces;
 using Avicola.Sales.Services.Dtos;
 using Avicola.Sales.Services.Interfaces;
 using Avicola.Web.Models;
-using Avicola.Web.Models.Drivers;
 using Framework.Common.Web.Alerts;
 using PagedList;
 
@@ -72,7 +66,7 @@ namespace Avicola.Web.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, DriverForm driverForm)
+        public ActionResult Edit(Guid id, DriverForm driverForm)
         {
             if (!ModelState.IsValid)
             {
