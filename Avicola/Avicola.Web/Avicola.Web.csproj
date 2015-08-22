@@ -206,6 +206,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\GeneticLineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -213,6 +214,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Drivers\DriverForm.cs" />
+    <Compile Include="Models\Drivers\DriverListFiltersModel.cs" />
+    <Compile Include="Models\Drivers\DriverListModel.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineListFiltersModel.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineListModel.cs" />
@@ -393,6 +397,10 @@
     <ProjectReference Include="..\Avicola.Sales.Data\Avicola.Sales.Data.csproj">
       <Project>{655a731f-8412-4ad3-9bf3-9081a7c05df9}</Project>
       <Name>Avicola.Sales.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Sales.Entities\Avicola.Sales.Entities.csproj">
+      <Project>{8C6CDBD9-F5DE-4FE9-B7C5-178967C2B5AB}</Project>
+      <Name>Avicola.Sales.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Avicola.Sales.Services\Avicola.Sales.Services.csproj">
       <Project>{b72272a4-ab34-4f49-bfbc-75c0c600b120}</Project>
