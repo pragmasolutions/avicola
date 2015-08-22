@@ -12,7 +12,8 @@ namespace Avicola.Sales.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class StockEntry
+    using Framework.Data.Interfaces;
+    public partial class StockEntry : IEntity
     {
         public System.Guid Id { get; set; }
         public System.DateTime CreatedDate { get; set; }

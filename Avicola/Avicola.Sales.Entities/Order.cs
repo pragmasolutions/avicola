@@ -12,7 +12,8 @@ namespace Avicola.Sales.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    using Framework.Data.Interfaces;
+    public partial class Order : IEntity
     {
         public System.Guid Id { get; set; }
         public System.DateTime CreatedDate { get; set; }

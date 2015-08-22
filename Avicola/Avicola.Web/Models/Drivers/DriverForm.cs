@@ -25,8 +25,8 @@ namespace Avicola.Web.Models
         
         public Driver ToDriver()
         {
-            var shop = Mapper.Map<DriverForm, Driver>(this);
-            return shop;
+            var driver = Mapper.Map<DriverForm, Driver>(this);
+            return driver;
         }
 
         public static DriverForm FromDriver(Driver driver)

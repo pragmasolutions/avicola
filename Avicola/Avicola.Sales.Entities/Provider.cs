@@ -12,7 +12,8 @@ namespace Avicola.Sales.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Provider
+    using Framework.Data.Interfaces;
+    public partial class Provider : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Provider()
