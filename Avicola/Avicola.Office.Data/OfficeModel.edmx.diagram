@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="Avicola.OfficeModel.Barn" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.Batch" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.BatchObservation" Width="1.875" PointX="9.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Avicola.OfficeModel.BatchVaccine" Width="1.5" PointX="12.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.DataLoadType" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.FoodClass" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.GeneticLine" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
@@ -18,9 +17,7 @@
         <EntityTypeShape EntityType="Avicola.OfficeModel.StandardItem" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.Vaccine" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchObservation_Batch" ManuallyRouted="false" />
-        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Batch" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_Batch" ManuallyRouted="false" />
-        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Standard_DataLoadType" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_StandardItem_FoodClass" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_StandardGeneticLine_GeneticLine" ManuallyRouted="false" />
@@ -30,7 +27,10 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_Barn" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_FoodClass" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_GeneticLine" />
-      </Diagram>
+        <EntityTypeShape EntityType="Avicola.OfficeModel.BatchVaccine" Width="1.5" PointX="12.75" PointY="6.875" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Batch" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -55,6 +55,16 @@
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\GeneticLineDto.cs" />
+    <Compile Include="Extensions\BatchObservation.cs" />
+    <Compile Include="Extensions\BatchVaccine.cs" />
+    <Compile Include="Extensions\FoodClass.cs" />
+    <Compile Include="Extensions\GeneticLine.cs" />
+    <Compile Include="Extensions\Measure.cs" />
+    <Compile Include="Extensions\Standard.cs" />
+    <Compile Include="Extensions\StandardGeneticLine.cs" />
+    <Compile Include="Extensions\StandardItem.cs" />
+    <Compile Include="Extensions\Vaccine.cs" />
+    <Compile Include="Extensions\Batch.cs" />
     <Compile Include="FoodClass.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
@@ -64,6 +74,7 @@
     <Compile Include="Measure.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Barn.cs" />
     <Compile Include="OfficeModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,6 +105,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Avicola.Data.Common\Avicola.Data.Common.csproj">
+      <Project>{8d1c1fdf-6a6d-4354-aaed-cd35a57734ad}</Project>
+      <Name>Avicola.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
       <Project>{492b8264-0c10-4afe-a15f-8a82e60ade68}</Project>
       <Name>Framework.Common</Name>

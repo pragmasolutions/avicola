@@ -46,9 +46,9 @@
         </EntityType>
         <EntityType Name="BatchVaccine">
           <Key>
-            <PropertyRef Name="BatchId" />
-            <PropertyRef Name="VaccineId" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="BatchId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="VaccineId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
@@ -389,12 +389,12 @@
           <Property Name="PostureStartDate" Type="DateTime" Precision="7" />
           <Property Name="EndDate" Type="DateTime" Precision="7" />
           <NavigationProperty Name="BatchObservations" Relationship="Self.FK_BatchObservation_Batch" FromRole="Batch" ToRole="BatchObservation" />
-          <NavigationProperty Name="BatchVaccines" Relationship="Self.FK_BatchVaccine_Batch" FromRole="Batch" ToRole="BatchVaccine" />
           <NavigationProperty Name="Measures" Relationship="Self.FK_Measure_Batch" FromRole="Batch" ToRole="Measure" />
           <NavigationProperty Name="Barn" Relationship="Avicola.OfficeModel.FK_Batch_Barn" FromRole="Batch" ToRole="Barn" />
           <NavigationProperty Name="FoodClass" Relationship="Avicola.OfficeModel.FK_Batch_FoodClass" FromRole="Batch" ToRole="FoodClass" />
           <NavigationProperty Name="GeneticLine" Relationship="Avicola.OfficeModel.FK_Batch_GeneticLine" FromRole="Batch" ToRole="GeneticLine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BatchVaccines" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Batch" FromRole="Batch" ToRole="BatchVaccine" />
         </EntityType>
         <EntityType Name="BatchObservation">
           <Key>
@@ -406,21 +406,6 @@
           <Property Name="ObservationDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="BatchId" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Batch" Relationship="Self.FK_BatchObservation_Batch" FromRole="BatchObservation" ToRole="Batch" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="BatchVaccine">
-          <Key>
-            <PropertyRef Name="BatchId" />
-            <PropertyRef Name="VaccineId" />
-          </Key>
-          <Property Name="BatchId" Type="Guid" Nullable="false" />
-          <Property Name="VaccineId" Type="Guid" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="RecommendedDate" Type="DateTime" Precision="7" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="EndDate" Type="DateTime" Precision="7" />
-          <NavigationProperty Name="Batch" Relationship="Self.FK_BatchVaccine_Batch" FromRole="BatchVaccine" ToRole="Batch" />
-          <NavigationProperty Name="Vaccine" Relationship="Self.FK_BatchVaccine_Vaccine" FromRole="BatchVaccine" ToRole="Vaccine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="DataLoadType">
@@ -514,8 +499,8 @@
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="BatchVaccines" Relationship="Self.FK_BatchVaccine_Vaccine" FromRole="Vaccine" ToRole="BatchVaccine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BatchVaccines" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" FromRole="Vaccine" ToRole="BatchVaccine" />
         </EntityType>
         <Association Name="FK_BatchObservation_Batch">
           <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
@@ -529,18 +514,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BatchVaccine_Batch">
-          <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
-          <End Role="BatchVaccine" Type="Self.BatchVaccine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Batch">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BatchVaccine">
-              <PropertyRef Name="BatchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Measure_Batch">
           <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
           <End Role="Measure" Type="Self.Measure" Multiplicity="*" />
@@ -550,18 +523,6 @@
             </Principal>
             <Dependent Role="Measure">
               <PropertyRef Name="BatchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BatchVaccine_Vaccine">
-          <End Role="Vaccine" Type="Self.Vaccine" Multiplicity="1" />
-          <End Role="BatchVaccine" Type="Self.BatchVaccine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vaccine">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BatchVaccine">
-              <PropertyRef Name="VaccineId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -641,7 +602,6 @@
           <EntitySet Name="Barns" EntityType="Self.Barn" />
           <EntitySet Name="Batches" EntityType="Self.Batch" />
           <EntitySet Name="BatchObservations" EntityType="Self.BatchObservation" />
-          <EntitySet Name="BatchVaccines" EntityType="Self.BatchVaccine" />
           <EntitySet Name="DataLoadTypes" EntityType="Self.DataLoadType" />
           <EntitySet Name="FoodClasses" EntityType="Self.FoodClass" />
           <EntitySet Name="GeneticLines" EntityType="Self.GeneticLine" />
@@ -654,17 +614,9 @@
             <End Role="Batch" EntitySet="Batches" />
             <End Role="BatchObservation" EntitySet="BatchObservations" />
           </AssociationSet>
-          <AssociationSet Name="FK_BatchVaccine_Batch" Association="Self.FK_BatchVaccine_Batch">
-            <End Role="Batch" EntitySet="Batches" />
-            <End Role="BatchVaccine" EntitySet="BatchVaccines" />
-          </AssociationSet>
           <AssociationSet Name="FK_Measure_Batch" Association="Self.FK_Measure_Batch">
             <End Role="Batch" EntitySet="Batches" />
             <End Role="Measure" EntitySet="Measures" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BatchVaccine_Vaccine" Association="Self.FK_BatchVaccine_Vaccine">
-            <End Role="Vaccine" EntitySet="Vaccines" />
-            <End Role="BatchVaccine" EntitySet="BatchVaccines" />
           </AssociationSet>
           <AssociationSet Name="FK_Standard_DataLoadType" Association="Self.FK_Standard_DataLoadType">
             <End Role="DataLoadType" EntitySet="DataLoadTypes" />
@@ -702,7 +654,16 @@
             <End Role="GeneticLine" EntitySet="GeneticLines" />
             <End Role="Batch" EntitySet="Batches" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="BatchVaccines" EntityType="Avicola.OfficeModel.BatchVaccine" />
+          <AssociationSet Name="FK_BatchVaccine_Batch" Association="Avicola.OfficeModel.FK_BatchVaccine_Batch">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="BatchVaccine" EntitySet="BatchVaccines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchVaccine_Vaccine" Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine">
+            <End Role="Vaccine" EntitySet="Vaccines" />
+            <End Role="BatchVaccine" EntitySet="BatchVaccines" />
+          </AssociationSet>
+          </EntityContainer>
         <Association Name="FK_Batch_Barn">
           <End Type="Avicola.OfficeModel.Barn" Role="Barn" Multiplicity="0..1" />
           <End Type="Avicola.OfficeModel.Batch" Role="Batch" Multiplicity="*" />
@@ -739,7 +700,46 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="BatchVaccine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="BatchId" Type="Guid" Nullable="false" />
+          <Property Name="VaccineId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="RecommendedDate" Type="DateTime" Precision="7" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EndDate" Type="DateTime" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Batch" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Batch" FromRole="BatchVaccine" ToRole="Batch" />
+          <NavigationProperty Name="Vaccine" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" FromRole="BatchVaccine" ToRole="Vaccine" />
+        </EntityType>
+        <Association Name="FK_BatchVaccine_Batch">
+          <End Type="Avicola.OfficeModel.Batch" Role="Batch" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.BatchVaccine" Role="BatchVaccine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchVaccine">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchVaccine_Vaccine">
+          <End Type="Avicola.OfficeModel.Vaccine" Role="Vaccine" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.BatchVaccine" Role="BatchVaccine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaccine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchVaccine">
+              <PropertyRef Name="VaccineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -784,19 +784,6 @@
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="ObservationDate" ColumnName="ObservationDate" />
                 <ScalarProperty Name="BatchId" ColumnName="BatchId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BatchVaccines">
-            <EntityTypeMapping TypeName="Avicola.OfficeModel.BatchVaccine">
-              <MappingFragment StoreEntitySet="BatchVaccine">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
-                <ScalarProperty Name="VaccineId" ColumnName="VaccineId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="RecommendedDate" ColumnName="RecommendedDate" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -883,6 +870,20 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BatchVaccines">
+            <EntityTypeMapping TypeName="Avicola.OfficeModel.BatchVaccine">
+              <MappingFragment StoreEntitySet="BatchVaccine">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="RecommendedDate" ColumnName="RecommendedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="VaccineId" ColumnName="VaccineId" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

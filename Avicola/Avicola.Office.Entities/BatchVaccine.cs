@@ -14,6 +14,7 @@ namespace Avicola.Office.Entities
     
     public partial class BatchVaccine
     {
+        public System.Guid Id { get; set; }
         public System.Guid BatchId { get; set; }
         public System.Guid VaccineId { get; set; }
         public System.DateTime CreatedDate { get; set; }
