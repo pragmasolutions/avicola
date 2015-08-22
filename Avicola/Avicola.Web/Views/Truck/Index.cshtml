@@ -27,7 +27,7 @@
         @foreach (var truck in Model.List)
         {
             <tr>
-                <td>@Html.ActionLink(truck.NumberPlate, "Detail", "Truck", routeValues: new { driver.Id }, htmlAttributes: null)</td>
+                <td>@Html.ActionLink(truck.NumberPlate, "Detail", "Truck", routeValues: new { truck.Id }, htmlAttributes: null)</td>
                 <td>@truck.Description</td>
             </tr>
         }
