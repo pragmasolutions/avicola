@@ -298,39 +298,43 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\Views\Web.config" />
-    <Content Include="Scripts\Views\_ViewStart.cshtml" />
-    <Content Include="Scripts\Views\Shared\Error.cshtml" />
-    <Content Include="Scripts\Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\Views\Home\About.cshtml" />
-    <Content Include="Scripts\Views\Home\Contact.cshtml" />
-    <Content Include="Scripts\Views\Home\Index.cshtml" />
-    <Content Include="Scripts\Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Scripts\Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Scripts\Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Scripts\Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Scripts\Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Scripts\Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Scripts\Views\Account\Login.cshtml" />
-    <Content Include="Scripts\Views\Account\Register.cshtml" />
-    <Content Include="Scripts\Views\Account\ResetPassword.cshtml" />
-    <Content Include="Scripts\Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Scripts\Views\Account\SendCode.cshtml" />
-    <Content Include="Scripts\Views\Account\VerifyCode.cshtml" />
-    <Content Include="Scripts\Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Scripts\Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Scripts\Views\Manage\Index.cshtml" />
-    <Content Include="Scripts\Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Scripts\Views\Manage\SetPassword.cshtml" />
-    <Content Include="Scripts\Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Scripts\Views\Shared\Lockout.cshtml" />
-    <Content Include="Scripts\Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Scripts\Views\Shared\_Alerts.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="Views\GeneticLine\Create.cshtml" />
+    <Content Include="Views\GeneticLine\Detail.cshtml" />
+    <Content Include="Views\GeneticLine\Edit.cshtml" />
+    <Content Include="Views\GeneticLine\Index.cshtml" />
+    <Content Include="Views\GeneticLine\_Filters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Views\Base\" />
-    <Folder Include="Scripts\Views\GeneticLine\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

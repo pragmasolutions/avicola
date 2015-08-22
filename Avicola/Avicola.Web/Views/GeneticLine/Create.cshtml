@@ -1,0 +1,20 @@
+﻿@using Framework.Common.Web.Helpers
+@model Avicola.Web.Models.GeneticLines.GeneticLineForm
+@{
+    ViewBag.Title = "Crear Línea Genética";
+}
+
+<h3>Crear Línea Genética</h3>
+@Html.BackButton("Index", "GeneticLine")
+<hr />
+@using (Html.BeginForm("Create", "GeneticLine", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.EditorForModel()
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Crear" class="btn btn-default" />
+        </div>
+    </div>
+}
