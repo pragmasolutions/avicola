@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [dbo].[Provider](
 	[Id] [uniqueidentifier] NOT NULL,
+	[CreatedDate] DATETIME2(7) NOT NULL,
 	[Name] [varchar](200) NOT NULL,
 	[Tel1] [varchar](20) NULL,
 	[Tel2] [varchar](20) NULL,
@@ -9,6 +10,7 @@
 	[WebSite] [varchar](1000) NULL,
 	[Address] [varchar](200) NULL,
 	[City] [varchar](100) NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Provider] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

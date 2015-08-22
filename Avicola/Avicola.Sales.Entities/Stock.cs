@@ -27,6 +27,7 @@ namespace Avicola.Sales.Entities
         public int CurrentBoxes { get; set; }
         public int CurrentMaples { get; set; }
         public int CurrentEggs { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Deposit Deposit { get; set; }
         public virtual Product Product { get; set; }

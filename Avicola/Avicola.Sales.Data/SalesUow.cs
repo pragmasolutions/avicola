@@ -6,6 +6,7 @@ using Framework.Data.EntityFramework.Helpers;
 using Framework.Data.Repository;
 using Avicola.Sales.Data.Interfaces;
 using Avicola.Sales.Entities;
+using Framework.Data.Interfaces;
 
 namespace Avicola.Sales.Data
 {
@@ -77,12 +78,12 @@ namespace Avicola.Sales.Data
 
         protected IRepositoryProvider RepositoryProvider { get; set; }
 
-        private IRepository<T> GetStandardRepo<T>() where T : class
+        private IRepository<T> GetStandardRepo<T>() where T : class, IEntity
         {
             return RepositoryProvider.GetRepositoryForEntityType<T>();
         }
 
-        private T GetRepo<T>() where T : class
+        private T GetRepo<T>() where T : class, IEntity
         {
             return RepositoryProvider.GetRepository<T>();
         }

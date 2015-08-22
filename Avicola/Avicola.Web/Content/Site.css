@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.alert-success {
+    width: 1170px !important;
+}
+
+.select2-selection__rendered {
+    display: none;
+}

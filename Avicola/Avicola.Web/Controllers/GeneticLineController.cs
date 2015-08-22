@@ -58,7 +58,7 @@ namespace Avicola.Web.Controllers
 
             _geneticLineService.Create(geneticLine);
 
-            return RedirectToAction("Index", new GeneticLineListFiltersModel().GetRouteValues()).WithSuccess("Establecimiento Educativo Creado");
+            return RedirectToAction("Index", new GeneticLineListFiltersModel().GetRouteValues()).WithSuccess("Línea genética creada");
         }
 
         public ActionResult Edit(Guid id)
@@ -69,7 +69,7 @@ namespace Avicola.Web.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, GeneticLineForm geneticLineForm)
+        public ActionResult Edit(Guid id, GeneticLineForm geneticLineForm)
         {
             if (!ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Avicola.Web.Controllers
 
             _geneticLineService.Edit(geneticLineForm.ToGeneticLine());
 
-            return RedirectToAction("Index", new GeneticLineListFiltersModel().GetRouteValues()).WithSuccess("Establecimiento Educativo Editado");
+            return RedirectToAction("Index", new GeneticLineListFiltersModel().GetRouteValues()).WithSuccess("Línea genética editada");
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -86,7 +86,7 @@ namespace Avicola.Web.Controllers
         {
             _geneticLineService.Delete(id);
 
-            return RedirectToAction("Index", new GeneticLineListFiltersModel().GetRouteValues()).WithSuccess("Establecimiento Educativo Eliminado");
+            return RedirectToAction("Index", new GeneticLineListFiltersModel().GetRouteValues()).WithSuccess("Línea genética eliminada");
         }
 
         public ActionResult IsNameAvailable(string name, Guid id)

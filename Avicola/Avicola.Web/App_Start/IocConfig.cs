@@ -44,6 +44,7 @@ namespace Avicola.Web
             kernel.Bind<ApplicationSignInManager>().ToMethod(c => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>());
 
             kernel.Bind<IGeneticLineService>().To<GeneticLineService>().InRequestScope();
+            kernel.Bind<IStandardService>().To<StandardService>().InRequestScope();
             
 
             //kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();

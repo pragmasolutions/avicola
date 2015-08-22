@@ -18,8 +18,8 @@ namespace Avicola.Office.Entities
         public Batch()
         {
             this.BatchObservations = new HashSet<BatchObservation>();
-            this.BatchVaccines = new HashSet<BatchVaccine>();
             this.Measures = new HashSet<Measure>();
+            this.BatchVaccines = new HashSet<BatchVaccine>();
         }
     
         public System.Guid Id { get; set; }
@@ -39,11 +39,11 @@ namespace Avicola.Office.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BatchObservation> BatchObservations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BatchVaccine> BatchVaccines { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Measure> Measures { get; set; }
         public virtual Barn Barn { get; set; }
         public virtual FoodClass FoodClass { get; set; }
         public virtual GeneticLine GeneticLine { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BatchVaccine> BatchVaccines { get; set; }
     }
 }

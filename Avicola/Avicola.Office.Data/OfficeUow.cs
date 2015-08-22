@@ -6,6 +6,7 @@ using Framework.Data.EntityFramework.Helpers;
 using Framework.Data.Repository;
 using Avicola.Office.Data.Interfaces;
 using Avicola.Office.Entities;
+using Framework.Data.Interfaces;
 
 namespace Avicola.Office.Data
 {
@@ -78,7 +79,7 @@ namespace Avicola.Office.Data
 
         protected IRepositoryProvider RepositoryProvider { get; set; }
 
-        private IRepository<T> GetStandardRepo<T>() where T : class
+        private IRepository<T> GetStandardRepo<T>() where T : class, IEntity
         {
             return RepositoryProvider.GetRepositoryForEntityType<T>();
         }

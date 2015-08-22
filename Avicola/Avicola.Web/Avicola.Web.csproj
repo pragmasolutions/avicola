@@ -195,6 +195,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\AvicolaGlobalResources.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvicolaGlobalResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -204,8 +209,10 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\StandardController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\GeneticLineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -214,6 +221,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Standards\StandardForm.cs" />
+    <Compile Include="Models\Standards\StandardListFiltersModel.cs" />
+    <Compile Include="Models\Standards\StandardListModel.cs" />
     <Compile Include="Models\Drivers\DriverForm.cs" />
     <Compile Include="Models\Drivers\DriverListFiltersModel.cs" />
     <Compile Include="Models\Drivers\DriverListModel.cs" />
@@ -363,6 +373,13 @@
     <Content Include="Views\Shared\DisplayTemplates\MultilineText.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Object.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataLoadTypeId.cshtml" />
+    <Content Include="Views\Standard\_Filters.cshtml" />
+    <Content Include="Views\Standard\Create.cshtml" />
+    <Content Include="Views\Standard\Detail.cshtml" />
+    <Content Include="Views\Standard\Edit.cshtml" />
+    <Content Include="Views\Standard\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DataLoadTypeId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -382,6 +399,10 @@
     <Content Include="Scripts\underscore.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Avicola.Data.Common\Avicola.Data.Common.csproj">
+      <Project>{8d1c1fdf-6a6d-4354-aaed-cd35a57734ad}</Project>
+      <Name>Avicola.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Avicola.Office.Data\Avicola.Office.Data.csproj">
       <Project>{6bffa4f1-929d-4838-b780-c999ce56ef38}</Project>
       <Name>Avicola.Office.Data</Name>
@@ -434,6 +455,12 @@
       <Project>{9f222811-5858-42ed-958f-96c228d67808}</Project>
       <Name>Framework.Ioc</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\AvicolaGlobalResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>AvicolaGlobalResources.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

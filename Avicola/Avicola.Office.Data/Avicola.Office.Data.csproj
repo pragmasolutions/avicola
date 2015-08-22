@@ -90,6 +90,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Avicola.Data.Common\Avicola.Data.Common.csproj">
+      <Project>{8d1c1fdf-6a6d-4354-aaed-cd35a57734ad}</Project>
+      <Name>Avicola.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Avicola.Office.Entities\Avicola.Office.Entities.csproj">
       <Project>{37f66cd2-c14c-4273-b4c2-09e434f63a7d}</Project>
       <Name>Avicola.Office.Entities</Name>

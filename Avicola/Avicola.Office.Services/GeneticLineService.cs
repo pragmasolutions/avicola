@@ -67,7 +67,6 @@ namespace Avicola.Office.Services
                 throw new ApplicationException("Ya existe una línea genética con el mismo nombre");
             }
 
-            geneticLine.CreatedDate = _clock.Now;
             Uow.GeneticLines.Add(geneticLine);
             Uow.Commit();
         }
@@ -85,9 +84,7 @@ namespace Avicola.Office.Services
 
         public void Delete(Guid geneticLineId)
         {
-            var geneticLine = Uow.GeneticLines.Get(geneticLineId);
-            geneticLine.IsDeleted = true;
-            Uow.GeneticLines.Edit(geneticLine);
+            Uow.GeneticLines.Delete(geneticLineId);
             Uow.Commit();
         }
 
@@ -102,13 +99,5 @@ namespace Avicola.Office.Services
 
             return currentGeneticLine.Id == id;
         }
-
-
-
-        public void Delete(int geneticLineId)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

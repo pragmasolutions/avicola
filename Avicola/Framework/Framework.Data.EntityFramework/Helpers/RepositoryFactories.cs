@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using Framework.Data.EntityFramework.Repository;
+using Framework.Data.Interfaces;
 using Framework.Data.Repository;
 
 namespace Framework.Data.EntityFramework.Helpers
@@ -95,7 +96,7 @@ namespace Framework.Data.EntityFramework.Helpers
         /// You can substitute an alternative factory for the default one by adding
         /// a repository factory for type "T" to <see cref="_repositoryFactories"/>.
         /// </remarks>
-        public Func<DbContext, object> GetRepositoryFactoryForEntityType<T>() where T : class
+        public Func<DbContext, object> GetRepositoryFactoryForEntityType<T>() where T : class, IEntity
         {
             return GetRepositoryFactory<T>() ?? DefaultEntityRepositoryFactory<T>();
         }
@@ -104,7 +105,7 @@ namespace Framework.Data.EntityFramework.Helpers
         /// Default factory for a <see cref="IRepository{T}"/> where T is an entity.
         /// </summary>
         /// <typeparam name="T">Type of the repository's root entity</typeparam>
-        protected virtual Func<DbContext, object> DefaultEntityRepositoryFactory<T>() where T : class
+        protected virtual Func<DbContext, object> DefaultEntityRepositoryFactory<T>() where T : class, IEntity
         {
             return dbContext => new EFRepository<T>(dbContext);
         }

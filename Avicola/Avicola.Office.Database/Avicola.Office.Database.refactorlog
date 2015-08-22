@@ -21,4 +21,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[FK_Batch_GeneticLine]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="4568f028-b4e5-422c-9587-f405b0d10a3b" ChangeDateTime="08/22/2015 16:25:21">
+    <Property Name="ElementName" Value="[dbo].[BatchVaccine].[BatchVaccineId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BatchVaccine]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
 </Operations>

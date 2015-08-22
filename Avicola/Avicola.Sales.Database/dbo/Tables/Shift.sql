@@ -1,6 +1,8 @@
 ﻿CREATE TABLE [dbo].[Shift](
 	[Id] [uniqueidentifier] NOT NULL,
-	[Name] [varchar](100) NULL,
+	[Name] [varchar](100) NOT NULL,
+	[CreatedDate] DATETIME2(7) NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Shift] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
