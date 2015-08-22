@@ -20,6 +20,7 @@ namespace Avicola.Office.Entities
         public Nullable<System.DateTime> RecommendedDate { get; set; }
         public System.DateTime StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Batch Batch { get; set; }
         public virtual Vaccine Vaccine { get; set; }

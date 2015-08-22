@@ -4,6 +4,7 @@
 	[BatchId] [uniqueidentifier] NOT NULL,
 	[StandardItemId] [uniqueidentifier] NOT NULL,
 	[Value] [decimal](18, 4) NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Measure] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

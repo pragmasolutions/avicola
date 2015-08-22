@@ -4,6 +4,7 @@
 	[Content] [varchar](max) NOT NULL,
 	[ObservationDate] [datetime2](7) NOT NULL,
 	[BatchId] [uniqueidentifier] NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_BatchObservation] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

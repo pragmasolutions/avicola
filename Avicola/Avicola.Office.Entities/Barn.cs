@@ -24,6 +24,7 @@ namespace Avicola.Office.Entities
         public System.DateTime CreatedDate { get; set; }
         public int Number { get; set; }
         public Nullable<int> Capacity { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Batch> Batches { get; set; }

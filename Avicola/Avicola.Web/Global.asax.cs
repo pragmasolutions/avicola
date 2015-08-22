@@ -24,6 +24,7 @@ namespace Avicola.Web
             ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
             ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
 
+            AutoMapperConfig.Config();
         }
     }
 }

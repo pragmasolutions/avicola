@@ -2,6 +2,7 @@
 	[Id] [uniqueidentifier] NOT NULL,
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[Name] [nchar](10) NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Vaccine] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

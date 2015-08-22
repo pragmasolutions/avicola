@@ -98,7 +98,7 @@ namespace Framework.Data.EntityFramework.Repository
             return result;
         }
 
-        public virtual T Get(int id)
+        public virtual T Get(Guid id)
         {
             return DbSet.Find(id);
         }
@@ -151,7 +151,7 @@ namespace Framework.Data.EntityFramework.Repository
             }
         }
 
-        public virtual void Delete(int id)
+        public virtual void Delete(Guid id)
         {
             var entity = Get(id);
             if (entity == null) return; // not found; assume already deleted.

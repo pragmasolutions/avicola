@@ -34,6 +34,7 @@ namespace Avicola.Office.Entities
         public Nullable<System.DateTime> ArrivedToBarn { get; set; }
         public Nullable<System.DateTime> PostureStartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BatchObservation> BatchObservations { get; set; }

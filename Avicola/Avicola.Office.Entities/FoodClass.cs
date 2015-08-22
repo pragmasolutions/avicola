@@ -24,6 +24,7 @@ namespace Avicola.Office.Entities
         public System.Guid Id { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StandardItem> StandardItems { get; set; }

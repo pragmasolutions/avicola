@@ -13,6 +13,7 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Number" Type="int" Nullable="false" />
           <Property Name="Capacity" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Batch">
           <Key>
@@ -30,6 +31,7 @@
           <Property Name="ArrivedToBarn" Type="datetime2" Precision="7" />
           <Property Name="PostureStartDate" Type="datetime2" Precision="7" />
           <Property Name="EndDate" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="BatchObservation">
           <Key>
@@ -40,6 +42,7 @@
           <Property Name="Content" Type="varchar(max)" Nullable="false" />
           <Property Name="ObservationDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="BatchId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="BatchVaccine">
           <Key>
@@ -52,6 +55,7 @@
           <Property Name="RecommendedDate" Type="datetime2" Precision="7" />
           <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EndDate" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="DataLoadType">
           <Key>
@@ -67,6 +71,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="GeneticLine">
           <Key>
@@ -76,6 +81,7 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="ProductionWeeks" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Measure">
           <Key>
@@ -86,6 +92,7 @@
           <Property Name="BatchId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StandardItemId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Value" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Standard">
           <Key>
@@ -95,6 +102,7 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="DataLoadTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StandardGeneticLine">
           <Key>
@@ -104,6 +112,7 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="StandardId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="GeneticLineId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StandardItem">
           <Key>
@@ -115,6 +124,7 @@
           <Property Name="Sequence" Type="int" Nullable="false" />
           <Property Name="Value" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="FoodClassId" Type="uniqueidentifier" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Vaccine">
           <Key>
@@ -123,6 +133,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Batch_Barn">
           <End Role="Barn" Type="Self.Barn" Multiplicity="0..1" />
@@ -359,6 +370,7 @@
           <Property Name="Number" Type="Int32" Nullable="false" />
           <Property Name="Capacity" Type="Int32" />
           <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_Barn" FromRole="Barn" ToRole="Batch" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Batch">
           <Key>
@@ -382,6 +394,7 @@
           <NavigationProperty Name="Barn" Relationship="Avicola.OfficeModel.FK_Batch_Barn" FromRole="Batch" ToRole="Barn" />
           <NavigationProperty Name="FoodClass" Relationship="Avicola.OfficeModel.FK_Batch_FoodClass" FromRole="Batch" ToRole="FoodClass" />
           <NavigationProperty Name="GeneticLine" Relationship="Avicola.OfficeModel.FK_Batch_GeneticLine" FromRole="Batch" ToRole="GeneticLine" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="BatchObservation">
           <Key>
@@ -393,6 +406,7 @@
           <Property Name="ObservationDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="BatchId" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Batch" Relationship="Self.FK_BatchObservation_Batch" FromRole="BatchObservation" ToRole="Batch" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="BatchVaccine">
           <Key>
@@ -407,6 +421,7 @@
           <Property Name="EndDate" Type="DateTime" Precision="7" />
           <NavigationProperty Name="Batch" Relationship="Self.FK_BatchVaccine_Batch" FromRole="BatchVaccine" ToRole="Batch" />
           <NavigationProperty Name="Vaccine" Relationship="Self.FK_BatchVaccine_Vaccine" FromRole="BatchVaccine" ToRole="Vaccine" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="DataLoadType">
           <Key>
@@ -425,6 +440,7 @@
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="StandardItems" Relationship="Self.FK_StandardItem_FoodClass" FromRole="FoodClass" ToRole="StandardItem" />
           <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_FoodClass" FromRole="FoodClass" ToRole="Batch" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="GeneticLine">
           <Key>
@@ -436,6 +452,7 @@
           <Property Name="ProductionWeeks" Type="Int32" Nullable="false" />
           <NavigationProperty Name="StandardGeneticLines" Relationship="Self.FK_StandardGeneticLine_GeneticLine" FromRole="GeneticLine" ToRole="StandardGeneticLine" />
           <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_GeneticLine" FromRole="GeneticLine" ToRole="Batch" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Measure">
           <Key>
@@ -448,6 +465,7 @@
           <Property Name="Value" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <NavigationProperty Name="Batch" Relationship="Self.FK_Measure_Batch" FromRole="Measure" ToRole="Batch" />
           <NavigationProperty Name="StandardItem" Relationship="Self.FK_Measure_StandardItem" FromRole="Measure" ToRole="StandardItem" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Standard">
           <Key>
@@ -459,6 +477,7 @@
           <Property Name="DataLoadTypeId" Type="Guid" Nullable="false" />
           <NavigationProperty Name="DataLoadType" Relationship="Self.FK_Standard_DataLoadType" FromRole="Standard" ToRole="DataLoadType" />
           <NavigationProperty Name="StandardGeneticLines" Relationship="Self.FK_StandardGeneticLine_Standard" FromRole="Standard" ToRole="StandardGeneticLine" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="StandardGeneticLine">
           <Key>
@@ -471,6 +490,7 @@
           <NavigationProperty Name="GeneticLine" Relationship="Self.FK_StandardGeneticLine_GeneticLine" FromRole="StandardGeneticLine" ToRole="GeneticLine" />
           <NavigationProperty Name="Standard" Relationship="Self.FK_StandardGeneticLine_Standard" FromRole="StandardGeneticLine" ToRole="Standard" />
           <NavigationProperty Name="StandardItems" Relationship="Self.FK_StandardItem_StandardGeneticLine" FromRole="StandardGeneticLine" ToRole="StandardItem" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="StandardItem">
           <Key>
@@ -485,6 +505,7 @@
           <NavigationProperty Name="FoodClass" Relationship="Self.FK_StandardItem_FoodClass" FromRole="StandardItem" ToRole="FoodClass" />
           <NavigationProperty Name="Measures" Relationship="Self.FK_Measure_StandardItem" FromRole="StandardItem" ToRole="Measure" />
           <NavigationProperty Name="StandardGeneticLine" Relationship="Self.FK_StandardItem_StandardGeneticLine" FromRole="StandardItem" ToRole="StandardGeneticLine" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Vaccine">
           <Key>
@@ -494,6 +515,7 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="BatchVaccines" Relationship="Self.FK_BatchVaccine_Vaccine" FromRole="Vaccine" ToRole="BatchVaccine" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_BatchObservation_Batch">
           <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
@@ -726,6 +748,7 @@
           <EntitySetMapping Name="Barns">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Barn">
               <MappingFragment StoreEntitySet="Barn">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
@@ -736,6 +759,7 @@
           <EntitySetMapping Name="Batches">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Batch">
               <MappingFragment StoreEntitySet="Batch">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
@@ -754,6 +778,7 @@
           <EntitySetMapping Name="BatchObservations">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.BatchObservation">
               <MappingFragment StoreEntitySet="BatchObservation">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
@@ -765,6 +790,7 @@
           <EntitySetMapping Name="BatchVaccines">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.BatchVaccine">
               <MappingFragment StoreEntitySet="BatchVaccine">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="BatchId" ColumnName="BatchId" />
                 <ScalarProperty Name="VaccineId" ColumnName="VaccineId" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -785,6 +811,7 @@
           <EntitySetMapping Name="FoodClasses">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.FoodClass">
               <MappingFragment StoreEntitySet="FoodClass">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -794,6 +821,7 @@
           <EntitySetMapping Name="GeneticLines">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.GeneticLine">
               <MappingFragment StoreEntitySet="GeneticLine">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -804,6 +832,7 @@
           <EntitySetMapping Name="Measures">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Measure">
               <MappingFragment StoreEntitySet="Measure">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="BatchId" ColumnName="BatchId" />
@@ -815,6 +844,7 @@
           <EntitySetMapping Name="Standards">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Standard">
               <MappingFragment StoreEntitySet="Standard">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -825,6 +855,7 @@
           <EntitySetMapping Name="StandardGeneticLines">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.StandardGeneticLine">
               <MappingFragment StoreEntitySet="StandardGeneticLine">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="StandardId" ColumnName="StandardId" />
@@ -835,6 +866,7 @@
           <EntitySetMapping Name="StandardItems">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.StandardItem">
               <MappingFragment StoreEntitySet="StandardItem">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="StandardGeneticLineId" ColumnName="StandardGeneticLineId" />
@@ -847,6 +879,7 @@
           <EntitySetMapping Name="Vaccines">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Vaccine">
               <MappingFragment StoreEntitySet="Vaccine">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

@@ -11,6 +11,7 @@
 	[ArrivedToBarn] [datetime2](7) NULL,
 	[PostureStartDate] [datetime2](7) NULL,
 	[EndDate] [datetime2](7) NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Batch] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

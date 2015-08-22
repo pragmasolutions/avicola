@@ -19,6 +19,7 @@ namespace Avicola.Office.Entities
         public System.Guid BatchId { get; set; }
         public System.Guid StandardItemId { get; set; }
         public decimal Value { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Batch Batch { get; set; }
         public virtual StandardItem StandardItem { get; set; }

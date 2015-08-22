@@ -3,6 +3,7 @@
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[StandardId] [uniqueidentifier] NOT NULL,
 	[GeneticLineId] [uniqueidentifier] NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_StandardGeneticLine] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

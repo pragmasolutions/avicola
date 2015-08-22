@@ -4,6 +4,8 @@ using System.Web.Caching;
 using System.Web.Mvc;
 using Avicola.Office.Data;
 using Avicola.Office.Data.Interfaces;
+using Avicola.Office.Services;
+using Avicola.Office.Services.Interfaces;
 using Avicola.Sales.Data;
 using Avicola.Sales.Data.Interfaces;
 using Framework.Common.Utility;
@@ -41,7 +43,7 @@ namespace Avicola.Web
             kernel.Bind<ApplicationUserManager>().ToMethod(c => HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>());
             kernel.Bind<ApplicationSignInManager>().ToMethod(c => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>());
 
-            //kernel.Bind<IShopService>().To<ShopService>().InRequestScope();
+            kernel.Bind<IGeneticLineService>().To<GeneticLineService>().InRequestScope();
             
 
             //kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();

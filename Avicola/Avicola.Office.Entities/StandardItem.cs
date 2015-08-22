@@ -26,6 +26,7 @@ namespace Avicola.Office.Entities
         public int Sequence { get; set; }
         public decimal Value { get; set; }
         public Nullable<System.Guid> FoodClassId { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual FoodClass FoodClass { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -24,6 +24,7 @@ namespace Avicola.Office.Entities
         public System.DateTime CreatedDate { get; set; }
         public string Name { get; set; }
         public System.Guid DataLoadTypeId { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual DataLoadType DataLoadType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

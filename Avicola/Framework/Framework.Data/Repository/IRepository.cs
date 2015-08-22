@@ -11,12 +11,12 @@ namespace Framework.Data.Repository
         IQueryable<T> GetAll(Expression<Func<T, bool>> whereClause,params Expression<Func<T, object>>[] includes);
         PagedResultList<T> GetAll(PagingCriteria paging, params Expression<Func<T, object>>[] includes);
         PagedResultList<T> GetAll(PagingCriteria paging, Expression<Func<T, bool>> whereClause, params Expression<Func<T, object>>[] includes);
-        T Get(int id);
+        T Get(Guid id);
         T Get(Expression<Func<T, bool>> whereClause, params Expression<Func<T, object>>[] includes);
         void Add(T entity);
         void Edit(T entity);
         void Delete(T entity);
-        void Delete(int id);
+        void Delete(Guid id);
         bool Commit();
     }
 }

@@ -3,6 +3,7 @@
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[Name] [varchar](200) NOT NULL,
 	[DataLoadTypeId] [uniqueidentifier] NOT NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Standard] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

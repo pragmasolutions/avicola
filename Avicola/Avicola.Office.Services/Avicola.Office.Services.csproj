@@ -11,6 +11,8 @@
     <AssemblyName>Avicola.Office.Services</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.3.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneticLineService.cs" />
+    <Compile Include="Interfaces\IGeneticLineService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBase.cs" />
   </ItemGroup>
@@ -47,16 +59,35 @@
       <Project>{6bffa4f1-929d-4838-b780-c999ce56ef38}</Project>
       <Name>Avicola.Office.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Avicola.Office.Entities\Avicola.Office.Entities.csproj">
+      <Project>{37f66cd2-c14c-4273-b4c2-09e434f63a7d}</Project>
+      <Name>Avicola.Office.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Avicola.Services.Common\Avicola.Services.Common.csproj">
       <Project>{d99a9f23-dbbf-4a12-a9d7-a4b6380c9fa4}</Project>
       <Name>Avicola.Services.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
+      <Project>{492b8264-0c10-4afe-a15f-8a82e60ade68}</Project>
+      <Name>Framework.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
       <Project>{cb41f702-99fb-49ae-8bc0-1b7f0193efab}</Project>
       <Name>Framework.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

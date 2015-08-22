@@ -24,6 +24,7 @@ namespace Avicola.Office.Entities
         public System.DateTime CreatedDate { get; set; }
         public System.Guid StandardId { get; set; }
         public System.Guid GeneticLineId { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual GeneticLine GeneticLine { get; set; }
         public virtual Standard Standard { get; set; }

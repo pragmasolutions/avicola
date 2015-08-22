@@ -19,6 +19,7 @@ namespace Avicola.Office.Entities
         public string Content { get; set; }
         public System.DateTime ObservationDate { get; set; }
         public System.Guid BatchId { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Batch Batch { get; set; }
     }
