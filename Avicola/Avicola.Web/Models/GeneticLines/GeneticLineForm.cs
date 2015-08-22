@@ -23,6 +23,7 @@ namespace Avicola.Web.Models.GeneticLines
 
         [Required]
         [Display(Name = "Ciclo de vida (en semanas)")]
+        [Range(1, 10000, ErrorMessage = "Ingrese un ciclo de vida válido")]
         public int ProductionWeeks { get; set; }
 
         [HiddenInput]

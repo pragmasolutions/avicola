@@ -2,12 +2,14 @@
 @using PagedList.Mvc;
 @model Avicola.Web.Models.GeneticLines.GeneticLineListModel
 
+<br/>
 @Html.ActionLink("Crear Línea Genética", "Create", "GeneticLine", htmlAttributes: new { @class = "btn btn-primary" })
 
 @Html.FilterButton()
 
 <div class="spacer">
 </div>
+
 
 @Html.Partial("_Filters", Model.Filters)
 
