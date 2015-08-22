@@ -49,8 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\StandardGeneticLineDto.cs" />
     <Compile Include="DTO\StandardDto.cs" />
     <Compile Include="DTO\GeneticLineDto.cs" />
+    <Compile Include="StandardGeneticLineService.cs" />
+    <Compile Include="Interfaces\IStandardGeneticLineService.cs" />
     <Compile Include="StandardService.cs" />
     <Compile Include="GeneticLineService.cs" />
     <Compile Include="Interfaces\IStandardService.cs" />

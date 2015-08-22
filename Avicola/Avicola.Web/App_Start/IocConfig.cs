@@ -45,6 +45,7 @@ namespace Avicola.Web
 
             kernel.Bind<IGeneticLineService>().To<GeneticLineService>().InRequestScope();
             kernel.Bind<IStandardService>().To<StandardService>().InRequestScope();
+            kernel.Bind<IStandardGeneticLineService>().To<StandardGeneticLineService>().InRequestScope();
             
 
             //kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();

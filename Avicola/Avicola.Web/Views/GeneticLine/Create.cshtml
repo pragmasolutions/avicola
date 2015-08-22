@@ -12,6 +12,8 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.EditorForModel()
+    
+    @Html.Partial("_Standards")
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Crear" class="btn btn-default" />

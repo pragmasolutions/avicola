@@ -1,0 +1,36 @@
+﻿@model IList<Avicola.Office.Entities.StandardGeneticLine>
+
+<h4>Estándares</h4>
+
+<a class="btn btn-primary" href="#" id="btn-agregar-estandar">Agregar Estandar</a>
+
+<div class="spacer">
+</div>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+    </tr>
+    </thead>
+    <tbody class="row-link" data-link="row">
+    @foreach (var standard in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(standard.Standard.Name, "Detail", "StandardGeneticLine", routeValues: new {standard.Id}, htmlAttributes: null)</td>
+            @*<td>@line.ProductionWeeks semanas</td>*@
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script src="/Scripts/app/standard-genetic-line.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            app.standards.initialize('@ViewBag.GeneticLineId');
+        })
+    </script>
+    
+}
