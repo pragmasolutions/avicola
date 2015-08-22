@@ -18,16 +18,16 @@ namespace Avicola.Web.Models.GeneticLines
 
         [Required]
         [Display(Name = "Nombre")]
-        [Remote("IsNameAvailable", "GeneticLine", "Admin", ErrorMessage = "Ya existe un estandar con este nombre", AdditionalFields = "Id")]
+        [Remote("IsNameAvailable", "GeneticLine", "Admin", ErrorMessage = "Ya existe una línea genética con este nombre", AdditionalFields = "Id")]
         public string Name { get; set; }
 
         [Required]
         [Display(Name = "Ciclo de vida (en semanas)")]
-        [Range(1, 10000, ErrorMessage = "Ingrese un ciclo de vida válido")]
+        [Range(1, 10000)]
         public int ProductionWeeks { get; set; }
 
         [HiddenInput]
-        public int CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         
         public GeneticLine ToGeneticLine()
         {
