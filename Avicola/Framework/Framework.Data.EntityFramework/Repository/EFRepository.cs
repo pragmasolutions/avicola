@@ -30,7 +30,7 @@ namespace Framework.Data.EntityFramework.Repository
 
         public IQueryable<T> GetAll(Expression<Func<T, bool>> whereClause,params Expression<Func<T, object>>[] includes)
         {
-            var dbset = DbSet.AsQueryable();
+            var dbset = DbSet.Where(x => !x.IsDeleted).AsQueryable();
             if (whereClause != null)
             {
                 dbset = dbset.Where(whereClause).AsQueryable();
@@ -101,13 +101,12 @@ namespace Framework.Data.EntityFramework.Repository
 
         public virtual T Get(Guid id)
         {
-            return DbSet.Find(id);
+            return DbSet.FirstOrDefault(x => x.Id == id && !x.IsDeleted);
         }
 
         public virtual T Get(Expression<Func<T, bool>> whereClause, params Expression<Func<T, object>>[] includes)
         {
-            var dbset = DbSet.AsQueryable();
-            var list = dbset.ToList();
+            var dbset = DbSet.Where(x => !x.IsDeleted).AsQueryable();
             foreach (var include in includes)
             {
                 dbset = dbset.Include(include);
@@ -144,7 +143,7 @@ namespace Framework.Data.EntityFramework.Repository
 
         public virtual void Delete(T entity)
         {
-            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+            //DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
             entity.IsDeleted = true;
             Edit(entity);
         }

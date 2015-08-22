@@ -24,9 +24,7 @@ namespace Avicola.Sales.Services
 
         public IQueryable<Driver> GetAll()
         {
-            return Uow.Drivers.GetAll(whereClause: null, includes: x => x.Truck)
-                //.Where(e => !e.IsDeleted)
-                ;
+            return Uow.Drivers.GetAll(whereClause: null, includes: x => x.Truck);
         }
 
         public List<DriverDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)
@@ -38,9 +36,7 @@ namespace Avicola.Sales.Services
             pagingCriteria.SortBy = !string.IsNullOrEmpty(sortBy) ? sortBy : "CreatedDate";
             pagingCriteria.SortDirection = !string.IsNullOrEmpty(sortDirection) ? sortDirection : "DESC";
 
-            Expression<Func<Driver, bool>> where = x => 
-                //!x.IsDeleted &&
-                                                        ((string.IsNullOrEmpty(criteria) || x.Name.Contains(criteria)));
+            Expression<Func<Driver, bool>> where = x => ((string.IsNullOrEmpty(criteria) || x.Name.Contains(criteria)));
 
             var results = Uow.Drivers.GetAll(pagingCriteria, where, x => x.Truck);
 
@@ -51,21 +47,16 @@ namespace Avicola.Sales.Services
 
         public Driver GetById(Guid id)
         {
-            return Uow.Drivers.Get(x => x.Id == id 
-                //&& !x.IsDeleted
-                );
+            return Uow.Drivers.Get(x => x.Id == id);
         }
 
         public Driver GetByName(string name)
         {
-            return Uow.Drivers.Get(e => e.Name == name 
-                //&& !e.IsDeleted
-                );
+            return Uow.Drivers.Get(e => e.Name == name);
         }
 
         public void Create(Driver driver)
         {
-            //driver.CreatedDate = _clock.Now;
             Uow.Drivers.Add(driver);
             Uow.Commit();
         }
@@ -87,9 +78,7 @@ namespace Avicola.Sales.Services
 
         public void Delete(Guid driverId)
         {
-            var driver = Uow.Drivers.Get(driverId);
-            //driver.IsDeleted = true;
-            Uow.Drivers.Edit(driver);
+            Uow.Drivers.Delete(driverId);
             Uow.Commit();
         }
     }
