@@ -9,5 +9,9 @@ namespace Avicola.Sales.Entities
 {
     public partial class Truck : IEntity
     {
+        public override string ToString()
+        {
+            return string.Format("{0} - {1}", this.NumberPlate, this.Description);
+        }
     }
 }

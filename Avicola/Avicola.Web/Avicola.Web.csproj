@@ -398,6 +398,7 @@
     <Content Include="Views\Truck\Detail.cshtml" />
     <Content Include="Views\Truck\Edit.cshtml" />
     <Content Include="Views\Truck\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TruckId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

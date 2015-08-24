@@ -22,6 +22,9 @@ namespace Avicola.Web.Models
         public string Address { get; set; }
         [Required]
         public string City { get; set; }
+        [UIHint("TruckId")]
+        [Display(Name = "Camion por Defecto")]
+        public Guid? TruckId { get; set; }
         
         public Driver ToDriver()
         {
