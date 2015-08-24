@@ -85,5 +85,10 @@ namespace Avicola.Web.Controllers
 
             return RedirectToAction("Index", new TruckListFiltersModel().GetRouteValues()).WithSuccess("Camion Eliminado");
         }
+
+        public ActionResult IsNumberPlateAvailable(string numberPlate, Guid id)
+        {
+            return Json(_truckService.IsNumberPlateAvailable(numberPlate, id), JsonRequestBehavior.AllowGet);
+        }
     }
 }

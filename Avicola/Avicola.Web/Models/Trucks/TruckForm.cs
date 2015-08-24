@@ -14,6 +14,8 @@ namespace Avicola.Web.Models
 
         [Required]
         [Display(Name = "Patente")]
+        [RegularExpression(@"^[A-Z]{3}\d{3}$",ErrorMessage = "La patente ingresada no es válida")]
+        [Remote("IsNumberPlateAvailable", "Truck", ErrorMessage = "Ya existe un camion con esta patente", AdditionalFields = "Id")]
         public string NumberPlate { get; set; }
 
         [Required]

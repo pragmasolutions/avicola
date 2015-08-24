@@ -55,6 +55,11 @@ namespace Avicola.Sales.Services
             return Uow.Trucks.Get(e => e.Description == description);
         }
 
+        public Truck GetByNumberPlate(string numberPlate)
+        {
+            return Uow.Trucks.Get(x => x.NumberPlate == numberPlate && !x.IsDeleted);
+        }
+
         public void Create(Truck truck)
         {
             Uow.Trucks.Add(truck);
@@ -76,6 +81,18 @@ namespace Avicola.Sales.Services
         {
             Uow.Trucks.Delete(truckId);
             Uow.Commit();
+        }
+
+        public bool IsNumberPlateAvailable(string numberPlate, Guid id)
+        {
+            var currentTruck = this.GetByNumberPlate(numberPlate);
+
+            if (currentTruck == null)
+            {
+                return true;
+            }
+
+            return currentTruck.Id == id;
         }
     }
 }
