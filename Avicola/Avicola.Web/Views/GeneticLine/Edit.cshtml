@@ -7,7 +7,7 @@
 <h3>Editar Línea Genética</h3>
 @Html.BackButton("/GeneticLine")
 <hr />
-@using (Html.BeginForm("Edit", "GeneticLine", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Edit", "GeneticLine", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "edit-form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -17,4 +17,15 @@
             <input type="submit" value="Editar" class="btn btn-default" />
         </div>
     </div>
+}
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#edit-form").on("submit", function () {
+                return confirm("Si esta línea genética tiene estándares asociados y el número de semanas de producción se ha reducido, se perderán los datos recolectados para las semanas restantes de los lotes de esta línea. \n\n Está seguro que desea continuar?");
+            });
+        });
+    </script>
 }

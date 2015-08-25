@@ -52,7 +52,10 @@ namespace Avicola.Office.Services
 
         public GeneticLine GetById(Guid id)
         {
-            return Uow.GeneticLines.Get(g => g.Id == id, g => g.StandardGeneticLines, g => g.StandardGeneticLines.Select(s => s.Standard));
+            return Uow.GeneticLines.Get(g => g.Id == id, 
+                                    g => g.StandardGeneticLines, 
+                                    g => g.StandardGeneticLines.Select(s => s.Standard),
+                                    g => g.StandardGeneticLines.Select(sgl => sgl.StandardItems));
         }
 
         public GeneticLine GetByName(string name)
@@ -74,9 +77,40 @@ namespace Avicola.Office.Services
         public void Edit(GeneticLine geneticLine)
         {
             var currentGeneticLine = this.GetById(geneticLine.Id);
+            var previousWeeks = currentGeneticLine.ProductionWeeks;
 
             currentGeneticLine.Name = geneticLine.Name;
             currentGeneticLine.ProductionWeeks = geneticLine.ProductionWeeks;
+
+            var standards = currentGeneticLine.StandardGeneticLines.Where(x => !x.IsDeleted).ToList();
+            if (standards.Any())
+            {
+                foreach (var standard in standards)
+                {
+                    if (previousWeeks < geneticLine.ProductionWeeks)
+                    {
+                        for (int i = previousWeeks; i < geneticLine.ProductionWeeks; i++)
+                        {
+                            var item = new StandardItem()
+                            {
+                                Sequence = i + 1,
+                                Value = 0,
+                                StandardGeneticLineId = standard.Id
+                            };
+                            Uow.StandardItems.Add(item);
+                        }
+                    }
+                    else if (previousWeeks > geneticLine.ProductionWeeks)
+                    {
+                        var orderedList = standard.StandardItems.Where(x => !x.IsDeleted).OrderBy(x => x.Sequence).ToList();
+                        for (int i = geneticLine.ProductionWeeks; i < previousWeeks; i++)
+                        {
+                            var item = orderedList.ElementAt(i);
+                            Uow.StandardItems.Delete(item);
+                        }
+                    }
+                }
+            }
 
             Uow.GeneticLines.Edit(currentGeneticLine);
             Uow.Commit();

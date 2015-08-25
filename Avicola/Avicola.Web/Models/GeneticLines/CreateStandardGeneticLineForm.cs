@@ -16,9 +16,10 @@ namespace Avicola.Web.Models.GeneticLines
             if (StandardGeneticLine.Id != Guid.Empty)
             {
                 StandardItems = new List<StandardItemModel>();
-                for (int i = 0; i < StandardGeneticLine.StandardItems.Count; i++)
+                var activeList = StandardGeneticLine.StandardItems.Where(x => !x.IsDeleted).OrderBy(x => x.Sequence).ToList();
+                for (int i = 0; i < activeList.Count; i++)
                 {
-                    var item = StandardGeneticLine.StandardItems.ElementAt(i);
+                    var item = activeList.ElementAt(i);
                     StandardItems.Add(new StandardItemModel
                     {
                         Sequence = i + 1,
