@@ -1,0 +1,43 @@
+﻿@using Framework.Common.Web.Helpers;
+@using PagedList.Mvc;
+@model Avicola.Web.Models.ProviderListModel
+
+<br/>
+
+@Html.ActionLink("Crear Proveedor", "Create", "Provider", htmlAttributes: new { @class = "btn btn-primary" })
+
+
+@Html.FilterButton()
+
+<div class="spacer">
+</div>
+
+@Html.Partial("_Filters", Model.Filters)
+
+<div class="spacer">
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Ciudad</th>
+            <th>Teléfono</th>
+            <th>Celúlar</th>
+        </tr>
+    </thead>
+    <tbody class="row-link" data-link="row">
+        @foreach (var truck in Model.List)
+        {
+            <tr>
+                <td>@Html.ActionLink(truck.Name, "Detail", "Provider", routeValues: new { truck.Id }, htmlAttributes: null)</td>
+                <td>@truck.Address</td>
+                <td>@truck.City</td>
+                <td>@truck.Tel1</td>
+                <td>@truck.CellPhone</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model.List, page => Url.Action("Index", Model.Filters.GetRouteValues(page)))

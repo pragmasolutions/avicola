@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="CellPhone" xml:space="preserve">
+    <value>Celúlar</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>El campo {0} no es un email válido.</value>
   </data>
@@ -125,6 +134,9 @@
   </data>
   <data name="FieldMustBeNumeric" xml:space="preserve">
     <value>El campo {0} debe ser un numero.</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
   </data>
   <data name="PasswordLength" xml:space="preserve">
     <value>El campo {0} debe tener almenos {2} caracteres.</value>
@@ -138,7 +150,19 @@
   <data name="Range" xml:space="preserve">
     <value>El campo {0} debe ser un valor entre {1} y {2}</value>
   </data>
+  <data name="Referent" xml:space="preserve">
+    <value>Referente</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>El campo {0} es requerido</value>
+  </data>
+  <data name="Tel1" xml:space="preserve">
+    <value>Teléfono 1</value>
+  </data>
+  <data name="Tel2" xml:space="preserve">
+    <value>Teléfono 2</value>
+  </data>
+  <data name="WebSite" xml:space="preserve">
+    <value>Sitio Web</value>
   </data>
 </root>

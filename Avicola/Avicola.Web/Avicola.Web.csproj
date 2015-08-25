@@ -216,6 +216,7 @@
     <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\TruckController.cs" />
     <Compile Include="Controllers\StandardController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
@@ -226,6 +227,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Providers\ProviderForm.cs" />
+    <Compile Include="Models\Providers\ProviderListFiltersModel.cs" />
+    <Compile Include="Models\Providers\ProviderListModel.cs" />
     <Compile Include="Models\Trucks\TruckForm.cs" />
     <Compile Include="Models\Trucks\TruckListFiltersModel.cs" />
     <Compile Include="Models\Trucks\TruckListModel.cs" />
@@ -399,6 +403,12 @@
     <Content Include="Views\Truck\Edit.cshtml" />
     <Content Include="Views\Truck\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TruckId.cshtml" />
+    <Content Include="Views\Provider\_Filters.cshtml" />
+    <Content Include="Views\Provider\Create.cshtml" />
+    <Content Include="Views\Provider\Detail.cshtml" />
+    <Content Include="Views\Provider\Edit.cshtml" />
+    <Content Include="Views\Provider\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
