@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DriverService.cs" />
+    <Compile Include="Dtos\DriverDto.cs" />
+    <Compile Include="Interfaces\IDriverService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBase.cs" />
   </ItemGroup>
@@ -57,9 +60,17 @@
       <Project>{655a731f-8412-4ad3-9bf3-9081a7c05df9}</Project>
       <Name>Avicola.Sales.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Avicola.Sales.Entities\Avicola.Sales.Entities.csproj">
+      <Project>{8C6CDBD9-F5DE-4FE9-B7C5-178967C2B5AB}</Project>
+      <Name>Avicola.Sales.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Avicola.Services.Common\Avicola.Services.Common.csproj">
       <Project>{d99a9f23-dbbf-4a12-a9d7-a4b6380c9fa4}</Project>
       <Name>Avicola.Services.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
+      <Project>{492B8264-0C10-4AFE-A15F-8A82E60ADE68}</Project>
+      <Name>Framework.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
       <Project>{cb41f702-99fb-49ae-8bc0-1b7f0193efab}</Project>

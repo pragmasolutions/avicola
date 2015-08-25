@@ -1,7 +1,5 @@
 ﻿using System.Security.Principal;
 using System.Web;
-using System.Web.Caching;
-using System.Web.Mvc;
 using Avicola.Office.Data;
 using Avicola.Office.Data.Interfaces;
 using Avicola.Office.Services;
@@ -11,11 +9,10 @@ using Avicola.Sales.Data.Interfaces;
 using Framework.Common.Utility;
 using Framework.Data.EntityFramework.Helpers;
 using Framework.Ioc;
-using Framework.Ioc.Ninject;
 using Microsoft.AspNet.Identity.Owin;
 using Ninject;
 using Ninject.Web.Common;
-
+using Ninject.Extensions.Conventions;
 
 namespace Avicola.Web
 {
@@ -43,10 +40,21 @@ namespace Avicola.Web
             kernel.Bind<ApplicationUserManager>().ToMethod(c => HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>());
             kernel.Bind<ApplicationSignInManager>().ToMethod(c => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>());
 
+            //kernel.Bind<IGeneticLineService>().To<GeneticLineService>().InRequestScope();
+            //kernel.Bind<IStandardService>().To<StandardService>().InRequestScope();
+
+            kernel.Bind(x => x.FromAssemblyContaining<Avicola.Sales.Services.ServiceBase>()
+                            .SelectAllClasses()
+                            .BindAllInterfaces()
+                            .Configure(c => c.InRequestScope()));
             kernel.Bind<IGeneticLineService>().To<GeneticLineService>().InRequestScope();
             kernel.Bind<IStandardService>().To<StandardService>().InRequestScope();
             kernel.Bind<IStandardGeneticLineService>().To<StandardGeneticLineService>().InRequestScope();
             
+            kernel.Bind(x => x.FromAssemblyContaining<Avicola.Office.Services.ServiceBase>()
+                            .SelectAllClasses()
+                            .BindAllInterfaces()
+                            .Configure(c => c.InRequestScope()));
 
             //kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();
             kernel.Bind<IIdentity>().ToMethod(c => HttpContext.Current.User.Identity);

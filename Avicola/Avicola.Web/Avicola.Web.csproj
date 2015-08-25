@@ -59,7 +59,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.1-unstable-005\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
@@ -214,6 +218,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\StandardGeneticLineController.cs" />
     <Compile Include="Controllers\StandardController.cs" />
+    <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\GeneticLineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -221,9 +226,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\GeneticLines\CreateStandardGeneticLineForm.cs" />
+    <Compile Include="Models\GeneticLines\StandardGeneticLineForm.cs" />
+    <Compile Include="Models\GeneticLines\StandardItemModel.cs" />
     <Compile Include="Models\Standards\StandardForm.cs" />
     <Compile Include="Models\Standards\StandardListFiltersModel.cs" />
     <Compile Include="Models\Standards\StandardListModel.cs" />
+    <Compile Include="Models\Drivers\DriverForm.cs" />
+    <Compile Include="Models\Drivers\DriverListFiltersModel.cs" />
+    <Compile Include="Models\Drivers\DriverListModel.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineListFiltersModel.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineListModel.cs" />
@@ -380,6 +391,11 @@
     <Content Include="Views\Shared\DisplayTemplates\DataLoadTypeId.cshtml" />
     <Content Include="Views\GeneticLine\_Standards.cshtml" />
     <Content Include="Views\StandardGeneticLine\Index.cshtml" />
+    <Content Include="Views\Driver\_Filters.cshtml" />
+    <Content Include="Views\Driver\Create.cshtml" />
+    <Content Include="Views\Driver\Detail.cshtml" />
+    <Content Include="Views\Driver\Edit.cshtml" />
+    <Content Include="Views\Driver\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -418,6 +434,10 @@
     <ProjectReference Include="..\Avicola.Sales.Data\Avicola.Sales.Data.csproj">
       <Project>{655a731f-8412-4ad3-9bf3-9081a7c05df9}</Project>
       <Name>Avicola.Sales.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Sales.Entities\Avicola.Sales.Entities.csproj">
+      <Project>{8C6CDBD9-F5DE-4FE9-B7C5-178967C2B5AB}</Project>
+      <Name>Avicola.Sales.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Avicola.Sales.Services\Avicola.Sales.Services.csproj">
       <Project>{b72272a4-ab34-4f49-bfbc-75c0c600b120}</Project>

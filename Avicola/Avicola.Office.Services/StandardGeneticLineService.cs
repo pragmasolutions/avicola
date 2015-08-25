@@ -36,5 +36,17 @@ namespace Avicola.Office.Services
             var item = Uow.StandardGeneticLines.Get(x => x.Id == standardGeneticLineId, x => x.StandardItems);
             return item;
         }
+
+        public void Create(StandardGeneticLine item)
+        {
+            foreach (var standardItem in item.StandardItems)
+            {
+                standardItem.Id = Guid.NewGuid();
+                standardItem.IsDeleted = false;
+                standardItem.CreatedDate = _clock.Now;
+            }
+            Uow.StandardGeneticLines.Add(item);
+            Uow.Commit();
+        }
     }
 }

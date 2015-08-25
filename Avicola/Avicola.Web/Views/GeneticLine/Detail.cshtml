@@ -6,23 +6,23 @@
 
 <h3>Detalle de Línea Genética</h3>
 @Html.BackButton("/GeneticLine")
+<a class="btn btn-info" href="/StandardGeneticLine/Index/@Model.Id">Estándares</a>
+
 <hr />
 <div class="form-horizontal">
     @Html.DisplayForModel()
-    <hr/>
-
-    @{ Html.RenderAction("Index", "StandardGeneticLine", new { Model.Id});}
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            @using (Html.BeginForm("Delete", "GeneticLine", new { id = Model.Id }, FormMethod.Post, new { id = "delete-form" }))
+            @using (Html.BeginForm("Delete", "GeneticLine", new {id = Model.Id}, FormMethod.Post, new {id = "delete-form"}))
             {
                 @Html.AntiForgeryToken()
-                @Html.ActionLink("Editar", "Edit", "GeneticLine", routeValues: new { Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Editar", "Edit", "GeneticLine", routeValues: new {Model.Id}, htmlAttributes: new {@class = "btn btn-primary"})
                 <button type="submit" class="btn btn-warning">Eliminar</button>
             }
         </div>
     </div>
+    
 </div>
 
 

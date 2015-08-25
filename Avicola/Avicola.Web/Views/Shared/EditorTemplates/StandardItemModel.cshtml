@@ -1,0 +1,7 @@
+﻿@model Avicola.Web.Models.GeneticLines.StandardItemModel
+
+<tr>
+    <td style="text-align: center;">@Model.Sequence</td>
+    <td>@Html.HiddenFor(model => model.Sequence)</td>
+    <td style="text-align: center;">@Html.TextBoxFor(model => model.Value, new { @class = "form-control autonumeric-control standard-item-value", data_a_sep = "", data_a_dec = "," })</td>
+</tr>

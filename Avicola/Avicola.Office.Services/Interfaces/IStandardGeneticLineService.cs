@@ -13,5 +13,7 @@ namespace Avicola.Office.Services.Interfaces
         IList<StandardGeneticLine> GetByGeneticLine(Guid geneticLineId);
 
         StandardGeneticLine GetById(Guid standardGeneticLineId);
+
+        void Create(StandardGeneticLine item);
     }
 }
