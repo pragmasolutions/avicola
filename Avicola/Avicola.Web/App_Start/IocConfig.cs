@@ -40,19 +40,21 @@ namespace Avicola.Web
             kernel.Bind<ApplicationUserManager>().ToMethod(c => HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>());
             kernel.Bind<ApplicationSignInManager>().ToMethod(c => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>());
 
-            //kernel.Bind<IGeneticLineService>().To<GeneticLineService>().InRequestScope();
-            //kernel.Bind<IStandardService>().To<StandardService>().InRequestScope();
+            kernel.Bind<IGeneticLineService>().To<GeneticLineService>().InRequestScope();
+            kernel.Bind<IStandardService>().To<StandardService>().InRequestScope();
+            kernel.Bind<IStandardGeneticLineService>().To<StandardGeneticLineService>().InRequestScope();
 
             kernel.Bind(x => x.FromAssemblyContaining<Avicola.Sales.Services.ServiceBase>()
                             .SelectAllClasses()
                             .BindAllInterfaces()
                             .Configure(c => c.InRequestScope()));
-
-            kernel.Bind(x => x.FromAssemblyContaining<Avicola.Office.Services.ServiceBase>()
-                            .SelectAllClasses()
-                            .BindAllInterfaces()
-                            .Configure(c => c.InRequestScope()));
             
+            
+            //kernel.Bind(x => x.FromAssemblyContaining<Avicola.Office.Services.ServiceBase>()
+            //                .SelectAllClasses()
+            //                .BindAllInterfaces()
+            //                .Configure(c => c.InRequestScope()));
+
             //kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();
             kernel.Bind<IIdentity>().ToMethod(c => HttpContext.Current.User.Identity);
         }

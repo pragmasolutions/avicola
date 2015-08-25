@@ -8,12 +8,11 @@ using Avicola.Office.Entities;
 
 namespace Avicola.Office.Services.DTO
 {
-    public class StandardDto : IMapFrom<Standard>
+    public class StandardGeneticLineDto : IMapFrom<StandardGeneticLine>
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string MeasureUnity { get; set; }
-        public Guid DataLoadTypeId { get; set; }
+        public Guid StandardId { get; set; }
+        public Guid GeneticLineId { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
     }

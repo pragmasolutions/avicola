@@ -81,6 +81,7 @@
   <ItemGroup>
     <None Include="ReferenceData\DataLoadType.Data.sql" />
     <None Include="Avicola.Office.Database.publish.xml" />
+    <None Include="ReferenceData\Standards.Data.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="ReferenceData\Script.PostDeployment.sql" />

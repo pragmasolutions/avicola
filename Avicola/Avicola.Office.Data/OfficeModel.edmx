@@ -103,6 +103,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MeasureUnity" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="DataLoadTypeId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
@@ -467,6 +468,7 @@
           <NavigationProperty Name="DataLoadType" Relationship="Self.FK_Standard_DataLoadType" FromRole="Standard" ToRole="DataLoadType" />
           <NavigationProperty Name="StandardGeneticLines" Relationship="Self.FK_StandardGeneticLine_Standard" FromRole="Standard" ToRole="StandardGeneticLine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="MeasureUnity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="StandardGeneticLine">
           <Key>
@@ -837,6 +839,7 @@
           <EntitySetMapping Name="Standards">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Standard">
               <MappingFragment StoreEntitySet="Standard">
+                <ScalarProperty Name="MeasureUnity" ColumnName="MeasureUnity" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />

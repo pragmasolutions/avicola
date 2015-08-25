@@ -1,0 +1,57 @@
+﻿@using Framework.Common.Web.Helpers
+@model Avicola.Web.Models.GeneticLines.StandardGeneticLineForm
+@{
+    ViewBag.Title = "Estándares de línea: " + Model.GeneticLine.Name.ToUpper();
+}
+
+<h3>Estándares de línea: @Model.GeneticLine.Name.ToUpper()</h3>
+
+
+@if (Model.MissingList.Any())
+{
+    <div style="float: left; margin-right: 20px;">
+        <table>
+            <tr>
+                <td>
+                    @Html.DropDownList("StandardDropdown", ViewBag.MissingList as SelectList, new { @class = "form-control select2-control" })
+                </td>
+                <td style="padding-left: 5px">
+                    <a class="btn btn-primary" href="#" id="btn-agregar-estandar">Agregar Estandar</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+<a class="btn btn-info" href="/GeneticLine/Detail/@Model.GeneticLine.Id" style="float: left; margin-top: 1px;">Volver a Detalle</a>
+
+<div class="spacer">
+</div>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+    </tr>
+    </thead>
+    <tbody class="row-link" data-link="row">
+    @foreach (var standard in Model.GeneticLine.StandardGeneticLines)
+    {
+        <tr>
+            <td>@Html.ActionLink(standard.Standard.Name, "Detail", "StandardGeneticLine", routeValues: new {standard.Id}, htmlAttributes: null)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $('#btn-agregar-estandar').click(function() {
+                var id = $('#StandardDropdown').val();
+                location.href = '/StandardGeneticLine/Create?geneticLineId=@Model.GeneticLine.Id&standardId=' + id;
+            });
+        })
+    </script>
+}
+

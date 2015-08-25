@@ -216,6 +216,7 @@
     <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\StandardGeneticLineController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\TruckController.cs" />
     <Compile Include="Controllers\StandardController.cs" />
@@ -227,6 +228,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\GeneticLines\CreateStandardGeneticLineForm.cs" />
+    <Compile Include="Models\GeneticLines\StandardGeneticLineForm.cs" />
+    <Compile Include="Models\GeneticLines\StandardItemModel.cs" />
     <Compile Include="Models\Providers\ProviderForm.cs" />
     <Compile Include="Models\Providers\ProviderListFiltersModel.cs" />
     <Compile Include="Models\Providers\ProviderListModel.cs" />
@@ -257,6 +261,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\standard-genetic-line.js" />
     <Content Include="Scripts\app\utilities\bootstrapAlerts.js" />
     <Content Include="Scripts\app\utilities\controls.unobtrusive.js" />
     <Content Include="Scripts\app\utilities\dbgeography.js" />
@@ -392,6 +397,8 @@
     <Content Include="Views\Standard\Edit.cshtml" />
     <Content Include="Views\Standard\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DataLoadTypeId.cshtml" />
+    <Content Include="Views\GeneticLine\_Standards.cshtml" />
+    <Content Include="Views\StandardGeneticLine\Index.cshtml" />
     <Content Include="Views\Driver\_Filters.cshtml" />
     <Content Include="Views\Driver\Create.cshtml" />
     <Content Include="Views\Driver\Detail.cshtml" />
@@ -403,6 +410,10 @@
     <Content Include="Views\Truck\Edit.cshtml" />
     <Content Include="Views\Truck\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TruckId.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\StandardItemModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\StandardItemModel.cshtml" />
+    <Content Include="Views\StandardGeneticLine\Create.cshtml" />
+    <Content Include="Views\StandardGeneticLine\Detail.cshtml" />
     <Content Include="Views\Provider\_Filters.cshtml" />
     <Content Include="Views\Provider\Create.cshtml" />
     <Content Include="Views\Provider\Detail.cshtml" />

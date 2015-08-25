@@ -52,7 +52,7 @@ namespace Avicola.Office.Services
 
         public GeneticLine GetById(Guid id)
         {
-            return Uow.GeneticLines.Get(id);
+            return Uow.GeneticLines.Get(g => g.Id == id, g => g.StandardGeneticLines, g => g.StandardGeneticLines.Select(s => s.Standard));
         }
 
         public GeneticLine GetByName(string name)

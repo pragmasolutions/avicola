@@ -11,3 +11,4 @@ Post-Deployment Script Template
 */
 
 :r .\DataLoadType.Data.sql	
+:r .\Standards.Data.sql	
