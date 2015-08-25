@@ -22,7 +22,5 @@ namespace Avicola.Sales.Services.Interfaces
         void Edit(Client geneticLine);
 
         void Delete(Guid geneticLineId);
-
-        bool IsNameAvailable(string numberPlate, Guid id);
     }
 }

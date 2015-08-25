@@ -13,7 +13,6 @@ namespace Avicola.Web.Models
         [HiddenInput]
         public Guid Id { get; set; }
         [Required]
-        [Remote("IsNameAvailable", "Client", ErrorMessage = "Ya existe un proveedor con ese nombre", AdditionalFields = "Id")]
         public string Name { get; set; }
         [Required]
         public string Tel1 { get; set; }
@@ -30,8 +29,8 @@ namespace Avicola.Web.Models
 
         public Client ToClient()
         {
-            var provider = Mapper.Map<ClientForm, Client>(this);
-            return provider;
+            var client = Mapper.Map<ClientForm, Client>(this);
+            return client;
         }
 
         public static ClientForm FromClient(Client driver)

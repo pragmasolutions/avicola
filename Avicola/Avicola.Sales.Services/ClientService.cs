@@ -86,17 +86,5 @@ namespace Avicola.Sales.Services
             Uow.Clients.Delete(clientId);
             Uow.Commit();
         }
-
-        public bool IsNameAvailable(string name, Guid id)
-        {
-            var currentClient = this.GetByName(name);
-
-            if (currentClient == null)
-            {
-                return true;
-            }
-
-            return currentClient.Id == id;
-        }
     }
 }

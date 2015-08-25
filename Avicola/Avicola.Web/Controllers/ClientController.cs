@@ -85,10 +85,5 @@ namespace Avicola.Web.Controllers
 
             return RedirectToAction("Index", new ClientListFiltersModel().GetRouteValues()).WithSuccess("Camion Eliminado");
         }
-
-        public ActionResult IsNameAvailable(string name, Guid id)
-        {
-            return Json(_clientService.IsNameAvailable(name, id), JsonRequestBehavior.AllowGet);
-        }
     }
 }
