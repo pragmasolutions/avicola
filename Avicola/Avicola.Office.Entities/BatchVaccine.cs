@@ -12,7 +12,8 @@ namespace Avicola.Office.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class BatchVaccine
+    using Framework.Data.Interfaces;
+    public partial class BatchVaccine : IEntity
     {
         public System.Guid Id { get; set; }
         public System.Guid BatchId { get; set; }

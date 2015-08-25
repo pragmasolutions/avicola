@@ -22,11 +22,14 @@ namespace Avicola.Web.Models
         public string Address { get; set; }
         [Required]
         public string City { get; set; }
+        [UIHint("TruckId")]
+        [Display(Name = "Camion por Defecto")]
+        public Guid? TruckId { get; set; }
         
         public Driver ToDriver()
         {
-            var shop = Mapper.Map<DriverForm, Driver>(this);
-            return shop;
+            var driver = Mapper.Map<DriverForm, Driver>(this);
+            return driver;
         }
 
         public static DriverForm FromDriver(Driver driver)

@@ -12,7 +12,8 @@ namespace Avicola.Office.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class StandardItem
+    using Framework.Data.Interfaces;
+    public partial class StandardItem : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StandardItem()

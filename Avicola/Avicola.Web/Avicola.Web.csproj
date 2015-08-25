@@ -217,6 +217,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\StandardGeneticLineController.cs" />
+    <Compile Include="Controllers\TruckController.cs" />
     <Compile Include="Controllers\StandardController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\GeneticLineController.cs" />
@@ -229,6 +230,9 @@
     <Compile Include="Models\GeneticLines\CreateStandardGeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\StandardGeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\StandardItemModel.cs" />
+    <Compile Include="Models\Trucks\TruckForm.cs" />
+    <Compile Include="Models\Trucks\TruckListFiltersModel.cs" />
+    <Compile Include="Models\Trucks\TruckListModel.cs" />
     <Compile Include="Models\Standards\StandardForm.cs" />
     <Compile Include="Models\Standards\StandardListFiltersModel.cs" />
     <Compile Include="Models\Standards\StandardListModel.cs" />
@@ -396,6 +400,12 @@
     <Content Include="Views\Driver\Detail.cshtml" />
     <Content Include="Views\Driver\Edit.cshtml" />
     <Content Include="Views\Driver\Index.cshtml" />
+    <Content Include="Views\Truck\_Filters.cshtml" />
+    <Content Include="Views\Truck\Create.cshtml" />
+    <Content Include="Views\Truck\Detail.cshtml" />
+    <Content Include="Views\Truck\Edit.cshtml" />
+    <Content Include="Views\Truck\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TruckId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

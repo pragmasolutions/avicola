@@ -25,7 +25,7 @@ namespace Framework.Data.EntityFramework.Repository
 
         public virtual IQueryable<T> GetAll()
         {
-            return DbSet;
+            return DbSet.Where(x => !x.IsDeleted);
         }
 
         public IQueryable<T> GetAll(Expression<Func<T, bool>> whereClause,params Expression<Func<T, object>>[] includes)

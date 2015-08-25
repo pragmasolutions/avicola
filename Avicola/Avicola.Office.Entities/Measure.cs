@@ -12,7 +12,8 @@ namespace Avicola.Office.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Measure
+    using Framework.Data.Interfaces;
+    public partial class Measure : IEntity
     {
         public System.Guid Id { get; set; }
         public System.DateTime CreatedDate { get; set; }

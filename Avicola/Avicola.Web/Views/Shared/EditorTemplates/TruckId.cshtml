@@ -1,0 +1,9 @@
+﻿@using Avicola.Sales.Services.Interfaces
+@using Framework.Common.Web.Extensions
+@model System.Guid?
+@{
+    var service = IocContainer.GetContainer().Get<ITruckService>();
+    var selectList = service.GetAll().ToSelectListItem(Model, x => x.Id, x => x.ToString(), x => x.Id.ToString());
+}
+
+@Html.DropDownList("", selectList, "Seleccione Camion", new { @class = "form-control select2-control" })

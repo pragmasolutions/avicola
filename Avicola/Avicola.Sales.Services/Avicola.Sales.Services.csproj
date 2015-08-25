@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\TruckDto.cs" />
+    <Compile Include="Interfaces\ITruckService.cs" />
+    <Compile Include="TruckService.cs" />
     <Compile Include="DriverService.cs" />
     <Compile Include="Dtos\DriverDto.cs" />
     <Compile Include="Interfaces\IDriverService.cs" />
