@@ -406,6 +406,10 @@
     <Content Include="Views\Truck\Edit.cshtml" />
     <Content Include="Views\Truck\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TruckId.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\StandardItemModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\StandardItemModel.cshtml" />
+    <Content Include="Views\StandardGeneticLine\Create.cshtml" />
+    <Content Include="Views\StandardGeneticLine\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

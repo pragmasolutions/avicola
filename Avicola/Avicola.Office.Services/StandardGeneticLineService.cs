@@ -33,7 +33,10 @@ namespace Avicola.Office.Services
 
         public StandardGeneticLine GetById(Guid standardGeneticLineId)
         {
-            var item = Uow.StandardGeneticLines.Get(x => x.Id == standardGeneticLineId, x => x.StandardItems);
+            var item = Uow.StandardGeneticLines.Get(x => x.Id == standardGeneticLineId, 
+                                                                    x => x.StandardItems, 
+                                                                    x => x.GeneticLine, 
+                                                                    x => x.Standard);
             return item;
         }
 

@@ -9,27 +9,40 @@ namespace Avicola.Web.Models.GeneticLines
     public class CreateStandardGeneticLineForm
     {
         public List<StandardItemModel> StandardItems { get; set; }
-        public GeneticLine GeneticLine { get; set; }
-        public Standard Standard { get; set; }
+        public StandardGeneticLine StandardGeneticLine { get; set; }
 
         public void GenerateItems()
         {
-            if (GeneticLine != null && Standard != null)
+            if (StandardGeneticLine.Id != Guid.Empty)
             {
                 StandardItems = new List<StandardItemModel>();
-                for (int i = 0; i < GeneticLine.ProductionWeeks; i++)
+                for (int i = 0; i < StandardGeneticLine.StandardItems.Count; i++)
+                {
+                    var item = StandardGeneticLine.StandardItems.ElementAt(i);
+                    StandardItems.Add(new StandardItemModel
+                    {
+                        Sequence = i + 1,
+                        Value = item.Value
+                    });
+                }
+            }
+            else if (StandardGeneticLine.GeneticLine != null && StandardGeneticLine.Standard != null)
+            {
+                StandardItems = new List<StandardItemModel>();
+                for (int i = 0; i < StandardGeneticLine.GeneticLine.ProductionWeeks; i++)
                 {
                     StandardItems.Add(new StandardItemModel { Sequence = i + 1 });
                 }
             }
+            
         }
 
         public StandardGeneticLine ToStandardGeneticLine()
         {
             var item = new StandardGeneticLine()
             {
-                GeneticLineId = this.GeneticLine.Id,
-                StandardId = this.Standard.Id,
+                GeneticLineId = this.StandardGeneticLine.GeneticLine.Id,
+                StandardId = this.StandardGeneticLine.Standard.Id,
                 StandardItems = this.StandardItems.Select(si => new StandardItem()
                 {
                     Sequence = si.Sequence,

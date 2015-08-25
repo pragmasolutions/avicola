@@ -51,8 +51,12 @@ namespace Avicola.Web.Controllers
 
             var model = new CreateStandardGeneticLineForm()
             {
-                GeneticLine = geneticLine,
-                Standard = standard
+                StandardGeneticLine = new StandardGeneticLine()
+                {
+                    GeneticLine = geneticLine,
+                    Standard = standard
+                }
+                
             };
             model.GenerateItems();
             return View(model);
@@ -68,15 +72,18 @@ namespace Avicola.Web.Controllers
 
             StandardGeneticLine item = form.ToStandardGeneticLine();
             _service.Create(item);
-            return Redirect("/StandardGeneticLine/Index/" + form.GeneticLine.Id).WithSuccess("El estandar se ha creado correctamente");
+            return Redirect("/StandardGeneticLine/Index/" + form.StandardGeneticLine.GeneticLine.Id).WithSuccess("El estandar se ha creado correctamente");
         }
 
         public ActionResult Detail(Guid id)
         {
             var item = _service.GetById(id);
-            ViewBag.GeneticLineId = id;
-            return View(item);
+            var model = new CreateStandardGeneticLineForm()
+            {
+                StandardGeneticLine = item
+            };
+            model.GenerateItems();
+            return View(model);
         }
-
     }
 }

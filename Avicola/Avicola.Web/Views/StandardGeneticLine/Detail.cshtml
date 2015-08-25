@@ -7,45 +7,33 @@
 
 <h3>Valores de @Model.StandardGeneticLine.Standard.Name.ToUpper() para @Model.StandardGeneticLine.GeneticLine.Name.ToUpper()</h3><br/>
 
-@using (Html.BeginForm("Create", "StandardGeneticLine", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    @Html.HiddenFor(model => model.StandardGeneticLine.GeneticLine.Id)
-    @Html.HiddenFor(model => model.StandardGeneticLine.Standard.Id)
-    <div class="form-group">
-        <div class="col-md-10">
-            <input type="submit" value="Crear" class="btn btn-default"/>
-            @Html.BackButton("/StandardGeneticLine/Index/" + Model.StandardGeneticLine.GeneticLine.Id, "Volver a listado de estándares")
-        </div>
+<div class="form-group">
+    <div class="col-md-10" style="padding-left: 0; margin-bottom: 10px;">
+        @Html.BackButton("/StandardGeneticLine/Index/" + Model.StandardGeneticLine.GeneticLine.Id, "Volver a listado de estándares")
     </div>
+</div>
 
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 350px;">
-                <div class="standard-item-container">
-                    <table>
-                        <thead>
-                        <th style="text-align: center;"><h3>Semana</h3></th>
-                        <th style="width: 30px;"></th>
-                        <th style="text-align: center;"><h3>Valor</h3></th>
-                        </thead>
-                        <tbody>
-                            @Html.EditorFor(model => model.StandardItems)
-                        </tbody>
-                    </table>
-                </div>
-            </td>
-            <td style="vertical-align: top;">
-                <div id="chart-container"></div>
-            </td>
-        </tr>
-    </table>
-}
-
-
-
+<table style="width: 100%;">
+    <tr>
+        <td style="width: 350px;">
+            <div class="standard-item-container">
+                <table>
+                    <thead>
+                    <th style="text-align: center;"><h3>Semana</h3></th>
+                    <th style="width: 30px;"></th>
+                    <th style="text-align: center;"><h3>Valor</h3></th>
+                    </thead>
+                    <tbody>
+                        @Html.DisplayFor(model => model.StandardItems)
+                    </tbody>
+                </table>
+            </div>
+        </td>
+        <td style="vertical-align: top;">
+            <div id="chart-container"></div>
+        </td>
+    </tr>
+</table>
 
 
 <style>
@@ -75,9 +63,9 @@
         var categories = [];
         var values = [];
 
-        $('.standard-item-value').each(function (i, item) {
+        $('.item-value').each(function (i, item) {
             categories.push(i + 1);
-            values.push(parseFloat($(item).val()));
+            values.push(parseFloat($(item).html()));
         });
 
         $('#chart-container').highcharts({
@@ -119,13 +107,6 @@
             }
 
         $(function () {
-            $('.standard-item-value').change(function () {
-                if (!$(this).val()) {
-                    $(this).val('0,00');
-                }
-                generateChart();
-            });
-
             generateChart();
         });
     </script>
