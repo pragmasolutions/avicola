@@ -54,6 +54,11 @@ namespace Avicola.Web.Controllers
             {
                 return View(standardForm);
             }
+            var available = _standardService.IsNameAvailable(standardForm.Name, Guid.Empty);
+            if (!available)
+            {
+                return View(standardForm).WithError("Ya existe una standard con el nombre ingresado.");
+            }
 
             var standard = standardForm.ToStandard();
 
@@ -75,6 +80,11 @@ namespace Avicola.Web.Controllers
             if (!ModelState.IsValid)
             {
                 return View(standardForm);
+            }
+            var available = _standardService.IsNameAvailable(standardForm.Name, id);
+            if (!available)
+            {
+                return View(standardForm).WithError("Ya existe un estandar con el nombre ingresado.");
             }
 
             _standardService.Edit(standardForm.ToStandard());

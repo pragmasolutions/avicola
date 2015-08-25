@@ -18,7 +18,6 @@ namespace Avicola.Web.Models.Standards
 
         [Required]
         [Display(Name = "Nombre")]
-        [Remote("IsNameAvailable", "Standard", "Admin", ErrorMessage = "Ya existe un estandar con este nombre", AdditionalFields = "Id")]
         public string Name { get; set; }
         
         [Required]
