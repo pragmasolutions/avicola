@@ -54,6 +54,12 @@ namespace Avicola.Web.Controllers
                 return View(geneticLineForm);
             }
 
+            var available = _geneticLineService.IsNameAvailable(geneticLineForm.Name, Guid.Empty);
+            if (!available)
+            {
+                return View(geneticLineForm).WithError("Ya existe una línea genética con el nombre ingresado.");
+            }
+
             var geneticLine = geneticLineForm.ToGeneticLine();
 
             _geneticLineService.Create(geneticLine);
@@ -74,6 +80,12 @@ namespace Avicola.Web.Controllers
             if (!ModelState.IsValid)
             {
                 return View(geneticLineForm);
+            }
+
+            var available = _geneticLineService.IsNameAvailable(geneticLineForm.Name, id);
+            if (!available)
+            {
+                return View(geneticLineForm).WithError("Ya existe una línea genética con el nombre ingresado.");
             }
 
             _geneticLineService.Edit(geneticLineForm.ToGeneticLine());
