@@ -49,10 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\ClientDto.cs" />
     <Compile Include="Dtos\ProviderDto.cs" />
     <Compile Include="Dtos\TruckDto.cs" />
+    <Compile Include="Interfaces\IClientService.cs" />
     <Compile Include="Interfaces\IProviderService.cs" />
     <Compile Include="Interfaces\ITruckService.cs" />
+    <Compile Include="ClientService.cs" />
     <Compile Include="ProviderService.cs" />
     <Compile Include="TruckService.cs" />
     <Compile Include="DriverService.cs" />
