@@ -8,7 +8,7 @@ using AutoMapper.QueryableExtensions;
 using Avicola.Office.Data.Interfaces;
 using Avicola.Office.Entities;
 using Avicola.Office.Entities.DTO;
-using Avicola.Office.Services.DTO;
+using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
 using Framework.Common.Utility;
 using Framework.Data.Helpers;

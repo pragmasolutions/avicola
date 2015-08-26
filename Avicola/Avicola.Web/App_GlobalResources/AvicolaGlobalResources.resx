@@ -120,6 +120,9 @@
   <data name="Address" xml:space="preserve">
     <value>Dirección</value>
   </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>Capacidad</value>
+  </data>
   <data name="CellPhone" xml:space="preserve">
     <value>Celúlar</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Número</value>
   </data>
   <data name="PasswordLength" xml:space="preserve">
     <value>El campo {0} debe tener almenos {2} caracteres.</value>

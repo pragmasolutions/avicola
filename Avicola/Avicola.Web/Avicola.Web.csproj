@@ -216,6 +216,7 @@
     <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BarnController.cs" />
     <Compile Include="Controllers\DepositController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\StandardGeneticLineController.cs" />
@@ -230,6 +231,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Barns\BarnForm.cs" />
+    <Compile Include="Models\Barns\BarnListFiltersModel.cs" />
+    <Compile Include="Models\Barns\BarnListModel.cs" />
     <Compile Include="Models\Deposits\DepositForm.cs" />
     <Compile Include="Models\Deposits\DepositListFiltersModel.cs" />
     <Compile Include="Models\Deposits\DepositListModel.cs" />
@@ -438,6 +442,11 @@
     <Content Include="Views\Deposit\Detail.cshtml" />
     <Content Include="Views\Deposit\Edit.cshtml" />
     <Content Include="Views\Deposit\Index.cshtml" />
+    <Content Include="Views\Barn\_Filters.cshtml" />
+    <Content Include="Views\Barn\Create.cshtml" />
+    <Content Include="Views\Barn\Detail.cshtml" />
+    <Content Include="Views\Barn\Edit.cshtml" />
+    <Content Include="Views\Barn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
