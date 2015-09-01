@@ -13,25 +13,20 @@ namespace Avicola.Office.Entities
     using System.Collections.Generic;
     
     using Framework.Data.Interfaces;
-    public partial class StandardGeneticLine : IEntity
+    public partial class StandardType : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public StandardGeneticLine()
+        public StandardType()
         {
-            this.StandardItems = new HashSet<StandardItem>();
+            this.Standards = new HashSet<Standard>();
         }
     
         public System.Guid Id { get; set; }
+        public string Name { get; set; }
         public System.DateTime CreatedDate { get; set; }
-        public System.Guid StandardId { get; set; }
-        public System.Guid GeneticLineId { get; set; }
         public bool IsDeleted { get; set; }
-        public System.Guid StageId { get; set; }
     
-        public virtual GeneticLine GeneticLine { get; set; }
-        public virtual Standard Standard { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StandardItem> StandardItems { get; set; }
-        public virtual Stage Stage { get; set; }
+        public virtual ICollection<Standard> Standards { get; set; }
     }
 }

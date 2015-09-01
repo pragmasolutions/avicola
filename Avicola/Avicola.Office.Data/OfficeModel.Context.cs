@@ -39,5 +39,7 @@ namespace Avicola.Office.Data
         public virtual DbSet<StandardItem> StandardItems { get; set; }
         public virtual DbSet<Vaccine> Vaccines { get; set; }
         public virtual DbSet<BatchVaccine> BatchVaccines { get; set; }
+        public virtual DbSet<Stage> Stages { get; set; }
+        public virtual DbSet<StandardType> StandardTypes { get; set; }
     }
 }

@@ -1,0 +1,6 @@
+﻿@using Avicola.Office.Entities
+@using Framework.Common.Web.Extensions
+@model Guid?
+
+
+@Html.TextBox("", Model == StandardType.UNIQUE_VALUE ? "Valor único" : "Rango de valores", new { @class = "form-control", @readonly = true })

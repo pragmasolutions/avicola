@@ -83,6 +83,7 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="ProductionWeeks" Type="int" Nullable="false" />
+          <Property Name="WeeksInBreeding" Type="int" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Measure">
@@ -96,6 +97,15 @@
           <Property Name="Value" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Stage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Standard">
           <Key>
             <PropertyRef Name="Id" />
@@ -105,6 +115,7 @@
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="MeasureUnity" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="DataLoadTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StandardTypeId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StandardGeneticLine">
@@ -115,6 +126,7 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="StandardId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="GeneticLineId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StageId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StandardItem">
@@ -127,6 +139,15 @@
           <Property Name="Sequence" Type="int" Nullable="false" />
           <Property Name="Value" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="FoodClassId" Type="uniqueidentifier" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StandardType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Vaccine">
@@ -246,6 +267,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Standard_StandardType">
+          <End Role="StandardType" Type="Self.StandardType" Multiplicity="1" />
+          <End Role="Standard" Type="Self.Standard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandardType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Standard">
+              <PropertyRef Name="StandardTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StandardGeneticLine_GeneticLine">
           <End Role="GeneticLine" Type="Self.GeneticLine" Multiplicity="1" />
           <End Role="StandardGeneticLine" Type="Self.StandardGeneticLine" Multiplicity="*" />
@@ -255,6 +288,18 @@
             </Principal>
             <Dependent Role="StandardGeneticLine">
               <PropertyRef Name="GeneticLineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StandardGeneticLine_Stage">
+          <End Role="Stage" Type="Self.Stage" Multiplicity="1" />
+          <End Role="StandardGeneticLine" Type="Self.StandardGeneticLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StandardGeneticLine">
+              <PropertyRef Name="StageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -303,9 +348,11 @@
           <EntitySet Name="FoodClass" EntityType="Self.FoodClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneticLine" EntityType="Self.GeneticLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Measure" EntityType="Self.Measure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stage" EntityType="Self.Stage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Standard" EntityType="Self.Standard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StandardGeneticLine" EntityType="Self.StandardGeneticLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StandardItem" EntityType="Self.StandardItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StandardType" EntityType="Self.StandardType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vaccine" EntityType="Self.Vaccine" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Batch_Barn" Association="Self.FK_Batch_Barn">
             <End Role="Barn" EntitySet="Barn" />
@@ -343,8 +390,16 @@
             <End Role="DataLoadType" EntitySet="DataLoadType" />
             <End Role="Standard" EntitySet="Standard" />
           </AssociationSet>
+          <AssociationSet Name="FK_Standard_StandardType" Association="Self.FK_Standard_StandardType">
+            <End Role="StandardType" EntitySet="StandardType" />
+            <End Role="Standard" EntitySet="Standard" />
+          </AssociationSet>
           <AssociationSet Name="FK_StandardGeneticLine_GeneticLine" Association="Self.FK_StandardGeneticLine_GeneticLine">
             <End Role="GeneticLine" EntitySet="GeneticLine" />
+            <End Role="StandardGeneticLine" EntitySet="StandardGeneticLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StandardGeneticLine_Stage" Association="Self.FK_StandardGeneticLine_Stage">
+            <End Role="Stage" EntitySet="Stage" />
             <End Role="StandardGeneticLine" EntitySet="StandardGeneticLine" />
           </AssociationSet>
           <AssociationSet Name="FK_StandardGeneticLine_Standard" Association="Self.FK_StandardGeneticLine_Standard">
@@ -443,6 +498,7 @@
           <NavigationProperty Name="StandardGeneticLines" Relationship="Self.FK_StandardGeneticLine_GeneticLine" FromRole="GeneticLine" ToRole="StandardGeneticLine" />
           <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_GeneticLine" FromRole="GeneticLine" ToRole="Batch" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="WeeksInBreeding" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Measure">
           <Key>
@@ -469,6 +525,8 @@
           <NavigationProperty Name="StandardGeneticLines" Relationship="Self.FK_StandardGeneticLine_Standard" FromRole="Standard" ToRole="StandardGeneticLine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="MeasureUnity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StandardTypeId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="StandardType" Relationship="Avicola.OfficeModel.FK_Standard_StandardType" FromRole="Standard" ToRole="StandardType" />
         </EntityType>
         <EntityType Name="StandardGeneticLine">
           <Key>
@@ -482,6 +540,8 @@
           <NavigationProperty Name="Standard" Relationship="Self.FK_StandardGeneticLine_Standard" FromRole="StandardGeneticLine" ToRole="Standard" />
           <NavigationProperty Name="StandardItems" Relationship="Self.FK_StandardItem_StandardGeneticLine" FromRole="StandardGeneticLine" ToRole="StandardItem" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="StageId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Stage" Relationship="Avicola.OfficeModel.FK_StandardGeneticLine_Stage" FromRole="StandardGeneticLine" ToRole="Stage" />
         </EntityType>
         <EntityType Name="StandardItem">
           <Key>
@@ -669,6 +729,16 @@
             <End Role="Vaccine" EntitySet="Vaccines" />
             <End Role="BatchVaccine" EntitySet="BatchVaccines" />
           </AssociationSet>
+          <EntitySet Name="Stages" EntityType="Avicola.OfficeModel.Stage" />
+          <AssociationSet Name="FK_StandardGeneticLine_Stage" Association="Avicola.OfficeModel.FK_StandardGeneticLine_Stage">
+            <End Role="Stage" EntitySet="Stages" />
+            <End Role="StandardGeneticLine" EntitySet="StandardGeneticLines" />
+          </AssociationSet>
+          <EntitySet Name="StandardTypes" EntityType="Avicola.OfficeModel.StandardType" />
+          <AssociationSet Name="FK_Standard_StandardType" Association="Avicola.OfficeModel.FK_Standard_StandardType">
+            <End Role="StandardType" EntitySet="StandardTypes" />
+            <End Role="Standard" EntitySet="Standards" />
+          </AssociationSet>
           </EntityContainer>
         <Association Name="FK_Batch_Barn">
           <End Type="Avicola.OfficeModel.Barn" Role="Barn" Multiplicity="0..1" />
@@ -745,6 +815,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Stage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="StandardGeneticLines" Relationship="Avicola.OfficeModel.FK_StandardGeneticLine_Stage" FromRole="Stage" ToRole="StandardGeneticLine" />
+        </EntityType>
+        <Association Name="FK_StandardGeneticLine_Stage">
+          <End Type="Avicola.OfficeModel.Stage" Role="Stage" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.StandardGeneticLine" Role="StandardGeneticLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StandardGeneticLine">
+              <PropertyRef Name="StageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StandardType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Standards" Relationship="Avicola.OfficeModel.FK_Standard_StandardType" FromRole="StandardType" ToRole="Standard" />
+        </EntityType>
+        <Association Name="FK_Standard_StandardType">
+          <End Type="Avicola.OfficeModel.StandardType" Role="StandardType" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.Standard" Role="Standard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandardType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Standard">
+              <PropertyRef Name="StandardTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -816,6 +930,7 @@
           <EntitySetMapping Name="GeneticLines">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.GeneticLine">
               <MappingFragment StoreEntitySet="GeneticLine">
+                <ScalarProperty Name="WeeksInBreeding" ColumnName="WeeksInBreeding" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -839,6 +954,7 @@
           <EntitySetMapping Name="Standards">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Standard">
               <MappingFragment StoreEntitySet="Standard">
+                <ScalarProperty Name="StandardTypeId" ColumnName="StandardTypeId" />
                 <ScalarProperty Name="MeasureUnity" ColumnName="MeasureUnity" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -851,6 +967,7 @@
           <EntitySetMapping Name="StandardGeneticLines">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.StandardGeneticLine">
               <MappingFragment StoreEntitySet="StandardGeneticLine">
+                <ScalarProperty Name="StageId" ColumnName="StageId" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -892,6 +1009,26 @@
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="VaccineId" ColumnName="VaccineId" />
                 <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stages">
+            <EntityTypeMapping TypeName="Avicola.OfficeModel.Stage">
+              <MappingFragment StoreEntitySet="Stage">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StandardTypes">
+            <EntityTypeMapping TypeName="Avicola.OfficeModel.StandardType">
+              <MappingFragment StoreEntitySet="StandardType">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

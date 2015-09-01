@@ -44,10 +44,11 @@ namespace Avicola.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Create(Guid geneticLineId, Guid standardId)
+        public ActionResult Create(Guid geneticLineId, Guid standardId, Guid stageId)
         {
             var geneticLine = _geneticLineService.GetById(geneticLineId);
             var standard = _standardService.GetById(standardId);
+            ViewBag.StageName = stageId == Stage.BREEDING ? "CRIA Y PRE-CRIA" : "POSTURA";
 
             var model = new CreateStandardGeneticLineForm()
             {
@@ -55,8 +56,8 @@ namespace Avicola.Web.Controllers
                 {
                     GeneticLine = geneticLine,
                     Standard = standard
-                }
-                
+                },
+                StageId = stageId
             };
             model.GenerateItems();
             return View(model);
@@ -84,6 +85,27 @@ namespace Avicola.Web.Controllers
             };
             model.GenerateItems();
             return View(model);
+        }
+
+        public ActionResult Select(Guid id)
+        {
+            var model = new SelectStandardModel() {GeneticLineId = id};
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult Select(SelectStandardModel model)
+        {
+            var exists = _service.CheckExistance(model.GeneticLineId, model.StageId, model.StandardId);
+            if (exists)
+                return Redirect("/StandardGeneticLine/Index/" + model.GeneticLineId).WithError("Ya existe un estandar para la línea genética y etapa seleccionada");
+
+            var url = String.Format("/StandardGeneticLine/Create?geneticLineId={0}&standardId={1}&stageId={2}",
+                                model.GeneticLineId,
+                                model.StandardId,
+                                model.StageId);
+
+            return Redirect(url);
         }
     }
 }

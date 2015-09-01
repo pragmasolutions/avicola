@@ -19,6 +19,7 @@
         <tr>
             <th>Nombre</th>
             <th>Unidad de Medida</th>
+            <th>Tipo de Estandar</th>
             <th>Ingreso de datos</th>
         </tr>
     </thead>
@@ -28,6 +29,7 @@
             <tr>
                 <td>@Html.ActionLink(standard.Name, "Detail", "Standard", routeValues: new { standard.Id }, htmlAttributes: null)</td>
                 <td>@standard.MeasureUnity</td>
+                <td>@(standard.StandardTypeId == StandardType.UNIQUE_VALUE ? "Valor único" : "Rango de valores")</td>
                 <td>@(standard.DataLoadTypeId == DataLoadType.DAYLY ? "Diariamente" : "Semanalmente")</td>
             </tr>
         }

@@ -6,23 +6,8 @@
 
 <h3>Estándares de línea: @Model.GeneticLine.Name.ToUpper()</h3>
 
-
-@if (Model.MissingList.Any())
-{
-    <div style="float: left; margin-right: 20px;">
-        <table>
-            <tr>
-                <td>
-                    @Html.DropDownList("StandardDropdown", ViewBag.MissingList as SelectList, new { @class = "form-control select2-control" })
-                </td>
-                <td style="padding-left: 5px">
-                    <a class="btn btn-primary" href="#" id="btn-agregar-estandar">Agregar Estandar</a>
-                </td>
-            </tr>
-        </table>
-    </div>
-}
-<a class="btn btn-info" href="/GeneticLine/Detail/@Model.GeneticLine.Id" style="float: left; margin-top: 1px;">Volver a Detalle</a>
+<a class="btn btn-primary" href="/StandardGeneticLine/Select/@Model.GeneticLine.Id" id="btn-add-standard">Agregar Estandar</a>
+<a class="btn btn-info" href="/GeneticLine/Detail/@Model.GeneticLine.Id">Volver a Detalle</a>
 
 <div class="spacer">
 </div>
@@ -31,6 +16,7 @@
     <thead>
     <tr>
         <th>Nombre</th>
+        <th>Etapa</th>
     </tr>
     </thead>
     <tbody class="row-link" data-link="row">
@@ -38,20 +24,15 @@
     {
         <tr>
             <td>@Html.ActionLink(standard.Standard.Name, "Detail", "StandardGeneticLine", routeValues: new {standard.Id}, htmlAttributes: null)</td>
+            <td>@standard.Stage.Name</td>
         </tr>
     }
     </tbody>
 </table>
+@Html.Modal("AddStandardModal")
 
 @section scripts
 {
-    <script>
-        $(function () {
-            $('#btn-agregar-estandar').click(function() {
-                var id = $('#StandardDropdown').val();
-                location.href = '/StandardGeneticLine/Create?geneticLineId=@Model.GeneticLine.Id&standardId=' + id;
-            });
-        })
-    </script>
+    @Scripts.Render("~/Scripts/app/office-select-standard.js")
 }
 

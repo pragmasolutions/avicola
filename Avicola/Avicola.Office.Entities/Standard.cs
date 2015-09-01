@@ -27,9 +27,11 @@ namespace Avicola.Office.Entities
         public System.Guid DataLoadTypeId { get; set; }
         public bool IsDeleted { get; set; }
         public string MeasureUnity { get; set; }
+        public System.Guid StandardTypeId { get; set; }
     
         public virtual DataLoadType DataLoadType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StandardGeneticLine> StandardGeneticLines { get; set; }
+        public virtual StandardType StandardType { get; set; }
     }
 }

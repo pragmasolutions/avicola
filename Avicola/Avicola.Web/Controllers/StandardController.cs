@@ -64,7 +64,7 @@ namespace Avicola.Web.Controllers
 
             _standardService.Create(standard);
 
-            return RedirectToAction("Index", new StandardListFiltersModel().GetRouteValues()).WithSuccess("Línea genética creada");
+            return RedirectToAction("Index", new StandardListFiltersModel().GetRouteValues()).WithSuccess("Estandar creado");
         }
 
         public ActionResult Edit(Guid id)
@@ -89,7 +89,7 @@ namespace Avicola.Web.Controllers
 
             _standardService.Edit(standardForm.ToStandard());
 
-            return RedirectToAction("Index", new StandardListFiltersModel().GetRouteValues()).WithSuccess("Línea genética editada");
+            return RedirectToAction("Index", new StandardListFiltersModel().GetRouteValues()).WithSuccess("Estandar editado");
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -97,7 +97,7 @@ namespace Avicola.Web.Controllers
         {
             _standardService.Delete(id);
 
-            return RedirectToAction("Index", new StandardListFiltersModel().GetRouteValues()).WithSuccess("Línea genética eliminada");
+            return RedirectToAction("Index", new StandardListFiltersModel().GetRouteValues()).WithSuccess("Estandar eliminado");
         }
 
         public ActionResult IsNameAvailable(string name, Guid id)

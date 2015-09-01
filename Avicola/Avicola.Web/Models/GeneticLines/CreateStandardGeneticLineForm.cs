@@ -10,6 +10,7 @@ namespace Avicola.Web.Models.GeneticLines
     {
         public List<StandardItemModel> StandardItems { get; set; }
         public StandardGeneticLine StandardGeneticLine { get; set; }
+        public Guid StageId { get; set; }
 
         public void GenerateItems()
         {
@@ -44,6 +45,7 @@ namespace Avicola.Web.Models.GeneticLines
             {
                 GeneticLineId = this.StandardGeneticLine.GeneticLine.Id,
                 StandardId = this.StandardGeneticLine.Standard.Id,
+                StageId = this.StageId,
                 StandardItems = this.StandardItems.Select(si => new StandardItem()
                 {
                     Sequence = si.Sequence,

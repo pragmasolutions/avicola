@@ -14,6 +14,7 @@ namespace Avicola.Office.Services.DTO
         public string Name { get; set; }
         public string MeasureUnity { get; set; }
         public Guid DataLoadTypeId { get; set; }
+        public Guid StandardTypeId { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
     }

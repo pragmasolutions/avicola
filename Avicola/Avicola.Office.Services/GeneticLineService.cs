@@ -55,6 +55,7 @@ namespace Avicola.Office.Services
             return Uow.GeneticLines.Get(g => g.Id == id, 
                                     g => g.StandardGeneticLines, 
                                     g => g.StandardGeneticLines.Select(s => s.Standard),
+                                    g => g.StandardGeneticLines.Select(s => s.Stage),
                                     g => g.StandardGeneticLines.Select(sgl => sgl.StandardItems));
         }
 
