@@ -1,0 +1,20 @@
+﻿@using Framework.Common.Web.Helpers
+@model Avicola.Web.Models.BarnForm
+@{
+    ViewBag.Title = "Crear Galpón";
+}
+
+<h3>Crear Galpón</h3>
+@Html.BackButton("/Barn")
+<hr />
+@using (Html.BeginForm("Create", "Barn", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.EditorForModel()
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Crear" class="btn btn-default" />
+        </div>
+    </div>
+}

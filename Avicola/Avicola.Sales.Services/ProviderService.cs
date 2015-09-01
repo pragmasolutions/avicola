@@ -60,6 +60,11 @@ namespace Avicola.Sales.Services
 
         public void Create(Provider provider)
         {
+            if (!IsNameAvailable(provider.Name, provider.Id))
+            {
+                throw new ApplicationException("Un proveedor con el mismo nombre ya ha sido creado");
+            }
+
             Uow.Providers.Add(provider);
             Uow.Commit();
         }

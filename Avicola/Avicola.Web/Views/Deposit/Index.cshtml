@@ -1,0 +1,33 @@
+﻿@model Avicola.Web.Models.DepositListModel
+
+<br/>
+
+@Html.ActionLink("Crear Depósito", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
+
+
+@Html.FilterButton()
+
+<div class="spacer">
+</div>
+
+@Html.Partial("_Filters", Model.Filters)
+
+<div class="spacer">
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>@AvicolaGlobalResources.Name</th>
+        </tr>
+    </thead>
+    <tbody class="row-link" data-link="row">
+        @foreach (var deposit in Model.List)
+        {
+            <tr>
+                <td>@Html.ActionLink(deposit.Name, "Detail", "Deposit", routeValues: new { deposit.Id }, htmlAttributes: null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model.List, page => Url.Action("Index", Model.Filters.GetRouteValues(page)))

@@ -216,6 +216,9 @@
     <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BarnController.cs" />
+    <Compile Include="Controllers\DepositController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\StandardGeneticLineController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\TruckController.cs" />
@@ -228,10 +231,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Barns\BarnForm.cs" />
+    <Compile Include="Models\Barns\BarnListFiltersModel.cs" />
+    <Compile Include="Models\Barns\BarnListModel.cs" />
+    <Compile Include="Models\Deposits\DepositForm.cs" />
+    <Compile Include="Models\Deposits\DepositListFiltersModel.cs" />
+    <Compile Include="Models\Deposits\DepositListModel.cs" />
     <Compile Include="Models\GeneticLines\CreateStandardGeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\SelectStandardModel.cs" />
     <Compile Include="Models\GeneticLines\StandardGeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\StandardItemModel.cs" />
+    <Compile Include="Models\Clients\ClientForm.cs" />
+    <Compile Include="Models\Clients\ClientListFiltersModel.cs" />
+    <Compile Include="Models\Clients\ClientListModel.cs" />
     <Compile Include="Models\Providers\ProviderForm.cs" />
     <Compile Include="Models\Providers\ProviderListFiltersModel.cs" />
     <Compile Include="Models\Providers\ProviderListModel.cs" />
@@ -427,6 +439,21 @@
     <Content Include="Views\Shared\DisplayTemplates\StandardTypeId.cshtml" />
     <Content Include="Views\StandardGeneticLine\Select.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\StandardId.cshtml" />
+    <Content Include="Views\Client\_Filters.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Client\Detail.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Deposit\_Filters.cshtml" />
+    <Content Include="Views\Deposit\Create.cshtml" />
+    <Content Include="Views\Deposit\Detail.cshtml" />
+    <Content Include="Views\Deposit\Edit.cshtml" />
+    <Content Include="Views\Deposit\Index.cshtml" />
+    <Content Include="Views\Barn\_Filters.cshtml" />
+    <Content Include="Views\Barn\Create.cshtml" />
+    <Content Include="Views\Barn\Detail.cshtml" />
+    <Content Include="Views\Barn\Edit.cshtml" />
+    <Content Include="Views\Barn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

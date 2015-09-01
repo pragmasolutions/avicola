@@ -1,12 +1,8 @@
-﻿using Framework.Common.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Avicola.Office.Entities;
+using Framework.Common.Mapping;
 
-namespace Avicola.Office.Services.DTO
+namespace Avicola.Office.Services.Dtos
 {
     public class StandardGeneticLineDto : IMapFrom<StandardGeneticLine>
     {

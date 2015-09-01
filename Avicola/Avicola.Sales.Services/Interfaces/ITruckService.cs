@@ -17,11 +17,11 @@ namespace Avicola.Sales.Services.Interfaces
         List<TruckDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize,
             out int pageTotal);
 
-        void Create(Truck geneticLine);
+        void Create(Truck truck);
 
-        void Edit(Truck geneticLine);
+        void Edit(Truck truck);
 
-        void Delete(Guid geneticLineId);
+        void Delete(Guid truckId);
 
         bool IsNumberPlateAvailable(string numberPlate, Guid id);
     }

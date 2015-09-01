@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Capacidad.
+        /// </summary>
+        internal static string Capacity {
+            get {
+                return ResourceManager.GetString("Capacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Celúlar.
         /// </summary>
         internal static string CellPhone {
@@ -120,6 +129,15 @@ namespace Resources {
         internal static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Número.
+        /// </summary>
+        internal static string Number {
+            get {
+                return ResourceManager.GetString("Number", resourceCulture);
             }
         }
         

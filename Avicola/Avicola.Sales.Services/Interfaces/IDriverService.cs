@@ -15,10 +15,10 @@ namespace Avicola.Sales.Services.Interfaces
         List<DriverDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize,
             out int pageTotal);
 
-        void Create(Driver geneticLine);
+        void Create(Driver driver);
 
-        void Edit(Driver geneticLine);
+        void Edit(Driver driver);
 
-        void Delete(Guid geneticLineId);
+        void Delete(Guid driverId);
     }
 }

@@ -62,6 +62,11 @@ namespace Avicola.Sales.Services
 
         public void Create(Truck truck)
         {
+            if (!IsNumberPlateAvailable(truck.NumberPlate, truck.Id))
+            {
+                throw new ApplicationException("Un camion con la misma patente ya ha sido creado");
+            }
+
             Uow.Trucks.Add(truck);
             Uow.Commit();
         }

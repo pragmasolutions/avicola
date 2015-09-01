@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Avicola.Office.Entities.DTO;
-using Avicola.Office.Services.DTO;
+using Avicola.Office.Services.Dtos;
 using PagedList;
 
 namespace Avicola.Web.Models.Standards
