@@ -95,7 +95,8 @@ namespace Avicola.Office.Services
                             var item = new StandardItem()
                             {
                                 Sequence = i + 1,
-                                Value = 0,
+                                Value1 = 0,
+                                Value2 = 0,
                                 StandardGeneticLineId = standard.Id
                             };
                             Uow.StandardItems.Add(item);

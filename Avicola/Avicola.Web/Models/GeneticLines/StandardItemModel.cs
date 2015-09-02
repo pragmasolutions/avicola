@@ -10,8 +10,13 @@ namespace Avicola.Web.Models.GeneticLines
     {
         public int Sequence { get; set; }
 
+        public bool ShowSecondValue { get; set; }
+
         [Required]
         [Range(0, 10000)]
-        public decimal Value { get; set; }
+        public decimal Value1 { get; set; }
+
+        [Range(0, 10000)]
+        public decimal? Value2 { get; set; }
     }
 }

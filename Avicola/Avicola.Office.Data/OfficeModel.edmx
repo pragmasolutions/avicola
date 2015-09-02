@@ -137,7 +137,8 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="StandardGeneticLineId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Sequence" Type="int" Nullable="false" />
-          <Property Name="Value" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Value1" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Value2" Type="decimal" Precision="18" Scale="4" />
           <Property Name="FoodClassId" Type="uniqueidentifier" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
@@ -551,12 +552,13 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="StandardGeneticLineId" Type="Guid" Nullable="false" />
           <Property Name="Sequence" Type="Int32" Nullable="false" />
-          <Property Name="Value" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="FoodClassId" Type="Guid" />
           <NavigationProperty Name="FoodClass" Relationship="Self.FK_StandardItem_FoodClass" FromRole="StandardItem" ToRole="FoodClass" />
           <NavigationProperty Name="Measures" Relationship="Self.FK_Measure_StandardItem" FromRole="StandardItem" ToRole="Measure" />
           <NavigationProperty Name="StandardGeneticLine" Relationship="Self.FK_StandardItem_StandardGeneticLine" FromRole="StandardItem" ToRole="StandardGeneticLine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Value1" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Value2" Type="Decimal" Precision="18" Scale="4" />
         </EntityType>
         <EntityType Name="Vaccine">
           <Key>
@@ -979,12 +981,13 @@
           <EntitySetMapping Name="StandardItems">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.StandardItem">
               <MappingFragment StoreEntitySet="StandardItem">
+                <ScalarProperty Name="Value2" ColumnName="Value2" />
+                <ScalarProperty Name="Value1" ColumnName="Value1" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="StandardGeneticLineId" ColumnName="StandardGeneticLineId" />
                 <ScalarProperty Name="Sequence" ColumnName="Sequence" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="FoodClassId" ColumnName="FoodClassId" />
               </MappingFragment>
             </EntityTypeMapping>

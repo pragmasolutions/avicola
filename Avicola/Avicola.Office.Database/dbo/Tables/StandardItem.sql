@@ -3,7 +3,8 @@
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[StandardGeneticLineId] [uniqueidentifier] NOT NULL,
 	[Sequence] [int] NOT NULL,
-	[Value] [decimal](18, 4) NOT NULL,
+	[Value1] [decimal](18, 4) NOT NULL,
+	[Value2] [decimal](18, 4) NULL,
 	[FoodClassId] [uniqueidentifier] NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_StandardItem] PRIMARY KEY CLUSTERED 

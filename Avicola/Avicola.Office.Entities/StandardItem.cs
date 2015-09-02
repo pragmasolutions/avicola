@@ -25,9 +25,10 @@ namespace Avicola.Office.Entities
         public System.DateTime CreatedDate { get; set; }
         public System.Guid StandardGeneticLineId { get; set; }
         public int Sequence { get; set; }
-        public decimal Value { get; set; }
         public Nullable<System.Guid> FoodClassId { get; set; }
         public bool IsDeleted { get; set; }
+        public decimal Value1 { get; set; }
+        public Nullable<decimal> Value2 { get; set; }
     
         public virtual FoodClass FoodClass { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
