@@ -36,7 +36,8 @@ namespace Avicola.Office.Services
             var item = Uow.StandardGeneticLines.Get(x => x.Id == standardGeneticLineId, 
                                                                     x => x.StandardItems, 
                                                                     x => x.GeneticLine, 
-                                                                    x => x.Standard);
+                                                                    x => x.Standard,
+                                                                    x => x.Stage);
             return item;
         }
 
@@ -50,6 +51,15 @@ namespace Avicola.Office.Services
             }
             Uow.StandardGeneticLines.Add(item);
             Uow.Commit();
+        }
+
+        public bool CheckExistance(Guid geneticLineId, Guid? stageId, Guid? standardId)
+        {
+            var list = Uow.StandardGeneticLines.GetAll().Where(x => x.StandardId == standardId
+                                                                    && x.GeneticLineId == geneticLineId
+                                                                    && x.StageId == stageId
+                                                                    && !x.IsDeleted);
+            return list.Any();
         }
     }
 }

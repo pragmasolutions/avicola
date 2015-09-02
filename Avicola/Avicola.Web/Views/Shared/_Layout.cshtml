@@ -21,20 +21,35 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Líneas Genéticas", "Index", new { controller = "GeneticLine" })</li>
-                    <li>@Html.ActionLink("Estándares", "Index", new { controller = "Standard" })</li>
-                    <li>@Html.ActionLink("Conductores", "Index", new { controller = "Driver" })</li>
-                    <li>@Html.ActionLink("Camiones", "Index", new { controller = "Truck" })</li>
-                    <li>@Html.ActionLink("Proveedores", "Index", new { controller = "Provider" })</li>
-                    <li>@Html.ActionLink("Clientes", "Index", new { controller = "Client" })</li>
-                    <li>@Html.ActionLink("Depósitos", "Index", new { controller = "Deposit" })</li>
-                    <li>@Html.ActionLink("Galpónes", "Index", new { controller = "Barn" })</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Producción <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Líneas Genéticas", "Index", new { controller = "GeneticLine" })</li>
+                            <li>@Html.ActionLink("Estándares", "Index", new { controller = "Standard" })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logística <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Conductores", "Index", new { controller = "Driver" })</li>
+                            <li>@Html.ActionLink("Camiones", "Index", new { controller = "Truck" })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ventas y Pedidos <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Clientes", "Index", new { controller = "Client" })</li>
+                            <li>@Html.ActionLink("Depósitos", "Index", new { controller = "Deposit" })</li>
+                            <li>@Html.ActionLink("Galpónes", "Index", new {controller = "Barn"})</li>
+                            <li>@Html.ActionLink("Proveedores", "Index", new { controller = "Provider" })</li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Reporte 1", "Report1", new { controller = "Report" })</li>
-                            <li>@Html.ActionLink("Reporte 2", "Report1", new { controller = "Report" })</li>
-                            <li>@Html.ActionLink("Reporte 3", "Report1", new { controller = "Report" })</li>
+                            <li>@Html.ActionLink("Reporte 1", "Report1", new {controller = "Report"})</li>
+                            <li>@Html.ActionLink("Reporte 2", "Report1", new {controller = "Report"})</li>
+                            <li>@Html.ActionLink("Reporte 3", "Report1", new {controller = "Report"})</li>
                         </ul>
                     </li>
                 </ul>

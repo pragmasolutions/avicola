@@ -29,6 +29,11 @@ namespace Avicola.Web.Models.Standards
         [UIHint("DataLoadTypeId")]
         public Guid DataLoadTypeId { get; set; }
 
+        [Required]
+        [Display(Name = "Tipo de Estandar")]
+        [UIHint("StandardTypeId")]
+        public Guid StandardTypeId { get; set; }
+
         [HiddenInput]
         public DateTime CreatedDate { get; set; }
         

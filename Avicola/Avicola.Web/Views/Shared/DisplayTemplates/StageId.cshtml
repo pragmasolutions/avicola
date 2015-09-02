@@ -1,0 +1,6 @@
+﻿@using Avicola.Office.Entities
+@using Framework.Common.Web.Extensions
+@model Guid?
+
+
+@Html.TextBox("", Model == Stage.BREEDING ? "Cría y Pre-cría" : "Postura", new { @class = "form-control", @readonly = true })

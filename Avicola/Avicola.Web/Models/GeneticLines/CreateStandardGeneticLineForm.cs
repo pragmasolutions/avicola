@@ -10,6 +10,7 @@ namespace Avicola.Web.Models.GeneticLines
     {
         public List<StandardItemModel> StandardItems { get; set; }
         public StandardGeneticLine StandardGeneticLine { get; set; }
+        public Guid StageId { get; set; }
 
         public void GenerateItems()
         {
@@ -23,7 +24,9 @@ namespace Avicola.Web.Models.GeneticLines
                     StandardItems.Add(new StandardItemModel
                     {
                         Sequence = i + 1,
-                        Value = item.Value
+                        Value1 = item.Value1,
+                        Value2 = item.Value2,
+                        ShowSecondValue = this.StandardGeneticLine.Standard.StandardTypeId == StandardType.VALUES_RANGE
                     });
                 }
             }
@@ -32,7 +35,12 @@ namespace Avicola.Web.Models.GeneticLines
                 StandardItems = new List<StandardItemModel>();
                 for (int i = 0; i < StandardGeneticLine.GeneticLine.ProductionWeeks; i++)
                 {
-                    StandardItems.Add(new StandardItemModel { Sequence = i + 1 });
+                    StandardItems.Add(new StandardItemModel
+                    {
+                        Sequence = i + 1,
+                        ShowSecondValue = this.StandardGeneticLine.Standard.StandardTypeId == StandardType.VALUES_RANGE,
+                        Value2 = 0
+                    });
                 }
             }
             
@@ -44,10 +52,12 @@ namespace Avicola.Web.Models.GeneticLines
             {
                 GeneticLineId = this.StandardGeneticLine.GeneticLine.Id,
                 StandardId = this.StandardGeneticLine.Standard.Id,
+                StageId = this.StageId,
                 StandardItems = this.StandardItems.Select(si => new StandardItem()
                 {
                     Sequence = si.Sequence,
-                    Value = si.Value
+                    Value1 = si.Value1,
+                    Value2 = si.Value2
                 }).ToList()
             };
             return item;

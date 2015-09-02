@@ -25,6 +25,11 @@ namespace Avicola.Web.Models.GeneticLines
         [Range(1, 10000)]
         public int ProductionWeeks { get; set; }
 
+        [Required]
+        [Display(Name = "Semanas en cría y pre-cría")]
+        [Range(1, 10000)]
+        public int WeeksInBreeding { get; set; }
+
         [HiddenInput]
         public DateTime CreatedDate { get; set; }
         

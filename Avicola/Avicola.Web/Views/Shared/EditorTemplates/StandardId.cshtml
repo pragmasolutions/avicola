@@ -1,0 +1,10 @@
+﻿@using Avicola.Office.Services.Interfaces
+@using Avicola.Sales.Services.Interfaces
+@using Framework.Common.Web.Extensions
+@model System.Guid?
+@{
+    var service = IocContainer.GetContainer().Get<IStandardService>();
+    var selectList = service.GetAll().ToSelectListItem(Model, x => x.Id, x => x.Name, x => x.Id.ToString());
+}
+
+@Html.DropDownList("", selectList, "Seleccione Estandar", new { @class = "form-control select2-control" })

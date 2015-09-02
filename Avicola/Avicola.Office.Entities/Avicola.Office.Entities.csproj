@@ -55,6 +55,8 @@
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\GeneticLineDto.cs" />
+    <Compile Include="Extensions\Stage.cs" />
+    <Compile Include="Extensions\StandardType.cs" />
     <Compile Include="Extensions\DataLoadType.cs" />
     <Compile Include="Extensions\BatchObservation.cs" />
     <Compile Include="Extensions\BatchVaccine.cs" />
@@ -82,6 +84,9 @@
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stage.cs">
+      <DependentUpon>OfficeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Standard.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
@@ -89,6 +94,9 @@
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StandardItem.cs">
+      <DependentUpon>OfficeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StandardType.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Vaccine.cs">

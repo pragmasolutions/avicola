@@ -15,5 +15,7 @@ namespace Avicola.Office.Services.Interfaces
         StandardGeneticLine GetById(Guid standardGeneticLineId);
 
         void Create(StandardGeneticLine item);
+
+        bool CheckExistance(Guid geneticLineId, Guid? stageId, Guid? standardId);
     }
 }

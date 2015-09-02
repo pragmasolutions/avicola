@@ -1,0 +1,12 @@
+﻿@using Avicola.Office.Entities
+@using Framework.Common.Web.Extensions
+@model Guid?
+@{
+    var list = new List<KeyValuePair<Guid, string>>
+    {
+        new KeyValuePair<Guid, string>(StandardType.VALUES_RANGE, "Rango de valores") ,
+        new KeyValuePair<Guid, string>(StandardType.UNIQUE_VALUE, "Valor único") 
+    };
+}
+
+@Html.DropDownList("", new SelectList(list, "Key", "Value", Model), "Seleccione Tipo", new { @class = "form-control select2-control" })
