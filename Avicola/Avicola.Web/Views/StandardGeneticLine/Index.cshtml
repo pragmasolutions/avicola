@@ -20,7 +20,7 @@
     </tr>
     </thead>
     <tbody class="row-link" data-link="row">
-    @foreach (var standard in Model.GeneticLine.StandardGeneticLines)
+    @foreach (var standard in Model.GeneticLine.StandardGeneticLines.Where(x => !x.IsDeleted))
     {
         <tr>
             <td>@Html.ActionLink(standard.Standard.Name, "Detail", "StandardGeneticLine", routeValues: new {standard.Id}, htmlAttributes: null)</td>

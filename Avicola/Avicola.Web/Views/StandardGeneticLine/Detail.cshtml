@@ -14,7 +14,14 @@
 
 <div class="form-group">
     <div class="col-md-10" style="padding-left: 0; margin-bottom: 10px;">
-        @Html.BackButton("/StandardGeneticLine/Index/" + Model.StandardGeneticLine.GeneticLine.Id, "Volver a listado de estándares")
+        @using (Html.BeginForm("Delete", "StandardGeneticLine", new { id = Model.StandardGeneticLine.Id }, FormMethod.Post, new { id = "delete-form" }))
+        {
+            @Html.AntiForgeryToken()
+            
+            @Html.ActionLink("Editar", "Edit", "StandardGeneticLine", routeValues: new { Model.StandardGeneticLine.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+            <button type="submit" class="btn btn-warning">Eliminar</button>
+            @Html.BackButton("/StandardGeneticLine/Index/" + Model.StandardGeneticLine.GeneticLine.Id, "Volver a listado de estándares")
+        }
     </div>
 </div>
 
@@ -146,6 +153,10 @@
 
     $(function () {
         generateChart();
+
+        $("#delete-form").on("submit", function () {
+            return confirm("Está seguro que desea eliminar este estandar?  Esta operación no se puede deshacer.");
+        });
     });
     </script>
 }

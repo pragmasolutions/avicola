@@ -8,6 +8,7 @@ namespace Avicola.Web.Models.GeneticLines
 {
     public class CreateStandardGeneticLineForm
     {
+        public Guid NAME { get; set; }
         public List<StandardItemModel> StandardItems { get; set; }
         public StandardGeneticLine StandardGeneticLine { get; set; }
         public Guid StageId { get; set; }
@@ -23,6 +24,7 @@ namespace Avicola.Web.Models.GeneticLines
                     var item = activeList.ElementAt(i);
                     StandardItems.Add(new StandardItemModel
                     {
+                        Id = item.Id,
                         Sequence = i + 1,
                         Value1 = item.Value1,
                         Value2 = item.Value2,
@@ -53,11 +55,13 @@ namespace Avicola.Web.Models.GeneticLines
                 GeneticLineId = this.StandardGeneticLine.GeneticLine.Id,
                 StandardId = this.StandardGeneticLine.Standard.Id,
                 StageId = this.StageId,
+                Id = this.StandardGeneticLine.Id,
                 StandardItems = this.StandardItems.Select(si => new StandardItem()
                 {
                     Sequence = si.Sequence,
                     Value1 = si.Value1,
-                    Value2 = si.Value2
+                    Value2 = si.Value2,
+                    Id = si.Id
                 }).ToList()
             };
             return item;

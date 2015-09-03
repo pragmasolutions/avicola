@@ -9,7 +9,7 @@ namespace Avicola.Web.Models.GeneticLines
     public class StandardItemModel
     {
         public int Sequence { get; set; }
-
+        public Guid Id { get; set; }
         public bool ShowSecondValue { get; set; }
 
         [Required]
