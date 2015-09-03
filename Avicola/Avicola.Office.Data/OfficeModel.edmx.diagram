@@ -34,6 +34,7 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_StandardGeneticLine_Stage" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.StandardType" Width="1.5" PointX="3.375" PointY="11.875" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Standard_StandardType" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_Stage" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

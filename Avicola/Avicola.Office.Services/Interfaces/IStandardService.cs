@@ -18,6 +18,8 @@ namespace Avicola.Office.Services.Interfaces
         List<StandardDto> GetAll(string sortBy, string sortDirection, string criteria, 
                                 int pageIndex, int pageSize, out int pageTotal);
 
+        IQueryable<Standard> GetByBatchId(Guid batchId);
+
         void Create(Standard standard);
 
         void Edit(Standard standard);

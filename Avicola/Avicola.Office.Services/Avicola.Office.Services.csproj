@@ -49,11 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IMeasureService.cs" />
+    <Compile Include="MeasureService.cs" />
+    <Compile Include="BatchService.cs" />
     <Compile Include="BarnService.cs" />
     <Compile Include="Dtos\BarnDto.cs" />
     <Compile Include="Dtos\StandardGeneticLineDto.cs" />
     <Compile Include="Dtos\StandardDto.cs" />
     <Compile Include="Dtos\GeneticLineDto.cs" />
+    <Compile Include="Interfaces\IBatchService.cs" />
     <Compile Include="Interfaces\IBarnService.cs" />
     <Compile Include="StandardGeneticLineService.cs" />
     <Compile Include="Interfaces\IStandardGeneticLineService.cs" />

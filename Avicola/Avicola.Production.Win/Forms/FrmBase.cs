@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 
-namespace Avicola.Production.Win.Forms.Measure
+namespace Avicola.Production.Win.Forms
 {
-    public partial class FrmCreateEditMeasure : Form
+    public partial class FrmBase : Telerik.WinControls.UI.RadForm
     {
-        public FrmCreateEditMeasure()
+        public FrmBase()
         {
             InitializeComponent();
         }

@@ -19,6 +19,7 @@ namespace Avicola.Office.Entities
         public Stage()
         {
             this.StandardGeneticLines = new HashSet<StandardGeneticLine>();
+            this.Batches = new HashSet<Batch>();
         }
     
         public System.Guid Id { get; set; }
@@ -28,5 +29,7 @@ namespace Avicola.Office.Entities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StandardGeneticLine> StandardGeneticLines { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Batch> Batches { get; set; }
     }
 }

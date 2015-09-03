@@ -17,10 +17,12 @@ namespace Avicola.Office.Services
 {
     public class StandardService : ServiceBase, IStandardService
     {
+        private readonly IBatchService _batchService;
         private readonly IClock _clock;
 
-        public StandardService(IOfficeUow uow, IClock clock)
+        public StandardService(IOfficeUow uow,IBatchService batchService, IClock clock)
         {
+            _batchService = batchService;
             _clock = clock;
             Uow = uow;
         }
@@ -49,6 +51,16 @@ namespace Avicola.Office.Services
             pageTotal = results.PagedMetadata.TotalItemCount;
 
             return results.Entities.Project().To<StandardDto>().ToList();
+        }
+
+        public IQueryable<Standard> GetByBatchId(Guid batchId)
+        {
+            var batch = Uow.Batches.Get(x => x.Id == batchId && !x.IsDeleted);
+
+            return Uow.Standards.GetAll(
+                whereClause: x => x.StandardGeneticLines.Any(y => y.Id == batch.GeneticLineId && y.StageId == batch.StageId),
+                includes: x => x.StandardGeneticLines)
+                .Where(e => !e.IsDeleted);
         }
 
         public Standard GetById(Guid id)

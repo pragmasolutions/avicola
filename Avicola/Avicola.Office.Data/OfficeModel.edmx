@@ -28,6 +28,7 @@
           <Property Name="StartingFood" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="FoodClassId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="BarnId" Type="uniqueidentifier" />
+          <Property Name="StageId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ArrivedToBarn" Type="datetime2" Precision="7" />
           <Property Name="PostureStartDate" Type="datetime2" Precision="7" />
           <Property Name="EndDate" Type="datetime2" Precision="7" />
@@ -193,6 +194,18 @@
             </Principal>
             <Dependent Role="Batch">
               <PropertyRef Name="GeneticLineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batch_Stage">
+          <End Role="Stage" Type="Self.Stage" Multiplicity="1" />
+          <End Role="Batch" Type="Self.Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="StageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -367,6 +380,10 @@
             <End Role="GeneticLine" EntitySet="GeneticLine" />
             <End Role="Batch" EntitySet="Batch" />
           </AssociationSet>
+          <AssociationSet Name="FK_Batch_Stage" Association="Self.FK_Batch_Stage">
+            <End Role="Stage" EntitySet="Stage" />
+            <End Role="Batch" EntitySet="Batch" />
+          </AssociationSet>
           <AssociationSet Name="FK_BatchObservation_Batch" Association="Self.FK_BatchObservation_Batch">
             <End Role="Batch" EntitySet="Batch" />
             <End Role="BatchObservation" EntitySet="BatchObservation" />
@@ -454,6 +471,8 @@
           <NavigationProperty Name="GeneticLine" Relationship="Avicola.OfficeModel.FK_Batch_GeneticLine" FromRole="Batch" ToRole="GeneticLine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="BatchVaccines" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Batch" FromRole="Batch" ToRole="BatchVaccine" />
+          <Property Name="StageId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Stage" Relationship="Avicola.OfficeModel.FK_Batch_Stage" FromRole="Batch" ToRole="Stage" />
         </EntityType>
         <EntityType Name="BatchObservation">
           <Key>
@@ -741,6 +760,10 @@
             <End Role="StandardType" EntitySet="StandardTypes" />
             <End Role="Standard" EntitySet="Standards" />
           </AssociationSet>
+          <AssociationSet Name="FK_Batch_Stage" Association="Avicola.OfficeModel.FK_Batch_Stage">
+            <End Role="Stage" EntitySet="Stages" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
           </EntityContainer>
         <Association Name="FK_Batch_Barn">
           <End Type="Avicola.OfficeModel.Barn" Role="Barn" Multiplicity="0..1" />
@@ -826,6 +849,7 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="StandardGeneticLines" Relationship="Avicola.OfficeModel.FK_StandardGeneticLine_Stage" FromRole="Stage" ToRole="StandardGeneticLine" />
+          <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_Stage" FromRole="Stage" ToRole="Batch" />
         </EntityType>
         <Association Name="FK_StandardGeneticLine_Stage">
           <End Type="Avicola.OfficeModel.Stage" Role="Stage" Multiplicity="1" />
@@ -861,6 +885,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Batch_Stage">
+          <End Type="Avicola.OfficeModel.Stage" Role="Stage" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="StageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -881,6 +917,7 @@
           <EntitySetMapping Name="Batches">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Batch">
               <MappingFragment StoreEntitySet="Batch">
+                <ScalarProperty Name="StageId" ColumnName="StageId" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />

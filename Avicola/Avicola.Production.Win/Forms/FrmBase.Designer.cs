@@ -1,6 +1,6 @@
-﻿namespace Avicola.Production.Win.Forms.Measure
+﻿namespace Avicola.Production.Win.Forms
 {
-    partial class FrmCreateEditMeasure
+    partial class FrmBase
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // FrmCreateEditMeasure
+            // FrmBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 366);
-            this.Name = "FrmCreateEditMeasure";
-            this.Text = "FrmCreateEditMeasure";
+            this.Name = "FrmBase";
+            this.Text = "FrmBase";
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
         }
