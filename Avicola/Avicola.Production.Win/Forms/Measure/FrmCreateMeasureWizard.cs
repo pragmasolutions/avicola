@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
 using Avicola.Production.Win.Models.Measures;
+using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms.Measure
@@ -11,6 +13,7 @@ namespace Avicola.Production.Win.Forms.Measure
     {
         private readonly IServiceFactory _serviceFactory;
         private BatchDto _selectedBatch;
+        private IList<LoadMeasureModel> _newMeasures;
 
         public FrmCreateMeasureWizard(IServiceFactory serviceFactory)
         {
@@ -50,33 +53,90 @@ namespace Avicola.Production.Win.Forms.Measure
 
             if (commandCell.ColumnInfo.Name == GlobalConstants.SelectColumnName)
             {
-                _selectedBatch = batch;
+                if (_selectedBatch != batch)
+                {
+                    _selectedBatch = batch;
+
+                    LoadMeasures();
+                }
 
                 createMeasureWizard.SelectNextPage();
             }
         }
 
+        private void LoadMeasures()
+        {
+            using (var standardService = _serviceFactory.Create<IStandardService>())
+            {
+                var standars = standardService.GetByBatchId(_selectedBatch.Id);
+
+                _newMeasures = standars.Select(x => new LoadMeasureModel()
+                                                    {
+                                                        BatchId = _selectedBatch.Id,
+                                                        CreatedDate = DateTime.Now,
+                                                        MeasureUnity = x.MeasureUnity,
+                                                        Name = x.Name
+                                                    }).ToList();
+
+                gvMeasures.DataSource = _newMeasures;
+            }
+        }
+
         private void createMeasureWizard_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
         {
-            if (e.SelectedPage == wizardPage2)
+            if (e.SelectedPage == wizardCompletionPage1)
             {
-                if (_selectedBatch != null)
+                ucLoadMeasuresSummary.Batch = _selectedBatch;
+            }
+        }
+
+        private void createMeasureWizard_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
+        {
+            if (e.NextPage == wizardCompletionPage1)
+            {
+                ValidateMeasures(e);
+            }
+        }
+
+        private void ValidateMeasures(SelectedPageChangingEventArgs e)
+        {
+            var measures = gvMeasures.DataSource as IList<LoadMeasureModel>;
+            if (measures != null)
+            {
+                foreach (var measure in measures)
                 {
-                    using (var standardService = _serviceFactory.Create<IStandardService>())
+                    if (!measure.CreatedDate.HasValue)
                     {
-                        var standars = standardService.GetByBatchId(_selectedBatch.Id);
+                        RadMessageBox.Show(string.Format("Debe ingresar una fecha para la medida {0}", measure.Name));
+                        e.Cancel = true;
+                        break;
+                    }
 
-                        var newMeasures = standars.Select(x => new LoadMeasureModel()
-                        {
-                            BatchId = _selectedBatch.Id,
-                            CreatedDate = DateTime.Now,
-                            MeasureUnity = x.MeasureUnity,
-                            Name = x.Name
-                        }).ToList();
-
-                        gvMeasures.DataSource = newMeasures;
+                    if (!measure.Value.HasValue)
+                    {
+                        RadMessageBox.Show(string.Format("Debe ingresar un valor para la medida {0}", measure.Name));
+                        e.Cancel = true;
+                        break;
                     }
                 }
+            }
+        }
+
+        private void createMeasureWizard_Finish(object sender, EventArgs e)
+        {
+            using (var measureService = _serviceFactory.Create<IMeasureService>())
+            {
+                var measure =
+                    _newMeasures.Select(
+                        x =>
+                            new Office.Entities.Measure()
+                            {
+                                Id = Guid.NewGuid(),
+                                CreatedDate = x.CreatedDate.GetValueOrDefault(),
+                                Value = x.Value.GetValueOrDefault()
+                            });
+
+                measureService.CreateMeasures(measure, _selectedBatch.Id);
             }
         }
     }

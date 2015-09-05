@@ -33,8 +33,8 @@ namespace Avicola.Production.Win
                                  .BindAllInterfaces()
                                  .Configure(c => c.InSingletonScope()));
 
-            //kernel.Bind<IIocContainer>().To<NinjectIocContainer>().InSingletonScope();
-            kernel.Bind<IClock>().To<Clock>().InSingletonScope();
+            kernel.Bind<IIocContainer>().To<NinjectIocContainer>().InSingletonScope();
+            kernel.Rebind<IClock>().To<Clock>().InSingletonScope();
             //kernel.Bind<IMessageBoxDisplayService>().To<MessageBoxDisplayService>().InSingletonScope();
         }
     }

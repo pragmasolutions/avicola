@@ -113,6 +113,12 @@
     <Compile Include="Models\Measures\LoadMeasureModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UcLoadMeasuresSummary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcLoadMeasuresSummary.Designer.cs">
+      <DependentUpon>UcLoadMeasuresSummary.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FrmBase.resx">
       <DependentUpon>FrmBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +135,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\UcLoadMeasuresSummary.resx">
+      <DependentUpon>UcLoadMeasuresSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -143,9 +152,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Avicola.Common.Win\Avicola.Common.Win.csproj">
       <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>
