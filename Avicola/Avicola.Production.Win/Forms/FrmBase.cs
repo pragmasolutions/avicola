@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Avicola.Common.Win;
+using Framework.Data.Repository;
 using Telerik.WinControls;
 
 namespace Avicola.Production.Win.Forms
@@ -15,5 +17,13 @@ namespace Avicola.Production.Win.Forms
         {
             InitializeComponent();
         }
+
+        protected IUow Uow { get; set; }
+
+        protected IFormFactory FormFactory { get; set; }
+
+        protected IUowFactory UowFactory { get; set; }
+
+        
     }
 }
