@@ -5,7 +5,7 @@ using System.Reflection;
 using AutoMapper;
 using Framework.Common.Mapping;
 
-namespace Avicola.Common.Win.Mappings
+namespace Avicola.Production.Win
 {
     public class AutoMapperConfig
     {
@@ -15,7 +15,7 @@ namespace Avicola.Common.Win.Mappings
                            .GetExecutingAssembly()
                            .GetReferencedAssemblies()
                            .Where(x => x.Name.StartsWith("Avicola") || x.Name.StartsWith("Framework"))
-                           .Select(Assembly.Load)
+                           .Select(x => Assembly.Load(x))
                            .SelectMany(x => x.GetTypes())
                            .ToArray();
 

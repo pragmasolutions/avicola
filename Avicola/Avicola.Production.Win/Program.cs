@@ -32,7 +32,6 @@ namespace Avicola.Production.Win
             MetadataTypesRegister.InstallForThisAssembly();
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
-
             using (var kernel = new StandardKernel())
             {
                 //Configurar bindings

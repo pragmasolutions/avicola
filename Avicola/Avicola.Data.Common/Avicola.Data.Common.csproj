@@ -54,11 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework\Framework.Data.EntityFramework\Framework.Data.EntityFramework.csproj">
-      <Project>{20259eaa-c937-4bf2-913a-f4531796fe5b}</Project>
+      <Project>{20259EAA-C937-4BF2-913A-F4531796FE5B}</Project>
       <Name>Framework.Data.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
-      <Project>{cb41f702-99fb-49ae-8bc0-1b7f0193efab}</Project>
+      <Project>{CB41F702-99FB-49AE-8BC0-1B7F0193EFAB}</Project>
       <Name>Framework.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Ioc\Framework.Ioc.csproj">

@@ -16,6 +16,11 @@ namespace Avicola.Production.Win
                                  .BindAllInterfaces()
                                  .Configure(c => c.InTransientScope()));
 
+            kernel.Bind(x => x.FromAssembliesMatching("Framework.*")
+                                 .SelectAllClasses()
+                                 .BindAllInterfaces()
+                                 .Configure(c => c.InTransientScope()));
+
             kernel.Bind(x => x.FromAssembliesMatching("Avicola.*")
                                  .SelectAllInterfaces()
                                  .EndingWith("Factory")
