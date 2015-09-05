@@ -47,15 +47,23 @@
                     });
                 },
                 generateChart = function(batch, container) {
-                    var categories = [];
-                    var series = [];
+                    var categories = [],
+                        series = [],
+                        colors = [],
+                        availableColors = [
+                            '#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce',
+                            '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
+                        ];
 
                     for (var j = 0; j < batch.GeneticLine.Standards.length; j++) {
+                        var color = availableColors.pop();
                         var standard = batch.GeneticLine.Standards[j];
-                        
+
+                        var name = standard.Name + ' (' + standard.MeasureUnity + ')';
                         var firstSerie = {
-                            name: 'Mínimo',
-                            data: []
+                            name: standard.ShowSecondValue ? '[<] ' + name : name,
+                            data: [],
+                            measure: standard.MeasureUnity
                         }
                         for (var i = 0; i < standard.StandardItems.length; i++) {
                             var item = standard.StandardItems[i];
@@ -64,11 +72,12 @@
                             firstSerie.data.push(item.Value1);
                         }
                         series.push(firstSerie);
+                        colors.push(color);
 
                         if (standard.ShowSecondValue) {
                             
                             var secondSerie = {
-                                name: 'Máximo',
+                                name:'[>] ' + name,
                                 data: []
                             }
                             for (i = 0; i < standard.StandardItems.length; i++) {
@@ -77,11 +86,13 @@
                                 secondSerie.data.push(item.Value2);
                             }
                             series.push(secondSerie);
+                            colors.push(color);
                         } 
                     }
                     
 
                     $(container).find('.content').highcharts({
+                        colors: colors,
                         title: {
                             text: batch.Name,
                             x: -20 //center
@@ -95,7 +106,7 @@
                         },
                         yAxis: {
                             title: {
-                                text: 'fuck you'
+                                text: 'Valor'
                             },
                             plotLines: [
                                 {
@@ -106,7 +117,11 @@
                             ]
                         },
                         tooltip: {
-                            valueSuffix: ' medidas'
+                            formatter: function () {
+                                var standard = this.series.name.split('(')[0].trim();
+                                var measure = this.series.name.split('(')[1].split(')')[0];
+                                return 'Semana <b>' + this.x + '</b><br/>' + standard + ': <b>' + this.y + '</b> ' + measure ;
+                            }
                     },
                     legend: {
                         layout: 'vertical',
