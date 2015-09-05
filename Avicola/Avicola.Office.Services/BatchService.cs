@@ -27,5 +27,16 @@ namespace Avicola.Office.Services
                     .To<BatchDto>()
                     .ToList();
         }
+
+        public IList<Batch> GetAllActiveComplete()
+        {
+            return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted,
+                                    x => x.Barn,
+                                    x => x.Measures,
+                                    x => x.GeneticLine,
+                                    x => x.GeneticLine.StandardGeneticLines,
+                                    x => x.GeneticLine.StandardGeneticLines.Select(sgl => sgl.Standard),
+                                    x => x.GeneticLine.StandardGeneticLines.Select(sgl => sgl.StandardItems)).ToList();
+        }
     }
 }

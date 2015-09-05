@@ -13,5 +13,6 @@ namespace Avicola.Office.Services.Interfaces
     public interface IBatchService : IService
     {
         IList<BatchDto> GetAllActive();
+        IList<Batch> GetAllActiveComplete();
     }
 }
