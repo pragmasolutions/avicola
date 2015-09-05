@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Avicola.Common.Win.Mappings;
+using Avicola.Production.Win.Forms;
 using Avicola.Production.Win.Forms.Measure;
 using Framework.Ioc;
 using Ninject;
@@ -63,7 +64,7 @@ namespace Avicola.Production.Win
 //                    } 
 //                }
 //#endif
-                var mainForm = kernel.Get<FrmCreateMeasureWizard>();
+                var mainForm = kernel.Get<FrmPrincipal>();
 
                 Application.Run(mainForm);
             }

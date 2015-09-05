@@ -5,6 +5,7 @@
 	[MeasureUnity] [varchar](200) NOT NULL,
 	[DataLoadTypeId] [uniqueidentifier] NOT NULL,
 	[StandardTypeId] [uniqueidentifier] NOT NULL,
+	[AllowDecimal] BIT NOT NULL DEFAULT 1,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Standard] PRIMARY KEY CLUSTERED 
 (

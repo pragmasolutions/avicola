@@ -236,6 +236,7 @@
     <Compile Include="Models\GeneticLines\CreateStandardGeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\SelectStandardModel.cs" />
     <Compile Include="Models\GeneticLines\StandardGeneticLineForm.cs" />
+    <Compile Include="Models\GeneticLines\StandardItemIntegerModel.cs" />
     <Compile Include="Models\GeneticLines\StandardItemModel.cs" />
     <Compile Include="Models\Clients\ClientForm.cs" />
     <Compile Include="Models\Clients\ClientListFiltersModel.cs" />
@@ -265,6 +266,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -452,6 +454,8 @@
     <Content Include="Views\Barn\Edit.cshtml" />
     <Content Include="Views\Barn\Index.cshtml" />
     <Content Include="Views\StandardGeneticLine\_EditionControls.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\StandardItemIntegerModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\StandardItemIntegerModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,7 +24,15 @@
 
                     </thead>
                     <tbody>
-                        @Html.EditorFor(model => model.StandardItems)
+                        @if (Model.StandardGeneticLine.Standard.AllowDecimal)
+                        {
+                            @Html.EditorFor(model => model.StandardItems)
+                        }
+                        else
+                        {
+                             @Html.EditorFor(model => model.IntegerStandardItems)
+                        }
+                    
                     </tbody>
                 </table>
             </div>

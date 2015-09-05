@@ -34,6 +34,10 @@ namespace Avicola.Web.Models.Standards
         [UIHint("StandardTypeId")]
         public Guid StandardTypeId { get; set; }
 
+        [Required]
+        [Display(Name = "Acepta valores decimales")]
+        public bool AllowDecimal { get; set; }
+
         [HiddenInput]
         public DateTime CreatedDate { get; set; }
         
