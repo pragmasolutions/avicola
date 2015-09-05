@@ -3,6 +3,7 @@
         _standardName,
         _geneticLineName,
         _measureUnity,
+        _allowDecimal,
 
     generateChart = function() {
         var categories = [];
@@ -77,10 +78,11 @@
         _standardName = options.standardName;
         _geneticLineName = options.geneticLineName;
         _measureUnity = options.measureUnity;
+        _allowDecimal = options.allowDecimal;
 
         $('.standard-item-value').change(function () {
             if (!$(this).val()) {
-                $(this).val('0,00');
+                $(this).val(_allowDecimal ? '0,00' : '0');
             }
             generateChart();
         });

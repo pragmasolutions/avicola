@@ -12,6 +12,7 @@ namespace Avicola.Office.Services.Dtos
         public Guid DataLoadTypeId { get; set; }
         public Guid StandardTypeId { get; set; }
         public DateTime CreatedDate { get; set; }
+        public bool AllowDecimal { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

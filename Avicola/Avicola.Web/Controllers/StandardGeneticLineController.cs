@@ -65,14 +65,14 @@ namespace Avicola.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreateStandardGeneticLineForm form)
+        public ActionResult Create(CreateStandardGeneticLineForm form, FormCollection collection)
         {
             if (!ModelState.IsValid)
             {
                 ViewBag.Operation = "Create";
                 return View(form).WithError("Se ha producido un error. Por favor valide que los datos ingresados sean correctos");
             }
-
+            form.StandardGeneticLine.Standard.AllowDecimal = collection["StandardGeneticLine.Standard.AllowDecimal"] == "True";
             StandardGeneticLine item = form.ToStandardGeneticLine();
             _service.Create(item);
             return Redirect("/StandardGeneticLine/Index/" + form.StandardGeneticLine.GeneticLine.Id).WithSuccess("El estandar se ha creado correctamente");
@@ -135,14 +135,14 @@ namespace Avicola.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(CreateStandardGeneticLineForm form)
+        public ActionResult Edit(CreateStandardGeneticLineForm form, FormCollection collection)
         {
             if (!ModelState.IsValid)
             {
                 ViewBag.Operation = "Edit";
                 return View(form).WithError("Se ha producido un error. Por favor valide que los datos ingresados sean correctos");
             }
-
+            form.StandardGeneticLine.Standard.AllowDecimal = collection["StandardGeneticLine.Standard.AllowDecimal"] == "True";
             StandardGeneticLine item = form.ToStandardGeneticLine();
             _service.Edit(item);
             return Redirect("/StandardGeneticLine/Index/" + form.StandardGeneticLine.GeneticLine.Id).WithSuccess("El estandar se ha editado correctamente");

@@ -2,6 +2,9 @@
 @using Framework.Common.Web.Helpers;
 @using PagedList.Mvc;
 @model Avicola.Web.Models.Standards.StandardListModel
+@{
+    ViewBag.Title = "Estándares";
+}
 
 <h3>Estándares</h3>
 
@@ -21,6 +24,7 @@
             <th>Unidad de Medida</th>
             <th>Tipo de Estandar</th>
             <th>Ingreso de datos</th>
+            <th>Acepta decimales</th>
         </tr>
     </thead>
     <tbody class="row-link" data-link="row">
@@ -31,6 +35,7 @@
                 <td>@standard.MeasureUnity</td>
                 <td>@(standard.StandardTypeId == StandardType.UNIQUE_VALUE ? "Valor único" : "Rango de valores")</td>
                 <td>@(standard.DataLoadTypeId == DataLoadType.DAYLY ? "Diariamente" : "Semanalmente")</td>
+                <td>@(standard.AllowDecimal  ? "SI" : "NO")</td>
             </tr>
         }
     </tbody>

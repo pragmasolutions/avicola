@@ -21,6 +21,7 @@
 
     @Html.HiddenFor(model => model.StandardGeneticLine.GeneticLine.Id)
     @Html.HiddenFor(model => model.StandardGeneticLine.Standard.Id)
+    @Html.HiddenFor(model => model.StandardGeneticLine.Standard.AllowDecimal)
     <div class="form-group">
         <div class="col-md-10">
             <input type="submit" value="@(ViewBag.Operation == "Edit" ? "Editar" : "Crear")" class="btn btn-default"/>
@@ -38,12 +39,13 @@
     <script src="/Scripts/app/office-create-standard.js" type="text/javascript"></script>
     <script>
         var options = {
-            showSecondValue : '@(Model.StandardGeneticLine.Standard.StandardTypeId == StandardType.VALUES_RANGE)' == 'True',
-            standardName : '@Model.StandardGeneticLine.Standard.Name',
-            geneticLineName : '@Model.StandardGeneticLine.GeneticLine.Name',
-            measureUnity : '@Model.StandardGeneticLine.Standard.MeasureUnity'
+            showSecondValue: '@(Model.StandardGeneticLine.Standard.StandardTypeId == StandardType.VALUES_RANGE)' == 'True',
+            standardName: '@Model.StandardGeneticLine.Standard.Name',
+            geneticLineName: '@Model.StandardGeneticLine.GeneticLine.Name',
+            measureUnity: '@Model.StandardGeneticLine.Standard.MeasureUnity',
+            allowDecimal: '@Model.StandardGeneticLine.Standard.AllowDecimal' == 'True'
         }
-        
+
         $(function () {
             standardForm.initialize(options);
         });

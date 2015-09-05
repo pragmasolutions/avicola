@@ -1,0 +1,14 @@
+﻿@model Avicola.Web.Models.GeneticLines.StandardItemIntegerModel
+
+<tr>
+    <td style="text-align: center;">@Model.Sequence</td>
+    <td>
+        @Html.HiddenFor(model => model.Sequence)
+        @Html.HiddenFor(model => model.Id)
+    </td>
+    <td style="text-align: center;" class="item-value first-value">@Html.TextBoxFor(model => model.Value1, new { @class = "form-control autonumeric-control standard-item-value", data_a_sep = "", data_m_dec = "0", data_v_min = 0, data_v_max = int.MaxValue })</td>
+    @if (Model.ShowSecondValue)
+    {
+        <td style="text-align: center;" class="item-value second-value">@Html.TextBoxFor(model => model.Value2, new { @class = "form-control autonumeric-control standard-item-value", data_a_sep = "", data_m_dec = "0", data_v_min = 0, data_v_max = int.MaxValue })</td>
+    }
+</tr>

@@ -35,8 +35,8 @@ namespace Avicola.Web.Models.GeneticLines
         
         public GeneticLine ToGeneticLine()
         {
-            var shop = Mapper.Map<GeneticLineForm, GeneticLine>(this);
-            return shop;
+            var geneticLine = Mapper.Map<GeneticLineForm, GeneticLine>(this);
+            return geneticLine;
         }
 
         public static GeneticLineForm FromGeneticLine(GeneticLine geneticLine)

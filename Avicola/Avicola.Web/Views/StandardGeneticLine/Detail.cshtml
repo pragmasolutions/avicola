@@ -44,7 +44,15 @@
                     }
                     </thead>
                     <tbody>
-                        @Html.DisplayFor(model => model.StandardItems)
+                        @if (Model.StandardGeneticLine.Standard.AllowDecimal)
+                        {
+                            @Html.DisplayFor(model => model.StandardItems)
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(model => model.IntegerStandardItems)
+                        }
+                        
                     </tbody>
                 </table>
             </div>

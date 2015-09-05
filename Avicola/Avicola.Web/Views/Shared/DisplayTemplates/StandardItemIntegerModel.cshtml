@@ -1,0 +1,11 @@
+﻿@model Avicola.Web.Models.GeneticLines.StandardItemIntegerModel
+
+<tr>
+    <td style="text-align: center;" class="item-sequence">@Model.Sequence</td>
+    <td></td>
+    <td style="text-align: center;" class="item-value first-value">@Model.Value1</td>
+    @if (Model.ShowSecondValue)
+    {
+        <td style="text-align: center;" class="item-value second-value">@Model.Value2.GetValueOrDefault()</td>
+    }
+</tr>
