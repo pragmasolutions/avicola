@@ -49,6 +49,7 @@ namespace Avicola.Web.Controllers
             var geneticLine = _geneticLineService.GetById(geneticLineId);
             var standard = _standardService.GetById(standardId);
             ViewBag.StageName = stageId == Stage.BREEDING ? "CRIA Y PRE-CRIA" : "POSTURA";
+            ViewBag.Operation = "Create";
 
             var model = new CreateStandardGeneticLineForm()
             {
@@ -68,6 +69,7 @@ namespace Avicola.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Operation = "Create";
                 return View(form).WithError("Se ha producido un error. Por favor valide que los datos ingresados sean correctos");
             }
 
@@ -106,6 +108,44 @@ namespace Avicola.Web.Controllers
                                 model.StageId);
 
             return Redirect(url);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Guid id)
+        {
+            var standard = _service.GetById(id);
+            var geneticLineId = standard.GeneticLineId;
+            _service.Delete(standard);
+            return Redirect("/StandardGeneticLine/Index/" + geneticLineId).WithSuccess("Estandar eliminado correctamente.");
+        }
+
+        public ActionResult Edit(Guid id)
+        {
+            var item = _service.GetById(id);
+            ViewBag.StageName = item.StageId == Stage.BREEDING ? "CRIA Y PRE-CRIA" : "POSTURA";
+            ViewBag.Operation = "Edit";
+
+            var model = new CreateStandardGeneticLineForm()
+            {
+                StandardGeneticLine = item,
+                StageId = item.StageId
+            };
+            model.GenerateItems();
+            return View("Create", model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CreateStandardGeneticLineForm form)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Operation = "Edit";
+                return View(form).WithError("Se ha producido un error. Por favor valide que los datos ingresados sean correctos");
+            }
+
+            StandardGeneticLine item = form.ToStandardGeneticLine();
+            _service.Edit(item);
+            return Redirect("/StandardGeneticLine/Index/" + form.StandardGeneticLine.GeneticLine.Id).WithSuccess("El estandar se ha editado correctamente");
         }
     }
 }

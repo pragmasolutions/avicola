@@ -61,5 +61,23 @@ namespace Avicola.Office.Services
                                                                     && !x.IsDeleted);
             return list.Any();
         }
+
+
+        public void Delete(StandardGeneticLine standard)
+        {
+            Uow.StandardGeneticLines.Delete(standard);
+            Uow.Commit();
+        }
+
+
+        public void Edit(StandardGeneticLine item)
+        {
+            foreach (var standardItem in item.StandardItems)
+            {
+                standardItem.StandardGeneticLineId = item.Id;
+                Uow.StandardItems.Edit(standardItem);
+            }
+            Uow.Commit();
+        }
     }
 }
