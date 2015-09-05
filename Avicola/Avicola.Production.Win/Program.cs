@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Avicola.Common.Win.Mappings;
 using Avicola.Production.Win.Forms.Measure;
+using Framework.Ioc;
+using Ninject;
 
 namespace Avicola.Production.Win
 {
@@ -13,11 +17,82 @@ namespace Avicola.Production.Win
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCreateMeasureWizard());
+
+#if (!DEBUG)
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += ApplicationOnThreadException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+#endif
+
+            AutoMapperConfig.Execute();
+            MetadataTypesRegister.InstallForThisAssembly();
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+
+
+            using (var kernel = new StandardKernel())
+            {
+                //Configurar bindings
+                DIConfig.Configure(kernel);
+
+                //Set global container.
+                Ioc.Container = new NinjectIocContainer(kernel);
+
+                //Config log4net
+                //log4net.Config.DOMConfigurator.Configure();
+
+                //MessageBoxDisplayService = Ioc.Container.Get<IMessageBoxDisplayService>();
+
+                //Create a custom principal with an anonymous identity at startup
+                //var laPazPrincipal = new LaPazPrincipal();
+                //AppDomain.CurrentDomain.SetThreadPrincipal(laPazPrincipal);
+
+//#if(MOCK_SECURITY)
+//                MockUser();
+//#else
+//                using (var login = kernel.Get<FrmCreateMeasureWizard>())
+//                {
+//                    var result = login.ShowDialog();
+
+//                    if (result == DialogResult.Cancel)
+//                    {
+//                        Application.Exit();
+//                        return;
+//                    } 
+//                }
+//#endif
+                var mainForm = kernel.Get<FrmCreateMeasureWizard>();
+
+                Application.Run(mainForm);
+            }
+        }
+
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            //var mensaje = GetGlobalExeptionMessage((Exception)unhandledExceptionEventArgs.ExceptionObject);
+            //MessageBoxDisplayService.ShowError(mensaje);
+            //Application.Exit();
+        }
+
+        //private static string GetGlobalExeptionMessage(Exception ex)
+        //{
+        //    //LogManager.GetLogger("errors").Error(ex);
+
+        //    //var mensaje = string.Format("Ha ocurrido un error.\r\n\n" +
+        //    //                            "{0}\r\n\n" +
+        //    //                            "por favor contactese con soporte",
+        //    //                            ex.Message);
+
+        //    //return mensaje;
+        //}
+
+        private static void ApplicationOnThreadException(object sender, ThreadExceptionEventArgs threadExceptionEventArgs)
+        {
+            //var mesange = GetGlobalExeptionMessage(threadExceptionEventArgs.Exception);
+            //MessageBoxDisplayService.ShowError(mesange);
         }
     }
 }

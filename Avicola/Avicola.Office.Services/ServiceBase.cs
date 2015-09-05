@@ -5,7 +5,7 @@ using Avicola.Services.Common;
 
 namespace Avicola.Office.Services
 {
-    public class ServiceBase : IServive
+    public class ServiceBase : IService
     {
         protected IOfficeUow Uow { get; set; }
 

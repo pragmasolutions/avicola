@@ -74,6 +74,7 @@
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\IRunAfterLogin.cs" />
     <Compile Include="Utility\Clock.cs" />
     <Compile Include="Utility\IClock.cs" />
     <Compile Include="Validation\DataAnnotationsValidator.cs" />

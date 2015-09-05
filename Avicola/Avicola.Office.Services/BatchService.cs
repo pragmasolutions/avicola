@@ -19,9 +19,13 @@ namespace Avicola.Office.Services
             Uow = uow;
         }
 
-        public IQueryable<Batch> GetAllActive()
+        public IList<BatchDto> GetAllActive()
         {
-            return Uow.Batches.GetAll(whereClause: x => !x.EndDate.HasValue && !x.IsDeleted);
+            return
+                Uow.Batches.GetAll(whereClause: x => !x.EndDate.HasValue && !x.IsDeleted)
+                    .Project()
+                    .To<BatchDto>()
+                    .ToList();
         }
     }
 }

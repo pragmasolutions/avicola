@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Avicola.Services.Common
 {
-    public interface IServive : IDisposable
+    public interface IService : IDisposable
     {
     }
 }
