@@ -32,11 +32,10 @@ namespace Avicola.Production.Win
             MetadataTypesRegister.InstallForThisAssembly();
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
-
             using (var kernel = new StandardKernel())
             {
                 //Configurar bindings
-                DIConfig.Configure(kernel);
+                IoCConfig.Configure(kernel);
 
                 //Set global container.
                 Ioc.Container = new NinjectIocContainer(kernel);
