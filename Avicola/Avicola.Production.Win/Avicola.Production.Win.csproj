@@ -83,7 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\DIConfig.cs" />
+    <Compile Include="App_Start\IoCConfig.cs" />
     <Compile Include="Forms\FrmBase.cs">
       <SubType>Form</SubType>
     </Compile>

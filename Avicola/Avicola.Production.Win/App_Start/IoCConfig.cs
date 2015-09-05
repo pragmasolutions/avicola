@@ -7,16 +7,16 @@ using Ninject.Extensions.Conventions;
 
 namespace Avicola.Production.Win
 {
-    public class DIConfig
+    public class IoCConfig
     {
         public static void Configure(StandardKernel kernel)
         {
-            kernel.Bind(x => x.FromAssembliesMatching("LaPaz.*")
+            kernel.Bind(x => x.FromAssembliesMatching("Avicola.*")
                                  .SelectAllClasses()
                                  .BindAllInterfaces()
                                  .Configure(c => c.InTransientScope()));
 
-            kernel.Bind(x => x.FromThisAssembly()
+            kernel.Bind(x => x.FromAssembliesMatching("Avicola.*")
                                  .SelectAllInterfaces()
                                  .EndingWith("Factory")
                                  .BindToFactory()
