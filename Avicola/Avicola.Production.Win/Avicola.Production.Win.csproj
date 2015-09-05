@@ -103,21 +103,45 @@
     <Compile Include="Forms\FrmBase.Designer.cs">
       <DependentUpon>FrmBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.Designer.cs">
       <DependentUpon>FrmCreateMeasureWizard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Measure\History\FrmMeasureHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Measure\History\FrmMeasureHistory.Designer.cs">
+      <DependentUpon>FrmMeasureHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Models\Measures\LoadMeasureModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UcLoadMeasuresSummary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcLoadMeasuresSummary.Designer.cs">
+      <DependentUpon>UcLoadMeasuresSummary.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FrmBase.resx">
       <DependentUpon>FrmBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Measure\FrmCreateMeasureWizard.resx">
       <DependentUpon>FrmCreateMeasureWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Measure\History\FrmMeasureHistory.resx">
+      <DependentUpon>FrmMeasureHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -129,6 +153,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\UcLoadMeasuresSummary.resx">
+      <DependentUpon>UcLoadMeasuresSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -143,9 +170,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Avicola.Common.Win\Avicola.Common.Win.csproj">
       <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>

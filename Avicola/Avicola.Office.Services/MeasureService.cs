@@ -19,14 +19,34 @@ namespace Avicola.Office.Services
             Uow = uow;
         }
 
-        public void CreateMeasures(IEnumerable<Measure> measures)
+        public void CreateMeasures(IEnumerable<Measure> measures, Guid batchId)
         {
+            var batch = Uow.Batches.Get(batchId);
+
             foreach (var measure in measures)
             {
+                if (measure.StandardItemId == default(Guid))
+                {
+                    var sequence = CalculateSequence(batch.CreatedDate, measure.CreatedDate);
+                    var standardItem = Uow.StandardItems.Get(x => x.Sequence == sequence &&
+                                                                  x.StandardGeneticLine.GeneticLineId ==
+                                                                  batch.GeneticLineId &&
+                                                                  x.StandardGeneticLine.StandardId == Guid.Empty);
+
+                    measure.StandardItemId = standardItem.Id;
+                }
+
                 Uow.Measures.Add(measure);
             }
 
             Uow.Commit();
+        }
+
+        private int CalculateSequence(DateTime batchCreatedDate, DateTime measureCreateDate)
+        {
+             int weeks = (int) ((batchCreatedDate - measureCreateDate).TotalDays / 7);
+
+            return weeks;
         }
     }
 }

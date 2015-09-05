@@ -1,6 +1,6 @@
-﻿namespace Avicola.Production.Win.Forms.Measure
+﻿namespace Avicola.Production.Win.Forms.Measure.History
 {
-    partial class FrmCreateMeasureWizard
+    partial class FrmMeasureHistory
     {
         /// <summary>
         /// Required designer variable.
@@ -48,10 +48,8 @@
             this.gvMeasures = new Telerik.WinControls.UI.RadGridView();
             this.wizardPage1 = new Telerik.WinControls.UI.WizardPage();
             this.wizardPage2 = new Telerik.WinControls.UI.WizardPage();
-            this.ucLoadMeasuresSummary = new Avicola.Production.Win.UserControls.UcLoadMeasuresSummary();
             ((System.ComponentModel.ISupportInitialize)(this.createMeasureWizard)).BeginInit();
             this.createMeasureWizard.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches.MasterTemplate)).BeginInit();
@@ -68,7 +66,6 @@
             this.createMeasureWizard.Controls.Add(this.panel3);
             this.createMeasureWizard.Controls.Add(this.panel1);
             this.createMeasureWizard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.createMeasureWizard.HideCompletionImage = true;
             this.createMeasureWizard.Location = new System.Drawing.Point(0, 0);
             this.createMeasureWizard.Name = "createMeasureWizard";
             this.createMeasureWizard.PageHeaderIcon = ((System.Drawing.Image)(resources.GetObject("createMeasureWizard.PageHeaderIcon")));
@@ -78,8 +75,6 @@
             this.createMeasureWizard.Size = new System.Drawing.Size(827, 547);
             this.createMeasureWizard.TabIndex = 0;
             this.createMeasureWizard.WelcomePage = null;
-            this.createMeasureWizard.Finish += new System.EventHandler(this.createMeasureWizard_Finish);
-            this.createMeasureWizard.SelectedPageChanging += new Telerik.WinControls.UI.SelectedPageChangingEventHandler(this.createMeasureWizard_SelectedPageChanging);
             this.createMeasureWizard.SelectedPageChanged += new Telerik.WinControls.UI.SelectedPageChangedEventHandler(this.createMeasureWizard_SelectedPageChanged);
             // 
             // wizardCompletionPage1
@@ -92,10 +87,9 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.ucLoadMeasuresSummary);
-            this.panel3.Location = new System.Drawing.Point(0, 56);
+            this.panel3.Location = new System.Drawing.Point(150, 56);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(827, 443);
+            this.panel3.Size = new System.Drawing.Size(677, 443);
             this.panel3.TabIndex = 2;
             // 
             // panel2
@@ -123,22 +117,17 @@
             gridViewTextBoxColumn1.FieldName = "Number";
             gridViewTextBoxColumn1.HeaderText = "Número";
             gridViewTextBoxColumn1.Name = "Number";
-            gridViewTextBoxColumn1.Width = 200;
+            gridViewTextBoxColumn1.Width = 202;
             gridViewTextBoxColumn2.FieldName = "GeneticLineName";
             gridViewTextBoxColumn2.HeaderText = "Linea Genética";
             gridViewTextBoxColumn2.Name = "GeneticLineName";
-            gridViewTextBoxColumn2.Width = 200;
+            gridViewTextBoxColumn2.Width = 202;
             gridViewTextBoxColumn3.FieldName = "StageName";
             gridViewTextBoxColumn3.HeaderText = "Estado";
             gridViewTextBoxColumn3.Name = "StageName";
-            gridViewTextBoxColumn3.Width = 201;
-            gridViewCommandColumn1.AllowResize = false;
-            gridViewCommandColumn1.AllowSort = false;
-            gridViewCommandColumn1.DefaultText = "Seleccionar";
+            gridViewTextBoxColumn3.Width = 202;
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.Name = "SelectColumn";
-            gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewCommandColumn1.UseDefaultText = true;
             gridViewCommandColumn1.Width = 204;
             this.gvBatches.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
@@ -171,28 +160,21 @@
             this.gvMeasures.MasterTemplate.AllowColumnReorder = false;
             this.gvMeasures.MasterTemplate.AllowDeleteRow = false;
             this.gvMeasures.MasterTemplate.AllowDragToGroup = false;
-            this.gvMeasures.MasterTemplate.AutoGenerateColumns = false;
+            this.gvMeasures.MasterTemplate.AllowEditRow = false;
             this.gvMeasures.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn4.FieldName = "Name";
             gridViewTextBoxColumn4.HeaderText = "Nombre";
             gridViewTextBoxColumn4.Name = "Name";
-            gridViewTextBoxColumn4.ReadOnly = true;
-            gridViewTextBoxColumn4.Width = 463;
-            gridViewTextBoxColumn5.FieldName = "MeasureUnity";
+            gridViewTextBoxColumn4.Width = 466;
+            gridViewTextBoxColumn5.FieldName = "MeasureUnit";
             gridViewTextBoxColumn5.HeaderText = "Unidad de Medida";
-            gridViewTextBoxColumn5.Name = "MeasureUnity";
-            gridViewTextBoxColumn5.ReadOnly = true;
-            gridViewTextBoxColumn5.Width = 138;
-            gridViewDateTimeColumn1.ExcelExportType = Telerik.WinControls.UI.Export.DisplayFormatType.ShortDate;
-            gridViewDateTimeColumn1.FieldName = "CreatedDate";
-            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            gridViewDateTimeColumn1.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn5.Name = "MeasureUnit";
+            gridViewTextBoxColumn5.Width = 139;
+            gridViewDateTimeColumn1.FieldName = "CreatedDate ";
             gridViewDateTimeColumn1.HeaderText = "Fecha";
-            gridViewDateTimeColumn1.Name = "CreatedDate";
-            gridViewDateTimeColumn1.Width = 102;
-            gridViewDecimalColumn1.EnableExpressionEditor = false;
-            gridViewDecimalColumn1.Expression = "";
-            gridViewDecimalColumn1.FieldName = "Value";
+            gridViewDateTimeColumn1.Name = "CreatedDate ";
+            gridViewDateTimeColumn1.Width = 103;
+            gridViewDecimalColumn1.FieldName = "Value ";
             gridViewDecimalColumn1.HeaderText = "Valor";
             gridViewDecimalColumn1.Name = "Value";
             gridViewDecimalColumn1.Width = 102;
@@ -220,13 +202,6 @@
             this.wizardPage2.Name = "wizardPage2";
             this.wizardPage2.Title = "Ingreso de Valores";
             // 
-            // ucLoadMeasuresSummary
-            // 
-            this.ucLoadMeasuresSummary.Location = new System.Drawing.Point(12, 14);
-            this.ucLoadMeasuresSummary.Name = "ucLoadMeasuresSummary";
-            this.ucLoadMeasuresSummary.Size = new System.Drawing.Size(488, 248);
-            this.ucLoadMeasuresSummary.TabIndex = 0;
-            // 
             // FrmCreateMeasureWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,7 +217,6 @@
             this.Load += new System.EventHandler(this.FrmCreateMeasureWizard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.createMeasureWizard)).EndInit();
             this.createMeasureWizard.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches)).EndInit();
@@ -265,6 +239,5 @@
         private Telerik.WinControls.UI.WizardPage wizardPage2;
         private Telerik.WinControls.UI.RadGridView gvBatches;
         private Telerik.WinControls.UI.RadGridView gvMeasures;
-        private UserControls.UcLoadMeasuresSummary ucLoadMeasuresSummary;
     }
 }

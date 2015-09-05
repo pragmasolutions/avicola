@@ -58,7 +58,8 @@ namespace Avicola.Office.Services
             var batch = Uow.Batches.Get(x => x.Id == batchId && !x.IsDeleted);
 
             return Uow.Standards.GetAll(
-                whereClause: x => x.StandardGeneticLines.Any(y => y.Id == batch.GeneticLineId && y.StageId == batch.StageId),
+                whereClause: x => x.StandardGeneticLines.Any(y => y.GeneticLineId == batch.GeneticLineId && 
+                                                             y.StageId == batch.StageId),
                 includes: x => x.StandardGeneticLines)
                 .Where(e => !e.IsDeleted);
         }
