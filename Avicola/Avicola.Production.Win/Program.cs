@@ -7,8 +7,10 @@ using System.Windows.Forms;
 using Avicola.Common.Win.Mappings;
 using Avicola.Production.Win.Forms;
 using Avicola.Production.Win.Forms.Measure;
+using Framework.Common.Win.CustomProviders;
 using Framework.Ioc;
 using Ninject;
+using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win
 {
@@ -32,6 +34,8 @@ namespace Avicola.Production.Win
             AutoMapperConfig.Execute();
             MetadataTypesRegister.InstallForThisAssembly();
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+
+            RadWizardLocalizationProvider.CurrentProvider = new CustomRadWizardLocalizationProvider();
 
             using (var kernel = new StandardKernel())
             {

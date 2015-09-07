@@ -14,39 +14,75 @@ namespace Avicola.Office.Services
 {
     public class MeasureService : ServiceBase, IMeasureService
     {
-        public MeasureService(IOfficeUow uow)
+        private readonly IClock _clock;
+
+        public MeasureService(IOfficeUow uow, IClock clock)
         {
+            _clock = clock;
             Uow = uow;
         }
 
-        public void CreateMeasures(IEnumerable<Measure> measures, Guid batchId)
+        public void CreateMeasures(IEnumerable<LoadMeasureModel> measures, Guid batchId)
         {
             var batch = Uow.Batches.Get(batchId);
 
             foreach (var measure in measures)
             {
-                if (measure.StandardItemId == default(Guid))
-                {
-                    var sequence = CalculateSequence(batch.CreatedDate, measure.CreatedDate);
-                    var standardItem = Uow.StandardItems.Get(x => x.Sequence == sequence &&
-                                                                  x.StandardGeneticLine.GeneticLineId ==
-                                                                  batch.GeneticLineId &&
-                                                                  x.StandardGeneticLine.StandardId == Guid.Empty);
+                var sequence = CalculateSequence(measure.StandardId, batch.CreatedDate,
+                    measure.CreatedDate.GetValueOrDefault());
 
-                    measure.StandardItemId = standardItem.Id;
+                var standardItem = Uow.StandardItems.Get(x => x.Sequence == sequence &&
+                                                              x.StandardGeneticLine.GeneticLineId ==
+                                                              batch.GeneticLineId &&
+                                                              x.StandardGeneticLine.StandardId == measure.StandardId);
+
+                if (standardItem == null)
+                {
+                    throw new ApplicationException("No se encontro ningun standard item para los valores indicados");
                 }
 
-                Uow.Measures.Add(measure);
+                var newMeasure = new Measure()
+                                 {
+                                     Id = Guid.NewGuid(),
+                                     BatchId = batchId,
+                                     CreatedDate = _clock.Now.Date,
+                                     StandardItemId = standardItem.Id,
+                                     Value = measure.Value.GetValueOrDefault()
+                                 };
+
+                Uow.Measures.Add(newMeasure);
             }
 
             Uow.Commit();
         }
 
-        private int CalculateSequence(DateTime batchCreatedDate, DateTime measureCreateDate)
+        private int CalculateSequence(Guid standardId, DateTime batchCreatedDate, DateTime measureCreateDate)
         {
-             int weeks = (int) ((batchCreatedDate - measureCreateDate).TotalDays / 7);
+            var standard = Uow.Standards.Get(standardId);
 
+            switch (standard.DataLoadTypeId.ToString())
+            {
+                case GlobalConstants.DailyDataLoadType:
+                    return GetDaySequence(batchCreatedDate, measureCreateDate);
+                case GlobalConstants.WeeklyDataLoadType:
+                    return GetWeekSequence(batchCreatedDate, measureCreateDate);
+                default:
+                    return GetDaySequence(batchCreatedDate, measureCreateDate);
+            }
+        }
+
+        private static int GetWeekSequence(DateTime batchCreatedDate, DateTime measureCreateDate)
+        {
+            int weeks = (int)((batchCreatedDate - measureCreateDate).TotalDays / 7);
+            weeks = weeks == 0 ? weeks : 1;
             return weeks;
+        }
+
+        private static int GetDaySequence(DateTime batchCreatedDate, DateTime measureCreateDate)
+        {
+            int days = (int)((batchCreatedDate - measureCreateDate).TotalDays);
+            days = days == 0 ? days : 1;
+            return days;
         }
     }
 }

@@ -74,6 +74,7 @@
     <Compile Include="GeneticLine.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="Measure.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
