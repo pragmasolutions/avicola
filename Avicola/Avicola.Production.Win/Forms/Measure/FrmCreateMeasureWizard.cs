@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
-using Avicola.Production.Win.Models.Measures;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
@@ -25,6 +24,8 @@ namespace Avicola.Production.Win.Forms.Measure
         private void FrmCreateMeasureWizard_Load(object sender, EventArgs e)
         {
             LoadActiveBatches();
+
+            this.createMeasureWizard.HelpButton.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
         }
 
         private void LoadActiveBatches()
@@ -75,7 +76,8 @@ namespace Avicola.Production.Win.Forms.Measure
                                                         BatchId = _selectedBatch.Id,
                                                         CreatedDate = DateTime.Now,
                                                         MeasureUnity = x.MeasureUnity,
-                                                        Name = x.Name
+                                                        Name = x.Name,
+                                                        StandardId = x.Id
                                                     }).ToList();
 
                 gvMeasures.DataSource = _newMeasures;
@@ -100,10 +102,9 @@ namespace Avicola.Production.Win.Forms.Measure
 
         private void ValidateMeasures(SelectedPageChangingEventArgs e)
         {
-            var measures = gvMeasures.DataSource as IList<LoadMeasureModel>;
-            if (measures != null)
+            if (_newMeasures != null)
             {
-                foreach (var measure in measures)
+                foreach (var measure in _newMeasures)
                 {
                     if (!measure.CreatedDate.HasValue)
                     {
@@ -126,18 +127,10 @@ namespace Avicola.Production.Win.Forms.Measure
         {
             using (var measureService = _serviceFactory.Create<IMeasureService>())
             {
-                var measure =
-                    _newMeasures.Select(
-                        x =>
-                            new Office.Entities.Measure()
-                            {
-                                Id = Guid.NewGuid(),
-                                CreatedDate = x.CreatedDate.GetValueOrDefault(),
-                                Value = x.Value.GetValueOrDefault()
-                            });
-
-                measureService.CreateMeasures(measure, _selectedBatch.Id);
+                measureService.CreateMeasures(_newMeasures, _selectedBatch.Id);
             }
+
+            this.Close();
         }
     }
 }

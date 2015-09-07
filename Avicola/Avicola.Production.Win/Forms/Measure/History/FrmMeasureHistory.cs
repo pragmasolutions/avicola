@@ -2,7 +2,6 @@
 using System.Linq;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
-using Avicola.Production.Win.Models.Measures;
 using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms.Measure.History

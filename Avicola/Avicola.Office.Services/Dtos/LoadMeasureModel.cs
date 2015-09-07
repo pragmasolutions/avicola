@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Avicola.Production.Win.Models.Measures
+namespace Avicola.Office.Services.Dtos
 {
     public class LoadMeasureModel
     {
-        public string Name { get; set; }
+        public Guid StandardId { get; set; }
+        public string Name { get; set; }                    
         public string MeasureUnity { get; set; }
         public System.DateTime? CreatedDate { get; set; }
         public System.Guid BatchId { get; set; }

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\BatchDto.cs" />
+    <Compile Include="Dtos\LoadMeasureModel.cs" />
     <Compile Include="Dtos\MeasureDto.cs" />
     <Compile Include="Interfaces\IFormFactory.cs" />
     <Compile Include="Interfaces\IMeasureService.cs" />
