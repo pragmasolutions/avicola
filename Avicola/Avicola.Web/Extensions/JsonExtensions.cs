@@ -25,7 +25,7 @@ namespace Avicola.Web.Extensions
                         ShowSecondValue = sgl.Standard.StandardTypeId == StandardType.VALUES_RANGE,
                         sgl.Standard.AllowDecimal,
                         sgl.Standard.MeasureUnity,
-                        StandardItems = sgl.StandardItems.Where(sql => !sgl.IsDeleted).Select(si => new
+                        StandardItems = sgl.StandardItems.Where(sql => !sgl.IsDeleted).OrderBy(s => s.Sequence).Select(si => new
                         {
                             si.Value1,
                             si.Value2,
