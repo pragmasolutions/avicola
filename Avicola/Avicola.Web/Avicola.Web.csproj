@@ -210,9 +210,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ValidationConfig.cs" />
+    <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BarnController.cs" />
+    <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\DepositController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\StandardGeneticLineController.cs" />
@@ -266,6 +268,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ControlPanel.css">
+      <DependentUpon>ControlPanel.less</DependentUpon>
+    </Content>
+    <Content Include="Content\ControlPanel.min.css">
+      <DependentUpon>ControlPanel.css</DependentUpon>
+    </Content>
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
@@ -289,6 +297,10 @@
     <Content Include="Scripts\globalize.init.js" />
     <Content Include="Scripts\globalize.js" />
     <Content Include="Scripts\ImageUploadValidation.js" />
+    <Content Include="Content\ControlPanel.less" />
+    <Content Include="Content\ControlPanel.css.map">
+      <DependentUpon>ControlPanel.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
@@ -456,6 +468,8 @@
     <Content Include="Views\StandardGeneticLine\_EditionControls.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\StandardItemIntegerModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\StandardItemIntegerModel.cshtml" />
+    <Content Include="Views\ControlPanel\ProductionStandards.cshtml" />
+    <Content Include="Views\Shared\_ControlPanelLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

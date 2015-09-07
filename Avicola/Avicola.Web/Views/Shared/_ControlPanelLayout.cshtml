@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Avícola Santa Ana</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" style="margin: 6px 16px 0 5px; padding: 0;">
+                    <img src="/Content/Images/logo.png" style="width: 40px;" />
+                </a>
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Producción <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Líneas Genéticas", "Index", new { controller = "GeneticLine" })</li>
+                            <li>@Html.ActionLink("Estándares", "Index", new { controller = "Standard" })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logística <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Conductores", "Index", new { controller = "Driver" })</li>
+                            <li>@Html.ActionLink("Camiones", "Index", new { controller = "Truck" })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ventas y Pedidos <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Clientes", "Index", new { controller = "Client" })</li>
+                            <li>@Html.ActionLink("Depósitos", "Index", new { controller = "Deposit" })</li>
+                            <li>@Html.ActionLink("Galpónes", "Index", new {controller = "Barn"})</li>
+                            <li>@Html.ActionLink("Proveedores", "Index", new { controller = "Provider" })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Reporte 1", "Report1", new {controller = "Report"})</li>
+                            <li>@Html.ActionLink("Reporte 2", "Report1", new {controller = "Report"})</li>
+                            <li>@Html.ActionLink("Reporte 3", "Report1", new {controller = "Report"})</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderSection("banner", required: false)
+        <div class="container alert-container" style="padding-left: 0 !important;"></div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/globalize")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/lib")
+    @Scripts.Render("~/bundles/app")
+    @RenderSection("scripts", required: false)
+    @Html.Partial("_Alerts")
+
+</body>
+</html>
