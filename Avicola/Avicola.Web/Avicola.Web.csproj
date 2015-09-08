@@ -282,6 +282,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\office-create-standard.js" />
     <Content Include="Scripts\app\office-select-standard.js" />
+    <Content Include="Scripts\app\office-standards-dashboard.js" />
     <Content Include="Scripts\app\utilities\bootstrapAlerts.js" />
     <Content Include="Scripts\app\utilities\controls.unobtrusive.js" />
     <Content Include="Scripts\app\utilities\dbgeography.js" />
@@ -803,6 +804,8 @@
     <Content Include="Views\Shared\DisplayTemplates\StandardItemIntegerModel.cshtml" />
     <Content Include="Views\ControlPanel\ProductionStandards.cshtml" />
     <Content Include="Views\Shared\_ControlPanelLayout.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AggregateOperationId.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AggregateOperationId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

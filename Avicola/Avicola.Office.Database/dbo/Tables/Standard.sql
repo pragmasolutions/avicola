@@ -6,6 +6,7 @@
 	[DataLoadTypeId] [uniqueidentifier] NOT NULL,
 	[StandardTypeId] [uniqueidentifier] NOT NULL,
 	[AllowDecimal] BIT NOT NULL DEFAULT 1,
+	[AggregateOperation] VARCHAR(5) NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Standard] PRIMARY KEY CLUSTERED 
 (

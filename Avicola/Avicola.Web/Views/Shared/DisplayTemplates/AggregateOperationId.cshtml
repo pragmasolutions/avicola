@@ -1,0 +1,6 @@
+﻿@using Avicola.Office.Entities
+@using Framework.Common.Web.Extensions
+@model string
+
+
+@Html.TextBox("", Model == "SUM" ? "Sumatoria" : "Promedio", new { @class = "form-control", @readonly = true })
