@@ -1,0 +1,12 @@
+﻿@using Avicola.Office.Entities
+@using Framework.Common.Web.Extensions
+@model string
+@{
+    var list = new List<KeyValuePair<string, string>>
+    {
+        new KeyValuePair<string, string>("AVG", "Promedio") ,
+        new KeyValuePair<string, string>("SUM", "Sumatoria") 
+    };
+}
+
+@Html.DropDownList("", new SelectList(list, "Key", "Value", Model), "Seleccione Operación", new { @class = "form-control select2-control" })

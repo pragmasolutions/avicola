@@ -40,6 +40,10 @@ namespace Avicola.Web.Models.Standards
 
         [HiddenInput]
         public DateTime CreatedDate { get; set; }
+
+        [Display(Name = "Operación de agregado")]
+        [UIHint("AggregateOperationId")]
+        public string AggregateOperation { get; set; }
         
         public Standard ToStandard()
         {

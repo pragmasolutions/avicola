@@ -118,6 +118,7 @@
           <Property Name="DataLoadTypeId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StandardTypeId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="AllowDecimal" Type="bit" Nullable="false" />
+          <Property Name="AggregateOperation" Type="varchar" MaxLength="5" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StandardGeneticLine">
@@ -549,6 +550,7 @@
           <Property Name="StandardTypeId" Type="Guid" Nullable="false" />
           <NavigationProperty Name="StandardType" Relationship="Avicola.OfficeModel.FK_Standard_StandardType" FromRole="Standard" ToRole="StandardType" />
           <Property Name="AllowDecimal" Type="Boolean" Nullable="false" />
+          <Property Name="AggregateOperation" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="StandardGeneticLine">
           <Key>
@@ -995,6 +997,7 @@
           <EntitySetMapping Name="Standards">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Standard">
               <MappingFragment StoreEntitySet="Standard">
+                <ScalarProperty Name="AggregateOperation" ColumnName="AggregateOperation" />
                 <ScalarProperty Name="AllowDecimal" ColumnName="AllowDecimal" />
                 <ScalarProperty Name="StandardTypeId" ColumnName="StandardTypeId" />
                 <ScalarProperty Name="MeasureUnity" ColumnName="MeasureUnity" />

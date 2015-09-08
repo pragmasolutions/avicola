@@ -2,183 +2,19 @@
     ViewBag.Title = "Seguimiento de Lotes";
     Layout = "~/Views/Shared/_ControlPanelLayout.cshtml";
 }
-<link href="/Content/ControlPanel.css" type="text/css"/>
+<link rel="stylesheet" href="/Content/ControlPanel.css" type="text/css" media="all"/>
 <div class="main-container col-lg-12">
 
 </div>
 
 @section scripts
 {
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="/Scripts/Highcharts-4.1.8/js/highcharts.js"></script>
+    <script src="/Scripts/Highcharts-4.1.8/js/modules/exporting.js"></script>
+    <script src="/Scripts/app/office-standards-dashboard.js"></script>
     <script>
-        var controlPanel = function() {
-            var refresh = function() {
-                    $.getJSON("/ControlPanel/GetAllActive", function(data) {
-                        var height = $(window).height();
-                        $container = $('.main-container').empty().height(height - 60);
-
-                        switch (data.length) {
-                        case 1:
-                            $container.append('<div class="chart-block col-lg-12 height100"><div class="content"></div></div>');
-                            break;
-                        case 2:
-                            $container.append('<div class="chart-block col-lg-6 height100"><div class="content"></div></div>')
-                                .append('<div class="chart-block col-lg-6 height100"><div class="content"></div></div>');
-                            break;
-                        case 3:
-                            $container.append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                                .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                                .append('<div class="chart-block col-lg-12 height50"><div class="content"></div></div>');
-                            break;
-                        case 4:
-                            $container.append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                                .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                                .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                                .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>');
-                            break;
-                        }
-
-                        $container.find('.chart-block').each(function(i, block) {
-                            generateChart(data[i], block);
-                        });
-
-
-                    });
-                },
-                generateChart = function(batch, container) {
-                    var categories = [],
-                        series = [],
-                        colors = [],
-                        availableColors = [
-                            '#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce',
-                            '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
-                        ];
-
-                    for (var j = 0; j < batch.GeneticLine.Standards.length; j++) {
-                        var color = availableColors.pop();
-                        var standard = batch.GeneticLine.Standards[j];
-
-                        var name = standard.Name + ' (' + standard.MeasureUnity + ')';
-                        var firstSerie = {
-                            name: standard.ShowSecondValue ? '[<] ' + name : name,
-                            data: [],
-                            measure: standard.MeasureUnity
-                        }
-                        for (var i = 0; i < standard.StandardItems.length; i++) {
-                            var item = standard.StandardItems[i];
-
-                            categories.push(i + 1);
-                            firstSerie.data.push(item.Value1);
-                        }
-                        series.push(firstSerie);
-                        colors.push(color);
-
-                        if (standard.ShowSecondValue) {
-                            
-                            var secondSerie = {
-                                name:'[>] ' + name,
-                                data: []
-                            }
-                            for (i = 0; i < standard.StandardItems.length; i++) {
-                                item = standard.StandardItems[i];
-
-                                secondSerie.data.push(item.Value2);
-                            }
-                            series.push(secondSerie);
-                            colors.push(color);
-                        } 
-                    }
-                    
-
-                    $(container).find('.content').highcharts({
-                        colors: colors,
-                        title: {
-                            text: batch.Name,
-                            x: -20 //center
-                        },
-                        subtitle: {
-                            text: 'Línea genética: ' + batch.GeneticLine.Name,
-                            x: -20
-                        },
-                        xAxis: {
-                            categories: categories
-                        },
-                        yAxis: {
-                            title: {
-                                text: 'Valor'
-                            },
-                            plotLines: [
-                                {
-                                    value: 0,
-                                    width: 1,
-                                    color: '#808080'
-                                }
-                            ]
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                var standard = this.series.name.split('(')[0].trim();
-                                var measure = this.series.name.split('(')[1].split(')')[0];
-                                return 'Semana <b>' + this.x + '</b><br/>' + standard + ': <b>' + this.y + '</b> ' + measure ;
-                            }
-                    },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'right',
-                        verticalAlign: 'middle',
-                        borderWidth: 0
-                    },
-                    series: series
-                });
-            };
-
-            return {
-                refresh: refresh
-            }
-        }();
-
         $(function() {
             controlPanel.refresh();
         });
     </script>
-
-
-
 }
-
-
-
-<style media="all">
-    html, body {
-        height: 100%;
-    }
-
-    .container {
-        max-width: 100%;
-    }
-
-    .main-container {
-        min-height: 100%;
-    }
-
-    .chart-block {
-        float: left;
-        padding: 10px;
-    }
-
-    .chart-block .content {
-        border: 1px solid black;
-        float: left;
-        width: 100%;
-        height: 100%;
-    }
-
-    .height50 {
-        height: 50%;
-    }
-
-    .height100 {
-        height: 100%;
-    }
-</style>
