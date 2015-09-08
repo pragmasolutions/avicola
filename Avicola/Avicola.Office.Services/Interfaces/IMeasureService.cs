@@ -9,5 +9,7 @@ namespace Avicola.Office.Services.Interfaces
     public interface IMeasureService : IService
     {
         void CreateMeasures(IEnumerable<LoadMeasureModel> measures, Guid batchId);
+
+        DateTime MaxDateAllowed(Guid standardId, Guid geneticLineId, DateTime batchCreatedDate);
     }
 }

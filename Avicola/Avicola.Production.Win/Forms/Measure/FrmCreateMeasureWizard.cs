@@ -123,14 +123,14 @@ namespace Avicola.Production.Win.Forms.Measure
                 {
                     if (!measure.CreatedDate.HasValue)
                     {
-                        RadMessageBox.Show(string.Format("Debe ingresar una fecha para la medida {0}", measure.Name));
+                        RadMessageBox.Show(this, string.Format("Debe ingresar una fecha para la medida {0}", measure.Name));
                         e.Cancel = true;
                         break;
                     }
 
                     if (!measure.Value.HasValue)
                     {
-                        RadMessageBox.Show(string.Format("Debe ingresar un valor para la medida {0}", measure.Name));
+                        RadMessageBox.Show(this, string.Format("Debe ingresar un valor para la medida {0}", measure.Name));
                         e.Cancel = true;
                         break;
                     }
@@ -151,6 +151,28 @@ namespace Avicola.Production.Win.Forms.Measure
         private void createMeasureWizard_Cancel(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void gvMeasures_CellEditorInitialized(object sender, GridViewCellEventArgs e)
+        {
+            using (var measureService = _serviceFactory.Create<IMeasureService>())
+            {
+                var standard = e.Row.DataBoundItem as LoadMeasureModel;
+
+                if (standard != null)
+                {
+                    var maxDate = measureService.MaxDateAllowed(standard.StandardId, _selectedBatch.GeneticLineId,
+                           _selectedBatch.CreatedDate);
+
+                    RadDateTimeEditor editor = gvMeasures.ActiveEditor as RadDateTimeEditor;
+
+                    if (editor != null)
+                    {
+                        editor.MinValue = _selectedBatch.CreatedDate;
+                        editor.MaxValue = maxDate;
+                    }
+                }
+            }
         }
     }
 }

@@ -59,5 +59,9 @@ namespace Framework.Common.Extentensions
             else
                 return returnIfNull;
         }
+        public static DateTime AddWeeks(this DateTime dateTime, int numberOfWeeks)
+        {
+            return dateTime.AddDays(numberOfWeeks * 7);
+        }
     }
 }
