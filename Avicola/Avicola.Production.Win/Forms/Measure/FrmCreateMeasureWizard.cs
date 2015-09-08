@@ -94,6 +94,21 @@ namespace Avicola.Production.Win.Forms.Measure
 
         private void createMeasureWizard_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
         {
+            if (e.NextPage == wizardPage2)
+            {
+                if (gvBatches.SelectedRows.Count == 1)
+                {
+                    var selectedBatch = gvBatches.SelectedRows.Single().DataBoundItem as BatchDto;
+
+                    _selectedBatch = selectedBatch;
+                }
+                else
+                {
+                    RadMessageBox.Show("Debe seleccionar un lote para continuar");
+                    e.Cancel = true;
+                }
+            }
+
             if (e.NextPage == wizardCompletionPage1)
             {
                 ValidateMeasures(e);
@@ -130,6 +145,11 @@ namespace Avicola.Production.Win.Forms.Measure
                 measureService.CreateMeasures(_newMeasures, _selectedBatch.Id);
             }
 
+            this.Close();
+        }
+
+        private void createMeasureWizard_Cancel(object sender, EventArgs e)
+        {
             this.Close();
         }
     }
