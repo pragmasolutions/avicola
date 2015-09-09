@@ -75,14 +75,14 @@ namespace Avicola.Office.Services
         private static int GetWeekSequence(DateTime batchCreatedDate, DateTime measureCreateDate)
         {
             int weeks = (int)((batchCreatedDate - measureCreateDate).TotalDays / 7);
-            weeks = weeks == 0 ? weeks : 1;
+            weeks = weeks > 0 ? weeks : 1;
             return weeks;
         }
 
         private static int GetDaySequence(DateTime batchCreatedDate, DateTime measureCreateDate)
         {
             int days = (int)((batchCreatedDate - measureCreateDate).TotalDays);
-            days = days == 0 ? days : 1;
+            days = days > 0 ? days : 1;
             return days;
         }
 
