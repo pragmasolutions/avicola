@@ -2,7 +2,7 @@
 
 namespace Avicola.Office.Services.Dtos
 {
-    public class LoadMeasureModel
+    public class LoadMeasureModel 
     {
         public Guid StandardId { get; set; }
         public string Name { get; set; }                    

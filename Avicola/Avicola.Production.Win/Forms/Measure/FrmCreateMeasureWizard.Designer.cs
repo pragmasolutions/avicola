@@ -32,10 +32,11 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
@@ -79,6 +80,7 @@
             this.createMeasureWizard.TabIndex = 0;
             this.createMeasureWizard.WelcomePage = null;
             this.createMeasureWizard.Finish += new System.EventHandler(this.createMeasureWizard_Finish);
+            this.createMeasureWizard.Cancel += new System.EventHandler(this.createMeasureWizard_Cancel);
             this.createMeasureWizard.SelectedPageChanging += new Telerik.WinControls.UI.SelectedPageChangingEventHandler(this.createMeasureWizard_SelectedPageChanging);
             this.createMeasureWizard.SelectedPageChanged += new Telerik.WinControls.UI.SelectedPageChangedEventHandler(this.createMeasureWizard_SelectedPageChanged);
             // 
@@ -123,15 +125,21 @@
             gridViewTextBoxColumn1.FieldName = "Number";
             gridViewTextBoxColumn1.HeaderText = "Número";
             gridViewTextBoxColumn1.Name = "Number";
-            gridViewTextBoxColumn1.Width = 200;
+            gridViewTextBoxColumn1.Width = 185;
             gridViewTextBoxColumn2.FieldName = "GeneticLineName";
             gridViewTextBoxColumn2.HeaderText = "Linea Genética";
             gridViewTextBoxColumn2.Name = "GeneticLineName";
-            gridViewTextBoxColumn2.Width = 200;
+            gridViewTextBoxColumn2.Width = 185;
             gridViewTextBoxColumn3.FieldName = "StageName";
             gridViewTextBoxColumn3.HeaderText = "Estado";
             gridViewTextBoxColumn3.Name = "StageName";
-            gridViewTextBoxColumn3.Width = 201;
+            gridViewTextBoxColumn3.Width = 131;
+            gridViewTextBoxColumn4.FieldName = "CreatedDate";
+            gridViewTextBoxColumn4.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn4.HeaderText = "Fecha Creación";
+            gridViewTextBoxColumn4.MinWidth = 100;
+            gridViewTextBoxColumn4.Name = "CreatedDate";
+            gridViewTextBoxColumn4.Width = 100;
             gridViewCommandColumn1.AllowResize = false;
             gridViewCommandColumn1.AllowSort = false;
             gridViewCommandColumn1.DefaultText = "Seleccionar";
@@ -144,6 +152,7 @@
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4,
             gridViewCommandColumn1});
             this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatches.Name = "gvBatches";
@@ -173,23 +182,23 @@
             this.gvMeasures.MasterTemplate.AllowDragToGroup = false;
             this.gvMeasures.MasterTemplate.AutoGenerateColumns = false;
             this.gvMeasures.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn4.FieldName = "Name";
-            gridViewTextBoxColumn4.HeaderText = "Nombre";
-            gridViewTextBoxColumn4.Name = "Name";
-            gridViewTextBoxColumn4.ReadOnly = true;
-            gridViewTextBoxColumn4.Width = 466;
-            gridViewTextBoxColumn5.FieldName = "MeasureUnity";
-            gridViewTextBoxColumn5.HeaderText = "Unidad de Medida";
-            gridViewTextBoxColumn5.Name = "MeasureUnity";
+            gridViewTextBoxColumn5.FieldName = "Name";
+            gridViewTextBoxColumn5.HeaderText = "Nombre";
+            gridViewTextBoxColumn5.Name = "Name";
             gridViewTextBoxColumn5.ReadOnly = true;
-            gridViewTextBoxColumn5.Width = 139;
+            gridViewTextBoxColumn5.Width = 463;
+            gridViewTextBoxColumn6.FieldName = "MeasureUnity";
+            gridViewTextBoxColumn6.HeaderText = "Unidad de Medida";
+            gridViewTextBoxColumn6.Name = "MeasureUnity";
+            gridViewTextBoxColumn6.ReadOnly = true;
+            gridViewTextBoxColumn6.Width = 138;
             gridViewDateTimeColumn1.ExcelExportType = Telerik.WinControls.UI.Export.DisplayFormatType.ShortDate;
             gridViewDateTimeColumn1.FieldName = "CreatedDate";
             gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             gridViewDateTimeColumn1.FormatString = "{0: dd/M/yyyy}";
             gridViewDateTimeColumn1.HeaderText = "Fecha";
             gridViewDateTimeColumn1.Name = "CreatedDate";
-            gridViewDateTimeColumn1.Width = 103;
+            gridViewDateTimeColumn1.Width = 102;
             gridViewDecimalColumn1.EnableExpressionEditor = false;
             gridViewDecimalColumn1.Expression = "";
             gridViewDecimalColumn1.FieldName = "Value";
@@ -197,14 +206,15 @@
             gridViewDecimalColumn1.Name = "Value";
             gridViewDecimalColumn1.Width = 102;
             this.gvMeasures.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
             gridViewDateTimeColumn1,
             gridViewDecimalColumn1});
             this.gvMeasures.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.gvMeasures.Name = "gvMeasures";
             this.gvMeasures.Size = new System.Drawing.Size(827, 418);
             this.gvMeasures.TabIndex = 4;
+            this.gvMeasures.CellEditorInitialized += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gvMeasures_CellEditorInitialized);
             // 
             // wizardPage1
             // 

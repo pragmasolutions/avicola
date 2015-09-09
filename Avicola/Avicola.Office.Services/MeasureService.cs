@@ -7,6 +7,7 @@ using Avicola.Office.Data.Interfaces;
 using Avicola.Office.Entities;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
+using Framework.Common.Extentensions;
 using Framework.Common.Utility;
 using Framework.Data.Helpers;
 
@@ -60,7 +61,7 @@ namespace Avicola.Office.Services
         {
             var standard = Uow.Standards.Get(standardId);
 
-            switch (standard.DataLoadTypeId.ToString())
+            switch (standard.DataLoadTypeId.ToString().ToUpper())
             {
                 case GlobalConstants.DailyDataLoadType:
                     return GetDaySequence(batchCreatedDate, measureCreateDate);
@@ -83,6 +84,26 @@ namespace Avicola.Office.Services
             int days = (int)((batchCreatedDate - measureCreateDate).TotalDays);
             days = days == 0 ? days : 1;
             return days;
+        }
+
+        public DateTime MaxDateAllowed(Guid standardId, Guid geneticLineId, DateTime batchCreatedDate)
+        {
+            var maxSequence = Uow.StandardItems
+                .GetAll(x => x.StandardGeneticLine.GeneticLineId == geneticLineId &&
+                             x.StandardGeneticLine.StandardId == standardId)
+                             .Max(x => x.Sequence);
+
+            var standard = Uow.Standards.Get(standardId);
+
+            switch (standard.DataLoadTypeId.ToString().ToUpper())
+            {
+                case GlobalConstants.DailyDataLoadType:
+                    return batchCreatedDate.AddDays(maxSequence);
+                case GlobalConstants.WeeklyDataLoadType:
+                    return batchCreatedDate.AddWeeks(maxSequence);
+                default:
+                    return batchCreatedDate.AddDays(maxSequence);
+            }
         }
     }
 }
