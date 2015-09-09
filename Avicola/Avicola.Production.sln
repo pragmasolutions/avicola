@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Data", "Framework
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Data.EntityFramework", "Framework\Framework.Data.EntityFramework\Framework.Data.EntityFramework.csproj", "{20259EAA-C937-4BF2-913A-F4531796FE5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Office.Test", "Avicola.Office.Test\Avicola.Office.Test.csproj", "{E44BA08C-9EDB-452D-81F8-5673C05F1DBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +133,12 @@ Global
 		{20259EAA-C937-4BF2-913A-F4531796FE5B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20259EAA-C937-4BF2-913A-F4531796FE5B}.tekove|Any CPU.ActiveCfg = tekove|Any CPU
 		{20259EAA-C937-4BF2-913A-F4531796FE5B}.tekove|Any CPU.Build.0 = tekove|Any CPU
+		{E44BA08C-9EDB-452D-81F8-5673C05F1DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44BA08C-9EDB-452D-81F8-5673C05F1DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44BA08C-9EDB-452D-81F8-5673C05F1DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44BA08C-9EDB-452D-81F8-5673C05F1DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44BA08C-9EDB-452D-81F8-5673C05F1DBE}.tekove|Any CPU.ActiveCfg = Release|Any CPU
+		{E44BA08C-9EDB-452D-81F8-5673C05F1DBE}.tekove|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,5 +156,6 @@ Global
 		{E764FE19-BDC2-4D35-9A83-F29FBA4B61B2} = {94F2721F-96CB-4F7B-BCD7-B8B7605FC441}
 		{CB41F702-99FB-49AE-8BC0-1B7F0193EFAB} = {94F2721F-96CB-4F7B-BCD7-B8B7605FC441}
 		{20259EAA-C937-4BF2-913A-F4531796FE5B} = {94F2721F-96CB-4F7B-BCD7-B8B7605FC441}
+		{E44BA08C-9EDB-452D-81F8-5673C05F1DBE} = {37883D0F-AD27-47B9-84F3-9416BBC821EA}
 	EndGlobalSection
 EndGlobal

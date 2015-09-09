@@ -17,7 +17,7 @@ namespace Avicola.Office.Services.Dtos
         public System.Guid FoodClassId { get; set; }
         public string FoodClassName { get; set; }
         public Guid? BarnId { get; set; }
-        public int BarnNumber { get; set; }
+        public int? BarnNumber { get; set; }
         public DateTime? ArrivedToBarn { get; set; }
         public DateTime? PostureStartDate { get; set; }
         public DateTime? EndDate { get; set; }
