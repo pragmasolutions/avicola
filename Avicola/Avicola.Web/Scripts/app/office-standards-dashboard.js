@@ -17,112 +17,137 @@
 
             });
         },
+        getContainer = function (width, height) {
+            var widthCol = 0;
+            switch (width) {
+                case 100:
+                    widthCol = 12;
+                    break;
+                case 50:
+                    widthCol = 6;
+                    break;
+                case 33:
+                    widthCol = 4;
+                    break;
+                case 25:
+                    widthCol = 3;
+                    break;
+            }
+            var classes = 'col-lg-' + widthCol + ' ' + 'height' + height;
+            var $container = $('<div class="chart-block ' + classes + '">');
+
+            var $content = $('<div class="content">');
+            $container.append($content);
+
+            return $container;
+        },
         buildLayout = function (batchCount) {
             switch (batchCount) {
                 case 1:
-                    $container.append('<div class="chart-block col-lg-12 height100"><div class="content"></div></div>');
+                    $container.append(getContainer(100, 100));
                     break;
                 case 2:
-                    $container.append('<div class="chart-block col-lg-6 height100"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height100"><div class="content"></div></div>');
+                    $container.append(getContainer(50, 100))
+                        .append(getContainer(50, 100));
                     break;
                 case 3:
-                    $container.append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-12 height50"><div class="content"></div></div>');
+                    $container.append(getContainer(50, 50))
+                        .append(getContainer(50, 50))
+                        .append(getContainer(100, 50));
                     break;
                 case 4:
-                    $container.append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>');
+                    $container.append()
+                        .append(getContainer(50, 50))
+                        .append(getContainer(50, 50))
+                        .append(getContainer(50, 50));
                     break;
                 case 5:
-                    $container.append('<div class="chart-block col-lg-4 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height50"><div class="content"></div></div>');
+                    $container.append(getContainer(33, 50))
+                        .append(getContainer(33, 50))
+                        .append(getContainer(33, 50))
+                        .append(getContainer(50, 50))
+                        .append(getContainer(50, 50));
                     break;
                 case 6:
-                    $container.append('<div class="chart-block col-lg-4 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height50"><div class="content"></div></div>');
+                    $container.append(getContainer(33, 50))
+                        .append(getContainer(33, 50))
+                        .append(getContainer(33, 50))
+                        .append(getContainer(33, 50))
+                        .append(getContainer(33, 50))
+                        .append(getContainer(33, 50));
                     break;
                 case 7:
-                    $container.append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>');
+                    $container.append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50));
                     break;
                 case 8:
-                    $container.append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height50"><div class="content"></div></div>');
+                    $container.append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50))
+                        .append(getContainer(25, 50));
                     break;
                 case 9:
-                    $container.append('<div class="chart-block col-lg-4 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-4 height33"><div class="content"></div></div>');
+                    $container.append(getContainer(33, 33))
+                        .append(getContainer(33, 33))
+                        .append(getContainer(33, 33))
+                        .append(getContainer(33, 33))
+                        .append(getContainer(33, 33))
+                        .append(getContainer(33, 33))
+                        .append(getContainer(33, 33))
+                        .append(getContainer(33, 33))
+                        .append(getContainer(33, 33));
                     break;
                 case 10:
-                    $container.append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height33"><div class="content"></div></div>');
+                    $container.append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(50, 33))
+                        .append(getContainer(50, 33));
                     break;
                 case 11:
-                    $container.append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-6 height33"><div class="content"></div></div>');
+                    $container.append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(50, 33));
                     break;
                 case 12:
-                    $container.append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>')
-                        .append('<div class="chart-block col-lg-3 height33"><div class="content"></div></div>');
+                    $container.append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33))
+                        .append(getContainer(25, 33));
                     break;
             }
         },
+        
         getDifferences = function (batchName, standardName, week, value) {
             var result = '<br/><br/>';
             var batch = $.grep(_lastData, function (x) { return x.Name == batchName })[0];

@@ -18,11 +18,14 @@ body {
   width: 100%;
   height: 100%;
 }
+.main-container .chart-block .buttons {
+  width: 40px;
+}
 .main-container .height33 {
   height: 33%;
 }
 .main-container .height50 {
-  height: 50%;
+  height: 47%;
 }
 .main-container .height100 {
   height: 100%;
