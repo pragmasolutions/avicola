@@ -74,24 +74,21 @@ namespace Avicola.Office.Services
 
         private static int GetWeekSequence(DateTime batchCreatedDate, DateTime measureCreateDate)
         {
-            int weeks = (int)((batchCreatedDate - measureCreateDate).TotalDays / 7);
+            int weeks = (int)((measureCreateDate - batchCreatedDate).TotalDays / 7);
             weeks = weeks > 0 ? weeks : 1;
             return weeks;
         }
 
         private static int GetDaySequence(DateTime batchCreatedDate, DateTime measureCreateDate)
         {
-            int days = (int)((batchCreatedDate - measureCreateDate).TotalDays);
+            int days = (int)((measureCreateDate - batchCreatedDate).TotalDays);
             days = days > 0 ? days : 1;
             return days;
         }
 
         public DateTime MaxDateAllowed(Guid standardId, Guid geneticLineId, DateTime batchCreatedDate)
         {
-            var maxSequence = Uow.StandardItems
-                .GetAll(x => x.StandardGeneticLine.GeneticLineId == geneticLineId &&
-                             x.StandardGeneticLine.StandardId == standardId)
-                             .Max(x => x.Sequence);
+            var maxSequence = GetMaxSequence(standardId, geneticLineId);
 
             var standard = Uow.Standards.Get(standardId);
 
@@ -104,6 +101,14 @@ namespace Avicola.Office.Services
                 default:
                     return batchCreatedDate.AddDays(maxSequence);
             }
+        }
+
+        public int GetMaxSequence(Guid standardId, Guid geneticLineId)
+        {
+            return Uow.StandardItems
+                .GetAll(x => x.StandardGeneticLine.GeneticLineId == geneticLineId &&
+                             x.StandardGeneticLine.StandardId == standardId)
+                .Max(x => x.Sequence);
         }
     }
 }
