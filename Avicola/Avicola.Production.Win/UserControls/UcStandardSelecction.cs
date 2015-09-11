@@ -40,11 +40,16 @@ namespace Avicola.Production.Win.UserControls
                     radButton.ImageAlignment = ContentAlignment.MiddleCenter;
                     radButton.Width = 200;
                     radButton.Height = 200;
+
                     var assemblyPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
                     if (assemblyPath != null)
                     {
                         string imagePath = Path.Combine(assemblyPath, string.Format(StandardImagesBaseFolder, standard.Name));
-                        radButton.Image = Image.FromFile(imagePath);
+
+                        if (File.Exists(imagePath))
+                        {
+                            radButton.Image = Image.FromFile(imagePath);
+                        }
                     }
 
                     radButton.Click += RadButtonOnClick;
