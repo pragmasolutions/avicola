@@ -16,7 +16,7 @@ namespace Avicola.Production.Win.UserControls
 {
     public partial class UcStandardSelecction : UserControl
     {
-        public const string StandardImagesBaseFolder = @"\Resources\Images\Standards\{0}.png";
+        public const string StandardImagesBaseFolder = @"Resources\Images\Standards\{0}.png";
 
         public UcStandardSelecction()
         {
@@ -38,9 +38,14 @@ namespace Avicola.Production.Win.UserControls
                     radButton.Text = standard.Name;
                     radButton.TextAlignment = ContentAlignment.BottomCenter;
                     radButton.ImageAlignment = ContentAlignment.MiddleCenter;
-                    radButton.Image =
-                        Image.FromFile(Path.Combine(Assembly.GetEntryAssembly().Location,
-                            string.Format(StandardImagesBaseFolder, standard.Name)));
+                    radButton.Width = 200;
+                    radButton.Height = 200;
+                    var assemblyPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                    if (assemblyPath != null)
+                    {
+                        string imagePath = Path.Combine(assemblyPath, string.Format(StandardImagesBaseFolder, standard.Name));
+                        radButton.Image = Image.FromFile(imagePath);
+                    }
 
                     radButton.Click += RadButtonOnClick;
                     radButton.Tag = standard;

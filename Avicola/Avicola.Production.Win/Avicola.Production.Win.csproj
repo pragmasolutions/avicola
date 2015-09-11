@@ -212,8 +212,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Images\barn.png" />
+    <Content Include="Resources\Images\edit.ico" />
     <Content Include="Resources\Images\LOGO.JPG" />
-    <Content Include="Resources\Images\Standards\Temperature.png" />
+    <Content Include="Resources\Images\notes-icon.png" />
+    <Content Include="Resources\Images\Pencil.png" />
+    <Content Include="Resources\Images\Standards\Mortandad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Standards\Temperature.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Standards\Peso del ave.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\vaccine.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

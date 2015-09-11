@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.MainMenu = new Telerik.WinControls.UI.RadMenu();
             this.miMeasuresHistory = new Telerik.WinControls.UI.RadMenuItem();
@@ -48,12 +49,33 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gvBatches = new Telerik.WinControls.UI.RadGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnGalpon = new System.Windows.Forms.Button();
+            this.btnObservaciones = new System.Windows.Forms.Button();
+            this.btnVacunas = new System.Windows.Forms.Button();
+            this.btnEstandares = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtFechaIngresoGalpon = new System.Windows.Forms.TextBox();
+            this.txtGalpon = new System.Windows.Forms.TextBox();
+            this.txtSemanaActual = new System.Windows.Forms.TextBox();
+            this.txtEtapa = new System.Windows.Forms.TextBox();
+            this.txtLineaGenetica = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.ucStandardSelecction = new Avicola.Production.Win.UserControls.UcStandardSelecction();
             this.wizardWelcomePage1 = new Telerik.WinControls.UI.WizardWelcomePage();
             this.wizardPage1 = new Telerik.WinControls.UI.WizardPage();
             this.wpSelectStandard = new Telerik.WinControls.UI.WizardPage();
-            this.ucStandardSelecction = new Avicola.Production.Win.UserControls.UcStandardSelecction();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PnlBotones)).BeginInit();
@@ -64,6 +86,11 @@
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches.MasterTemplate)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -125,7 +152,7 @@
             this.PnlBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBotones.Location = new System.Drawing.Point(0, 24);
             this.PnlBotones.Name = "PnlBotones";
-            this.PnlBotones.Size = new System.Drawing.Size(1082, 543);
+            this.PnlBotones.Size = new System.Drawing.Size(1082, 513);
             this.PnlBotones.TabIndex = 2;
             // 
             // wizard
@@ -143,7 +170,7 @@
             this.wizard.Pages.Add(this.wizardPage1);
             this.wizard.Pages.Add(this.wpSelectStandard);
             this.wizard.Pages.Add(this.wizardCompletionPage1);
-            this.wizard.Size = new System.Drawing.Size(1082, 543);
+            this.wizard.Size = new System.Drawing.Size(1082, 513);
             this.wizard.TabIndex = 0;
             this.wizard.Text = "wizard";
             this.wizard.WelcomePage = this.wizardWelcomePage1;
@@ -171,7 +198,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Location = new System.Drawing.Point(150, 56);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 439);
+            this.panel1.Size = new System.Drawing.Size(932, 409);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -179,13 +206,14 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.gvBatches, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 439);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 409);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gvBatches
@@ -202,62 +230,280 @@
             this.gvBatches.MasterTemplate.AllowEditRow = false;
             this.gvBatches.MasterTemplate.AutoGenerateColumns = false;
             this.gvBatches.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn7.FieldName = "Number";
-            gridViewTextBoxColumn7.HeaderText = "Número";
-            gridViewTextBoxColumn7.Name = "Number";
-            gridViewTextBoxColumn7.Width = 123;
-            gridViewTextBoxColumn8.FieldName = "GeneticLineName";
-            gridViewTextBoxColumn8.HeaderText = "Linea Genética";
-            gridViewTextBoxColumn8.Name = "GeneticLineName";
-            gridViewTextBoxColumn8.Width = 203;
-            gridViewTextBoxColumn9.FieldName = "DateOfBirth";
-            gridViewTextBoxColumn9.FormatString = "{0: dd/M/yyyy}";
-            gridViewTextBoxColumn9.HeaderText = "Fecha de Nacimiento";
-            gridViewTextBoxColumn9.MinWidth = 100;
-            gridViewTextBoxColumn9.Name = "DateOfBirth";
-            gridViewTextBoxColumn9.Width = 166;
-            gridViewTextBoxColumn10.FieldName = "Week";
-            gridViewTextBoxColumn10.HeaderText = "Semana Actual";
-            gridViewTextBoxColumn10.Name = "Week";
-            gridViewTextBoxColumn10.Width = 116;
-            gridViewTextBoxColumn11.FieldName = "StageName";
-            gridViewTextBoxColumn11.HeaderText = "Estado";
-            gridViewTextBoxColumn11.Name = "StageName";
-            gridViewTextBoxColumn11.Width = 55;
-            gridViewTextBoxColumn12.FieldName = "BarnNumber";
-            gridViewTextBoxColumn12.HeaderText = "Galpón";
-            gridViewTextBoxColumn12.MinWidth = 80;
-            gridViewTextBoxColumn12.Name = "BarnNumber";
-            gridViewTextBoxColumn12.Width = 97;
-            gridViewCommandColumn2.AllowResize = false;
-            gridViewCommandColumn2.AllowSort = false;
-            gridViewCommandColumn2.DefaultText = "Seleccionar";
-            gridViewCommandColumn2.HeaderText = "";
-            gridViewCommandColumn2.Name = "SelectColumn";
-            gridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewCommandColumn2.UseDefaultText = true;
-            gridViewCommandColumn2.Width = 150;
+            gridViewTextBoxColumn1.FieldName = "Number";
+            gridViewTextBoxColumn1.HeaderText = "Número";
+            gridViewTextBoxColumn1.Name = "Number";
+            gridViewTextBoxColumn1.Width = 123;
+            gridViewTextBoxColumn2.FieldName = "GeneticLineName";
+            gridViewTextBoxColumn2.HeaderText = "Linea Genética";
+            gridViewTextBoxColumn2.Name = "GeneticLineName";
+            gridViewTextBoxColumn2.Width = 203;
+            gridViewTextBoxColumn3.FieldName = "DateOfBirth";
+            gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn3.HeaderText = "Fecha de Nacimiento";
+            gridViewTextBoxColumn3.MinWidth = 100;
+            gridViewTextBoxColumn3.Name = "DateOfBirth";
+            gridViewTextBoxColumn3.Width = 166;
+            gridViewTextBoxColumn4.FieldName = "Week";
+            gridViewTextBoxColumn4.HeaderText = "Semana Actual";
+            gridViewTextBoxColumn4.Name = "Week";
+            gridViewTextBoxColumn4.Width = 116;
+            gridViewTextBoxColumn5.FieldName = "StageName";
+            gridViewTextBoxColumn5.HeaderText = "Estado";
+            gridViewTextBoxColumn5.Name = "StageName";
+            gridViewTextBoxColumn5.Width = 55;
+            gridViewTextBoxColumn6.FieldName = "BarnNumber";
+            gridViewTextBoxColumn6.HeaderText = "Galpón";
+            gridViewTextBoxColumn6.MinWidth = 80;
+            gridViewTextBoxColumn6.Name = "BarnNumber";
+            gridViewTextBoxColumn6.Width = 97;
+            gridViewCommandColumn1.AllowResize = false;
+            gridViewCommandColumn1.AllowSort = false;
+            gridViewCommandColumn1.DefaultText = "Seleccionar";
+            gridViewCommandColumn1.HeaderText = "";
+            gridViewCommandColumn1.Name = "SelectColumn";
+            gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewCommandColumn1.UseDefaultText = true;
+            gridViewCommandColumn1.Width = 150;
             this.gvBatches.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
-            gridViewTextBoxColumn9,
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11,
-            gridViewTextBoxColumn12,
-            gridViewCommandColumn2});
-            this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
+            gridViewCommandColumn1});
+            this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatches.Name = "gvBatches";
-            this.gvBatches.Size = new System.Drawing.Size(924, 387);
+            this.gvBatches.Size = new System.Drawing.Size(924, 360);
             this.gvBatches.TabIndex = 1;
             this.gvBatches.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatches_CommandCellClick);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button1.Location = new System.Drawing.Point(767, 373);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(162, 30);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Crear Lote";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.tableLayoutPanel3);
             this.panel2.Location = new System.Drawing.Point(0, 81);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1082, 414);
+            this.panel2.Size = new System.Drawing.Size(1082, 384);
             this.panel2.TabIndex = 1;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.panel5, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox2, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1082, 384);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.groupBox1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(3, 178);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1076, 203);
+            this.panel5.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnGalpon);
+            this.groupBox1.Controls.Add(this.btnObservaciones);
+            this.groupBox1.Controls.Add(this.btnVacunas);
+            this.groupBox1.Controls.Add(this.btnEstandares);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1076, 203);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Operación";
+            // 
+            // btnGalpon
+            // 
+            this.btnGalpon.Image = ((System.Drawing.Image)(resources.GetObject("btnGalpon.Image")));
+            this.btnGalpon.Location = new System.Drawing.Point(760, 25);
+            this.btnGalpon.Name = "btnGalpon";
+            this.btnGalpon.Size = new System.Drawing.Size(230, 159);
+            this.btnGalpon.TabIndex = 11;
+            this.btnGalpon.Text = "Asignar galpón";
+            this.btnGalpon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGalpon.UseVisualStyleBackColor = true;
+            // 
+            // btnObservaciones
+            // 
+            this.btnObservaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnObservaciones.Image")));
+            this.btnObservaciones.Location = new System.Drawing.Point(519, 25);
+            this.btnObservaciones.Name = "btnObservaciones";
+            this.btnObservaciones.Size = new System.Drawing.Size(230, 159);
+            this.btnObservaciones.TabIndex = 10;
+            this.btnObservaciones.Text = "Registrar notas";
+            this.btnObservaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnObservaciones.UseVisualStyleBackColor = true;
+            // 
+            // btnVacunas
+            // 
+            this.btnVacunas.Image = ((System.Drawing.Image)(resources.GetObject("btnVacunas.Image")));
+            this.btnVacunas.Location = new System.Drawing.Point(280, 25);
+            this.btnVacunas.Name = "btnVacunas";
+            this.btnVacunas.Size = new System.Drawing.Size(230, 159);
+            this.btnVacunas.TabIndex = 9;
+            this.btnVacunas.Text = "Registrar vacunación";
+            this.btnVacunas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnVacunas.UseVisualStyleBackColor = true;
+            // 
+            // btnEstandares
+            // 
+            this.btnEstandares.Image = ((System.Drawing.Image)(resources.GetObject("btnEstandares.Image")));
+            this.btnEstandares.Location = new System.Drawing.Point(39, 25);
+            this.btnEstandares.Name = "btnEstandares";
+            this.btnEstandares.Size = new System.Drawing.Size(230, 159);
+            this.btnEstandares.TabIndex = 8;
+            this.btnEstandares.Text = "Ingresar valores de estandares";
+            this.btnEstandares.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEstandares.UseVisualStyleBackColor = true;
+            this.btnEstandares.Click += new System.EventHandler(this.btnEstandares_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtFechaIngresoGalpon);
+            this.groupBox2.Controls.Add(this.txtGalpon);
+            this.groupBox2.Controls.Add(this.txtSemanaActual);
+            this.groupBox2.Controls.Add(this.txtEtapa);
+            this.groupBox2.Controls.Add(this.txtLineaGenetica);
+            this.groupBox2.Controls.Add(this.txtNumero);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1076, 169);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Detall de lote";
+            // 
+            // txtFechaIngresoGalpon
+            // 
+            this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(643, 148);
+            this.txtFechaIngresoGalpon.Name = "txtFechaIngresoGalpon";
+            this.txtFechaIngresoGalpon.ReadOnly = true;
+            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(205, 20);
+            this.txtFechaIngresoGalpon.TabIndex = 11;
+            // 
+            // txtGalpon
+            // 
+            this.txtGalpon.Location = new System.Drawing.Point(643, 59);
+            this.txtGalpon.Name = "txtGalpon";
+            this.txtGalpon.ReadOnly = true;
+            this.txtGalpon.Size = new System.Drawing.Size(205, 20);
+            this.txtGalpon.TabIndex = 10;
+            // 
+            // txtSemanaActual
+            // 
+            this.txtSemanaActual.Location = new System.Drawing.Point(358, 148);
+            this.txtSemanaActual.Name = "txtSemanaActual";
+            this.txtSemanaActual.ReadOnly = true;
+            this.txtSemanaActual.Size = new System.Drawing.Size(205, 20);
+            this.txtSemanaActual.TabIndex = 9;
+            // 
+            // txtEtapa
+            // 
+            this.txtEtapa.Location = new System.Drawing.Point(358, 59);
+            this.txtEtapa.Name = "txtEtapa";
+            this.txtEtapa.ReadOnly = true;
+            this.txtEtapa.Size = new System.Drawing.Size(205, 20);
+            this.txtEtapa.TabIndex = 8;
+            // 
+            // txtLineaGenetica
+            // 
+            this.txtLineaGenetica.Location = new System.Drawing.Point(39, 148);
+            this.txtLineaGenetica.Name = "txtLineaGenetica";
+            this.txtLineaGenetica.ReadOnly = true;
+            this.txtLineaGenetica.Size = new System.Drawing.Size(205, 20);
+            this.txtLineaGenetica.TabIndex = 7;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(39, 59);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.ReadOnly = true;
+            this.txtNumero.Size = new System.Drawing.Size(205, 20);
+            this.txtNumero.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(354, 37);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Etapa";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(639, 126);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(128, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Fecha ingreso a galpón";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(354, 126);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Semana Actual";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(639, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Galpón";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(35, 126);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Línea Genética";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Número";
             // 
             // panel4
             // 
@@ -267,6 +513,15 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1082, 431);
             this.panel4.TabIndex = 3;
+            // 
+            // ucStandardSelecction
+            // 
+            this.ucStandardSelecction.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucStandardSelecction.Location = new System.Drawing.Point(0, 0);
+            this.ucStandardSelecction.Name = "ucStandardSelecction";
+            this.ucStandardSelecction.Size = new System.Drawing.Size(1082, 431);
+            this.ucStandardSelecction.TabIndex = 0;
+            this.ucStandardSelecction.StandardSelected += new System.EventHandler<Avicola.Office.Entities.Standard>(this.ucStandardSelecction_StandardSelected);
             // 
             // wizardWelcomePage1
             // 
@@ -292,20 +547,11 @@
             this.wpSelectStandard.Name = "wpSelectStandard";
             this.wpSelectStandard.Title = "Seleccionar Indicador";
             // 
-            // ucStandardSelecction
-            // 
-            this.ucStandardSelecction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucStandardSelecction.Location = new System.Drawing.Point(0, 0);
-            this.ucStandardSelecction.Name = "ucStandardSelecction";
-            this.ucStandardSelecction.Size = new System.Drawing.Size(1082, 431);
-            this.ucStandardSelecction.TabIndex = 0;
-            this.ucStandardSelecction.StandardSelected += new System.EventHandler<Avicola.Office.Entities.Standard>(this.ucStandardSelecction_StandardSelected);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 567);
+            this.ClientSize = new System.Drawing.Size(1082, 537);
             this.Controls.Add(this.PnlBotones);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -329,6 +575,12 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -354,6 +606,27 @@
         private Telerik.WinControls.UI.WizardPage wpSelectStandard;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Telerik.WinControls.UI.RadGridView gvBatches;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnGalpon;
+        private System.Windows.Forms.Button btnObservaciones;
+        private System.Windows.Forms.Button btnVacunas;
+        private System.Windows.Forms.Button btnEstandares;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtFechaIngresoGalpon;
+        private System.Windows.Forms.TextBox txtGalpon;
+        private System.Windows.Forms.TextBox txtSemanaActual;
+        private System.Windows.Forms.TextBox txtEtapa;
+        private System.Windows.Forms.TextBox txtLineaGenetica;
+        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
         private UserControls.UcStandardSelecction ucStandardSelecction;
     }
 }

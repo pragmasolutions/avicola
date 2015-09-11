@@ -127,7 +127,15 @@ namespace Avicola.Production.Win.Forms
         {
             if (e.SelectedPage == wizardPage1)
             {
-                e.SelectedPage.Title = "Lote " + _selectedBatch.Number;
+                wizardPage1.Title = "Lote " + _selectedBatch.Number;
+                txtEtapa.Text = _selectedBatch.StageName;
+                txtFechaIngresoGalpon.Text = _selectedBatch.PostureStartDate == null
+                    ? string.Empty
+                    : _selectedBatch.PostureStartDate.GetValueOrDefault().ToShortDateString();
+                txtGalpon.Text = _selectedBatch.BarnNumber == null ? string.Empty : _selectedBatch.BarnNumber.ToString();
+                txtLineaGenetica.Text = _selectedBatch.GeneticLineName;
+                txtNumero.Text = _selectedBatch.Number.ToString();
+                txtSemanaActual.Text = _selectedBatch.Week.ToString();
             }
 
             if (e.SelectedPage == wpSelectStandard)
@@ -149,6 +157,11 @@ namespace Avicola.Production.Win.Forms
         private void ucStandardSelecction_StandardSelected(object sender, Office.Entities.Standard e)
         {
 
+        }
+
+        private void btnEstandares_Click(object sender, EventArgs e)
+        {
+            wizard.SelectNextPage();
         }
     }
 }
