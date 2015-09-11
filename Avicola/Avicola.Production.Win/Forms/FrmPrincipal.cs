@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
 using Avicola.Production.Win.Forms.Measure;
 using Avicola.Production.Win.Forms.Measure.History;
-using Framework.Data.Repository;
-using Ninject.Extensions.Conventions.Syntax;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
@@ -73,7 +67,7 @@ namespace Avicola.Production.Win.Forms
         {
             LoadActiveBatches();
 
-            this.wizard.HelpButton.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            this.wizard.HelpButton.Visibility = ElementVisibility.Collapsed;
         }
 
         private void LoadActiveBatches()
@@ -105,7 +99,7 @@ namespace Avicola.Production.Win.Forms
                 if (_selectedBatch != batch)
                 {
                     _selectedBatch = batch;
-                    }
+                }
 
                 wizard.SelectNextPage();
             }
@@ -127,12 +121,10 @@ namespace Avicola.Production.Win.Forms
                     e.Cancel = true;
                 }
             }
-
         }
 
         private void wizard_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
         {
-
             if (e.SelectedPage == wizardPage1)
             {
                 wizardPage1.Title = "Lote " + _selectedBatch.Number;
@@ -145,6 +137,31 @@ namespace Avicola.Production.Win.Forms
                 txtNumero.Text = _selectedBatch.Number.ToString();
                 txtSemanaActual.Text = _selectedBatch.Week.ToString();
             }
+
+            if (e.SelectedPage == wpSelectStandard)
+            {
+                LoadBatchStandards();
+            }
+        }
+
+        private void LoadBatchStandards()
+        {
+            using (var batchService = _serviceFactory.Create<IStandardService>())
+            {
+                var standards = batchService.GetByBatchId(_selectedBatch.Id).ToList();
+
+                ucStandardSelecction.Standards = standards;
+            }
+        }
+
+        private void ucStandardSelecction_StandardSelected(object sender, Office.Entities.Standard e)
+        {
+
+        }
+
+        private void btnEstandares_Click(object sender, EventArgs e)
+        {
+            wizard.SelectNextPage();
         }
 
         private void button1_Click(object sender, EventArgs e)
