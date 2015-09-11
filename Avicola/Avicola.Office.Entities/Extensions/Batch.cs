@@ -9,5 +9,13 @@ namespace Avicola.Office.Entities
 {
     public partial class Batch : IEntity
     {
+        public int CurrentWeek
+        {
+            get
+            {
+                var daysDifference = (DateTime.Now - DateOfBirth).TotalDays;
+                return Convert.ToInt32(Math.Floor(daysDifference % 7));
+            }
+        }
     }
 }

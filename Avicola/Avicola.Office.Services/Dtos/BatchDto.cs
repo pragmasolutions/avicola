@@ -23,5 +23,14 @@ namespace Avicola.Office.Services.Dtos
         public DateTime? EndDate { get; set; }
         public System.Guid StageId { get; set; }
         public string StageName { get; set; }
+        public int Week
+        {
+            get
+            {
+                var daysDifference = (DateTime.Now - DateOfBirth).TotalDays;
+                return Convert.ToInt32(Math.Floor(daysDifference % 7));
+            }
+        }
+        
     }
 }
