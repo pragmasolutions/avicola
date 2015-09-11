@@ -150,7 +150,7 @@
             this.PnlBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBotones.Location = new System.Drawing.Point(0, 24);
             this.PnlBotones.Name = "PnlBotones";
-            this.PnlBotones.Size = new System.Drawing.Size(1082, 513);
+            this.PnlBotones.Size = new System.Drawing.Size(1082, 507);
             this.PnlBotones.TabIndex = 2;
             // 
             // wizard
@@ -168,7 +168,7 @@
             this.wizard.Pages.Add(this.wizardPage1);
             this.wizard.Pages.Add(this.wizardPage2);
             this.wizard.Pages.Add(this.wizardCompletionPage1);
-            this.wizard.Size = new System.Drawing.Size(1082, 513);
+            this.wizard.Size = new System.Drawing.Size(1082, 507);
             this.wizard.TabIndex = 0;
             this.wizard.Text = "wizard";
             this.wizard.WelcomePage = this.wizardWelcomePage1;
@@ -196,7 +196,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Location = new System.Drawing.Point(150, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 402);
+            this.panel1.Size = new System.Drawing.Size(932, 396);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -211,7 +211,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 402);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 396);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gvBatches
@@ -273,19 +273,20 @@
             gridViewCommandColumn1});
             this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatches.Name = "gvBatches";
-            this.gvBatches.Size = new System.Drawing.Size(924, 353);
+            this.gvBatches.Size = new System.Drawing.Size(924, 348);
             this.gvBatches.TabIndex = 1;
             this.gvBatches.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatches_CommandCellClick);
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Location = new System.Drawing.Point(767, 366);
+            this.button1.Location = new System.Drawing.Point(767, 361);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 30);
             this.button1.TabIndex = 2;
             this.button1.Text = "Crear Lote";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -293,7 +294,7 @@
             this.panel2.Controls.Add(this.tableLayoutPanel3);
             this.panel2.Location = new System.Drawing.Point(0, 93);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1082, 375);
+            this.panel2.Size = new System.Drawing.Size(1082, 366);
             this.panel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -308,7 +309,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1082, 375);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1082, 366);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // panel5
@@ -317,7 +318,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 178);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1076, 194);
+            this.panel5.Size = new System.Drawing.Size(1076, 185);
             this.panel5.TabIndex = 0;
             // 
             // groupBox1
@@ -329,7 +330,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1076, 194);
+            this.groupBox1.Size = new System.Drawing.Size(1076, 185);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operación";
@@ -538,7 +539,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 537);
+            this.ClientSize = new System.Drawing.Size(1082, 531);
             this.Controls.Add(this.PnlBotones);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

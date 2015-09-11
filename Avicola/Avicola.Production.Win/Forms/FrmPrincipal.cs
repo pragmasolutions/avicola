@@ -146,5 +146,10 @@ namespace Avicola.Production.Win.Forms
                 txtSemanaActual.Text = _selectedBatch.Week.ToString();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
