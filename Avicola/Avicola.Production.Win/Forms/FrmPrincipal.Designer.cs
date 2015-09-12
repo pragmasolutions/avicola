@@ -72,10 +72,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.ucStandardSelecction = new Avicola.Production.Win.UserControls.UcStandardSelecction();
             this.wizardWelcomePage1 = new Telerik.WinControls.UI.WizardWelcomePage();
             this.wizardPage1 = new Telerik.WinControls.UI.WizardPage();
-            this.wpSelectStandard = new Telerik.WinControls.UI.WizardPage();
+            this.wizardPage2 = new Telerik.WinControls.UI.WizardPage();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PnlBotones)).BeginInit();
@@ -91,7 +90,6 @@
             this.panel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,7 +115,7 @@
             this.miMeasuresHistory});
             this.MainMenu.Location = new System.Drawing.Point(3, 3);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(1076, 20);
+            this.MainMenu.Size = new System.Drawing.Size(1076, 18);
             this.MainMenu.TabIndex = 0;
             // 
             // miMeasuresHistory
@@ -152,7 +150,7 @@
             this.PnlBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBotones.Location = new System.Drawing.Point(0, 24);
             this.PnlBotones.Name = "PnlBotones";
-            this.PnlBotones.Size = new System.Drawing.Size(1082, 513);
+            this.PnlBotones.Size = new System.Drawing.Size(1082, 507);
             this.PnlBotones.TabIndex = 2;
             // 
             // wizard
@@ -168,9 +166,9 @@
             this.wizard.PageHeaderIcon = null;
             this.wizard.Pages.Add(this.wizardWelcomePage1);
             this.wizard.Pages.Add(this.wizardPage1);
-            this.wizard.Pages.Add(this.wpSelectStandard);
+            this.wizard.Pages.Add(this.wizardPage2);
             this.wizard.Pages.Add(this.wizardCompletionPage1);
-            this.wizard.Size = new System.Drawing.Size(1082, 513);
+            this.wizard.Size = new System.Drawing.Size(1082, 507);
             this.wizard.TabIndex = 0;
             this.wizard.Text = "wizard";
             this.wizard.WelcomePage = this.wizardWelcomePage1;
@@ -187,18 +185,18 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(150, 56);
+            this.panel3.Location = new System.Drawing.Point(150, 63);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(932, 439);
+            this.panel3.Size = new System.Drawing.Size(932, 468);
             this.panel3.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.tableLayoutPanel2);
-            this.panel1.Location = new System.Drawing.Point(150, 56);
+            this.panel1.Location = new System.Drawing.Point(150, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 409);
+            this.panel1.Size = new System.Drawing.Size(932, 396);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -213,7 +211,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 409);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 396);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gvBatches
@@ -275,27 +273,28 @@
             gridViewCommandColumn1});
             this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatches.Name = "gvBatches";
-            this.gvBatches.Size = new System.Drawing.Size(924, 360);
+            this.gvBatches.Size = new System.Drawing.Size(924, 348);
             this.gvBatches.TabIndex = 1;
             this.gvBatches.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatches_CommandCellClick);
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Location = new System.Drawing.Point(767, 373);
+            this.button1.Location = new System.Drawing.Point(767, 361);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 30);
             this.button1.TabIndex = 2;
             this.button1.Text = "Crear Lote";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.tableLayoutPanel3);
-            this.panel2.Location = new System.Drawing.Point(0, 81);
+            this.panel2.Location = new System.Drawing.Point(0, 93);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1082, 384);
+            this.panel2.Size = new System.Drawing.Size(1082, 366);
             this.panel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -310,7 +309,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1082, 384);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1082, 366);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // panel5
@@ -319,7 +318,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 178);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1076, 203);
+            this.panel5.Size = new System.Drawing.Size(1076, 185);
             this.panel5.TabIndex = 0;
             // 
             // groupBox1
@@ -331,7 +330,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1076, 203);
+            this.groupBox1.Size = new System.Drawing.Size(1076, 185);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operación";
@@ -379,7 +378,6 @@
             this.btnEstandares.Text = "Ingresar valores de estandares";
             this.btnEstandares.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEstandares.UseVisualStyleBackColor = true;
-            this.btnEstandares.Click += new System.EventHandler(this.btnEstandares_Click);
             // 
             // groupBox2
             // 
@@ -408,7 +406,7 @@
             this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(643, 148);
             this.txtFechaIngresoGalpon.Name = "txtFechaIngresoGalpon";
             this.txtFechaIngresoGalpon.ReadOnly = true;
-            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(205, 20);
+            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(205, 22);
             this.txtFechaIngresoGalpon.TabIndex = 11;
             // 
             // txtGalpon
@@ -416,7 +414,7 @@
             this.txtGalpon.Location = new System.Drawing.Point(643, 59);
             this.txtGalpon.Name = "txtGalpon";
             this.txtGalpon.ReadOnly = true;
-            this.txtGalpon.Size = new System.Drawing.Size(205, 20);
+            this.txtGalpon.Size = new System.Drawing.Size(205, 22);
             this.txtGalpon.TabIndex = 10;
             // 
             // txtSemanaActual
@@ -424,7 +422,7 @@
             this.txtSemanaActual.Location = new System.Drawing.Point(358, 148);
             this.txtSemanaActual.Name = "txtSemanaActual";
             this.txtSemanaActual.ReadOnly = true;
-            this.txtSemanaActual.Size = new System.Drawing.Size(205, 20);
+            this.txtSemanaActual.Size = new System.Drawing.Size(205, 22);
             this.txtSemanaActual.TabIndex = 9;
             // 
             // txtEtapa
@@ -432,7 +430,7 @@
             this.txtEtapa.Location = new System.Drawing.Point(358, 59);
             this.txtEtapa.Name = "txtEtapa";
             this.txtEtapa.ReadOnly = true;
-            this.txtEtapa.Size = new System.Drawing.Size(205, 20);
+            this.txtEtapa.Size = new System.Drawing.Size(205, 22);
             this.txtEtapa.TabIndex = 8;
             // 
             // txtLineaGenetica
@@ -440,7 +438,7 @@
             this.txtLineaGenetica.Location = new System.Drawing.Point(39, 148);
             this.txtLineaGenetica.Name = "txtLineaGenetica";
             this.txtLineaGenetica.ReadOnly = true;
-            this.txtLineaGenetica.Size = new System.Drawing.Size(205, 20);
+            this.txtLineaGenetica.Size = new System.Drawing.Size(205, 22);
             this.txtLineaGenetica.TabIndex = 7;
             // 
             // txtNumero
@@ -448,7 +446,7 @@
             this.txtNumero.Location = new System.Drawing.Point(39, 59);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.ReadOnly = true;
-            this.txtNumero.Size = new System.Drawing.Size(205, 20);
+            this.txtNumero.Size = new System.Drawing.Size(205, 22);
             this.txtNumero.TabIndex = 6;
             // 
             // label6
@@ -456,7 +454,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(354, 37);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.Size = new System.Drawing.Size(43, 19);
             this.label6.TabIndex = 5;
             this.label6.Text = "Etapa";
             // 
@@ -465,7 +463,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(639, 126);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 13);
+            this.label5.Size = new System.Drawing.Size(150, 19);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha ingreso a galpón";
             // 
@@ -474,7 +472,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(354, 126);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.Size = new System.Drawing.Size(99, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "Semana Actual";
             // 
@@ -483,7 +481,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(639, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(53, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Galpón";
             // 
@@ -492,7 +490,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(35, 126);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(98, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Línea Genética";
             // 
@@ -501,27 +499,17 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(35, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(59, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Número";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.ucStandardSelecction);
-            this.panel4.Location = new System.Drawing.Point(0, 64);
+            this.panel4.Location = new System.Drawing.Point(0, 93);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1082, 431);
+            this.panel4.Size = new System.Drawing.Size(1082, 405);
             this.panel4.TabIndex = 3;
-            // 
-            // ucStandardSelecction
-            // 
-            this.ucStandardSelecction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucStandardSelecction.Location = new System.Drawing.Point(0, 0);
-            this.ucStandardSelecction.Name = "ucStandardSelecction";
-            this.ucStandardSelecction.Size = new System.Drawing.Size(1082, 431);
-            this.ucStandardSelecction.TabIndex = 0;
-            this.ucStandardSelecction.StandardSelected += new System.EventHandler<Avicola.Office.Entities.Standard>(this.ucStandardSelecction_StandardSelected);
             // 
             // wizardWelcomePage1
             // 
@@ -540,18 +528,18 @@
             this.wizardPage1.Name = "wizardPage1";
             this.wizardPage1.Title = "Seleccionar Operación";
             // 
-            // wpSelectStandard
+            // wizardPage2
             // 
-            this.wpSelectStandard.ContentArea = this.panel4;
-            this.wpSelectStandard.Header = "";
-            this.wpSelectStandard.Name = "wpSelectStandard";
-            this.wpSelectStandard.Title = "Seleccionar Indicador";
+            this.wizardPage2.ContentArea = this.panel4;
+            this.wizardPage2.Header = "Page header";
+            this.wizardPage2.Name = "wizardPage2";
+            this.wizardPage2.Title = "Page title";
             // 
             // FrmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 537);
+            this.ClientSize = new System.Drawing.Size(1082, 531);
             this.Controls.Add(this.PnlBotones);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -581,7 +569,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -603,7 +590,7 @@
         private Telerik.WinControls.UI.WizardWelcomePage wizardWelcomePage1;
         private Telerik.WinControls.UI.WizardPage wizardPage1;
         private System.Windows.Forms.Panel panel4;
-        private Telerik.WinControls.UI.WizardPage wpSelectStandard;
+        private Telerik.WinControls.UI.WizardPage wizardPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Telerik.WinControls.UI.RadGridView gvBatches;
         private System.Windows.Forms.Button button1;
@@ -627,6 +614,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private UserControls.UcStandardSelecction ucStandardSelecction;
     }
 }

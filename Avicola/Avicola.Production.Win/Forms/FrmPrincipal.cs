@@ -163,5 +163,10 @@ namespace Avicola.Production.Win.Forms
         {
             wizard.SelectNextPage();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
