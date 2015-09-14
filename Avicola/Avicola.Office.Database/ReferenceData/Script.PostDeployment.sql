@@ -11,6 +11,6 @@ Post-Deployment Script Template
 */
 
 :r .\DataLoadType.Data.sql	
+:r .\StandardTypes.Data.sql	
 :r .\Standards.Data.sql	
 :r .\Stages.Data.sql	
-:r .\StandardTypes.Data.sql	
