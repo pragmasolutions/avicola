@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
+using Avicola.Production.Win.Forms.Batch;
 using Avicola.Production.Win.Forms.Measure;
 using Avicola.Production.Win.Forms.Measure.History;
 using Telerik.WinControls;
@@ -150,7 +151,7 @@ namespace Avicola.Production.Win.Forms
             {
                 var standards = batchService.GetByBatchId(_selectedBatch.Id).ToList();
 
-                ucStandardSelecction.Standards = standards;
+                //ucStandardSelecction.Standards = standards;
             }
         }
 
@@ -164,9 +165,23 @@ namespace Avicola.Production.Win.Forms
             wizard.SelectNextPage();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCreateBatch_Click(object sender, EventArgs e)
         {
+            OpenCreateBatchForm();
+        }
 
+        private void OpenCreateBatchForm()
+        {
+            var form = Application.OpenForms.OfType<FrmCreateBatch>().FirstOrDefault();
+            if (form != null)
+            {
+                form.Activate();
+            }
+            else
+            {
+                var frm = FormFactory.Create<FrmCreateBatch>();
+                frm.Show();
+            }
         }
     }
 }

@@ -52,7 +52,9 @@
     <Compile Include="Dtos\BatchDto.cs" />
     <Compile Include="Dtos\LoadMeasureModel.cs" />
     <Compile Include="Dtos\MeasureDto.cs" />
+    <Compile Include="FoodClassService.cs" />
     <Compile Include="Interfaces\IFormFactory.cs" />
+    <Compile Include="Interfaces\IFoodClass.cs" />
     <Compile Include="Interfaces\IMeasureService.cs" />
     <Compile Include="MeasureService.cs" />
     <Compile Include="BatchService.cs" />
