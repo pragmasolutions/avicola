@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.MainMenu = new Telerik.WinControls.UI.RadMenu();
@@ -150,7 +150,7 @@
             this.PnlBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBotones.Location = new System.Drawing.Point(0, 24);
             this.PnlBotones.Name = "PnlBotones";
-            this.PnlBotones.Size = new System.Drawing.Size(1082, 495);
+            this.PnlBotones.Size = new System.Drawing.Size(1082, 489);
             this.PnlBotones.TabIndex = 2;
             // 
             // wizard
@@ -168,7 +168,7 @@
             this.wizard.Pages.Add(this.wizardPage1);
             this.wizard.Pages.Add(this.wpSelectStandard);
             this.wizard.Pages.Add(this.wizardCompletionPage1);
-            this.wizard.Size = new System.Drawing.Size(1082, 495);
+            this.wizard.Size = new System.Drawing.Size(1082, 489);
             this.wizard.TabIndex = 0;
             this.wizard.Text = "wizard";
             this.wizard.WelcomePage = this.wizardWelcomePage1;
@@ -196,7 +196,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Location = new System.Drawing.Point(150, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 384);
+            this.panel1.Size = new System.Drawing.Size(932, 378);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -211,7 +211,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 384);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 378);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gvBatches
@@ -228,59 +228,59 @@
             this.gvBatches.MasterTemplate.AllowEditRow = false;
             this.gvBatches.MasterTemplate.AutoGenerateColumns = false;
             this.gvBatches.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn7.FieldName = "Number";
-            gridViewTextBoxColumn7.HeaderText = "Número";
-            gridViewTextBoxColumn7.Name = "Number";
-            gridViewTextBoxColumn7.Width = 123;
-            gridViewTextBoxColumn8.FieldName = "GeneticLineName";
-            gridViewTextBoxColumn8.HeaderText = "Linea Genética";
-            gridViewTextBoxColumn8.Name = "GeneticLineName";
-            gridViewTextBoxColumn8.Width = 203;
-            gridViewTextBoxColumn9.FieldName = "DateOfBirth";
-            gridViewTextBoxColumn9.FormatString = "{0: dd/M/yyyy}";
-            gridViewTextBoxColumn9.HeaderText = "Fecha de Nacimiento";
-            gridViewTextBoxColumn9.MinWidth = 100;
-            gridViewTextBoxColumn9.Name = "DateOfBirth";
-            gridViewTextBoxColumn9.Width = 166;
-            gridViewTextBoxColumn10.FieldName = "Week";
-            gridViewTextBoxColumn10.HeaderText = "Semana Actual";
-            gridViewTextBoxColumn10.Name = "Week";
-            gridViewTextBoxColumn10.Width = 116;
-            gridViewTextBoxColumn11.FieldName = "StageName";
-            gridViewTextBoxColumn11.HeaderText = "Estado";
-            gridViewTextBoxColumn11.Name = "StageName";
-            gridViewTextBoxColumn11.Width = 55;
-            gridViewTextBoxColumn12.FieldName = "BarnNumber";
-            gridViewTextBoxColumn12.HeaderText = "Galpón";
-            gridViewTextBoxColumn12.MinWidth = 80;
-            gridViewTextBoxColumn12.Name = "BarnNumber";
-            gridViewTextBoxColumn12.Width = 97;
-            gridViewCommandColumn2.AllowResize = false;
-            gridViewCommandColumn2.AllowSort = false;
-            gridViewCommandColumn2.DefaultText = "Seleccionar";
-            gridViewCommandColumn2.HeaderText = "";
-            gridViewCommandColumn2.Name = "SelectColumn";
-            gridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewCommandColumn2.UseDefaultText = true;
-            gridViewCommandColumn2.Width = 150;
+            gridViewTextBoxColumn1.FieldName = "Number";
+            gridViewTextBoxColumn1.HeaderText = "Número";
+            gridViewTextBoxColumn1.Name = "Number";
+            gridViewTextBoxColumn1.Width = 123;
+            gridViewTextBoxColumn2.FieldName = "GeneticLineName";
+            gridViewTextBoxColumn2.HeaderText = "Linea Genética";
+            gridViewTextBoxColumn2.Name = "GeneticLineName";
+            gridViewTextBoxColumn2.Width = 203;
+            gridViewTextBoxColumn3.FieldName = "DateOfBirth";
+            gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn3.HeaderText = "Fecha de Nacimiento";
+            gridViewTextBoxColumn3.MinWidth = 100;
+            gridViewTextBoxColumn3.Name = "DateOfBirth";
+            gridViewTextBoxColumn3.Width = 166;
+            gridViewTextBoxColumn4.FieldName = "Week";
+            gridViewTextBoxColumn4.HeaderText = "Semana Actual";
+            gridViewTextBoxColumn4.Name = "Week";
+            gridViewTextBoxColumn4.Width = 116;
+            gridViewTextBoxColumn5.FieldName = "StageName";
+            gridViewTextBoxColumn5.HeaderText = "Estado";
+            gridViewTextBoxColumn5.Name = "StageName";
+            gridViewTextBoxColumn5.Width = 55;
+            gridViewTextBoxColumn6.FieldName = "BarnNumber";
+            gridViewTextBoxColumn6.HeaderText = "Galpón";
+            gridViewTextBoxColumn6.MinWidth = 80;
+            gridViewTextBoxColumn6.Name = "BarnNumber";
+            gridViewTextBoxColumn6.Width = 97;
+            gridViewCommandColumn1.AllowResize = false;
+            gridViewCommandColumn1.AllowSort = false;
+            gridViewCommandColumn1.DefaultText = "Seleccionar";
+            gridViewCommandColumn1.HeaderText = "";
+            gridViewCommandColumn1.Name = "SelectColumn";
+            gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewCommandColumn1.UseDefaultText = true;
+            gridViewCommandColumn1.Width = 150;
             this.gvBatches.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
-            gridViewTextBoxColumn9,
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11,
-            gridViewTextBoxColumn12,
-            gridViewCommandColumn2});
-            this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
+            gridViewCommandColumn1});
+            this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatches.Name = "gvBatches";
-            this.gvBatches.Size = new System.Drawing.Size(924, 337);
+            this.gvBatches.Size = new System.Drawing.Size(924, 332);
             this.gvBatches.TabIndex = 1;
             this.gvBatches.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatches_CommandCellClick);
             // 
             // btnCreateBatch
             // 
             this.btnCreateBatch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCreateBatch.Location = new System.Drawing.Point(767, 349);
+            this.btnCreateBatch.Location = new System.Drawing.Point(767, 344);
             this.btnCreateBatch.Name = "btnCreateBatch";
             this.btnCreateBatch.Size = new System.Drawing.Size(162, 30);
             this.btnCreateBatch.TabIndex = 2;
@@ -539,7 +539,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 519);
+            this.ClientSize = new System.Drawing.Size(1082, 513);
             this.Controls.Add(this.PnlBotones);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

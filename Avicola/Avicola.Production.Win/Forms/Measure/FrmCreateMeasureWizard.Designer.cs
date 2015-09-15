@@ -43,13 +43,13 @@
             this.createMeasureWizard = new Telerik.WinControls.UI.RadWizard();
             this.wizardCompletionPage1 = new Telerik.WinControls.UI.WizardCompletionPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ucLoadMeasuresSummary = new Avicola.Production.Win.UserControls.UcLoadMeasuresSummary();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gvBatches = new Telerik.WinControls.UI.RadGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gvMeasures = new Telerik.WinControls.UI.RadGridView();
             this.wizardPage1 = new Telerik.WinControls.UI.WizardPage();
             this.wizardPage2 = new Telerik.WinControls.UI.WizardPage();
-            this.ucLoadMeasuresSummary = new Avicola.Production.Win.UserControls.UcLoadMeasuresSummary();
             ((System.ComponentModel.ISupportInitialize)(this.createMeasureWizard)).BeginInit();
             this.createMeasureWizard.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -71,13 +71,12 @@
             this.createMeasureWizard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.createMeasureWizard.HideCompletionImage = true;
             this.createMeasureWizard.Location = new System.Drawing.Point(0, 0);
-            this.createMeasureWizard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.createMeasureWizard.Name = "createMeasureWizard";
             this.createMeasureWizard.PageHeaderIcon = ((System.Drawing.Image)(resources.GetObject("createMeasureWizard.PageHeaderIcon")));
             this.createMeasureWizard.Pages.Add(this.wizardPage1);
             this.createMeasureWizard.Pages.Add(this.wizardPage2);
             this.createMeasureWizard.Pages.Add(this.wizardCompletionPage1);
-            this.createMeasureWizard.Size = new System.Drawing.Size(1111, 686);
+            this.createMeasureWizard.Size = new System.Drawing.Size(841, 560);
             this.createMeasureWizard.TabIndex = 0;
             this.createMeasureWizard.WelcomePage = null;
             this.createMeasureWizard.Finish += new System.EventHandler(this.createMeasureWizard_Finish);
@@ -96,27 +95,32 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.ucLoadMeasuresSummary);
-            this.panel3.Location = new System.Drawing.Point(0, 63);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(0, 51);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1111, 575);
+            this.panel3.Size = new System.Drawing.Size(833, 467);
             this.panel3.TabIndex = 2;
+            // 
+            // ucLoadMeasuresSummary
+            // 
+            this.ucLoadMeasuresSummary.Location = new System.Drawing.Point(12, 14);
+            this.ucLoadMeasuresSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ucLoadMeasuresSummary.Name = "ucLoadMeasuresSummary";
+            this.ucLoadMeasuresSummary.Size = new System.Drawing.Size(488, 248);
+            this.ucLoadMeasuresSummary.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.gvBatches);
-            this.panel2.Location = new System.Drawing.Point(0, 71);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 64);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1111, 567);
+            this.panel2.Size = new System.Drawing.Size(841, 448);
             this.panel2.TabIndex = 1;
             // 
             // gvBatches
             // 
             this.gvBatches.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvBatches.Location = new System.Drawing.Point(0, 0);
-            this.gvBatches.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // 
             // 
@@ -129,21 +133,21 @@
             gridViewTextBoxColumn1.FieldName = "Number";
             gridViewTextBoxColumn1.HeaderText = "Número";
             gridViewTextBoxColumn1.Name = "Number";
-            gridViewTextBoxColumn1.Width = 272;
+            gridViewTextBoxColumn1.Width = 191;
             gridViewTextBoxColumn2.FieldName = "GeneticLineName";
             gridViewTextBoxColumn2.HeaderText = "Linea Genética";
             gridViewTextBoxColumn2.Name = "GeneticLineName";
-            gridViewTextBoxColumn2.Width = 272;
+            gridViewTextBoxColumn2.Width = 191;
             gridViewTextBoxColumn3.FieldName = "StageName";
             gridViewTextBoxColumn3.HeaderText = "Estado";
             gridViewTextBoxColumn3.Name = "StageName";
-            gridViewTextBoxColumn3.Width = 193;
+            gridViewTextBoxColumn3.Width = 135;
             gridViewTextBoxColumn4.FieldName = "CreatedDate";
             gridViewTextBoxColumn4.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn4.HeaderText = "Fecha Creación";
             gridViewTextBoxColumn4.MinWidth = 100;
             gridViewTextBoxColumn4.Name = "CreatedDate";
-            gridViewTextBoxColumn4.Width = 148;
+            gridViewTextBoxColumn4.Width = 104;
             gridViewCommandColumn1.AllowResize = false;
             gridViewCommandColumn1.AllowSort = false;
             gridViewCommandColumn1.DefaultText = "Seleccionar";
@@ -160,7 +164,7 @@
             gridViewCommandColumn1});
             this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatches.Name = "gvBatches";
-            this.gvBatches.Size = new System.Drawing.Size(1111, 567);
+            this.gvBatches.Size = new System.Drawing.Size(841, 448);
             this.gvBatches.TabIndex = 0;
             this.gvBatches.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatches_CommandCellClick);
             // 
@@ -168,17 +172,15 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.gvMeasures);
-            this.panel1.Location = new System.Drawing.Point(0, 93);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(0, 81);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1111, 545);
+            this.panel1.Size = new System.Drawing.Size(841, 431);
             this.panel1.TabIndex = 3;
             // 
             // gvMeasures
             // 
             this.gvMeasures.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvMeasures.Location = new System.Drawing.Point(0, 0);
-            this.gvMeasures.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // 
             // 
@@ -192,25 +194,25 @@
             gridViewTextBoxColumn5.HeaderText = "Nombre";
             gridViewTextBoxColumn5.Name = "Name";
             gridViewTextBoxColumn5.ReadOnly = true;
-            gridViewTextBoxColumn5.Width = 627;
+            gridViewTextBoxColumn5.Width = 474;
             gridViewTextBoxColumn6.FieldName = "MeasureUnity";
             gridViewTextBoxColumn6.HeaderText = "Unidad de Medida";
             gridViewTextBoxColumn6.Name = "MeasureUnity";
             gridViewTextBoxColumn6.ReadOnly = true;
-            gridViewTextBoxColumn6.Width = 186;
+            gridViewTextBoxColumn6.Width = 141;
             gridViewDateTimeColumn1.ExcelExportType = Telerik.WinControls.UI.Export.DisplayFormatType.ShortDate;
             gridViewDateTimeColumn1.FieldName = "CreatedDate";
             gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             gridViewDateTimeColumn1.FormatString = "{0: dd/M/yyyy}";
             gridViewDateTimeColumn1.HeaderText = "Fecha";
             gridViewDateTimeColumn1.Name = "CreatedDate";
-            gridViewDateTimeColumn1.Width = 138;
+            gridViewDateTimeColumn1.Width = 104;
             gridViewDecimalColumn1.EnableExpressionEditor = false;
             gridViewDecimalColumn1.Expression = "";
             gridViewDecimalColumn1.FieldName = "Value";
             gridViewDecimalColumn1.HeaderText = "Valor";
             gridViewDecimalColumn1.Name = "Value";
-            gridViewDecimalColumn1.Width = 138;
+            gridViewDecimalColumn1.Width = 105;
             this.gvMeasures.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn5,
             gridViewTextBoxColumn6,
@@ -218,7 +220,7 @@
             gridViewDecimalColumn1});
             this.gvMeasures.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.gvMeasures.Name = "gvMeasures";
-            this.gvMeasures.Size = new System.Drawing.Size(1111, 545);
+            this.gvMeasures.Size = new System.Drawing.Size(841, 431);
             this.gvMeasures.TabIndex = 4;
             this.gvMeasures.CellEditorInitialized += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gvMeasures_CellEditorInitialized);
             // 
@@ -236,21 +238,12 @@
             this.wizardPage2.Name = "wizardPage2";
             this.wizardPage2.Title = "Ingreso de Valores";
             // 
-            // ucLoadMeasuresSummary
-            // 
-            this.ucLoadMeasuresSummary.Location = new System.Drawing.Point(16, 17);
-            this.ucLoadMeasuresSummary.Margin = new System.Windows.Forms.Padding(5);
-            this.ucLoadMeasuresSummary.Name = "ucLoadMeasuresSummary";
-            this.ucLoadMeasuresSummary.Size = new System.Drawing.Size(651, 305);
-            this.ucLoadMeasuresSummary.TabIndex = 0;
-            // 
             // FrmCreateMeasureWizard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1111, 686);
+            this.ClientSize = new System.Drawing.Size(841, 560);
             this.Controls.Add(this.createMeasureWizard);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmCreateMeasureWizard";
             // 
             // 

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Avicola.Common.Win;
+using Avicola.Office.Entities;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
-using Avicola.Production.Win.Forms.Batch;
+using Avicola.Production.Win.Forms.Batchs;
 using Avicola.Production.Win.Forms.Measure;
 using Avicola.Production.Win.Forms.Measure.History;
 using Telerik.WinControls;
@@ -75,7 +76,7 @@ namespace Avicola.Production.Win.Forms
         {
             using (var batchService = _serviceFactory.Create<IBatchService>())
             {
-                var allActiveBatches = batchService.GetAllActive();
+                var allActiveBatches = batchService.GetAllActive().OrderBy(x => x.Number);
 
                 gvBatches.DataSource = allActiveBatches;
             }
@@ -180,8 +181,14 @@ namespace Avicola.Production.Win.Forms
             else
             {
                 var frm = FormFactory.Create<FrmCreateBatch>();
+                frm.BatchCreated += FrmOnBatchCreated;
                 frm.Show();
             }
+        }
+
+        private void FrmOnBatchCreated(object sender, Batch batch)
+        {
+            LoadActiveBatches();
         }
     }
 }
