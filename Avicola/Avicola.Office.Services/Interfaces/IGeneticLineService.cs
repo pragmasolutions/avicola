@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Avicola.Office.Entities;
 using Avicola.Office.Entities.DTO;
+using Avicola.Services.Common;
 
 namespace Avicola.Office.Services.Interfaces
 {
-    public interface IGeneticLineService
+    public interface IGeneticLineService: IService
     {
         IQueryable<GeneticLine> GetAll();
 

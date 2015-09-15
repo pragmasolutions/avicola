@@ -97,6 +97,12 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\Batch\FrmCreateBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Batch\FrmCreateBatch.Designer.cs">
+      <DependentUpon>FrmCreateBatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     <Compile Include="UserControls\UcStandardSelecction.Designer.cs">
       <DependentUpon>UcStandardSelecction.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Batch\FrmCreateBatch.resx">
+      <DependentUpon>FrmCreateBatch.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="UserControls\UcWeekSelection.cs">
       <SubType>UserControl</SubType>
     </Compile>
