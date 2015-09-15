@@ -97,11 +97,14 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
-    <Compile Include="Forms\Batch\FrmCreateBatch.cs">
+    <Compile Include="Forms\Batchs\FrmCreateBatch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Batch\FrmCreateBatch.Designer.cs">
+    <Compile Include="Forms\Batchs\FrmCreateBatch.Designer.cs">
       <DependentUpon>FrmCreateBatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditFormBase.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmBase.cs">
       <SubType>Form</SubType>
@@ -128,6 +131,7 @@
       <DependentUpon>FrmMeasureHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalConstants.cs" />
+    <Compile Include="Models\Batchs\CreateBatchModel.cs" />
     <Compile Include="Models\Measures\LoadDailyStandardMeasures.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,7 +153,7 @@
     <Compile Include="UserControls\UcStandardSelecction.Designer.cs">
       <DependentUpon>UcStandardSelecction.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Batch\FrmCreateBatch.resx">
+    <EmbeddedResource Include="Forms\Batchs\FrmCreateBatch.resx">
       <DependentUpon>FrmCreateBatch.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="UserControls\UcWeekSelection.cs">
@@ -179,6 +183,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControls\UcLoadDailyMeasures.resx">
       <DependentUpon>UcLoadDailyMeasures.cs</DependentUpon>
@@ -251,6 +256,7 @@
     </Content>
     <Content Include="Resources\Images\Standards\Temperatura.png" />
     <Content Include="Resources\Images\vaccine.png" />
+    <Content Include="Resources\Wrong.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
