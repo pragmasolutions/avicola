@@ -190,5 +190,16 @@ namespace Avicola.Production.Win.Forms
         {
             LoadActiveBatches();
         }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnEliminarLote_Click(object sender, EventArgs e)
+        {
+            DialogResult ds = RadMessageBox.Show(this, "Si elimina el lote se perderán todos los datos cargados asociados al mismo. \n\nEstá seguro que desea continuar?", "Confirmación", MessageBoxButtons.YesNo, RadMessageIcon.Question);
+            this.Text = ds.ToString();
+        }
     }
 }

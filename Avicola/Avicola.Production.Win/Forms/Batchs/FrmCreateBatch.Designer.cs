@@ -197,6 +197,7 @@
             this.BtnCancelar.TabIndex = 83;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.ThemeName = "TelerikMetroBlue";
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // pbvBatch
             // 

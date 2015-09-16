@@ -54,6 +54,8 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEliminarLote = new System.Windows.Forms.Button();
+            this.btnFinalizar = new System.Windows.Forms.Button();
             this.btnGalpon = new System.Windows.Forms.Button();
             this.btnObservaciones = new System.Windows.Forms.Button();
             this.btnVacunas = new System.Windows.Forms.Button();
@@ -105,7 +107,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1082, 24);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1466, 24);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // MainMenu
@@ -115,7 +117,7 @@
             this.miMeasuresHistory});
             this.MainMenu.Location = new System.Drawing.Point(3, 3);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(1076, 24);
+            this.MainMenu.Size = new System.Drawing.Size(1460, 24);
             this.MainMenu.TabIndex = 0;
             // 
             // miMeasuresHistory
@@ -150,7 +152,7 @@
             this.PnlBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBotones.Location = new System.Drawing.Point(0, 24);
             this.PnlBotones.Name = "PnlBotones";
-            this.PnlBotones.Size = new System.Drawing.Size(1082, 489);
+            this.PnlBotones.Size = new System.Drawing.Size(1466, 477);
             this.PnlBotones.TabIndex = 2;
             // 
             // wizard
@@ -168,7 +170,7 @@
             this.wizard.Pages.Add(this.wizardPage1);
             this.wizard.Pages.Add(this.wpSelectStandard);
             this.wizard.Pages.Add(this.wizardCompletionPage1);
-            this.wizard.Size = new System.Drawing.Size(1082, 489);
+            this.wizard.Size = new System.Drawing.Size(1466, 477);
             this.wizard.TabIndex = 0;
             this.wizard.Text = "wizard";
             this.wizard.WelcomePage = this.wizardWelcomePage1;
@@ -196,7 +198,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Location = new System.Drawing.Point(150, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 378);
+            this.panel1.Size = new System.Drawing.Size(1316, 366);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -211,7 +213,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 378);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1316, 366);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gvBatches
@@ -231,30 +233,30 @@
             gridViewTextBoxColumn1.FieldName = "Number";
             gridViewTextBoxColumn1.HeaderText = "Número";
             gridViewTextBoxColumn1.Name = "Number";
-            gridViewTextBoxColumn1.Width = 123;
+            gridViewTextBoxColumn1.Width = 185;
             gridViewTextBoxColumn2.FieldName = "GeneticLineName";
             gridViewTextBoxColumn2.HeaderText = "Linea Genética";
             gridViewTextBoxColumn2.Name = "GeneticLineName";
-            gridViewTextBoxColumn2.Width = 203;
+            gridViewTextBoxColumn2.Width = 306;
             gridViewTextBoxColumn3.FieldName = "DateOfBirth";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn3.HeaderText = "Fecha de Nacimiento";
             gridViewTextBoxColumn3.MinWidth = 100;
             gridViewTextBoxColumn3.Name = "DateOfBirth";
-            gridViewTextBoxColumn3.Width = 166;
+            gridViewTextBoxColumn3.Width = 250;
             gridViewTextBoxColumn4.FieldName = "Week";
             gridViewTextBoxColumn4.HeaderText = "Semana Actual";
             gridViewTextBoxColumn4.Name = "Week";
-            gridViewTextBoxColumn4.Width = 116;
+            gridViewTextBoxColumn4.Width = 174;
             gridViewTextBoxColumn5.FieldName = "StageName";
             gridViewTextBoxColumn5.HeaderText = "Estado";
             gridViewTextBoxColumn5.Name = "StageName";
-            gridViewTextBoxColumn5.Width = 55;
+            gridViewTextBoxColumn5.Width = 83;
             gridViewTextBoxColumn6.FieldName = "BarnNumber";
             gridViewTextBoxColumn6.HeaderText = "Galpón";
             gridViewTextBoxColumn6.MinWidth = 80;
             gridViewTextBoxColumn6.Name = "BarnNumber";
-            gridViewTextBoxColumn6.Width = 97;
+            gridViewTextBoxColumn6.Width = 146;
             gridViewCommandColumn1.AllowResize = false;
             gridViewCommandColumn1.AllowSort = false;
             gridViewCommandColumn1.DefaultText = "Seleccionar";
@@ -273,14 +275,14 @@
             gridViewCommandColumn1});
             this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatches.Name = "gvBatches";
-            this.gvBatches.Size = new System.Drawing.Size(924, 332);
+            this.gvBatches.Size = new System.Drawing.Size(1308, 321);
             this.gvBatches.TabIndex = 1;
             this.gvBatches.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatches_CommandCellClick);
             // 
             // btnCreateBatch
             // 
             this.btnCreateBatch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCreateBatch.Location = new System.Drawing.Point(767, 344);
+            this.btnCreateBatch.Location = new System.Drawing.Point(1151, 332);
             this.btnCreateBatch.Name = "btnCreateBatch";
             this.btnCreateBatch.Size = new System.Drawing.Size(162, 30);
             this.btnCreateBatch.TabIndex = 2;
@@ -294,7 +296,7 @@
             this.panel2.Controls.Add(this.tableLayoutPanel3);
             this.panel2.Location = new System.Drawing.Point(0, 93);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1082, 366);
+            this.panel2.Size = new System.Drawing.Size(1466, 336);
             this.panel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -309,7 +311,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1082, 366);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1466, 336);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // panel5
@@ -318,11 +320,13 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 178);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1076, 185);
+            this.panel5.Size = new System.Drawing.Size(1460, 155);
             this.panel5.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEliminarLote);
+            this.groupBox1.Controls.Add(this.btnFinalizar);
             this.groupBox1.Controls.Add(this.btnGalpon);
             this.groupBox1.Controls.Add(this.btnObservaciones);
             this.groupBox1.Controls.Add(this.btnVacunas);
@@ -330,10 +334,34 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1076, 185);
+            this.groupBox1.Size = new System.Drawing.Size(1460, 155);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operación";
+            // 
+            // btnEliminarLote
+            // 
+            this.btnEliminarLote.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarLote.Image")));
+            this.btnEliminarLote.Location = new System.Drawing.Point(1240, 25);
+            this.btnEliminarLote.Name = "btnEliminarLote";
+            this.btnEliminarLote.Size = new System.Drawing.Size(230, 159);
+            this.btnEliminarLote.TabIndex = 13;
+            this.btnEliminarLote.Text = "Eliminar Lote";
+            this.btnEliminarLote.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEliminarLote.UseVisualStyleBackColor = true;
+            this.btnEliminarLote.Click += new System.EventHandler(this.btnEliminarLote_Click);
+            // 
+            // btnFinalizar
+            // 
+            this.btnFinalizar.Image = ((System.Drawing.Image)(resources.GetObject("btnFinalizar.Image")));
+            this.btnFinalizar.Location = new System.Drawing.Point(1000, 25);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(230, 159);
+            this.btnFinalizar.TabIndex = 12;
+            this.btnFinalizar.Text = "Finalizar Lote";
+            this.btnFinalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
             // btnGalpon
             // 
@@ -396,7 +424,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1076, 169);
+            this.groupBox2.Size = new System.Drawing.Size(1460, 169);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detall de lote";
@@ -539,7 +567,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 513);
+            this.ClientSize = new System.Drawing.Size(1466, 501);
             this.Controls.Add(this.PnlBotones);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -614,5 +642,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.Button btnEliminarLote;
     }
 }
