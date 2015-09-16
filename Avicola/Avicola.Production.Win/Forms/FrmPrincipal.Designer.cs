@@ -150,7 +150,7 @@
             this.PnlBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBotones.Location = new System.Drawing.Point(0, 24);
             this.PnlBotones.Name = "PnlBotones";
-            this.PnlBotones.Size = new System.Drawing.Size(1082, 495);
+            this.PnlBotones.Size = new System.Drawing.Size(1082, 489);
             this.PnlBotones.TabIndex = 2;
             // 
             // wizard
@@ -168,7 +168,7 @@
             this.wizard.Pages.Add(this.wizardPage1);
             this.wizard.Pages.Add(this.wpSelectStandard);
             this.wizard.Pages.Add(this.wizardCompletionPage1);
-            this.wizard.Size = new System.Drawing.Size(1082, 495);
+            this.wizard.Size = new System.Drawing.Size(1082, 489);
             this.wizard.TabIndex = 0;
             this.wizard.Text = "wizard";
             this.wizard.WelcomePage = this.wizardWelcomePage1;
@@ -196,7 +196,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Location = new System.Drawing.Point(150, 56);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 391);
+            this.panel1.Size = new System.Drawing.Size(932, 378);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -211,7 +211,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 391);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 378);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gvBatches
@@ -273,14 +273,14 @@
             gridViewCommandColumn1});
             this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatches.Name = "gvBatches";
-            this.gvBatches.Size = new System.Drawing.Size(924, 343);
+            this.gvBatches.Size = new System.Drawing.Size(924, 332);
             this.gvBatches.TabIndex = 1;
             this.gvBatches.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatches_CommandCellClick);
             // 
             // btnCreateBatch
             // 
             this.btnCreateBatch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCreateBatch.Location = new System.Drawing.Point(767, 356);
+            this.btnCreateBatch.Location = new System.Drawing.Point(767, 344);
             this.btnCreateBatch.Name = "btnCreateBatch";
             this.btnCreateBatch.Size = new System.Drawing.Size(162, 30);
             this.btnCreateBatch.TabIndex = 2;
@@ -539,7 +539,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 519);
+            this.ClientSize = new System.Drawing.Size(1082, 513);
             this.Controls.Add(this.PnlBotones);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

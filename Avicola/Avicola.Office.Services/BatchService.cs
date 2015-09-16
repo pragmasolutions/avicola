@@ -38,5 +38,18 @@ namespace Avicola.Office.Services
                                     x => x.GeneticLine.StandardGeneticLines.Select(sgl => sgl.Standard),
                                     x => x.GeneticLine.StandardGeneticLines.Select(sgl => sgl.StandardItems)).ToList();
         }
+
+        public int GetNextNumber()
+        {
+            var max = Uow.Batches.GetAll().Max(x => x.Number);
+            return max + 1;
+        }
+
+
+        public void Create(Batch batch)
+        {
+            Uow.Batches.Add(batch);
+            Uow.Commit();
+        }
     }
 }

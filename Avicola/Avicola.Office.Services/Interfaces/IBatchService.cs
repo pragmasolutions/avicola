@@ -14,5 +14,9 @@ namespace Avicola.Office.Services.Interfaces
     {
         IList<BatchDto> GetAllActive();
         IList<Batch> GetAllActiveComplete();
+
+        int GetNextNumber();
+
+        void Create(Batch batch);
     }
 }
