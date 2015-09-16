@@ -117,7 +117,7 @@
             this.miMeasuresHistory});
             this.MainMenu.Location = new System.Drawing.Point(3, 3);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(1460, 24);
+            this.MainMenu.Size = new System.Drawing.Size(1076, 18);
             this.MainMenu.TabIndex = 0;
             // 
             // miMeasuresHistory
@@ -187,16 +187,16 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(150, 63);
+            this.panel3.Location = new System.Drawing.Point(150, 56);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(932, 468);
+            this.panel3.Size = new System.Drawing.Size(932, 391);
             this.panel3.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.tableLayoutPanel2);
-            this.panel1.Location = new System.Drawing.Point(150, 63);
+            this.panel1.Location = new System.Drawing.Point(150, 56);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1316, 366);
             this.panel1.TabIndex = 0;
@@ -294,7 +294,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.tableLayoutPanel3);
-            this.panel2.Location = new System.Drawing.Point(0, 93);
+            this.panel2.Location = new System.Drawing.Point(0, 81);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1466, 336);
             this.panel2.TabIndex = 1;
@@ -434,7 +434,7 @@
             this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(643, 148);
             this.txtFechaIngresoGalpon.Name = "txtFechaIngresoGalpon";
             this.txtFechaIngresoGalpon.ReadOnly = true;
-            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(205, 22);
+            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(205, 20);
             this.txtFechaIngresoGalpon.TabIndex = 11;
             // 
             // txtGalpon
@@ -442,7 +442,7 @@
             this.txtGalpon.Location = new System.Drawing.Point(643, 59);
             this.txtGalpon.Name = "txtGalpon";
             this.txtGalpon.ReadOnly = true;
-            this.txtGalpon.Size = new System.Drawing.Size(205, 22);
+            this.txtGalpon.Size = new System.Drawing.Size(205, 20);
             this.txtGalpon.TabIndex = 10;
             // 
             // txtSemanaActual
@@ -450,7 +450,7 @@
             this.txtSemanaActual.Location = new System.Drawing.Point(358, 148);
             this.txtSemanaActual.Name = "txtSemanaActual";
             this.txtSemanaActual.ReadOnly = true;
-            this.txtSemanaActual.Size = new System.Drawing.Size(205, 22);
+            this.txtSemanaActual.Size = new System.Drawing.Size(205, 20);
             this.txtSemanaActual.TabIndex = 9;
             // 
             // txtEtapa
@@ -458,7 +458,7 @@
             this.txtEtapa.Location = new System.Drawing.Point(358, 59);
             this.txtEtapa.Name = "txtEtapa";
             this.txtEtapa.ReadOnly = true;
-            this.txtEtapa.Size = new System.Drawing.Size(205, 22);
+            this.txtEtapa.Size = new System.Drawing.Size(205, 20);
             this.txtEtapa.TabIndex = 8;
             // 
             // txtLineaGenetica
@@ -466,7 +466,7 @@
             this.txtLineaGenetica.Location = new System.Drawing.Point(39, 148);
             this.txtLineaGenetica.Name = "txtLineaGenetica";
             this.txtLineaGenetica.ReadOnly = true;
-            this.txtLineaGenetica.Size = new System.Drawing.Size(205, 22);
+            this.txtLineaGenetica.Size = new System.Drawing.Size(205, 20);
             this.txtLineaGenetica.TabIndex = 7;
             // 
             // txtNumero
@@ -474,7 +474,7 @@
             this.txtNumero.Location = new System.Drawing.Point(39, 59);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.ReadOnly = true;
-            this.txtNumero.Size = new System.Drawing.Size(205, 22);
+            this.txtNumero.Size = new System.Drawing.Size(205, 20);
             this.txtNumero.TabIndex = 6;
             // 
             // label6
@@ -482,7 +482,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(354, 37);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 19);
+            this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "Etapa";
             // 
@@ -491,7 +491,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(639, 126);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 19);
+            this.label5.Size = new System.Drawing.Size(128, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha ingreso a galpón";
             // 
@@ -500,7 +500,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(354, 126);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 19);
+            this.label4.Size = new System.Drawing.Size(82, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Semana Actual";
             // 
@@ -509,7 +509,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(639, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 19);
+            this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Galpón";
             // 
@@ -518,7 +518,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(35, 126);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 19);
+            this.label2.Size = new System.Drawing.Size(82, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Línea Genética";
             // 
@@ -527,16 +527,16 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(35, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 19);
+            this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Número";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(0, 93);
+            this.panel4.Location = new System.Drawing.Point(0, 81);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1082, 405);
+            this.panel4.Size = new System.Drawing.Size(1082, 366);
             this.panel4.TabIndex = 3;
             // 
             // wizardWelcomePage1
@@ -565,7 +565,7 @@
             // 
             // FrmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1466, 501);
             this.Controls.Add(this.PnlBotones);
