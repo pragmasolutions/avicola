@@ -97,6 +97,18 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\Batchs\FrmBatchManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Batchs\FrmBatchManager.Designer.cs">
+      <DependentUpon>FrmBatchManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Batchs\FrmBatchSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Batchs\FrmBatchSelection.Designer.cs">
+      <DependentUpon>FrmBatchSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Batchs\FrmCreateBatch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +123,12 @@
     </Compile>
     <Compile Include="Forms\FrmBase.Designer.cs">
       <DependentUpon>FrmBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -130,7 +148,16 @@
     <Compile Include="Forms\Measure\History\FrmMeasureHistory.Designer.cs">
       <DependentUpon>FrmMeasureHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Standards\FrmStandardSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Standards\FrmStandardSelection.Designer.cs">
+      <DependentUpon>FrmStandardSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalConstants.cs" />
+    <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
+    <Compile Include="Infrastructure\ITransitionManager.cs" />
+    <Compile Include="Infrastructure\StateController.cs" />
     <Compile Include="Models\Batchs\CreateBatchModel.cs" />
     <Compile Include="Models\Measures\LoadDailyStandardMeasures.cs" />
     <Compile Include="Program.cs" />
@@ -153,6 +180,12 @@
     <Compile Include="UserControls\UcStandardSelecction.Designer.cs">
       <DependentUpon>UcStandardSelecction.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Batchs\FrmBatchManager.resx">
+      <DependentUpon>FrmBatchManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Batchs\FrmBatchSelection.resx">
+      <DependentUpon>FrmBatchSelection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Batchs\FrmCreateBatch.resx">
       <DependentUpon>FrmCreateBatch.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +198,9 @@
     <EmbeddedResource Include="Forms\FrmBase.resx">
       <DependentUpon>FrmBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Measure\History\FrmMeasureHistory.resx">
       <DependentUpon>FrmMeasureHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Standards\FrmStandardSelection.resx">
+      <DependentUpon>FrmStandardSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

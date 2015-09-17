@@ -68,7 +68,7 @@ namespace Avicola.Production.Win
 //                    } 
 //                }
 //#endif
-                var mainForm = kernel.Get<FrmPrincipal>();
+                var mainForm = kernel.Get<FrmMain>();
 
                 Application.Run(mainForm);
             }

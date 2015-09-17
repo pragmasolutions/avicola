@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Avicola.Common.Win;
+using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Properties;
 using Framework.Data.Repository;
 using Telerik.WinControls;
@@ -35,6 +36,6 @@ namespace Avicola.Production.Win.Forms
 
         protected IUowFactory UowFactory { get; set; }
 
-        
+        public ITransitionManager TransitionManager { get; set; }
     }
 }
