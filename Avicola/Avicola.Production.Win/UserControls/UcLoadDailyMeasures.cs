@@ -22,6 +22,8 @@ namespace Avicola.Production.Win.UserControls
             InitializeComponent();
         }
 
+        public event EventHandler SaveClick;
+
         public IList<LoadDailyStandardMeasures> LoadDailyStandardMeasures
         {
             get { return _loadDailyStandardMeasures; }
@@ -57,6 +59,19 @@ namespace Avicola.Production.Win.UserControls
                 var newWeek = _loadDailyStandardMeasures.First(x => x.Week == ucWeekSelection.Current);
 
                 UpdateCurrentDailyStandardMeasure(newWeek);
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            OnSaveClick();
+        }
+
+        private void OnSaveClick()
+        {
+            if (SaveClick != null)
+            {
+                SaveClick(this, new EventArgs());
             }
         }
     }

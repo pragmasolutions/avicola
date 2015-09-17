@@ -97,6 +97,12 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\Batchs\FrmEndBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Batchs\FrmEndBatch.Designer.cs">
+      <DependentUpon>FrmEndBatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Batchs\FrmCreateBatch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     <Compile Include="UserControls\UcStandardSelecction.Designer.cs">
       <DependentUpon>UcStandardSelecction.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Batchs\FrmEndBatch.resx">
+      <DependentUpon>FrmEndBatch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Batchs\FrmCreateBatch.resx">
       <DependentUpon>FrmCreateBatch.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,7 +272,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Images\barn.png" />
+    <Content Include="Resources\Images\delete-icon.png" />
     <Content Include="Resources\Images\edit.ico" />
+    <Content Include="Resources\Images\green-check.png" />
     <Content Include="Resources\Images\LOGO.JPG" />
     <Content Include="Resources\Images\notes-icon.png" />
     <Content Include="Resources\Images\Pencil.png" />

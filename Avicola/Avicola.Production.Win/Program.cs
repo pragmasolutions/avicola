@@ -10,6 +10,7 @@ using Avicola.Production.Win.Forms.Measure;
 using Framework.Common.Win.CustomProviders;
 using Framework.Ioc;
 using Ninject;
+using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win
@@ -36,6 +37,7 @@ namespace Avicola.Production.Win
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
             RadWizardLocalizationProvider.CurrentProvider = new CustomRadWizardLocalizationProvider();
+            RadMessageLocalizationProvider.CurrentProvider = new CustomRadMessageLocalizationProvider();
 
             using (var kernel = new StandardKernel())
             {
