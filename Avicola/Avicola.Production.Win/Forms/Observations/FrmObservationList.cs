@@ -74,19 +74,7 @@ namespace Avicola.Production.Win.Forms.Observations
         {
             var batch = new CreateBatchModel
             {
-                InitialBirds = string.IsNullOrEmpty(txtInitialBirds.Text) 
-                                    ? (int?)null
-                                    : Convert.ToInt32(txtInitialBirds.Text),
-                DateOfBirth = dtpDateOfBirth.Value,
-                StartingFood = string.IsNullOrEmpty(txtInitialFood.Text)
-                                    ? (decimal?)null
-                                    : Convert.ToDecimal(txtInitialFood.Text),
-                FoodClassId = ddlFoodClass.SelectedValue == null
-                                ? (Guid?)null
-                                : Guid.Parse(ddlFoodClass.SelectedValue.ToString()),
-                GeneticLineId = ddlGeneticLine.SelectedValue == null
-                                ? (Guid?)null
-                                : Guid.Parse(ddlGeneticLine.SelectedValue.ToString())
+                
             };
             
             return batch;
@@ -94,11 +82,7 @@ namespace Avicola.Production.Win.Forms.Observations
 
         protected override void ValidateControls()
         {
-            this.ValidateControl(txtInitialBirds, "InitialBirds");
-            this.ValidateControl(txtInitialFood, "StartingFood");
-            this.ValidateControl(ddlFoodClass, "FoodClassId");
-            this.ValidateControl(ddlGeneticLine, "GeneticLineId");
-            this.ValidateControl(dtpDateOfBirth, "DateOfBirth");
+            
         }
 
         protected override object GetEntity()

@@ -31,46 +31,29 @@ namespace Avicola.Office.Services
 
         public BatchObservation GetById(Guid id)
         {
-            return Uow.FoodClasses.Get(g => g.Id == id);
+            return Uow.BatchObservations.Get(g => g.Id == id);
         }
 
-        public BatchObservation GetByName(string name)
+        public IQueryable<BatchObservation> GetByBatchId(Guid batchId)
         {
-            return Uow.FoodClasses.Get(e => e.Name == name && !e.IsDeleted);
+            return Uow.BatchObservations.GetAll().Where(e => e.BatchId == batchId && !e.IsDeleted);
         }
 
         public void Create(BatchObservation batchObservation)
         {
-            if (!IsNameAvailable(batchObservation.Name, batchObservation.Id))
-            {
-                throw new ApplicationException("Ya existe un tipo de alimento con el mismo nombre");
-            }
-
-            Uow.FoodClasses.Add(batchObservation);
+            Uow.BatchObservations.Add(batchObservation);
             Uow.Commit();
         }
 
-        public void Edit(FoodClass foodClass)
+        public void Edit(BatchObservation batchObservation)
         {
             
         }
 
-        public void Delete(Guid foodClassId)
+        public void Delete(Guid batchObservationId)
         {
-            Uow.FoodClasses.Delete(foodClassId);
+            Uow.BatchObservations.Delete(batchObservationId);
             Uow.Commit();
-        }
-
-        public bool IsNameAvailable(string name, Guid id)
-        {
-            var currentFoodClass = this.GetByName(name);
-
-            if (currentFoodClass == null)
-            {
-                return true;
-            }
-
-            return currentFoodClass.Id == id;
         }
     }
 }

@@ -12,7 +12,7 @@ using Framework.Data.Helpers;
 using Telerik.WinControls;
 using System.Linq;
 using Avicola.Office.Entities;
-using Avicola.Production.Win.Models.Batchs;
+using Avicola.Production.Win.Models.BatchObservations;
 
 namespace Avicola.Production.Win.Forms.Observations
 {
@@ -65,37 +65,26 @@ namespace Avicola.Production.Win.Forms.Observations
             }
             else
             {
-                var batchModel = GetBatch();
-                var batch = batchModel.ToBatch();
-                batch.Number = GetNextNumber();
-
-                using (var service = _serviceFactory.Create<IBatchService>())
+                var batchObservationModel = GetBatchObservation();
+                var batchObservation = batchObservationModel.ToBatchObservation();
+                
+                using (var service = _serviceFactory.Create<IBatchObservationService>())
                 {
-                    service.Create(batch);
+                    service.Create(batchObservation);
                 }
 
-                OnBatchCreated(batch);
+                OnBatchObservationCreated(batchObservation);
                 this.Close();
             }
         }
 
-        private CreateBatchModel GetBatch()
+        private CreateBatchObservationModel GetBatchObservation()
         {
-            var batch = new CreateBatchModel
+            var batch = new CreateBatchObservationModel
             {
-                InitialBirds = string.IsNullOrEmpty(txtInitialBirds.Text) 
-                                    ? (int?)null
-                                    : Convert.ToInt32(txtInitialBirds.Text),
-                DateOfBirth = dtpCreatedDate.Value,
-                StartingFood = string.IsNullOrEmpty(txtInitialFood.Text)
-                                    ? (decimal?)null
-                                    : Convert.ToDecimal(txtInitialFood.Text),
-                FoodClassId = ddlFoodClass.SelectedValue == null
-                                ? (Guid?)null
-                                : Guid.Parse(ddlFoodClass.SelectedValue.ToString()),
-                GeneticLineId = ddlGeneticLine.SelectedValue == null
-                                ? (Guid?)null
-                                : Guid.Parse(ddlGeneticLine.SelectedValue.ToString())
+                Content = txtObservation.Text,
+                ObservationDate = dtpObservationDate.Value,
+                BatchId = _batchId
             };
             
             return batch;
@@ -104,20 +93,21 @@ namespace Avicola.Production.Win.Forms.Observations
         protected override void ValidateControls()
         {
             
-            this.ValidateControl(dtpCreatedDate, "DateOfBirth");
+            this.ValidateControl(dtpObservationDate, "ObservationDate");
+            this.ValidateControl(txtObservation, "Content");
         }
 
         protected override object GetEntity()
         {
-            return GetBatch();
+            return GetBatchObservation();
         }
 
-        public event EventHandler<Batch> BatchCreated;
-        private void OnBatchCreated(Batch batch)
+        public event EventHandler<BatchObservation> BatchObservationCreated;
+        private void OnBatchObservationCreated(BatchObservation batchObservation)
         {
-            if (BatchCreated != null)
+            if (BatchObservationCreated != null)
             {
-                BatchCreated(this, batch);
+                BatchObservationCreated(this, batchObservation);
             }
         }
 

@@ -15,12 +15,12 @@ namespace Avicola.Office.Services.Interfaces
 
         BatchObservation GetById(Guid id);
 
-        void Create(BatchObservation geneticLine);
+        IQueryable<BatchObservation> GetByBatchId(Guid batchId);
 
-        void Edit(BatchObservation geneticLine);
+        void Create(BatchObservation batchObservation);
 
-        void Delete(Guid geneticLineId);
+        void Edit(BatchObservation batchObservation);
 
-        bool IsNameAvailable(string name, Guid id);
+        void Delete(Guid batchObservationId);
     }
 }

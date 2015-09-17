@@ -14,38 +14,29 @@ namespace Avicola.Production.Win.Models.BatchObservations
     public class CreateBatchObservationModel
     {
         [Required]
-        public Guid? GeneticLineId { get; set; }
-
+        public DateTime? CreatedDate { get; set; }
         [Required]
-        public Guid? FoodClassId { get; set; }
-
+        public string Content { get; set; }
         [Required]
-        [Range(0, int.MaxValue)]
-        public decimal? StartingFood { get; set; }
-
+        public DateTime? ObservationDate { get; set; }
         [Required]
-        [Range(0, int.MaxValue)]
-        public int? InitialBirds { get; set; }
-
-        [Required]
-        public DateTime? DateOfBirth { get; set; }
-
-
+        public Guid? BatchId { get; set; }
+        
         public BatchObservation ToBatchObservation()
         {
-            var batch = new BatchObservation
+            var batchObservation = new BatchObservation
             {
-                InitialBirds = this.InitialBirds.GetValueOrDefault(),
-                StartingFood = this.StartingFood.GetValueOrDefault(),
-                DateOfBirth = this.DateOfBirth.GetValueOrDefault(),
-                GeneticLineId = this.GeneticLineId.GetValueOrDefault(),
-                FoodClassId = this.FoodClassId.GetValueOrDefault(),
-                StageId = Stage.BREEDING
+                Id = Guid.NewGuid(),
+                CreatedDate = DateTime.Now,
+                Content = this.Content,
+                ObservationDate = this.ObservationDate.GetValueOrDefault(),
+                BatchId = this.BatchId.GetValueOrDefault(),
+                IsDeleted = false
             };
-            return batch;
+            return batchObservation;
         }
 
-        public static CreateBatchObservationModel FromClient(CreateBatchObservationModel batchObservation)
+        public static CreateBatchObservationModel FromClient(BatchObservation batchObservation)
         {
             var form = Mapper.Map<BatchObservation, CreateBatchObservationModel>(batchObservation);
             return form;
