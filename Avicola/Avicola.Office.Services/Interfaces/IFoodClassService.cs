@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Avicola.Office.Entities;
 using Avicola.Office.Entities.DTO;
+using Avicola.Office.Services.Dtos;
 using Avicola.Services.Common;
 
 namespace Avicola.Office.Services.Interfaces
@@ -12,6 +13,9 @@ namespace Avicola.Office.Services.Interfaces
     public interface IFoodClassService: IService
     {
         IQueryable<FoodClass> GetAll();
+
+        List<FoodClassDto> GetAll(string sortBy, string sortDirection, string criteria,
+                               int pageIndex, int pageSize, out int pageTotal);
 
         FoodClass GetById(Guid id);
 
