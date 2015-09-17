@@ -14,39 +14,28 @@ using System.Linq;
 using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.Batchs;
 
-namespace Avicola.Production.Win.Forms.Batchs
+namespace Avicola.Production.Win.Forms.Observations
 {
-    public partial class FrmCreateBatch : EditFormBase
+    public partial class FrmObservationList : EditFormBase
     {
         private readonly IServiceFactory _serviceFactory;
-       
-        public FrmCreateBatch(IFormFactory formFactory, IServiceFactory serviceFactory)
+        private Guid _batchId;
+
+        public FrmObservationList(IFormFactory formFactory, IServiceFactory serviceFactory, Guid batchId)
         {
             FormFactory = formFactory;
             _serviceFactory = serviceFactory;
+            _batchId = batchId;
             InitializeComponent();
         }
 
-        private void FrmCreateBatch_Load(object sender, EventArgs e)
+        private void FrmObservationList_Load(object sender, EventArgs e)
         {
-            using (var geneticLineService = _serviceFactory.Create<IGeneticLineService>())
+            using (var batchObservationService = _serviceFactory.Create<IBatchObservationService>())
             {
-                var geneticLine = geneticLineService.GetAll().OrderBy(x => x.Name).ToList();
-                ddlGeneticLine.ValueMember = "Id";
-                ddlGeneticLine.DisplayMember = "Name";
-                ddlGeneticLine.DataSource = geneticLine;
+                var geneticLine = batchObservationService.GetAll().Where(b => b.BatchId == _batchId).OrderBy(x => x.CreatedDate).ToList();
+                
             }
-
-            using (var foodClassService = _serviceFactory.Create<IFoodClassService>())
-            {
-                var foodClass = foodClassService.GetAll().OrderBy(x => x.Name).ToList();
-                ddlFoodClass.ValueMember = "Id";
-                ddlFoodClass.DisplayMember = "Name";
-                ddlFoodClass.DataSource = foodClass;
-            }
-
-            txtNumber.Text = GetNextNumber().ToString();
-            txtNumber.ReadOnly = true;
         }
 
         private int GetNextNumber()

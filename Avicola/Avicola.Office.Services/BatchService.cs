@@ -41,10 +41,15 @@ namespace Avicola.Office.Services
 
         public int GetNextNumber()
         {
-            var max = Uow.Batches.GetAll().Max(x => x.Number);
-            return max + 1;
+            if (Uow.Batches.GetAll().Any())
+            {
+                return Uow.Batches.GetAll().Max(x => x.Number) + 1;
+            }
+            else
+            {
+                return 1;
+            }
         }
-
 
         public void Create(Batch batch)
         {

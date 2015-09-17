@@ -14,39 +14,37 @@ using System.Linq;
 using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.Batchs;
 
-namespace Avicola.Production.Win.Forms.Batchs
+namespace Avicola.Production.Win.Forms.Observations
 {
-    public partial class FrmCreateBatch : EditFormBase
+    public partial class FrmCreateBatchObservation : EditFormBase
     {
         private readonly IServiceFactory _serviceFactory;
-       
-        public FrmCreateBatch(IFormFactory formFactory, IServiceFactory serviceFactory)
+        private Guid _batchId = Guid.Empty;
+
+        public FrmCreateBatchObservation(IFormFactory formFactory, IServiceFactory serviceFactory, Guid batchId)
         {
             FormFactory = formFactory;
             _serviceFactory = serviceFactory;
+            _batchId = batchId;
             InitializeComponent();
         }
 
-        private void FrmCreateBatch_Load(object sender, EventArgs e)
+        private void FrmCreateBatchObservation_Load(object sender, EventArgs e)
         {
             using (var geneticLineService = _serviceFactory.Create<IGeneticLineService>())
             {
                 var geneticLine = geneticLineService.GetAll().OrderBy(x => x.Name).ToList();
-                ddlGeneticLine.ValueMember = "Id";
-                ddlGeneticLine.DisplayMember = "Name";
-                ddlGeneticLine.DataSource = geneticLine;
+                
             }
 
             using (var foodClassService = _serviceFactory.Create<IFoodClassService>())
             {
                 var foodClass = foodClassService.GetAll().OrderBy(x => x.Name).ToList();
-                ddlFoodClass.ValueMember = "Id";
-                ddlFoodClass.DisplayMember = "Name";
-                ddlFoodClass.DataSource = foodClass;
+                
             }
 
-            txtNumber.Text = GetNextNumber().ToString();
-            txtNumber.ReadOnly = true;
+            txtWeek.Text = GetNextNumber().ToString();
+            txtWeek.ReadOnly = true;
         }
 
         private int GetNextNumber()
@@ -88,7 +86,7 @@ namespace Avicola.Production.Win.Forms.Batchs
                 InitialBirds = string.IsNullOrEmpty(txtInitialBirds.Text) 
                                     ? (int?)null
                                     : Convert.ToInt32(txtInitialBirds.Text),
-                DateOfBirth = dtpDateOfBirth.Value,
+                DateOfBirth = dtpCreatedDate.Value,
                 StartingFood = string.IsNullOrEmpty(txtInitialFood.Text)
                                     ? (decimal?)null
                                     : Convert.ToDecimal(txtInitialFood.Text),
@@ -105,11 +103,8 @@ namespace Avicola.Production.Win.Forms.Batchs
 
         protected override void ValidateControls()
         {
-            this.ValidateControl(txtInitialBirds, "InitialBirds");
-            this.ValidateControl(txtInitialFood, "StartingFood");
-            this.ValidateControl(ddlFoodClass, "FoodClassId");
-            this.ValidateControl(ddlGeneticLine, "GeneticLineId");
-            this.ValidateControl(dtpDateOfBirth, "DateOfBirth");
+            
+            this.ValidateControl(dtpCreatedDate, "DateOfBirth");
         }
 
         protected override object GetEntity()

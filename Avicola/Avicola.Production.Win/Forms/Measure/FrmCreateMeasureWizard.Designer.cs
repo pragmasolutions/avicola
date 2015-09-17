@@ -43,13 +43,13 @@
             this.createMeasureWizard = new Telerik.WinControls.UI.RadWizard();
             this.wizardCompletionPage1 = new Telerik.WinControls.UI.WizardCompletionPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ucLoadMeasuresSummary = new Avicola.Production.Win.UserControls.UcLoadMeasuresSummary();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gvBatches = new Telerik.WinControls.UI.RadGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gvMeasures = new Telerik.WinControls.UI.RadGridView();
             this.wizardPage1 = new Telerik.WinControls.UI.WizardPage();
             this.wizardPage2 = new Telerik.WinControls.UI.WizardPage();
+            this.ucLoadMeasuresSummary = new Avicola.Production.Win.UserControls.UcLoadMeasuresSummary();
             ((System.ComponentModel.ISupportInitialize)(this.createMeasureWizard)).BeginInit();
             this.createMeasureWizard.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -100,14 +100,6 @@
             this.panel3.Size = new System.Drawing.Size(833, 467);
             this.panel3.TabIndex = 2;
             // 
-            // ucLoadMeasuresSummary
-            // 
-            this.ucLoadMeasuresSummary.Location = new System.Drawing.Point(12, 14);
-            this.ucLoadMeasuresSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ucLoadMeasuresSummary.Name = "ucLoadMeasuresSummary";
-            this.ucLoadMeasuresSummary.Size = new System.Drawing.Size(488, 248);
-            this.ucLoadMeasuresSummary.TabIndex = 0;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -133,21 +125,21 @@
             gridViewTextBoxColumn1.FieldName = "Number";
             gridViewTextBoxColumn1.HeaderText = "Número";
             gridViewTextBoxColumn1.Name = "Number";
-            gridViewTextBoxColumn1.Width = 191;
+            gridViewTextBoxColumn1.Width = 189;
             gridViewTextBoxColumn2.FieldName = "GeneticLineName";
             gridViewTextBoxColumn2.HeaderText = "Linea Genética";
             gridViewTextBoxColumn2.Name = "GeneticLineName";
-            gridViewTextBoxColumn2.Width = 191;
+            gridViewTextBoxColumn2.Width = 189;
             gridViewTextBoxColumn3.FieldName = "StageName";
             gridViewTextBoxColumn3.HeaderText = "Estado";
             gridViewTextBoxColumn3.Name = "StageName";
-            gridViewTextBoxColumn3.Width = 135;
+            gridViewTextBoxColumn3.Width = 134;
             gridViewTextBoxColumn4.FieldName = "CreatedDate";
             gridViewTextBoxColumn4.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn4.HeaderText = "Fecha Creación";
             gridViewTextBoxColumn4.MinWidth = 100;
             gridViewTextBoxColumn4.Name = "CreatedDate";
-            gridViewTextBoxColumn4.Width = 104;
+            gridViewTextBoxColumn4.Width = 103;
             gridViewCommandColumn1.AllowResize = false;
             gridViewCommandColumn1.AllowSort = false;
             gridViewCommandColumn1.DefaultText = "Seleccionar";
@@ -194,19 +186,19 @@
             gridViewTextBoxColumn5.HeaderText = "Nombre";
             gridViewTextBoxColumn5.Name = "Name";
             gridViewTextBoxColumn5.ReadOnly = true;
-            gridViewTextBoxColumn5.Width = 474;
+            gridViewTextBoxColumn5.Width = 471;
             gridViewTextBoxColumn6.FieldName = "MeasureUnity";
             gridViewTextBoxColumn6.HeaderText = "Unidad de Medida";
             gridViewTextBoxColumn6.Name = "MeasureUnity";
             gridViewTextBoxColumn6.ReadOnly = true;
-            gridViewTextBoxColumn6.Width = 141;
+            gridViewTextBoxColumn6.Width = 140;
             gridViewDateTimeColumn1.ExcelExportType = Telerik.WinControls.UI.Export.DisplayFormatType.ShortDate;
             gridViewDateTimeColumn1.FieldName = "CreatedDate";
             gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             gridViewDateTimeColumn1.FormatString = "{0: dd/M/yyyy}";
             gridViewDateTimeColumn1.HeaderText = "Fecha";
             gridViewDateTimeColumn1.Name = "CreatedDate";
-            gridViewDateTimeColumn1.Width = 104;
+            gridViewDateTimeColumn1.Width = 103;
             gridViewDecimalColumn1.EnableExpressionEditor = false;
             gridViewDecimalColumn1.Expression = "";
             gridViewDecimalColumn1.FieldName = "Value";
@@ -237,6 +229,14 @@
             this.wizardPage2.Header = "Estandares";
             this.wizardPage2.Name = "wizardPage2";
             this.wizardPage2.Title = "Ingreso de Valores";
+            // 
+            // ucLoadMeasuresSummary
+            // 
+            this.ucLoadMeasuresSummary.Location = new System.Drawing.Point(12, 14);
+            this.ucLoadMeasuresSummary.Margin = new System.Windows.Forms.Padding(4);
+            this.ucLoadMeasuresSummary.Name = "ucLoadMeasuresSummary";
+            this.ucLoadMeasuresSummary.Size = new System.Drawing.Size(488, 248);
+            this.ucLoadMeasuresSummary.TabIndex = 0;
             // 
             // FrmCreateMeasureWizard
             // 
