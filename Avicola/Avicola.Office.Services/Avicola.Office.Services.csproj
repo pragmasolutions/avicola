@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\BatchObservationDto.cs" />
     <Compile Include="Dtos\BatchDto.cs" />
     <Compile Include="Dtos\LoadMeasureModel.cs" />
     <Compile Include="Dtos\MeasureDto.cs" />
