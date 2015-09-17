@@ -18,5 +18,9 @@ namespace Avicola.Office.Services.Interfaces
         int GetNextNumber();
 
         void Create(Batch batch);
+
+        void Delete(Guid batchId);
+
+        Batch GetById(Guid batchId);
     }
 }

@@ -19,7 +19,7 @@ namespace Avicola.Production.Win.Forms.Batchs
     public partial class FrmCreateBatch : EditFormBase
     {
         private readonly IServiceFactory _serviceFactory;
-       
+
         public FrmCreateBatch(IFormFactory formFactory, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;

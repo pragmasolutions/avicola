@@ -193,13 +193,41 @@ namespace Avicola.Production.Win.Forms
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            
+            OpenEndBatchForm();
+        }
+
+        private void OpenEndBatchForm()
+        {
+            var form = Application.OpenForms.OfType<FrmEndBatch>().FirstOrDefault();
+            if (form != null)
+            {
+                form.Activate();
+            }
+            else
+            {
+                var frm = FormFactory.Create<FrmEndBatch>(_selectedBatch.Id);
+                frm.BatchEnded += FrmOnBatchEnded;
+                frm.Show();
+            }
+        }
+
+        private void FrmOnBatchEnded(object sender, Batch batch)
+        {
+            LoadActiveBatches();
         }
 
         private void btnEliminarLote_Click(object sender, EventArgs e)
         {
             DialogResult ds = RadMessageBox.Show(this, "Si elimina el lote se perderán todos los datos cargados asociados al mismo. \n\nEstá seguro que desea continuar?", "Confirmación", MessageBoxButtons.YesNo, RadMessageIcon.Question);
-            this.Text = ds.ToString();
+            if (ds.ToString() == "Yes")
+            {
+                using (var batchService = _serviceFactory.Create<IBatchService>())
+                {
+                    batchService.Delete(_selectedBatch.Id);
+                    wizard.SelectPreviousPage();
+                    LoadActiveBatches();
+                }
+            }
         }
     }
 }

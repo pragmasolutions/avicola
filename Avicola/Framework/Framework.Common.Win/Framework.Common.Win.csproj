@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomProviders\CustomRadMessageLocalizationProvider .cs" />
     <Compile Include="CustomProviders\CustomRadWizardLocalizationProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

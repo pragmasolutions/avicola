@@ -51,5 +51,22 @@ namespace Avicola.Office.Services
             Uow.Batches.Add(batch);
             Uow.Commit();
         }
+
+        public void Delete(Guid batchId)
+        {
+            Uow.Batches.Delete(batchId);
+            Uow.Commit();
+        }
+
+
+        public Batch GetById(Guid batchId)
+        {
+            return Uow.Batches.Get(x => x.Id == batchId,
+                                b => b.Measures,
+                                b => b.Measures.Select(m => m.StandardItem),
+                                b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine),
+                                b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.GeneticLine),
+                                b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.Standard));
+        }
     }
 }
