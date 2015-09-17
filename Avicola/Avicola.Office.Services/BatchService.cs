@@ -68,5 +68,13 @@ namespace Avicola.Office.Services
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.GeneticLine),
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.Standard));
         }
+
+
+        public void EndBatch(Batch batch, DateTime endDate)
+        {
+            batch.EndDate = endDate;
+            Uow.Batches.Edit(batch);
+            Uow.Commit();
+        }
     }
 }

@@ -34,5 +34,11 @@ namespace Avicola.Office.Entities
                 return 7-((Week*7)-Sequence);
             }
         }
+
+        //StartDate y EndDate van a ser iguales para standards de tipo diario
+        //pero para semanales, uno marca el comienzo y el otro el fin de la semana
+        //y ser cargan manualmente cuando se calcula a partir de la fecha de nacimiento del lote
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

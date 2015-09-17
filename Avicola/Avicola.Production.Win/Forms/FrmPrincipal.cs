@@ -213,6 +213,7 @@ namespace Avicola.Production.Win.Forms
 
         private void FrmOnBatchEnded(object sender, Batch batch)
         {
+            wizard.SelectPreviousPage();
             LoadActiveBatches();
         }
 

@@ -17,5 +17,6 @@ namespace Avicola.Office.Entities
                 return Convert.ToInt32(Math.Floor(daysDifference % 7));
             }
         }
+
     }
 }

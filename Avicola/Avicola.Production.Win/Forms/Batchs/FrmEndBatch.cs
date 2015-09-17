@@ -21,11 +21,11 @@ namespace Avicola.Production.Win.Forms.Batchs
         private readonly IServiceFactory _serviceFactory;
         private Guid _batchId;
 
-        public FrmEndBatch(Guid batchId, IFormFactory formFactory, IServiceFactory serviceFactory)
+        public FrmEndBatch(Guid id, IFormFactory formFactory, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;
             _serviceFactory = serviceFactory;
-            _batchId = batchId;
+            _batchId = id;
             InitializeComponent();
         }
         
@@ -36,39 +36,14 @@ namespace Avicola.Production.Win.Forms.Batchs
             {
                 var batch = service.GetById(_batchId);
 
-                //chequeamos que no tenga medidas cargadas despues de la fecha de finalizacion
-                //if (batch.Measures.Any(m => m.StandardItem.TopDate > endDate))
-                //{
-                    
-                //}
-                //service.Edit(batch);
+                service.EndBatch(batch, endDate);
 
                 OnBatchEnded(batch);
             }
-
             
             this.Close();
         }
 
-        //private EndBatchModel GetBatch()
-        //{
-        //    var batch = new EndBatchModel
-        //    {
-        //        EndDate = dtpEndDate.Value
-        //    };
-            
-        //    return batch;
-        //}
-
-        protected override void ValidateControls()
-        {
-            this.ValidateControl(dtpEndDate, "EndDate");
-        }
-
-        //protected override object GetEntity()
-        //{
-        //    //return GetBatch();
-        //}
 
         public event EventHandler<Batch> BatchEnded;
         private void OnBatchEnded(Batch batch)
