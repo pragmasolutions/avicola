@@ -166,10 +166,15 @@
     <Compile Include="Forms\Observations\FrmObservationList.Designer.cs">
       <DependentUpon>FrmObservationList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Standards\FrmStandardSelection.cs" />
+    <Compile Include="Forms\Standards\FrmStandardSelection.Designer.cs">
+      <DependentUpon>FrmStandardSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
     <Compile Include="Infrastructure\ITransitionManager.cs" />
     <Compile Include="Infrastructure\StateController.cs" />
+    <Compile Include="Models\BatchObservations\CreateBatchObservationModel.cs" />
     <Compile Include="Models\Batchs\CreateBatchModel.cs" />
     <Compile Include="Models\Measures\LoadDailyStandardMeasures.cs" />
     <Compile Include="Program.cs" />
