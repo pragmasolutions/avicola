@@ -142,6 +142,12 @@
     <Compile Include="Forms\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Measure\FrmEnterDailyMeasures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Measure\FrmEnterDailyMeasures.Designer.cs">
+      <DependentUpon>FrmEnterDailyMeasures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,12 @@
     </Compile>
     <Compile Include="Forms\Observations\FrmObservationList.Designer.cs">
       <DependentUpon>FrmObservationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Standards\FrmStandardSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Standards\FrmStandardSelection.Designer.cs">
+      <DependentUpon>FrmStandardSelection.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
@@ -219,6 +231,9 @@
     <EmbeddedResource Include="Forms\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Measure\FrmEnterDailyMeasures.resx">
+      <DependentUpon>FrmEnterDailyMeasures.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Measure\FrmCreateMeasureWizard.resx">
       <DependentUpon>FrmCreateMeasureWizard.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,9 +246,7 @@
     <EmbeddedResource Include="Forms\Observations\FrmObservationList.resx">
       <DependentUpon>FrmObservationList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Standards\FrmStandardSelection.resx">
-      <DependentUpon>FrmStandardSelection.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Standards\FrmStandardSelection.resx" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
