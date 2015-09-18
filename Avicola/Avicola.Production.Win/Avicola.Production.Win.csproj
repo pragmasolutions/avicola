@@ -97,6 +97,12 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\Batchs\FrmEndBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Batchs\FrmEndBatch.Designer.cs">
+      <DependentUpon>FrmEndBatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Batchs\FrmBatchManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,11 +154,17 @@
     <Compile Include="Forms\Measure\History\FrmMeasureHistory.Designer.cs">
       <DependentUpon>FrmMeasureHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Standards\FrmStandardSelection.cs">
+    <Compile Include="Forms\Observations\FrmCreateBatchObservation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Standards\FrmStandardSelection.Designer.cs">
-      <DependentUpon>FrmStandardSelection.cs</DependentUpon>
+    <Compile Include="Forms\Observations\FrmCreateBatchObservation.Designer.cs">
+      <DependentUpon>FrmCreateBatchObservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Observations\FrmObservationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Observations\FrmObservationList.Designer.cs">
+      <DependentUpon>FrmObservationList.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
@@ -186,6 +198,9 @@
     <EmbeddedResource Include="Forms\Batchs\FrmBatchSelection.resx">
       <DependentUpon>FrmBatchSelection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Batchs\FrmEndBatch.resx">
+      <DependentUpon>FrmEndBatch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Batchs\FrmCreateBatch.resx">
       <DependentUpon>FrmCreateBatch.cs</DependentUpon>
     </EmbeddedResource>
@@ -209,6 +224,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Measure\History\FrmMeasureHistory.resx">
       <DependentUpon>FrmMeasureHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Observations\FrmCreateBatchObservation.resx">
+      <DependentUpon>FrmCreateBatchObservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Observations\FrmObservationList.resx">
+      <DependentUpon>FrmObservationList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Standards\FrmStandardSelection.resx">
       <DependentUpon>FrmStandardSelection.cs</DependentUpon>
@@ -283,7 +304,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Images\barn.png" />
+    <Content Include="Resources\Images\delete-icon.png" />
     <Content Include="Resources\Images\edit.ico" />
+    <Content Include="Resources\Images\green-check.png" />
     <Content Include="Resources\Images\LOGO.JPG" />
     <Content Include="Resources\Images\notes-icon.png" />
     <Content Include="Resources\Images\Pencil.png" />

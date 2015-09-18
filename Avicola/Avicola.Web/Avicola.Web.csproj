@@ -210,6 +210,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ValidationConfig.cs" />
+    <Compile Include="Controllers\FoodClassController.cs" />
     <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -235,6 +236,9 @@
     <Compile Include="Models\Deposits\DepositForm.cs" />
     <Compile Include="Models\Deposits\DepositListFiltersModel.cs" />
     <Compile Include="Models\Deposits\DepositListModel.cs" />
+    <Compile Include="Models\FoodClasses\FoodClassForm.cs" />
+    <Compile Include="Models\FoodClasses\FoodClassListFiltersModel.cs" />
+    <Compile Include="Models\FoodClasses\FoodClassListModel.cs" />
     <Compile Include="Models\GeneticLines\CreateStandardGeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\SelectStandardModel.cs" />
     <Compile Include="Models\GeneticLines\StandardGeneticLineForm.cs" />
@@ -806,6 +810,11 @@
     <Content Include="Views\Shared\_ControlPanelLayout.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AggregateOperationId.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\AggregateOperationId.cshtml" />
+    <Content Include="Views\FoodClass\_Filters.cshtml" />
+    <Content Include="Views\FoodClass\Create.cshtml" />
+    <Content Include="Views\FoodClass\Detail.cshtml" />
+    <Content Include="Views\FoodClass\Edit.cshtml" />
+    <Content Include="Views\FoodClass\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

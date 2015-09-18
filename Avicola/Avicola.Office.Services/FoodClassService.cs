@@ -9,6 +9,7 @@ using Avicola.Office.Data.Interfaces;
 using Avicola.Office.Entities;
 using Avicola.Office.Entities.DTO;
 using Avicola.Office.Services.Interfaces;
+using Avicola.Office.Services.Dtos;
 using Framework.Common.Utility;
 using Framework.Data.Helpers;
 
@@ -27,6 +28,26 @@ namespace Avicola.Office.Services
         public IQueryable<FoodClass> GetAll()
         {
             return Uow.FoodClasses.GetAll().Where(e => !e.IsDeleted);
+        }
+
+        public List<FoodClassDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)
+        {
+            var pagingCriteria = new PagingCriteria();
+
+            pagingCriteria.PageNumber = pageIndex;
+            pagingCriteria.PageSize = pageSize;
+            pagingCriteria.SortBy = !string.IsNullOrEmpty(sortBy) ? sortBy : "CreatedDate";
+            pagingCriteria.SortDirection = !string.IsNullOrEmpty(sortDirection) ? sortDirection : "DESC";
+
+            Expression<Func<FoodClass, bool>> where = x => !x.IsDeleted &&
+                                                        ((string.IsNullOrEmpty(criteria) || x.Name.Contains(criteria)));
+
+            var results = Uow.FoodClasses.GetAll(pagingCriteria,
+                                                    where);
+
+            pageTotal = results.PagedMetadata.TotalItemCount;
+
+            return results.Entities.Project().To<FoodClassDto>().ToList();
         }
 
         public FoodClass GetById(Guid id)
@@ -52,7 +73,12 @@ namespace Avicola.Office.Services
 
         public void Edit(FoodClass foodClass)
         {
-            
+            var currentFoodClass = this.GetById(foodClass.Id);
+
+            currentFoodClass.Name = foodClass.Name;
+
+            Uow.FoodClasses.Edit(currentFoodClass);
+            Uow.Commit();
         }
 
         public void Delete(Guid foodClassId)
