@@ -58,7 +58,7 @@
             this.BtnAgregar.TabIndex = 82;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.ThemeName = "TelerikMetroBlue";
-            this.BtnAgregar.Click += new System.EventHandler(this.BtnGuardar_Click);
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnCancelar
             // 

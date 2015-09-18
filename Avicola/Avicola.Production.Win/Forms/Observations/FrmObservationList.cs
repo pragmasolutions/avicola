@@ -12,7 +12,7 @@ using Framework.Data.Helpers;
 using Telerik.WinControls;
 using System.Linq;
 using Avicola.Office.Entities;
-using Avicola.Production.Win.Models.Batchs;
+using Avicola.Production.Win.Models.BatchObservations;
 
 namespace Avicola.Production.Win.Forms.Observations
 {
@@ -38,46 +38,19 @@ namespace Avicola.Production.Win.Forms.Observations
             }
         }
 
-        private int GetNextNumber()
+        private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            using (var service = _serviceFactory.Create<IBatchService>())
-            {
-                return service.GetNextNumber();
-            }
+            //var form = new FrmCreateBatchObservation(_serviceFactory, _batchId);
         }
 
-        private void BtnGuardar_Click(object sender, EventArgs e)
+        private CreateBatchObservationModel GetBatchObservation()
         {
-            var esValido = this.ValidarForm();
-
-            if (!esValido)
-            {
-                this.DialogResult = DialogResult.None;
-            }
-            else
-            {
-                var batchModel = GetBatch();
-                var batch = batchModel.ToBatch();
-                batch.Number = GetNextNumber();
-
-                using (var service = _serviceFactory.Create<IBatchService>())
-                {
-                    service.Create(batch);
-                }
-
-                OnBatchCreated(batch);
-                this.Close();
-            }
-        }
-
-        private CreateBatchModel GetBatch()
-        {
-            var batch = new CreateBatchModel
+            var batchObservation = new CreateBatchObservationModel
             {
                 
             };
-            
-            return batch;
+
+            return batchObservation;
         }
 
         protected override void ValidateControls()
@@ -87,15 +60,15 @@ namespace Avicola.Production.Win.Forms.Observations
 
         protected override object GetEntity()
         {
-            return GetBatch();
+            return GetBatchObservation();
         }
 
-        public event EventHandler<Batch> BatchCreated;
-        private void OnBatchCreated(Batch batch)
+        public event EventHandler<BatchObservation> BatchObservationCreated;
+        private void OnBatchObservationCreated(BatchObservation batchObservation)
         {
-            if (BatchCreated != null)
+            if (BatchObservationCreated != null)
             {
-                BatchCreated(this, batch);
+                BatchObservationCreated(this, batchObservation);
             }
         }
 

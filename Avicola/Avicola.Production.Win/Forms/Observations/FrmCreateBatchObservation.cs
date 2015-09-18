@@ -21,9 +21,8 @@ namespace Avicola.Production.Win.Forms.Observations
         private readonly IServiceFactory _serviceFactory;
         private Guid _batchId = Guid.Empty;
 
-        public FrmCreateBatchObservation(IFormFactory formFactory, IServiceFactory serviceFactory, Guid batchId)
+        public FrmCreateBatchObservation(IServiceFactory serviceFactory, Guid batchId)
         {
-            FormFactory = formFactory;
             _serviceFactory = serviceFactory;
             _batchId = batchId;
             InitializeComponent();
@@ -35,23 +34,6 @@ namespace Avicola.Production.Win.Forms.Observations
             {
                 var geneticLine = geneticLineService.GetAll().OrderBy(x => x.Name).ToList();
                 
-            }
-
-            using (var foodClassService = _serviceFactory.Create<IFoodClassService>())
-            {
-                var foodClass = foodClassService.GetAll().OrderBy(x => x.Name).ToList();
-                
-            }
-
-            txtWeek.Text = GetNextNumber().ToString();
-            txtWeek.ReadOnly = true;
-        }
-
-        private int GetNextNumber()
-        {
-            using (var service = _serviceFactory.Create<IBatchService>())
-            {
-                return service.GetNextNumber();
             }
         }
 
