@@ -39,12 +39,12 @@
             this.BtnAgregar = new Telerik.WinControls.UI.RadButton();
             this.BtnCancelar = new Telerik.WinControls.UI.RadButton();
             this.pbvBatch = new System.Windows.Forms.ErrorProvider(this.components);
-            this.gvBatchOb = new Telerik.WinControls.UI.RadGridView();
+            this.gvBatchObservations = new Telerik.WinControls.UI.RadGridView();
             ((System.ComponentModel.ISupportInitialize)(this.BtnAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnCancelar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbvBatch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvBatchOb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvBatchOb.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBatchObservations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBatchObservations.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +52,7 @@
             // 
             this.BtnAgregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAgregar.Location = new System.Drawing.Point(451, 271);
-            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(75, 24);
             this.BtnAgregar.TabIndex = 82;
@@ -65,7 +65,7 @@
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelar.Location = new System.Drawing.Point(536, 271);
-            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 24);
             this.BtnCancelar.TabIndex = 83;
@@ -77,13 +77,13 @@
             // 
             this.pbvBatch.ContainerControl = this;
             // 
-            // gvBatchOb
+            // gvBatchObservations
             // 
-            this.gvBatchOb.Location = new System.Drawing.Point(2, 12);
+            this.gvBatchObservations.Location = new System.Drawing.Point(2, 12);
             // 
             // 
             // 
-            this.gvBatchOb.MasterTemplate.AllowAddNewRow = false;
+            this.gvBatchObservations.MasterTemplate.AllowAddNewRow = false;
             gridViewTextBoxColumn1.FieldName = "Id";
             gridViewTextBoxColumn1.HeaderText = "Id";
             gridViewTextBoxColumn1.IsVisible = false;
@@ -107,31 +107,31 @@
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.Name = "Buttons";
             gridViewCommandColumn1.Width = 100;
-            this.gvBatchOb.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            this.gvBatchObservations.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
             gridViewCommandColumn1});
-            this.gvBatchOb.MasterTemplate.ViewDefinition = tableViewDefinition1;
-            this.gvBatchOb.Name = "gvBatchOb";
-            this.gvBatchOb.ReadOnly = true;
-            this.gvBatchOb.Size = new System.Drawing.Size(609, 244);
-            this.gvBatchOb.TabIndex = 84;
-            this.gvBatchOb.Text = "radGridView1";
+            this.gvBatchObservations.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.gvBatchObservations.Name = "gvBatchObservations";
+            this.gvBatchObservations.ReadOnly = true;
+            this.gvBatchObservations.Size = new System.Drawing.Size(609, 244);
+            this.gvBatchObservations.TabIndex = 84;
+            this.gvBatchObservations.Text = "radGridView1";
             // 
-            // FrmObservation
+            // FrmObservationList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 306);
-            this.Controls.Add(this.gvBatchOb);
+            this.Controls.Add(this.gvBatchObservations);
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.BtnCancelar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "FrmObservation";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "FrmObservationList";
             // 
             // 
             // 
@@ -143,8 +143,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BtnAgregar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnCancelar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbvBatch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvBatchOb.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvBatchOb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBatchObservations.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBatchObservations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -155,6 +155,6 @@
         private Telerik.WinControls.UI.RadButton BtnAgregar;
         private Telerik.WinControls.UI.RadButton BtnCancelar;
         private System.Windows.Forms.ErrorProvider pbvBatch;
-        private Telerik.WinControls.UI.RadGridView gvBatchOb;
+        private Telerik.WinControls.UI.RadGridView gvBatchObservations;
     }
 }

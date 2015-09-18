@@ -20,20 +20,23 @@ namespace Avicola.Production.Win.Forms.Observations
     {
         private readonly IServiceFactory _serviceFactory;
         private Guid _batchId = Guid.Empty;
+        private Batch _batch;
 
-        public FrmCreateBatchObservation(IServiceFactory serviceFactory, Guid batchId)
+        public FrmCreateBatchObservation(Guid Id, IFormFactory formFactory, IServiceFactory serviceFactory)
         {
+            FormFactory = formFactory;
             _serviceFactory = serviceFactory;
-            _batchId = batchId;
+            _batchId = Id;
             InitializeComponent();
         }
 
         private void FrmCreateBatchObservation_Load(object sender, EventArgs e)
         {
-            using (var geneticLineService = _serviceFactory.Create<IGeneticLineService>())
+            using (var batchService = _serviceFactory.Create<IBatchService>())
             {
-                var geneticLine = geneticLineService.GetAll().OrderBy(x => x.Name).ToList();
-                
+                var _batch = batchService.GetById(_batchId);
+                txtWeek.Text = _batch.CurrentWeek.ToString();
+                txtDay.Text = _batch.CurrentWeek.ToString();
             }
         }
 
@@ -74,9 +77,12 @@ namespace Avicola.Production.Win.Forms.Observations
 
         protected override void ValidateControls()
         {
-            
             this.ValidateControl(dtpObservationDate, "ObservationDate");
             this.ValidateControl(txtObservation, "Content");
+            if (_batch.DateOfBirth > dtpObservationDate.Value || _batch.EndDate < dtpObservationDate.Value)
+            {
+                this.FormErrorProvider.SetError(dtpObservationDate, "La fecha de Observación tiene que estar comprendida en la fecha de nacimiento y la fecha de fin.");
+            }
         }
 
         protected override object GetEntity()

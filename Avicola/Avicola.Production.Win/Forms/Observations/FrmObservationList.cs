@@ -21,11 +21,11 @@ namespace Avicola.Production.Win.Forms.Observations
         private readonly IServiceFactory _serviceFactory;
         private Guid _batchId;
 
-        public FrmObservationList(IFormFactory formFactory, IServiceFactory serviceFactory, Guid batchId)
+        public FrmObservationList(Guid Id, IFormFactory formFactory, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;
             _serviceFactory = serviceFactory;
-            _batchId = batchId;
+            _batchId = Id;
             InitializeComponent();
         }
 
@@ -33,36 +33,31 @@ namespace Avicola.Production.Win.Forms.Observations
         {
             using (var batchObservationService = _serviceFactory.Create<IBatchObservationService>())
             {
-                var geneticLine = batchObservationService.GetAll().Where(b => b.BatchId == _batchId).OrderBy(x => x.CreatedDate).ToList();
-                
+                var batchObservations = batchObservationService.GetAll().Where(b => b.BatchId == _batchId).OrderBy(x => x.CreatedDate).ToList();
+                gvBatchObservations.DataSource = batchObservations;
             }
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            //var form = new FrmCreateBatchObservation(_serviceFactory, _batchId);
+            OpenCreateBatchForm();
         }
 
-        private CreateBatchObservationModel GetBatchObservation()
+        private void OpenCreateBatchForm()
         {
-            var batchObservation = new CreateBatchObservationModel
+            var form = Application.OpenForms.OfType<FrmCreateBatchObservation>().FirstOrDefault();
+            if (form != null)
             {
-                
-            };
-
-            return batchObservation;
+                form.Activate();
+            }
+            else
+            {
+                var frm = FormFactory.Create<FrmCreateBatchObservation>(_batchId);
+                frm.BatchObservationCreated += BatchObservationCreated;
+                frm.Show();
+            }
         }
-
-        protected override void ValidateControls()
-        {
-            
-        }
-
-        protected override object GetEntity()
-        {
-            return GetBatchObservation();
-        }
-
+        
         public event EventHandler<BatchObservation> BatchObservationCreated;
         private void OnBatchObservationCreated(BatchObservation batchObservation)
         {
