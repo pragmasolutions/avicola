@@ -37,11 +37,6 @@
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.MainMenu = new Telerik.WinControls.UI.RadMenu();
-            this.miMeasuresHistory = new Telerik.WinControls.UI.RadMenuItem();
-            this.miCreateMeasures = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             this.PnlBotones = new Telerik.WinControls.UI.RadPanel();
             this.wizard = new Telerik.WinControls.UI.RadWizard();
             this.wizardCompletionPage1 = new Telerik.WinControls.UI.WizardCompletionPage();
@@ -77,8 +72,11 @@
             this.wizardWelcomePage1 = new Telerik.WinControls.UI.WizardWelcomePage();
             this.wizardPage1 = new Telerik.WinControls.UI.WizardPage();
             this.wpSelectStandard = new Telerik.WinControls.UI.WizardPage();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainMenu)).BeginInit();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.MainMenu = new Telerik.WinControls.UI.RadMenu();
+            this.miMeasuresHistory = new Telerik.WinControls.UI.RadMenuItem();
+            this.miCreateMeasures = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PnlBotones)).BeginInit();
             this.PnlBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wizard)).BeginInit();
@@ -92,59 +90,10 @@
             this.panel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.MainMenu, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1466, 24);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // MainMenu
-            // 
-            this.MainMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainMenu.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.miMeasuresHistory});
-            this.MainMenu.Location = new System.Drawing.Point(3, 3);
-            this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(1460, 24);
-            this.MainMenu.TabIndex = 0;
-            // 
-            // miMeasuresHistory
-            // 
-            this.miMeasuresHistory.AccessibleDescription = "Medidas";
-            this.miMeasuresHistory.AccessibleName = "Medidas";
-            this.miMeasuresHistory.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.miCreateMeasures,
-            this.radMenuItem3});
-            this.miMeasuresHistory.Name = "miMeasuresHistory";
-            this.miMeasuresHistory.Text = "Medidas";
-            // 
-            // miCreateMeasures
-            // 
-            this.miCreateMeasures.AccessibleDescription = "Cargar Medidas";
-            this.miCreateMeasures.AccessibleName = "Cargar Medidas";
-            this.miCreateMeasures.Name = "miCreateMeasures";
-            this.miCreateMeasures.Text = "Cargar Medidas";
-            this.miCreateMeasures.Click += new System.EventHandler(this.miCreateMeasures_Click);
-            // 
-            // radMenuItem3
-            // 
-            this.radMenuItem3.AccessibleDescription = "Historial";
-            this.radMenuItem3.AccessibleName = "Historial";
-            this.radMenuItem3.Name = "radMenuItem3";
-            this.radMenuItem3.Text = "Historial";
-            this.radMenuItem3.Click += new System.EventHandler(this.miMeasuresHistory_Click);
             // 
             // PnlBotones
             // 
@@ -152,7 +101,7 @@
             this.PnlBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBotones.Location = new System.Drawing.Point(0, 24);
             this.PnlBotones.Name = "PnlBotones";
-            this.PnlBotones.Size = new System.Drawing.Size(1466, 468);
+            this.PnlBotones.Size = new System.Drawing.Size(1466, 465);
             this.PnlBotones.TabIndex = 2;
             // 
             // wizard
@@ -170,7 +119,7 @@
             this.wizard.Pages.Add(this.wizardPage1);
             this.wizard.Pages.Add(this.wpSelectStandard);
             this.wizard.Pages.Add(this.wizardCompletionPage1);
-            this.wizard.Size = new System.Drawing.Size(1466, 468);
+            this.wizard.Size = new System.Drawing.Size(1466, 465);
             this.wizard.TabIndex = 0;
             this.wizard.Text = "wizard";
             this.wizard.WelcomePage = this.wizardWelcomePage1;
@@ -198,7 +147,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Location = new System.Drawing.Point(150, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1316, 357);
+            this.panel1.Size = new System.Drawing.Size(1316, 354);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -213,7 +162,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1316, 357);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1316, 354);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gvBatches
@@ -275,14 +224,14 @@
             gridViewCommandColumn1});
             this.gvBatches.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatches.Name = "gvBatches";
-            this.gvBatches.Size = new System.Drawing.Size(1308, 313);
+            this.gvBatches.Size = new System.Drawing.Size(1308, 310);
             this.gvBatches.TabIndex = 1;
             this.gvBatches.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatches_CommandCellClick);
             // 
             // btnCreateBatch
             // 
             this.btnCreateBatch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCreateBatch.Location = new System.Drawing.Point(1151, 324);
+            this.btnCreateBatch.Location = new System.Drawing.Point(1151, 321);
             this.btnCreateBatch.Name = "btnCreateBatch";
             this.btnCreateBatch.Size = new System.Drawing.Size(162, 30);
             this.btnCreateBatch.TabIndex = 2;
@@ -563,11 +512,62 @@
             this.wpSelectStandard.Name = "wpSelectStandard";
             this.wpSelectStandard.Title = "Page title";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.MainMenu, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1466, 24);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // MainMenu
+            // 
+            this.MainMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainMenu.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.miMeasuresHistory});
+            this.MainMenu.Location = new System.Drawing.Point(3, 3);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.Size = new System.Drawing.Size(1460, 24);
+            this.MainMenu.TabIndex = 0;
+            // 
+            // miMeasuresHistory
+            // 
+            this.miMeasuresHistory.AccessibleDescription = "Medidas";
+            this.miMeasuresHistory.AccessibleName = "Medidas";
+            this.miMeasuresHistory.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.miCreateMeasures,
+            this.radMenuItem3});
+            this.miMeasuresHistory.Name = "miMeasuresHistory";
+            this.miMeasuresHistory.Text = "Medidas";
+            // 
+            // miCreateMeasures
+            // 
+            this.miCreateMeasures.AccessibleDescription = "Cargar Medidas";
+            this.miCreateMeasures.AccessibleName = "Cargar Medidas";
+            this.miCreateMeasures.Name = "miCreateMeasures";
+            this.miCreateMeasures.Text = "Cargar Medidas";
+            this.miCreateMeasures.Click += new System.EventHandler(this.miCreateMeasures_Click);
+            // 
+            // radMenuItem3
+            // 
+            this.radMenuItem3.AccessibleDescription = "Historial";
+            this.radMenuItem3.AccessibleName = "Historial";
+            this.radMenuItem3.Name = "radMenuItem3";
+            this.radMenuItem3.Text = "Historial";
+            this.radMenuItem3.Click += new System.EventHandler(this.miMeasuresHistory_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1466, 492);
+            this.ClientSize = new System.Drawing.Size(1466, 489);
             this.Controls.Add(this.PnlBotones);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -580,9 +580,6 @@
             this.Text = "Sistema de gestión Avicola Santa Ana";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PnlBotones)).EndInit();
             this.PnlBotones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.wizard)).EndInit();
@@ -597,6 +594,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

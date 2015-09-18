@@ -43,7 +43,6 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "FrmBatchSelection";
-            this.Load += new System.EventHandler(this.FrmBatchSelection_Load);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

@@ -182,6 +182,7 @@
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
     <Compile Include="Infrastructure\ITransitionManager.cs" />
     <Compile Include="Infrastructure\StateController.cs" />
+    <Compile Include="Models\BatchObservations\CreateBatchObservationModel.cs" />
     <Compile Include="Models\Batchs\CreateBatchModel.cs" />
     <Compile Include="Models\Measures\LoadDailyStandardMeasures.cs" />
     <Compile Include="Program.cs" />

@@ -196,3 +196,4 @@ FakesAssemblies/
 *.opt
 *.licx
 licenses.licx
+Avicola/Avicola.Production.Win/App.config
