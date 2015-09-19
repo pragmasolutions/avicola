@@ -65,6 +65,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\RectangleExtensions.cs" />
+    <Compile Include="Helpers\DateHelper.cs" />
     <Compile Include="Helpers\ExceptionHelper.cs" />
     <Compile Include="Helpers\PaymentHelper.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />

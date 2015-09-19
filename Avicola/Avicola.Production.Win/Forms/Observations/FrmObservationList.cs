@@ -15,6 +15,7 @@ using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.BatchObservations;
 using Telerik.WinControls.UI;
 using Avicola.Production.Win.Infrastructure;
+using Framework.Common.Helpers;
 
 namespace Avicola.Production.Win.Forms.Observations
 {
@@ -22,6 +23,7 @@ namespace Avicola.Production.Win.Forms.Observations
     {
         private readonly IStateController _stateController;
         private readonly IServiceFactory _serviceFactory;
+        private Batch batch;
 
         public FrmObservationList(IFormFactory formFactory, IStateController stateController, IServiceFactory serviceFactory)
         {
@@ -34,9 +36,26 @@ namespace Avicola.Production.Win.Forms.Observations
 
         private void FrmObservationList_Load(object sender, EventArgs e)
         {
+            using (var batchService = _serviceFactory.Create<IBatchService>())
+            {
+                batch = batchService.GetById(_stateController.CurrentSelectedBatch.Id);
+            }
+
+            UpdateGrid();
+        }
+
+        private void UpdateGrid()
+        {
             using (var batchObservationService = _serviceFactory.Create<IBatchObservationService>())
             {
                 var batchObservations = batchObservationService.GetByBatchId(_stateController.CurrentSelectedBatch.Id).OrderBy(x => x.CreatedDate).ToList();
+                foreach (var batchObservation in batchObservations)
+                {
+                    var weeksDays = DateHelper.DateDiffInWeek(batch.DateOfBirth, batchObservation.ObservationDate);
+                    batchObservation.Week = weeksDays.Weeks;
+                    batchObservation.Day = weeksDays.Days;
+                }
+
                 gvBatchObservations.DataSource = batchObservations;
             }
         }
@@ -59,6 +78,8 @@ namespace Avicola.Production.Win.Forms.Observations
                 frm.BatchObservationCreated += BatchObservationCreated;
                 frm.ShowDialog();
             }
+
+            UpdateGrid();
         }
         
         public event EventHandler<BatchObservation> BatchObservationCreated;
@@ -105,11 +126,16 @@ namespace Avicola.Production.Win.Forms.Observations
             var frm = FormFactory.Create<FrmCreateEditBatchObservation>(observationId);
             frm.BatchObservationCreated += BatchObservationCreated;
             frm.ShowDialog();
+            UpdateGrid();
         }
 
         private void Delete(Guid observationId)
         {
-
+            using (var service = _serviceFactory.Create<IBatchObservationService>())
+            {
+                service.Delete(observationId);
+                UpdateGrid();
+            }
         }
     }
 }

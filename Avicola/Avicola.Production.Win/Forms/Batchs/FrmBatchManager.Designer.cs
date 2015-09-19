@@ -236,7 +236,7 @@
             this.btnObservaciones.Name = "btnObservaciones";
             this.btnObservaciones.Size = new System.Drawing.Size(230, 159);
             this.btnObservaciones.TabIndex = 10;
-            this.btnObservaciones.Text = "Registrar notas";
+            this.btnObservaciones.Text = "Registrar Observación";
             this.btnObservaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnObservaciones.UseVisualStyleBackColor = true;
             this.btnObservaciones.Click += new System.EventHandler(this.btnObservaciones_Click);
@@ -283,7 +283,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmBatchManager";
             // 
             // 

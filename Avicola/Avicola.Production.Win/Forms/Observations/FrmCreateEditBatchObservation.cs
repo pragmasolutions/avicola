@@ -14,7 +14,7 @@ using System.Linq;
 using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.BatchObservations;
 using Avicola.Production.Win.Infrastructure;
-
+using Framework.Common.Helpers;
 namespace Avicola.Production.Win.Forms.Observations
 {
     public partial class FrmCreateEditBatchObservation : EditFormBase
@@ -36,13 +36,14 @@ namespace Avicola.Production.Win.Forms.Observations
 
         private void FrmCreateBatchObservation_Load(object sender, EventArgs e)
         {
+            var formTitle = "";
+
             using (var batchService = _serviceFactory.Create<IBatchService>())
             {
                 _batch = batchService.GetById(_stateController.CurrentSelectedBatch.Id);
-                txtWeek.Text = _batch.CurrentWeek.ToString();
-                //Falta CuurentDay
-                txtDay.Text = _batch.CurrentWeek.ToString();
+                SetWeekAndDay(_batch.DateOfBirth,DateTime.Now);
                 dtpObservationDate.Value = DateTime.Now;
+                formTitle = string.Format("Lote {0} - Crear Observación", _batch.Number.ToString());
             }
 
             if (_observationId != Guid.Empty)
@@ -50,12 +51,16 @@ namespace Avicola.Production.Win.Forms.Observations
                 using (var batchObservationService = _serviceFactory.Create<IBatchObservationService>())
                 {
                     _batchObservation = batchObservationService.GetById(_observationId);
-                    //txtWeek.Text = _batchObservation.CurrentWeek.ToString();
-                    //txtDay.Text = _batchObservation.CurrentWeek.ToString();
+                    SetWeekAndDay(_batch.DateOfBirth, _batchObservation.ObservationDate);
                     txtObservation.Text = _batchObservation.Content;
                     dtpObservationDate.Value = _batchObservation.ObservationDate;
+                    formTitle = string.Format("Lote {0} - Editar Observación", _batch.Number.ToString());
                 }
             }
+
+            this.Text = formTitle;
+            txtDay.Enabled = false;
+            txtWeek.Enabled = false;
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -143,6 +148,18 @@ namespace Avicola.Production.Win.Forms.Observations
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SetWeekAndDay(DateTime dateFrom, DateTime dateTo)
+        {
+            var weekDays = DateHelper.DateDiffInWeek(dateFrom, dateTo);
+            txtWeek.Text = weekDays.Weeks.ToString();
+            txtDay.Text = weekDays.Days.ToString(); ;
+        }
+
+        private void dtpObservationDate_ValueChanged(object sender, EventArgs e)
+        {
+            SetWeekAndDay(_batch.DateOfBirth, dtpObservationDate.Value);
         }
 
     }
