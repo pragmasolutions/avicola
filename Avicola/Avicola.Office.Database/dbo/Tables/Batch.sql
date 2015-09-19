@@ -10,7 +10,6 @@
 	[BarnId] [uniqueidentifier] NULL,
 	[StageId] [uniqueidentifier] NOT NULL DEFAULT '096DEBD6-C537-4569-8B97-53A3C3E82A39',
 	[ArrivedToBarn] [datetime2](7) NULL,
-	[PostureStartDate] [datetime2](7) NULL,
 	[EndDate] [datetime2](7) NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Batch] PRIMARY KEY CLUSTERED 

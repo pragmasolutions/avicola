@@ -9,5 +9,9 @@ namespace Avicola.Office.Entities
 {
     public partial class Barn : IEntity
     {
+        public string Name
+        {
+            get { return String.Format("Galpón {0}", this.Number); }
+        }
     }
 }

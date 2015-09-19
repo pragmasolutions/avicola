@@ -97,6 +97,12 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\Batchs\FrmAssignBarn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Batchs\FrmAssignBarn.Designer.cs">
+      <DependentUpon>FrmAssignBarn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Batchs\FrmEndBatch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,18 +142,6 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmPrincipal.Designer.cs">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Measure\FrmEnterDailyMeasures.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Measure\FrmEnterDailyMeasures.Designer.cs">
-      <DependentUpon>FrmEnterDailyMeasures.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +177,7 @@
     <Compile Include="Infrastructure\ITransitionManager.cs" />
     <Compile Include="Infrastructure\StateController.cs" />
     <Compile Include="Models\BatchObservations\CreateBatchObservationModel.cs" />
+    <Compile Include="Models\Batchs\AssignBarnModel.cs" />
     <Compile Include="Models\Batchs\CreateBatchModel.cs" />
     <Compile Include="Models\Measures\LoadDailyStandardMeasures.cs" />
     <Compile Include="Program.cs" />
@@ -211,6 +206,9 @@
     <EmbeddedResource Include="Forms\Batchs\FrmBatchSelection.resx">
       <DependentUpon>FrmBatchSelection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Batchs\FrmAssignBarn.resx">
+      <DependentUpon>FrmAssignBarn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Batchs\FrmEndBatch.resx">
       <DependentUpon>FrmEndBatch.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,9 +226,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmPrincipal.resx">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Measure\FrmEnterDailyMeasures.resx">
       <DependentUpon>FrmEnterDailyMeasures.cs</DependentUpon>

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Avicola.Office.Entities;
 using Avicola.Office.Entities.DTO;
 using Avicola.Office.Services.Dtos;
+using Avicola.Services.Common;
 
 namespace Avicola.Office.Services.Interfaces
 {
-    public interface IBarnService
+    public interface IBarnService: IService
     {
         IQueryable<Barn> GetAll();
 
@@ -27,5 +28,7 @@ namespace Avicola.Office.Services.Interfaces
         void Delete(Guid barnId);
 
         bool IsNumberAvailable(int number, Guid id);
+
+        List<Barn> GetAllAvailable();
     }
 }
