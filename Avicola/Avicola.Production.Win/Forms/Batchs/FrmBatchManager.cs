@@ -9,6 +9,7 @@ using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Properties;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
+using Avicola.Production.Win.Forms.Observations;
 
 namespace Avicola.Production.Win.Forms.Batchs
 {
@@ -109,6 +110,12 @@ namespace Avicola.Production.Win.Forms.Batchs
             _stateController.CurrentSelectedBatch.BarnNumber = e.BarnNumber;
             _stateController.CurrentSelectedBatch.ArrivedToBarn = e.ArrivedToBarn;
             TransitionManager.LoadBatchManagerView();
+        }
+
+        private void btnObservaciones_Click(object sender, EventArgs e)
+        {
+            var frm = FormFactory.Create<FrmCreateBatchObservation>(_stateController.CurrentSelectedBatch.Id);
+            frm.ShowDialog();
         }
     }
 }

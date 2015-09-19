@@ -22,11 +22,11 @@ namespace Avicola.Production.Win.Forms.Observations
         private Guid _batchId = Guid.Empty;
         private Batch _batch;
 
-        public FrmCreateBatchObservation(Guid Id, IFormFactory formFactory, IServiceFactory serviceFactory)
+        public FrmCreateBatchObservation(Guid id, IFormFactory formFactory, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;
             _serviceFactory = serviceFactory;
-            _batchId = Id;
+            _batchId = id;
             InitializeComponent();
         }
 
@@ -34,7 +34,7 @@ namespace Avicola.Production.Win.Forms.Observations
         {
             using (var batchService = _serviceFactory.Create<IBatchService>())
             {
-                var _batch = batchService.GetById(_batchId);
+                _batch = batchService.GetById(_batchId);
                 txtWeek.Text = _batch.CurrentWeek.ToString();
                 txtDay.Text = _batch.CurrentWeek.ToString();
             }

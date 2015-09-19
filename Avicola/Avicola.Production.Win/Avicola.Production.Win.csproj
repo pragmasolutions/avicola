@@ -148,6 +148,12 @@
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.Designer.cs">
       <DependentUpon>FrmCreateMeasureWizard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Measure\FrmEnterDailyMeasures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Measure\FrmEnterDailyMeasures.Designer.cs">
+      <DependentUpon>FrmEnterDailyMeasures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Measure\History\FrmMeasureHistory.cs">
       <SubType>Form</SubType>
     </Compile>
