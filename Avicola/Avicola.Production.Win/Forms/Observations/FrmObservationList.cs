@@ -21,11 +21,11 @@ namespace Avicola.Production.Win.Forms.Observations
         private readonly IServiceFactory _serviceFactory;
         private Guid _batchId;
 
-        public FrmObservationList(Guid Id, IFormFactory formFactory, IServiceFactory serviceFactory)
+        public FrmObservationList(Guid id, IFormFactory formFactory, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;
             _serviceFactory = serviceFactory;
-            _batchId = Id;
+            _batchId = id;
             InitializeComponent();
         }
 
@@ -54,7 +54,7 @@ namespace Avicola.Production.Win.Forms.Observations
             {
                 var frm = FormFactory.Create<FrmCreateBatchObservation>(_batchId);
                 frm.BatchObservationCreated += BatchObservationCreated;
-                frm.Show();
+                frm.ShowDialog();
             }
         }
         
