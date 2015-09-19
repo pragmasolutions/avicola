@@ -160,11 +160,11 @@
     <Compile Include="Forms\Measure\History\FrmMeasureHistory.Designer.cs">
       <DependentUpon>FrmMeasureHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Observations\FrmCreateBatchObservation.cs">
+    <Compile Include="Forms\Observations\FrmCreateEditBatchObservation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Observations\FrmCreateBatchObservation.Designer.cs">
-      <DependentUpon>FrmCreateBatchObservation.cs</DependentUpon>
+    <Compile Include="Forms\Observations\FrmCreateEditBatchObservation.Designer.cs">
+      <DependentUpon>FrmCreateEditBatchObservation.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Observations\FrmObservationList.cs">
       <SubType>Form</SubType>
@@ -242,8 +242,8 @@
     <EmbeddedResource Include="Forms\Measure\History\FrmMeasureHistory.resx">
       <DependentUpon>FrmMeasureHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Observations\FrmCreateBatchObservation.resx">
-      <DependentUpon>FrmCreateBatchObservation.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Observations\FrmCreateEditBatchObservation.resx">
+      <DependentUpon>FrmCreateEditBatchObservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Observations\FrmObservationList.resx">
       <DependentUpon>FrmObservationList.cs</DependentUpon>

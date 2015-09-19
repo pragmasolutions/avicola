@@ -1,6 +1,6 @@
 ﻿namespace Avicola.Production.Win.Forms.Observations
 {
-    partial class FrmCreateBatchObservation
+    partial class FrmCreateEditBatchObservation
     {
         /// <summary>
         /// Required designer variable.
@@ -206,6 +206,7 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Observación";
             this.Load += new System.EventHandler(this.FrmCreateBatchObservation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();

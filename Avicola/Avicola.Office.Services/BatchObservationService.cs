@@ -8,6 +8,7 @@ using AutoMapper.QueryableExtensions;
 using Avicola.Office.Data.Interfaces;
 using Avicola.Office.Entities;
 using Avicola.Office.Entities.DTO;
+using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
 using Framework.Common.Utility;
 using Framework.Data.Helpers;
@@ -26,6 +27,11 @@ namespace Avicola.Office.Services
 
         public IQueryable<BatchObservation> GetAll()
         {
+            return Uow.BatchObservations.GetAll();
+        }
+
+        public IQueryable<BatchObservation> GetAllActive()
+        {
             return Uow.BatchObservations.GetAll().Where(e => !e.IsDeleted);
         }
 
@@ -34,9 +40,12 @@ namespace Avicola.Office.Services
             return Uow.BatchObservations.Get(g => g.Id == id);
         }
 
-        public IQueryable<BatchObservation> GetByBatchId(Guid batchId)
+        public IList<BatchObservationDto> GetByBatchId(Guid batchId)
         {
-            return Uow.BatchObservations.GetAll().Where(e => e.BatchId == batchId && !e.IsDeleted);
+            return Uow.BatchObservations.GetAll().Where(e => e.BatchId == batchId && !e.IsDeleted)
+                    .Project()
+                    .To<BatchObservationDto>()
+                    .ToList();
         }
 
         public void Create(BatchObservation batchObservation)

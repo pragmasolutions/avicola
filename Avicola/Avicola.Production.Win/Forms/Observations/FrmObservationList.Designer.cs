@@ -35,6 +35,7 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.BtnAgregar = new Telerik.WinControls.UI.RadButton();
             this.BtnCancelar = new Telerik.WinControls.UI.RadButton();
@@ -94,32 +95,34 @@
             gridViewTextBoxColumn3.FieldName = "Day";
             gridViewTextBoxColumn3.HeaderText = "Día";
             gridViewTextBoxColumn3.Name = "Day";
-            gridViewTextBoxColumn4.FieldName = "CreatedDate";
+            gridViewTextBoxColumn4.FieldName = "ObservationDate";
             gridViewTextBoxColumn4.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn4.HeaderText = "Fecha";
-            gridViewTextBoxColumn4.Name = "CreatedDate";
-            gridViewTextBoxColumn4.Width = 75;
+            gridViewTextBoxColumn4.Name = "ObservationDate";
+            gridViewTextBoxColumn4.Width = 100;
             gridViewTextBoxColumn5.FieldName = "Content";
             gridViewTextBoxColumn5.HeaderText = "Observación";
             gridViewTextBoxColumn5.Name = "Content";
             gridViewTextBoxColumn5.Width = 300;
-            gridViewCommandColumn1.FieldName = "Buttons";
             gridViewCommandColumn1.HeaderText = "";
-            gridViewCommandColumn1.Name = "Buttons";
-            gridViewCommandColumn1.Width = 100;
+            gridViewCommandColumn1.Name = "btnEdit";
+            gridViewCommandColumn2.HeaderText = "";
+            gridViewCommandColumn2.Name = "btnDelete";
             this.gvBatchObservations.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
-            gridViewCommandColumn1});
+            gridViewCommandColumn1,
+            gridViewCommandColumn2});
             this.gvBatchObservations.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatchObservations.Name = "gvBatchObservations";
             this.gvBatchObservations.ReadOnly = true;
             this.gvBatchObservations.Size = new System.Drawing.Size(609, 244);
             this.gvBatchObservations.TabIndex = 84;
             this.gvBatchObservations.Text = "radGridView1";
+            this.gvBatchObservations.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatchObservations_CommandCellClick);
             // 
             // FrmObservationList
             // 

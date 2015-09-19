@@ -114,7 +114,7 @@ namespace Avicola.Production.Win.Forms.Batchs
 
         private void btnObservaciones_Click(object sender, EventArgs e)
         {
-            var frm = FormFactory.Create<FrmCreateBatchObservation>(_stateController.CurrentSelectedBatch.Id);
+            var frm = FormFactory.Create<FrmObservationList>();
             frm.ShowDialog();
         }
     }

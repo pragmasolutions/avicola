@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Avicola.Office.Entities;
 using Avicola.Office.Entities.DTO;
 using Avicola.Services.Common;
+using Avicola.Office.Services.Dtos;
 
 namespace Avicola.Office.Services.Interfaces
 {
@@ -13,9 +14,11 @@ namespace Avicola.Office.Services.Interfaces
     {
         IQueryable<BatchObservation> GetAll();
 
+        IQueryable<BatchObservation> GetAllActive();
+
         BatchObservation GetById(Guid id);
 
-        IQueryable<BatchObservation> GetByBatchId(Guid batchId);
+        IList<BatchObservationDto> GetByBatchId(Guid batchId);
 
         void Create(BatchObservation batchObservation);
 
