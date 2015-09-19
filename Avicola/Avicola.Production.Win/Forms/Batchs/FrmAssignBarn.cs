@@ -60,27 +60,28 @@ namespace Avicola.Production.Win.Forms.Batchs
             }
             else
             {
-                var model = GetModel();
-                int barnNumber;
-                using (var service = _serviceFactory.Create<IBarnService>())
+                var dc = RadMessageBox.Show(this, "Está seguro que desea continuar? Esta operación no se puede deshacer", "Confirmación", MessageBoxButtons.YesNo, RadMessageIcon.Question);
+                if (dc.ToString() == "Yes")
                 {
-                    var barn = service.GetById(model.BarnId.GetValueOrDefault());
-                    barnNumber = barn.Number;
-                }
-                using (var service = _serviceFactory.Create<IBatchService>())
-                {
-                    var batch = service.GetById(_batchId);
-                    
-
-                    var errorMessage = service.AssignBarn(_batchId, model.ArrivedToBarn.GetValueOrDefault(), model.BarnId.GetValueOrDefault());
-                    if (!string.IsNullOrEmpty(errorMessage))
+                    var model = GetModel();
+                    int barnNumber;
+                    using (var service = _serviceFactory.Create<IBarnService>())
                     {
-                        RadMessageBox.Show(this, String.Format("ERROR \n\n{0}", errorMessage), "Atención", MessageBoxButtons.OK, RadMessageIcon.Question);
+                        var barn = service.GetById(model.BarnId.GetValueOrDefault());
+                        barnNumber = barn.Number;
                     }
-                    else
+                    using (var service = _serviceFactory.Create<IBatchService>())
                     {
-                        OnBarnAssigned(new BarnAssignedEventModel(barnNumber, model.ArrivedToBarn.GetValueOrDefault()));
-                        this.Close();
+                        var errorMessage = service.AssignBarn(_batchId, model.ArrivedToBarn.GetValueOrDefault(), model.BarnId.GetValueOrDefault());
+                        if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            RadMessageBox.Show(this, String.Format("ERROR \n\n{0}", errorMessage), "Atención", MessageBoxButtons.OK, RadMessageIcon.Question);
+                        }
+                        else
+                        {
+                            OnBarnAssigned(new BarnAssignedEventModel(barnNumber, model.ArrivedToBarn.GetValueOrDefault()));
+                            this.Close();
+                        }
                     }
                 }
             }

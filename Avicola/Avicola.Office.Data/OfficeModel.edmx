@@ -30,7 +30,6 @@
           <Property Name="BarnId" Type="uniqueidentifier" />
           <Property Name="StageId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ArrivedToBarn" Type="datetime2" Precision="7" />
-          <Property Name="PostureStartDate" Type="datetime2" Precision="7" />
           <Property Name="EndDate" Type="datetime2" Precision="7" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
@@ -464,7 +463,6 @@
           <Property Name="FoodClassId" Type="Guid" Nullable="false" />
           <Property Name="BarnId" Type="Guid" />
           <Property Name="ArrivedToBarn" Type="DateTime" Precision="7" />
-          <Property Name="PostureStartDate" Type="DateTime" Precision="7" />
           <Property Name="EndDate" Type="DateTime" Precision="7" />
           <NavigationProperty Name="BatchObservations" Relationship="Self.FK_BatchObservation_Batch" FromRole="Batch" ToRole="BatchObservation" />
           <NavigationProperty Name="Measures" Relationship="Self.FK_Measure_Batch" FromRole="Batch" ToRole="Measure" />
@@ -933,7 +931,6 @@
                 <ScalarProperty Name="FoodClassId" ColumnName="FoodClassId" />
                 <ScalarProperty Name="BarnId" ColumnName="BarnId" />
                 <ScalarProperty Name="ArrivedToBarn" ColumnName="ArrivedToBarn" />
-                <ScalarProperty Name="PostureStartDate" ColumnName="PostureStartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
               </MappingFragment>
             </EntityTypeMapping>

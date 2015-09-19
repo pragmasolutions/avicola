@@ -35,13 +35,15 @@ namespace Avicola.Production.Win.Forms.Batchs
 
             lbBatchTitle.Text = Resources.Batch + " " + _stateController.CurrentSelectedBatch.Number;
             txtEtapa.Text = _stateController.CurrentSelectedBatch.StageName;
-            txtFechaIngresoGalpon.Text = _stateController.CurrentSelectedBatch.PostureStartDate == null
+            txtFechaIngresoGalpon.Text = _stateController.CurrentSelectedBatch.ArrivedToBarn == null
                 ? string.Empty
-                : _stateController.CurrentSelectedBatch.PostureStartDate.GetValueOrDefault().ToShortDateString();
+                : _stateController.CurrentSelectedBatch.ArrivedToBarn.GetValueOrDefault().ToShortDateString();
             txtGalpon.Text = _stateController.CurrentSelectedBatch.BarnNumber == null ? string.Empty : _stateController.CurrentSelectedBatch.BarnNumber.ToString();
             txtLineaGenetica.Text = _stateController.CurrentSelectedBatch.GeneticLineName;
             txtNumero.Text = _stateController.CurrentSelectedBatch.Number.ToString();
             txtSemanaActual.Text = _stateController.CurrentSelectedBatch.Week.ToString();
+
+            btnGalpon.Enabled = _stateController.CurrentSelectedBatch.BarnNumber == null;
         }
 
         private void btnEstandares_Click(object sender, EventArgs e)
