@@ -14,6 +14,8 @@ namespace Avicola.Production.Win.Models.Measures
 
     public class DailyStandardMeasure
     {
+        public Guid StandardItemId { get; set; }
+        public Guid MeasureId { get; set; }
         public int Day { get; set; }
         public DateTime Date { get; set; }
         public decimal? Value { get; set; }

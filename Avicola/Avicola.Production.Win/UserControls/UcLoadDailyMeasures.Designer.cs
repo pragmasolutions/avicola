@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.gvDailyMeasures = new Telerik.WinControls.UI.RadGridView();
             this.ucWeekSelection = new Avicola.Production.Win.UserControls.UcWeekSelection();
             this.txtTotal = new Telerik.WinControls.UI.RadTextBox();
@@ -46,6 +46,9 @@
             // 
             // gvDailyMeasures
             // 
+            this.gvDailyMeasures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvDailyMeasures.Location = new System.Drawing.Point(3, 56);
             // 
             // 
@@ -56,33 +59,36 @@
             this.gvDailyMeasures.MasterTemplate.AllowDragToGroup = false;
             this.gvDailyMeasures.MasterTemplate.AutoGenerateColumns = false;
             this.gvDailyMeasures.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn3.FieldName = "Day";
-            gridViewTextBoxColumn3.HeaderText = "Día";
-            gridViewTextBoxColumn3.Name = "Day";
-            gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.Width = 135;
-            gridViewTextBoxColumn4.FieldName = "Date";
-            gridViewTextBoxColumn4.HeaderText = "Fecha";
-            gridViewTextBoxColumn4.Name = "Date";
-            gridViewTextBoxColumn4.ReadOnly = true;
-            gridViewTextBoxColumn4.Width = 110;
-            gridViewDecimalColumn2.EnableExpressionEditor = false;
-            gridViewDecimalColumn2.Expression = "";
-            gridViewDecimalColumn2.FieldName = "Value";
-            gridViewDecimalColumn2.HeaderText = "Valor";
-            gridViewDecimalColumn2.Name = "Value";
-            gridViewDecimalColumn2.Width = 317;
+            gridViewTextBoxColumn1.FieldName = "Day";
+            gridViewTextBoxColumn1.HeaderText = "Día";
+            gridViewTextBoxColumn1.Name = "Day";
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn1.Width = 135;
+            gridViewTextBoxColumn2.FieldName = "Date";
+            gridViewTextBoxColumn2.HeaderText = "Fecha";
+            gridViewTextBoxColumn2.Name = "Date";
+            gridViewTextBoxColumn2.ReadOnly = true;
+            gridViewTextBoxColumn2.Width = 110;
+            gridViewDecimalColumn1.EnableExpressionEditor = false;
+            gridViewDecimalColumn1.Expression = "";
+            gridViewDecimalColumn1.FieldName = "Value";
+            gridViewDecimalColumn1.HeaderText = "Valor";
+            gridViewDecimalColumn1.Name = "Value";
+            gridViewDecimalColumn1.Width = 317;
             this.gvDailyMeasures.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4,
-            gridViewDecimalColumn2});
-            this.gvDailyMeasures.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewDecimalColumn1});
+            this.gvDailyMeasures.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvDailyMeasures.Name = "gvDailyMeasures";
             this.gvDailyMeasures.Size = new System.Drawing.Size(580, 200);
             this.gvDailyMeasures.TabIndex = 5;
+            this.gvDailyMeasures.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gvDailyMeasures_CellValueChanged);
             // 
             // ucWeekSelection
             // 
+            this.ucWeekSelection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucWeekSelection.Current = 0;
             this.ucWeekSelection.Location = new System.Drawing.Point(3, 5);
             this.ucWeekSelection.Name = "ucWeekSelection";
@@ -93,6 +99,7 @@
             // 
             // txtTotal
             // 
+            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTotal.Enabled = false;
             this.txtTotal.Location = new System.Drawing.Point(61, 272);
             this.txtTotal.Name = "txtTotal";
@@ -101,6 +108,7 @@
             // 
             // radLabel1
             // 
+            this.radLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radLabel1.Location = new System.Drawing.Point(21, 273);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(34, 18);
@@ -109,6 +117,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Location = new System.Drawing.Point(448, 270);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 24);

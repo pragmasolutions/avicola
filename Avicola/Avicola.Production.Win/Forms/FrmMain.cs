@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Production.Win.Forms.Batchs;
+using Avicola.Production.Win.Forms.Measure;
 using Avicola.Production.Win.Forms.Standards;
 using Avicola.Production.Win.Infrastructure;
 using Telerik.WinControls;
@@ -58,13 +59,13 @@ namespace Avicola.Production.Win.Forms
         
         public void LoadEnterDailyStandardView()
         {
-            var view = FormFactory.Create<FrmStandardSelection>();
+            var view = FormFactory.Create<FrmEnterDailyMeasures>();
             LoadView(view);
         }
 
         public void LoadEnterWeeklyStandardView()
         {
-            var view = FormFactory.Create<FrmStandardSelection>();
+            var view = FormFactory.Create<FrmEnterDailyMeasures>();
             LoadView(view);
         }
     }

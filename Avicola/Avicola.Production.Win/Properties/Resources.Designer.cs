@@ -78,5 +78,14 @@ namespace Avicola.Production.Win.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Semana.
+        /// </summary>
+        internal static string Week {
+            get {
+                return ResourceManager.GetString("Week", resourceCulture);
+            }
+        }
     }
 }

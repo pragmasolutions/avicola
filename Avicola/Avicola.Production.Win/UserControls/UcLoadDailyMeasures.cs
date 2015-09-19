@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.Measures;
 
@@ -29,19 +30,21 @@ namespace Avicola.Production.Win.UserControls
             get { return _loadDailyStandardMeasures; }
             set
             {
-                if (!value.Any())
+                if (value == null || !value.Any())
                 {
                     return;
                 }
 
                 _loadDailyStandardMeasures = value;
 
-                ucWeekSelection.Current = 1;
-                ucWeekSelection.NumberOfWeek = _loadDailyStandardMeasures.Count;
-
                 var firstWeek = _loadDailyStandardMeasures.First();
 
+                ucWeekSelection.NumberOfWeek = _loadDailyStandardMeasures.Count;
+                ucWeekSelection.Current = firstWeek.Week;
+
                 UpdateCurrentDailyStandardMeasure(firstWeek);
+
+                UpdateTotal();
             }
         }
 
@@ -54,7 +57,7 @@ namespace Avicola.Production.Win.UserControls
 
         private void ucWeekSelection_CurrentWeekChanged(object sender, int e)
         {
-            if (ucWeekSelection.Current != _currentDailyStandardMeasure.Week)
+            if (_currentDailyStandardMeasure != null && ucWeekSelection.Current != _currentDailyStandardMeasure.Week)
             {
                 var newWeek = _loadDailyStandardMeasures.First(x => x.Week == ucWeekSelection.Current);
 
@@ -73,6 +76,17 @@ namespace Avicola.Production.Win.UserControls
             {
                 SaveClick(this, new EventArgs());
             }
+        }
+
+        private void UpdateTotal()
+        {
+            var total = LoadDailyStandardMeasures.SelectMany(x => x.DailyStandardMeasures).Sum(x => x.Value ?? 0);
+            txtTotal.Text = total.ToString("n2");
+        }
+
+        private void gvDailyMeasures_CellValueChanged(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        {
+            UpdateTotal();
         }
     }
 }
