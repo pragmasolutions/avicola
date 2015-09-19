@@ -70,12 +70,39 @@ namespace Avicola.Production.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ingreso de Medidas.
+        /// </summary>
+        internal static string EnterMeasures {
+            get {
+                return ResourceManager.GetString("EnterMeasures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ErrorIcon {
             get {
                 object obj = ResourceManager.GetObject("ErrorIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tiene cambios sin guardar ¿esta seguro que desea salir?.
+        /// </summary>
+        internal static string PendingChangesConfirmation {
+            get {
+                return ResourceManager.GetString("PendingChangesConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicador.
+        /// </summary>
+        internal static string Standard {
+            get {
+                return ResourceManager.GetString("Standard", resourceCulture);
             }
         }
         

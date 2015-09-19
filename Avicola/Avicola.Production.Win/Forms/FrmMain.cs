@@ -65,7 +65,7 @@ namespace Avicola.Production.Win.Forms
 
         public void LoadEnterWeeklyStandardView()
         {
-            var view = FormFactory.Create<FrmEnterDailyMeasures>();
+            var view = FormFactory.Create<FrmEnterWeeklyMeasures>();
             LoadView(view);
         }
     }

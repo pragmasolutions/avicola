@@ -148,6 +148,12 @@
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.Designer.cs">
       <DependentUpon>FrmCreateMeasureWizard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Measure\FrmEnterWeeklyMeasures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Measure\FrmEnterWeeklyMeasures.Designer.cs">
+      <DependentUpon>FrmEnterWeeklyMeasures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Measure\FrmEnterDailyMeasures.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,9 +191,16 @@
     <Compile Include="Models\BatchObservations\CreateBatchObservationModel.cs" />
     <Compile Include="Models\Batchs\AssignBarnModel.cs" />
     <Compile Include="Models\Batchs\CreateBatchModel.cs" />
+    <Compile Include="Models\Measures\LoadWeeklyStandardMeasures.cs" />
     <Compile Include="Models\Measures\LoadDailyStandardMeasures.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UcLoadWeeklyMeasures.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcLoadWeeklyMeasures.Designer.cs">
+      <DependentUpon>UcLoadWeeklyMeasures.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcLoadDailyMeasures.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -233,6 +246,9 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Measure\FrmEnterWeeklyMeasures.resx">
+      <DependentUpon>FrmEnterWeeklyMeasures.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Measure\FrmEnterDailyMeasures.resx">
       <DependentUpon>FrmEnterDailyMeasures.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +278,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\UcLoadWeeklyMeasures.resx">
+      <DependentUpon>UcLoadWeeklyMeasures.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcLoadDailyMeasures.resx">
       <DependentUpon>UcLoadDailyMeasures.cs</DependentUpon>
     </EmbeddedResource>

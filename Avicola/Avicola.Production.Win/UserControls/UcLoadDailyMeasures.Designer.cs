@@ -63,18 +63,20 @@
             gridViewTextBoxColumn1.HeaderText = "Día";
             gridViewTextBoxColumn1.Name = "Day";
             gridViewTextBoxColumn1.ReadOnly = true;
-            gridViewTextBoxColumn1.Width = 134;
+            gridViewTextBoxColumn1.Width = 135;
             gridViewTextBoxColumn2.FieldName = "Date";
+            gridViewTextBoxColumn2.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn2.HeaderText = "Fecha";
             gridViewTextBoxColumn2.Name = "Date";
             gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.Width = 109;
+            gridViewTextBoxColumn2.Width = 110;
             gridViewDecimalColumn1.EnableExpressionEditor = false;
             gridViewDecimalColumn1.Expression = "";
             gridViewDecimalColumn1.FieldName = "Value";
+            gridViewDecimalColumn1.FormatString = "{0:N2}";
             gridViewDecimalColumn1.HeaderText = "Valor";
             gridViewDecimalColumn1.Name = "Value";
-            gridViewDecimalColumn1.Width = 315;
+            gridViewDecimalColumn1.Width = 317;
             this.gvDailyMeasures.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
