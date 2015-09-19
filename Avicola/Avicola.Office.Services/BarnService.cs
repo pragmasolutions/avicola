@@ -95,5 +95,14 @@ namespace Avicola.Office.Services
 
             return currentBarn.Id == id;
         }
+
+
+        public List<Barn> GetAllAvailable()
+        {
+            var barns = Uow.Barns.GetAll().ToList();
+            var activeBatches = Uow.Batches.GetAll().Where(b => b.EndDate == null && b.BarnId != null).ToList();
+
+            return barns.Where(b => !activeBatches.Any(ab => ab.BarnId == b.Id)).ToList();
+        }
     }
 }

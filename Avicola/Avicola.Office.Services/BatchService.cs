@@ -14,9 +14,11 @@ namespace Avicola.Office.Services
 {
     public class BatchService : ServiceBase, IBatchService
     {
-        public BatchService(IOfficeUow uow)
+        private readonly IBarnService _barnService;
+        public BatchService(IOfficeUow uow, IBarnService barnService)
         {
             Uow = uow;
+            _barnService = barnService;
         }
 
         public IList<BatchDto> GetAllActive()
@@ -71,7 +73,8 @@ namespace Avicola.Office.Services
                                 b => b.Measures.Select(m => m.StandardItem),
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine),
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.GeneticLine),
-                                b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.Standard));
+                                b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.Standard),
+                                b => b.GeneticLine);
         }
 
 
@@ -80,6 +83,40 @@ namespace Avicola.Office.Services
             batch.EndDate = endDate;
             Uow.Batches.Edit(batch);
             Uow.Commit();
+        }
+
+
+        public string AssignBarn(Guid batchId, DateTime arrivedToBarn, Guid barnId)
+        {
+            var batch = GetById(batchId);
+            batch.AssignDatesToStandardMeasures();
+            
+            //chequeamos que no tenga medidas de precria para fechas posteriores
+            foreach (var measure in batch.Measures)
+            {
+                if (measure.MeasureDate > arrivedToBarn && measure.StandardItem.StandardGeneticLine.StageId == Stage.BREEDING)
+                {
+                    return "Existen medidas cargadas para estandares de cría y pre-cría posteriores a la fecha seleccionada";
+                }
+            }
+
+            //ahora chequeo que el galpon este disponible
+            var availableBarns = _barnService.GetAllAvailable();
+            if (!availableBarns.Any(b => b.Id == barnId))
+            {
+                return "El galpón seleccionado ya no se encuentra disponible";
+            }
+
+            var today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            if (arrivedToBarn == batch.CalculatedPostureStartDate && arrivedToBarn == today)
+            {
+                batch.StageId = Stage.POSTURE;
+            }
+            batch.ArrivedToBarn = arrivedToBarn;
+            batch.BarnId = barnId;
+            Uow.Batches.Edit(batch);
+            Uow.Commit();
+            return null;
         }
     }
 }

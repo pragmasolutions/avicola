@@ -86,5 +86,27 @@ namespace Avicola.Production.Win.Forms.Batchs
                 }
             }
         }
+
+        private void btnGalpon_Click(object sender, EventArgs e)
+        {
+            var form = Application.OpenForms.OfType<FrmAssignBarn>().FirstOrDefault();
+            if (form != null)
+            {
+                form.Activate();
+            }
+            else
+            {
+                var frm = FormFactory.Create<FrmAssignBarn>(_stateController.CurrentSelectedBatch.Id);
+                frm.BarnAssigned += FrmOnBarnAssigned;
+                frm.Show();
+            }
+        }
+
+        private void FrmOnBarnAssigned(object sender, BarnAssignedEventModel e)
+        {
+            _stateController.CurrentSelectedBatch.BarnNumber = e.BarnNumber;
+            _stateController.CurrentSelectedBatch.ArrivedToBarn = e.ArrivedToBarn;
+            TransitionManager.LoadBatchManagerView();
+        }
     }
 }

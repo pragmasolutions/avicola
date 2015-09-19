@@ -43,13 +43,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEliminarLote = new System.Windows.Forms.Button();
+            this.btnEndBatch = new System.Windows.Forms.Button();
             this.btnGalpon = new System.Windows.Forms.Button();
             this.btnObservaciones = new System.Windows.Forms.Button();
             this.btnVacunas = new System.Windows.Forms.Button();
             this.btnEstandares = new System.Windows.Forms.Button();
             this.lbBatchTitle = new System.Windows.Forms.Label();
-            this.btnEndBatch = new System.Windows.Forms.Button();
-            this.btnEliminarLote = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -70,9 +70,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(11, 92);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1339, 239);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
@@ -81,7 +81,7 @@
             // txtFechaIngresoGalpon
             // 
             this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(857, 182);
-            this.txtFechaIngresoGalpon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFechaIngresoGalpon.Margin = new System.Windows.Forms.Padding(4);
             this.txtFechaIngresoGalpon.Name = "txtFechaIngresoGalpon";
             this.txtFechaIngresoGalpon.ReadOnly = true;
             this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(272, 22);
@@ -90,7 +90,7 @@
             // txtGalpon
             // 
             this.txtGalpon.Location = new System.Drawing.Point(857, 73);
-            this.txtGalpon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGalpon.Margin = new System.Windows.Forms.Padding(4);
             this.txtGalpon.Name = "txtGalpon";
             this.txtGalpon.ReadOnly = true;
             this.txtGalpon.Size = new System.Drawing.Size(272, 22);
@@ -99,7 +99,7 @@
             // txtSemanaActual
             // 
             this.txtSemanaActual.Location = new System.Drawing.Point(477, 182);
-            this.txtSemanaActual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSemanaActual.Margin = new System.Windows.Forms.Padding(4);
             this.txtSemanaActual.Name = "txtSemanaActual";
             this.txtSemanaActual.ReadOnly = true;
             this.txtSemanaActual.Size = new System.Drawing.Size(272, 22);
@@ -108,7 +108,7 @@
             // txtEtapa
             // 
             this.txtEtapa.Location = new System.Drawing.Point(477, 73);
-            this.txtEtapa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEtapa.Margin = new System.Windows.Forms.Padding(4);
             this.txtEtapa.Name = "txtEtapa";
             this.txtEtapa.ReadOnly = true;
             this.txtEtapa.Size = new System.Drawing.Size(272, 22);
@@ -117,7 +117,7 @@
             // txtLineaGenetica
             // 
             this.txtLineaGenetica.Location = new System.Drawing.Point(52, 182);
-            this.txtLineaGenetica.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLineaGenetica.Margin = new System.Windows.Forms.Padding(4);
             this.txtLineaGenetica.Name = "txtLineaGenetica";
             this.txtLineaGenetica.ReadOnly = true;
             this.txtLineaGenetica.Size = new System.Drawing.Size(272, 22);
@@ -126,7 +126,7 @@
             // txtNumero
             // 
             this.txtNumero.Location = new System.Drawing.Point(52, 73);
-            this.txtNumero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.ReadOnly = true;
             this.txtNumero.Size = new System.Drawing.Size(272, 22);
@@ -201,31 +201,58 @@
             this.groupBox1.Controls.Add(this.btnVacunas);
             this.groupBox1.Controls.Add(this.btnEstandares);
             this.groupBox1.Location = new System.Drawing.Point(11, 347);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1339, 448);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operación";
             // 
+            // btnEliminarLote
+            // 
+            this.btnEliminarLote.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarLote.Image")));
+            this.btnEliminarLote.Location = new System.Drawing.Point(373, 244);
+            this.btnEliminarLote.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEliminarLote.Name = "btnEliminarLote";
+            this.btnEliminarLote.Size = new System.Drawing.Size(307, 196);
+            this.btnEliminarLote.TabIndex = 13;
+            this.btnEliminarLote.Text = "Eliminar lote";
+            this.btnEliminarLote.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEliminarLote.UseVisualStyleBackColor = true;
+            this.btnEliminarLote.Click += new System.EventHandler(this.btnEliminarLote_Click);
+            // 
+            // btnEndBatch
+            // 
+            this.btnEndBatch.Image = ((System.Drawing.Image)(resources.GetObject("btnEndBatch.Image")));
+            this.btnEndBatch.Location = new System.Drawing.Point(52, 244);
+            this.btnEndBatch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEndBatch.Name = "btnEndBatch";
+            this.btnEndBatch.Size = new System.Drawing.Size(307, 196);
+            this.btnEndBatch.TabIndex = 12;
+            this.btnEndBatch.Text = "Finalizar lote";
+            this.btnEndBatch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEndBatch.UseVisualStyleBackColor = true;
+            this.btnEndBatch.Click += new System.EventHandler(this.btnEndBatch_Click);
+            // 
             // btnGalpon
             // 
             this.btnGalpon.Image = ((System.Drawing.Image)(resources.GetObject("btnGalpon.Image")));
             this.btnGalpon.Location = new System.Drawing.Point(1013, 31);
-            this.btnGalpon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGalpon.Margin = new System.Windows.Forms.Padding(4);
             this.btnGalpon.Name = "btnGalpon";
             this.btnGalpon.Size = new System.Drawing.Size(307, 196);
             this.btnGalpon.TabIndex = 11;
             this.btnGalpon.Text = "Asignar galpón";
             this.btnGalpon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGalpon.UseVisualStyleBackColor = true;
+            this.btnGalpon.Click += new System.EventHandler(this.btnGalpon_Click);
             // 
             // btnObservaciones
             // 
             this.btnObservaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnObservaciones.Image")));
             this.btnObservaciones.Location = new System.Drawing.Point(692, 31);
-            this.btnObservaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnObservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.btnObservaciones.Name = "btnObservaciones";
             this.btnObservaciones.Size = new System.Drawing.Size(307, 196);
             this.btnObservaciones.TabIndex = 10;
@@ -237,7 +264,7 @@
             // 
             this.btnVacunas.Image = ((System.Drawing.Image)(resources.GetObject("btnVacunas.Image")));
             this.btnVacunas.Location = new System.Drawing.Point(373, 31);
-            this.btnVacunas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVacunas.Margin = new System.Windows.Forms.Padding(4);
             this.btnVacunas.Name = "btnVacunas";
             this.btnVacunas.Size = new System.Drawing.Size(307, 196);
             this.btnVacunas.TabIndex = 9;
@@ -249,7 +276,7 @@
             // 
             this.btnEstandares.Image = ((System.Drawing.Image)(resources.GetObject("btnEstandares.Image")));
             this.btnEstandares.Location = new System.Drawing.Point(52, 31);
-            this.btnEstandares.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEstandares.Margin = new System.Windows.Forms.Padding(4);
             this.btnEstandares.Name = "btnEstandares";
             this.btnEstandares.Size = new System.Drawing.Size(307, 196);
             this.btnEstandares.TabIndex = 8;
@@ -269,32 +296,6 @@
             this.lbBatchTitle.TabIndex = 12;
             this.lbBatchTitle.Text = "{{Batch Title}}";
             // 
-            // btnEndBatch
-            // 
-            this.btnEndBatch.Image = ((System.Drawing.Image)(resources.GetObject("btnEndBatch.Image")));
-            this.btnEndBatch.Location = new System.Drawing.Point(52, 244);
-            this.btnEndBatch.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEndBatch.Name = "btnEndBatch";
-            this.btnEndBatch.Size = new System.Drawing.Size(307, 196);
-            this.btnEndBatch.TabIndex = 12;
-            this.btnEndBatch.Text = "Finalizar lote";
-            this.btnEndBatch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEndBatch.UseVisualStyleBackColor = true;
-            this.btnEndBatch.Click += new System.EventHandler(this.btnEndBatch_Click);
-            // 
-            // btnEliminarLote
-            // 
-            this.btnEliminarLote.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarLote.Image")));
-            this.btnEliminarLote.Location = new System.Drawing.Point(373, 244);
-            this.btnEliminarLote.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEliminarLote.Name = "btnEliminarLote";
-            this.btnEliminarLote.Size = new System.Drawing.Size(307, 196);
-            this.btnEliminarLote.TabIndex = 13;
-            this.btnEliminarLote.Text = "Eliminar lote";
-            this.btnEliminarLote.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEliminarLote.UseVisualStyleBackColor = true;
-            this.btnEliminarLote.Click += new System.EventHandler(this.btnEliminarLote_Click);
-            // 
             // FrmBatchManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -304,7 +305,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmBatchManager";
             // 
             // 
