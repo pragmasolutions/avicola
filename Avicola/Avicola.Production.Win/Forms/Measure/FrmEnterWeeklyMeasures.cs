@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using Avicola.Common.Win;
+using Avicola.Office.Entities;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
+using Avicola.Production.Win.Forms.Batchs;
 using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Models.Measures;
 using Avicola.Production.Win.Properties;
 using Framework.WinForm.Comun.Notification;
+using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms.Measure
 {
-    public partial class FrmEnterDailyMeasures : FrmBase
+    public partial class FrmEnterWeeklyMeasures : FrmBase
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly IStateController _stateController;
         private readonly IMessageBoxDisplayService _messageBoxDisplayService;
 
-        public FrmEnterDailyMeasures(IFormFactory formFactory, 
+        public FrmEnterWeeklyMeasures(IFormFactory formFactory, 
             IServiceFactory serviceFactory, 
             IStateController stateController,
             IMessageBoxDisplayService messageBoxDisplayService)
@@ -34,7 +38,7 @@ namespace Avicola.Production.Win.Forms.Measure
         private void FrmEnterDailyMeasures_Load(object sender, EventArgs e)
         {
             lbCurrentStandard.Text = Resources.Standard + ": " + _stateController.CurrentSelectedStandard.Name; 
-            
+
             var geneticLineId = _stateController.CurrentSelectedBatch.GeneticLineId;
             var stageId = _stateController.CurrentSelectedBatch.StageId;
             var standardId = _stateController.CurrentSelectedStandard.Id;
@@ -48,52 +52,38 @@ namespace Avicola.Production.Win.Forms.Measure
                     var items = standardItemService.GetByStandardAndGeneticLine(standardId, stageId, geneticLineId);
                     var measures = measureService.GetByStandardAndBatch(standardId, batchId);
 
-                    var itemsGroupedByWeek = items.GroupBy(x => x.Week);
+                    var model = new List<LoadWeeklyStandardMeasures>();
 
-                    var model = new List<LoadDailyStandardMeasures>();
-
-                    foreach (var weekGroup in itemsGroupedByWeek)
+                    foreach (var item in items)
                     {
-                        var dailyLoad = new LoadDailyStandardMeasures();
+                        var measureDateFrom = batchCreatedDate.AddDays(item.Sequence);
+                        var measureDateTo = batchCreatedDate.AddDays(item.Sequence * 7);
+                        var measure = measures.FirstOrDefault(x => x.StandardItemId == item.Id);
 
-                        dailyLoad.Week = weekGroup.Key;
-                        dailyLoad.DailyStandardMeasures = new List<DailyStandardMeasure>();
-
-                        foreach (var weekDays in weekGroup)
+                        var weekMeasureModel = new LoadWeeklyStandardMeasures()
                         {
-                            if (!weekDays.Day.HasValue)
-                            {
-                                continue;
-                            }
+                            StandardItemId = item.Id,
+                            MeasureId = measure == null ? Guid.Empty : measure.Id,
+                            DateFrom = measureDateFrom,
+                            DateTo = measureDateTo,
+                            Week = item.Sequence,
+                            Value = measure == null ? (decimal?)null : measure.Value
+                        };
 
-                            var measureDate = batchCreatedDate.AddDays(weekDays.Sequence);
-                            var measure = measures.FirstOrDefault(x => x.StandardItemId == weekDays.Id);
 
-                            var measureModel = new DailyStandardMeasure()
-                            {
-                                StandardItemId = weekDays.Id,
-                                MeasureId = measure == null ? Guid.Empty : measure.Id,
-                                Date = measureDate,
-                                Day = weekDays.Sequence,
-                                Value = measure == null ? (decimal?)null : measure.Value
-                            };
-
-                            dailyLoad.DailyStandardMeasures.Add(measureModel);
-                        }
-
-                        model.Add(dailyLoad);
+                        model.Add(weekMeasureModel);
                     }
 
-                    ucLoadDailyMeasures.LoadDailyStandardMeasures = model;
+                    ucLoadWeeklyMeasures.LoadWeeklyStandardMeasures = model;
                 }
             }
         }
 
-        private void ucLoadDailyMeasures_SaveClick(object sender, EventArgs e)
+        private void ucLoadWeeklyMeasures_SaveClick(object sender, EventArgs e)
         {
             using (var measureService = _serviceFactory.Create<IMeasureService>())
             {
-                var measures = ucLoadDailyMeasures.LoadDailyStandardMeasures.SelectMany(x => x.DailyStandardMeasures)
+                var measures = ucLoadWeeklyMeasures.LoadWeeklyStandardMeasures
                     .Select(x => new UpdateMeasureDto()
                                  {
                                      Id = x.MeasureId,
@@ -110,7 +100,7 @@ namespace Avicola.Production.Win.Forms.Measure
 
         private void btnShowStandardSelection_Click(object sender, EventArgs e)
         {
-            if (ucLoadDailyMeasures.IsDirty)
+            if (ucLoadWeeklyMeasures.IsDirty)
             {
                 _messageBoxDisplayService.ShowConfirmationDialog(
                     Resources.PendingChangesConfirmation, Resources.EnterMeasures,

@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,9 +47,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CustomSpinEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\NumericTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomProviders\CustomRadMessageLocalizationProvider .cs" />
     <Compile Include="CustomProviders\CustomRadWizardLocalizationProvider.cs" />
+    <Compile Include="Notifications\FrmGenericMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notifications\FrmGenericMessage.designer.cs">
+      <DependentUpon>FrmGenericMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\IMessageBoxDisplayService.cs" />
+    <Compile Include="Notifications\MensajeGenerico.cs" />
+    <Compile Include="Notifications\MessageBoxDisplayService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Notifications\FrmGenericMessage.resx">
+      <DependentUpon>FrmGenericMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Resources\Resource.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Check.png" />
+    <Content Include="Resources\error.png" />
+    <Content Include="Resources\Message-Information.png" />
+    <Content Include="Resources\warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

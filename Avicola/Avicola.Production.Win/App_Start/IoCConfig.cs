@@ -3,6 +3,7 @@ using Framework.Common.Tasks;
 using Framework.Common.Utility;
 using Framework.Data.Repository;
 using Framework.Ioc;
+using Framework.WinForm.Comun.Notification;
 using Ninject;
 using Ninject.Extensions.Conventions;
 
@@ -37,7 +38,7 @@ namespace Avicola.Production.Win
             kernel.Bind<IIocContainer>().To<NinjectIocContainer>().InSingletonScope();
             kernel.Rebind<IClock>().To<Clock>().InSingletonScope();
             kernel.Rebind<IStateController>().To<StateController>().InSingletonScope();
-            //kernel.Bind<IMessageBoxDisplayService>().To<MessageBoxDisplayService>().InSingletonScope();
+            kernel.Rebind<IMessageBoxDisplayService>().To<MessageBoxDisplayService>().InSingletonScope();
         }
     }
 }

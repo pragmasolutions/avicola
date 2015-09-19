@@ -25,6 +25,8 @@ namespace Avicola.Production.Win.UserControls
 
         public event EventHandler SaveClick;
 
+        public bool IsDirty { get; set; }
+
         public IList<LoadDailyStandardMeasures> LoadDailyStandardMeasures
         {
             get { return _loadDailyStandardMeasures; }
@@ -86,6 +88,8 @@ namespace Avicola.Production.Win.UserControls
 
         private void gvDailyMeasures_CellValueChanged(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
+            IsDirty = true;
+
             UpdateTotal();
         }
     }
