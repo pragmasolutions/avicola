@@ -148,6 +148,12 @@
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.Designer.cs">
       <DependentUpon>FrmCreateMeasureWizard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Measure\FrmEnterDailyMeasures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Measure\FrmEnterDailyMeasures.Designer.cs">
+      <DependentUpon>FrmEnterDailyMeasures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Measure\History\FrmMeasureHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,7 +248,9 @@
     <EmbeddedResource Include="Forms\Observations\FrmObservationList.resx">
       <DependentUpon>FrmObservationList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Standards\FrmStandardSelection.resx" />
+    <EmbeddedResource Include="Forms\Standards\FrmStandardSelection.resx">
+      <DependentUpon>FrmStandardSelection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

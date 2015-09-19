@@ -9,6 +9,7 @@ using Avicola.Office.Services.Interfaces;
 using Avicola.Production.Win.Forms.Batchs;
 using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Models.Measures;
+using Framework.WinForm.Comun.Notification;
 using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms.Measure
@@ -17,13 +18,18 @@ namespace Avicola.Production.Win.Forms.Measure
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly IStateController _stateController;
+        private readonly IMessageBoxDisplayService _messageBoxDisplayService;
 
-        public FrmEnterDailyMeasures(IFormFactory formFactory, IServiceFactory serviceFactory, IStateController stateController)
+        public FrmEnterDailyMeasures(IFormFactory formFactory, 
+            IServiceFactory serviceFactory, 
+            IStateController stateController,
+            IMessageBoxDisplayService messageBoxDisplayService)
         {
             FormFactory = formFactory;
 
             _serviceFactory = serviceFactory;
             _stateController = stateController;
+            _messageBoxDisplayService = messageBoxDisplayService;
 
             InitializeComponent();
         }
@@ -101,6 +107,16 @@ namespace Avicola.Production.Win.Forms.Measure
             }
 
             TransitionManager.LoadStandardSelectionView();
+        }
+
+        private void btnShowStandardSelection_Click(object sender, EventArgs e)
+        {
+            if (ucLoadDailyMeasures.IsDirty)
+            {
+                _messageBoxDisplayService.ShowConfirmationDialog(
+                    "Tiene cambios sin guardar ¿esta seguro que desea salir?", "Ingreso de Medidas",
+                    () => TransitionManager.LoadStandardSelectionView());
+            }
         }
     }
 }

@@ -33,10 +33,10 @@
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.gvDailyMeasures = new Telerik.WinControls.UI.RadGridView();
-            this.ucWeekSelection = new Avicola.Production.Win.UserControls.UcWeekSelection();
             this.txtTotal = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.btnSave = new Telerik.WinControls.UI.RadButton();
+            this.ucWeekSelection = new Avicola.Production.Win.UserControls.UcWeekSelection();
             ((System.ComponentModel.ISupportInitialize)(this.gvDailyMeasures)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDailyMeasures.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotal)).BeginInit();
@@ -63,18 +63,18 @@
             gridViewTextBoxColumn1.HeaderText = "Día";
             gridViewTextBoxColumn1.Name = "Day";
             gridViewTextBoxColumn1.ReadOnly = true;
-            gridViewTextBoxColumn1.Width = 135;
+            gridViewTextBoxColumn1.Width = 134;
             gridViewTextBoxColumn2.FieldName = "Date";
             gridViewTextBoxColumn2.HeaderText = "Fecha";
             gridViewTextBoxColumn2.Name = "Date";
             gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.Width = 110;
+            gridViewTextBoxColumn2.Width = 109;
             gridViewDecimalColumn1.EnableExpressionEditor = false;
             gridViewDecimalColumn1.Expression = "";
             gridViewDecimalColumn1.FieldName = "Value";
             gridViewDecimalColumn1.HeaderText = "Valor";
             gridViewDecimalColumn1.Name = "Value";
-            gridViewDecimalColumn1.Width = 317;
+            gridViewDecimalColumn1.Width = 315;
             this.gvDailyMeasures.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -84,6 +84,36 @@
             this.gvDailyMeasures.Size = new System.Drawing.Size(580, 200);
             this.gvDailyMeasures.TabIndex = 5;
             this.gvDailyMeasures.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gvDailyMeasures_CellValueChanged);
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(95, 262);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(100, 41);
+            this.txtTotal.TabIndex = 6;
+            // 
+            // radLabel1
+            // 
+            this.radLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.Location = new System.Drawing.Point(3, 262);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(86, 41);
+            this.radLabel1.TabIndex = 7;
+            this.radLabel1.Text = "Total:";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(473, 262);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(110, 41);
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ucWeekSelection
             // 
@@ -96,34 +126,6 @@
             this.ucWeekSelection.Size = new System.Drawing.Size(580, 45);
             this.ucWeekSelection.TabIndex = 0;
             this.ucWeekSelection.CurrentWeekChanged += new System.EventHandler<int>(this.ucWeekSelection_CurrentWeekChanged);
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(61, 272);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtTotal.TabIndex = 6;
-            // 
-            // radLabel1
-            // 
-            this.radLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.radLabel1.Location = new System.Drawing.Point(21, 273);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(34, 18);
-            this.radLabel1.TabIndex = 7;
-            this.radLabel1.Text = "Total:";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(448, 270);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 24);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // UcLoadDailyMeasures
             // 
