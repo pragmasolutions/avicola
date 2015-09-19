@@ -16,6 +16,8 @@ using Avicola.Production.Win.Models.BatchObservations;
 using Telerik.WinControls.UI;
 using Avicola.Production.Win.Infrastructure;
 using Framework.Common.Helpers;
+using Framework.WinForm.Comun.Notification;
+using Avicola.Production.Win.Properties;
 
 namespace Avicola.Production.Win.Forms.Observations
 {
@@ -23,13 +25,18 @@ namespace Avicola.Production.Win.Forms.Observations
     {
         private readonly IStateController _stateController;
         private readonly IServiceFactory _serviceFactory;
+        private readonly IMessageBoxDisplayService _messageBoxDisplayService;
         private Batch batch;
 
-        public FrmObservationList(IFormFactory formFactory, IStateController stateController, IServiceFactory serviceFactory)
+        public FrmObservationList(IFormFactory formFactory, 
+            IStateController stateController, 
+            IServiceFactory serviceFactory,
+            IMessageBoxDisplayService messageBoxDisplayService)
         {
             FormFactory = formFactory;
             _stateController = stateController;
             _serviceFactory = serviceFactory;
+            _messageBoxDisplayService = messageBoxDisplayService;
             
             InitializeComponent();
         }
@@ -75,20 +82,10 @@ namespace Avicola.Production.Win.Forms.Observations
             else
             {
                 var frm = FormFactory.Create<FrmCreateEditBatchObservation>(Guid.Empty);
-                frm.BatchObservationCreated += BatchObservationCreated;
                 frm.ShowDialog();
             }
 
             UpdateGrid();
-        }
-        
-        public event EventHandler<BatchObservation> BatchObservationCreated;
-        private void OnBatchObservationCreated(BatchObservation batchObservation)
-        {
-            if (BatchObservationCreated != null)
-            {
-                BatchObservationCreated(this, batchObservation);
-            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -124,17 +121,20 @@ namespace Avicola.Production.Win.Forms.Observations
         private void Edit(Guid observationId)
         {
             var frm = FormFactory.Create<FrmCreateEditBatchObservation>(observationId);
-            frm.BatchObservationCreated += BatchObservationCreated;
             frm.ShowDialog();
             UpdateGrid();
         }
 
         private void Delete(Guid observationId)
         {
-            using (var service = _serviceFactory.Create<IBatchObservationService>())
+            DialogResult ds = RadMessageBox.Show(this, "Si elimina la observación se perderán todos los datos. \n\nEstá seguro que desea continuar?", "Confirmación", MessageBoxButtons.YesNo, RadMessageIcon.Question);
+            if (ds.ToString() == "Yes")
             {
-                service.Delete(observationId);
-                UpdateGrid();
+                using (var service = _serviceFactory.Create<IBatchObservationService>())
+                {
+                    service.Delete(observationId);
+                    UpdateGrid();
+                }
             }
         }
     }
