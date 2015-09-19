@@ -12,7 +12,7 @@ using Framework.Data.Helpers;
 using Telerik.WinControls;
 using System.Linq;
 using Avicola.Office.Entities;
-using Avicola.Production.Win.Models.Batchs;
+using Avicola.Production.Win.Models.BatchObservations;
 
 namespace Avicola.Production.Win.Forms.Observations
 {
@@ -21,11 +21,11 @@ namespace Avicola.Production.Win.Forms.Observations
         private readonly IServiceFactory _serviceFactory;
         private Guid _batchId;
 
-        public FrmObservationList(IFormFactory formFactory, IServiceFactory serviceFactory, Guid batchId)
+        public FrmObservationList(Guid Id, IFormFactory formFactory, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;
             _serviceFactory = serviceFactory;
-            _batchId = batchId;
+            _batchId = Id;
             InitializeComponent();
         }
 
@@ -33,69 +33,37 @@ namespace Avicola.Production.Win.Forms.Observations
         {
             using (var batchObservationService = _serviceFactory.Create<IBatchObservationService>())
             {
-                var geneticLine = batchObservationService.GetAll().Where(b => b.BatchId == _batchId).OrderBy(x => x.CreatedDate).ToList();
-                
+                var batchObservations = batchObservationService.GetAll().Where(b => b.BatchId == _batchId).OrderBy(x => x.CreatedDate).ToList();
+                gvBatchObservations.DataSource = batchObservations;
             }
         }
 
-        private int GetNextNumber()
+        private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            using (var service = _serviceFactory.Create<IBatchService>())
-            {
-                return service.GetNextNumber();
-            }
+            OpenCreateBatchForm();
         }
 
-        private void BtnGuardar_Click(object sender, EventArgs e)
+        private void OpenCreateBatchForm()
         {
-            var esValido = this.ValidarForm();
-
-            if (!esValido)
+            var form = Application.OpenForms.OfType<FrmCreateBatchObservation>().FirstOrDefault();
+            if (form != null)
             {
-                this.DialogResult = DialogResult.None;
+                form.Activate();
             }
             else
             {
-                var batchModel = GetBatch();
-                var batch = batchModel.ToBatch();
-                batch.Number = GetNextNumber();
-
-                using (var service = _serviceFactory.Create<IBatchService>())
-                {
-                    service.Create(batch);
-                }
-
-                OnBatchCreated(batch);
-                this.Close();
+                var frm = FormFactory.Create<FrmCreateBatchObservation>(_batchId);
+                frm.BatchObservationCreated += BatchObservationCreated;
+                frm.Show();
             }
         }
-
-        private CreateBatchModel GetBatch()
+        
+        public event EventHandler<BatchObservation> BatchObservationCreated;
+        private void OnBatchObservationCreated(BatchObservation batchObservation)
         {
-            var batch = new CreateBatchModel
+            if (BatchObservationCreated != null)
             {
-                
-            };
-            
-            return batch;
-        }
-
-        protected override void ValidateControls()
-        {
-            
-        }
-
-        protected override object GetEntity()
-        {
-            return GetBatch();
-        }
-
-        public event EventHandler<Batch> BatchCreated;
-        private void OnBatchCreated(Batch batch)
-        {
-            if (BatchCreated != null)
-            {
-                BatchCreated(this, batch);
+                BatchObservationCreated(this, batchObservation);
             }
         }
 

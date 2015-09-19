@@ -21,6 +21,10 @@ namespace Avicola.Production.Win.Models.BatchObservations
         public DateTime? ObservationDate { get; set; }
         [Required]
         public Guid? BatchId { get; set; }
+        [Required]
+        public int Week { get; set; }
+        [Required]
+        public int Day { get; set; }
         
         public BatchObservation ToBatchObservation()
         {
