@@ -55,11 +55,13 @@
     <Compile Include="Dtos\MeasureDto.cs" />
     <Compile Include="BatchObservationService.cs" />
     <Compile Include="Dtos\FoodClassDto.cs" />
+    <Compile Include="Dtos\UpdateMeasureDto.cs" />
     <Compile Include="FoodClassService.cs" />
     <Compile Include="Interfaces\IBatchObservationService.cs" />
     <Compile Include="Interfaces\IFormFactory.cs" />
     <Compile Include="Interfaces\IFoodClassService.cs" />
     <Compile Include="Interfaces\IMeasureService.cs" />
+    <Compile Include="Interfaces\IStandardItemService.cs" />
     <Compile Include="MeasureService.cs" />
     <Compile Include="BatchService.cs" />
     <Compile Include="BarnService.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Interfaces\IBarnService.cs" />
     <Compile Include="StandardGeneticLineService.cs" />
     <Compile Include="Interfaces\IStandardGeneticLineService.cs" />
+    <Compile Include="StandardItemService.cs" />
     <Compile Include="StandardService.cs" />
     <Compile Include="GeneticLineService.cs" />
     <Compile Include="Interfaces\IStandardService.cs" />

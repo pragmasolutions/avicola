@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Avicola.Production.Win.Properties;
 
 namespace Avicola.Production.Win.UserControls
 {
@@ -34,7 +35,7 @@ namespace Avicola.Production.Win.UserControls
 
                 _current = value;
 
-                lbCurrent.Text = _current.ToString();
+                lbCurrent.Text = Resources.Week + ": " + _current.ToString();
 
                 btnPrevious.Enabled = _current > 1;
                 btnNext.Enabled = _current < _numberOfWeeks;
@@ -71,7 +72,7 @@ namespace Avicola.Production.Win.UserControls
         {
             var newCurrent = _current + 1;
 
-            if (newCurrent < _numberOfWeeks)
+            if (newCurrent <= _numberOfWeeks)
             {
                 Current = newCurrent;
             }

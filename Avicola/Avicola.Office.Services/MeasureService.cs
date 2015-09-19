@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Avicola.Office.Data.Interfaces;
 using Avicola.Office.Entities;
@@ -21,6 +22,50 @@ namespace Avicola.Office.Services
         {
             _clock = clock;
             Uow = uow;
+        }
+
+        public void UpdateMeasures(IEnumerable<UpdateMeasureDto> measures)
+        {
+            foreach (var measureUpdated in measures)
+            {
+                if (measureUpdated.Id == Guid.Empty)
+                {
+                    if (measureUpdated.Value.HasValue)
+                    {
+                        var newMeasure = new Measure()
+                                         {
+                                             Id = Guid.NewGuid(),
+                                             BatchId = measureUpdated.BatchId,
+                                             StandardItemId = measureUpdated.StandardItemId,
+                                             Value = measureUpdated.Value.Value
+                                         };
+
+                        Uow.Measures.Add(newMeasure);
+                    }
+                }
+                else
+                {
+                    var currentMeasure = Uow.Measures.Get(measureUpdated.Id);
+
+                    if (currentMeasure == null)
+                    {
+                        throw new ApplicationException("No se encontro la medida");
+                    }
+
+                    if (measureUpdated.Value.HasValue)
+                    {
+                        currentMeasure.Value = measureUpdated.Value.Value;
+
+                        Uow.Measures.Edit(currentMeasure);
+                    }
+                    else
+                    {
+                        Uow.Measures.Delete(measureUpdated.Id);
+                    }
+                }
+            }
+
+            Uow.Commit();
         }
 
         public void CreateMeasures(IEnumerable<LoadMeasureModel> measures, Guid batchId)
@@ -61,7 +106,7 @@ namespace Avicola.Office.Services
         {
             var standard = Uow.Standards.Get(standardId);
 
-            switch (standard.DataLoadTypeId.ToString().ToUpper())
+            switch (standard.DataLoadTypeId.ToString())
             {
                 case GlobalConstants.DailyDataLoadType:
                     return GetDaySequence(batchCreatedDate, measureCreateDate);
@@ -92,7 +137,7 @@ namespace Avicola.Office.Services
 
             var standard = Uow.Standards.Get(standardId);
 
-            switch (standard.DataLoadTypeId.ToString().ToUpper())
+            switch (standard.DataLoadTypeId.ToString())
             {
                 case GlobalConstants.DailyDataLoadType:
                     return batchCreatedDate.AddDays(maxSequence);
@@ -109,6 +154,15 @@ namespace Avicola.Office.Services
                 .GetAll(x => x.StandardGeneticLine.GeneticLineId == geneticLineId &&
                              x.StandardGeneticLine.StandardId == standardId)
                 .Max(x => x.Sequence);
+        }
+
+
+        public IList<Measure> GetByStandardAndBatch(Guid standardId, Guid batchId)
+        {
+            return
+                Uow.Measures.GetAll(
+                    x => x.BatchId == batchId && x.StandardItem.StandardGeneticLine.StandardId == standardId)
+                    .ToList();
         }
     }
 }

@@ -120,4 +120,7 @@
   <data name="Batch" xml:space="preserve">
     <value>Lote</value>
   </data>
+  <data name="Week" xml:space="preserve">
+    <value>Semana</value>
+  </data>
 </root>

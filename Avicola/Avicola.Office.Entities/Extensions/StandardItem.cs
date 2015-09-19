@@ -18,7 +18,7 @@ namespace Avicola.Office.Entities
                 {
                     return Sequence;
                 }
-                return Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(Sequence/7)));
+                return Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(Sequence/7M)));
             }
         }
 
