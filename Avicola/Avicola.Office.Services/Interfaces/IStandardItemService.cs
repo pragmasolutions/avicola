@@ -13,5 +13,6 @@ namespace Avicola.Office.Services.Interfaces
     public interface IStandardItemService : IService
     {
         IList<StandardItem> GetByStandardAndGeneticLine(Guid standardId, Guid stageId, Guid geneticLineId);
+
     }
 }

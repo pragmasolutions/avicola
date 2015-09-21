@@ -63,10 +63,9 @@ namespace Avicola.Office.Services
         }
 
 
-        public void Delete(StandardGeneticLine standard)
+        public void Delete(Guid id)
         {
-            Uow.StandardGeneticLines.Delete(standard);
-            Uow.Commit();
+            Uow.DbContext.StandardGeneticLineDelete(id);
         }
 
 
