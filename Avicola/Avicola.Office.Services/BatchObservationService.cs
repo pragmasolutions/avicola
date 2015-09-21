@@ -56,7 +56,13 @@ namespace Avicola.Office.Services
 
         public void Edit(BatchObservation batchObservation)
         {
-            
+            var currentbatchObservation = this.GetById(batchObservation.Id);
+
+            currentbatchObservation.Content = batchObservation.Content;
+            currentbatchObservation.ObservationDate = batchObservation.ObservationDate;
+
+            Uow.BatchObservations.Edit(currentbatchObservation);
+            Uow.Commit();
         }
 
         public void Delete(Guid batchObservationId)

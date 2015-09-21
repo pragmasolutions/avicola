@@ -15,6 +15,9 @@ using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.BatchObservations;
 using Telerik.WinControls.UI;
 using Avicola.Production.Win.Infrastructure;
+using Framework.Common.Helpers;
+using Framework.WinForm.Comun.Notification;
+using Avicola.Production.Win.Properties;
 
 namespace Avicola.Production.Win.Forms.Observations
 {
@@ -22,21 +25,44 @@ namespace Avicola.Production.Win.Forms.Observations
     {
         private readonly IStateController _stateController;
         private readonly IServiceFactory _serviceFactory;
+        private readonly IMessageBoxDisplayService _messageBoxDisplayService;
+        private Batch batch;
 
-        public FrmObservationList(IFormFactory formFactory, IStateController stateController, IServiceFactory serviceFactory)
+        public FrmObservationList(IFormFactory formFactory, 
+            IStateController stateController, 
+            IServiceFactory serviceFactory,
+            IMessageBoxDisplayService messageBoxDisplayService)
         {
             FormFactory = formFactory;
             _stateController = stateController;
             _serviceFactory = serviceFactory;
+            _messageBoxDisplayService = messageBoxDisplayService;
             
             InitializeComponent();
         }
 
         private void FrmObservationList_Load(object sender, EventArgs e)
         {
+            using (var batchService = _serviceFactory.Create<IBatchService>())
+            {
+                batch = batchService.GetById(_stateController.CurrentSelectedBatch.Id);
+            }
+
+            UpdateGrid();
+        }
+
+        private void UpdateGrid()
+        {
             using (var batchObservationService = _serviceFactory.Create<IBatchObservationService>())
             {
                 var batchObservations = batchObservationService.GetByBatchId(_stateController.CurrentSelectedBatch.Id).OrderBy(x => x.CreatedDate).ToList();
+                foreach (var batchObservation in batchObservations)
+                {
+                    var weeksDays = DateHelper.DateDiffInWeek(batch.DateOfBirth, batchObservation.ObservationDate);
+                    batchObservation.Week = weeksDays.Weeks;
+                    batchObservation.Day = weeksDays.Days;
+                }
+
                 gvBatchObservations.DataSource = batchObservations;
             }
         }
@@ -56,18 +82,10 @@ namespace Avicola.Production.Win.Forms.Observations
             else
             {
                 var frm = FormFactory.Create<FrmCreateEditBatchObservation>(Guid.Empty);
-                frm.BatchObservationCreated += BatchObservationCreated;
                 frm.ShowDialog();
             }
-        }
-        
-        public event EventHandler<BatchObservation> BatchObservationCreated;
-        private void OnBatchObservationCreated(BatchObservation batchObservation)
-        {
-            if (BatchObservationCreated != null)
-            {
-                BatchObservationCreated(this, batchObservation);
-            }
+
+            UpdateGrid();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -103,13 +121,21 @@ namespace Avicola.Production.Win.Forms.Observations
         private void Edit(Guid observationId)
         {
             var frm = FormFactory.Create<FrmCreateEditBatchObservation>(observationId);
-            frm.BatchObservationCreated += BatchObservationCreated;
             frm.ShowDialog();
+            UpdateGrid();
         }
 
         private void Delete(Guid observationId)
         {
-
+            DialogResult ds = RadMessageBox.Show(this, "Si elimina la observación se perderán todos los datos. \n\nEstá seguro que desea continuar?", "Confirmación", MessageBoxButtons.YesNo, RadMessageIcon.Question);
+            if (ds.ToString() == "Yes")
+            {
+                using (var service = _serviceFactory.Create<IBatchObservationService>())
+                {
+                    service.Delete(observationId);
+                    UpdateGrid();
+                }
+            }
         }
     }
 }
