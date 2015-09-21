@@ -1,6 +1,6 @@
 ﻿namespace Avicola.Production.Win.Forms.Observations
 {
-    partial class FrmCreateBatchObservation
+    partial class FrmCreateEditBatchObservation
     {
         /// <summary>
         /// Required designer variable.
@@ -77,6 +77,7 @@
             this.dtpObservationDate.TabStop = false;
             this.dtpObservationDate.Text = "14/09/2015";
             this.dtpObservationDate.Value = new System.DateTime(2015, 9, 14, 10, 20, 19, 820);
+            this.dtpObservationDate.ValueChanged += new System.EventHandler(this.dtpObservationDate_ValueChanged);
             // 
             // txtWeek
             // 
@@ -181,7 +182,7 @@
             this.txtObservation.TabStop = false;
             this.txtObservation.ThemeName = "TelerikMetroBlue";
             // 
-            // FrmCreateBatchObservation
+            // FrmCreateEditBatchObservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,12 +201,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "FrmCreateBatchObservation";
+            this.Name = "FrmCreateEditBatchObservation";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Observación";
             this.Load += new System.EventHandler(this.FrmCreateBatchObservation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();

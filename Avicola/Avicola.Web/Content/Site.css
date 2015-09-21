@@ -110,3 +110,11 @@ textarea {
 .all-width {
     width: 100%;
 }
+
+.report-group {
+    margin-left: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 110%;
+    line-height: 30px;
+}

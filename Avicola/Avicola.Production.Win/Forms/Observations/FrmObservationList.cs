@@ -13,27 +13,56 @@ using Telerik.WinControls;
 using System.Linq;
 using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.BatchObservations;
+using Telerik.WinControls.UI;
+using Avicola.Production.Win.Infrastructure;
+using Framework.Common.Helpers;
+using Framework.WinForm.Comun.Notification;
+using Avicola.Production.Win.Properties;
 
 namespace Avicola.Production.Win.Forms.Observations
 {
     public partial class FrmObservationList : EditFormBase
     {
+        private readonly IStateController _stateController;
         private readonly IServiceFactory _serviceFactory;
-        private Guid _batchId;
+        private readonly IMessageBoxDisplayService _messageBoxDisplayService;
+        private Batch batch;
 
-        public FrmObservationList(Guid id, IFormFactory formFactory, IServiceFactory serviceFactory)
+        public FrmObservationList(IFormFactory formFactory, 
+            IStateController stateController, 
+            IServiceFactory serviceFactory,
+            IMessageBoxDisplayService messageBoxDisplayService)
         {
             FormFactory = formFactory;
+            _stateController = stateController;
             _serviceFactory = serviceFactory;
-            _batchId = id;
+            _messageBoxDisplayService = messageBoxDisplayService;
+            
             InitializeComponent();
         }
 
         private void FrmObservationList_Load(object sender, EventArgs e)
         {
+            using (var batchService = _serviceFactory.Create<IBatchService>())
+            {
+                batch = batchService.GetById(_stateController.CurrentSelectedBatch.Id);
+            }
+
+            UpdateGrid();
+        }
+
+        private void UpdateGrid()
+        {
             using (var batchObservationService = _serviceFactory.Create<IBatchObservationService>())
             {
-                var batchObservations = batchObservationService.GetAll().Where(b => b.BatchId == _batchId).OrderBy(x => x.CreatedDate).ToList();
+                var batchObservations = batchObservationService.GetByBatchId(_stateController.CurrentSelectedBatch.Id).OrderBy(x => x.CreatedDate).ToList();
+                foreach (var batchObservation in batchObservations)
+                {
+                    var weeksDays = DateHelper.DateDiffInWeek(batch.DateOfBirth, batchObservation.ObservationDate);
+                    batchObservation.Week = weeksDays.Weeks;
+                    batchObservation.Day = weeksDays.Days;
+                }
+
                 gvBatchObservations.DataSource = batchObservations;
             }
         }
@@ -45,26 +74,18 @@ namespace Avicola.Production.Win.Forms.Observations
 
         private void OpenCreateBatchForm()
         {
-            var form = Application.OpenForms.OfType<FrmCreateBatchObservation>().FirstOrDefault();
+            var form = Application.OpenForms.OfType<FrmCreateEditBatchObservation>().FirstOrDefault();
             if (form != null)
             {
                 form.Activate();
             }
             else
             {
-                var frm = FormFactory.Create<FrmCreateBatchObservation>(_batchId);
-                frm.BatchObservationCreated += BatchObservationCreated;
+                var frm = FormFactory.Create<FrmCreateEditBatchObservation>(Guid.Empty);
                 frm.ShowDialog();
             }
-        }
-        
-        public event EventHandler<BatchObservation> BatchObservationCreated;
-        private void OnBatchObservationCreated(BatchObservation batchObservation)
-        {
-            if (BatchObservationCreated != null)
-            {
-                BatchObservationCreated(this, batchObservation);
-            }
+
+            UpdateGrid();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -72,5 +93,49 @@ namespace Avicola.Production.Win.Forms.Observations
             this.Close();
         }
 
+        private void gvBatchObservations_CommandCellClick(object sender, EventArgs e)
+        {
+            var commandCell = (GridCommandCellElement)sender;
+
+            var selectedRow = this.gvBatchObservations.SelectedRows.FirstOrDefault();
+
+            if (selectedRow == null)
+                return;
+
+            var observation = selectedRow.DataBoundItem as BatchObservationDto;
+
+            if (observation == null)
+                return;
+
+            switch (commandCell.ColumnInfo.Name)
+            {
+                case "btnEdit":
+                    Edit(observation.Id);
+                    break;
+                case "btnDelete":
+                    Delete(observation.Id);
+                    break;
+            }
+        }
+
+        private void Edit(Guid observationId)
+        {
+            var frm = FormFactory.Create<FrmCreateEditBatchObservation>(observationId);
+            frm.ShowDialog();
+            UpdateGrid();
+        }
+
+        private void Delete(Guid observationId)
+        {
+            DialogResult ds = RadMessageBox.Show(this, "Si elimina la observación se perderán todos los datos. \n\nEstá seguro que desea continuar?", "Confirmación", MessageBoxButtons.YesNo, RadMessageIcon.Question);
+            if (ds.ToString() == "Yes")
+            {
+                using (var service = _serviceFactory.Create<IBatchObservationService>())
+                {
+                    service.Delete(observationId);
+                    UpdateGrid();
+                }
+            }
+        }
     }
 }

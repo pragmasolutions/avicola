@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReportService.cs" />
     <Compile Include="Dtos\BatchObservationDto.cs" />
     <Compile Include="Dtos\BatchDto.cs" />
     <Compile Include="Dtos\LoadMeasureModel.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Dtos\FoodClassDto.cs" />
     <Compile Include="Dtos\UpdateMeasureDto.cs" />
     <Compile Include="FoodClassService.cs" />
+    <Compile Include="Interfaces\IReportService.cs" />
     <Compile Include="Interfaces\IBatchObservationService.cs" />
     <Compile Include="Interfaces\IFormFactory.cs" />
     <Compile Include="Interfaces\IFoodClassService.cs" />

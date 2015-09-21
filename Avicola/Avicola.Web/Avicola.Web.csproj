@@ -211,6 +211,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Controllers\FoodClassController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Models\Providers\ProviderForm.cs" />
     <Compile Include="Models\Providers\ProviderListFiltersModel.cs" />
     <Compile Include="Models\Providers\ProviderListModel.cs" />
+    <Compile Include="Models\Reports\MeasuresFollowUpFilterModel.cs" />
     <Compile Include="Models\Trucks\TruckForm.cs" />
     <Compile Include="Models\Trucks\TruckListFiltersModel.cs" />
     <Compile Include="Models\Trucks\TruckListModel.cs" />
@@ -278,12 +280,21 @@
     <Content Include="Content\ControlPanel.min.css">
       <DependentUpon>ControlPanel.css</DependentUpon>
     </Content>
+    <Content Include="Content\Images\adobe-acrobat.png" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\loading100X100.gif" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\microsoft-excel.png" />
+    <Content Include="Content\Images\microsoft-word.png" />
+    <Content Include="Content\Images\rar.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Models\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\avicola-spinner.js" />
+    <Content Include="Scripts\app\reports-measures-followup.js" />
+    <Content Include="Scripts\app\reports.js" />
     <Content Include="Scripts\app\office-create-standard.js" />
     <Content Include="Scripts\app\office-select-standard.js" />
     <Content Include="Scripts\app\office-standards-dashboard.js" />
@@ -815,6 +826,8 @@
     <Content Include="Views\FoodClass\Detail.cshtml" />
     <Content Include="Views\FoodClass\Edit.cshtml" />
     <Content Include="Views\FoodClass\Index.cshtml" />
+    <Content Include="Views\Report\MeasuresFollowUp.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\BatchStatusId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -825,9 +838,9 @@
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Models\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Models\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Models\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -853,6 +866,10 @@
     <ProjectReference Include="..\Avicola.Office.Services\Avicola.Office.Services.csproj">
       <Project>{36c18611-d925-45a2-83b8-ae98ec89e74b}</Project>
       <Name>Avicola.Office.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Reports\Avicola.Reports.csproj">
+      <Project>{4be11c27-fb2e-46f9-8fac-59c559448e6f}</Project>
+      <Name>Avicola.Reports</Name>
     </ProjectReference>
     <ProjectReference Include="..\Avicola.Sales.Data\Avicola.Sales.Data.csproj">
       <Project>{655a731f-8412-4ad3-9bf3-9081a7c05df9}</Project>
