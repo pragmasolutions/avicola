@@ -118,5 +118,11 @@ namespace Avicola.Office.Services
             Uow.Commit();
             return null;
         }
+
+
+        public IQueryable<Batch> GetAll()
+        {
+            return Uow.Batches.GetAll();
+        }
     }
 }
