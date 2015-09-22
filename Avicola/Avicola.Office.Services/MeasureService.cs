@@ -161,7 +161,8 @@ namespace Avicola.Office.Services
         {
             return
                 Uow.Measures.GetAll(
-                    x => x.BatchId == batchId && x.StandardItem.StandardGeneticLine.StandardId == standardId)
+                    x => x.BatchId == batchId && x.StandardItem.StandardGeneticLine.StandardId == standardId,
+                    x => x.StandardItem)
                     .ToList();
         }
     }

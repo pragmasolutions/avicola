@@ -67,7 +67,7 @@ namespace Avicola.Production.Win.Forms.Measure
                             }
 
                             var measureDate = batchCreatedDate.AddDays(weekDays.Sequence);
-                            var measure = measures.FirstOrDefault(x => x.StandardItemId == weekDays.Id);
+                            var measure = measures.Where(m => !m.StandardItem.IsDeleted).FirstOrDefault(x => x.StandardItemId == weekDays.Id);
 
                             var measureModel = new DailyStandardMeasure()
                             {

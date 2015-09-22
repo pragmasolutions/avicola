@@ -17,12 +17,15 @@ namespace Avicola.Web.Controllers
         private readonly IStandardGeneticLineService _service;
         private readonly IStandardService _standardService;
         private readonly IGeneticLineService _geneticLineService;
+        private readonly IStandardItemService _standardItemService;
 
-        public StandardGeneticLineController(IStandardGeneticLineService service, IStandardService standardService, IGeneticLineService geneticLineService)
+        public StandardGeneticLineController(IStandardGeneticLineService service, IStandardService standardService, 
+                        IGeneticLineService geneticLineService, IStandardItemService standardItemService)
         {
             _service = service;
             _standardService = standardService;
             _geneticLineService = geneticLineService;
+            _standardItemService = standardItemService;
         }
 
         public ActionResult Index(Guid id)
@@ -115,7 +118,8 @@ namespace Avicola.Web.Controllers
         {
             var standard = _service.GetById(id);
             var geneticLineId = standard.GeneticLineId;
-            _service.Delete(standard);
+
+            _service.Delete(id);
             return Redirect("/StandardGeneticLine/Index/" + geneticLineId).WithSuccess("Estandar eliminado correctamente.");
         }
 

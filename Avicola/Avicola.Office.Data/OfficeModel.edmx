@@ -354,6 +354,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="StandardGeneticLine_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <EntityContainer Name="AvicolaOfficeModelStoreContainer">
           <EntitySet Name="Barn" EntityType="Self.Barn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Batch" EntityType="Self.Batch" Schema="dbo" store:Type="Tables" />
@@ -766,6 +769,9 @@
             <End Role="Stage" EntitySet="Stages" />
             <End Role="Batch" EntitySet="Batches" />
           </AssociationSet>
+          <FunctionImport Name="StandardGeneticLineDelete">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+          </FunctionImport>
           </EntityContainer>
         <Association Name="FK_Batch_Barn">
           <End Type="Avicola.OfficeModel.Barn" Role="Barn" Multiplicity="0..1" />
@@ -1076,6 +1082,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="StandardGeneticLineDelete" FunctionName="Avicola.OfficeModel.Store.StandardGeneticLine_Delete" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
