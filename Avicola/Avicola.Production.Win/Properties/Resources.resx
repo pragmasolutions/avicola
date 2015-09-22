@@ -132,4 +132,10 @@
   <data name="EnterMeasures" xml:space="preserve">
     <value>Ingreso de Medidas</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Average" xml:space="preserve">
+    <value>Promedio</value>
+  </data>
 </root>

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.Measures;
+using Avicola.Production.Win.Properties;
 using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.UserControls
@@ -27,6 +28,8 @@ namespace Avicola.Production.Win.UserControls
         public event EventHandler SaveClick;
 
         public bool IsDirty { get; set; }
+
+        public Standard Standard { get; set; }
 
         public IList<LoadDailyStandardMeasures> LoadDailyStandardMeasures
         {
@@ -65,6 +68,8 @@ namespace Avicola.Production.Win.UserControls
                 var newWeek = _loadDailyStandardMeasures.First(x => x.Week == ucWeekSelection.Current);
 
                 UpdateCurrentDailyStandardMeasure(newWeek);
+
+                UpdateTotal();
             }
         }
 
@@ -83,7 +88,19 @@ namespace Avicola.Production.Win.UserControls
 
         private void UpdateTotal()
         {
-            var total = LoadDailyStandardMeasures.SelectMany(x => x.DailyStandardMeasures).Sum(x => x.Value ?? 0);
+            decimal total = 0;
+
+            if (Standard.AggregateOperation == GlobalConstants.SumAggregateOperation || string.IsNullOrEmpty(Standard.AggregateOperation))
+            {
+                lbAggregate.Text = Resources.Total;
+                total = _currentDailyStandardMeasure.DailyStandardMeasures.Sum(x => x.Value ?? 0);
+            }
+            else if (Standard.AggregateOperation == GlobalConstants.AvgAggregateOperation)
+            {
+                lbAggregate.Text = Resources.Average;
+                total = _currentDailyStandardMeasure.DailyStandardMeasures.Average(x => x.Value ?? 0);
+            }
+
             txtTotal.Text = total.ToString("n2");
         }
 

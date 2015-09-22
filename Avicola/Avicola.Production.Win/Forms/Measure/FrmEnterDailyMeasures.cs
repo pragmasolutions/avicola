@@ -84,6 +84,7 @@ namespace Avicola.Production.Win.Forms.Measure
                         model.Add(dailyLoad);
                     }
 
+                    ucLoadDailyMeasures.Standard = _stateController.CurrentSelectedStandard;
                     ucLoadDailyMeasures.LoadDailyStandardMeasures = model;
                 }
             }

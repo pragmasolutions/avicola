@@ -9,5 +9,7 @@ namespace Avicola.Production.Win
     public class GlobalConstants
     {
         public const string SelectColumnName = "SelectColumn";
+        public const string SumAggregateOperation = "SUM";
+        public const string AvgAggregateOperation = "AVG";
     }
 }

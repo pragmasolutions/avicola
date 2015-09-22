@@ -61,6 +61,15 @@ namespace Avicola.Production.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Promedio.
+        /// </summary>
+        internal static string Average {
+            get {
+                return ResourceManager.GetString("Average", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lote.
         /// </summary>
         internal static string Batch {
@@ -103,6 +112,15 @@ namespace Avicola.Production.Win.Properties {
         internal static string Standard {
             get {
                 return ResourceManager.GetString("Standard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        internal static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
             }
         }
         
