@@ -63,6 +63,7 @@
             // gvBatches
             // 
             this.gvBatches.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gvBatches.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvBatches.Location = new System.Drawing.Point(4, 4);
             this.gvBatches.Margin = new System.Windows.Forms.Padding(4);
             // 

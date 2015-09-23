@@ -11,5 +11,6 @@ namespace Avicola.Production.Win
         public const string SelectColumnName = "SelectColumn";
         public const string SumAggregateOperation = "SUM";
         public const string AvgAggregateOperation = "AVG";
+        public const int DefaultRowHeight = 50;
     }
 }

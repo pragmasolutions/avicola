@@ -24,6 +24,8 @@ namespace Avicola.Production.Win.Forms.Batchs
             _stateController = stateController;
 
             InitializeComponent();
+
+            gvBatches.TableElement.RowHeight = GlobalConstants.DefaultRowHeight;
         }
 
         private void btnCreateBatch_Click(object sender, EventArgs e)

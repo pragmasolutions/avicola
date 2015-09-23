@@ -23,6 +23,8 @@ namespace Avicola.Production.Win.UserControls
         public UcLoadDailyMeasures()
         {
             InitializeComponent();
+
+            gvDailyMeasures.TableElement.RowHeight = GlobalConstants.DefaultRowHeight;
         }
 
         public event EventHandler SaveClick;
