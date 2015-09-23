@@ -12,7 +12,7 @@ using Framework.Data.Helpers;
 using Telerik.WinControls;
 using System.Linq;
 using Avicola.Office.Entities;
-using Avicola.Production.Win.Models.BatchObservations;
+using Avicola.Production.Win.Models.BatchVaccines;
 using Avicola.Production.Win.Infrastructure;
 using Framework.Common.Helpers;
 namespace Avicola.Production.Win.Forms.Vaccines
@@ -73,73 +73,77 @@ namespace Avicola.Production.Win.Forms.Vaccines
             {
                 if (_vaccineId == Guid.Empty)
                 {
-                    var batchObservationModel = GetBatchObservationCreate();
-                    var batchObservation = batchObservationModel.ToBatchObservation();
+                    var batchVaccinenModel = GetBatchVaccineCreate();
+                    var batchVaccine = batchVaccinenModel.ToBatchVaccine();
 
-                    using (var service = _serviceFactory.Create<IBatchObservationService>())
+                    using (var service = _serviceFactory.Create<IBatchVaccineService>())
                     {
-                        service.Create(batchObservation);
+                        service.Create(batchVaccine);
                     }
 
-                    OnBatchObservationCreated(batchObservation);
+                    OnBatchVaccineCreated(batchVaccine);
                 }
                 else
                 {
-                    GetBatchObservationEdit();
-                    using (var service = _serviceFactory.Create<IBatchObservationService>())
+                    GetBatchVaccineEdit();
+                    using (var service = _serviceFactory.Create<IBatchVaccineService>())
                     {
                         service.Edit(_batchVaccine);
                     }
 
-                    OnBatchObservationCreated(_batchVaccine);
+                    OnBatchVaccineCreated(_batchVaccine);
                 }
 
                 this.Close();
             }
         }
 
-        private void GetBatchObservationEdit()
+        private void GetBatchVaccineEdit()
         {
-            _batchVaccine.ObservationDate = dtpStartDate.Value;
-            _batchVaccine.Content = txtObservation.Text;
+            _batchVaccine.VaccineId = (Guid)ddlVaccines.SelectedValue;
+            _batchVaccine.RecommendedDate = dtpRecommendedDate.Value;
+            _batchVaccine.EndDate = dtpEndDate.Value;
+            _batchVaccine.StartDate = dtpStartDate.Value;
         }
 
-        private CreateBatchObservationModel GetBatchObservationCreate()
+        private CreateBatchVaccineModel GetBatchVaccineCreate()
         {
-            var batchObservation = new CreateBatchObservationModel
+            var batchVaccine = new CreateBatchVaccineModel
             {
                 Id = new Guid(),
-                Content = txtObservation.Text,
+                VaccineId = (Guid)ddlVaccines.SelectedValue;
+                RecommendedDate = dtpRecommendedDate.Value;
+                EndDate = dtpEndDate.Value;
+                StartDate = dtpStartDate.Value;
                 CreatedDate = DateTime.Now,
-                ObservationDate = dtpStartDate.Value,
                 IsDelete = false,
                 BatchId = _stateController.CurrentSelectedBatch.Id
             };
 
-            return batchObservation;
+            return batchVaccine;
         }
 
         protected override void ValidateControls()
         {
-            this.ValidateControl(dtpStartDate, "ObservationDate");
-            this.ValidateControl(txtObservation, "Content");
+            this.ValidateControl(dtpStartDate, "StartDate");
+            this.ValidateControl(ddlVaccines, "VaccineId");
             if (_batch.DateOfBirth > dtpStartDate.Value || _batch.EndDate < dtpStartDate.Value)
             {
-                this.FormErrorProvider.SetError(dtpStartDate, "La fecha de Observación tiene que estar comprendida en la fecha de nacimiento y la fecha de fin.");
+                this.FormErrorProvider.SetError(dtpStartDate, "La fecha de vacunación tiene que estar comprendida en la fecha de nacimiento y la fecha de fin.");
             }
         }
 
         protected override object GetEntity()
         {
-            return GetBatchObservationCreate();
+            return GetBatchVaccineCreate();
         }
 
-        public event EventHandler<BatchObservation> BatchObservationCreated;
-        private void OnBatchObservationCreated(BatchObservation batchObservation)
+        public event EventHandler<BatchVaccine> BatchVaccineCreated;
+        private void OnBatchVaccineCreated(BatchVaccine batchVaccine)
         {
-            if (BatchObservationCreated != null)
+            if (BatchVaccineCreated != null)
             {
-                BatchObservationCreated(this, batchObservation);
+                BatchVaccineCreated(this, batchVaccine);
             }
         }
 
@@ -148,16 +152,9 @@ namespace Avicola.Production.Win.Forms.Vaccines
             this.Close();
         }
 
-        private void SetWeekAndDay(DateTime dateFrom, DateTime dateTo)
-        {
-            var weekDays = DateHelper.DateDiffInWeek(dateFrom, dateTo);
-            txtWeek.Text = weekDays.Weeks.ToString();
-            txtDay.Text = weekDays.Days.ToString(); ;
-        }
-
         private void dtpObservationDate_ValueChanged(object sender, EventArgs e)
         {
-            SetWeekAndDay(_batch.DateOfBirth, dtpStartDate.Value);
+            
         }
 
     }

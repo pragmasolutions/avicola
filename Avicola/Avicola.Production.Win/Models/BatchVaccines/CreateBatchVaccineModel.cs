@@ -13,19 +13,18 @@ namespace Avicola.Production.Win.Models.BatchVaccines
 {
     public class CreateBatchVaccineModel
     {
+
         public Guid Id { get; set; }
         [Required]
-        public DateTime? CreatedDate { get; set; }
-        [Required]
-        public string Content { get; set; }
-        [Required]
-        public DateTime? ObservationDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         [Required]
         public Guid? BatchId { get; set; }
         [Required]
-        public int Week { get; set; }
+        public Guid? VaccineId { get; set; }
+        public DateTime? RecommendedDate { get; set; }
         [Required]
-        public int Day { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         [Required]
         public bool IsDelete { get; set; }
         
@@ -35,9 +34,11 @@ namespace Avicola.Production.Win.Models.BatchVaccines
             {
                 Id = Guid.NewGuid(),
                 CreatedDate = DateTime.Now,
-                Content = this.Content,
-                ObservationDate = this.ObservationDate.GetValueOrDefault(),
                 BatchId = this.BatchId.GetValueOrDefault(),
+                VaccineId = this.VaccineId.GetValueOrDefault(),
+                RecommendedDate = this.RecommendedDate.Value,
+                StartDate = this.StartDate,
+                EndDate = this.EndDate.Value,
                 IsDeleted = false
             };
             return batchVaccine;
