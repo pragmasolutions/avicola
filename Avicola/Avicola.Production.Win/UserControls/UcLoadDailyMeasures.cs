@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.Measures;
+using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.UserControls
 {
@@ -91,6 +92,21 @@ namespace Avicola.Production.Win.UserControls
             IsDirty = true;
 
             UpdateTotal();
+        }
+
+        private void gvDailyMeasures_CellBeginEdit(object sender, Telerik.WinControls.UI.GridViewCellCancelEventArgs e)
+        {
+            var measure = e.Row.DataBoundItem as DailyStandardMeasure;
+
+            if (measure != null)
+            {
+                var editMeasure = measure.Date.Date <= DateTime.Today && e.Column.Name == "Value";
+
+                if (!editMeasure)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }

@@ -203,6 +203,7 @@
     <Compile Include="Models\BatchObservations\CreateBatchObservationModel.cs" />
     <Compile Include="Models\Batchs\AssignBarnModel.cs" />
     <Compile Include="Models\Batchs\CreateBatchModel.cs" />
+    <Compile Include="Models\BatchVaccines\CreateBatchVaccineModel.cs" />
     <Compile Include="Models\Measures\LoadWeeklyStandardMeasures.cs" />
     <Compile Include="Models\Measures\LoadDailyStandardMeasures.cs" />
     <Compile Include="Program.cs" />

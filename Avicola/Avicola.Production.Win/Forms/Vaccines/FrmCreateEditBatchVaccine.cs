@@ -23,7 +23,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
         private readonly IServiceFactory _serviceFactory;
         private Guid _vaccineId = Guid.Empty;
         private Batch _batch;
-        private BatchObservation _batchObservation;
+        private BatchVaccine _batchVaccine;
 
         public FrmCreateEditBatchVaccine(Guid id, IFormFactory formFactory, IStateController stateController, IServiceFactory serviceFactory)
         {
@@ -43,24 +43,22 @@ namespace Avicola.Production.Win.Forms.Vaccines
                 _batch = batchService.GetById(_stateController.CurrentSelectedBatch.Id);
                 SetWeekAndDay(_batch.DateOfBirth,DateTime.Now);
                 dtpStartDate.Value = DateTime.Now;
-                formTitle = string.Format("Lote {0} - Crear Observación", _batch.Number.ToString());
+                formTitle = string.Format("Lote {0} - Crear Vacuna", _batch.Number.ToString());
             }
 
             if (_vaccineId != Guid.Empty)
             {
-                using (var batchObservationService = _serviceFactory.Create<IBatchObservationService>())
+                using (var batchVaccineService = _serviceFactory.Create<IBatchVaccineService>())
                 {
-                    _batchObservation = batchObservationService.GetById(_vaccineId);
-                    SetWeekAndDay(_batch.DateOfBirth, _batchObservation.ObservationDate);
-                    txtObservation.Text = _batchObservation.Content;
-                    dtpStartDate.Value = _batchObservation.ObservationDate;
-                    formTitle = string.Format("Lote {0} - Editar Observación", _batch.Number.ToString());
+                    _batchVaccine = batchVaccineService.GetById(_vaccineId);
+                    dtpRecommendedDate.Value = _batchVaccine.RecommendedDate.Value;
+                    dtpStartDate.Value = _batchVaccine.StartDate;
+                    dtpEndDate.Value = _batchVaccine.EndDate.Value;
+                    formTitle = string.Format("Lote {0} - Editar Vacuna", _batch.Number.ToString());
                 }
             }
 
             this.Text = formTitle;
-            txtDay.Enabled = false;
-            txtWeek.Enabled = false;
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -90,10 +88,10 @@ namespace Avicola.Production.Win.Forms.Vaccines
                     GetBatchObservationEdit();
                     using (var service = _serviceFactory.Create<IBatchObservationService>())
                     {
-                        service.Edit(_batchObservation);
+                        service.Edit(_batchVaccine);
                     }
 
-                    OnBatchObservationCreated(_batchObservation);
+                    OnBatchObservationCreated(_batchVaccine);
                 }
 
                 this.Close();
@@ -102,8 +100,8 @@ namespace Avicola.Production.Win.Forms.Vaccines
 
         private void GetBatchObservationEdit()
         {
-            _batchObservation.ObservationDate = dtpStartDate.Value;
-            _batchObservation.Content = txtObservation.Text;
+            _batchVaccine.ObservationDate = dtpStartDate.Value;
+            _batchVaccine.Content = txtObservation.Text;
         }
 
         private CreateBatchObservationModel GetBatchObservationCreate()

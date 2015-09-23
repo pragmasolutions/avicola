@@ -53,7 +53,8 @@ namespace Avicola.Web
                 .Include("~/Scripts/jquery.sortable.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
-                .IncludeDirectory("~/Scripts/app/utilities", "*.js"));
+                .IncludeDirectory("~/Scripts/app/utilities", "*.js")
+                .Include("~/Scripts/app/avicola-spinner.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

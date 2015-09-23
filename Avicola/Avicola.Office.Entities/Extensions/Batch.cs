@@ -10,6 +10,11 @@ namespace Avicola.Office.Entities
 {
     public partial class Batch : IEntity
     {
+        public string Name
+        {
+            get { return String.Format("Lote {0}", this.Number); }
+        }
+
         public int CurrentWeek
         {
             get

@@ -10,9 +10,8 @@ using Avicola.Services.Common;
 
 namespace Avicola.Office.Services.Interfaces
 {
-    public interface IStandardItemService : IService
+    public interface IReportService: IService
     {
-        IList<StandardItem> GetByStandardAndGeneticLine(Guid standardId, Guid stageId, Guid geneticLineId);
-
+        
     }
 }

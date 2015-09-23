@@ -1,0 +1,15 @@
+﻿@using Avicola.Office.Entities
+@using Framework.Common.Web.Extensions
+@model Avicola.Web.Models.Reports.BatchStatusEnum
+@{
+    var list = new List<KeyValuePair<int, string>>
+    {
+        new KeyValuePair<int, string>(0, "Sólo Activos"),
+        new KeyValuePair<int, string>(1, "Inactivos"),
+        new KeyValuePair<int, string>(2, "Mostrar todos")
+        
+        
+    };
+}
+
+@Html.DropDownList("", new SelectList(list, "Key", "Value", Model), new { @class = "form-control select2-control" })

@@ -58,6 +58,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Sales.Services", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Web", "Avicola.Web\Avicola.Web.csproj", "{D7196523-A45A-470B-88A1-C6A207FD3BF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Reports", "Avicola.Reports\Avicola.Reports.csproj", "{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,6 +193,12 @@ Global
 		{D7196523-A45A-470B-88A1-C6A207FD3BF8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7196523-A45A-470B-88A1-C6A207FD3BF8}.tekove|Any CPU.ActiveCfg = Release|Any CPU
 		{D7196523-A45A-470B-88A1-C6A207FD3BF8}.tekove|Any CPU.Build.0 = Release|Any CPU
+		{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}.tekove|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}.tekove|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

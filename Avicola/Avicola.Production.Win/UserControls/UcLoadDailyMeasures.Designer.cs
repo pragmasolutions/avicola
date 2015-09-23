@@ -85,6 +85,7 @@
             this.gvDailyMeasures.Name = "gvDailyMeasures";
             this.gvDailyMeasures.Size = new System.Drawing.Size(580, 200);
             this.gvDailyMeasures.TabIndex = 5;
+            this.gvDailyMeasures.CellBeginEdit += new Telerik.WinControls.UI.GridViewCellCancelEventHandler(this.gvDailyMeasures_CellBeginEdit);
             this.gvDailyMeasures.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gvDailyMeasures_CellValueChanged);
             // 
             // txtTotal

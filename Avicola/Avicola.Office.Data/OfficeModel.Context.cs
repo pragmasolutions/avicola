@@ -14,6 +14,8 @@ namespace Avicola.Office.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class OfficeEntities : DbContext
     {
@@ -41,5 +43,14 @@ namespace Avicola.Office.Data
         public virtual DbSet<BatchVaccine> BatchVaccines { get; set; }
         public virtual DbSet<Stage> Stages { get; set; }
         public virtual DbSet<StandardType> StandardTypes { get; set; }
+    
+        public virtual int StandardGeneticLineDelete(Nullable<System.Guid> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StandardGeneticLineDelete", idParameter);
+        }
     }
 }
