@@ -61,5 +61,10 @@ namespace Avicola.Production.Win.Forms.Standards
                 TransitionManager.LoadEnterWeeklyStandardView();
             }
         }
+
+        private void btnShowBatchManagerView_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadBatchManagerView();
+        }
     }
 }

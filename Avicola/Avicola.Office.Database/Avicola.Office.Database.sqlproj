@@ -79,7 +79,6 @@
     <Build Include="dbo\Tables\Stage.sql" />
     <Build Include="dbo\Tables\StandardType.sql" />
     <Build Include="dbo\Functions\ExplodeDates.sql" />
-    <Build Include="dbo\Stored Procedures\StandardGeneticLine_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Avicola.Office.Database.refactorlog" />

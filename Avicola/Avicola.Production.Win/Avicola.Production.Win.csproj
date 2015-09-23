@@ -341,6 +341,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Images\Arrow-Left-Medium.png" />
+    <Content Include="Resources\Images\Arrow-Left.png" />
+    <Content Include="Resources\Images\Arrow-Right-Medium.png" />
+    <Content Include="Resources\Images\Arrow-Right.png" />
     <Content Include="Resources\Images\barn.png" />
     <Content Include="Resources\Images\delete-icon.png" />
     <Content Include="Resources\Images\edit.ico" />

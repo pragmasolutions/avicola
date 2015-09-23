@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnShowStandardSelection = new Telerik.WinControls.UI.RadButton();
-            this.lbCurrentStandard = new Telerik.WinControls.UI.RadLabel();
             this.ucLoadWeeklyMeasures = new Avicola.Production.Win.UserControls.UcLoadWeeklyMeasures();
+            this.lbCurrentStandard = new Telerik.WinControls.UI.RadLabel();
+            this.btnShowStandardSelection = new Telerik.WinControls.UI.RadButton();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnShowStandardSelection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbCurrentStandard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnShowStandardSelection)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,40 +56,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1061, 492);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.Controls.Add(this.btnShowStandardSelection, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lbCurrentStandard, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1055, 44);
-            this.tableLayoutPanel2.TabIndex = 5;
-            // 
-            // btnShowStandardSelection
-            // 
-            this.btnShowStandardSelection.Location = new System.Drawing.Point(3, 3);
-            this.btnShowStandardSelection.Name = "btnShowStandardSelection";
-            this.btnShowStandardSelection.Size = new System.Drawing.Size(177, 38);
-            this.btnShowStandardSelection.TabIndex = 1;
-            this.btnShowStandardSelection.Text = "Ir Seleccionar Indicador";
-            this.btnShowStandardSelection.Click += new System.EventHandler(this.btnShowStandardSelection_Click);
-            // 
-            // lbCurrentStandard
-            // 
-            this.lbCurrentStandard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbCurrentStandard.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCurrentStandard.Location = new System.Drawing.Point(203, 3);
-            this.lbCurrentStandard.Name = "lbCurrentStandard";
-            this.lbCurrentStandard.Size = new System.Drawing.Size(278, 41);
-            this.lbCurrentStandard.TabIndex = 2;
-            this.lbCurrentStandard.Text = "{{Current Standard}}";
-            // 
             // ucLoadWeeklyMeasures
             // 
             this.ucLoadWeeklyMeasures.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -101,6 +67,40 @@
             this.ucLoadWeeklyMeasures.Size = new System.Drawing.Size(1055, 436);
             this.ucLoadWeeklyMeasures.TabIndex = 2;
             this.ucLoadWeeklyMeasures.SaveClick += new System.EventHandler(this.ucLoadWeeklyMeasures_SaveClick);
+            // 
+            // lbCurrentStandard
+            // 
+            this.lbCurrentStandard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbCurrentStandard.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentStandard.Location = new System.Drawing.Point(203, 3);
+            this.lbCurrentStandard.Name = "lbCurrentStandard";
+            this.lbCurrentStandard.Size = new System.Drawing.Size(849, 38);
+            this.lbCurrentStandard.TabIndex = 2;
+            this.lbCurrentStandard.Text = "{{Current Standard}}";
+            // 
+            // btnShowStandardSelection
+            // 
+            this.btnShowStandardSelection.Location = new System.Drawing.Point(3, 3);
+            this.btnShowStandardSelection.Name = "btnShowStandardSelection";
+            this.btnShowStandardSelection.Size = new System.Drawing.Size(177, 38);
+            this.btnShowStandardSelection.TabIndex = 1;
+            this.btnShowStandardSelection.Text = "Ir Seleccionar Indicador";
+            this.btnShowStandardSelection.Click += new System.EventHandler(this.btnShowStandardSelection_Click);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 855F));
+            this.tableLayoutPanel2.Controls.Add(this.btnShowStandardSelection, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lbCurrentStandard, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1055, 44);
+            this.tableLayoutPanel2.TabIndex = 5;
             // 
             // FrmEnterWeeklyMeasures
             // 
@@ -117,10 +117,10 @@
             this.Text = "FrmBatchSelection";
             this.Load += new System.EventHandler(this.FrmEnterDailyMeasures_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lbCurrentStandard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnShowStandardSelection)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnShowStandardSelection)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbCurrentStandard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -130,8 +130,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private UserControls.UcLoadWeeklyMeasures ucLoadWeeklyMeasures;
-        private Telerik.WinControls.UI.RadButton btnShowStandardSelection;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private Telerik.WinControls.UI.RadButton btnShowStandardSelection;
         private Telerik.WinControls.UI.RadLabel lbCurrentStandard;
 
 

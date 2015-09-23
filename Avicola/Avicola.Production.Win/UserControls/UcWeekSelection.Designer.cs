@@ -41,21 +41,23 @@
             // btnNext
             // 
             this.btnNext.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnNext.Image = global::Avicola.Production.Win.Properties.Resources.Arrow_Right_Medium;
+            this.btnNext.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnNext.Location = new System.Drawing.Point(630, 3);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(81, 64);
             this.btnNext.TabIndex = 0;
-            this.btnNext.Text = ">";
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
             this.btnPrevious.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnPrevious.Image = global::Avicola.Production.Win.Properties.Resources.Arrow_Left_Medium;
+            this.btnPrevious.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnPrevious.Location = new System.Drawing.Point(3, 3);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(81, 64);
             this.btnPrevious.TabIndex = 1;
-            this.btnPrevious.Text = "<";
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // lbCurrent
@@ -90,6 +92,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(0, 70);
             this.Name = "UcWeekSelection";
             this.Size = new System.Drawing.Size(714, 70);
             ((System.ComponentModel.ISupportInitialize)(this.btnNext)).EndInit();
