@@ -18,7 +18,7 @@ namespace Avicola.Office.Services.Interfaces
 
         BatchVaccine GetById(Guid id);
 
-        IList<BatchVaccineDto> GetByBatchId(Guid batchId);
+        List<BatchVaccineDto> GetByBatchId(Guid batchId);
 
         void Create(BatchVaccine batchVaccine);
 

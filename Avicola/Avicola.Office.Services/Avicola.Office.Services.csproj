@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VaccineService.cs" />
+    <Compile Include="Dtos\VaccineDto.cs" />
+    <Compile Include="Interfaces\IVaccineService.cs" />
     <Compile Include="ReportService.cs" />
     <Compile Include="BatchVaccineService.cs" />
     <Compile Include="Dtos\BatchObservationDto.cs" />
@@ -122,7 +125,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

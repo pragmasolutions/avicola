@@ -40,7 +40,7 @@ namespace Avicola.Office.Services
             return Uow.BatchVaccines.Get(g => g.Id == id);
         }
 
-        public IList<BatchVaccineDto> GetByBatchId(Guid batchId)
+        public List<BatchVaccineDto> GetByBatchId(Guid batchId)
         {
             return Uow.BatchVaccines.GetAll(whereClause: null, includes: x => x.Vaccine).Where(e => e.BatchId == batchId && !e.IsDeleted)
                     .Project()

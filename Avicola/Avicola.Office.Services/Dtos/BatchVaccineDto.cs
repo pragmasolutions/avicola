@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Avicola.Office.Entities;
+using Framework.Common.Mapping;
+using System;
 
 namespace Avicola.Office.Services.Dtos
 {
-    public class BatchVaccineDto
+    public class BatchVaccineDto : IMapFrom<BatchVaccine>
     {
         public Guid Id { get; set; }
         public Guid BatchId { get; set; }

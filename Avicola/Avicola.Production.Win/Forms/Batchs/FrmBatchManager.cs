@@ -10,6 +10,7 @@ using Avicola.Production.Win.Properties;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Avicola.Production.Win.Forms.Observations;
+using Avicola.Production.Win.Forms.Vaccines;
 
 namespace Avicola.Production.Win.Forms.Batchs
 {
@@ -115,6 +116,12 @@ namespace Avicola.Production.Win.Forms.Batchs
         private void btnObservaciones_Click(object sender, EventArgs e)
         {
             var frm = FormFactory.Create<FrmObservationList>();
+            frm.ShowDialog();
+        }
+
+        private void btnVacunas_Click(object sender, EventArgs e)
+        {
+            var frm = FormFactory.Create<FrmVaccinesList>();
             frm.ShowDialog();
         }
     }

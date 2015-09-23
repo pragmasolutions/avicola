@@ -77,7 +77,6 @@
             this.dtpStartDate.TabStop = false;
             this.dtpStartDate.Text = "14/09/2015";
             this.dtpStartDate.Value = new System.DateTime(2015, 9, 14, 10, 20, 19, 820);
-            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpObservationDate_ValueChanged);
             // 
             // metroLabel1
             // 
@@ -177,7 +176,7 @@
             this.ddlVaccines.TabIndex = 91;
             this.ddlVaccines.Text = "Seleccione vacuna";
             // 
-            // FrmCreateEditVaccine
+            // FrmCreateEditBatchVaccine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -196,7 +195,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "FrmCreateEditVaccine";
+            this.Name = "FrmCreateEditBatchVaccine";
             // 
             // 
             // 

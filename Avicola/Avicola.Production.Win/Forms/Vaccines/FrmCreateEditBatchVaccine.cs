@@ -41,9 +41,11 @@ namespace Avicola.Production.Win.Forms.Vaccines
             using (var batchService = _serviceFactory.Create<IBatchService>())
             {
                 _batch = batchService.GetById(_stateController.CurrentSelectedBatch.Id);
-                SetWeekAndDay(_batch.DateOfBirth,DateTime.Now);
+
                 dtpStartDate.Value = DateTime.Now;
-                formTitle = string.Format("Lote {0} - Crear Vacuna", _batch.Number.ToString());
+                dtpEndDate.Value = DateTime.Now;
+                dtpRecommendedDate.Value = DateTime.Now;
+                formTitle = string.Format("Lote {0} - Crear Vacunación", _batch.Number.ToString());
             }
 
             if (_vaccineId != Guid.Empty)
@@ -54,8 +56,16 @@ namespace Avicola.Production.Win.Forms.Vaccines
                     dtpRecommendedDate.Value = _batchVaccine.RecommendedDate.Value;
                     dtpStartDate.Value = _batchVaccine.StartDate;
                     dtpEndDate.Value = _batchVaccine.EndDate.Value;
-                    formTitle = string.Format("Lote {0} - Editar Vacuna", _batch.Number.ToString());
+                    formTitle = string.Format("Lote {0} - Editar Vacunación", _batch.Number.ToString());
                 }
+            }
+
+            using (var vaccineService = _serviceFactory.Create<IVaccineService>())
+            {
+                var vaccines = vaccineService.GetAllActive().OrderBy(x => x.Name).ToList();
+                ddlVaccines.ValueMember = "Id";
+                ddlVaccines.DisplayMember = "Name";
+                ddlVaccines.DataSource = vaccines;
             }
 
             this.Text = formTitle;
@@ -64,6 +74,8 @@ namespace Avicola.Production.Win.Forms.Vaccines
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             var esValido = this.ValidarForm();
+            if (FormErrorProvider.GetError(dtpStartDate) != "")
+                esValido = false;
 
             if (!esValido)
             {
@@ -111,10 +123,10 @@ namespace Avicola.Production.Win.Forms.Vaccines
             var batchVaccine = new CreateBatchVaccineModel
             {
                 Id = new Guid(),
-                VaccineId = (Guid)ddlVaccines.SelectedValue;
-                RecommendedDate = dtpRecommendedDate.Value;
-                EndDate = dtpEndDate.Value;
-                StartDate = dtpStartDate.Value;
+                VaccineId = (Guid)ddlVaccines.SelectedValue,
+                RecommendedDate = dtpRecommendedDate.Value,
+                EndDate = dtpEndDate.Value,
+                StartDate = dtpStartDate.Value,
                 CreatedDate = DateTime.Now,
                 IsDelete = false,
                 BatchId = _stateController.CurrentSelectedBatch.Id
@@ -130,6 +142,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
             if (_batch.DateOfBirth > dtpStartDate.Value || _batch.EndDate < dtpStartDate.Value)
             {
                 this.FormErrorProvider.SetError(dtpStartDate, "La fecha de vacunación tiene que estar comprendida en la fecha de nacimiento y la fecha de fin.");
+
             }
         }
 
@@ -151,11 +164,5 @@ namespace Avicola.Production.Win.Forms.Vaccines
         {
             this.Close();
         }
-
-        private void dtpObservationDate_ValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
     }
 }

@@ -95,7 +95,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
             if (selectedRow == null)
                 return;
 
-            var observation = selectedRow.DataBoundItem as BatchObservationDto;
+            var observation = selectedRow.DataBoundItem as BatchVaccineDto;
 
             if (observation == null)
                 return;

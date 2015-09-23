@@ -251,6 +251,7 @@
             this.btnVacunas.Text = "Registrar vacunación";
             this.btnVacunas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnVacunas.UseVisualStyleBackColor = true;
+            this.btnVacunas.Click += new System.EventHandler(this.btnVacunas_Click);
             // 
             // btnEstandares
             // 
