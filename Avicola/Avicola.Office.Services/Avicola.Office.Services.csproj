@@ -58,9 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VaccineService.cs" />
+    <Compile Include="Dtos\VaccineDto.cs" />
+    <Compile Include="Interfaces\IVaccineService.cs" />
     <Compile Include="ReportService.cs" />
+    <Compile Include="BatchVaccineService.cs" />
     <Compile Include="Dtos\BatchObservationDto.cs" />
     <Compile Include="Dtos\BatchDto.cs" />
+    <Compile Include="Dtos\BatchVaccineDto.cs" />
     <Compile Include="Dtos\LoadMeasureModel.cs" />
     <Compile Include="Dtos\MeasureDto.cs" />
     <Compile Include="BatchObservationService.cs" />
@@ -68,6 +73,7 @@
     <Compile Include="Dtos\UpdateMeasureDto.cs" />
     <Compile Include="FoodClassService.cs" />
     <Compile Include="Interfaces\IReportService.cs" />
+    <Compile Include="Interfaces\IBatchVaccineService.cs" />
     <Compile Include="Interfaces\IBatchObservationService.cs" />
     <Compile Include="Interfaces\IFormFactory.cs" />
     <Compile Include="Interfaces\IFoodClassService.cs" />

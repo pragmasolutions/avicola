@@ -66,6 +66,8 @@ namespace Avicola.Production.Win.Forms.Observations
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             var esValido = this.ValidarForm();
+            if (FormErrorProvider.GetError(dtpObservationDate) != "")
+                esValido = false;
 
             if (!esValido)
             {
