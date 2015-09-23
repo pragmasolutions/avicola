@@ -52,9 +52,9 @@
             // ucStandardSelecction
             // 
             this.ucStandardSelecction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucStandardSelecction.Location = new System.Drawing.Point(3, 51);
+            this.ucStandardSelecction.Location = new System.Drawing.Point(3, 53);
             this.ucStandardSelecction.Name = "ucStandardSelecction";
-            this.ucStandardSelecction.Size = new System.Drawing.Size(1018, 426);
+            this.ucStandardSelecction.Size = new System.Drawing.Size(1018, 445);
             this.ucStandardSelecction.TabIndex = 13;
             this.ucStandardSelecction.StandardSelected += new System.EventHandler<Avicola.Office.Entities.Standard>(this.ucStandardSelecction_StandardSelected);
             // 
@@ -62,13 +62,12 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ucStandardSelecction, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -87,7 +86,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1018, 42);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1018, 44);
             this.tableLayoutPanel3.TabIndex = 15;
             // 
             // btnShowBatchManagerView

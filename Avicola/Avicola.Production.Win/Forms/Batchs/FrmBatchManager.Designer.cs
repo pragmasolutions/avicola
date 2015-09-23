@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBatchManager));
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnShowBatchSelectionView = new Telerik.WinControls.UI.RadButton();
+            this.lbBatchTitle = new System.Windows.Forms.Label();
+            this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtFechaIngresoGalpon = new System.Windows.Forms.TextBox();
             this.txtGalpon = new System.Windows.Forms.TextBox();
@@ -49,11 +54,75 @@
             this.btnObservaciones = new System.Windows.Forms.Button();
             this.btnVacunas = new System.Windows.Forms.Button();
             this.btnEstandares = new System.Windows.Forms.Button();
-            this.lbBatchTitle = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnShowBatchSelectionView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
+            this.radPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.radPanel1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1029, 688);
+            this.tableLayoutPanel1.TabIndex = 13;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 855F));
+            this.tableLayoutPanel3.Controls.Add(this.btnShowBatchSelectionView, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lbBatchTitle, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1018, 44);
+            this.tableLayoutPanel3.TabIndex = 16;
+            // 
+            // btnShowBatchSelectionView
+            // 
+            this.btnShowBatchSelectionView.Location = new System.Drawing.Point(3, 3);
+            this.btnShowBatchSelectionView.Name = "btnShowBatchSelectionView";
+            this.btnShowBatchSelectionView.Size = new System.Drawing.Size(177, 36);
+            this.btnShowBatchSelectionView.TabIndex = 1;
+            this.btnShowBatchSelectionView.Text = "Ir a Selección de Lote";
+            this.btnShowBatchSelectionView.Click += new System.EventHandler(this.btnShowBatchSelectionView_Click);
+            // 
+            // lbBatchTitle
+            // 
+            this.lbBatchTitle.AutoSize = true;
+            this.lbBatchTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBatchTitle.Location = new System.Drawing.Point(203, 0);
+            this.lbBatchTitle.Name = "lbBatchTitle";
+            this.lbBatchTitle.Size = new System.Drawing.Size(194, 37);
+            this.lbBatchTitle.TabIndex = 12;
+            this.lbBatchTitle.Text = "{{Batch Title}}";
+            // 
+            // radPanel1
+            // 
+            this.radPanel1.Controls.Add(this.groupBox2);
+            this.radPanel1.Controls.Add(this.groupBox1);
+            this.radPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radPanel1.Location = new System.Drawing.Point(3, 71);
+            this.radPanel1.Name = "radPanel1";
+            this.radPanel1.Size = new System.Drawing.Size(1023, 614);
+            this.radPanel1.TabIndex = 14;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel1.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             // 
             // groupBox2
             // 
@@ -69,112 +138,125 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(8, 75);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1004, 194);
+            this.groupBox2.Size = new System.Drawing.Size(1000, 222);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detall de lote";
             // 
             // txtFechaIngresoGalpon
             // 
-            this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(643, 148);
+            this.txtFechaIngresoGalpon.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(643, 153);
             this.txtFechaIngresoGalpon.Name = "txtFechaIngresoGalpon";
             this.txtFechaIngresoGalpon.ReadOnly = true;
-            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(205, 20);
+            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(205, 33);
             this.txtFechaIngresoGalpon.TabIndex = 11;
             // 
             // txtGalpon
             // 
-            this.txtGalpon.Location = new System.Drawing.Point(643, 59);
+            this.txtGalpon.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGalpon.Location = new System.Drawing.Point(643, 65);
             this.txtGalpon.Name = "txtGalpon";
             this.txtGalpon.ReadOnly = true;
-            this.txtGalpon.Size = new System.Drawing.Size(205, 20);
+            this.txtGalpon.Size = new System.Drawing.Size(205, 33);
             this.txtGalpon.TabIndex = 10;
             // 
             // txtSemanaActual
             // 
-            this.txtSemanaActual.Location = new System.Drawing.Point(358, 148);
+            this.txtSemanaActual.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSemanaActual.Location = new System.Drawing.Point(358, 153);
             this.txtSemanaActual.Name = "txtSemanaActual";
             this.txtSemanaActual.ReadOnly = true;
-            this.txtSemanaActual.Size = new System.Drawing.Size(205, 20);
+            this.txtSemanaActual.Size = new System.Drawing.Size(205, 33);
             this.txtSemanaActual.TabIndex = 9;
             // 
             // txtEtapa
             // 
-            this.txtEtapa.Location = new System.Drawing.Point(358, 59);
+            this.txtEtapa.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEtapa.Location = new System.Drawing.Point(358, 65);
             this.txtEtapa.Name = "txtEtapa";
             this.txtEtapa.ReadOnly = true;
-            this.txtEtapa.Size = new System.Drawing.Size(205, 20);
+            this.txtEtapa.Size = new System.Drawing.Size(205, 33);
             this.txtEtapa.TabIndex = 8;
             // 
             // txtLineaGenetica
             // 
-            this.txtLineaGenetica.Location = new System.Drawing.Point(39, 148);
+            this.txtLineaGenetica.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLineaGenetica.Location = new System.Drawing.Point(39, 153);
             this.txtLineaGenetica.Name = "txtLineaGenetica";
             this.txtLineaGenetica.ReadOnly = true;
-            this.txtLineaGenetica.Size = new System.Drawing.Size(205, 20);
+            this.txtLineaGenetica.Size = new System.Drawing.Size(205, 33);
             this.txtLineaGenetica.TabIndex = 7;
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(39, 59);
+            this.txtNumero.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumero.Location = new System.Drawing.Point(39, 65);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.ReadOnly = true;
-            this.txtNumero.Size = new System.Drawing.Size(205, 20);
+            this.txtNumero.Size = new System.Drawing.Size(205, 33);
             this.txtNumero.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(354, 37);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.Size = new System.Drawing.Size(59, 25);
             this.label6.TabIndex = 5;
             this.label6.Text = "Etapa";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(639, 126);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 13);
+            this.label5.Size = new System.Drawing.Size(208, 25);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha ingreso a galpón";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(354, 126);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.Size = new System.Drawing.Size(137, 25);
             this.label4.TabIndex = 3;
             this.label4.Text = "Semana Actual";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(639, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(73, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "Galpón";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(35, 126);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(136, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Línea Genética";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(35, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(81, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Número";
             // 
@@ -186,9 +268,10 @@
             this.groupBox1.Controls.Add(this.btnObservaciones);
             this.groupBox1.Controls.Add(this.btnVacunas);
             this.groupBox1.Controls.Add(this.btnEstandares);
-            this.groupBox1.Location = new System.Drawing.Point(8, 282);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(3, 231);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1004, 364);
+            this.groupBox1.Size = new System.Drawing.Size(1000, 364);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operación";
@@ -265,24 +348,12 @@
             this.btnEstandares.UseVisualStyleBackColor = true;
             this.btnEstandares.Click += new System.EventHandler(this.btnEstandares_Click);
             // 
-            // lbBatchTitle
-            // 
-            this.lbBatchTitle.AutoSize = true;
-            this.lbBatchTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBatchTitle.Location = new System.Drawing.Point(12, 24);
-            this.lbBatchTitle.Name = "lbBatchTitle";
-            this.lbBatchTitle.Size = new System.Drawing.Size(155, 32);
-            this.lbBatchTitle.TabIndex = 12;
-            this.lbBatchTitle.Text = "{{Batch Title}}";
-            // 
             // FrmBatchManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 640);
-            this.Controls.Add(this.lbBatchTitle);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(1029, 688);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmBatchManager";
@@ -292,12 +363,17 @@
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "FrmBatchSelection";
             this.Load += new System.EventHandler(this.FrmBatchManager_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnShowBatchSelectionView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
+            this.radPanel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -324,6 +400,10 @@
         private System.Windows.Forms.Label lbBatchTitle;
         private System.Windows.Forms.Button btnEndBatch;
         private System.Windows.Forms.Button btnEliminarLote;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Telerik.WinControls.UI.RadPanel radPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private Telerik.WinControls.UI.RadButton btnShowBatchSelectionView;
 
 
     }

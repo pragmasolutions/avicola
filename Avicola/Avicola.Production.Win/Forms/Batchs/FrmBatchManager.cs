@@ -124,5 +124,10 @@ namespace Avicola.Production.Win.Forms.Batchs
             var frm = FormFactory.Create<FrmVaccinesList>();
             frm.ShowDialog();
         }
+
+        private void btnShowBatchSelectionView_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadBatchSelectionView();
+        }
     }
 }
