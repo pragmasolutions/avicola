@@ -115,6 +115,7 @@
             // 
             // radPanel1
             // 
+            this.radPanel1.AutoScroll = true;
             this.radPanel1.Controls.Add(this.groupBox2);
             this.radPanel1.Controls.Add(this.groupBox1);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -352,6 +353,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1029, 688);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
