@@ -40,9 +40,9 @@ namespace Avicola.Production.Win.Forms.Standards
 
         private void LoadBatchStandards()
         {
-            using (var batchService = _serviceFactory.Create<IStandardService>())
+            using (var standardService = _serviceFactory.Create<IStandardService>())
             {
-                var standards = batchService.GetByBatchId(_stateController.CurrentSelectedBatch.Id).ToList();
+                var standards = standardService.GetByBatchId(_stateController.CurrentSelectedBatch.Id).Where(s => !s.IsDeleted).ToList();
 
                 ucStandardSelecction.Standards = standards;
             }
