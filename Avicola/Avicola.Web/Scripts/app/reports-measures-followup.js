@@ -1,5 +1,5 @@
 ﻿var reportesVentasPorCierre = function () {
-    var $formRefreshReport = $("#FrmActualizarReporte"),
+    var $formRefreshReport = $("#FrmRefreshReport"),
     init = function () {
         $('#StageId').attr('disabled', 'disabled');
 

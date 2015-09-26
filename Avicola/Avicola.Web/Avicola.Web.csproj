@@ -831,6 +831,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Reports\" />
     <Folder Include="Scripts\Highcharts-4.1.8\exporting-server\java\highcharts-export\highcharts-export-convert\target\generated-sources\annotations\" />
     <Folder Include="Scripts\Highcharts-4.1.8\exporting-server\java\highcharts-export\highcharts-export-convert\target\surefire\" />
     <Folder Include="Scripts\Highcharts-4.1.8\exporting-server\java\highcharts-export\highcharts-export-web\target\generated-sources\annotations\" />

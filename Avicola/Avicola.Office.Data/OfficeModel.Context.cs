@@ -52,5 +52,22 @@ namespace Avicola.Office.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StandardGeneticLineDelete", idParameter);
         }
+    
+        public virtual ObjectResult<ReportBreedingMeasuresFollowUpRow> ReportBreedingMeasuresFollowUpRow(Nullable<System.Guid> batchId, Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo)
+        {
+            var batchIdParameter = batchId.HasValue ?
+                new ObjectParameter("BatchId", batchId) :
+                new ObjectParameter("BatchId", typeof(System.Guid));
+    
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("DateFrom", dateFrom) :
+                new ObjectParameter("DateFrom", typeof(System.DateTime));
+    
+            var dateToParameter = dateTo.HasValue ?
+                new ObjectParameter("DateTo", dateTo) :
+                new ObjectParameter("DateTo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportBreedingMeasuresFollowUpRow>("ReportBreedingMeasuresFollowUpRow", batchIdParameter, dateFromParameter, dateToParameter);
+        }
     }
 }

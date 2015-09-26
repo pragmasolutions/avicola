@@ -18,5 +18,10 @@ namespace Avicola.Office.Services
         {
             Uow = uow;
         }
+
+        public List<ReportBreedingMeasuresFollowUpRow> BreedingMeasuresFollowUp(Guid batchId, DateTime? dateFrom, DateTime? dateTo)
+        {
+            return Uow.DbContext.ReportBreedingMeasuresFollowUpRow(batchId, dateFrom, dateTo).ToList();
+        }
     }
 }

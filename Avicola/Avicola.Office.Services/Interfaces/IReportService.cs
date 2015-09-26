@@ -12,6 +12,7 @@ namespace Avicola.Office.Services.Interfaces
 {
     public interface IReportService: IService
     {
-        
+
+        List<ReportBreedingMeasuresFollowUpRow> BreedingMeasuresFollowUp(Guid batchId, DateTime? dateFrom, DateTime? dateTo);
     }
 }
