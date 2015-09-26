@@ -19,7 +19,6 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchObservation_Batch" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_Batch" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Standard_DataLoadType" ManuallyRouted="false" />
-        <AssociationConnector Association="Avicola.OfficeModel.FK_StandardItem_FoodClass" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_StandardGeneticLine_GeneticLine" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_StandardItem" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_StandardGeneticLine_Standard" ManuallyRouted="false" />
@@ -35,6 +34,7 @@
         <EntityTypeShape EntityType="Avicola.OfficeModel.StandardType" Width="1.5" PointX="3.375" PointY="11.875" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Standard_StandardType" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_Stage" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_FoodClass" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

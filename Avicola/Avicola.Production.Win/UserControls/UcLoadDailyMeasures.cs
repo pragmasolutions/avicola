@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Avicola.Office.Entities;
+using Avicola.Office.Services.Interfaces;
 using Avicola.Production.Win.Models.Measures;
 using Avicola.Production.Win.Properties;
 using Telerik.WinControls.UI;
@@ -20,10 +21,12 @@ namespace Avicola.Production.Win.UserControls
         private IList<LoadDailyStandardMeasures> _loadDailyStandardMeasures;
         private LoadDailyStandardMeasures _currentDailyStandardMeasure;
 
-        public UcLoadDailyMeasures()
-        {
-            InitializeComponent();
+        
 
+        public UcLoadDailyMeasures(IServiceFactory serviceFactory)
+        {
+            _serviceFactory = serviceFactory;
+            InitializeComponent();
             gvDailyMeasures.TableElement.RowHeight = GlobalConstants.DefaultRowHeight;
         }
 
@@ -51,7 +54,7 @@ namespace Avicola.Production.Win.UserControls
                 ucWeekSelection.Current = firstWeek.Week;
 
                 UpdateCurrentDailyStandardMeasure(firstWeek);
-
+                
                 UpdateTotal();
             }
         }
@@ -61,6 +64,16 @@ namespace Avicola.Production.Win.UserControls
             _currentDailyStandardMeasure = firstWeek;
 
             gvDailyMeasures.DataSource = firstWeek.DailyStandardMeasures;
+
+            ShowHideFoodClassColumn();
+        }
+
+        private void ShowHideFoodClassColumn()
+        {
+            if (this.Standard.Id != Standard.FoodEntry)
+            {
+                gvDailyMeasures.Columns["FoodClassId"].IsVisible = false;
+            }
         }
 
         private void ucWeekSelection_CurrentWeekChanged(object sender, int e)
@@ -119,13 +132,29 @@ namespace Avicola.Production.Win.UserControls
 
             if (measure != null)
             {
-                var editMeasure = measure.Date.Date <= DateTime.Today && e.Column.Name == "Value";
+                var editMeasure = measure.Date.Date <= DateTime.Today && (e.Column.Name == "Value" || e.Column.Name == "FoodClassId");
 
                 if (!editMeasure)
                 {
                     e.Cancel = true;
                 }
+                else if (e.Column.Name == "FoodClassId")
+                {
+                    var value = e.Row.Cells["Value"].Value;
+                    if (value == null)
+                    {
+                        e.Cancel = true;
+                    }
+                }
             }
+        }
+
+        private void UcLoadDailyMeasures_Load(object sender, EventArgs e)
+        {
+            //var dropdown = gvDailyMeasures.Columns["FoodClassId"] as GridViewComboBoxColumn;
+            //dropdown.DataSource = FoodClasses;
+            //dropdown.ValueMember = "Id";
+            //dropdown.DisplayMember = "Name";
         }
     }
 }

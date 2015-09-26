@@ -18,8 +18,8 @@ namespace Avicola.Office.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FoodClass()
         {
-            this.StandardItems = new HashSet<StandardItem>();
             this.Batches = new HashSet<Batch>();
+            this.Measures = new HashSet<Measure>();
         }
     
         public System.Guid Id { get; set; }
@@ -28,8 +28,8 @@ namespace Avicola.Office.Entities
         public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StandardItem> StandardItems { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Batch> Batches { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Measure> Measures { get; set; }
     }
 }

@@ -12,5 +12,6 @@ namespace Avicola.Office.Services.Dtos
         public System.Guid BatchId { get; set; }
         public System.Guid StandardItemId { get; set; }
         public decimal? Value { get; set; }
+        public Guid? FoodClassId { get; set; }
     }
 }

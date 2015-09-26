@@ -95,6 +95,7 @@
           <Property Name="BatchId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StandardItemId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Value" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="FoodClassId" Type="uniqueidentifier" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Stage">
@@ -141,7 +142,6 @@
           <Property Name="Sequence" Type="int" Nullable="false" />
           <Property Name="Value1" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Value2" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="FoodClassId" Type="uniqueidentifier" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StandardType">
@@ -258,6 +258,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Measure_FoodClass">
+          <End Role="FoodClass" Type="Self.FoodClass" Multiplicity="0..1" />
+          <End Role="Measure" Type="Self.Measure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Measure">
+              <PropertyRef Name="FoodClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Measure_StandardItem">
           <End Role="StandardItem" Type="Self.StandardItem" Multiplicity="1" />
           <End Role="Measure" Type="Self.Measure" Multiplicity="*" />
@@ -330,18 +342,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StandardItem_FoodClass">
-          <End Role="FoodClass" Type="Self.FoodClass" Multiplicity="0..1" />
-          <End Role="StandardItem" Type="Self.StandardItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FoodClass">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StandardItem">
-              <PropertyRef Name="FoodClassId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_StandardItem_StandardGeneticLine">
           <End Role="StandardGeneticLine" Type="Self.StandardGeneticLine" Multiplicity="1" />
           <End Role="StandardItem" Type="Self.StandardItem" Multiplicity="*" />
@@ -404,6 +404,10 @@
             <End Role="Batch" EntitySet="Batch" />
             <End Role="Measure" EntitySet="Measure" />
           </AssociationSet>
+          <AssociationSet Name="FK_Measure_FoodClass" Association="Self.FK_Measure_FoodClass">
+            <End Role="FoodClass" EntitySet="FoodClass" />
+            <End Role="Measure" EntitySet="Measure" />
+          </AssociationSet>
           <AssociationSet Name="FK_Measure_StandardItem" Association="Self.FK_Measure_StandardItem">
             <End Role="StandardItem" EntitySet="StandardItem" />
             <End Role="Measure" EntitySet="Measure" />
@@ -427,10 +431,6 @@
           <AssociationSet Name="FK_StandardGeneticLine_Standard" Association="Self.FK_StandardGeneticLine_Standard">
             <End Role="Standard" EntitySet="Standard" />
             <End Role="StandardGeneticLine" EntitySet="StandardGeneticLine" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StandardItem_FoodClass" Association="Self.FK_StandardItem_FoodClass">
-            <End Role="FoodClass" EntitySet="FoodClass" />
-            <End Role="StandardItem" EntitySet="StandardItem" />
           </AssociationSet>
           <AssociationSet Name="FK_StandardItem_StandardGeneticLine" Association="Self.FK_StandardItem_StandardGeneticLine">
             <End Role="StandardGeneticLine" EntitySet="StandardGeneticLine" />
@@ -506,9 +506,9 @@
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="StandardItems" Relationship="Self.FK_StandardItem_FoodClass" FromRole="FoodClass" ToRole="StandardItem" />
           <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_FoodClass" FromRole="FoodClass" ToRole="Batch" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Measures" Relationship="Avicola.OfficeModel.FK_Measure_FoodClass" FromRole="FoodClass" ToRole="Measure" />
         </EntityType>
         <EntityType Name="GeneticLine">
           <Key>
@@ -535,6 +535,8 @@
           <NavigationProperty Name="Batch" Relationship="Self.FK_Measure_Batch" FromRole="Measure" ToRole="Batch" />
           <NavigationProperty Name="StandardItem" Relationship="Self.FK_Measure_StandardItem" FromRole="Measure" ToRole="StandardItem" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="FoodClassId" Type="Guid" />
+          <NavigationProperty Name="FoodClass" Relationship="Avicola.OfficeModel.FK_Measure_FoodClass" FromRole="Measure" ToRole="FoodClass" />
         </EntityType>
         <EntityType Name="Standard">
           <Key>
@@ -576,8 +578,6 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="StandardGeneticLineId" Type="Guid" Nullable="false" />
           <Property Name="Sequence" Type="Int32" Nullable="false" />
-          <Property Name="FoodClassId" Type="Guid" />
-          <NavigationProperty Name="FoodClass" Relationship="Self.FK_StandardItem_FoodClass" FromRole="StandardItem" ToRole="FoodClass" />
           <NavigationProperty Name="Measures" Relationship="Self.FK_Measure_StandardItem" FromRole="StandardItem" ToRole="Measure" />
           <NavigationProperty Name="StandardGeneticLine" Relationship="Self.FK_StandardItem_StandardGeneticLine" FromRole="StandardItem" ToRole="StandardGeneticLine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
@@ -627,18 +627,6 @@
             </Principal>
             <Dependent Role="Standard">
               <PropertyRef Name="DataLoadTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StandardItem_FoodClass">
-          <End Role="FoodClass" Type="Self.FoodClass" Multiplicity="0..1" />
-          <End Role="StandardItem" Type="Self.StandardItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FoodClass">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StandardItem">
-              <PropertyRef Name="FoodClassId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -714,10 +702,6 @@
             <End Role="DataLoadType" EntitySet="DataLoadTypes" />
             <End Role="Standard" EntitySet="Standards" />
           </AssociationSet>
-          <AssociationSet Name="FK_StandardItem_FoodClass" Association="Self.FK_StandardItem_FoodClass">
-            <End Role="FoodClass" EntitySet="FoodClasses" />
-            <End Role="StandardItem" EntitySet="StandardItems" />
-          </AssociationSet>
           <AssociationSet Name="FK_StandardGeneticLine_GeneticLine" Association="Self.FK_StandardGeneticLine_GeneticLine">
             <End Role="GeneticLine" EntitySet="GeneticLines" />
             <End Role="StandardGeneticLine" EntitySet="StandardGeneticLines" />
@@ -772,6 +756,10 @@
           <FunctionImport Name="StandardGeneticLineDelete">
           <Parameter Name="Id" Mode="In" Type="Guid" />
           </FunctionImport>
+          <AssociationSet Name="FK_Measure_FoodClass" Association="Avicola.OfficeModel.FK_Measure_FoodClass">
+            <End Role="FoodClass" EntitySet="FoodClasses" />
+            <End Role="Measure" EntitySet="Measures" />
+          </AssociationSet>
           </EntityContainer>
         <Association Name="FK_Batch_Barn">
           <End Type="Avicola.OfficeModel.Barn" Role="Barn" Multiplicity="0..1" />
@@ -905,6 +893,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Measure_FoodClass">
+          <End Type="Avicola.OfficeModel.FoodClass" Role="FoodClass" Multiplicity="0..1" />
+          <End Type="Avicola.OfficeModel.Measure" Role="Measure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Measure">
+              <PropertyRef Name="FoodClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -988,6 +988,7 @@
           <EntitySetMapping Name="Measures">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Measure">
               <MappingFragment StoreEntitySet="Measure">
+                <ScalarProperty Name="FoodClassId" ColumnName="FoodClassId" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -1034,7 +1035,6 @@
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="StandardGeneticLineId" ColumnName="StandardGeneticLineId" />
                 <ScalarProperty Name="Sequence" ColumnName="Sequence" />
-                <ScalarProperty Name="FoodClassId" ColumnName="FoodClassId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,4 +1,10 @@
-﻿namespace Avicola.Production.Win.UserControls
+﻿using System.Collections.Generic;
+using System.Linq;
+using Avicola.Office.Entities;
+using Avicola.Office.Services.Interfaces;
+using Telerik.WinControls.UI;
+
+namespace Avicola.Production.Win.UserControls
 {
     partial class UcLoadDailyMeasures
     {
@@ -6,6 +12,23 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private readonly IServiceFactory _serviceFactory;
+        private IList<FoodClass> _foodClasses;
+
+        public IList<FoodClass> FoodClasses
+        {
+            get
+            {
+                if (_foodClasses == null)
+                {
+                    using (var service = _serviceFactory.Create<IFoodClassService>())
+                    {
+                        _foodClasses = service.GetAll().ToList();
+                    }
+                }
+                return _foodClasses;
+            }
+        }
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -31,14 +54,15 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn1 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.gvDailyMeasures = new Telerik.WinControls.UI.RadGridView();
             this.lbAggregate = new Telerik.WinControls.UI.RadLabel();
             this.btnSave = new Telerik.WinControls.UI.RadButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ucWeekSelection = new Avicola.Production.Win.UserControls.UcWeekSelection();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtTotal = new Telerik.WinControls.UI.RadTextBox();
-            this.ucWeekSelection = new Avicola.Production.Win.UserControls.UcWeekSelection();
             ((System.ComponentModel.ISupportInitialize)(this.gvDailyMeasures)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDailyMeasures.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbAggregate)).BeginInit();
@@ -67,24 +91,34 @@
             gridViewTextBoxColumn1.HeaderText = "Día";
             gridViewTextBoxColumn1.Name = "Day";
             gridViewTextBoxColumn1.ReadOnly = true;
-            gridViewTextBoxColumn1.Width = 180;
+            gridViewTextBoxColumn1.Width = 210;
             gridViewTextBoxColumn2.FieldName = "Date";
             gridViewTextBoxColumn2.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn2.HeaderText = "Fecha";
             gridViewTextBoxColumn2.Name = "Date";
             gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.Width = 146;
+            gridViewTextBoxColumn2.Width = 171;
             gridViewDecimalColumn1.EnableExpressionEditor = false;
             gridViewDecimalColumn1.Expression = "";
             gridViewDecimalColumn1.FieldName = "Value";
             gridViewDecimalColumn1.FormatString = "{0:N2}";
             gridViewDecimalColumn1.HeaderText = "Valor";
             gridViewDecimalColumn1.Name = "Value";
-            gridViewDecimalColumn1.Width = 425;
+            gridViewDecimalColumn1.Width = 215;
+            gridViewComboBoxColumn1.DisplayMember = "Name";
+            gridViewComboBoxColumn1.FieldName = "FoodClassId";
+            gridViewComboBoxColumn1.HeaderText = "Clase";
+            gridViewComboBoxColumn1.MinWidth = 160;
+            gridViewComboBoxColumn1.DataSource = FoodClasses;
+            gridViewComboBoxColumn1.Name = "FoodClassId";
+            gridViewComboBoxColumn1.ValueMember = "Id";
+            gridViewComboBoxColumn1.Width = 160;
+
             this.gvDailyMeasures.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
-            gridViewDecimalColumn1});
+            gridViewDecimalColumn1,
+            gridViewComboBoxColumn1});
             this.gvDailyMeasures.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvDailyMeasures.Name = "gvDailyMeasures";
             this.gvDailyMeasures.Size = new System.Drawing.Size(773, 263);
@@ -131,12 +165,26 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(781, 433);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
+            // ucWeekSelection
+            // 
+            this.ucWeekSelection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucWeekSelection.Current = 0;
+            this.ucWeekSelection.Location = new System.Drawing.Point(5, 5);
+            this.ucWeekSelection.Margin = new System.Windows.Forms.Padding(5);
+            this.ucWeekSelection.MinimumSize = new System.Drawing.Size(0, 86);
+            this.ucWeekSelection.Name = "ucWeekSelection";
+            this.ucWeekSelection.NumberOfWeek = 0;
+            this.ucWeekSelection.Size = new System.Drawing.Size(771, 86);
+            this.ucWeekSelection.TabIndex = 0;
+            this.ucWeekSelection.CurrentWeekChanged += new System.EventHandler<int>(this.ucWeekSelection_CurrentWeekChanged);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.33238F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.66763F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
             this.tableLayoutPanel2.Controls.Add(this.lbAggregate, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtTotal, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSave, 2, 0);
@@ -153,34 +201,21 @@
             this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(114, 4);
+            this.txtTotal.Location = new System.Drawing.Point(112, 4);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(125, 50);
             this.txtTotal.TabIndex = 6;
-            // 
-            // ucWeekSelection
-            // 
-            this.ucWeekSelection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucWeekSelection.Current = 0;
-            this.ucWeekSelection.Location = new System.Drawing.Point(5, 5);
-            this.ucWeekSelection.Margin = new System.Windows.Forms.Padding(5);
-            this.ucWeekSelection.MinimumSize = new System.Drawing.Size(0, 86);
-            this.ucWeekSelection.Name = "ucWeekSelection";
-            this.ucWeekSelection.NumberOfWeek = 0;
-            this.ucWeekSelection.Size = new System.Drawing.Size(771, 86);
-            this.ucWeekSelection.TabIndex = 0;
-            this.ucWeekSelection.CurrentWeekChanged += new System.EventHandler<int>(this.ucWeekSelection_CurrentWeekChanged);
             // 
             // UcLoadDailyMeasures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UcLoadDailyMeasures";
             this.Size = new System.Drawing.Size(781, 433);
+            this.Load += new System.EventHandler(this.UcLoadDailyMeasures_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvDailyMeasures.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDailyMeasures)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbAggregate)).EndInit();

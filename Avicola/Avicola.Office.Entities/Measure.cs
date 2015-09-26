@@ -21,8 +21,10 @@ namespace Avicola.Office.Entities
         public System.Guid StandardItemId { get; set; }
         public decimal Value { get; set; }
         public bool IsDeleted { get; set; }
+        public Nullable<System.Guid> FoodClassId { get; set; }
     
         public virtual Batch Batch { get; set; }
         public virtual StandardItem StandardItem { get; set; }
+        public virtual FoodClass FoodClass { get; set; }
     }
 }

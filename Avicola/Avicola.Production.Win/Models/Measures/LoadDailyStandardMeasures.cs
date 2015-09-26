@@ -19,5 +19,6 @@ namespace Avicola.Production.Win.Models.Measures
         public int Day { get; set; }
         public DateTime Date { get; set; }
         public decimal? Value { get; set; }
+        public Guid? FoodClassId { get; set; }
     }
 }
