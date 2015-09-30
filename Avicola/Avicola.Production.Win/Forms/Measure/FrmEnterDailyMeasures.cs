@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Avicola.Common.Win;
+using Avicola.Office.Entities;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
 using Avicola.Production.Win.Infrastructure;
@@ -50,38 +51,58 @@ namespace Avicola.Production.Win.Forms.Measure
                     var items = standardItemService.GetByStandardAndGeneticLine(standardId, stageId, geneticLineId);
                     var measures = measureService.GetByStandardAndBatch(standardId, batchId);
 
-                    var itemsGroupedByWeek = items.GroupBy(x => x.Week);
-
                     var model = new List<LoadDailyStandardMeasures>();
 
-                    foreach (var weekGroup in itemsGroupedByWeek)
+
+                    DateTime startDate;
+                    DateTime endDate;
+
+                    using (var geneticLineService = _serviceFactory.Create<IGeneticLineService>())
+                    {
+                        var geneticLine = geneticLineService.GetById(geneticLineId);
+                        if (_stateController.CurrentSelectedBatch.StageId == Stage.BREEDING)
+                        {
+
+                            startDate = batchDateOfBirth;
+                            endDate = _stateController.CurrentSelectedBatch.ArrivedToBarn
+                                      ?? batchDateOfBirth.AddDays(geneticLine.WeeksInBreeding*7);
+                        }
+                        else
+                        {
+                            startDate =_stateController.CurrentSelectedBatch.ArrivedToBarn.GetValueOrDefault();
+                            endDate = batchDateOfBirth.AddDays(geneticLine.ProductionWeeks*7);
+                        }
+                    }
+                    
+
+                    foreach (var item in items)
                     {
                         var dailyLoad = new LoadDailyStandardMeasures();
 
-                        dailyLoad.Week = weekGroup.Key;
+                        dailyLoad.Week = item.Sequence;
                         dailyLoad.DailyStandardMeasures = new List<DailyStandardMeasure>();
 
-                        foreach (var weekDays in weekGroup)
+                        for (var i = 0; i < 7; i++)
                         {
-                            if (!weekDays.Day.HasValue)
+                            var measureDate = startDate.AddDays((item.Sequence - 1) * 7 + i);
+                            if (measureDate < endDate)
                             {
-                                continue;
+                                var measure = measures.Where(m => !m.StandardItem.IsDeleted)
+                                            .FirstOrDefault(x => x.StandardItemId == item.Id
+                                                            && x.Date == measureDate);
+
+                                var measureModel = new DailyStandardMeasure()
+                                {
+                                    StandardItemId = item.Id,
+                                    MeasureId = measure == null ? Guid.Empty : measure.Id,
+                                    Date = measureDate,
+                                    Day = (item.Sequence - 1) * 7 + i + 1,
+                                    Value = measure == null ? (decimal?)null : measure.Value,
+                                    FoodClassId = measure == null ? (Guid?)null : measure.FoodClassId
+                                };
+
+                                dailyLoad.DailyStandardMeasures.Add(measureModel);
                             }
-
-                            var measureDate = batchDateOfBirth.AddDays(weekDays.Sequence);
-                            var measure = measures.Where(m => !m.StandardItem.IsDeleted).FirstOrDefault(x => x.StandardItemId == weekDays.Id);
-
-                            var measureModel = new DailyStandardMeasure()
-                            {
-                                StandardItemId = weekDays.Id,
-                                MeasureId = measure == null ? Guid.Empty : measure.Id,
-                                Date = measureDate,
-                                Day = weekDays.Sequence,
-                                Value = measure == null ? (decimal?)null : measure.Value,
-                                FoodClassId = measure == null ? (Guid?)null : measure.FoodClassId
-                            };
-
-                            dailyLoad.DailyStandardMeasures.Add(measureModel);
                         }
 
                         model.Add(dailyLoad);
@@ -114,7 +135,8 @@ namespace Avicola.Production.Win.Forms.Measure
                                      StandardItemId = x.StandardItemId,
                                      BatchId = _stateController.CurrentSelectedBatch.Id,
                                      Value = x.Value,
-                                     FoodClassId = x.FoodClassId
+                                     FoodClassId = x.FoodClassId,
+                                     Date = x.Date
                                  });
 
                 measureService.UpdateMeasures(measures);

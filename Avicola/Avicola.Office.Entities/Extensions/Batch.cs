@@ -29,16 +29,5 @@ namespace Avicola.Office.Entities
             get { return DateOfBirth.AddDays(GeneticLine.WeeksInBreeding * 7); }
         }
 
-        public void AssignDatesToStandardMeasures()
-        {
-            foreach (var measure in this.Measures)
-            {
-                measure.MeasureDate = this.DateOfBirth.AddDays((measure.StandardItem.Week - 1) * 7);
-                if (measure.StandardItem.Day != null)
-                {
-                    measure.MeasureDate = this.DateOfBirth.AddDays(measure.StandardItem.Day.GetValueOrDefault() - 1);
-                }
-            }
-        }
     }
 }

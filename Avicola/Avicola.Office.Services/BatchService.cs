@@ -89,12 +89,12 @@ namespace Avicola.Office.Services
         public string AssignBarn(Guid batchId, DateTime arrivedToBarn, Guid barnId)
         {
             var batch = GetById(batchId);
-            batch.AssignDatesToStandardMeasures();
+
             
             //chequeamos que no tenga medidas de precria para fechas posteriores
             foreach (var measure in batch.Measures)
             {
-                if (measure.MeasureDate > arrivedToBarn && measure.StandardItem.StandardGeneticLine.StageId == Stage.BREEDING)
+                if (measure.Date > arrivedToBarn && measure.StandardItem.StandardGeneticLine.StageId == Stage.BREEDING)
                 {
                     return "Existen medidas cargadas para estandares de cría y pre-cría posteriores a la fecha seleccionada";
                 }

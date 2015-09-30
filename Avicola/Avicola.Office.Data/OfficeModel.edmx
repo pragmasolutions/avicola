@@ -96,6 +96,7 @@
           <Property Name="StandardItemId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Value" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="FoodClassId" Type="uniqueidentifier" />
+          <Property Name="Date" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Stage">
@@ -542,6 +543,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="FoodClassId" Type="Guid" />
           <NavigationProperty Name="FoodClass" Relationship="Avicola.OfficeModel.FK_Measure_FoodClass" FromRole="Measure" ToRole="FoodClass" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Standard">
           <Key>
@@ -1024,6 +1026,7 @@
           <EntitySetMapping Name="Measures">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Measure">
               <MappingFragment StoreEntitySet="Measure">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="FoodClassId" ColumnName="FoodClassId" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
