@@ -12,5 +12,6 @@ namespace Avicola.Office.Services.Dtos
         public DateTime CreatedDate { get; set; }
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
+        public int? RecommendedDay { get; set; }
     }
 }

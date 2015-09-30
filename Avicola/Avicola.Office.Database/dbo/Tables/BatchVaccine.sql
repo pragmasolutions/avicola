@@ -3,7 +3,6 @@
 	[BatchId] [uniqueidentifier] NOT NULL,
 	[VaccineId] [uniqueidentifier] NOT NULL,
 	[CreatedDate] [datetime2](7) NOT NULL,
-	[RecommendedDate] [datetime2](7) NULL,
 	[StartDate] [datetime2](7) NOT NULL,
 	[EndDate] [datetime2](7) NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
