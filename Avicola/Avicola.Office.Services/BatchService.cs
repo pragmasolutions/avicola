@@ -70,7 +70,7 @@ namespace Avicola.Office.Services
         {
             return Uow.Batches.Get(x => x.Id == batchId,
                                 b => b.Measures,
-                                b => b.Measures.Select(m => m.StandardItem),
+                                b => b.Measures.Select(m => m.StandardItem),                                
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine),
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.GeneticLine),
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.Standard),

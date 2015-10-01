@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="Avicola.OfficeModel.Standard" Width="1.875" PointX="2.875" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.StandardGeneticLine" Width="1.75" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.StandardItem" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Avicola.OfficeModel.Vaccine" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchObservation_Batch" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_Batch" ManuallyRouted="false" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Standard_DataLoadType" ManuallyRouted="false" />
@@ -28,13 +27,14 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_GeneticLine" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.BatchVaccine" Width="1.5" PointX="12.75" PointY="6.875" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Batch" />
-        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.Stage" Width="1.5" PointX="0.75" PointY="11.875" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_StandardGeneticLine_Stage" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.StandardType" Width="1.5" PointX="3.375" PointY="11.875" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Standard_StandardType" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_Stage" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_FoodClass" />
+        <EntityTypeShape EntityType="Avicola.OfficeModel.Vaccine" Width="1.5" PointX="10.375" PointY="4.75" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

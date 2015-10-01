@@ -35,22 +35,22 @@
             this.BtnGuardar = new Telerik.WinControls.UI.RadButton();
             this.BtnCancelar = new Telerik.WinControls.UI.RadButton();
             this.pbvBatch = new System.Windows.Forms.ErrorProvider(this.components);
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.lblRecommendedDate = new Telerik.WinControls.UI.RadLabel();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.dtpEndDate = new Telerik.WinControls.UI.RadDateTimePicker();
-            this.dtpRecommendedDate = new Telerik.WinControls.UI.RadDateTimePicker();
             this.ddlVaccines = new Telerik.WinControls.UI.RadDropDownList();
+            this.txtRecommendedDate = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpStartDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnGuardar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnCancelar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbvBatch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblRecommendedDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEndDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpRecommendedDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlVaccines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRecommendedDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,21 +119,21 @@
             // 
             this.pbvBatch.ContainerControl = this;
             // 
-            // radLabel1
+            // lblRecommendedDate
             // 
-            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(13, 118);
-            this.radLabel1.Margin = new System.Windows.Forms.Padding(2);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(117, 24);
-            this.radLabel1.TabIndex = 86;
-            this.radLabel1.Text = "Recomendación";
-            this.radLabel1.ThemeName = "TelerikMetroBlue";
+            this.lblRecommendedDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecommendedDate.Location = new System.Drawing.Point(11, 168);
+            this.lblRecommendedDate.Margin = new System.Windows.Forms.Padding(2);
+            this.lblRecommendedDate.Name = "lblRecommendedDate";
+            this.lblRecommendedDate.Size = new System.Drawing.Size(149, 24);
+            this.lblRecommendedDate.TabIndex = 86;
+            this.lblRecommendedDate.Text = "Fecha Recomendada";
+            this.lblRecommendedDate.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(13, 172);
+            this.radLabel3.Location = new System.Drawing.Point(11, 116);
             this.radLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(92, 24);
@@ -154,27 +154,23 @@
             this.dtpEndDate.Text = "14/09/2015";
             this.dtpEndDate.Value = new System.DateTime(2015, 9, 14, 10, 20, 19, 820);
             // 
-            // dtpRecommendedDate
-            // 
-            this.dtpRecommendedDate.CustomFormat = "";
-            this.dtpRecommendedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpRecommendedDate.Location = new System.Drawing.Point(11, 148);
-            this.dtpRecommendedDate.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpRecommendedDate.Name = "dtpRecommendedDate";
-            this.dtpRecommendedDate.Size = new System.Drawing.Size(145, 20);
-            this.dtpRecommendedDate.TabIndex = 89;
-            this.dtpRecommendedDate.TabStop = false;
-            this.dtpRecommendedDate.Text = "14/09/2015";
-            this.dtpRecommendedDate.Value = new System.DateTime(2015, 9, 14, 10, 20, 19, 820);
-            // 
             // ddlVaccines
             // 
-            this.ddlVaccines.Location = new System.Drawing.Point(11, 200);
+            this.ddlVaccines.Location = new System.Drawing.Point(9, 144);
             this.ddlVaccines.Margin = new System.Windows.Forms.Padding(2);
             this.ddlVaccines.Name = "ddlVaccines";
             this.ddlVaccines.Size = new System.Drawing.Size(145, 20);
             this.ddlVaccines.TabIndex = 91;
             this.ddlVaccines.Text = "Seleccione vacuna";
+            this.ddlVaccines.SelectedValueChanged += new System.EventHandler(this.ddlVaccines_SelectedValueChanged);
+            // 
+            // txtRecommendedDate
+            // 
+            this.txtRecommendedDate.Location = new System.Drawing.Point(11, 197);
+            this.txtRecommendedDate.MaxLength = 10;
+            this.txtRecommendedDate.Name = "txtRecommendedDate";
+            this.txtRecommendedDate.Size = new System.Drawing.Size(143, 20);
+            this.txtRecommendedDate.TabIndex = 92;
             // 
             // FrmCreateEditBatchVaccine
             // 
@@ -182,12 +178,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 303);
             this.ControlBox = false;
+            this.Controls.Add(this.txtRecommendedDate);
             this.Controls.Add(this.ddlVaccines);
-            this.Controls.Add(this.dtpRecommendedDate);
             this.Controls.Add(this.dtpEndDate);
             this.Controls.Add(this.radLabel3);
             this.Controls.Add(this.radLabel2);
-            this.Controls.Add(this.radLabel1);
+            this.Controls.Add(this.lblRecommendedDate);
             this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.BtnGuardar);
@@ -210,11 +206,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.BtnGuardar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnCancelar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbvBatch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblRecommendedDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEndDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpRecommendedDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlVaccines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRecommendedDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -229,10 +225,10 @@
         private Telerik.WinControls.UI.RadDateTimePicker dtpStartDate;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private System.Windows.Forms.ErrorProvider pbvBatch;
-        private Telerik.WinControls.UI.RadLabel radLabel1;
+        private Telerik.WinControls.UI.RadLabel lblRecommendedDate;
         private Telerik.WinControls.UI.RadLabel radLabel3;
-        private Telerik.WinControls.UI.RadDateTimePicker dtpRecommendedDate;
         private Telerik.WinControls.UI.RadDateTimePicker dtpEndDate;
         private Telerik.WinControls.UI.RadDropDownList ddlVaccines;
+        private Telerik.WinControls.UI.RadTextBox txtRecommendedDate;
     }
 }
