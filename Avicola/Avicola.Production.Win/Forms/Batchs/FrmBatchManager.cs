@@ -40,6 +40,7 @@ namespace Avicola.Production.Win.Forms.Batchs
             txtFechaIngresoGalpon.Text = _stateController.CurrentSelectedBatch.ArrivedToBarn == null
                 ? string.Empty
                 : _stateController.CurrentSelectedBatch.ArrivedToBarn.GetValueOrDefault().ToShortDateString();
+            txtFechaNacimiento.Text = _stateController.CurrentSelectedBatch.DateOfBirth.ToShortDateString();
             txtGalpon.Text = _stateController.CurrentSelectedBatch.BarnNumber == null ? string.Empty : _stateController.CurrentSelectedBatch.BarnNumber.ToString();
             txtLineaGenetica.Text = _stateController.CurrentSelectedBatch.GeneticLineName;
             txtNumero.Text = _stateController.CurrentSelectedBatch.Number.ToString();

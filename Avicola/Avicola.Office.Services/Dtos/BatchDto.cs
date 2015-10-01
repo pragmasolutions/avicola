@@ -27,7 +27,7 @@ namespace Avicola.Office.Services.Dtos
             get
             {
                 var daysDifference = (DateTime.Now - DateOfBirth).TotalDays;
-                return Convert.ToInt32(Math.Floor(daysDifference % 7));
+                return Convert.ToInt32(Math.Floor(daysDifference / 7));
             }
         }
         

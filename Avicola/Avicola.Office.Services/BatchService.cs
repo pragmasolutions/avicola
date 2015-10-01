@@ -102,13 +102,13 @@ namespace Avicola.Office.Services
 
             //ahora chequeo que el galpon este disponible
             var availableBarns = _barnService.GetAllAvailable();
-            if (!availableBarns.Any(b => b.Id == barnId))
+            if (availableBarns.All(b => b.Id != barnId))
             {
                 return "El galpón seleccionado ya no se encuentra disponible";
             }
 
             var today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-            if (arrivedToBarn == batch.CalculatedPostureStartDate && arrivedToBarn == today)
+            if (arrivedToBarn <= today)
             {
                 batch.StageId = Stage.POSTURE;
             }

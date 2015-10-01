@@ -54,6 +54,8 @@
             this.btnObservaciones = new System.Windows.Forms.Button();
             this.btnVacunas = new System.Windows.Forms.Button();
             this.btnEstandares = new System.Windows.Forms.Button();
+            this.txtFechaNacimiento = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnShowBatchSelectionView)).BeginInit();
@@ -68,37 +70,40 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.radPanel1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1029, 688);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1372, 847);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 855F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 267F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1140F));
             this.tableLayoutPanel3.Controls.Add(this.btnShowBatchSelectionView, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.lbBatchTitle, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1018, 44);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1357, 54);
             this.tableLayoutPanel3.TabIndex = 16;
             // 
             // btnShowBatchSelectionView
             // 
-            this.btnShowBatchSelectionView.Location = new System.Drawing.Point(3, 3);
+            this.btnShowBatchSelectionView.Location = new System.Drawing.Point(4, 4);
+            this.btnShowBatchSelectionView.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowBatchSelectionView.Name = "btnShowBatchSelectionView";
-            this.btnShowBatchSelectionView.Size = new System.Drawing.Size(177, 36);
+            this.btnShowBatchSelectionView.Size = new System.Drawing.Size(236, 44);
             this.btnShowBatchSelectionView.TabIndex = 1;
             this.btnShowBatchSelectionView.Text = "Ir a Selección de Lote";
             this.btnShowBatchSelectionView.Click += new System.EventHandler(this.btnShowBatchSelectionView_Click);
@@ -107,9 +112,10 @@
             // 
             this.lbBatchTitle.AutoSize = true;
             this.lbBatchTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBatchTitle.Location = new System.Drawing.Point(203, 0);
+            this.lbBatchTitle.Location = new System.Drawing.Point(271, 0);
+            this.lbBatchTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbBatchTitle.Name = "lbBatchTitle";
-            this.lbBatchTitle.Size = new System.Drawing.Size(194, 37);
+            this.lbBatchTitle.Size = new System.Drawing.Size(241, 46);
             this.lbBatchTitle.TabIndex = 12;
             this.lbBatchTitle.Text = "{{Batch Title}}";
             // 
@@ -119,14 +125,17 @@
             this.radPanel1.Controls.Add(this.groupBox2);
             this.radPanel1.Controls.Add(this.groupBox1);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel1.Location = new System.Drawing.Point(3, 71);
+            this.radPanel1.Location = new System.Drawing.Point(4, 88);
+            this.radPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1023, 614);
+            this.radPanel1.Size = new System.Drawing.Size(1364, 755);
             this.radPanel1.TabIndex = 14;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel1.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtFechaNacimiento);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtFechaIngresoGalpon);
             this.groupBox2.Controls.Add(this.txtGalpon);
             this.groupBox2.Controls.Add(this.txtSemanaActual);
@@ -140,9 +149,11 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Location = new System.Drawing.Point(4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1000, 222);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(1333, 273);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detall de lote";
@@ -150,64 +161,71 @@
             // txtFechaIngresoGalpon
             // 
             this.txtFechaIngresoGalpon.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(643, 153);
+            this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(723, 188);
+            this.txtFechaIngresoGalpon.Margin = new System.Windows.Forms.Padding(4);
             this.txtFechaIngresoGalpon.Name = "txtFechaIngresoGalpon";
             this.txtFechaIngresoGalpon.ReadOnly = true;
-            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(205, 33);
+            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(245, 39);
             this.txtFechaIngresoGalpon.TabIndex = 11;
             // 
             // txtGalpon
             // 
             this.txtGalpon.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGalpon.Location = new System.Drawing.Point(643, 65);
+            this.txtGalpon.Location = new System.Drawing.Point(723, 80);
+            this.txtGalpon.Margin = new System.Windows.Forms.Padding(4);
             this.txtGalpon.Name = "txtGalpon";
             this.txtGalpon.ReadOnly = true;
-            this.txtGalpon.Size = new System.Drawing.Size(205, 33);
+            this.txtGalpon.Size = new System.Drawing.Size(245, 39);
             this.txtGalpon.TabIndex = 10;
             // 
             // txtSemanaActual
             // 
             this.txtSemanaActual.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSemanaActual.Location = new System.Drawing.Point(358, 153);
+            this.txtSemanaActual.Location = new System.Drawing.Point(372, 188);
+            this.txtSemanaActual.Margin = new System.Windows.Forms.Padding(4);
             this.txtSemanaActual.Name = "txtSemanaActual";
             this.txtSemanaActual.ReadOnly = true;
-            this.txtSemanaActual.Size = new System.Drawing.Size(205, 33);
+            this.txtSemanaActual.Size = new System.Drawing.Size(235, 39);
             this.txtSemanaActual.TabIndex = 9;
             // 
             // txtEtapa
             // 
             this.txtEtapa.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEtapa.Location = new System.Drawing.Point(358, 65);
+            this.txtEtapa.Location = new System.Drawing.Point(372, 80);
+            this.txtEtapa.Margin = new System.Windows.Forms.Padding(4);
             this.txtEtapa.Name = "txtEtapa";
             this.txtEtapa.ReadOnly = true;
-            this.txtEtapa.Size = new System.Drawing.Size(205, 33);
+            this.txtEtapa.Size = new System.Drawing.Size(235, 39);
             this.txtEtapa.TabIndex = 8;
             // 
             // txtLineaGenetica
             // 
             this.txtLineaGenetica.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLineaGenetica.Location = new System.Drawing.Point(39, 153);
+            this.txtLineaGenetica.Location = new System.Drawing.Point(52, 188);
+            this.txtLineaGenetica.Margin = new System.Windows.Forms.Padding(4);
             this.txtLineaGenetica.Name = "txtLineaGenetica";
             this.txtLineaGenetica.ReadOnly = true;
-            this.txtLineaGenetica.Size = new System.Drawing.Size(205, 33);
+            this.txtLineaGenetica.Size = new System.Drawing.Size(216, 39);
             this.txtLineaGenetica.TabIndex = 7;
             // 
             // txtNumero
             // 
             this.txtNumero.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumero.Location = new System.Drawing.Point(39, 65);
+            this.txtNumero.Location = new System.Drawing.Point(52, 80);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.ReadOnly = true;
-            this.txtNumero.Size = new System.Drawing.Size(205, 33);
+            this.txtNumero.Size = new System.Drawing.Size(216, 39);
             this.txtNumero.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(354, 37);
+            this.label6.Location = new System.Drawing.Point(367, 46);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 25);
+            this.label6.Size = new System.Drawing.Size(73, 32);
             this.label6.TabIndex = 5;
             this.label6.Text = "Etapa";
             // 
@@ -215,9 +233,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(639, 126);
+            this.label5.Location = new System.Drawing.Point(718, 155);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(208, 25);
+            this.label5.Size = new System.Drawing.Size(263, 32);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha ingreso a galpón";
             // 
@@ -225,9 +244,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(354, 126);
+            this.label4.Location = new System.Drawing.Point(367, 155);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 25);
+            this.label4.Size = new System.Drawing.Size(173, 32);
             this.label4.TabIndex = 3;
             this.label4.Text = "Semana Actual";
             // 
@@ -235,9 +255,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(639, 37);
+            this.label3.Location = new System.Drawing.Point(718, 46);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 25);
+            this.label3.Size = new System.Drawing.Size(91, 32);
             this.label3.TabIndex = 2;
             this.label3.Text = "Galpón";
             // 
@@ -245,9 +266,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(35, 126);
+            this.label2.Location = new System.Drawing.Point(47, 155);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 25);
+            this.label2.Size = new System.Drawing.Size(171, 32);
             this.label2.TabIndex = 1;
             this.label2.Text = "Línea Genética";
             // 
@@ -255,9 +277,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 37);
+            this.label1.Location = new System.Drawing.Point(47, 46);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 25);
+            this.label1.Size = new System.Drawing.Size(103, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Número";
             // 
@@ -270,9 +293,11 @@
             this.groupBox1.Controls.Add(this.btnVacunas);
             this.groupBox1.Controls.Add(this.btnEstandares);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 231);
+            this.groupBox1.Location = new System.Drawing.Point(4, 284);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1000, 364);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(1333, 448);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operación";
@@ -280,9 +305,10 @@
             // btnEliminarLote
             // 
             this.btnEliminarLote.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarLote.Image")));
-            this.btnEliminarLote.Location = new System.Drawing.Point(280, 198);
+            this.btnEliminarLote.Location = new System.Drawing.Point(373, 244);
+            this.btnEliminarLote.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminarLote.Name = "btnEliminarLote";
-            this.btnEliminarLote.Size = new System.Drawing.Size(230, 159);
+            this.btnEliminarLote.Size = new System.Drawing.Size(307, 196);
             this.btnEliminarLote.TabIndex = 13;
             this.btnEliminarLote.Text = "Eliminar lote";
             this.btnEliminarLote.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -292,9 +318,10 @@
             // btnEndBatch
             // 
             this.btnEndBatch.Image = ((System.Drawing.Image)(resources.GetObject("btnEndBatch.Image")));
-            this.btnEndBatch.Location = new System.Drawing.Point(39, 198);
+            this.btnEndBatch.Location = new System.Drawing.Point(52, 244);
+            this.btnEndBatch.Margin = new System.Windows.Forms.Padding(4);
             this.btnEndBatch.Name = "btnEndBatch";
-            this.btnEndBatch.Size = new System.Drawing.Size(230, 159);
+            this.btnEndBatch.Size = new System.Drawing.Size(307, 196);
             this.btnEndBatch.TabIndex = 12;
             this.btnEndBatch.Text = "Finalizar lote";
             this.btnEndBatch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -304,9 +331,10 @@
             // btnGalpon
             // 
             this.btnGalpon.Image = ((System.Drawing.Image)(resources.GetObject("btnGalpon.Image")));
-            this.btnGalpon.Location = new System.Drawing.Point(760, 25);
+            this.btnGalpon.Location = new System.Drawing.Point(1013, 31);
+            this.btnGalpon.Margin = new System.Windows.Forms.Padding(4);
             this.btnGalpon.Name = "btnGalpon";
-            this.btnGalpon.Size = new System.Drawing.Size(230, 159);
+            this.btnGalpon.Size = new System.Drawing.Size(307, 196);
             this.btnGalpon.TabIndex = 11;
             this.btnGalpon.Text = "Asignar galpón";
             this.btnGalpon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -316,9 +344,10 @@
             // btnObservaciones
             // 
             this.btnObservaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnObservaciones.Image")));
-            this.btnObservaciones.Location = new System.Drawing.Point(519, 25);
+            this.btnObservaciones.Location = new System.Drawing.Point(692, 31);
+            this.btnObservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.btnObservaciones.Name = "btnObservaciones";
-            this.btnObservaciones.Size = new System.Drawing.Size(230, 159);
+            this.btnObservaciones.Size = new System.Drawing.Size(307, 196);
             this.btnObservaciones.TabIndex = 10;
             this.btnObservaciones.Text = "Registrar Observación";
             this.btnObservaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -328,9 +357,10 @@
             // btnVacunas
             // 
             this.btnVacunas.Image = ((System.Drawing.Image)(resources.GetObject("btnVacunas.Image")));
-            this.btnVacunas.Location = new System.Drawing.Point(280, 25);
+            this.btnVacunas.Location = new System.Drawing.Point(373, 31);
+            this.btnVacunas.Margin = new System.Windows.Forms.Padding(4);
             this.btnVacunas.Name = "btnVacunas";
-            this.btnVacunas.Size = new System.Drawing.Size(230, 159);
+            this.btnVacunas.Size = new System.Drawing.Size(307, 196);
             this.btnVacunas.TabIndex = 9;
             this.btnVacunas.Text = "Registrar vacunación";
             this.btnVacunas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -340,24 +370,46 @@
             // btnEstandares
             // 
             this.btnEstandares.Image = ((System.Drawing.Image)(resources.GetObject("btnEstandares.Image")));
-            this.btnEstandares.Location = new System.Drawing.Point(39, 25);
+            this.btnEstandares.Location = new System.Drawing.Point(52, 31);
+            this.btnEstandares.Margin = new System.Windows.Forms.Padding(4);
             this.btnEstandares.Name = "btnEstandares";
-            this.btnEstandares.Size = new System.Drawing.Size(230, 159);
+            this.btnEstandares.Size = new System.Drawing.Size(307, 196);
             this.btnEstandares.TabIndex = 8;
             this.btnEstandares.Text = "Ingresar valores de estandares";
             this.btnEstandares.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEstandares.UseVisualStyleBackColor = true;
             this.btnEstandares.Click += new System.EventHandler(this.btnEstandares_Click);
             // 
+            // txtFechaNacimiento
+            // 
+            this.txtFechaNacimiento.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaNacimiento.Location = new System.Drawing.Point(1065, 80);
+            this.txtFechaNacimiento.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFechaNacimiento.Name = "txtFechaNacimiento";
+            this.txtFechaNacimiento.ReadOnly = true;
+            this.txtFechaNacimiento.Size = new System.Drawing.Size(245, 39);
+            this.txtFechaNacimiento.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(1060, 46);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(207, 32);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Fecha Nacimiento";
+            // 
             // FrmBatchManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1029, 688);
+            this.ClientSize = new System.Drawing.Size(1372, 847);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmBatchManager";
             // 
             // 
@@ -406,6 +458,8 @@
         private Telerik.WinControls.UI.RadPanel radPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Telerik.WinControls.UI.RadButton btnShowBatchSelectionView;
+        private System.Windows.Forms.TextBox txtFechaNacimiento;
+        private System.Windows.Forms.Label label7;
 
 
     }

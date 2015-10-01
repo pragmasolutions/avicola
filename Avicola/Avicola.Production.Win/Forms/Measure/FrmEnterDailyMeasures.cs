@@ -36,7 +36,10 @@ namespace Avicola.Production.Win.Forms.Measure
 
         private void FrmEnterDailyMeasures_Load(object sender, EventArgs e)
         {
-            lbCurrentStandard.Text = Resources.Standard + ": " + _stateController.CurrentSelectedStandard.Name; 
+            lbCurrentStandard.Text = String.Format("Indicador: {0}: {1}   |    Etapa: {2}",
+                                                Resources.Standard, 
+                                                _stateController.CurrentSelectedStandard.Name.ToUpper(),
+                                                _stateController.CurrentSelectedBatch.StageName.ToUpper()); 
             
             var geneticLineId = _stateController.CurrentSelectedBatch.GeneticLineId;
             var stageId = _stateController.CurrentSelectedBatch.StageId;
@@ -49,6 +52,8 @@ namespace Avicola.Production.Win.Forms.Measure
                 using (var measureService = _serviceFactory.Create<IMeasureService>())
                 {
                     var items = standardItemService.GetByStandardAndGeneticLine(standardId, stageId, geneticLineId);
+
+                    //TODO: filtrar items dependiendo de la etapa
                     var measures = measureService.GetByStandardAndBatch(standardId, batchId);
 
                     var model = new List<LoadDailyStandardMeasures>();
