@@ -18,6 +18,8 @@ using Avicola.Production.Win.Infrastructure;
 using Framework.Common.Helpers;
 using Framework.WinForm.Comun.Notification;
 using Avicola.Production.Win.Properties;
+using Framework.Common.Win.CustomProviders;
+using Telerik.WinControls.UI.Localization;
 
 namespace Avicola.Production.Win.Forms.Observations
 {
@@ -37,8 +39,11 @@ namespace Avicola.Production.Win.Forms.Observations
             _stateController = stateController;
             _serviceFactory = serviceFactory;
             _messageBoxDisplayService = messageBoxDisplayService;
+            RadGridLocalizationProvider.CurrentProvider = new CustomRadGridViewLocalizationProvider();
             
             InitializeComponent();
+
+            this.gvBatchObservations.CellFormatting += Grilla_CellFormatting;
         }
 
         private void FrmObservationList_Load(object sender, EventArgs e)

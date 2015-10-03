@@ -42,8 +42,8 @@ namespace Avicola.Production.Win.Forms.Vaccines
             {
                 _batch = batchService.GetById(_stateController.CurrentSelectedBatch.Id);
 
-                dtpStartDate.Value = DateTime.Now;
-                dtpEndDate.Value = DateTime.Now;
+                dtpStartDate.Value = _batch.DateOfBirth;
+                dtpEndDate.Value = _batch.DateOfBirth.AddDays(_batch.GeneticLine.ProductionWeeks * 7);
                 dtpRecommendedDate.Value = DateTime.Now;
                 formTitle = string.Format("Lote {0} - Crear Vacunación", _batch.Number.ToString());
             }
