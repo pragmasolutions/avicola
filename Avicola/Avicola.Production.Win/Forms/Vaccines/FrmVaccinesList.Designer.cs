@@ -33,7 +33,6 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
@@ -52,7 +51,7 @@
             // BtnAgregar
             // 
             this.BtnAgregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAgregar.Location = new System.Drawing.Point(451, 271);
+            this.BtnAgregar.Location = new System.Drawing.Point(348, 271);
             this.BtnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(75, 24);
@@ -65,7 +64,7 @@
             // 
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(536, 271);
+            this.BtnCancelar.Location = new System.Drawing.Point(433, 271);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 24);
@@ -93,22 +92,21 @@
             gridViewTextBoxColumn2.HeaderText = "Vacuna";
             gridViewTextBoxColumn2.Name = "VaccineName";
             gridViewTextBoxColumn2.Width = 180;
-            gridViewTextBoxColumn3.FieldName = "RecommendedDate";
+            gridViewTextBoxColumn3.FieldName = "StartDate";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
-            gridViewTextBoxColumn3.HeaderText = "Recomendación";
-            gridViewTextBoxColumn3.Name = "RecommendedDate";
+            gridViewTextBoxColumn3.HeaderText = "Comienzo";
+            gridViewTextBoxColumn3.Name = "StartDate";
             gridViewTextBoxColumn3.Width = 100;
-            gridViewTextBoxColumn4.FieldName = "StartDate";
+            gridViewTextBoxColumn4.FieldName = "EndDate";
             gridViewTextBoxColumn4.FormatString = "{0: dd/M/yyyy}";
-            gridViewTextBoxColumn4.HeaderText = "Comienzo";
-            gridViewTextBoxColumn4.Name = "StartDate";
+            gridViewTextBoxColumn4.HeaderText = "Fin";
+            gridViewTextBoxColumn4.Name = "EndDate";
             gridViewTextBoxColumn4.Width = 100;
             gridViewTextBoxColumn5.FieldName = "EndDate";
             gridViewTextBoxColumn5.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn5.HeaderText = "Fin";
             gridViewTextBoxColumn5.Name = "EndDate";
             gridViewTextBoxColumn5.Width = 100;
-            gridViewCommandColumn1.AllowResize = false;
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.Image = global::Avicola.Production.Win.Properties.Resources.Data_Edit;
             gridViewCommandColumn1.ImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -124,7 +122,6 @@
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
             gridViewCommandColumn1,
             gridViewCommandColumn2});
             this.gvBatchVaccines.MasterTemplate.ViewDefinition = tableViewDefinition1;
@@ -140,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 306);
+            this.ClientSize = new System.Drawing.Size(515, 306);
             this.Controls.Add(this.gvBatchVaccines);
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.BtnCancelar);

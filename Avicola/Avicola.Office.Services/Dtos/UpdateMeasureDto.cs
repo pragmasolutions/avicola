@@ -13,5 +13,6 @@ namespace Avicola.Office.Services.Dtos
         public System.Guid StandardItemId { get; set; }
         public decimal? Value { get; set; }
         public Guid? FoodClassId { get; set; }
+        public DateTime? Date { get; set; }
     }
 }

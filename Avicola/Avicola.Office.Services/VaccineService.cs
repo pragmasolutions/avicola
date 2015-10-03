@@ -51,6 +51,7 @@ namespace Avicola.Office.Services
             var currentVaccine = this.GetById(vaccine.Id);
 
             currentVaccine.Name = vaccine.Name;
+            currentVaccine.RecommendedDay = vaccine.RecommendedDay;
 
             Uow.Vaccines.Edit(currentVaccine);
             Uow.Commit();

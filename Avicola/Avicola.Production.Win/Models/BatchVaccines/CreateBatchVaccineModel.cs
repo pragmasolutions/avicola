@@ -20,8 +20,7 @@ namespace Avicola.Production.Win.Models.BatchVaccines
         [Required]
         public Guid? BatchId { get; set; }
         [Required]
-        public Guid? VaccineId { get; set; }
-        public DateTime? RecommendedDate { get; set; }
+        public Guid? VaccineId { get; set; }        
         [Required]
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
@@ -35,8 +34,7 @@ namespace Avicola.Production.Win.Models.BatchVaccines
                 Id = Guid.NewGuid(),
                 CreatedDate = DateTime.Now,
                 BatchId = this.BatchId.GetValueOrDefault(),
-                VaccineId = this.VaccineId.GetValueOrDefault(),
-                RecommendedDate = this.RecommendedDate.Value,
+                VaccineId = this.VaccineId.GetValueOrDefault(),                
                 StartDate = this.StartDate,
                 EndDate = this.EndDate.Value,
                 IsDeleted = false

@@ -80,6 +80,7 @@
     <Build Include="dbo\Tables\StandardType.sql" />
     <Build Include="dbo\Functions\ExplodeDates.sql" />
     <Build Include="dbo\Stored Procedures\StandardGeneticLine_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\Report_BreedingMeasuresFollowUp.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Avicola.Office.Database.refactorlog" />

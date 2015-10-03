@@ -26,19 +26,12 @@ namespace Avicola.Office.Entities
 
         public DateTime CalculatedPostureStartDate
         {
-            get { return DateOfBirth.AddDays(GeneticLine.WeeksInBreeding * 7); }
-        }
-
-        public void AssignDatesToStandardMeasures()
-        {
-            foreach (var measure in this.Measures)
+            get
             {
-                measure.MeasureDate = this.DateOfBirth.AddDays((measure.StandardItem.Week - 1) * 7);
-                if (measure.StandardItem.Day != null)
-                {
-                    measure.MeasureDate = this.DateOfBirth.AddDays(measure.StandardItem.Day.GetValueOrDefault() - 1);
-                }
+                var date = DateOfBirth.AddDays(GeneticLine.WeeksInBreeding * 7);
+                return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
             }
         }
+
     }
 }

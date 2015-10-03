@@ -39,10 +39,10 @@ namespace Avicola.Office.Data
         public virtual DbSet<Standard> Standards { get; set; }
         public virtual DbSet<StandardGeneticLine> StandardGeneticLines { get; set; }
         public virtual DbSet<StandardItem> StandardItems { get; set; }
-        public virtual DbSet<Vaccine> Vaccines { get; set; }
         public virtual DbSet<BatchVaccine> BatchVaccines { get; set; }
         public virtual DbSet<Stage> Stages { get; set; }
         public virtual DbSet<StandardType> StandardTypes { get; set; }
+        public virtual DbSet<Vaccine> Vaccines { get; set; }
     
         public virtual int StandardGeneticLineDelete(Nullable<System.Guid> id)
         {
@@ -51,6 +51,23 @@ namespace Avicola.Office.Data
                 new ObjectParameter("Id", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StandardGeneticLineDelete", idParameter);
+        }
+    
+        public virtual ObjectResult<ReportBreedingMeasuresFollowUpRow> ReportBreedingMeasuresFollowUpRow(Nullable<System.Guid> batchId, Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo)
+        {
+            var batchIdParameter = batchId.HasValue ?
+                new ObjectParameter("BatchId", batchId) :
+                new ObjectParameter("BatchId", typeof(System.Guid));
+    
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("DateFrom", dateFrom) :
+                new ObjectParameter("DateFrom", typeof(System.DateTime));
+    
+            var dateToParameter = dateTo.HasValue ?
+                new ObjectParameter("DateTo", dateTo) :
+                new ObjectParameter("DateTo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportBreedingMeasuresFollowUpRow>("ReportBreedingMeasuresFollowUpRow", batchIdParameter, dateFromParameter, dateToParameter);
         }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Avicola.OfficeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Avicola.OfficeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Barn">
           <Key>
             <PropertyRef Name="Id" />
@@ -52,7 +52,6 @@
           <Property Name="BatchId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="VaccineId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="RecommendedDate" Type="datetime2" Precision="7" />
           <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EndDate" Type="datetime2" Precision="7" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
@@ -96,6 +95,7 @@
           <Property Name="StandardItemId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Value" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="FoodClassId" Type="uniqueidentifier" />
+          <Property Name="Date" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Stage">
@@ -161,6 +161,7 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="RecommendedDay" Type="int" />
         </EntityType>
         <Association Name="FK_Batch_Barn">
           <End Role="Barn" Type="Self.Barn" Multiplicity="0..1" />
@@ -354,6 +355,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Report_BreedingMeasuresFollowUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="DateTo" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="StandardGeneticLine_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -537,6 +543,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="FoodClassId" Type="Guid" />
           <NavigationProperty Name="FoodClass" Relationship="Avicola.OfficeModel.FK_Measure_FoodClass" FromRole="Measure" ToRole="FoodClass" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Standard">
           <Key>
@@ -583,16 +590,6 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="Value1" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
           <Property Name="Value2" Type="Decimal" Precision="18" Scale="4" />
-        </EntityType>
-        <EntityType Name="Vaccine">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="BatchVaccines" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" FromRole="Vaccine" ToRole="BatchVaccine" />
         </EntityType>
         <Association Name="FK_BatchObservation_Batch">
           <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
@@ -689,7 +686,6 @@
           <EntitySet Name="Standards" EntityType="Self.Standard" />
           <EntitySet Name="StandardGeneticLines" EntityType="Self.StandardGeneticLine" />
           <EntitySet Name="StandardItems" EntityType="Self.StandardItem" />
-          <EntitySet Name="Vaccines" EntityType="Self.Vaccine" />
           <AssociationSet Name="FK_BatchObservation_Batch" Association="Self.FK_BatchObservation_Batch">
             <End Role="Batch" EntitySet="Batches" />
             <End Role="BatchObservation" EntitySet="BatchObservations" />
@@ -735,10 +731,6 @@
             <End Role="Batch" EntitySet="Batches" />
             <End Role="BatchVaccine" EntitySet="BatchVaccines" />
           </AssociationSet>
-          <AssociationSet Name="FK_BatchVaccine_Vaccine" Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine">
-            <End Role="Vaccine" EntitySet="Vaccines" />
-            <End Role="BatchVaccine" EntitySet="BatchVaccines" />
-          </AssociationSet>
           <EntitySet Name="Stages" EntityType="Avicola.OfficeModel.Stage" />
           <AssociationSet Name="FK_StandardGeneticLine_Stage" Association="Avicola.OfficeModel.FK_StandardGeneticLine_Stage">
             <End Role="Stage" EntitySet="Stages" />
@@ -759,6 +751,16 @@
           <AssociationSet Name="FK_Measure_FoodClass" Association="Avicola.OfficeModel.FK_Measure_FoodClass">
             <End Role="FoodClass" EntitySet="FoodClasses" />
             <End Role="Measure" EntitySet="Measures" />
+          </AssociationSet>
+          <FunctionImport Name="ReportBreedingMeasuresFollowUpRow" ReturnType="Collection(Avicola.OfficeModel.ReportBreedingMeasuresFollowUpRow)">
+            <Parameter Name="BatchId" Mode="In" Type="Guid" />
+            <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="DateTo" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="Vaccines" EntityType="Avicola.OfficeModel.Vaccine" />
+          <AssociationSet Name="FK_BatchVaccine_Vaccine" Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine">
+            <End Role="Vaccine" EntitySet="Vaccines" />
+            <End Role="BatchVaccine" EntitySet="BatchVaccines" />
           </AssociationSet>
           </EntityContainer>
         <Association Name="FK_Batch_Barn">
@@ -805,7 +807,6 @@
           <Property Name="BatchId" Type="Guid" Nullable="false" />
           <Property Name="VaccineId" Type="Guid" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="RecommendedDate" Type="DateTime" Precision="7" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="EndDate" Type="DateTime" Precision="7" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
@@ -821,18 +822,6 @@
             </Principal>
             <Dependent Role="BatchVaccine">
               <PropertyRef Name="BatchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BatchVaccine_Vaccine">
-          <End Type="Avicola.OfficeModel.Vaccine" Role="Vaccine" Multiplicity="1" />
-          <End Type="Avicola.OfficeModel.BatchVaccine" Role="BatchVaccine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vaccine">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BatchVaccine">
-              <PropertyRef Name="VaccineId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -902,6 +891,55 @@
             </Principal>
             <Dependent Role="Measure">
               <PropertyRef Name="FoodClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ReportBreedingMeasuresFollowUpRow">
+          <Property Type="Int32" Name="Semana" Nullable="true" />
+          <Property Type="Int32" Name="Dia" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Secuencia" Nullable="true" />
+          <Property Type="Int32" Name="Mortandad" Nullable="true" />
+          <Property Type="Int32" Name="Descarte" Nullable="true" />
+          <Property Type="Int32" Name="TotalEliminado" Nullable="true" />
+          <Property Type="Int32" Name="Aves" Nullable="true" />
+          <Property Type="Decimal" Name="PesoDelAve" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="IngresoAlimento" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="ClaseAlimento" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="IngresoAlimentoAcumulado" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ConsumoAlimento" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ConsumoAlimentoAcumulado" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="ConsumoPorAve" Nullable="true" />
+          <Property Type="Decimal" Name="Stock" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Mes" Nullable="true" MaxLength="14" />
+          <Property Type="Int32" Name="DiaDelMes" Nullable="true" />
+          <Property Type="String" Name="FechaNacimiento" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Lote" Nullable="true" />
+          <Property Type="String" Name="LineaGenetica" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Clase" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="AvesAlInicio" Nullable="true" />
+          <Property Type="Decimal" Name="AlimentoAlInicio" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <EntityType Name="Vaccine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="RecommendedDay" Type="Int32" />
+          <NavigationProperty Name="BatchVaccines" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" FromRole="Vaccine" ToRole="BatchVaccine" />
+        </EntityType>
+        <Association Name="FK_BatchVaccine_Vaccine">
+          <End Type="Avicola.OfficeModel.Vaccine" Role="Vaccine" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.BatchVaccine" Role="BatchVaccine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaccine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchVaccine">
+              <PropertyRef Name="VaccineId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -988,6 +1026,7 @@
           <EntitySetMapping Name="Measures">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Measure">
               <MappingFragment StoreEntitySet="Measure">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="FoodClassId" ColumnName="FoodClassId" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1038,23 +1077,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vaccines">
-            <EntityTypeMapping TypeName="Avicola.OfficeModel.Vaccine">
-              <MappingFragment StoreEntitySet="Vaccine">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="BatchVaccines">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.BatchVaccine">
               <MappingFragment StoreEntitySet="BatchVaccine">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="RecommendedDate" ColumnName="RecommendedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="VaccineId" ColumnName="VaccineId" />
                 <ScalarProperty Name="BatchId" ColumnName="BatchId" />
@@ -1083,6 +1111,47 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="StandardGeneticLineDelete" FunctionName="Avicola.OfficeModel.Store.StandardGeneticLine_Delete" />
+          <FunctionImportMapping FunctionImportName="ReportBreedingMeasuresFollowUpRow" FunctionName="Avicola.OfficeModel.Store.Report_BreedingMeasuresFollowUp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Avicola.OfficeModel.ReportBreedingMeasuresFollowUpRow">
+                <ScalarProperty Name="Semana" ColumnName="Semana" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
+                <ScalarProperty Name="Mortandad" ColumnName="Mortandad" />
+                <ScalarProperty Name="Descarte" ColumnName="Descarte" />
+                <ScalarProperty Name="TotalEliminado" ColumnName="TotalEliminado" />
+                <ScalarProperty Name="Aves" ColumnName="Aves" />
+                <ScalarProperty Name="PesoDelAve" ColumnName="PesoDelAve" />
+                <ScalarProperty Name="IngresoAlimento" ColumnName="IngresoAlimento" />
+                <ScalarProperty Name="ClaseAlimento" ColumnName="ClaseAlimento" />
+                <ScalarProperty Name="IngresoAlimentoAcumulado" ColumnName="IngresoAlimentoAcumulado" />
+                <ScalarProperty Name="ConsumoAlimento" ColumnName="ConsumoAlimento" />
+                <ScalarProperty Name="ConsumoAlimentoAcumulado" ColumnName="ConsumoAlimentoAcumulado" />
+                <ScalarProperty Name="ConsumoPorAve" ColumnName="ConsumoPorAve" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="DiaDelMes" ColumnName="DiaDelMes" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="LineaGenetica" ColumnName="LineaGenetica" />
+                <ScalarProperty Name="Clase" ColumnName="Clase" />
+                <ScalarProperty Name="AvesAlInicio" ColumnName="AvesAlInicio" />
+                <ScalarProperty Name="AlimentoAlInicio" ColumnName="AlimentoAlInicio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Vaccines">
+            <EntityTypeMapping TypeName="Avicola.OfficeModel.Vaccine">
+              <MappingFragment StoreEntitySet="Vaccine">
+                <ScalarProperty Name="RecommendedDay" ColumnName="RecommendedDay" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

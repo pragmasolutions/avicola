@@ -19,7 +19,6 @@ namespace Avicola.Office.Entities
         public System.Guid BatchId { get; set; }
         public System.Guid VaccineId { get; set; }
         public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> RecommendedDate { get; set; }
         public System.DateTime StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public bool IsDeleted { get; set; }

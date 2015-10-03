@@ -37,7 +37,7 @@ namespace Avicola.Office.Services
 
         public BatchVaccine GetById(Guid id)
         {
-            return Uow.BatchVaccines.Get(g => g.Id == id);
+            return Uow.BatchVaccines.Get(g => g.Id == id, bv => bv.Vaccine);
         }
 
         public List<BatchVaccineDto> GetByBatchId(Guid batchId)
@@ -58,8 +58,7 @@ namespace Avicola.Office.Services
         {
             var currentbatchVaccine = this.GetById(batchVaccine.Id);
 
-            currentbatchVaccine.VaccineId = batchVaccine.VaccineId;
-            currentbatchVaccine.RecommendedDate = batchVaccine.RecommendedDate;
+            currentbatchVaccine.VaccineId = batchVaccine.VaccineId;            
             currentbatchVaccine.StartDate = batchVaccine.StartDate;
             currentbatchVaccine.EndDate = batchVaccine.EndDate;
 

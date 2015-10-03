@@ -70,30 +70,26 @@ namespace Avicola.Web.Controllers
             if (ModelState.IsValid)
             {
 
-                //var ventasPorProductoDataSource = Uow.Reportes.VentasPorCierreCaja(model.CierreCajaId).ToList();
+                var dataset = model.StageId == Stage.BREEDING
+                    ? _reportService.BreedingMeasuresFollowUp(model.BatchId, DateTime.Now.AddMonths(-5),
+                        DateTime.Now.AddMonths(1)).ToList()
+                    : null;
+                var reportFactory = new ReportFactory();
 
-                //var ventasPorProductoRankingDataSource = Uow.Reportes.VentasPorProductoRanking(null, null, null, null, null, model.CierreCajaId).ToList();
-                //var reporteFactory = new ReportFactory();
+                var parameters = new Dictionary<string, string>
+                              {
+                                  {"BatchId", model.BatchId.ToString()},
+                                  {"DateFrom", null},
+                                  {"DateTo", null}
+                              };
 
-                //var cierreCaja = Uow.CierresDeCaja.Obtener(c => c.CierreCajaId == model.CierreCajaId,
-                //                                            c => c.Usuario, c => c.MaxiKiosco);
-                //var parameters = new Dictionary<string, string>
-                //              {
-                //                  {"CierreCajaId", model.CierreCajaId.ToString()},
-                //                  {"Desde", cierreCaja.FechaInicioFormateada},
-                //                  {"Hasta", string.IsNullOrEmpty(cierreCaja.FechaFinFormateada) ? "TODAVIA ABIERTA" : cierreCaja.FechaFinFormateada},
-                //                  {"Usuario", cierreCaja.Usuario.NombreUsuario},
-                //                  {"Maxikiosco", cierreCaja.MaxiKiosco.Nombre}
-                //              };
+                reportFactory.SetPathCompleto(Server.MapPath("~/Reports/MeasuresFollowUp.rdl"))
+                    .SetDataSource("DataSet1", dataset)
+                    .SetParametro(parameters); 
 
-                //reporteFactory.SetPathCompleto(Server.MapPath("~/Reportes/VentasPorCierreCaja.rdl"))
-                //    .SetDataSource("VentasPorProductoDataSet", ventasPorProductoDataSource)
-                //    .SetDataSource("VentasPorProductoRankingDataSet", ventasPorProductoRankingDataSource)
-                //    .SetParametro(parameters); ;
+                byte[] archivo = reportFactory.Renderizar(model.ReportType);
 
-                //byte[] archivo = reporteFactory.Renderizar(model.ReportType);
-
-                //return File(archivo, reporteFactory.MimeType);
+                return File(archivo, reportFactory.MimeType);
                 
             }
             return null;

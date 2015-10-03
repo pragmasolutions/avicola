@@ -5,6 +5,7 @@
 	[StandardItemId] [uniqueidentifier] NOT NULL,
 	[Value] [decimal](18, 4) NOT NULL,
 	[FoodClassId] [uniqueidentifier] NULL,
+	[Date] [datetime] NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Measure] PRIMARY KEY CLUSTERED 
 (

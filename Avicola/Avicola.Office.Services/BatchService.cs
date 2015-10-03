@@ -70,7 +70,7 @@ namespace Avicola.Office.Services
         {
             return Uow.Batches.Get(x => x.Id == batchId,
                                 b => b.Measures,
-                                b => b.Measures.Select(m => m.StandardItem),
+                                b => b.Measures.Select(m => m.StandardItem),                                
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine),
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.GeneticLine),
                                 b => b.Measures.Select(m => m.StandardItem.StandardGeneticLine.Standard),
@@ -89,12 +89,12 @@ namespace Avicola.Office.Services
         public string AssignBarn(Guid batchId, DateTime arrivedToBarn, Guid barnId)
         {
             var batch = GetById(batchId);
-            batch.AssignDatesToStandardMeasures();
+
             
             //chequeamos que no tenga medidas de precria para fechas posteriores
             foreach (var measure in batch.Measures)
             {
-                if (measure.MeasureDate > arrivedToBarn && measure.StandardItem.StandardGeneticLine.StageId == Stage.BREEDING)
+                if (measure.Date > arrivedToBarn && measure.StandardItem.StandardGeneticLine.StageId == Stage.BREEDING)
                 {
                     return "Existen medidas cargadas para estandares de cría y pre-cría posteriores a la fecha seleccionada";
                 }
@@ -102,13 +102,13 @@ namespace Avicola.Office.Services
 
             //ahora chequeo que el galpon este disponible
             var availableBarns = _barnService.GetAllAvailable();
-            if (!availableBarns.Any(b => b.Id == barnId))
+            if (availableBarns.All(b => b.Id != barnId))
             {
                 return "El galpón seleccionado ya no se encuentra disponible";
             }
 
             var today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-            if (arrivedToBarn == batch.CalculatedPostureStartDate && arrivedToBarn == today)
+            if (arrivedToBarn <= today)
             {
                 batch.StageId = Stage.POSTURE;
             }
