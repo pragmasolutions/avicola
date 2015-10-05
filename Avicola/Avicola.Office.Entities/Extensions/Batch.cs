@@ -15,12 +15,12 @@ namespace Avicola.Office.Entities
             get { return String.Format("Lote {0}", this.Number); }
         }
 
-        public int CurrentWeek
+        public int Week
         {
             get
             {
-                var daysDifference = (DateTime.Now - DateOfBirth).TotalDays;
-                return Convert.ToInt32(Math.Floor(daysDifference % 7));
+                var daysDifference = (DateTime.Today.Date - DateOfBirth.Date).TotalDays + 1;
+                return Convert.ToInt32(Math.Ceiling(daysDifference / 7d));
             }
         }
 
@@ -32,6 +32,5 @@ namespace Avicola.Office.Entities
                 return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
             }
         }
-
     }
 }

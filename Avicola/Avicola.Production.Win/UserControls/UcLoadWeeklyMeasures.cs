@@ -55,7 +55,8 @@ namespace Avicola.Production.Win.UserControls
 
                 var firstWeek = _loadWeeklyStandardMeasures.First();
 
-                ucWeekSelection.NumberOfWeek = _loadWeeklyStandardMeasures.Count;
+                ucWeekSelection.MinWeekNumber = _loadWeeklyStandardMeasures.Min(x => x.Week);
+                ucWeekSelection.MaxWeekNumber = _loadWeeklyStandardMeasures.Max(x => x.Week);
                 ucWeekSelection.Current = firstWeek.Week;
 
                 UpdateCurrentDailyStandardMeasure(firstWeek);

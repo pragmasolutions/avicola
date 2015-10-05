@@ -14,7 +14,7 @@ namespace Avicola.Production.Win.UserControls
     public partial class UcWeekSelection : UserControl
     {
         private int _current;
-        private int _numberOfWeeks;
+        //private int _numberOfWeeks;
 
         public event EventHandler<int> CurrentWeekChanged;
 
@@ -23,12 +23,16 @@ namespace Avicola.Production.Win.UserControls
             InitializeComponent();
         }
 
+        public int MinWeekNumber { get; set; }
+
+        public int MaxWeekNumber { get; set; }  
+
         public int Current
         {
             get { return _current; }
             set
             {
-                if (value <= 0 && value > _numberOfWeeks)
+                if (value < MinWeekNumber && value > MaxWeekNumber)
                 {
                     return;
                 }
@@ -37,32 +41,32 @@ namespace Avicola.Production.Win.UserControls
 
                 lbCurrent.Text = Resources.Week + ": " + _current.ToString();
 
-                btnPrevious.Enabled = _current > 1;
-                btnNext.Enabled = _current < _numberOfWeeks;
+                btnPrevious.Enabled = _current > MinWeekNumber;
+                btnNext.Enabled = _current < MaxWeekNumber;
 
                 OnCurrentWeekChanged(_current);
             }
         }
 
-        public int NumberOfWeek 
-        {
-            get { return _numberOfWeeks; }
-            set
-            {
-                if (Current >= _numberOfWeeks)
-                {
-                    Current = _numberOfWeeks;
-                }
+        //public int NumberOfWeek 
+        //{
+        //    get { return _numberOfWeeks; }
+        //    set
+        //    {
+        //        //if (Current >= MaxWeekNumber)
+        //        //{
+        //        //    Current = MaxWeekNumber;
+        //        //}
 
-                _numberOfWeeks = value;
-            }
-        }
+        //        _numberOfWeeks = value;
+        //    }
+        //}
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             var newCurrent = _current - 1;
 
-            if (newCurrent > 0)
+            if (newCurrent >= MinWeekNumber)
             {
                 Current = newCurrent;
             }
@@ -72,7 +76,7 @@ namespace Avicola.Production.Win.UserControls
         {
             var newCurrent = _current + 1;
 
-            if (newCurrent <= _numberOfWeeks)
+            if (newCurrent <= MaxWeekNumber)
             {
                 Current = newCurrent;
             }

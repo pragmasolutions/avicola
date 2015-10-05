@@ -24,7 +24,7 @@ namespace Avicola.Office.Services
 
         public IList<StandardItem> GetByStandardAndGeneticLine(Guid standardId, Guid stageId, Guid geneticLineId)
         {
-            return
+            var items =
                 Uow.StandardItems.GetAll(
                     whereClause:
                         x =>
@@ -35,6 +35,21 @@ namespace Avicola.Office.Services
                     .Where(e => !e.IsDeleted)
                     .OrderBy(x => x.Sequence)
                     .ToList();
+
+
+            var geneticLine = Uow.GeneticLines.Get(geneticLineId);
+
+            if (stageId == Stage.BREEDING && items.Count != geneticLine.WeeksInBreeding)
+            {
+                throw new ApplicationException("La cantidad de standard items de semanas no puede ser differente a la cantidad de semanas en cria");
+            }
+
+            if (stageId == Stage.POSTURE && items.Count != geneticLine.ProductionWeeks - geneticLine.WeeksInBreeding)
+            {
+                throw new ApplicationException("La cantidad de standard items de semanas no puede ser differente a la cantidad de semanas en postura");
+            }
+
+            return items;
         }
 
     }

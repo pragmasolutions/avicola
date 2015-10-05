@@ -13,6 +13,7 @@ namespace Avicola.Office.Services.Dtos
         public System.DateTime DateOfBirth { get; set; }
         public System.Guid GeneticLineId { get; set; }
         public string GeneticLineName { get; set; }
+        public int GeneticLineWeeksInBreeding { get; set; }
         public decimal StartingFood { get; set; }
         public System.Guid FoodClassId { get; set; }
         public string FoodClassName { get; set; }
@@ -26,10 +27,9 @@ namespace Avicola.Office.Services.Dtos
         {
             get
             {
-                var daysDifference = (DateTime.Now - DateOfBirth).TotalDays;
-                return Convert.ToInt32(Math.Floor(daysDifference / 7));
+                var daysDifference = (DateTime.Today.Date - DateOfBirth.Date).TotalDays + 1;
+                return Convert.ToInt32(Math.Ceiling(daysDifference / 7d));
             }
         }
-        
     }
 }

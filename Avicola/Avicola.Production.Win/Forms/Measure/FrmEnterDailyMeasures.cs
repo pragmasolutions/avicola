@@ -20,8 +20,8 @@ namespace Avicola.Production.Win.Forms.Measure
         private readonly IStateController _stateController;
         private readonly IMessageBoxDisplayService _messageBoxDisplayService;
 
-        public FrmEnterDailyMeasures(IFormFactory formFactory, 
-            IServiceFactory serviceFactory, 
+        public FrmEnterDailyMeasures(IFormFactory formFactory,
+            IServiceFactory serviceFactory,
             IStateController stateController,
             IMessageBoxDisplayService messageBoxDisplayService)
         {
@@ -37,10 +37,10 @@ namespace Avicola.Production.Win.Forms.Measure
         private void FrmEnterDailyMeasures_Load(object sender, EventArgs e)
         {
             lbCurrentStandard.Text = String.Format("Indicador: {0}: {1}   |    Etapa: {2}",
-                                                Resources.Standard, 
+                                                Resources.Standard,
                                                 _stateController.CurrentSelectedStandard.Name.ToUpper(),
-                                                _stateController.CurrentSelectedBatch.StageName.ToUpper()); 
-            
+                                                _stateController.CurrentSelectedBatch.StageName.ToUpper());
+
             var geneticLineId = _stateController.CurrentSelectedBatch.GeneticLineId;
             var stageId = _stateController.CurrentSelectedBatch.StageId;
             var standardId = _stateController.CurrentSelectedStandard.Id;
@@ -53,32 +53,16 @@ namespace Avicola.Production.Win.Forms.Measure
                 {
                     var items = standardItemService.GetByStandardAndGeneticLine(standardId, stageId, geneticLineId);
 
-                    //TODO: filtrar items dependiendo de la etapa
                     var measures = measureService.GetByStandardAndBatch(standardId, batchId);
 
                     var model = new List<LoadDailyStandardMeasures>();
 
-
-                    DateTime startDate;
                     DateTime endDate;
 
-                    using (var geneticLineService = _serviceFactory.Create<IGeneticLineService>())
+                    using (var batchService = _serviceFactory.Create<IBatchService>())
                     {
-                        var geneticLine = geneticLineService.GetById(geneticLineId);
-                        if (_stateController.CurrentSelectedBatch.StageId == Stage.BREEDING)
-                        {
-
-                            startDate = batchDateOfBirth;
-                            endDate = _stateController.CurrentSelectedBatch.ArrivedToBarn
-                                      ?? batchDateOfBirth.AddDays(geneticLine.WeeksInBreeding*7);
-                        }
-                        else
-                        {
-                            startDate =_stateController.CurrentSelectedBatch.ArrivedToBarn.GetValueOrDefault();
-                            endDate = batchDateOfBirth.AddDays(geneticLine.ProductionWeeks*7);
-                        }
+                        endDate = batchService.GetEndDateById(batchId);
                     }
-                    
 
                     foreach (var item in items)
                     {
@@ -89,8 +73,8 @@ namespace Avicola.Production.Win.Forms.Measure
 
                         for (var i = 0; i < 7; i++)
                         {
-                            var measureDate = startDate.AddDays((item.Sequence - 1) * 7 + i);
-                            if (measureDate < endDate)
+                            var measureDate = batchDateOfBirth.AddDays((item.Sequence - 1) * 7 + i);
+                            if (measureDate.Date < endDate.Date)
                             {
                                 var measure = measures.Where(m => !m.StandardItem.IsDeleted)
                                             .FirstOrDefault(x => x.StandardItemId == item.Id
@@ -113,9 +97,9 @@ namespace Avicola.Production.Win.Forms.Measure
                         model.Add(dailyLoad);
                     }
 
-                    
                     ucLoadDailyMeasures.Standard = _stateController.CurrentSelectedStandard;
                     ucLoadDailyMeasures.LoadDailyStandardMeasures = model;
+                    ucLoadDailyMeasures.CurrentWeek = _stateController.CurrentSelectedBatch.Week;
                 }
             }
         }

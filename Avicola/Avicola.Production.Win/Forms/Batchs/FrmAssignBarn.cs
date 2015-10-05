@@ -72,7 +72,7 @@ namespace Avicola.Production.Win.Forms.Batchs
                     }
                     using (var service = _serviceFactory.Create<IBatchService>())
                     {
-                        var errorMessage = service.AssignBarn(_batchId, model.ArrivedToBarn.GetValueOrDefault(), model.BarnId.GetValueOrDefault());
+                        var errorMessage = service.AssignBarn(_batchId, model.BarnId.GetValueOrDefault());
                         if (!string.IsNullOrEmpty(errorMessage))
                         {
                             RadMessageBox.Show(this, String.Format("ERROR \n\n{0}", errorMessage), "Atención", MessageBoxButtons.OK, RadMessageIcon.Question);

@@ -32,7 +32,7 @@ namespace Avicola.Office.Entities
         public decimal StartingFood { get; set; }
         public System.Guid FoodClassId { get; set; }
         public Nullable<System.Guid> BarnId { get; set; }
-        public Nullable<System.DateTime> ArrivedToBarn { get; set; }
+        public System.DateTime ArrivedToBarn { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public bool IsDeleted { get; set; }
         public System.Guid StageId { get; set; }

@@ -25,8 +25,10 @@ namespace Avicola.Office.Services.Interfaces
 
         void EndBatch(Batch batch, DateTime endDate);
 
-        string AssignBarn(Guid batchId, DateTime arrivedToBarn, Guid barnId);
+        string AssignBarn(Guid batchId, Guid barnId);
 
         IQueryable<Batch> GetAll();
+
+        DateTime GetEndDateById(Guid batchId);
     }
 }

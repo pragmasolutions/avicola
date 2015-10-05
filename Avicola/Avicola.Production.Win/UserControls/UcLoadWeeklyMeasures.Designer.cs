@@ -117,7 +117,7 @@
             this.ucWeekSelection.Current = 0;
             this.ucWeekSelection.Location = new System.Drawing.Point(3, 5);
             this.ucWeekSelection.Name = "ucWeekSelection";
-            this.ucWeekSelection.NumberOfWeek = 0;
+            //this.ucWeekSelection.NumberOfWeek = 0;
             this.ucWeekSelection.Size = new System.Drawing.Size(695, 45);
             this.ucWeekSelection.TabIndex = 0;
             this.ucWeekSelection.CurrentWeekChanged += new System.EventHandler<int>(this.ucWeekSelection_CurrentWeekChanged);

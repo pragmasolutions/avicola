@@ -40,7 +40,7 @@ namespace Avicola.Production.Win.Models.Batchs
                 DateOfBirth = this.DateOfBirth.GetValueOrDefault(),
                 GeneticLineId = this.GeneticLineId.GetValueOrDefault(),
                 FoodClassId = this.FoodClassId.GetValueOrDefault(),
-                StageId = Stage.BREEDING
+                //StageId = Stage.BREEDING
             };
             return batch;
         }

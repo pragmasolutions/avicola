@@ -174,7 +174,7 @@ namespace Avicola.Production.Win.UserControls
             this.ucWeekSelection.Margin = new System.Windows.Forms.Padding(5);
             this.ucWeekSelection.MinimumSize = new System.Drawing.Size(0, 86);
             this.ucWeekSelection.Name = "ucWeekSelection";
-            this.ucWeekSelection.NumberOfWeek = 0;
+            //this.ucWeekSelection.NumberOfWeek = 0;
             this.ucWeekSelection.Size = new System.Drawing.Size(771, 86);
             this.ucWeekSelection.TabIndex = 0;
             this.ucWeekSelection.CurrentWeekChanged += new System.EventHandler<int>(this.ucWeekSelection_CurrentWeekChanged);

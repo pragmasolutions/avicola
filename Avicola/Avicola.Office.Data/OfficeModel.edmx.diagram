@@ -31,10 +31,10 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_StandardGeneticLine_Stage" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.StandardType" Width="1.5" PointX="3.375" PointY="11.875" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Standard_StandardType" />
-        <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_Stage" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_FoodClass" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.Vaccine" Width="1.5" PointX="10.375" PointY="4.75" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" />
+        <AssociationConnector Association="Avicola.OfficeModel.BatchStage" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

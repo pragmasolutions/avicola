@@ -7,7 +7,7 @@
     <TargetConnectionString>Data Source=.\SQL2012;Integrated Security=True;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
     <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
-    <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
     <GenerateSmartDefaults>True</GenerateSmartDefaults>
   </PropertyGroup>
 </Project>
