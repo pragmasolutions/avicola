@@ -20,7 +20,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
     public partial class FrmCreateEditBatchVaccine : EditFormBase
     {
         private readonly IStateController _stateController;
-        private readonly IServiceFactory _serviceFactory;        
+        private readonly IServiceFactory _serviceFactory;
         private Guid _batchVaccineId = Guid.Empty;
         private Batch _batch;
         private BatchVaccine _batchVaccine;
@@ -29,7 +29,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
         {
             FormFactory = formFactory;
             _serviceFactory = serviceFactory;
-            _stateController = stateController;            
+            _stateController = stateController;
             _batchVaccineId = id;
             InitializeComponent();
         }
@@ -42,8 +42,9 @@ namespace Avicola.Production.Win.Forms.Vaccines
             {
                 _batch = batchService.GetById(_stateController.CurrentSelectedBatch.Id);
 
-                dtpStartDate.Value = DateTime.Now;
-                dtpEndDate.Value = DateTime.Now;                
+                dtpStartDate.Value = _batch.DateOfBirth;
+                dtpEndDate.Value = _batch.DateOfBirth.AddDays(_batch.GeneticLine.ProductionWeeks * 7);
+                dtpRecommendedDate.Value = DateTime.Now;
                 formTitle = string.Format("Lote {0} - Crear Vacunación", _batch.Number.ToString());
             }
 
@@ -77,7 +78,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
                     ddlVaccines.SelectedValue = _batchVaccine.VaccineId;
                     formTitle = string.Format("Lote {0} - Editar Vacunación", _batch.Number.ToString());
                 }
-            }            
+            }
 
             this.Text = formTitle;
         }
@@ -123,7 +124,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
 
         private void GetBatchVaccineEdit()
         {
-            _batchVaccine.VaccineId = (Guid)ddlVaccines.SelectedValue;            
+            _batchVaccine.VaccineId = (Guid)ddlVaccines.SelectedValue;
             _batchVaccine.EndDate = dtpEndDate.Value;
             _batchVaccine.StartDate = dtpStartDate.Value;
         }

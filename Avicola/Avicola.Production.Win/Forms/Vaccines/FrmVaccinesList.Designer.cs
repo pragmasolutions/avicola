@@ -34,7 +34,6 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVaccinesList));
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.BtnAgregar = new Telerik.WinControls.UI.RadButton();
@@ -103,12 +102,21 @@
             gridViewTextBoxColumn4.HeaderText = "Fin";
             gridViewTextBoxColumn4.Name = "EndDate";
             gridViewTextBoxColumn4.Width = 100;
+            gridViewTextBoxColumn5.FieldName = "EndDate";
+            gridViewTextBoxColumn5.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn5.HeaderText = "Fin";
+            gridViewTextBoxColumn5.Name = "EndDate";
+            gridViewTextBoxColumn5.Width = 100;
             gridViewCommandColumn1.HeaderText = "";
-            gridViewCommandColumn1.Image = ((System.Drawing.Image)(resources.GetObject("gridViewCommandColumn1.Image")));
+            gridViewCommandColumn1.Image = global::Avicola.Production.Win.Properties.Resources.Data_Edit;
+            gridViewCommandColumn1.ImageLayout = System.Windows.Forms.ImageLayout.Center;
             gridViewCommandColumn1.Name = "btnEdit";
+            gridViewCommandColumn1.Width = 40;
             gridViewCommandColumn2.HeaderText = "";
-            gridViewCommandColumn2.Image = ((System.Drawing.Image)(resources.GetObject("gridViewCommandColumn2.Image")));
+            gridViewCommandColumn2.Image = global::Avicola.Production.Win.Properties.Resources.Garbage_Closed;
+            gridViewCommandColumn2.ImageLayout = System.Windows.Forms.ImageLayout.Center;
             gridViewCommandColumn2.Name = "btnDelete";
+            gridViewCommandColumn2.Width = 40;
             this.gvBatchVaccines.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -119,7 +127,8 @@
             this.gvBatchVaccines.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatchVaccines.Name = "gvBatchVaccines";
             this.gvBatchVaccines.ReadOnly = true;
-            this.gvBatchVaccines.Size = new System.Drawing.Size(506, 244);
+            this.gvBatchVaccines.ShowGroupPanel = false;
+            this.gvBatchVaccines.Size = new System.Drawing.Size(609, 244);
             this.gvBatchVaccines.TabIndex = 84;
             this.gvBatchVaccines.Text = "radGridView1";
             this.gvBatchVaccines.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatchVaccines_CommandCellClick);

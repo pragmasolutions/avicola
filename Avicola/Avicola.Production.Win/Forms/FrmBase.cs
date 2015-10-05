@@ -10,6 +10,7 @@ using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Properties;
 using Framework.Data.Repository;
 using Telerik.WinControls;
+using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms
 {
@@ -37,5 +38,15 @@ namespace Avicola.Production.Win.Forms
         protected IUowFactory UowFactory { get; set; }
 
         public ITransitionManager TransitionManager { get; set; }
+
+        protected virtual void Grilla_CellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            GridCommandCellElement cmdCell = e.CellElement as GridCommandCellElement;
+
+            if (cmdCell != null)
+            {
+                cmdCell.CommandButton.ImageAlignment = ContentAlignment.MiddleCenter;
+            }
+        }
     }
 }

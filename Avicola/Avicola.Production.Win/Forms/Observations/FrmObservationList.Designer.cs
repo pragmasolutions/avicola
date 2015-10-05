@@ -122,6 +122,7 @@
             this.gvBatchObservations.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvBatchObservations.Name = "gvBatchObservations";
             this.gvBatchObservations.ReadOnly = true;
+            this.gvBatchObservations.ShowGroupPanel = false;
             this.gvBatchObservations.Size = new System.Drawing.Size(609, 244);
             this.gvBatchObservations.TabIndex = 84;
             this.gvBatchObservations.Text = "radGridView1";

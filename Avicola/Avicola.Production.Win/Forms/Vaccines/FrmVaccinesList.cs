@@ -18,6 +18,8 @@ using Avicola.Production.Win.Infrastructure;
 using Framework.Common.Helpers;
 using Framework.WinForm.Comun.Notification;
 using Avicola.Production.Win.Properties;
+using Telerik.WinControls.UI.Localization;
+using Framework.Common.Win.CustomProviders;
 
 namespace Avicola.Production.Win.Forms.Vaccines
 {
@@ -37,8 +39,11 @@ namespace Avicola.Production.Win.Forms.Vaccines
             _stateController = stateController;
             _serviceFactory = serviceFactory;
             _messageBoxDisplayService = messageBoxDisplayService;
-            
+            RadGridLocalizationProvider.CurrentProvider = new CustomRadGridViewLocalizationProvider();
+
             InitializeComponent();
+
+            this.gvBatchVaccines.CellFormatting += Grilla_CellFormatting;
         }
 
         private void FrmVaccinesList_Load(object sender, EventArgs e)
