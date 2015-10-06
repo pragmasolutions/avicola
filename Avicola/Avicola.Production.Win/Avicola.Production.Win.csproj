@@ -373,18 +373,30 @@
     <Content Include="Resources\Images\LOGO.JPG" />
     <Content Include="Resources\Images\notes-icon.png" />
     <Content Include="Resources\Images\Pencil.png" />
-    <Content Include="Resources\Images\Standards\Agua.png" />
-    <Content Include="Resources\Images\Standards\Consumo de Alimento.png" />
-    <Content Include="Resources\Images\Standards\Descarte.png" />
-    <Content Include="Resources\Images\Standards\Ingreso de Alimento.png" />
+    <Content Include="Resources\Images\Standards\Agua.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Standards\Consumo de Alimento.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Standards\Descarte.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Standards\Ingreso de Alimento.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\Standards\Mortandad.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Standards\Peso del ave.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Standards\Peso del huevo.png" />
-    <Content Include="Resources\Images\Standards\Temperatura.png" />
+    <Content Include="Resources\Images\Standards\Peso del huevo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Standards\Temperatura.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\vaccine.png" />
     <Content Include="Resources\Wrong.png" />
   </ItemGroup>
