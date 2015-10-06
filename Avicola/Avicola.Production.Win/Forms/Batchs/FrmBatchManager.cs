@@ -122,7 +122,7 @@ namespace Avicola.Production.Win.Forms.Batchs
 
         private void btnVacunas_Click(object sender, EventArgs e)
         {
-            var frm = FormFactory.Create<FrmVaccinesList>();
+            var frm = FormFactory.Create<FrmBatchVaccinesList>();
             frm.ShowDialog();
         }
 

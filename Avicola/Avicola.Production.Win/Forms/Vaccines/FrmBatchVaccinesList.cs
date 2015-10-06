@@ -23,14 +23,14 @@ using Framework.Common.Win.CustomProviders;
 
 namespace Avicola.Production.Win.Forms.Vaccines
 {
-    public partial class FrmVaccinesList : EditFormBase
+    public partial class FrmBatchVaccinesList : EditFormBase
     {
         private readonly IStateController _stateController;
         private readonly IServiceFactory _serviceFactory;
         private readonly IMessageBoxDisplayService _messageBoxDisplayService;
         private Batch batch;
 
-        public FrmVaccinesList(IFormFactory formFactory, 
+        public FrmBatchVaccinesList(IFormFactory formFactory, 
             IStateController stateController, 
             IServiceFactory serviceFactory,
             IMessageBoxDisplayService messageBoxDisplayService)
@@ -46,7 +46,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
             this.gvBatchVaccines.CellFormatting += Grilla_CellFormatting;
         }
 
-        private void FrmVaccinesList_Load(object sender, EventArgs e)
+        private void FrmBatchVaccinesList_Load(object sender, EventArgs e)
         {
             using (var batchService = _serviceFactory.Create<IBatchService>())
             {
