@@ -10,6 +10,7 @@ using Avicola.Production.Win.Forms.Batchs;
 using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Models.Measures;
 using Avicola.Production.Win.Properties;
+using Framework.Common.Extentensions;
 using Framework.WinForm.Comun.Notification;
 using Telerik.WinControls.UI;
 
@@ -43,7 +44,7 @@ namespace Avicola.Production.Win.Forms.Measure
             var stageId = _stateController.CurrentSelectedBatch.StageId;
             var standardId = _stateController.CurrentSelectedStandard.Id;
             var batchId = _stateController.CurrentSelectedBatch.Id;
-            var batchCreatedDate = _stateController.CurrentSelectedBatch.CreatedDate;
+            var batchDateOfBirth = _stateController.CurrentSelectedBatch.DateOfBirth;
 
             using (var standardItemService = _serviceFactory.Create<IStandardItemService>())
             {
@@ -56,8 +57,8 @@ namespace Avicola.Production.Win.Forms.Measure
 
                     foreach (var item in items)
                     {
-                        var measureDateFrom = batchCreatedDate.AddDays(item.Sequence);
-                        var measureDateTo = batchCreatedDate.AddDays(item.Sequence * 7);
+                        var measureDateFrom = batchDateOfBirth.AddWeeks(item.Sequence - 1);
+                        var measureDateTo = batchDateOfBirth.AddWeeks(item.Sequence).AddDays(-1);
                         var measure = measures.FirstOrDefault(x => x.StandardItemId == item.Id);
 
                         var weekMeasureModel = new LoadWeeklyStandardMeasures()
@@ -75,6 +76,7 @@ namespace Avicola.Production.Win.Forms.Measure
                     }
 
                     ucLoadWeeklyMeasures.LoadWeeklyStandardMeasures = model;
+                    ucLoadWeeklyMeasures.CurrentWeek = _stateController.CurrentSelectedBatch.Week;
                 }
             }
         }

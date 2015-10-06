@@ -63,6 +63,11 @@ namespace Avicola.Production.Win.UserControls
             }
         }
 
+        public int CurrentWeek
+        {
+            set { ucWeekSelection.Current = value; }
+        }
+
         private void UpdateCurrentDailyStandardMeasure(LoadWeeklyStandardMeasures weeklyStandardMeasure)
         {
             _currentWeeklyStandardMeasures = weeklyStandardMeasure;
@@ -70,6 +75,15 @@ namespace Avicola.Production.Win.UserControls
             txtDateFrom.Text = weeklyStandardMeasure.DateFrom.ToShortDateString();
             txtDateTo.Text = weeklyStandardMeasure.DateTo.ToShortDateString();
             MeasureValue = weeklyStandardMeasure.Value;
+
+            if (DateTime.Today.Date < weeklyStandardMeasure.DateFrom.Date)
+            {
+                txtValue.Enabled = false;
+            }
+            else
+            {
+                txtValue.Enabled = true;
+            }
         }
 
         private void ucWeekSelection_CurrentWeekChanged(object sender, int e)
