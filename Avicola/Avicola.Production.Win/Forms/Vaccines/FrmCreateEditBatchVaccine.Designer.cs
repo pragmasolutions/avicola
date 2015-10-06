@@ -93,7 +93,7 @@
             // 
             this.BtnGuardar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardar.Location = new System.Drawing.Point(110, 268);
+            this.BtnGuardar.Location = new System.Drawing.Point(110, 241);
             this.BtnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(75, 24);
@@ -106,7 +106,7 @@
             // 
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(195, 268);
+            this.BtnCancelar.Location = new System.Drawing.Point(195, 241);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 24);
@@ -136,9 +136,9 @@
             this.radLabel3.Location = new System.Drawing.Point(11, 116);
             this.radLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(92, 24);
+            this.radLabel3.Size = new System.Drawing.Size(57, 24);
             this.radLabel3.TabIndex = 87;
-            this.radLabel3.Text = "Observación";
+            this.radLabel3.Text = "Vacuna";
             this.radLabel3.ThemeName = "TelerikMetroBlue";
             // 
             // dtpEndDate
@@ -176,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 303);
+            this.ClientSize = new System.Drawing.Size(281, 271);
             this.ControlBox = false;
             this.Controls.Add(this.txtRecommendedDate);
             this.Controls.Add(this.ddlVaccines);
@@ -199,7 +199,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Vacunación";
-            this.Load += new System.EventHandler(this.FrmCreateEditVaccine_Load);
+            this.Load += new System.EventHandler(this.FrmCreateEditBatchVaccine_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpStartDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroLabel1)).EndInit();

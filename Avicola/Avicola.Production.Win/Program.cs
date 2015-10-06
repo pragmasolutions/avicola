@@ -34,7 +34,7 @@ namespace Avicola.Production.Win
 
             AutoMapperConfig.Execute();
             MetadataTypesRegister.InstallForThisAssembly();
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+            
 
             RadWizardLocalizationProvider.CurrentProvider = new CustomRadWizardLocalizationProvider();
             RadMessageLocalizationProvider.CurrentProvider = new CustomRadMessageLocalizationProvider();

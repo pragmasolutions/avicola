@@ -15,6 +15,7 @@ using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.BatchVaccines;
 using Avicola.Production.Win.Infrastructure;
 using Framework.Common.Helpers;
+using Telerik.WinControls.UI;
 namespace Avicola.Production.Win.Forms.Vaccines
 {
     public partial class FrmCreateEditBatchVaccine : EditFormBase
@@ -34,9 +35,11 @@ namespace Avicola.Production.Win.Forms.Vaccines
             InitializeComponent();
         }
 
-        private void FrmCreateEditVaccine_Load(object sender, EventArgs e)
+        private void FrmCreateEditBatchVaccine_Load(object sender, EventArgs e)
         {
             var formTitle = "";
+            txtRecommendedDate.Visible = false;
+            lblRecommendedDate.Visible = false;
 
             using (var batchService = _serviceFactory.Create<IBatchService>())
             {
@@ -44,7 +47,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
 
                 dtpStartDate.Value = _batch.DateOfBirth;
                 dtpEndDate.Value = _batch.DateOfBirth.AddDays(_batch.GeneticLine.ProductionWeeks * 7);
-                dtpRecommendedDate.Value = DateTime.Now;
+                txtRecommendedDate.Text = "";
                 formTitle = string.Format("Lote {0} - Crear Vacunación", _batch.Number.ToString());
             }
 
@@ -53,7 +56,12 @@ namespace Avicola.Production.Win.Forms.Vaccines
                 var vaccines = vaccineService.GetAllActive().OrderBy(x => x.Name).ToList();
                 ddlVaccines.ValueMember = "Id";
                 ddlVaccines.DisplayMember = "Name";
+                Vaccine item = new Vaccine();
+                item.Name = "Selecciona una vacuna..";
+                item.Id = Guid.Empty;
+                vaccines.Insert(0,item);
                 ddlVaccines.DataSource = vaccines;
+                //ddlVaccines.Items.Add(item);
             }
                         
             if (_batchVaccineId != Guid.Empty)
@@ -74,7 +82,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
                     }    
                     
                     dtpStartDate.Value = _batchVaccine.StartDate;
-                    dtpEndDate.Value = _batchVaccine.EndDate.Value;
+                    if (_batchVaccine.EndDate != null) dtpEndDate.Value = _batchVaccine.EndDate.Value;
                     ddlVaccines.SelectedValue = _batchVaccine.VaccineId;
                     formTitle = string.Format("Lote {0} - Editar Vacunación", _batch.Number.ToString());
                 }
@@ -179,7 +187,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
 
         private void ddlVaccines_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (ddlVaccines.SelectedValue != null)
+            if ((Guid)ddlVaccines.SelectedValue != Guid.Empty)
             {
                 using (var vaccineService = _serviceFactory.Create<IVaccineService>())
                 {
