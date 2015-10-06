@@ -28,7 +28,7 @@ namespace Avicola.Web.Models.GeneticLines
                         StandardItems.Add(new StandardItemModel
                         {
                             Id = item.Id,
-                            Sequence = i + 1,
+                            Sequence = item.Sequence,
                             Value1 = item.Value1,
                             Value2 = item.Value2,
                             ShowSecondValue = this.StandardGeneticLine.Standard.StandardTypeId == StandardType.VALUES_RANGE
@@ -45,9 +45,9 @@ namespace Avicola.Web.Models.GeneticLines
                         IntegerStandardItems.Add(new StandardItemIntegerModel
                         {
                             Id = item.Id,
-                            Sequence = i + 1,
+                            Sequence = item.Sequence,
                             Value1 = Convert.ToInt32(item.Value1),
-                            Value2 = item.Value2 == null ? (int?) null : Convert.ToInt32(item.Value2),
+                            Value2 = item.Value2 == null ? (int?)null : Convert.ToInt32(item.Value2),
                             ShowSecondValue = this.StandardGeneticLine.Standard.StandardTypeId == StandardType.VALUES_RANGE
                         });
                     }
@@ -58,7 +58,11 @@ namespace Avicola.Web.Models.GeneticLines
                 if (StandardGeneticLine.Standard.AllowDecimal)
                 {
                     StandardItems = new List<StandardItemModel>();
-                    for (int i = 0; i < StandardGeneticLine.GeneticLine.ProductionWeeks; i++)
+
+                    int initialSequence = GetInitialSequence();
+                    int finalSequence = GetFinalSequence();
+
+                    for (int i = initialSequence; i < finalSequence; i++)
                     {
                         StandardItems.Add(new StandardItemModel
                         {
@@ -71,7 +75,11 @@ namespace Avicola.Web.Models.GeneticLines
                 else
                 {
                     IntegerStandardItems = new List<StandardItemIntegerModel>();
-                    for (int i = 0; i < StandardGeneticLine.GeneticLine.ProductionWeeks; i++)
+
+                    int initialSequence = GetInitialSequence();
+                    int finalSequence = GetFinalSequence();
+
+                    for (int i = initialSequence; i < finalSequence; i++)
                     {
                         IntegerStandardItems.Add(new StandardItemIntegerModel
                         {
@@ -114,8 +122,20 @@ namespace Avicola.Web.Models.GeneticLines
                     Id = si.Id
                 }).ToList();
             }
-                
+
             return item;
+        }
+
+        private int GetInitialSequence()
+        {
+            return this.StageId == Stage.POSTURE ? StandardGeneticLine.GeneticLine.WeeksInBreeding : 0;
+        }
+
+        private int GetFinalSequence()
+        {
+            return this.StageId == Stage.BREEDING
+                ? StandardGeneticLine.GeneticLine.WeeksInBreeding
+                : StandardGeneticLine.GeneticLine.ProductionWeeks;
         }
     }
 }
