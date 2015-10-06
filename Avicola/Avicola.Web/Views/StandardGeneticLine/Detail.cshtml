@@ -87,6 +87,7 @@
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
     <script>
+        debugger;
         var _showSecondValue = '@(Model.StandardGeneticLine.Standard.StandardTypeId == StandardType.VALUES_RANGE)' == 'True';
         var _standardName = '@Model.StandardGeneticLine.Standard.Name';
 
@@ -99,8 +100,10 @@
                     name: 'Mínimo',
                     data: []
                 }
+                
                 $('.item-value.first-value').each(function (i, item) {
-                    categories.push(i + 1);
+                    var sequence = parseFloat($(item).prevAll('.item-sequence').html());
+                    categories.push(sequence);
                     firstSerie.data.push(parseFloat($(item).html()));
                 });
                 var secondSerie = {
@@ -117,8 +120,8 @@
                     data: []
                 }
                 $('.item-value.first-value').each(function (i, item) {
-                    
-                    categories.push(i + 1);
+                    var sequence = parseFloat($(item).prevAll('.item-sequence').html());
+                    categories.push(sequence);
                     firstSerie.data.push(parseFloat($(item).html()));
                 });
                 series = [firstSerie];
@@ -127,44 +130,44 @@
             $('#chart-container').highcharts({
                 title: {
                     text: '@Model.StandardGeneticLine.GeneticLine.Name',
-                x: -20 //center
-            },
-            subtitle: {
-                text: 'Standard: @Model.StandardGeneticLine.Standard.Name',
-                x: -20
-            },
-            xAxis: {
-                categories: categories
-            },
-            yAxis: {
-                title: {
-                    text: '@Model.StandardGeneticLine.Standard.Name (@Model.StandardGeneticLine.Standard.MeasureUnity)'
+                    x: -20 //center
                 },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: ' @Model.StandardGeneticLine.Standard.MeasureUnity'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: series
-        });
-    }
+                subtitle: {
+                    text: 'Standard: @Model.StandardGeneticLine.Standard.Name',
+                    x: -20
+                },
+                xAxis: {
+                    categories: categories
+                },
+                yAxis: {
+                    title: {
+                        text: '@Model.StandardGeneticLine.Standard.Name (@Model.StandardGeneticLine.Standard.MeasureUnity)'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: ' @Model.StandardGeneticLine.Standard.MeasureUnity'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: series
+            });
+        }
 
-    $(function () {
-        generateChart();
+        $(function () {
+            generateChart();
 
-        $("#delete-form").on("submit", function () {
-            return confirm("Está seguro que desea eliminar este estandar?  Esta operación no se puede deshacer.");
+            $("#delete-form").on("submit", function () {
+                return confirm("Está seguro que desea eliminar este estandar?  Esta operación no se puede deshacer.");
+            });
         });
-    });
     </script>
 }

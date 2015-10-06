@@ -15,7 +15,8 @@
                 data: []
             }
             $('.item-value.first-value .standard-item-value').each(function (i, item) {
-                categories.push(i + 1);
+                var sequence = parseFloat($(item).closest('tr').find('.item-sequence').html());
+                categories.push(sequence);
                 firstSerie.data.push(parseFloat($(item).val()));
             });
             var secondSerie = {
@@ -32,8 +33,8 @@
                 data: []
             }
             $('.item-value.first-value .standard-item-value').each(function (i, item) {
-
-                categories.push(i + 1);
+                var sequence = parseFloat($(item).closest('tr').find('.item-sequence').html());
+                categories.push(sequence);
                 firstSerie.data.push(parseFloat($(item).val()));
             });
             series = [firstSerie];
