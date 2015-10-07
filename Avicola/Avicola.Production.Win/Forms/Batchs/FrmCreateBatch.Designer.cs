@@ -67,7 +67,7 @@
             this.ddlFoodClass.Location = new System.Drawing.Point(280, 201);
             this.ddlFoodClass.Margin = new System.Windows.Forms.Padding(2);
             this.ddlFoodClass.Name = "ddlFoodClass";
-            this.ddlFoodClass.Size = new System.Drawing.Size(121, 20);
+            this.ddlFoodClass.Size = new System.Drawing.Size(121, 24);
             this.ddlFoodClass.TabIndex = 95;
             // 
             // ddlGeneticLine
@@ -75,7 +75,7 @@
             this.ddlGeneticLine.Location = new System.Drawing.Point(28, 201);
             this.ddlGeneticLine.Margin = new System.Windows.Forms.Padding(2);
             this.ddlGeneticLine.Name = "ddlGeneticLine";
-            this.ddlGeneticLine.Size = new System.Drawing.Size(148, 20);
+            this.ddlGeneticLine.Size = new System.Drawing.Size(148, 24);
             this.ddlGeneticLine.TabIndex = 94;
             // 
             // txtInitialFood
@@ -138,7 +138,7 @@
             this.dtpDateOfBirth.Location = new System.Drawing.Point(28, 124);
             this.dtpDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
-            this.dtpDateOfBirth.Size = new System.Drawing.Size(145, 20);
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(145, 24);
             this.dtpDateOfBirth.TabIndex = 87;
             this.dtpDateOfBirth.TabStop = false;
             this.dtpDateOfBirth.Text = "14/09/2015";
@@ -171,7 +171,7 @@
             this.txtNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumber.MaxLength = 50;
             this.txtNumber.Name = "txtNumber";
-            this.txtNumber.Size = new System.Drawing.Size(145, 25);
+            this.txtNumber.Size = new System.Drawing.Size(145, 28);
             this.txtNumber.TabIndex = 81;
             this.txtNumber.TabStop = false;
             this.txtNumber.ThemeName = "TelerikMetroBlue";
@@ -246,6 +246,7 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Lote";
             this.Load += new System.EventHandler(this.FrmCreateBatch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ddlFoodClass)).EndInit();

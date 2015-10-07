@@ -76,8 +76,7 @@ namespace Avicola.Production.Win.UserControls
             // 
             this.gvDailyMeasures.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvDailyMeasures.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvDailyMeasures.Location = new System.Drawing.Point(4, 104);
-            this.gvDailyMeasures.Margin = new System.Windows.Forms.Padding(4);
+            this.gvDailyMeasures.Location = new System.Drawing.Point(3, 84);
             // 
             // 
             // 
@@ -91,29 +90,27 @@ namespace Avicola.Production.Win.UserControls
             gridViewTextBoxColumn1.HeaderText = "Día";
             gridViewTextBoxColumn1.Name = "Day";
             gridViewTextBoxColumn1.ReadOnly = true;
-            gridViewTextBoxColumn1.Width = 210;
+            gridViewTextBoxColumn1.Width = 156;
             gridViewTextBoxColumn2.FieldName = "Date";
             gridViewTextBoxColumn2.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn2.HeaderText = "Fecha";
             gridViewTextBoxColumn2.Name = "Date";
             gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.Width = 171;
+            gridViewTextBoxColumn2.Width = 127;
             gridViewDecimalColumn1.EnableExpressionEditor = false;
             gridViewDecimalColumn1.Expression = "";
             gridViewDecimalColumn1.FieldName = "Value";
             gridViewDecimalColumn1.FormatString = "{0:N2}";
             gridViewDecimalColumn1.HeaderText = "Valor";
             gridViewDecimalColumn1.Name = "Value";
-            gridViewDecimalColumn1.Width = 215;
+            gridViewDecimalColumn1.Width = 120;
             gridViewComboBoxColumn1.DisplayMember = "Name";
             gridViewComboBoxColumn1.FieldName = "FoodClassId";
             gridViewComboBoxColumn1.HeaderText = "Clase";
             gridViewComboBoxColumn1.MinWidth = 160;
-            gridViewComboBoxColumn1.DataSource = FoodClasses;
             gridViewComboBoxColumn1.Name = "FoodClassId";
             gridViewComboBoxColumn1.ValueMember = "Id";
             gridViewComboBoxColumn1.Width = 160;
-
             this.gvDailyMeasures.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -121,7 +118,7 @@ namespace Avicola.Production.Win.UserControls
             gridViewComboBoxColumn1});
             this.gvDailyMeasures.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvDailyMeasures.Name = "gvDailyMeasures";
-            this.gvDailyMeasures.Size = new System.Drawing.Size(773, 263);
+            this.gvDailyMeasures.Size = new System.Drawing.Size(580, 215);
             this.gvDailyMeasures.TabIndex = 5;
             this.gvDailyMeasures.CellBeginEdit += new Telerik.WinControls.UI.GridViewCellCancelEventHandler(this.gvDailyMeasures_CellBeginEdit);
             this.gvDailyMeasures.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gvDailyMeasures_CellValueChanged);
@@ -130,20 +127,18 @@ namespace Avicola.Production.Win.UserControls
             // 
             this.lbAggregate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbAggregate.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAggregate.Location = new System.Drawing.Point(4, 4);
-            this.lbAggregate.Margin = new System.Windows.Forms.Padding(4);
+            this.lbAggregate.Location = new System.Drawing.Point(3, 3);
             this.lbAggregate.Name = "lbAggregate";
-            this.lbAggregate.Size = new System.Drawing.Size(107, 51);
+            this.lbAggregate.Size = new System.Drawing.Size(72, 40);
             this.lbAggregate.TabIndex = 7;
             this.lbAggregate.Text = "Total:";
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(686, 4);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Location = new System.Drawing.Point(484, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 48);
+            this.btnSave.Size = new System.Drawing.Size(95, 39);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Guardar";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -157,12 +152,13 @@ namespace Avicola.Production.Win.UserControls
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(781, 433);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(586, 352);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // ucWeekSelection
@@ -170,12 +166,13 @@ namespace Avicola.Production.Win.UserControls
             this.ucWeekSelection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucWeekSelection.Current = 0;
-            this.ucWeekSelection.Location = new System.Drawing.Point(5, 5);
-            this.ucWeekSelection.Margin = new System.Windows.Forms.Padding(5);
-            this.ucWeekSelection.MinimumSize = new System.Drawing.Size(0, 86);
+            this.ucWeekSelection.Location = new System.Drawing.Point(4, 4);
+            this.ucWeekSelection.Margin = new System.Windows.Forms.Padding(4);
+            this.ucWeekSelection.MaxWeekNumber = 0;
+            this.ucWeekSelection.MinimumSize = new System.Drawing.Size(0, 70);
+            this.ucWeekSelection.MinWeekNumber = 0;
             this.ucWeekSelection.Name = "ucWeekSelection";
-            //this.ucWeekSelection.NumberOfWeek = 0;
-            this.ucWeekSelection.Size = new System.Drawing.Size(771, 86);
+            this.ucWeekSelection.Size = new System.Drawing.Size(578, 70);
             this.ucWeekSelection.TabIndex = 0;
             this.ucWeekSelection.CurrentWeekChanged += new System.EventHandler<int>(this.ucWeekSelection_CurrentWeekChanged);
             // 
@@ -183,17 +180,18 @@ namespace Avicola.Production.Win.UserControls
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.33238F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.66763F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.66762F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanel2.Controls.Add(this.lbAggregate, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtTotal, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSave, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtTotal, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 374);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 304);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(775, 56);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(582, 46);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // txtTotal
@@ -201,20 +199,18 @@ namespace Avicola.Production.Win.UserControls
             this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(112, 4);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotal.Location = new System.Drawing.Point(81, 3);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(125, 50);
+            this.txtTotal.Size = new System.Drawing.Size(94, 40);
             this.txtTotal.TabIndex = 6;
             // 
             // UcLoadDailyMeasures
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UcLoadDailyMeasures";
-            this.Size = new System.Drawing.Size(781, 433);
+            this.Size = new System.Drawing.Size(586, 352);
             this.Load += new System.EventHandler(this.UcLoadDailyMeasures_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvDailyMeasures.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDailyMeasures)).EndInit();
