@@ -8,7 +8,7 @@
 	[StartingFood] [decimal](18, 2) NOT NULL,
 	[FoodClassId] [uniqueidentifier] NOT NULL,
 	[BarnId] [uniqueidentifier] NULL,
-	[StageId] AS isnull((CASE WHEN  GETDATE() < [ArrivedToBarn] THEN CONVERT(uniqueidentifier,'096DEBD6-C537-4569-8B97-53A3C3E82A39') ELSE CONVERT(uniqueidentifier,'0FB44F39-CDB4-4564-AA3D-DF5E30D3BD0F') END),CONVERT(uniqueidentifier,'096DEBD6-C537-4569-8B97-53A3C3E82A39')),
+	[StageId] AS (CASE WHEN  GETDATE() < [ArrivedToBarn] THEN CONVERT(uniqueidentifier,'096DEBD6-C537-4569-8B97-53A3C3E82A39') ELSE CONVERT(uniqueidentifier,'0FB44F39-CDB4-4564-AA3D-DF5E30D3BD0F') END),
 	[ArrivedToBarn] [datetime2](7) NOT NULL DEFAULT GETDATE(),
 	[EndDate] [datetime2](7) NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 

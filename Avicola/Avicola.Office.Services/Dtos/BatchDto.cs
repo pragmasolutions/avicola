@@ -21,7 +21,7 @@ namespace Avicola.Office.Services.Dtos
         public int? BarnNumber { get; set; }
         public DateTime? ArrivedToBarn { get; set; }
         public DateTime? EndDate { get; set; }
-        public System.Guid StageId { get; set; }
+        public System.Guid? StageId { get; set; }
         public string StageName { get; set; }
         public int Week
         {

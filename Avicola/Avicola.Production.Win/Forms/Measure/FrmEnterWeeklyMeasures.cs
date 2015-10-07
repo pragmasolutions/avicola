@@ -50,7 +50,7 @@ namespace Avicola.Production.Win.Forms.Measure
             {
                 using (var measureService = _serviceFactory.Create<IMeasureService>())
                 {
-                    var items = standardItemService.GetByStandardAndGeneticLine(standardId, stageId, geneticLineId);
+                    var items = standardItemService.GetByStandardAndGeneticLine(standardId, stageId.GetValueOrDefault(), geneticLineId);
                     var measures = measureService.GetByStandardAndBatch(standardId, batchId);
 
                     var model = new List<LoadWeeklyStandardMeasures>();
