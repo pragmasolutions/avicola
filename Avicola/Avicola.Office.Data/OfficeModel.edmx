@@ -28,7 +28,7 @@
           <Property Name="StartingFood" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="FoodClassId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="BarnId" Type="uniqueidentifier" />
-          <Property Name="StageId" Type="uniqueidentifier" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="StageId" Type="uniqueidentifier" StoreGeneratedPattern="Computed" />
           <Property Name="ArrivedToBarn" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EndDate" Type="datetime2" Precision="7" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
@@ -464,7 +464,7 @@
           <NavigationProperty Name="GeneticLine" Relationship="Avicola.OfficeModel.FK_Batch_GeneticLine" FromRole="Batch" ToRole="GeneticLine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="BatchVaccines" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Batch" FromRole="Batch" ToRole="BatchVaccine" />
-          <Property Name="StageId" Type="Guid" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="StageId" Type="Guid" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Stage" Relationship="Avicola.OfficeModel.BatchStage" FromRole="Batch" ToRole="Stage" />
         </EntityType>
         <EntityType Name="BatchObservation">
@@ -917,7 +917,7 @@
         </Association>
         <Association Name="BatchStage">
           <End Type="Avicola.OfficeModel.Batch" Role="Batch" Multiplicity="*" />
-          <End Type="Avicola.OfficeModel.Stage" Role="Stage" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.Stage" Role="Stage" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Stage">
               <PropertyRef Name="Id" />
