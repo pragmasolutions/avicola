@@ -38,7 +38,7 @@ namespace Avicola.Office.Services.Dtos
             {
                 if (this.StageId == Stage.BREEDING)
                 {
-                    return "Cria y Precria";
+                    return "Cría y Precría";
                 }
 
                 return "Postura";
