@@ -24,7 +24,7 @@ namespace Avicola.Production.Win.Models.Batchs
         public decimal? StartingFood { get; set; }
 
         [Required]
-        [Range(0, int.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int? InitialBirds { get; set; }
 
         [Required]
