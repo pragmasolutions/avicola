@@ -31,6 +31,7 @@ namespace Avicola.Production.Win.Forms
             this.FormErrorProvider = new ErrorProvider(this);
             this.FormErrorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             this.FormErrorProvider.Icon = Icon.FromHandle(Resources.ErrorIcon.GetHicon());
+            this.Icon = Icon.FromHandle(Resources.LOGO.GetHicon());
         }
 
         protected IUow Uow { get; set; }

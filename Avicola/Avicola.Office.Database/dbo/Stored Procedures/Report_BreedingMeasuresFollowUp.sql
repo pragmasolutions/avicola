@@ -4,6 +4,7 @@
 	@DateTo DATETIME = NULL
 
 AS
+BEGIN
 	DECLARE @Dias TABLE
 	(
 		Fecha datetime

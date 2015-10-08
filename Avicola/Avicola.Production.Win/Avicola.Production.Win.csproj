@@ -402,6 +402,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\vaccine.png" />
+    <None Include="Resources\Logo.png" />
     <Content Include="Resources\Wrong.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

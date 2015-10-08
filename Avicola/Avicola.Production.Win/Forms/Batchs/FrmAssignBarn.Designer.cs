@@ -60,6 +60,7 @@
             // dtpArrivedToBarn
             // 
             this.dtpArrivedToBarn.CustomFormat = "";
+            this.dtpArrivedToBarn.Enabled = false;
             this.dtpArrivedToBarn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpArrivedToBarn.Location = new System.Drawing.Point(23, 136);
             this.dtpArrivedToBarn.Margin = new System.Windows.Forms.Padding(2);
@@ -132,12 +133,14 @@
             this.Controls.Add(this.dtpArrivedToBarn);
             this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.BtnCancelar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmAssignBarn";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asignar galpón";
             this.Load += new System.EventHandler(this.FrmAssignBarn_Load);
