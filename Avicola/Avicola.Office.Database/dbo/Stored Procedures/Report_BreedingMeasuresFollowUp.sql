@@ -77,6 +77,7 @@ AS
 
 	UPDATE @Items
 	SET Dia = 7 - ((Semana * 7) - Secuencia)
+	
 
 	UPDATE @Items
 	SET Mortandad = M.Value
@@ -88,7 +89,7 @@ AS
 		INNER JOIN Standard S
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
-			ON SI.Sequence = I.Secuencia
+			ON M.[Date] = I.Fecha
 	WHERE SGL.StageId = @StageId
 		AND M.BatchId = @BatchId
 		AND S.Name = 'Mortandad'
@@ -112,7 +113,7 @@ AS
 		INNER JOIN Standard S
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
-			ON SI.Sequence = I.Secuencia
+			ON M.[Date] = I.Fecha
 	WHERE SGL.StageId = @StageId
 		AND M.BatchId = @BatchId
 		AND S.Name = 'Descarte'
@@ -168,7 +169,7 @@ AS
 		INNER JOIN Standard S
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
-			ON SI.Sequence = I.Secuencia
+			ON M.[Date] = I.Fecha
 	WHERE SGL.StageId = @StageId
 		AND M.BatchId = @BatchId
 		AND S.Name = 'Ingreso de Alimento'
@@ -187,7 +188,7 @@ AS
 		INNER JOIN Standard S
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
-			ON SI.Sequence = I.Secuencia
+			ON M.[Date] = I.Fecha
 		INNER JOIN FoodClass FC
 			ON M.FoodClassId = FC.Id
 	WHERE SGL.StageId = @StageId
@@ -217,7 +218,7 @@ AS
 		INNER JOIN Standard S
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
-			ON SI.Sequence = I.Secuencia
+			ON M.[Date] = I.Fecha
 	WHERE SGL.StageId = @StageId
 		AND M.BatchId = @BatchId
 		AND S.Name = 'Consumo de Alimento'
@@ -262,7 +263,8 @@ AS
 			AlimentoAlInicio = @StartingFood
 	FROM @Items I
 	WHERE (@DateFrom IS NULL OR I.Fecha >= @DateFrom) 
-		AND (@DateTo IS NULL OR I.Fecha <= @DateTo) 
+		AND (@DateTo IS NULL OR I.Fecha <= @DateTo)
 
+END
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Framework.Common.Helpers
 {
-    public class DateHelper
+    public static class DateHelper
     {
         public static WeekDay DateDiffInWeek(DateTime dateFrom, DateTime dateTo)
         {
@@ -24,4 +24,19 @@ namespace Framework.Common.Helpers
         public int Weeks { get; set; }
         public int Days { get; set; }
     }
+
+    
 }
+
+namespace System
+{
+    public static class DateHelperExtensions
+    {
+        public static DateTime ToZeroTime(this DateTime date)
+        {
+            return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0);
+        }
+    }
+}
+
+
