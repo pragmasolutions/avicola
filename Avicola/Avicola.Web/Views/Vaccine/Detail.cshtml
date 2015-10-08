@@ -1,0 +1,36 @@
+﻿@using Framework.Common.Web.Helpers
+@model Avicola.Web.Models.Vaccinees.VaccineForm
+@{
+    ViewBag.Title = "Detalle de Vacuna";
+}
+
+<h3>Detalle de Vacuna</h3>
+@Html.BackButton("/Vaccine")
+<hr />
+<div class="form-horizontal">
+    @Html.DisplayForModel()
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Editar", "Edit", "Vaccine", routeValues: new { Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+            @*@using (Html.BeginForm("Delete", "Standard", new {id = Model.Id}, FormMethod.Post, new {id = "delete-form"}))
+            {
+                @Html.AntiForgeryToken()
+
+                <button type="submit" class="btn btn-warning">Eliminar</button>
+            }*@
+        </div>
+    </div>
+</div>
+
+
+@*@section scripts
+{
+    <script>
+        $(function () {
+            $("#delete-form").on("submit", function () {
+                return confirm("Está seguro que desea eliminar esta línea genética?  Esta operación no se puede deshacer.");
+            });
+        });
+    </script>
+}*@

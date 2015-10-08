@@ -62,5 +62,42 @@ namespace Avicola.Office.Services
             Uow.Vaccines.Delete(vaccineId);
             Uow.Commit();
         }
+
+        public Vaccine GetByName(string name)
+        {
+            return Uow.Vaccines.Get(e => e.Name == name && !e.IsDeleted);
+        }
+
+        public bool IsNameAvailable(string name, Guid id)
+        {
+            var currentVaccine = this.GetByName(name);
+
+            if (currentVaccine == null)
+            {
+                return true;
+            }
+
+            return currentVaccine.Id == id;
+        }
+
+        public List<VaccineDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)
+        {
+            var pagingCriteria = new PagingCriteria();
+
+            pagingCriteria.PageNumber = pageIndex;
+            pagingCriteria.PageSize = pageSize;
+            pagingCriteria.SortBy = !string.IsNullOrEmpty(sortBy) ? sortBy : "CreatedDate";
+            pagingCriteria.SortDirection = !string.IsNullOrEmpty(sortDirection) ? sortDirection : "DESC";
+
+            Expression<Func<Vaccine, bool>> where = x => !x.IsDeleted &&
+                                                        ((string.IsNullOrEmpty(criteria) || x.Name.Contains(criteria)));
+
+            var results = Uow.Vaccines.GetAll(pagingCriteria,
+                                                    where);
+
+            pageTotal = results.PagedMetadata.TotalItemCount;
+
+            return results.Entities.Project().To<VaccineDto>().ToList();
+        }
     }
 }

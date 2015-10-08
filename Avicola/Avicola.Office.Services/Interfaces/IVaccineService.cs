@@ -23,5 +23,10 @@ namespace Avicola.Office.Services.Interfaces
         void Edit(Vaccine vaccine);
 
         void Delete(Guid vaccineId);
+
+        bool IsNameAvailable(string name, Guid id);
+
+        List<VaccineDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize,
+            out int pageTotal);
     }
 }
