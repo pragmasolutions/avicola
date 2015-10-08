@@ -267,5 +267,3 @@ BEGIN
 		AND (@DateTo IS NULL OR I.Fecha <= @DateTo)
 
 END
-
-

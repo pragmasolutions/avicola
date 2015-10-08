@@ -659,6 +659,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Reports\MeasuresFollowUp.rdl" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
@@ -845,7 +846,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Reports\" />
     <Folder Include="Scripts\Highcharts-4.1.8\exporting-server\java\highcharts-export\highcharts-export-convert\target\generated-sources\annotations\" />
     <Folder Include="Scripts\Highcharts-4.1.8\exporting-server\java\highcharts-export\highcharts-export-convert\target\surefire\" />
     <Folder Include="Scripts\Highcharts-4.1.8\exporting-server\java\highcharts-export\highcharts-export-web\target\generated-sources\annotations\" />
