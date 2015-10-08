@@ -265,6 +265,5 @@ AS
 	WHERE (@DateFrom IS NULL OR I.Fecha >= @DateFrom) 
 		AND (@DateTo IS NULL OR I.Fecha <= @DateTo)
 
-END
 
 
