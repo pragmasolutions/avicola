@@ -45,6 +45,7 @@ namespace Avicola.Production.Win.Forms.Batchs
                 ddlFoodClass.DataSource = foodClass;
             }
 
+            dtpDateOfBirth.Value = DateTime.Now;
             txtNumber.Text = GetNextNumber().ToString();
             txtNumber.ReadOnly = true;
         }
@@ -88,7 +89,7 @@ namespace Avicola.Production.Win.Forms.Batchs
                 InitialBirds = string.IsNullOrEmpty(txtInitialBirds.Text) 
                                     ? (int?)null
                                     : Convert.ToInt32(txtInitialBirds.Text),
-                DateOfBirth = dtpDateOfBirth.Value,
+                DateOfBirth = dtpDateOfBirth.Value.ToZeroTime(),
                 StartingFood = string.IsNullOrEmpty(txtInitialFood.Text)
                                     ? (decimal?)null
                                     : Convert.ToDecimal(txtInitialFood.Text),
