@@ -256,6 +256,7 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Lote";
             this.Load += new System.EventHandler(this.FrmCreateBatch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ddlFoodClass)).EndInit();

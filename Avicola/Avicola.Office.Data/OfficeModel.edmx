@@ -465,7 +465,6 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="BatchVaccines" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Batch" FromRole="Batch" ToRole="BatchVaccine" />
           <Property Name="StageId" Type="Guid" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Stage" Relationship="Avicola.OfficeModel.BatchStage" FromRole="Batch" ToRole="Stage" />
         </EntityType>
         <EntityType Name="BatchObservation">
           <Key>
@@ -742,10 +741,6 @@
             <End Role="Vaccine" EntitySet="Vaccines" />
             <End Role="BatchVaccine" EntitySet="BatchVaccines" />
           </AssociationSet>
-          <AssociationSet Name="BatchStage" Association="Avicola.OfficeModel.BatchStage">
-            <End Role="Batch" EntitySet="Batches" />
-            <End Role="Stage" EntitySet="Stages" />
-          </AssociationSet>
           </EntityContainer>
         <Association Name="FK_Batch_Barn">
           <End Type="Avicola.OfficeModel.Barn" Role="Barn" Multiplicity="0..1" />
@@ -818,7 +813,6 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="StandardGeneticLines" Relationship="Avicola.OfficeModel.FK_StandardGeneticLine_Stage" FromRole="Stage" ToRole="StandardGeneticLine" />
-          <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.BatchStage" FromRole="Stage" ToRole="Batch" />
         </EntityType>
         <Association Name="FK_StandardGeneticLine_Stage">
           <End Type="Avicola.OfficeModel.Stage" Role="Stage" Multiplicity="1" />
@@ -912,18 +906,6 @@
             </Principal>
             <Dependent Role="BatchVaccine">
               <PropertyRef Name="VaccineId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="BatchStage">
-          <End Type="Avicola.OfficeModel.Batch" Role="Batch" Multiplicity="*" />
-          <End Type="Avicola.OfficeModel.Stage" Role="Stage" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Stage">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Batch">
-              <PropertyRef Name="StageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
