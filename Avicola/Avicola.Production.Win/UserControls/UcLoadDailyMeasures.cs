@@ -158,10 +158,10 @@ namespace Avicola.Production.Win.UserControls
 
         private void UcLoadDailyMeasures_Load(object sender, EventArgs e)
         {
-            //var dropdown = gvDailyMeasures.Columns["FoodClassId"] as GridViewComboBoxColumn;
-            //dropdown.DataSource = FoodClasses;
-            //dropdown.ValueMember = "Id";
-            //dropdown.DisplayMember = "Name";
+            var dropdown = gvDailyMeasures.Columns["FoodClassId"] as GridViewComboBoxColumn;
+            dropdown.DataSource = FoodClasses;
+            dropdown.ValueMember = "Id";
+            dropdown.DisplayMember = "Name";
         }
     }
 }
