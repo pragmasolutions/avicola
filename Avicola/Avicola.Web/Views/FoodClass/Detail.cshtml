@@ -13,24 +13,24 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             @Html.ActionLink("Editar", "Edit", "FoodClass", routeValues: new { Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
-            @*@using (Html.BeginForm("Delete", "Standard", new {id = Model.Id}, FormMethod.Post, new {id = "delete-form"}))
+            @using (Html.BeginForm("Delete", "FoodClass", new {id = Model.Id}, FormMethod.Post, new {id = "delete-form"}))
             {
                 @Html.AntiForgeryToken()
 
                 <button type="submit" class="btn btn-warning">Eliminar</button>
-            }*@
+            }
         </div>
     </div>
 </div>
 
 
-@*@section scripts
+@section scripts
 {
     <script>
         $(function () {
             $("#delete-form").on("submit", function () {
-                return confirm("Está seguro que desea eliminar esta línea genética?  Esta operación no se puede deshacer.");
+                return confirm("Está seguro que desea eliminar esta clase de alimento?  Esta operación no se puede deshacer.");
             });
         });
     </script>
-}*@
+}
