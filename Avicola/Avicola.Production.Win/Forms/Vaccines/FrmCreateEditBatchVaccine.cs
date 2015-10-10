@@ -142,7 +142,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
             var batchVaccine = new CreateBatchVaccineModel
             {
                 Id = new Guid(),
-                VaccineId = ddlVaccines.SelectedValue == null
+                VaccineId = (Guid)ddlVaccines.SelectedValue == Guid.Empty
                             ? (Guid?)null
                             : Guid.Parse(ddlVaccines.SelectedValue.ToString()),                
                 EndDate = dtpEndDate.Value,

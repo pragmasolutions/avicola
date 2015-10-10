@@ -38,8 +38,8 @@
             this.lblRecommendedDate = new Telerik.WinControls.UI.RadLabel();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.dtpEndDate = new Telerik.WinControls.UI.RadDateTimePicker();
-            this.ddlVaccines = new Telerik.WinControls.UI.RadDropDownList();
             this.txtRecommendedDate = new Telerik.WinControls.UI.RadTextBox();
+            this.ddlVaccines = new Telerik.WinControls.UI.RadDropDownList();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpStartDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroLabel1)).BeginInit();
@@ -49,8 +49,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblRecommendedDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEndDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlVaccines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRecommendedDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlVaccines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,6 +154,14 @@
             this.dtpEndDate.Text = "14/09/2015";
             this.dtpEndDate.Value = new System.DateTime(2015, 9, 14, 10, 20, 19, 820);
             // 
+            // txtRecommendedDate
+            // 
+            this.txtRecommendedDate.Location = new System.Drawing.Point(11, 197);
+            this.txtRecommendedDate.MaxLength = 10;
+            this.txtRecommendedDate.Name = "txtRecommendedDate";
+            this.txtRecommendedDate.Size = new System.Drawing.Size(143, 20);
+            this.txtRecommendedDate.TabIndex = 92;
+            // 
             // ddlVaccines
             // 
             this.ddlVaccines.Location = new System.Drawing.Point(9, 144);
@@ -163,14 +171,6 @@
             this.ddlVaccines.TabIndex = 91;
             this.ddlVaccines.Text = "Seleccione vacuna";
             this.ddlVaccines.SelectedValueChanged += new System.EventHandler(this.ddlVaccines_SelectedValueChanged);
-            // 
-            // txtRecommendedDate
-            // 
-            this.txtRecommendedDate.Location = new System.Drawing.Point(11, 197);
-            this.txtRecommendedDate.MaxLength = 10;
-            this.txtRecommendedDate.Name = "txtRecommendedDate";
-            this.txtRecommendedDate.Size = new System.Drawing.Size(143, 20);
-            this.txtRecommendedDate.TabIndex = 92;
             // 
             // FrmCreateEditBatchVaccine
             // 
@@ -209,8 +209,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblRecommendedDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEndDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlVaccines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRecommendedDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlVaccines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -228,7 +228,7 @@
         private Telerik.WinControls.UI.RadLabel lblRecommendedDate;
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadDateTimePicker dtpEndDate;
-        private Telerik.WinControls.UI.RadDropDownList ddlVaccines;
         private Telerik.WinControls.UI.RadTextBox txtRecommendedDate;
+        private Telerik.WinControls.UI.RadDropDownList ddlVaccines;
     }
 }
