@@ -210,6 +210,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ValidationConfig.cs" />
+    <Compile Include="Controllers\VaccineController.cs" />
     <Compile Include="Controllers\FoodClassController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Extensions\JsonExtensions.cs" />
@@ -237,6 +238,9 @@
     <Compile Include="Models\Deposits\DepositForm.cs" />
     <Compile Include="Models\Deposits\DepositListFiltersModel.cs" />
     <Compile Include="Models\Deposits\DepositListModel.cs" />
+    <Compile Include="Models\Vaccines\VaccineForm.cs" />
+    <Compile Include="Models\Vaccines\VaccineListFiltersModel.cs" />
+    <Compile Include="Models\Vaccines\VaccineListModel.cs" />
     <Compile Include="Models\FoodClasses\FoodClassForm.cs" />
     <Compile Include="Models\FoodClasses\FoodClassListFiltersModel.cs" />
     <Compile Include="Models\FoodClasses\FoodClassListModel.cs" />
@@ -655,6 +659,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Reports\MeasuresFollowUp.rdl" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
@@ -833,10 +838,14 @@
     <Content Include="Views\FoodClass\Index.cshtml" />
     <Content Include="Views\Report\MeasuresFollowUp.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\BatchStatusId.cshtml" />
+    <Content Include="Views\Vaccine\_Filters.cshtml" />
+    <Content Include="Views\Vaccine\Create.cshtml" />
+    <Content Include="Views\Vaccine\Detail.cshtml" />
+    <Content Include="Views\Vaccine\Edit.cshtml" />
+    <Content Include="Views\Vaccine\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Reports\" />
     <Folder Include="Scripts\Highcharts-4.1.8\exporting-server\java\highcharts-export\highcharts-export-convert\target\generated-sources\annotations\" />
     <Folder Include="Scripts\Highcharts-4.1.8\exporting-server\java\highcharts-export\highcharts-export-convert\target\surefire\" />
     <Folder Include="Scripts\Highcharts-4.1.8\exporting-server\java\highcharts-export\highcharts-export-web\target\generated-sources\annotations\" />

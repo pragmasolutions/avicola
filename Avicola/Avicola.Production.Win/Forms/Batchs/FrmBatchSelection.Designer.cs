@@ -38,7 +38,7 @@
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gvBatches = new Telerik.WinControls.UI.RadGridView();
-            this.btnCreateBatch = new System.Windows.Forms.Button();
+            this.btnCreateBatch = new Telerik.WinControls.UI.RadButton();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBatches.MasterTemplate)).BeginInit();
@@ -135,7 +135,6 @@
             this.btnCreateBatch.Size = new System.Drawing.Size(162, 30);
             this.btnCreateBatch.TabIndex = 2;
             this.btnCreateBatch.Text = "Crear Lote";
-            this.btnCreateBatch.UseVisualStyleBackColor = true;
             this.btnCreateBatch.Click += new System.EventHandler(this.btnCreateBatch_Click);
             // 
             // FrmBatchSelection
@@ -164,7 +163,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Telerik.WinControls.UI.RadGridView gvBatches;
-        private System.Windows.Forms.Button btnCreateBatch;
+        private Telerik.WinControls.UI.RadButton btnCreateBatch;
 
     }
 }

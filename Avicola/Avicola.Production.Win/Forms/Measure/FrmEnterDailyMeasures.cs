@@ -125,7 +125,7 @@ namespace Avicola.Production.Win.Forms.Measure
                                      BatchId = _stateController.CurrentSelectedBatch.Id,
                                      Value = x.Value,
                                      FoodClassId = x.FoodClassId,
-                                     Date = x.Date
+                                     Date = x.Date.ToZeroTime()
                                  });
 
                 measureService.UpdateMeasures(measures);

@@ -22,6 +22,8 @@ namespace Avicola.Production.Win.Forms
         {
             InitializeComponent();
             InitializeControls();
+
+            ThemeResolutionService.ApplicationThemeName = "TelerikMetroBlue";
         }
 
         private void InitializeControls()
@@ -29,6 +31,7 @@ namespace Avicola.Production.Win.Forms
             this.FormErrorProvider = new ErrorProvider(this);
             this.FormErrorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             this.FormErrorProvider.Icon = Icon.FromHandle(Resources.ErrorIcon.GetHicon());
+            this.Icon = Icon.FromHandle(Resources.LOGO.GetHicon());
         }
 
         protected IUow Uow { get; set; }

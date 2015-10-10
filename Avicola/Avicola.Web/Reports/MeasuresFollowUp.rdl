@@ -1583,7 +1583,7 @@
                               <Top>17.14499mm</Top>
                               <Left>0.70555mm</Left>
                               <Height>20.18167mm</Height>
-                              <Width>167.66334mm</Width>
+                              <Width>167.66332mm</Width>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -3765,6 +3765,7 @@
                                       <Value>=Sum(Fields!Aves.Value) / (Last(Fields!DiaDelMes.Value) - First(Fields!DiaDelMes.Value))</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3782,26 +3783,6 @@
                                   <Color>LightGrey</Color>
                                   <Style>Solid</Style>
                                 </Border>
-                                <TopBorder>
-                                  <Color>LightGrey</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </TopBorder>
-                                <BottomBorder>
-                                  <Color>LightGrey</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </BottomBorder>
-                                <LeftBorder>
-                                  <Color>LightGrey</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </LeftBorder>
-                                <RightBorder>
-                                  <Color>LightGrey</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </RightBorder>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
