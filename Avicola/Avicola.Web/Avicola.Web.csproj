@@ -843,6 +843,11 @@
     <Content Include="Views\Vaccine\Detail.cshtml" />
     <Content Include="Views\Vaccine\Edit.cshtml" />
     <Content Include="Views\Vaccine\Index.cshtml" />
+    <Content Include="Views\Medicine\Index.cshtml" />
+    <Content Include="Views\Medicine\Edit.cshtml" />
+    <Content Include="Views\Medicine\Detail.cshtml" />
+    <Content Include="Views\Medicine\Create.cshtml" />
+    <Content Include="Views\Medicine\_Filters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

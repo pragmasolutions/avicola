@@ -21,6 +21,7 @@ namespace Avicola.Office.Entities
             this.BatchObservations = new HashSet<BatchObservation>();
             this.Measures = new HashSet<Measure>();
             this.BatchVaccines = new HashSet<BatchVaccine>();
+            this.BatchMedicines = new HashSet<BatchMedicine>();
         }
     
         public System.Guid Id { get; set; }
@@ -46,5 +47,7 @@ namespace Avicola.Office.Entities
         public virtual GeneticLine GeneticLine { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BatchVaccine> BatchVaccines { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BatchMedicine> BatchMedicines { get; set; }
     }
 }

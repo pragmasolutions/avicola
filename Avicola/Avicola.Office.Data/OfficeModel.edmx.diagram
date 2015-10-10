@@ -34,6 +34,10 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_FoodClass" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.Vaccine" Width="1.5" PointX="10.375" PointY="4.75" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" />
+        <EntityTypeShape EntityType="Avicola.OfficeModel.BatchMedicine" Width="1.5" PointX="9.75" PointY="11" />
+        <EntityTypeShape EntityType="Avicola.OfficeModel.Medicine" Width="1.5" PointX="7.5" PointY="13.375" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchMedicine_Batch" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchMedicine_Medicine" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

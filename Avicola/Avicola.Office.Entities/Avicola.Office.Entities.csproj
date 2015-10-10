@@ -45,6 +45,9 @@
     <Compile Include="Batch.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BatchMedicine.cs">
+      <DependentUpon>OfficeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="BatchObservation.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
@@ -79,12 +82,18 @@
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Barn.cs" />
+    <Compile Include="Medicine.cs">
+      <DependentUpon>OfficeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="OfficeModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportBatchMedicines.cs">
+      <DependentUpon>OfficeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ReportBatchObservations.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>

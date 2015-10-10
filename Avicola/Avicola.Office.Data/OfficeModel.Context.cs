@@ -43,6 +43,8 @@ namespace Avicola.Office.Data
         public virtual DbSet<Stage> Stages { get; set; }
         public virtual DbSet<StandardType> StandardTypes { get; set; }
         public virtual DbSet<Vaccine> Vaccines { get; set; }
+        public virtual DbSet<BatchMedicine> BatchMedicines { get; set; }
+        public virtual DbSet<Medicine> Medicines { get; set; }
     
         public virtual int StandardGeneticLineDelete(Nullable<System.Guid> id)
         {
@@ -94,6 +96,19 @@ namespace Avicola.Office.Data
                 new ObjectParameter("StageId", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportBatchVaccines>("ReportBatchVaccine", batchIdParameter, stageIdParameter);
+        }
+    
+        public virtual ObjectResult<ReportBatchMedicines> ReportBatchMedicine(Nullable<System.Guid> batchId, Nullable<System.Guid> stageId)
+        {
+            var batchIdParameter = batchId.HasValue ?
+                new ObjectParameter("BatchId", batchId) :
+                new ObjectParameter("BatchId", typeof(System.Guid));
+    
+            var stageIdParameter = stageId.HasValue ?
+                new ObjectParameter("StageId", stageId) :
+                new ObjectParameter("StageId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportBatchMedicines>("ReportBatchMedicine", batchIdParameter, stageIdParameter);
         }
     }
 }
