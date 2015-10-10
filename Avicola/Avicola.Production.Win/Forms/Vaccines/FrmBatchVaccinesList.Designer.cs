@@ -84,6 +84,7 @@
             // 
             // 
             this.gvBatchVaccines.MasterTemplate.AllowAddNewRow = false;
+            this.gvBatchVaccines.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.FieldName = "Id";
             gridViewTextBoxColumn1.HeaderText = "Id";
             gridViewTextBoxColumn1.IsVisible = false;
@@ -91,25 +92,29 @@
             gridViewTextBoxColumn2.FieldName = "VaccineName";
             gridViewTextBoxColumn2.HeaderText = "Vacuna";
             gridViewTextBoxColumn2.Name = "VaccineName";
-            gridViewTextBoxColumn2.Width = 180;
+            gridViewTextBoxColumn2.Width = 181;
             gridViewTextBoxColumn3.FieldName = "StartDate";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn3.HeaderText = "Comienzo";
             gridViewTextBoxColumn3.Name = "StartDate";
-            gridViewTextBoxColumn3.Width = 100;
+            gridViewTextBoxColumn3.Width = 101;
             gridViewTextBoxColumn4.FieldName = "EndDate";
             gridViewTextBoxColumn4.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn4.HeaderText = "Fin";
             gridViewTextBoxColumn4.Name = "EndDate";
-            gridViewTextBoxColumn4.Width = 100;
+            gridViewTextBoxColumn4.Width = 101;
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.Image = global::Avicola.Production.Win.Properties.Resources.Data_Edit;
             gridViewCommandColumn1.ImageLayout = System.Windows.Forms.ImageLayout.Center;
+            gridViewCommandColumn1.MaxWidth = 40;
+            gridViewCommandColumn1.MinWidth = 40;
             gridViewCommandColumn1.Name = "btnEdit";
             gridViewCommandColumn1.Width = 40;
             gridViewCommandColumn2.HeaderText = "";
             gridViewCommandColumn2.Image = global::Avicola.Production.Win.Properties.Resources.Garbage_Closed;
             gridViewCommandColumn2.ImageLayout = System.Windows.Forms.ImageLayout.Center;
+            gridViewCommandColumn2.MaxWidth = 40;
+            gridViewCommandColumn2.MinWidth = 40;
             gridViewCommandColumn2.Name = "btnDelete";
             gridViewCommandColumn2.Width = 40;
             this.gvBatchVaccines.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
