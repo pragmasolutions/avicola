@@ -69,6 +69,7 @@
     <Compile Include="Extensions\Standard.cs" />
     <Compile Include="Extensions\StandardGeneticLine.cs" />
     <Compile Include="Extensions\StandardItem.cs" />
+    <Compile Include="Extensions\Medicine.cs" />
     <Compile Include="Extensions\Vaccine.cs" />
     <Compile Include="Extensions\Batch.cs" />
     <Compile Include="FoodClass.cs">

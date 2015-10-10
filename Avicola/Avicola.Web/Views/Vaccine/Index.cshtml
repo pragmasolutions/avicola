@@ -25,12 +25,12 @@
         </tr>
     </thead>
     <tbody class="row-link" data-link="row">
-        @foreach (var foodClass in Model.List)
+        @foreach (var vaccine in Model.List)
         {
             <tr>
-                <td>@Html.ActionLink(foodClass.Name, "Detail", "Vaccine", routeValues: new { foodClass.Id }, htmlAttributes: null)</td>
-                <td>@foodClass.CreatedDate</td>
-                <td>@foodClass.RecommendedDay</td>
+                <td>@Html.ActionLink(vaccine.Name, "Detail", "Vaccine", routeValues: new { vaccine.Id }, htmlAttributes: null)</td>
+                <td>@vaccine.CreatedDate</td>
+                <td>@vaccine.RecommendedDay</td>
             </tr>
         }
     </tbody>

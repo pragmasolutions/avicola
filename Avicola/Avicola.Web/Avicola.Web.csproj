@@ -210,6 +210,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ValidationConfig.cs" />
+    <Compile Include="Controllers\MedicineController.cs" />
     <Compile Include="Controllers\VaccineController.cs" />
     <Compile Include="Controllers\FoodClassController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -238,6 +239,9 @@
     <Compile Include="Models\Deposits\DepositForm.cs" />
     <Compile Include="Models\Deposits\DepositListFiltersModel.cs" />
     <Compile Include="Models\Deposits\DepositListModel.cs" />
+    <Compile Include="Models\Medicines\MedicineForm.cs" />
+    <Compile Include="Models\Medicines\MedicineListFiltersModel.cs" />
+    <Compile Include="Models\Medicines\MedicineListModel.cs" />
     <Compile Include="Models\Vaccines\VaccineForm.cs" />
     <Compile Include="Models\Vaccines\VaccineListFiltersModel.cs" />
     <Compile Include="Models\Vaccines\VaccineListModel.cs" />

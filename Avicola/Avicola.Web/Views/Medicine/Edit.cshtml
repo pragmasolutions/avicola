@@ -1,13 +1,13 @@
 ﻿@using Framework.Common.Web.Helpers
-@model Avicola.Web.Models.Vaccinees.VaccineForm
+@model Avicola.Web.Models.Medicines.MedicineForm
 @{
-    ViewBag.Title = "Editar Vacuna";
+    ViewBag.Title = "Editar Medicamento";
 }
 
-<h3>Editar Vacuna</h3>
-@Html.BackButton("/Vaccine")
+<h3>Editar Medicamento</h3>
+@Html.BackButton("/Medicine")
 <hr />
-@using (Html.BeginForm("Edit", "Vaccine", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Edit", "Medicine", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)

@@ -1,15 +1,15 @@
 ﻿@using Avicola.Office.Entities
 @using Framework.Common.Web.Helpers;
 @using PagedList.Mvc;
-@model Avicola.Web.Models.Vaccinees.VaccineListModel
+@model Avicola.Web.Models.Medicines.MedicineListModel
 @{
-    ViewBag.Title = "Vacuna";
+    ViewBag.Title = "Medicamento";
 }
 
-<h3>Vacunas</h3>
+<h3>Medicamentos</h3>
 
 <br />
-@Html.ActionLink("Crear Vacuna", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
+@Html.ActionLink("Crear Medicamento", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
 
 @Html.Partial("_Filters", Model.Filters)
 
@@ -21,16 +21,16 @@
         <tr>
             <th>Nombre</th>
             <th>Fecha</th>
-            <th>Día Recomendado</th>
+            <th>Observacion</th>
         </tr>
     </thead>
     <tbody class="row-link" data-link="row">
-        @foreach (var foodClass in Model.List)
+        @foreach (var medicine in Model.List)
         {
             <tr>
-                <td>@Html.ActionLink(foodClass.Name, "Detail", "Vaccine", routeValues: new { foodClass.Id }, htmlAttributes: null)</td>
-                <td>@foodClass.CreatedDate</td>
-                <td>@foodClass.RecommendedDay</td>
+                <td>@Html.ActionLink(medicine.Name, "Detail", "Medicine", routeValues: new { medicine.Id }, htmlAttributes: null)</td>
+                <td>@medicine.CreatedDate</td>
+                <td>@medicine.Observation</td>
             </tr>
         }
     </tbody>

@@ -19,6 +19,7 @@ namespace Avicola.Office.Data.Interfaces
         IRepository<StandardGeneticLine> StandardGeneticLines { get; }
         IRepository<StandardItem> StandardItems { get; }
         IRepository<Vaccine> Vaccines { get; }
+        IRepository<Medicine> Medicines { get; }
 
         OfficeEntities DbContext { get; }
     }

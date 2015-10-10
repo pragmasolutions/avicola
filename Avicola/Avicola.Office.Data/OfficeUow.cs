@@ -32,6 +32,7 @@ namespace Avicola.Office.Data
         public IRepository<StandardGeneticLine> StandardGeneticLines { get { return GetStandardRepo<StandardGeneticLine>(); } }
         public IRepository<StandardItem> StandardItems { get { return GetStandardRepo<StandardItem>(); } }
         public IRepository<Vaccine> Vaccines { get { return GetStandardRepo<Vaccine>(); } }
+        public IRepository<Medicine> Medicines { get { return GetStandardRepo<Medicine>(); } }
 
         public string ConnectionString
         {
