@@ -56,4 +56,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RecommendedDay" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="3a0a0346-751a-4e65-a68e-ae8ff5b7fe6b" ChangeDateTime="10/10/2015 18:04:49">
+    <Property Name="ElementName" Value="[dbo].[Vaccine].[RecommendedDay]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Vaccine]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Observation" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d0e0bcb4-bd69-45e1-9c5b-cbe513f475c2" ChangeDateTime="10/10/2015 18:05:55">
+    <Property Name="ElementName" Value="[dbo].[BatchVaccine].[VaccineId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BatchVaccine]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MedicineId" />
+  </Operation>
 </Operations>
