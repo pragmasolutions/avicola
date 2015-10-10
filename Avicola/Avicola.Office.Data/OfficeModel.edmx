@@ -343,6 +343,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Report_BatchObservation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="StageId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="Report_BatchVaccine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="StageId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="Report_BreedingMeasuresFollowUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BatchId" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="DateFrom" Type="datetime" Mode="In" />
@@ -741,6 +749,14 @@
             <End Role="Vaccine" EntitySet="Vaccines" />
             <End Role="BatchVaccine" EntitySet="BatchVaccines" />
           </AssociationSet>
+          <FunctionImport Name="ReportBatchObservation" ReturnType="Collection(Avicola.OfficeModel.ReportBatchObservations)">
+            <Parameter Name="BatchId" Mode="In" Type="Guid" />
+            <Parameter Name="StageId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ReportBatchVaccine" ReturnType="Collection(Avicola.OfficeModel.ReportBatchVaccines)">
+            <Parameter Name="BatchId" Mode="In" Type="Guid" />
+            <Parameter Name="StageId" Mode="In" Type="Guid" />
+          </FunctionImport>
           </EntityContainer>
         <Association Name="FK_Batch_Barn">
           <End Type="Avicola.OfficeModel.Barn" Role="Barn" Multiplicity="0..1" />
@@ -909,6 +925,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="ReportBatchObservations">
+          <Property Type="Int32" Name="Number" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="String" Name="Content" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ReportBatchVaccines">
+          <Property Type="Int32" Name="Number" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" />
+          <Property Type="String" Name="Vaccine" Nullable="false" MaxLength="100" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1118,6 +1146,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ReportBatchObservation" FunctionName="Avicola.OfficeModel.Store.Report_BatchObservation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Avicola.OfficeModel.ReportBatchObservations">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReportBatchVaccine" FunctionName="Avicola.OfficeModel.Store.Report_BatchVaccine">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Avicola.OfficeModel.ReportBatchVaccines">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Vaccine" ColumnName="Vaccine" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

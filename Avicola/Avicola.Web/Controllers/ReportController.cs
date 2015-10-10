@@ -74,17 +74,22 @@ namespace Avicola.Web.Controllers
                     ? _reportService.BreedingMeasuresFollowUp(model.BatchId, DateTime.Now.AddMonths(-5),
                         DateTime.Now.AddMonths(1)).ToList()
                     : null;
+                var dsBatchObservation = _reportService.BatchObservation(model.BatchId, model.StageId);
+                var dsBatchVaccine = _reportService.BatchVaccine(model.BatchId, model.StageId);
                 var reportFactory = new ReportFactory();
 
                 var parameters = new Dictionary<string, string>
                               {
                                   {"BatchId", model.BatchId.ToString()},
                                   {"DateFrom", null},
-                                  {"DateTo", null}
+                                  {"DateTo", null},
+                                  {"StageId", model.StageId.ToString()}
                               };
 
                 reportFactory.SetPathCompleto(Server.MapPath("~/Reports/MeasuresFollowUp.rdl"))
                     .SetDataSource("DataSet1", dataset)
+                    .SetDataSource("BatchObservation", dsBatchObservation)
+                    .SetDataSource("BatchVaccine", dsBatchVaccine)
                     .SetParametro(parameters); 
 
                 byte[] archivo = reportFactory.Renderizar(model.ReportType);

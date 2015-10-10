@@ -85,6 +85,12 @@
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportBatchObservations.cs">
+      <DependentUpon>OfficeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportBatchVaccines.cs">
+      <DependentUpon>OfficeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ReportBreedingMeasuresFollowUpRow.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>

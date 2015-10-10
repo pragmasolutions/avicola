@@ -81,6 +81,8 @@
     <Build Include="dbo\Functions\ExplodeDates.sql" />
     <Build Include="dbo\Stored Procedures\StandardGeneticLine_Delete.sql" />
     <Build Include="dbo\Stored Procedures\Report_BreedingMeasuresFollowUp.sql" />
+    <Build Include="dbo\Stored Procedures\Report_BatchVaccine.sql" />
+    <Build Include="dbo\Stored Procedures\Report_BatchObservation.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Avicola.Office.Database.refactorlog" />

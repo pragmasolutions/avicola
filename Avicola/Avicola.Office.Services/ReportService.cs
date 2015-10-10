@@ -23,5 +23,15 @@ namespace Avicola.Office.Services
         {
             return Uow.DbContext.ReportBreedingMeasuresFollowUpRow(batchId, dateFrom, dateTo).ToList();
         }
+
+        public List<ReportBatchObservations> BatchObservation(Guid batchId, Guid stageId)
+        {
+            return Uow.DbContext.ReportBatchObservation(batchId, stageId).ToList();
+        }
+
+        public List<ReportBatchVaccines> BatchVaccine(Guid batchId, Guid stageId)
+        {
+            return Uow.DbContext.ReportBatchVaccine(batchId, stageId).ToList();
+        }
     }
 }

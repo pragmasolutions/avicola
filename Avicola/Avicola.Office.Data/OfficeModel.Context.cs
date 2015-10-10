@@ -69,5 +69,31 @@ namespace Avicola.Office.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportBreedingMeasuresFollowUpRow>("ReportBreedingMeasuresFollowUpRow", batchIdParameter, dateFromParameter, dateToParameter);
         }
+    
+        public virtual ObjectResult<ReportBatchObservations> ReportBatchObservation(Nullable<System.Guid> batchId, Nullable<System.Guid> stageId)
+        {
+            var batchIdParameter = batchId.HasValue ?
+                new ObjectParameter("BatchId", batchId) :
+                new ObjectParameter("BatchId", typeof(System.Guid));
+    
+            var stageIdParameter = stageId.HasValue ?
+                new ObjectParameter("StageId", stageId) :
+                new ObjectParameter("StageId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportBatchObservations>("ReportBatchObservation", batchIdParameter, stageIdParameter);
+        }
+    
+        public virtual ObjectResult<ReportBatchVaccines> ReportBatchVaccine(Nullable<System.Guid> batchId, Nullable<System.Guid> stageId)
+        {
+            var batchIdParameter = batchId.HasValue ?
+                new ObjectParameter("BatchId", batchId) :
+                new ObjectParameter("BatchId", typeof(System.Guid));
+    
+            var stageIdParameter = stageId.HasValue ?
+                new ObjectParameter("StageId", stageId) :
+                new ObjectParameter("StageId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportBatchVaccines>("ReportBatchVaccine", batchIdParameter, stageIdParameter);
+        }
     }
 }
