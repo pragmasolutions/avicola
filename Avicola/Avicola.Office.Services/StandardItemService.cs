@@ -29,8 +29,7 @@ namespace Avicola.Office.Services
                     whereClause:
                         x =>
                             x.StandardGeneticLine.StandardId == standardId &&
-                            x.StandardGeneticLine.GeneticLineId == geneticLineId &&
-                            x.StandardGeneticLine.StageId == stageId, 
+                            x.StandardGeneticLine.GeneticLineId == geneticLineId,
                     includes: x => x.StandardGeneticLine.Standard)
                     .Where(e => !e.IsDeleted)
                     .OrderBy(x => x.Sequence)

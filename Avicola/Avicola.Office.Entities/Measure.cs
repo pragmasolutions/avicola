@@ -24,8 +24,8 @@ namespace Avicola.Office.Entities
         public Nullable<System.Guid> FoodClassId { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
     
-        public virtual Batch Batch { get; set; }
         public virtual StandardItem StandardItem { get; set; }
         public virtual FoodClass FoodClass { get; set; }
+        public virtual Batch Batch { get; set; }
     }
 }

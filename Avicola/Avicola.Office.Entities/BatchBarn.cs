@@ -13,17 +13,19 @@ namespace Avicola.Office.Entities
     using System.Collections.Generic;
     
     using Framework.Data.Interfaces;
-    public partial class BatchVaccine : IEntity
+    public partial class BatchBarn : IEntity
     {
         public System.Guid Id { get; set; }
         public System.Guid BatchId { get; set; }
-        public System.Guid VaccineId { get; set; }
+        public System.Guid BarnId { get; set; }
         public System.DateTime CreatedDate { get; set; }
-        public System.DateTime StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
+        public int InitialBirds { get; set; }
+        public decimal StartingFood { get; set; }
+        public System.Guid FoodClassId { get; set; }
         public bool IsDeleted { get; set; }
     
-        public virtual Vaccine Vaccine { get; set; }
+        public virtual Barn Barn { get; set; }
+        public virtual FoodClass FoodClass { get; set; }
         public virtual Batch Batch { get; set; }
     }
 }

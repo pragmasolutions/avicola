@@ -18,6 +18,7 @@ namespace Avicola.Office.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Barn()
         {
+            this.BatchBarns = new HashSet<BatchBarn>();
             this.Batches = new HashSet<Batch>();
         }
     
@@ -26,7 +27,11 @@ namespace Avicola.Office.Entities
         public int Number { get; set; }
         public Nullable<int> Capacity { get; set; }
         public bool IsDeleted { get; set; }
+        public System.Guid StageId { get; set; }
     
+        public virtual Stage Stage { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BatchBarn> BatchBarns { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Batch> Batches { get; set; }
     }
