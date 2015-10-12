@@ -37,7 +37,7 @@ namespace Avicola.Production.Win.UserControls
             // 
             this.ddlVaccines.Location = new System.Drawing.Point(0, 0);
             this.ddlVaccines.Name = "ddlVaccines";
-            this.ddlVaccines.Size = new System.Drawing.Size(173, 20);
+            this.ddlVaccines.Size = new System.Drawing.Size(150, 20);
             this.ddlVaccines.TabIndex = 0;
             this.ddlVaccines.Text = "radDropDownList1";
             this.ddlVaccines.SelectedValueChanged += new System.EventHandler(this.ddlVaccines_SelectedValueChanged);
@@ -48,7 +48,7 @@ namespace Avicola.Production.Win.UserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ddlVaccines);
             this.Name = "UcVaccinesSelection";
-            this.Size = new System.Drawing.Size(176, 20);
+            this.Size = new System.Drawing.Size(153, 20);
             ((System.ComponentModel.ISupportInitialize)(this.ddlVaccines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
