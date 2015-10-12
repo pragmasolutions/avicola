@@ -38,6 +38,9 @@ namespace Avicola.Office.Entities
         public System.DateTime ArrivedToBarn { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public bool IsDeleted { get; set; }
+        public Nullable<System.DateTime> BreedingDate { get; set; }
+        public Nullable<System.DateTime> ReBreedingDate { get; set; }
+        public Nullable<System.DateTime> PostureDate { get; set; }
     
         public virtual Barn Barn { get; set; }
         public virtual FoodClass FoodClass { get; set; }

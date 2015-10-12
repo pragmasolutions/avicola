@@ -25,6 +25,9 @@
           <Property Name="Number" Type="int" Nullable="false" />
           <Property Name="InitialBirds" Type="int" Nullable="false" />
           <Property Name="DateOfBirth" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="BreedingDate" Type="datetime2" Precision="7" />
+          <Property Name="ReBreedingDate" Type="datetime2" Precision="7" />
+          <Property Name="PostureDate" Type="datetime2" Precision="7" />
           <Property Name="GeneticLineId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StartingFood" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="FoodClassId" Type="uniqueidentifier" Nullable="false" />
@@ -1124,6 +1127,9 @@
           <NavigationProperty Name="BatchObservations" Relationship="Avicola.OfficeModel.FK_BatchObservation_Batch" FromRole="Batch" ToRole="BatchObservation" />
           <NavigationProperty Name="BatchVaccines" Relationship="Avicola.OfficeModel.FK_BatchVaccine_Batch" FromRole="Batch" ToRole="BatchVaccine" />
           <NavigationProperty Name="Measures" Relationship="Avicola.OfficeModel.FK_Measure_Batch" FromRole="Batch" ToRole="Measure" />
+          <Property Name="BreedingDate" Type="DateTime" Precision="7" />
+          <Property Name="ReBreedingDate" Type="DateTime" Precision="7" />
+          <Property Name="PostureDate" Type="DateTime" Precision="7" />
         </EntityType>
         <Association Name="FK_Batch_Barn">
           <End Type="Avicola.OfficeModel.Barn" Role="Barn" Multiplicity="0..1" />
@@ -1496,6 +1502,9 @@
           <EntitySetMapping Name="Batches">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Batch">
               <MappingFragment StoreEntitySet="Batch">
+                <ScalarProperty Name="PostureDate" ColumnName="PostureDate" />
+                <ScalarProperty Name="ReBreedingDate" ColumnName="ReBreedingDate" />
+                <ScalarProperty Name="BreedingDate" ColumnName="BreedingDate" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="ArrivedToBarn" ColumnName="ArrivedToBarn" />
