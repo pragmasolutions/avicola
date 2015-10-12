@@ -319,9 +319,6 @@
     <EmbeddedResource Include="UserControls\UcStandardSelecction.resx">
       <DependentUpon>UcStandardSelecction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UcVaccinesSelection.resx">
-      <DependentUpon>UcVaccinesSelection.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcWeekSelection.resx">
       <DependentUpon>UcWeekSelection.cs</DependentUpon>
     </EmbeddedResource>

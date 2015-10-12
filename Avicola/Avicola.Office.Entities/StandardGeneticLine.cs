@@ -26,12 +26,10 @@ namespace Avicola.Office.Entities
         public System.Guid StandardId { get; set; }
         public System.Guid GeneticLineId { get; set; }
         public bool IsDeleted { get; set; }
-        public System.Guid StageId { get; set; }
     
         public virtual GeneticLine GeneticLine { get; set; }
         public virtual Standard Standard { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StandardItem> StandardItems { get; set; }
-        public virtual Stage Stage { get; set; }
     }
 }

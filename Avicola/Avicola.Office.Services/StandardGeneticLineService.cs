@@ -36,8 +36,7 @@ namespace Avicola.Office.Services
             var item = Uow.StandardGeneticLines.Get(x => x.Id == standardGeneticLineId, 
                                                                     x => x.StandardItems, 
                                                                     x => x.GeneticLine, 
-                                                                    x => x.Standard,
-                                                                    x => x.Stage);
+                                                                    x => x.Standard);
             return item;
         }
 
@@ -57,7 +56,6 @@ namespace Avicola.Office.Services
         {
             var list = Uow.StandardGeneticLines.GetAll().Where(x => x.StandardId == standardId
                                                                     && x.GeneticLineId == geneticLineId
-                                                                    && x.StageId == stageId
                                                                     && !x.IsDeleted);
             return list.Any();
         }

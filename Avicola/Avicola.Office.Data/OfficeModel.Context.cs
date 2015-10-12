@@ -30,7 +30,6 @@ namespace Avicola.Office.Data
         }
     
         public virtual DbSet<Barn> Barns { get; set; }
-        public virtual DbSet<Batch> Batches { get; set; }
         public virtual DbSet<BatchObservation> BatchObservations { get; set; }
         public virtual DbSet<DataLoadType> DataLoadTypes { get; set; }
         public virtual DbSet<FoodClass> FoodClasses { get; set; }
@@ -45,6 +44,8 @@ namespace Avicola.Office.Data
         public virtual DbSet<Vaccine> Vaccines { get; set; }
         public virtual DbSet<BatchMedicine> BatchMedicines { get; set; }
         public virtual DbSet<Medicine> Medicines { get; set; }
+        public virtual DbSet<BatchBarn> BatchBarns { get; set; }
+        public virtual DbSet<Batch> Batches { get; set; }
     
         public virtual int StandardGeneticLineDelete(Nullable<System.Guid> id)
         {
