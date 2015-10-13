@@ -61,6 +61,7 @@
           <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EndDate" Type="datetime2" Precision="7" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Observation" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="BatchObservation">
           <Key>
@@ -1016,6 +1017,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Batch" Relationship="Avicola.OfficeModel.FK_BatchMedicine_Batch" FromRole="BatchMedicine" ToRole="Batch" />
           <NavigationProperty Name="Medicine" Relationship="Avicola.OfficeModel.FK_BatchMedicine_Medicine" FromRole="BatchMedicine" ToRole="Medicine" />
+          <Property Name="Observation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="ReportBatchMedicines">
           <Property Type="Int32" Name="Number" Nullable="false" />
@@ -1450,6 +1452,7 @@
           <EntitySetMapping Name="BatchMedicines">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.BatchMedicine">
               <MappingFragment StoreEntitySet="BatchMedicine">
+                <ScalarProperty Name="Observation" ColumnName="Observation" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />

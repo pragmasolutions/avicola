@@ -61,6 +61,7 @@
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\GeneticLineDto.cs" />
+    <Compile Include="Extensions\BatchMedicine.cs" />
     <Compile Include="Extensions\Stage.cs" />
     <Compile Include="Extensions\StandardType.cs" />
     <Compile Include="Extensions\DataLoadType.cs" />

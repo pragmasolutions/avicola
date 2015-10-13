@@ -14,5 +14,6 @@ namespace Avicola.Office.Services.Dtos
         public DateTime? EndDate { get; set; }
         public bool IsDeleted { get; set; }
         public string MedicineName { get; set; }
+        public string Observation { get; set; }
     }
 }
