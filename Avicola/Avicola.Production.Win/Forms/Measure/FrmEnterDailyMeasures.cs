@@ -78,7 +78,7 @@ namespace Avicola.Production.Win.Forms.Measure
                             {
                                 var measure = measures.Where(m => !m.StandardItem.IsDeleted)
                                             .FirstOrDefault(x => x.StandardItemId == item.Id
-                                                            && x.Date == measureDate);
+                                                            && x.Date == measureDate.Date);
 
                                 var measureModel = new DailyStandardMeasure()
                                 {

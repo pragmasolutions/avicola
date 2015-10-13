@@ -32,7 +32,6 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchBarn_Barn" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchBarn_FoodClass" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.Batch" Width="1.5" PointX="7.5" PointY="7.125" />
-        <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_Barn" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_FoodClass" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_GeneticLine" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_Stage" />

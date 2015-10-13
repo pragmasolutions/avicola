@@ -19,7 +19,6 @@ namespace Avicola.Office.Entities
         public Barn()
         {
             this.BatchBarns = new HashSet<BatchBarn>();
-            this.Batches = new HashSet<Batch>();
         }
     
         public System.Guid Id { get; set; }
@@ -32,7 +31,5 @@ namespace Avicola.Office.Entities
         public virtual Stage Stage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BatchBarn> BatchBarns { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Batch> Batches { get; set; }
     }
 }

@@ -3,7 +3,7 @@
 
         refresh = function () {
             $.getJSON("/ControlPanel/GetAllActive", function (data) {
-                _lastData = data;
+                _lastData = mergeFatalitiesAndDiscarded(data);
 
                 var height = $(window).height();
                 $container = $('.main-container').empty().height(height - 60);
@@ -298,6 +298,28 @@
                 },
                 series: series
             });
+        },
+        mergeFatalitiesAndDiscarded = function(data) {
+            for (var i = 0; i < data.length; i++) {
+                var batch = data[i];
+                var fatalities = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name == 'Mortandad' })[0];
+                var discarded = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name == 'Descarte' })[0];
+
+                if (fatalities && discarded) {
+                    for (var j = 0; j < discarded.StandardItems.length; j++) {
+                        var discardedItem = discarded.StandardItems[j];
+                        var fatalityItem = fatalities.StandardItems[j];
+
+                        for (var k = 0; k < discardedItem.Measures.length; k++) {
+                            var measure = discardedItem.Measures[k];
+                            fatalityItem.Measures.push({ Value: measure.Value });
+                        }
+                    }
+
+                    batch.GeneticLine.Standards = $.grep(batch.GeneticLine.Standards, function(x) { return x.Name != 'Descarte' });
+                }
+            }
+            return data;
         };
 
     return {

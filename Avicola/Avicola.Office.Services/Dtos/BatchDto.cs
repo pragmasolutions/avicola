@@ -25,7 +25,7 @@ namespace Avicola.Office.Services.Dtos
         public DateTime? EndDate { get; set; }
         public System.Guid? StageId { get; set; }
         public Stage Stage { get; set; }
-        public IList<BatchBarn> BatchBarns { get; set; }
+        public IList<BatchBarnDto> BatchBarns { get; set; }
 
         public int Week
         {

@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\BatchBarnDto.cs" />
     <Compile Include="StageService.cs" />
     <Compile Include="BatchMedicineService.cs" />
     <Compile Include="Dtos\BatchMedicineDto.cs" />

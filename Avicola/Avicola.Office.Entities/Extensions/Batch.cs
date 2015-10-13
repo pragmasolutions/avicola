@@ -24,5 +24,20 @@ namespace Avicola.Office.Entities
             }
         }
 
+        public IList<BatchBarn> CurrentStageBarns
+        {
+            get
+            {
+                return this.BatchBarns.Where(bb => bb.Barn.StageId == this.StageId).ToList();
+            }
+        }
+
+        public string CurrentStageBarnNames
+        {
+            get
+            {
+                return String.Join(", ", CurrentStageBarns.Select(bb => bb.Barn.Name));
+            }
+        }
     }
 }

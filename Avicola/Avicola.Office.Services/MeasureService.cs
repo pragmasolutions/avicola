@@ -39,7 +39,7 @@ namespace Avicola.Office.Services
                                              StandardItemId = measureUpdated.StandardItemId,
                                              Value = measureUpdated.Value.Value,
                                              FoodClassId = measureUpdated.FoodClassId,
-                                             Date = measureUpdated.Date
+                                             Date = measureUpdated.Date.GetValueOrDefault().ToZeroTime()
                                          };
 
                         Uow.Measures.Add(newMeasure);
@@ -58,7 +58,7 @@ namespace Avicola.Office.Services
                     {
                         currentMeasure.Value = measureUpdated.Value.Value;
                         currentMeasure.FoodClassId = measureUpdated.FoodClassId;
-                        currentMeasure.Date = measureUpdated.Date;
+                        currentMeasure.Date = measureUpdated.Date.GetValueOrDefault().ToZeroTime();
                         Uow.Measures.Edit(currentMeasure);
                     }
                     else
