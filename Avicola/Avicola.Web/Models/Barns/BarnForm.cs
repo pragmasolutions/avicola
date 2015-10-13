@@ -15,8 +15,12 @@ namespace Avicola.Web.Models
         public Guid Id { get; set; }
 
         [Required]
-        [Remote("IsNumberAvailable", "Barn", ErrorMessage = "Ya existe un galpón con ese nombre", AdditionalFields = "Id")]
-        public int? Number { get; set; }
+        [Remote("IsNameAvailable", "Barn", ErrorMessage = "Ya existe un galpón con ese nombre", AdditionalFields = "Id")]
+        public string Name { get; set; }
+
+        [Required]
+        [UIHint("StageId")]
+        public Guid StageId { get; set; }
 
         [Required]
         public int? Capacity { get; set; }

@@ -123,6 +123,9 @@
   <data name="Capacity" xml:space="preserve">
     <value>Capacidad</value>
   </data>
+  <data name="Stage" xml:space="preserve">
+    <value>Etapa</value>
+  </data>
   <data name="CellPhone" xml:space="preserve">
     <value>Celúlar</value>
   </data>

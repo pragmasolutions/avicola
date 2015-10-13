@@ -37,7 +37,7 @@ namespace Avicola.Office.Services
             pagingCriteria.SortDirection = !string.IsNullOrEmpty(sortDirection) ? sortDirection : "DESC";
 
             Expression<Func<Barn, bool>> where = x => ((string.IsNullOrEmpty(criteria) 
-                || x.Number.ToString().Contains(criteria)));
+                || x.Name.Contains(criteria)));
 
             var results = Uow.Barns.GetAll(pagingCriteria, where);
 
@@ -51,16 +51,16 @@ namespace Avicola.Office.Services
             return Uow.Barns.Get(x => x.Id == id);
         }
 
-        public Barn GetByNumber(int number)
+        public Barn GetByName(string name)
         {
-            return Uow.Barns.Get(x => x.Number == number && !x.IsDeleted);
+            return Uow.Barns.Get(x => x.Name == name && !x.IsDeleted);
         }
 
         public void Create(Barn barn)
         {
-            if (!IsNumberAvailable(barn.Number, barn.Id))
+            if (!IsNameAvailable(barn.Name, barn.Id))
             {
-                throw new ApplicationException("Un galpón con el mismo numero ya ha sido creado");
+                throw new ApplicationException("Un galpón con el mismo nombre ya ha sido creado");
             }
 
             Uow.Barns.Add(barn);
@@ -72,7 +72,8 @@ namespace Avicola.Office.Services
             var currentBarn = this.GetById(barn.Id);
 
             currentBarn.Capacity = barn.Capacity;
-            currentBarn.Number = barn.Number;
+            currentBarn.Name = barn.Name;
+            currentBarn.StageId = barn.StageId;
 
             Uow.Barns.Edit(currentBarn);
             Uow.Commit();
@@ -84,9 +85,9 @@ namespace Avicola.Office.Services
             Uow.Commit();
         }
 
-        public bool IsNumberAvailable(int number, Guid id)
+        public bool IsNameAvailable(string name, Guid id)
         {
-            var currentBarn = this.GetByNumber(number);
+            var currentBarn = this.GetByName(name);
 
             if (currentBarn == null)
             {

@@ -11,7 +11,7 @@
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Capacity" Type="int" />
           <Property Name="StageId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
@@ -585,13 +585,13 @@
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Number" Type="Int32" Nullable="false" />
           <Property Name="Capacity" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="StageId" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Stage" Relationship="Avicola.OfficeModel.FK_Barn_Stage" FromRole="Barn" ToRole="Stage" />
           <NavigationProperty Name="BatchBarns" Relationship="Avicola.OfficeModel.FK_BatchBarn_Barn" FromRole="Barn" ToRole="BatchBarn" />
           <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_Barn" FromRole="Barn" ToRole="Batch" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="BatchObservation">
           <Key>
@@ -1246,11 +1246,11 @@
           <EntitySetMapping Name="Barns">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Barn">
               <MappingFragment StoreEntitySet="Barn">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="StageId" ColumnName="StageId" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Capacity" ColumnName="Capacity" />
               </MappingFragment>
             </EntityTypeMapping>

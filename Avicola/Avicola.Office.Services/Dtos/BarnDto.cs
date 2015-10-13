@@ -8,7 +8,8 @@ namespace Avicola.Office.Services.Dtos
     {
         public System.Guid Id { get; set; }
         public System.DateTime CreatedDate { get; set; }
-        public int Number { get; set; }
+        public string Name { get; set; }
         public int? Capacity { get; set; }
+        public Stage Stage { get; set; }
     }
 }

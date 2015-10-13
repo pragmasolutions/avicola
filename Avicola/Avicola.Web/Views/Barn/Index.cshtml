@@ -20,14 +20,16 @@
         <tr>
             <th>@AvicolaGlobalResources.Number</th>
             <th>@AvicolaGlobalResources.Capacity</th>
+            <th>@AvicolaGlobalResources.Stage</th>
         </tr>
     </thead>
     <tbody class="row-link" data-link="row">
         @foreach (var barn in Model.List)
         {
             <tr>
-                <td>@Html.ActionLink(barn.Number.ToString(), "Detail", "Barn", routeValues: new { barn.Id }, htmlAttributes: null)</td>
+                <td>@Html.ActionLink(barn.Name, "Detail", "Barn", routeValues: new { barn.Id }, htmlAttributes: null)</td>
                 <td>@barn.Capacity</td>
+                <td>@barn.Stage.Name</td>
             </tr>
         }
     </tbody>

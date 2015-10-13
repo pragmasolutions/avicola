@@ -19,7 +19,7 @@ namespace Avicola.Office.Services.Interfaces
         List<BarnDto> GetAll(string sortBy, string sortDirection, string criteria, 
                                 int pageIndex, int pageSize, out int pageTotal);
 
-        Barn GetByNumber(int number);
+        Barn GetByName(string name);
 
         void Create(Barn barn);
 
@@ -27,7 +27,7 @@ namespace Avicola.Office.Services.Interfaces
 
         void Delete(Guid barnId);
 
-        bool IsNumberAvailable(int number, Guid id);
+        bool IsNameAvailable(string name, Guid id);
 
         List<Barn> GetAllAvailable();
     }
