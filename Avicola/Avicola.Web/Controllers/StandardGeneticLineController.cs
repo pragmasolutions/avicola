@@ -126,13 +126,11 @@ namespace Avicola.Web.Controllers
         public ActionResult Edit(Guid id)
         {
             var item = _service.GetById(id);
-            ViewBag.StageName = item.StageId == Stage.BREEDING ? "CRIA Y PRE-CRIA" : "POSTURA";
             ViewBag.Operation = "Edit";
 
             var model = new CreateStandardGeneticLineForm()
             {
                 StandardGeneticLine = item,
-                StageId = item.StageId
             };
             model.GenerateItems();
             return View("Create", model);

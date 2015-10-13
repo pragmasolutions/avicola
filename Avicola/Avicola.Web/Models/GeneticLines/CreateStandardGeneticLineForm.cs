@@ -98,7 +98,6 @@ namespace Avicola.Web.Models.GeneticLines
             {
                 GeneticLineId = this.StandardGeneticLine.GeneticLine.Id,
                 StandardId = this.StandardGeneticLine.Standard.Id,
-                StageId = this.StageId,
                 Id = this.StandardGeneticLine.Id
             };
 
