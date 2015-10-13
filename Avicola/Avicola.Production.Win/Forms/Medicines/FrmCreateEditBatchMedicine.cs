@@ -12,34 +12,32 @@ using Framework.Data.Helpers;
 using Telerik.WinControls;
 using System.Linq;
 using Avicola.Office.Entities;
-using Avicola.Production.Win.Models.BatchVaccines;
 using Avicola.Production.Win.Infrastructure;
 using Framework.Common.Helpers;
 using Telerik.WinControls.UI;
+using Avicola.Production.Win.Models.BatchMedicines;
 namespace Avicola.Production.Win.Forms.Medicines
 {
     public partial class FrmCreateEditBatchMedicine : EditFormBase
     {
         private readonly IStateController _stateController;
         private readonly IServiceFactory _serviceFactory;
-        private Guid _batchVaccineId = Guid.Empty;
+        private Guid _batchMedicineId = Guid.Empty;
         private Batch _batch;
-        private BatchVaccine _batchVaccine;
+        private BatchMedicine _batchMedicine;
 
         public FrmCreateEditBatchMedicine(Guid id, IFormFactory formFactory, IStateController stateController, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;
             _serviceFactory = serviceFactory;
             _stateController = stateController;
-            _batchVaccineId = id;
+            _batchMedicineId = id;
             InitializeComponent();
         }
 
         private void FrmCreateEditBatchMedicine_Load(object sender, EventArgs e)
         {
             var formTitle = "";
-            txtRecommendedDate.Visible = false;
-            lblRecommendedDate.Visible = false;
 
             using (var batchService = _serviceFactory.Create<IBatchService>())
             {
@@ -47,44 +45,33 @@ namespace Avicola.Production.Win.Forms.Medicines
 
                 dtpStartDate.Value = _batch.DateOfBirth;
                 dtpEndDate.Value = _batch.DateOfBirth.AddDays(_batch.GeneticLine.ProductionWeeks * 7);
-                txtRecommendedDate.Text = "";
+                txtObservation.Text = "";
                 formTitle = string.Format("Lote {0} - Crear Medicamento", _batch.Number.ToString());
             }
 
             using (var medicineService = _serviceFactory.Create<IMedicineService>())
             {
-                var medicines = medicineService.GetAllActive().OrderBy(x => x.Name).ToList();
+                var vaccines = medicineService.GetAllActive().OrderBy(x => x.Name).ToList();
                 ddlMedicines.ValueMember = "Id";
                 ddlMedicines.DisplayMember = "Name";
                 Medicine item = new Medicine();
                 item.Name = "Selecciona un medicamento..";
                 item.Id = Guid.Empty;
-                medicines.Insert(0,item);
-                ddlMedicines.DataSource = medicines;
-                //ddlVaccines.Items.Add(item);
+                vaccines.Insert(0,item);
+                ddlMedicines.DataSource = vaccines;
             }
                         
-            if (_batchVaccineId != Guid.Empty)
+            if (_batchMedicineId != Guid.Empty)
             {
                 //Editar
-                using (var batchVaccineService = _serviceFactory.Create<IBatchVaccineService>())
+                using (var batchMedicineService = _serviceFactory.Create<IBatchMedicineService>())
                 {
-                    _batchVaccine = batchVaccineService.GetById(_batchVaccineId);
-                    if (_batchVaccine.Vaccine.RecommendedDay.HasValue)
-                    {                        
-                        txtRecommendedDate.Text = _batch.DateOfBirth.AddDays(_batchVaccine.Vaccine.RecommendedDay.Value).ToString();
-                        txtRecommendedDate.ReadOnly = true;                    
-                    }
-                    else
-                    {
-                        txtRecommendedDate.Visible = false;
-                        lblRecommendedDate.Visible = false;
-                    }    
-                    
-                    dtpStartDate.Value = _batchVaccine.StartDate;
-                    if (_batchVaccine.EndDate != null) dtpEndDate.Value = _batchVaccine.EndDate.Value;
-                    ddlMedicines.SelectedValue = _batchVaccine.VaccineId;
-                    formTitle = string.Format("Lote {0} - Editar Vacunación", _batch.Number.ToString());
+                    _batchMedicine = batchMedicineService.GetById(_batchMedicineId);
+                    txtObservation.Text = _batchMedicine.Observation;
+                    dtpStartDate.Value = _batchMedicine.StartDate;
+                    if (_batchMedicine.EndDate != null) dtpEndDate.Value = _batchMedicine.EndDate.Value;
+                    ddlMedicines.SelectedValue = _batchMedicine.MedicineId;
+                    formTitle = string.Format("Lote {0} - Editar Medicamento", _batch.Number.ToString());
                 }
             }
 
@@ -103,109 +90,87 @@ namespace Avicola.Production.Win.Forms.Medicines
             }
             else
             {
-                if (_batchVaccineId == Guid.Empty)
+                if (_batchMedicineId == Guid.Empty)
                 {
-                    var batchVaccinenModel = GetBatchVaccineCreate();
-                    var batchVaccine = batchVaccinenModel.ToBatchVaccine();
+                    var batchVaccinenModel = GetBatchMedicineCreate();
+                    var batchVaccine = batchVaccinenModel.ToBatchMedicine();
 
-                    using (var service = _serviceFactory.Create<IBatchVaccineService>())
+                    using (var service = _serviceFactory.Create<IBatchMedicineService>())
                     {
                         service.Create(batchVaccine);
                     }
 
-                    OnBatchVaccineCreated(batchVaccine);
+                    OnBatchMedicineCreated(batchVaccine);
                 }
                 else
                 {
-                    GetBatchVaccineEdit();
-                    using (var service = _serviceFactory.Create<IBatchVaccineService>())
+                    GetBatchMedicineEdit();
+                    using (var service = _serviceFactory.Create<IBatchMedicineService>())
                     {
-                        service.Edit(_batchVaccine);
+                        service.Edit(_batchMedicine);
                     }
 
-                    OnBatchVaccineCreated(_batchVaccine);
+                    OnBatchMedicineCreated(_batchMedicine);
                 }
 
                 this.Close();
             }
         }
 
-        private void GetBatchVaccineEdit()
+        private void GetBatchMedicineEdit()
         {
-            _batchVaccine.VaccineId = (Guid)ddlMedicines.SelectedValue;
-            _batchVaccine.EndDate = dtpEndDate.Value;
-            _batchVaccine.StartDate = dtpStartDate.Value;
+            _batchMedicine.MedicineId = (Guid)ddlMedicines.SelectedValue;
+            _batchMedicine.EndDate = dtpEndDate.Value;
+            _batchMedicine.StartDate = dtpStartDate.Value;
+            _batchMedicine.Observation = txtObservation.Text;
         }
 
-        private CreateBatchVaccineModel GetBatchVaccineCreate()
+        private CreateBatchMedicineModel GetBatchMedicineCreate()
         {
-            var batchVaccine = new CreateBatchVaccineModel
+            var batchMedicine = new CreateBatchMedicineModel
             {
                 Id = new Guid(),
-                VaccineId = (Guid)ddlMedicines.SelectedValue == Guid.Empty
+                MedicineId = (Guid)ddlMedicines.SelectedValue == Guid.Empty
                             ? (Guid?)null
                             : Guid.Parse(ddlMedicines.SelectedValue.ToString()),                
                 EndDate = dtpEndDate.Value,
                 StartDate = dtpStartDate.Value,
                 CreatedDate = DateTime.Now,
                 IsDelete = false,
+                Observation = txtObservation.Text,
                 BatchId = _stateController.CurrentSelectedBatch.Id
             };
 
-            return batchVaccine;
+            return batchMedicine;
         }
 
         protected override void ValidateControls()
         {
             this.ValidateControl(dtpStartDate, "StartDate");
-            this.ValidateControl(ddlMedicines, "VaccineId");
+            this.ValidateControl(ddlMedicines, "MedicineId");
             if (_batch.DateOfBirth > dtpStartDate.Value || _batch.EndDate < dtpStartDate.Value)
             {
-                this.FormErrorProvider.SetError(dtpStartDate, "La fecha de vacunación tiene que estar comprendida en la fecha de nacimiento y la fecha de fin.");
-
+                this.FormErrorProvider.SetError(dtpStartDate, "La fecha de medicamento tiene que estar comprendida en la fecha de nacimiento y la fecha de fin.");
             }
         }
 
         protected override object GetEntity()
         {
-            return GetBatchVaccineCreate();
+            return GetBatchMedicineCreate();
         }
 
-        public event EventHandler<BatchVaccine> BatchVaccineCreated;
-        private void OnBatchVaccineCreated(BatchVaccine batchVaccine)
+        public event EventHandler<BatchMedicine> BatchMedicineCreated;
+        private void OnBatchMedicineCreated(BatchMedicine batchMedicine)
         {
-            if (BatchVaccineCreated != null)
+            if (BatchMedicineCreated != null)
             {
-                BatchVaccineCreated(this, batchVaccine);
+                BatchMedicineCreated(this, batchMedicine);
             }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void ddlVaccines_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if ((Guid)ddlMedicines.SelectedValue != Guid.Empty)
-            {
-                using (var vaccineService = _serviceFactory.Create<IVaccineService>())
-                {
-                    var vaccine = vaccineService.GetById((Guid)ddlMedicines.SelectedValue);
-                    if (vaccine.RecommendedDay.HasValue)
-                    {
-                        txtRecommendedDate.Text = _batch.DateOfBirth.AddDays(vaccine.RecommendedDay.Value).ToString("dd/MM/yyyy");
-                        txtRecommendedDate.ReadOnly = true;
-                        txtRecommendedDate.Visible = true;
-                        lblRecommendedDate.Visible = true;
-                    }
-                    else
-                    {
-                        txtRecommendedDate.Visible = false;
-                        lblRecommendedDate.Visible = false;
-                    }      
-                }
-            }            
         }
     }
 }

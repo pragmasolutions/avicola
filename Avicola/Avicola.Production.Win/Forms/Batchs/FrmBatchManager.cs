@@ -11,6 +11,7 @@ using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Avicola.Production.Win.Forms.Observations;
 using Avicola.Production.Win.Forms.Vaccines;
+using Avicola.Production.Win.Forms.Medicines;
 
 namespace Avicola.Production.Win.Forms.Batchs
 {
@@ -129,6 +130,12 @@ namespace Avicola.Production.Win.Forms.Batchs
         private void btnShowBatchSelectionView_Click(object sender, EventArgs e)
         {
             TransitionManager.LoadBatchSelectionView();
+        }
+
+        private void btnMedicine_Click(object sender, EventArgs e)
+        {
+            var frm = FormFactory.Create<FrmBatchMedicinesList>();
+            frm.ShowDialog();
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Avicola.Office.Services
 
         public List<BatchMedicineDto> GetByBatchId(Guid batchId)
         {
-            return Uow.BatchVaccines.GetAll(whereClause: null, includes: x => x.Vaccine).Where(e => e.BatchId == batchId && !e.IsDeleted)
+            return Uow.BatchMedicines.GetAll(whereClause: null, includes: x => x.Medicine).Where(e => e.BatchId == batchId && !e.IsDeleted)
                     .Project()
                     .To<BatchMedicineDto>()
                     .ToList();
@@ -61,6 +61,7 @@ namespace Avicola.Office.Services
             currentBatchMedicine.MedicineId = batchMedicine.MedicineId;
             currentBatchMedicine.StartDate = batchMedicine.StartDate;
             currentBatchMedicine.EndDate = batchMedicine.EndDate;
+            currentBatchMedicine.Observation = batchMedicine.Observation;
 
             Uow.BatchMedicines.Edit(currentBatchMedicine);
             Uow.Commit();

@@ -43,7 +43,7 @@ namespace Avicola.Production.Win.Forms.Medicines
 
             InitializeComponent();
 
-            this.gvBatchVaccines.CellFormatting += Grilla_CellFormatting;
+            this.gvBatchMedicines.CellFormatting += Grilla_CellFormatting;
         }
 
         private void FrmBatchMedicineList_Load(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace Avicola.Production.Win.Forms.Medicines
             using (var batchVaccineService = _serviceFactory.Create<IBatchMedicineService>())
             {
                 var batchVaccines = batchVaccineService.GetByBatchId(_stateController.CurrentSelectedBatch.Id).OrderBy(x => x.CreatedDate).ToList();
-                gvBatchVaccines.DataSource = batchVaccines;
+                gvBatchMedicines.DataSource = batchVaccines;
             }
         }
 
@@ -91,16 +91,16 @@ namespace Avicola.Production.Win.Forms.Medicines
             this.Close();
         }
 
-        private void gvBatchVaccines_CommandCellClick(object sender, EventArgs e)
+        private void gvBatchMedicines_CommandCellClick(object sender, EventArgs e)
         {
             var commandCell = (GridCommandCellElement)sender;
 
-            var selectedRow = this.gvBatchVaccines.SelectedRows.FirstOrDefault();
+            var selectedRow = this.gvBatchMedicines.SelectedRows.FirstOrDefault();
 
             if (selectedRow == null)
                 return;
 
-            var observation = selectedRow.DataBoundItem as BatchVaccineDto;
+            var observation = selectedRow.DataBoundItem as BatchMedicineDto;
 
             if (observation == null)
                 return;
@@ -118,17 +118,17 @@ namespace Avicola.Production.Win.Forms.Medicines
 
         private void Edit(Guid batchVaccineId)
         {
-            var frm = FormFactory.Create<FrmCreateEditBatchVaccine>(batchVaccineId);
+            var frm = FormFactory.Create<FrmCreateEditBatchMedicine>(batchVaccineId);
             frm.ShowDialog();
             UpdateGrid();
         }
 
         private void Delete(Guid batchVaccineId)
         {
-            DialogResult ds = RadMessageBox.Show(this, "Si elimina la vacunación se perderán todos los datos. \n\nEstá seguro que desea continuar?", "Confirmación", MessageBoxButtons.YesNo, RadMessageIcon.Question);
+            DialogResult ds = RadMessageBox.Show(this, "Si elimina el Medicamento se perderán todos los datos. \n\nEstá seguro que desea continuar?", "Confirmación", MessageBoxButtons.YesNo, RadMessageIcon.Question);
             if (ds.ToString() == "Yes")
             {
-                using (var service = _serviceFactory.Create<IBatchVaccineService>())
+                using (var service = _serviceFactory.Create<IBatchMedicineService>())
                 {
                     service.Delete(batchVaccineId);
                     UpdateGrid();
