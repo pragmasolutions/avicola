@@ -76,6 +76,7 @@ namespace Avicola.Web.Controllers
                     : null;
                 var dsBatchObservation = _reportService.BatchObservation(model.BatchId, model.StageId);
                 var dsBatchVaccine = _reportService.BatchVaccine(model.BatchId, model.StageId);
+                var dsBatchMedicine = _reportService.BatchMedicine(model.BatchId, model.StageId);
                 var reportFactory = new ReportFactory();
 
                 var parameters = new Dictionary<string, string>
@@ -90,6 +91,7 @@ namespace Avicola.Web.Controllers
                     .SetDataSource("DataSet1", dataset)
                     .SetDataSource("BatchObservation", dsBatchObservation)
                     .SetDataSource("BatchVaccine", dsBatchVaccine)
+                    .SetDataSource("BatchMedicine", dsBatchMedicine)
                     .SetParametro(parameters); 
 
                 byte[] archivo = reportFactory.Renderizar(model.ReportType);
