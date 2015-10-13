@@ -131,8 +131,7 @@ namespace Avicola.Web.Controllers
 
             var model = new CreateStandardGeneticLineForm()
             {
-                StandardGeneticLine = item,
-                StageId = item.StageId
+                StandardGeneticLine = item
             };
             model.GenerateItems();
             return View("Create", model);

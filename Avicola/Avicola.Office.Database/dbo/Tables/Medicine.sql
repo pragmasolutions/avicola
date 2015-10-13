@@ -3,7 +3,6 @@
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[Name] VARCHAR(100) NOT NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
-	[Observation] VARCHAR(MAX) NULL, 
     CONSTRAINT [PK_Medicine] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

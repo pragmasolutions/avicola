@@ -135,7 +135,6 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
-          <Property Name="Observation" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Stage">
           <Key>
@@ -824,11 +823,6 @@
             <Parameter Name="StageId" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="BatchMedicines" EntityType="Avicola.OfficeModel.BatchMedicine" />
-          <EntitySet Name="Medicines" EntityType="Avicola.OfficeModel.Medicine" />
-          <AssociationSet Name="FK_BatchMedicine_Medicine" Association="Avicola.OfficeModel.FK_BatchMedicine_Medicine">
-            <End Role="Medicine" EntitySet="Medicines" />
-            <End Role="BatchMedicine" EntitySet="BatchMedicines" />
-          </AssociationSet>
           <FunctionImport Name="ReportBatchMedicine" ReturnType="Collection(Avicola.OfficeModel.ReportBatchMedicines)">
             <Parameter Name="BatchId" Mode="In" Type="Guid" />
             <Parameter Name="StageId" Mode="In" Type="Guid" />
@@ -882,6 +876,11 @@
           <AssociationSet Name="FK_Measure_Batch" Association="Avicola.OfficeModel.FK_Measure_Batch">
             <End Role="Batch" EntitySet="Batches" />
             <End Role="Measure" EntitySet="Measures" />
+          </AssociationSet>
+          <EntitySet Name="Medicines" EntityType="Avicola.OfficeModel.Medicine" />
+          <AssociationSet Name="FK_BatchMedicine_Medicine" Association="Avicola.OfficeModel.FK_BatchMedicine_Medicine">
+            <End Role="Medicine" EntitySet="Medicines" />
+            <End Role="BatchMedicine" EntitySet="BatchMedicines" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="BatchVaccine">
@@ -1015,32 +1014,9 @@
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="EndDate" Type="DateTime" Precision="7" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Medicine" Relationship="Avicola.OfficeModel.FK_BatchMedicine_Medicine" FromRole="BatchMedicine" ToRole="Medicine" />
           <NavigationProperty Name="Batch" Relationship="Avicola.OfficeModel.FK_BatchMedicine_Batch" FromRole="BatchMedicine" ToRole="Batch" />
+          <NavigationProperty Name="Medicine" Relationship="Avicola.OfficeModel.FK_BatchMedicine_Medicine" FromRole="BatchMedicine" ToRole="Medicine" />
         </EntityType>
-        <EntityType Name="Medicine">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="Observation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="BatchMedicines" Relationship="Avicola.OfficeModel.FK_BatchMedicine_Medicine" FromRole="Medicine" ToRole="BatchMedicine" />
-        </EntityType>
-        <Association Name="FK_BatchMedicine_Medicine">
-          <End Type="Avicola.OfficeModel.Medicine" Role="Medicine" Multiplicity="1" />
-          <End Type="Avicola.OfficeModel.BatchMedicine" Role="BatchMedicine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Medicine">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BatchMedicine">
-              <PropertyRef Name="MedicineId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="ReportBatchMedicines">
           <Property Type="Int32" Name="Number" Nullable="false" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
@@ -1236,6 +1212,28 @@
             </Principal>
             <Dependent Role="Measure">
               <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BatchMedicines" Relationship="Avicola.OfficeModel.FK_BatchMedicine_Medicine" FromRole="Medicine" ToRole="BatchMedicine" />
+        </EntityType>
+        <Association Name="FK_BatchMedicine_Medicine">
+          <End Type="Avicola.OfficeModel.Medicine" Role="Medicine" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.BatchMedicine" Role="BatchMedicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchMedicine">
+              <PropertyRef Name="MedicineId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1462,17 +1460,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Medicines">
-            <EntityTypeMapping TypeName="Avicola.OfficeModel.Medicine">
-              <MappingFragment StoreEntitySet="Medicine">
-                <ScalarProperty Name="Observation" ColumnName="Observation" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ReportBatchMedicine" FunctionName="Avicola.OfficeModel.Store.Report_BatchMedicine">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Avicola.OfficeModel.ReportBatchMedicines">
@@ -1516,6 +1503,16 @@
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="InitialBirds" ColumnName="InitialBirds" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicines">
+            <EntityTypeMapping TypeName="Avicola.OfficeModel.Medicine">
+              <MappingFragment StoreEntitySet="Medicine">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

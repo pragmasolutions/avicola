@@ -23,7 +23,7 @@ namespace Avicola.Office.Entities
         public Nullable<System.DateTime> EndDate { get; set; }
         public bool IsDeleted { get; set; }
     
-        public virtual Medicine Medicine { get; set; }
         public virtual Batch Batch { get; set; }
+        public virtual Medicine Medicine { get; set; }
     }
 }

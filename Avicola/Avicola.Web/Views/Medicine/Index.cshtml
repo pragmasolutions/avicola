@@ -21,7 +21,6 @@
         <tr>
             <th>Nombre</th>
             <th>Fecha</th>
-            <th>Observacion</th>
         </tr>
     </thead>
     <tbody class="row-link" data-link="row">
@@ -30,7 +29,6 @@
             <tr>
                 <td>@Html.ActionLink(medicine.Name, "Detail", "Medicine", routeValues: new { medicine.Id }, htmlAttributes: null)</td>
                 <td>@medicine.CreatedDate</td>
-                <td>@medicine.Observation</td>
             </tr>
         }
     </tbody>

@@ -11,6 +11,7 @@ namespace Avicola.Office.Data.Interfaces
         IRepository<Batch> Batches { get; }
         IRepository<BatchObservation> BatchObservations { get; }
         IRepository<BatchVaccine> BatchVaccines { get; }
+        IRepository<BatchMedicine> BatchMedicines { get; }
         IRepository<DataLoadType> DataLoadTypes { get; }
         IRepository<FoodClass> FoodClasses { get; }
         IRepository<GeneticLine> GeneticLines { get; }

@@ -43,9 +43,9 @@ namespace Avicola.Office.Data
         public virtual DbSet<StandardType> StandardTypes { get; set; }
         public virtual DbSet<Vaccine> Vaccines { get; set; }
         public virtual DbSet<BatchMedicine> BatchMedicines { get; set; }
-        public virtual DbSet<Medicine> Medicines { get; set; }
         public virtual DbSet<BatchBarn> BatchBarns { get; set; }
         public virtual DbSet<Batch> Batches { get; set; }
+        public virtual DbSet<Medicine> Medicines { get; set; }
     
         public virtual int StandardGeneticLineDelete(Nullable<System.Guid> id)
         {

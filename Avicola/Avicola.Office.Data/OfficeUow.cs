@@ -24,6 +24,7 @@ namespace Avicola.Office.Data
         public IRepository<Batch> Batches { get { return GetStandardRepo<Batch>(); } }
         public IRepository<BatchObservation> BatchObservations { get { return GetStandardRepo<BatchObservation>(); } }
         public IRepository<BatchVaccine> BatchVaccines { get { return GetStandardRepo<BatchVaccine>(); } }
+        public IRepository<BatchMedicine> BatchMedicines { get { return GetStandardRepo<BatchMedicine>(); } }
         public IRepository<DataLoadType> DataLoadTypes { get { return GetStandardRepo<DataLoadType>(); } }
         public IRepository<FoodClass> FoodClasses { get { return GetStandardRepo<FoodClass>(); } }
         public IRepository<GeneticLine> GeneticLines { get { return GetStandardRepo<GeneticLine>(); } }

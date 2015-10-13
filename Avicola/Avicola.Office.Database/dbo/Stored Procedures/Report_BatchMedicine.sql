@@ -12,8 +12,7 @@ BEGIN
 		BM.CreatedDate,
 		BM.StartDate,
 		BM.EndDate,
-		Medicine = M.Name,
-		Observation = M.Observation
+		Medicine = M.Name
 	FROM BatchMedicine BM INNER JOIN Batch B
 		ON BM.BatchId = B.Id INNER JOIN GeneticLine GL 
 		ON B.GeneticLineId = GL.Id INNER JOIN Medicine M

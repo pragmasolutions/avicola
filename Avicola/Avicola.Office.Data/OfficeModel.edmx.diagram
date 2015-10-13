@@ -27,8 +27,6 @@
         <EntityTypeShape EntityType="Avicola.OfficeModel.Vaccine" Width="1.5" PointX="10.375" PointY="4.75" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Vaccine" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.BatchMedicine" Width="1.5" PointX="9.75" PointY="11" />
-        <EntityTypeShape EntityType="Avicola.OfficeModel.Medicine" Width="1.5" PointX="7.5" PointY="13.375" />
-        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchMedicine_Medicine" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.BatchBarn" Width="1.5" PointX="12.75" PointY="11.25" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Barn_Stage" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchBarn_Barn" />
@@ -43,6 +41,8 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchObservation_Batch" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchVaccine_Batch" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_Batch" />
+        <EntityTypeShape EntityType="Avicola.OfficeModel.Medicine" Width="1.5" PointX="12.375" PointY="0.875" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchMedicine_Medicine" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
