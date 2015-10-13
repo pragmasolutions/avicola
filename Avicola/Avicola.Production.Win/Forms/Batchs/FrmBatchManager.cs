@@ -42,12 +42,9 @@ namespace Avicola.Production.Win.Forms.Batchs
                 ? string.Empty
                 : _stateController.CurrentSelectedBatch.ArrivedToBarn.GetValueOrDefault().ToShortDateString();
             txtFechaNacimiento.Text = _stateController.CurrentSelectedBatch.DateOfBirth.ToShortDateString();
-            txtGalpon.Text = _stateController.CurrentSelectedBatch.BarnNumber == null ? string.Empty : _stateController.CurrentSelectedBatch.BarnNumber.ToString();
             txtLineaGenetica.Text = _stateController.CurrentSelectedBatch.GeneticLineName;
             txtNumero.Text = _stateController.CurrentSelectedBatch.Number.ToString();
             txtSemanaActual.Text = _stateController.CurrentSelectedBatch.Week.ToString();
-
-            btnGalpon.Enabled = _stateController.CurrentSelectedBatch.BarnNumber == null;
         }
 
         private void btnEstandares_Click(object sender, EventArgs e)
@@ -110,7 +107,6 @@ namespace Avicola.Production.Win.Forms.Batchs
 
         private void FrmOnBarnAssigned(object sender, BarnAssignedEventModel e)
         {
-            _stateController.CurrentSelectedBatch.BarnNumber = e.BarnNumber;
             _stateController.CurrentSelectedBatch.ArrivedToBarn = e.ArrivedToBarn;
             TransitionManager.LoadBatchManagerView();
         }

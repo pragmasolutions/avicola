@@ -24,7 +24,6 @@ namespace Avicola.Production.Win.UserControls
             {
                 lbNumber.Text = value.Number.ToString();
                 lbGeneticLineName.Text = value.GeneticLineName;
-                lbBarnNumber.Text = value.BarnNumber.ToString();
                 lbStageName.Text = value.StageName;
             }
         }

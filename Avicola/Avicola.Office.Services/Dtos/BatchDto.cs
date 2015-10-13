@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using Avicola.Office.Entities;
 using Framework.Common.Mapping;
 
@@ -18,10 +21,11 @@ namespace Avicola.Office.Services.Dtos
         public System.Guid FoodClassId { get; set; }
         public string FoodClassName { get; set; }
         public Guid? BarnId { get; set; }
-        public int? BarnNumber { get; set; }
         public DateTime? ArrivedToBarn { get; set; }
         public DateTime? EndDate { get; set; }
         public System.Guid? StageId { get; set; }
+        public Stage Stage { get; set; }
+        public IList<BatchBarn> BatchBarns { get; set; }
 
         public int Week
         {
@@ -34,14 +38,18 @@ namespace Avicola.Office.Services.Dtos
 
         public string StageName
         {
+            get { return this.Stage.Name; }
+        }
+
+        public string Barns
+        {
             get
             {
-                if (this.StageId == Stage.BREEDING)
-                {
-                    return "Cría y Precría";
-                }
+                if (!this.BatchBarns.Any())
+                    return string.Empty;
 
-                return "Postura";
+                var currentStageBarns = this.BatchBarns.Where(bb => bb.Barn.StageId == this.StageId).Select(bb => bb.Barn.Name).ToArray();
+                return String.Join(", ", currentStageBarns);
             }
         }
     }
