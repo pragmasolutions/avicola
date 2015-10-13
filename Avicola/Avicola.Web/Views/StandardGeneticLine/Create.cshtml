@@ -2,10 +2,9 @@
 @using Framework.Common.Web.Helpers
 @model Avicola.Web.Models.GeneticLines.CreateStandardGeneticLineForm
 @{
-    var title = String.Format("Valores de {0} para {1}   [Etapa: {2}]",
+    var title = String.Format("Valores de {0} para {1}",
         Model.StandardGeneticLine.Standard.Name.ToUpper(),
-        Model.StandardGeneticLine.GeneticLine.Name.ToUpper(),
-        ViewBag.StageName);
+        Model.StandardGeneticLine.GeneticLine.Name.ToUpper());
     ViewBag.Title = title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -16,9 +15,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    
-    @Html.HiddenFor(model => model.StageId)
-
+   
     @Html.HiddenFor(model => model.StandardGeneticLine.GeneticLine.Id)
     @Html.HiddenFor(model => model.StandardGeneticLine.Standard.Id)
     @Html.HiddenFor(model => model.StandardGeneticLine.Standard.AllowDecimal)

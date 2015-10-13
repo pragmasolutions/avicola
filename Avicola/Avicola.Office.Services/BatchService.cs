@@ -57,7 +57,6 @@ namespace Avicola.Office.Services
         public void Create(Batch batch)
         {
             var geneticLine = Uow.GeneticLines.Get(batch.GeneticLineId);
-            batch.ArrivedToBarn = batch.DateOfBirth.AddWeeks(geneticLine.WeeksInBreeding);
             Uow.Batches.Add(batch);
             Uow.Commit();
         }

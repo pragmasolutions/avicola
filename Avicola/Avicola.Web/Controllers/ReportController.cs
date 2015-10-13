@@ -48,10 +48,10 @@ namespace Avicola.Web.Controllers
                 var batch = _batchService.GetById(id.GetValueOrDefault());
                 list.Add(new Stage(){ Name = "Cría y Pre-Cría", Id = Stage.BREEDING});
 
-                if (DateTime.Now >= batch.CalculatedPostureStartDate)
-                {
-                    list.Add(new Stage() { Name = "Postura", Id = Stage.POSTURE });
-                }
+                //if (DateTime.Now >= batch.CalculatedPostureStartDate)
+                //{
+                //    list.Add(new Stage() { Name = "Postura", Id = Stage.POSTURE });
+                //}
             }
             var result = list.Select(x => new {x.Id, x.Name});
             return Json(result, JsonRequestBehavior.AllowGet);

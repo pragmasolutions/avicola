@@ -20,11 +20,5 @@ namespace Avicola.Web.Models.GeneticLines
         [Display(Name = "Estandar")]
         [UIHint("StandardId")]
         public Guid? StandardId { get; set; }
-
-        [Required]
-        [Display(Name = "Etapa")]
-        [UIHint("StageId")]
-        public Guid? StageId { get; set; }
-
     }
 }

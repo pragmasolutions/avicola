@@ -12,7 +12,6 @@ namespace Avicola.Web.Models.GeneticLines
         public List<StandardItemModel> StandardItems { get; set; }
         public List<StandardItemIntegerModel> IntegerStandardItems { get; set; }
         public StandardGeneticLine StandardGeneticLine { get; set; }
-        public Guid StageId { get; set; }
 
         public void GenerateItems()
         {
@@ -60,8 +59,9 @@ namespace Avicola.Web.Models.GeneticLines
                     StandardItems = new List<StandardItemModel>();
 
                     int initialSequence = GetInitialSequence();
-                    int finalSequence = GetFinalSequence();
-
+                    
+                    //int finalSequence = GetFinalSequence();
+                    int finalSequence = 10; //TODO: ARREGLAR ESTO!!!
                     for (int i = initialSequence; i < finalSequence; i++)
                     {
                         StandardItems.Add(new StandardItemModel
@@ -77,7 +77,8 @@ namespace Avicola.Web.Models.GeneticLines
                     IntegerStandardItems = new List<StandardItemIntegerModel>();
 
                     int initialSequence = GetInitialSequence();
-                    int finalSequence = GetFinalSequence();
+                    //int finalSequence = GetFinalSequence();
+                    int finalSequence = 10; //TODO: ARREGLAR ESTO!!!
 
                     for (int i = initialSequence; i < finalSequence; i++)
                     {
@@ -127,14 +128,9 @@ namespace Avicola.Web.Models.GeneticLines
 
         private int GetInitialSequence()
         {
-            return this.StageId == Stage.POSTURE ? StandardGeneticLine.GeneticLine.WeeksInBreeding : 0;
+            //return this.StageId == Stage.POSTURE ? StandardGeneticLine.GeneticLine.WeeksInBreeding : 0;
+            return 0; //TODO: ARREGLAR ESTO!!!
         }
 
-        private int GetFinalSequence()
-        {
-            return this.StageId == Stage.BREEDING
-                ? StandardGeneticLine.GeneticLine.WeeksInBreeding
-                : StandardGeneticLine.GeneticLine.ProductionWeeks;
-        }
     }
 }

@@ -24,13 +24,5 @@ namespace Avicola.Office.Entities
             }
         }
 
-        public DateTime CalculatedPostureStartDate
-        {
-            get
-            {
-                var date = DateOfBirth.AddDays(GeneticLine.WeeksInBreeding * 7);
-                return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
-            }
-        }
     }
 }

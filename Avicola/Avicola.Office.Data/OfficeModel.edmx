@@ -112,7 +112,6 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="ProductionWeeks" Type="int" Nullable="false" />
-          <Property Name="WeeksInBreeding" Type="int" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Measure">
@@ -638,7 +637,6 @@
           <Property Name="ProductionWeeks" Type="Int32" Nullable="false" />
           <NavigationProperty Name="StandardGeneticLines" Relationship="Self.FK_StandardGeneticLine_GeneticLine" FromRole="GeneticLine" ToRole="StandardGeneticLine" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="WeeksInBreeding" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_GeneticLine" FromRole="GeneticLine" ToRole="Batch" />
         </EntityType>
         <EntityType Name="Measure">
@@ -1292,7 +1290,6 @@
           <EntitySetMapping Name="GeneticLines">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.GeneticLine">
               <MappingFragment StoreEntitySet="GeneticLine">
-                <ScalarProperty Name="WeeksInBreeding" ColumnName="WeeksInBreeding" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
