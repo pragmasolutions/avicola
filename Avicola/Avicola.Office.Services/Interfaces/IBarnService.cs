@@ -14,6 +14,8 @@ namespace Avicola.Office.Services.Interfaces
     {
         IQueryable<Barn> GetAll();
 
+        IList<Barn> GetAllByStage(Guid stageId);
+
         Barn GetById(Guid id);
 
         List<BarnDto> GetAll(string sortBy, string sortDirection, string criteria, 

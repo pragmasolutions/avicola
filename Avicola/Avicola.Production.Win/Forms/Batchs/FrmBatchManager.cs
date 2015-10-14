@@ -130,5 +130,13 @@ namespace Avicola.Production.Win.Forms.Batchs
         {
             TransitionManager.LoadBatchSelectionView();
         }
+
+        private void btnMoveNextStage_Click(object sender, EventArgs e)
+        {
+            using (var frm = FormFactory.Create<FrmMoveNextStage>())
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }

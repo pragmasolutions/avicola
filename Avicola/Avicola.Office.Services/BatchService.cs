@@ -15,7 +15,10 @@ namespace Avicola.Office.Services
 {
     public class BatchService : ServiceBase, IBatchService
     {
+        public const string MortalityStandardName = "Mortandad";
+        
         private readonly IBarnService _barnService;
+
         public BatchService(IOfficeUow uow, IBarnService barnService)
         {
             Uow = uow;
@@ -52,6 +55,29 @@ namespace Avicola.Office.Services
             {
                 return 1;
             }
+        }
+
+        public decimal GetBirdsAmount(Guid batchId)
+        {
+            var startStageDate = DateTime.Today;
+            var endStageDate = DateTime.Today;
+
+            var measures =
+                Uow.Measures.GetAll(
+                    x =>
+                        x.BatchId == batchId &&
+                        x.StandardItem.StandardGeneticLine.Standard.Name.Contains(MortalityStandardName) &&
+                        x.Date >= startStageDate &&
+                        x.Date <= endStageDate,
+                    x => x.StandardItem.StandardGeneticLine.Standard);
+
+            var batch = Uow.BatchBarns.GetAll(x => x.BarnId == batchId && x.Barn.StageId == x.Batch.StageId, x => x.Batch,x => x.Barn);
+
+            var initialBirds = batch.Sum(x => x.InitialBirds);
+
+            var deathBirds = measures.Sum(x => x.Value);
+
+            return initialBirds - deathBirds;
         }
 
         public void Create(Batch batch)

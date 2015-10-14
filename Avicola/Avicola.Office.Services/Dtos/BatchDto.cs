@@ -32,17 +32,6 @@ namespace Avicola.Office.Services.Dtos
             }
         }
 
-        public string StageName
-        {
-            get
-            {
-                if (this.StageId == Stage.BREEDING)
-                {
-                    return "Cría y Precría";
-                }
-
-                return "Postura";
-            }
-        }
+        public string StageName { get; set; }
     }
 }

@@ -101,6 +101,12 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\Barns\FrmBarnSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Barns\FrmBarnSelection.Designer.cs">
+      <DependentUpon>FrmBarnSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Batchs\FrmAssignBarn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,12 @@
     </Compile>
     <Compile Include="Forms\Batchs\FrmCreateBatch.Designer.cs">
       <DependentUpon>FrmCreateBatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Batchs\FrmMoveNextStage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Batchs\FrmMoveNextStage.Designer.cs">
+      <DependentUpon>FrmMoveNextStage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditFormBase.cs">
       <SubType>Form</SubType>
@@ -212,6 +224,21 @@
     <Compile Include="Models\Measures\LoadDailyStandardMeasures.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UcAssignBarns.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcAssignBarns.Designer.cs">
+      <DependentUpon>UcAssignBarns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcBarnAssigned.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcBarnAssigned.Designer.cs">
+      <DependentUpon>UcBarnAssigned.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControls\UcLoadWeeklyMeasures.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -236,6 +263,9 @@
     <Compile Include="UserControls\UcStandardSelecction.Designer.cs">
       <DependentUpon>UcStandardSelecction.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Barns\FrmBarnSelection.resx">
+      <DependentUpon>FrmBarnSelection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Batchs\FrmBatchManager.resx">
       <DependentUpon>FrmBatchManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,6 +293,9 @@
     <Compile Include="UserControls\UcWeekSelection.Designer.cs">
       <DependentUpon>UcWeekSelection.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Batchs\FrmMoveNextStage.resx">
+      <DependentUpon>FrmMoveNextStage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmBase.resx">
       <DependentUpon>FrmBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +340,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\UcAssignBarns.resx">
+      <DependentUpon>UcAssignBarns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcBarnAssigned.resx">
+      <DependentUpon>UcBarnAssigned.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcLoadWeeklyMeasures.resx">
       <DependentUpon>UcLoadWeeklyMeasures.cs</DependentUpon>
     </EmbeddedResource>
@@ -381,6 +420,7 @@
     <Content Include="Resources\Images\edit.ico" />
     <Content Include="Resources\Images\green-check.png" />
     <Content Include="Resources\Images\LOGO.JPG" />
+    <Content Include="Resources\Images\Next.png" />
     <Content Include="Resources\Images\notes-icon.png" />
     <Content Include="Resources\Images\Pencil.png" />
     <Content Include="Resources\Images\Standards\Agua.png">

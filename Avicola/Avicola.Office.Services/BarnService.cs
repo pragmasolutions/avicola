@@ -27,6 +27,11 @@ namespace Avicola.Office.Services
             return Uow.Barns.GetAll();
         }
 
+        public IList<Barn> GetAllByStage(Guid stageId)
+        {
+            return Uow.Barns.GetAll().Where(x => x.StageId == stageId).ToList();
+        }
+
         public List<BarnDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)
         {
             var pagingCriteria = new PagingCriteria();
@@ -36,7 +41,7 @@ namespace Avicola.Office.Services
             pagingCriteria.SortBy = !string.IsNullOrEmpty(sortBy) ? sortBy : "CreatedDate";
             pagingCriteria.SortDirection = !string.IsNullOrEmpty(sortDirection) ? sortDirection : "DESC";
 
-            Expression<Func<Barn, bool>> where = x => ((string.IsNullOrEmpty(criteria) 
+            Expression<Func<Barn, bool>> where = x => ((string.IsNullOrEmpty(criteria)
                 || x.Number.ToString().Contains(criteria)));
 
             var results = Uow.Barns.GetAll(pagingCriteria, where);
