@@ -18,8 +18,8 @@ BEGIN
 		ON B.GeneticLineId = GL.Id INNER JOIN Vaccine V
 		ON BV.VaccineId = V.Id
 	WHERE B.Id = BatchId 
-		AND ((@StageName = 'cría y precría' AND BV.CreatedDate < DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth))
-		OR (@StageName = 'postura' AND BV.CreatedDate > DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth)))
+		--AND ((@StageName = 'cría y precría' AND BV.CreatedDate < DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth))
+		--OR (@StageName = 'postura' AND BV.CreatedDate > DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth)))
 	ORDER BY BV.CreatedDate 
 END
 GO

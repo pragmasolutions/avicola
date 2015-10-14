@@ -58,8 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\BatchBarnDto.cs" />
+    <Compile Include="StageService.cs" />
+    <Compile Include="BatchMedicineService.cs" />
     <Compile Include="Dtos\BatchMedicineDto.cs" />
     <Compile Include="Dtos\MedicineDto.cs" />
+    <Compile Include="Interfaces\IStageService.cs" />
+    <Compile Include="Interfaces\IBatchMedicineService.cs" />
     <Compile Include="Interfaces\IMedicineService.cs" />
     <Compile Include="MedicineService.cs" />
     <Compile Include="VaccineService.cs" />

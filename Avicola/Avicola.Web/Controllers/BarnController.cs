@@ -55,7 +55,7 @@ namespace Avicola.Web.Controllers
 
             _barnService.Create(barn);
 
-            return RedirectToAction("Index", new BarnListFiltersModel().GetRouteValues()).WithSuccess("Depósito Creado");
+            return RedirectToAction("Index", new BarnListFiltersModel().GetRouteValues()).WithSuccess("Galpón Creado");
         }
 
         public ActionResult Edit(Guid id)
@@ -75,7 +75,7 @@ namespace Avicola.Web.Controllers
 
             _barnService.Edit(barnForm.ToBarn());
 
-            return RedirectToAction("Index", new BarnListFiltersModel().GetRouteValues()).WithSuccess("Depósito Editado");
+            return RedirectToAction("Index", new BarnListFiltersModel().GetRouteValues()).WithSuccess("Galpón Editado");
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -83,12 +83,12 @@ namespace Avicola.Web.Controllers
         {
             _barnService.Delete(id);
 
-            return RedirectToAction("Index", new BarnListFiltersModel().GetRouteValues()).WithSuccess("Depósito Eliminado");
+            return RedirectToAction("Index", new BarnListFiltersModel().GetRouteValues()).WithSuccess("Galpón Eliminado");
         }
 
-        public ActionResult IsNumberAvailable(int? number, Guid id)
+        public ActionResult IsNameAvailable(string name, Guid id)
         {
-            return Json(_barnService.IsNumberAvailable(number ?? 0, id), JsonRequestBehavior.AllowGet);
+            return Json(_barnService.IsNameAvailable(name, id), JsonRequestBehavior.AllowGet);
         }
     }
 }

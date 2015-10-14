@@ -34,7 +34,7 @@ namespace Avicola.Production.Win.Forms.Batchs
             using (var service = _serviceFactory.Create<IBatchService>())
             {
                 var batch = service.GetById(_batchId);
-                dtpArrivedToBarn.Value = batch.CalculatedPostureStartDate;
+                //dtpArrivedToBarn.Value = batch.CalculatedPostureStartDate; //TODO: ARREGLAR
 
                 dtpArrivedToBarn.MinDate = batch.DateOfBirth.AddDays(1);
                 dtpArrivedToBarn.MaxDate = batch.DateOfBirth.AddDays((batch.GeneticLine.ProductionWeeks * 7) - 1);
@@ -42,7 +42,7 @@ namespace Avicola.Production.Win.Forms.Batchs
 
             using (var barnService = _serviceFactory.Create<IBarnService>())
             {
-                var barns = barnService.GetAllAvailable().OrderBy(x => x.Number).ToList();
+                var barns = barnService.GetAllAvailable().OrderBy(x => x.Name).ToList();
                 ddlBarns.ValueMember = "Id";
                 ddlBarns.DisplayMember = "Name";
                 ddlBarns.DataSource = barns;
@@ -64,11 +64,9 @@ namespace Avicola.Production.Win.Forms.Batchs
                 if (dc.ToString() == "Yes")
                 {
                     var model = GetModel();
-                    int barnNumber;
                     using (var service = _serviceFactory.Create<IBarnService>())
                     {
                         var barn = service.GetById(model.BarnId.GetValueOrDefault());
-                        barnNumber = barn.Number;
                     }
                     using (var service = _serviceFactory.Create<IBatchService>())
                     {
@@ -79,7 +77,7 @@ namespace Avicola.Production.Win.Forms.Batchs
                         }
                         else
                         {
-                            OnBarnAssigned(new BarnAssignedEventModel(barnNumber, model.ArrivedToBarn.GetValueOrDefault()));
+                            //OnBarnAssigned(new BarnAssignedEventModel(barnNumber, model.ArrivedToBarn.GetValueOrDefault()));
                             this.Close();
                         }
                     }

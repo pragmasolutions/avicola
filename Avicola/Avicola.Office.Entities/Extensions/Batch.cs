@@ -24,12 +24,19 @@ namespace Avicola.Office.Entities
             }
         }
 
-        public DateTime CalculatedPostureStartDate
+        public IList<BatchBarn> CurrentStageBarns
         {
             get
             {
-                var date = DateOfBirth.AddDays(GeneticLine.WeeksInBreeding * 7);
-                return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
+                return this.BatchBarns.Where(bb => bb.Barn.StageId == this.StageId).ToList();
+            }
+        }
+
+        public string CurrentStageBarnNames
+        {
+            get
+            {
+                return String.Join(", ", CurrentStageBarns.Select(bb => bb.Barn.Name));
             }
         }
     }

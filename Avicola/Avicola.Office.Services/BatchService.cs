@@ -27,8 +27,9 @@ namespace Avicola.Office.Services
 
         public IList<BatchDto> GetAllActive()
         {
-            return
-                Uow.Batches.GetAll(whereClause: x => !x.EndDate.HasValue && !x.IsDeleted)
+            return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted, 
+                                    x => x.BatchBarns, 
+                                    x => x.BatchBarns.Select(bb => bb.Barn))
                     .Project()
                     .To<BatchDto>()
                     .ToList();
@@ -37,7 +38,8 @@ namespace Avicola.Office.Services
         public IList<Batch> GetAllActiveComplete()
         {
             return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted,
-                                    x => x.Barn,
+                                    x => x.BatchBarns,
+                                    x => x.BatchBarns.Select(bb => bb.Barn),
                                     x => x.Measures,
                                     x => x.GeneticLine,
                                     x => x.GeneticLine.StandardGeneticLines,
@@ -83,7 +85,6 @@ namespace Avicola.Office.Services
         public void Create(Batch batch)
         {
             var geneticLine = Uow.GeneticLines.Get(batch.GeneticLineId);
-            batch.ArrivedToBarn = batch.DateOfBirth.AddWeeks(geneticLine.WeeksInBreeding);
             Uow.Batches.Add(batch);
             Uow.Commit();
         }
@@ -98,18 +99,7 @@ namespace Avicola.Office.Services
         {
             var batch = Uow.Batches.Get(x => x.Id == batchId, x => x.GeneticLine);
 
-            DateTime endDate;
-
-            if (batch.StageId == Stage.BREEDING)
-            {
-                endDate = batch.ArrivedToBarn;// ?? batch.DateOfBirth.AddDays(batch.GeneticLine.WeeksInBreeding * 7);
-            }
-            else
-            {
-                endDate = batch.DateOfBirth.AddDays(batch.GeneticLine.ProductionWeeks * 7);
-            }
-
-            return endDate;
+            return batch.DateOfBirth.AddDays(batch.GeneticLine.ProductionWeeks * 7);
         }
 
         public Batch GetById(Guid batchId)
@@ -159,7 +149,7 @@ namespace Avicola.Office.Services
             //    batch.StageId = Stage.POSTURE;
             //}
             //batch.ArrivedToBarn = arrivedToBarn;
-            batch.BarnId = barnId;
+            //batch.BarnId = barnId;
             Uow.Batches.Edit(batch);
             Uow.Commit();
             return null;

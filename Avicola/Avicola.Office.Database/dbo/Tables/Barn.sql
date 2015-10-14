@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Barn](
 	[Id] [uniqueidentifier] NOT NULL,
 	[CreatedDate] [datetime2](7) NOT NULL,
-	[Number] [int] NOT NULL,
+	[Name] VARCHAR(100) NOT NULL,
 	[Capacity] [int] NULL,
 	[StageId] [uniqueidentifier] NOT NULL DEFAULT '096DEBD6-C537-4569-8B97-53A3C3E82A39',
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 

@@ -36,17 +36,17 @@ namespace Avicola.Office.Services
                     .ToList();
 
 
-            var geneticLine = Uow.GeneticLines.Get(geneticLineId);
+            //var geneticLine = Uow.GeneticLines.Get(geneticLineId);
 
-            if (stageId == Stage.BREEDING && items.Count != geneticLine.WeeksInBreeding)
-            {
-                throw new ApplicationException("La cantidad de standard items de semanas no puede ser differente a la cantidad de semanas en cria");
-            }
+            //if (stageId == Stage.BREEDING && items.Count != geneticLine.WeeksInBreeding)
+            //{
+            //    throw new ApplicationException("La cantidad de standard items de semanas no puede ser differente a la cantidad de semanas en cria");
+            //}
 
-            if (stageId == Stage.POSTURE && items.Count != geneticLine.ProductionWeeks - geneticLine.WeeksInBreeding)
-            {
-                throw new ApplicationException("La cantidad de standard items de semanas no puede ser differente a la cantidad de semanas en postura");
-            }
+            //if (stageId == Stage.POSTURE && items.Count != geneticLine.ProductionWeeks - geneticLine.WeeksInBreeding)
+            //{
+            //    throw new ApplicationException("La cantidad de standard items de semanas no puede ser differente a la cantidad de semanas en postura");
+            //}
 
             return items;
         }

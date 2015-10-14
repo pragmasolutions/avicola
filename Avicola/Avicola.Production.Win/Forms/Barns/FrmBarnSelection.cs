@@ -40,7 +40,6 @@ namespace Avicola.Production.Win.Forms.Barns
             {
                 var barns = service.GetAllByStage(StageId)
                     .TakeWhile(x => !ExcludedBarns.Any(y => x.Id == y))
-                    .OrderBy(x => x.Number)
                     .ToList();
 
                 ddlBarns.ValueMember = "Id";

@@ -33,5 +33,10 @@ namespace Avicola.Office.Services
         {
             return Uow.DbContext.ReportBatchVaccine(batchId, stageId).ToList();
         }
+
+        public List<ReportBatchMedicines> BatchMedicine(Guid batchId, Guid stageId)
+        {
+            return Uow.DbContext.ReportBatchMedicine(batchId, stageId).ToList();
+        }
     }
 }

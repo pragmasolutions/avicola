@@ -16,7 +16,7 @@ namespace Avicola.Office.Services.Interfaces
 
         void Create(StandardGeneticLine item);
 
-        bool CheckExistance(Guid geneticLineId, Guid? stageId, Guid? standardId);
+        bool CheckExistance(Guid geneticLineId, Guid? standardId);
         
         void Delete(Guid id);
 

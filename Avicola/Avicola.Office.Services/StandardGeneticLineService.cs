@@ -52,7 +52,7 @@ namespace Avicola.Office.Services
             Uow.Commit();
         }
 
-        public bool CheckExistance(Guid geneticLineId, Guid? stageId, Guid? standardId)
+        public bool CheckExistance(Guid geneticLineId, Guid? standardId)
         {
             var list = Uow.StandardGeneticLines.GetAll().Where(x => x.StandardId == standardId
                                                                     && x.GeneticLineId == geneticLineId

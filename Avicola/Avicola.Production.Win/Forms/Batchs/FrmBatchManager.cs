@@ -11,6 +11,7 @@ using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Avicola.Production.Win.Forms.Observations;
 using Avicola.Production.Win.Forms.Vaccines;
+using Avicola.Production.Win.Forms.Medicines;
 
 namespace Avicola.Production.Win.Forms.Batchs
 {
@@ -41,12 +42,9 @@ namespace Avicola.Production.Win.Forms.Batchs
                 ? string.Empty
                 : _stateController.CurrentSelectedBatch.ArrivedToBarn.GetValueOrDefault().ToShortDateString();
             txtFechaNacimiento.Text = _stateController.CurrentSelectedBatch.DateOfBirth.ToShortDateString();
-            txtGalpon.Text = _stateController.CurrentSelectedBatch.BarnNumber == null ? string.Empty : _stateController.CurrentSelectedBatch.BarnNumber.ToString();
             txtLineaGenetica.Text = _stateController.CurrentSelectedBatch.GeneticLineName;
             txtNumero.Text = _stateController.CurrentSelectedBatch.Number.ToString();
             txtSemanaActual.Text = _stateController.CurrentSelectedBatch.Week.ToString();
-
-            btnGalpon.Enabled = _stateController.CurrentSelectedBatch.BarnNumber == null;
         }
 
         private void btnEstandares_Click(object sender, EventArgs e)
@@ -109,7 +107,6 @@ namespace Avicola.Production.Win.Forms.Batchs
 
         private void FrmOnBarnAssigned(object sender, BarnAssignedEventModel e)
         {
-            _stateController.CurrentSelectedBatch.BarnNumber = e.BarnNumber;
             _stateController.CurrentSelectedBatch.ArrivedToBarn = e.ArrivedToBarn;
             TransitionManager.LoadBatchManagerView();
         }
@@ -129,6 +126,12 @@ namespace Avicola.Production.Win.Forms.Batchs
         private void btnShowBatchSelectionView_Click(object sender, EventArgs e)
         {
             TransitionManager.LoadBatchSelectionView();
+        }
+
+        private void btnMedicine_Click(object sender, EventArgs e)
+        {
+            var frm = FormFactory.Create<FrmBatchMedicinesList>();
+            frm.ShowDialog();
         }
 
         private void btnMoveNextStage_Click(object sender, EventArgs e)

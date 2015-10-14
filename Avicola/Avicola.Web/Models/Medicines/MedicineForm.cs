@@ -23,10 +23,6 @@ namespace Avicola.Web.Models.Medicines
         [HiddenInput]
         public DateTime CreatedDate { get; set; }
 
-        [DataType(DataType.MultilineText)]
-        [Display(Name = "Observación")]
-        public string Observation { get; set; }
-
         public Medicine ToMedicine()
         {
             var medicine = Mapper.Map<MedicineForm, Medicine>(this);

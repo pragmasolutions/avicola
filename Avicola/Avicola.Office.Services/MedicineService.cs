@@ -51,7 +51,6 @@ namespace Avicola.Office.Services
             var currentMedicine = this.GetById(medicine.Id);
 
             currentMedicine.Name = medicine.Name;
-            currentMedicine.Observation = medicine.Observation;
 
             Uow.Medicines.Edit(currentMedicine);
             Uow.Commit();

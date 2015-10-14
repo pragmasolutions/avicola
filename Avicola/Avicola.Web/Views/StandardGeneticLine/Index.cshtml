@@ -16,7 +16,6 @@
     <thead>
     <tr>
         <th>Nombre</th>
-        <th>Etapa</th>
     </tr>
     </thead>
     <tbody class="row-link" data-link="row">
@@ -24,7 +23,6 @@
     {
         <tr>
             <td>@Html.ActionLink(standard.Standard.Name, "Detail", "StandardGeneticLine", routeValues: new {standard.Id}, htmlAttributes: null)</td>
-            <td>@standard.Stage.Name</td>
         </tr>
     }
     </tbody>

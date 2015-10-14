@@ -15,8 +15,8 @@ BEGIN
 		ON BO.BatchId = B.Id INNER JOIN GeneticLine GL 
 		ON B.GeneticLineId = GL.Id		
 	WHERE B.Id = BatchId 
-		AND ((@StageName = 'cría y precría' AND BO.CreatedDate < DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth))
-		OR (@StageName = 'postura' AND BO.CreatedDate > DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth)))
+		--AND ((@StageName = 'cría y precría' AND BO.CreatedDate < DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth))
+		--OR (@StageName = 'postura' AND BO.CreatedDate > DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth)))
 	ORDER BY BO.CreatedDate 
 END
 GO

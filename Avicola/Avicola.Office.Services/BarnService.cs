@@ -29,7 +29,10 @@ namespace Avicola.Office.Services
 
         public IList<Barn> GetAllByStage(Guid stageId)
         {
-            return Uow.Barns.GetAll().Where(x => x.StageId == stageId).ToList();
+            return Uow.Barns.GetAll()
+                .Where(x => x.StageId == stageId)
+                .OrderBy(x => x.Name)
+                .ToList();
         }
 
         public List<BarnDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)
@@ -41,8 +44,8 @@ namespace Avicola.Office.Services
             pagingCriteria.SortBy = !string.IsNullOrEmpty(sortBy) ? sortBy : "CreatedDate";
             pagingCriteria.SortDirection = !string.IsNullOrEmpty(sortDirection) ? sortDirection : "DESC";
 
-            Expression<Func<Barn, bool>> where = x => ((string.IsNullOrEmpty(criteria)
-                || x.Number.ToString().Contains(criteria)));
+            Expression<Func<Barn, bool>> where = x => ((string.IsNullOrEmpty(criteria) 
+                || x.Name.Contains(criteria)));
 
             var results = Uow.Barns.GetAll(pagingCriteria, where);
 
@@ -56,16 +59,16 @@ namespace Avicola.Office.Services
             return Uow.Barns.Get(x => x.Id == id);
         }
 
-        public Barn GetByNumber(int number)
+        public Barn GetByName(string name)
         {
-            return Uow.Barns.Get(x => x.Number == number && !x.IsDeleted);
+            return Uow.Barns.Get(x => x.Name == name && !x.IsDeleted);
         }
 
         public void Create(Barn barn)
         {
-            if (!IsNumberAvailable(barn.Number, barn.Id))
+            if (!IsNameAvailable(barn.Name, barn.Id))
             {
-                throw new ApplicationException("Un galpón con el mismo numero ya ha sido creado");
+                throw new ApplicationException("Un galpón con el mismo nombre ya ha sido creado");
             }
 
             Uow.Barns.Add(barn);
@@ -77,7 +80,8 @@ namespace Avicola.Office.Services
             var currentBarn = this.GetById(barn.Id);
 
             currentBarn.Capacity = barn.Capacity;
-            currentBarn.Number = barn.Number;
+            currentBarn.Name = barn.Name;
+            currentBarn.StageId = barn.StageId;
 
             Uow.Barns.Edit(currentBarn);
             Uow.Commit();
@@ -89,9 +93,9 @@ namespace Avicola.Office.Services
             Uow.Commit();
         }
 
-        public bool IsNumberAvailable(int number, Guid id)
+        public bool IsNameAvailable(string name, Guid id)
         {
-            var currentBarn = this.GetByNumber(number);
+            var currentBarn = this.GetByName(name);
 
             if (currentBarn == null)
             {
@@ -105,9 +109,9 @@ namespace Avicola.Office.Services
         public List<Barn> GetAllAvailable()
         {
             var barns = Uow.Barns.GetAll().ToList();
-            var activeBatches = Uow.Batches.GetAll().Where(b => b.EndDate == null && b.BarnId != null).ToList();
+            //var activeBatches = Uow.Batches.GetAll().Where(b => b.EndDate == null && b.BarnId != null).ToList();
 
-            return barns.Where(b => !activeBatches.Any(ab => ab.BarnId == b.Id)).ToList();
+            return barns; //TODO: arreglar //barns.Where(b => !activeBatches.Any(ab => ab.BarnId == b.Id)).ToList();
         }
     }
 }

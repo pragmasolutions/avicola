@@ -1,12 +1,11 @@
 ﻿@using Avicola.Office.Entities
+@using Avicola.Office.Services.Interfaces
 @using Framework.Common.Web.Extensions
 @model Guid?
 @{
-    var list = new List<KeyValuePair<Guid, string>>
-    {
-        new KeyValuePair<Guid, string>(Stage.BREEDING, "Cría y Pre-cría") ,
-        new KeyValuePair<Guid, string>(Stage.POSTURE, "Postura") 
-    };
+    var service = IocContainer.GetContainer().Get<IStageService>();
+    var selectList = service.GetAll().ToSelectListItem(Model, x => x.Id, x => x.Name, x => x.Id.ToString());
 }
 
-@Html.DropDownList("", new SelectList(list, "Key", "Value", Model), "Seleccione Etapa", new { @class = "form-control select2-control" })
+
+@Html.DropDownList("", selectList, "Seleccione Etapa", new { @class = "form-control select2-control" })

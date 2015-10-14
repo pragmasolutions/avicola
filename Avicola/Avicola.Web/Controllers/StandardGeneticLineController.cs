@@ -47,11 +47,10 @@ namespace Avicola.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Create(Guid geneticLineId, Guid standardId, Guid stageId)
+        public ActionResult Create(Guid geneticLineId, Guid standardId)
         {
             var geneticLine = _geneticLineService.GetById(geneticLineId);
             var standard = _standardService.GetById(standardId);
-            ViewBag.StageName = stageId == Stage.BREEDING ? "CRIA Y PRE-CRIA" : "POSTURA";
             ViewBag.Operation = "Create";
 
             var model = new CreateStandardGeneticLineForm()
@@ -60,8 +59,7 @@ namespace Avicola.Web.Controllers
                 {
                     GeneticLine = geneticLine,
                     Standard = standard
-                },
-                StageId = stageId
+                }
             };
             model.GenerateItems();
             return View(model);
@@ -101,14 +99,13 @@ namespace Avicola.Web.Controllers
         [HttpPost]
         public ActionResult Select(SelectStandardModel model)
         {
-            var exists = _service.CheckExistance(model.GeneticLineId, model.StageId, model.StandardId);
+            var exists = _service.CheckExistance(model.GeneticLineId, model.StandardId);
             if (exists)
                 return Redirect("/StandardGeneticLine/Index/" + model.GeneticLineId).WithError("Ya existe un estandar para la línea genética y etapa seleccionada");
 
-            var url = String.Format("/StandardGeneticLine/Create?geneticLineId={0}&standardId={1}&stageId={2}",
+            var url = String.Format("/StandardGeneticLine/Create?geneticLineId={0}&standardId={1}",
                                 model.GeneticLineId,
-                                model.StandardId,
-                                model.StageId);
+                                model.StandardId);
 
             return Redirect(url);
         }
@@ -126,13 +123,11 @@ namespace Avicola.Web.Controllers
         public ActionResult Edit(Guid id)
         {
             var item = _service.GetById(id);
-            ViewBag.StageName = item.StageId == Stage.BREEDING ? "CRIA Y PRE-CRIA" : "POSTURA";
             ViewBag.Operation = "Edit";
 
             var model = new CreateStandardGeneticLineForm()
             {
                 StandardGeneticLine = item,
-                StageId = item.StageId
             };
             model.GenerateItems();
             return View("Create", model);

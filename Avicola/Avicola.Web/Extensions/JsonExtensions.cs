@@ -13,9 +13,7 @@ namespace Avicola.Web.Extensions
             return new
             {
                 instance.Id,
-                Name = instance.Barn == null
-                    ? String.Format("Lote {0}", instance.Number.ToString())
-                    : String.Format("Lote {0} [ Galpón: {1}]", instance.Number, instance.Barn.Number),
+                Name = String.Format("Lote {0} [ Galpón: {1}]", instance.Number, instance.CurrentStageBarnNames),
                 GeneticLine = new
                 {
                     instance.GeneticLine.Name,

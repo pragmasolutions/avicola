@@ -46,7 +46,6 @@ BEGIN
 	DECLARE @GeneticLine varchar(200)
 
 	SELECT @StartDate = B.DateOfBirth,
-			@WeeksInBreeding = GL.WeeksInBreeding,
 			@InitialBirds = B.InitialBirds,
 			@StartingFood = B.StartingFood,
 			@StartingFoodClass = FC.Name,
@@ -91,8 +90,7 @@ BEGIN
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
 			ON M.[Date] = I.Fecha
-	WHERE SGL.StageId = @StageId
-		AND M.BatchId = @BatchId
+	WHERE M.BatchId = @BatchId
 		AND S.Name = 'Mortandad'
 		AND M.IsDeleted = 0
 		AND SI.IsDeleted = 0
@@ -115,8 +113,7 @@ BEGIN
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
 			ON M.[Date] = I.Fecha
-	WHERE SGL.StageId = @StageId
-		AND M.BatchId = @BatchId
+	WHERE M.BatchId = @BatchId
 		AND S.Name = 'Descarte'
 		AND M.IsDeleted = 0
 		AND SI.IsDeleted = 0
@@ -149,8 +146,7 @@ BEGIN
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
 			ON SI.Sequence * 7 = I.Secuencia
-	WHERE SGL.StageId = @StageId
-		AND M.BatchId = @BatchId
+	WHERE M.BatchId = @BatchId
 		AND S.Name = 'Peso del Ave'
 		AND M.IsDeleted = 0
 		AND SI.IsDeleted = 0
@@ -171,8 +167,7 @@ BEGIN
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
 			ON M.[Date] = I.Fecha
-	WHERE SGL.StageId = @StageId
-		AND M.BatchId = @BatchId
+	WHERE M.BatchId = @BatchId
 		AND S.Name = 'Ingreso de Alimento'
 		AND M.IsDeleted = 0
 		AND SI.IsDeleted = 0
@@ -192,8 +187,7 @@ BEGIN
 			ON M.[Date] = I.Fecha
 		INNER JOIN FoodClass FC
 			ON M.FoodClassId = FC.Id
-	WHERE SGL.StageId = @StageId
-		AND M.BatchId = @BatchId
+	WHERE M.BatchId = @BatchId
 		AND S.Name = 'Ingreso de Alimento'
 		AND M.IsDeleted = 0
 		AND SI.IsDeleted = 0
@@ -220,8 +214,7 @@ BEGIN
 			ON SGL.StandardId = S.Id
 		INNER JOIN @Items I
 			ON M.[Date] = I.Fecha
-	WHERE SGL.StageId = @StageId
-		AND M.BatchId = @BatchId
+	WHERE M.BatchId = @BatchId
 		AND S.Name = 'Consumo de Alimento'
 		AND M.IsDeleted = 0
 		AND SI.IsDeleted = 0

@@ -81,7 +81,6 @@ namespace Avicola.Office.Services
 
             currentGeneticLine.Name = geneticLine.Name;
             currentGeneticLine.ProductionWeeks = geneticLine.ProductionWeeks;
-            currentGeneticLine.WeeksInBreeding = geneticLine.WeeksInBreeding;
 
             var standards = currentGeneticLine.StandardGeneticLines.Where(x => !x.IsDeleted).ToList();
             if (standards.Any())

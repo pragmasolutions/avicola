@@ -27,7 +27,6 @@ namespace Avicola.Office.Entities
         public string Name { get; set; }
         public int ProductionWeeks { get; set; }
         public bool IsDeleted { get; set; }
-        public int WeeksInBreeding { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StandardGeneticLine> StandardGeneticLines { get; set; }
