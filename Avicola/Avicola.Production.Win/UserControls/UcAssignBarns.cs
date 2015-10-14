@@ -36,6 +36,11 @@ namespace Avicola.Production.Win.UserControls
             get { return BarnsAssignedControls.Select(x => x.BarnAssigned).ToList(); }
         }
 
+        public decimal BirdsAmountDecimal
+        {
+            get { return BarnsAssigned.Select(x => x.BirdsAmount).DefaultIfEmpty(0).Sum(); }
+        }
+
         private void btnAddBarn_Click(object sender, EventArgs e)
         {
             using (var form = FormFactory.Create<FrmBarnSelection>())

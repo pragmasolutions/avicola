@@ -68,7 +68,7 @@
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(35, 75);
+            this.radLabel2.Location = new System.Drawing.Point(34, 75);
             this.radLabel2.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(47, 24);
@@ -81,7 +81,7 @@
             this.dtpDate.CustomFormat = "";
             this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(35, 104);
+            this.dtpDate.Location = new System.Drawing.Point(17, 104);
             this.dtpDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(145, 28);
@@ -93,8 +93,9 @@
             // txtCurrentStage
             // 
             this.txtCurrentStage.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCurrentStage.Enabled = false;
             this.txtCurrentStage.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentStage.Location = new System.Drawing.Point(35, 36);
+            this.txtCurrentStage.Location = new System.Drawing.Point(17, 36);
             this.txtCurrentStage.Margin = new System.Windows.Forms.Padding(2);
             this.txtCurrentStage.MaxLength = 50;
             this.txtCurrentStage.Name = "txtCurrentStage";
@@ -106,7 +107,7 @@
             // metroLabel1
             // 
             this.metroLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroLabel1.Location = new System.Drawing.Point(35, 11);
+            this.metroLabel1.Location = new System.Drawing.Point(17, 11);
             this.metroLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(100, 24);
@@ -117,8 +118,9 @@
             // txtNextStage
             // 
             this.txtNextStage.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNextStage.Enabled = false;
             this.txtNextStage.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNextStage.Location = new System.Drawing.Point(231, 36);
+            this.txtNextStage.Location = new System.Drawing.Point(213, 36);
             this.txtNextStage.Margin = new System.Windows.Forms.Padding(2);
             this.txtNextStage.MaxLength = 50;
             this.txtNextStage.Name = "txtNextStage";
@@ -130,7 +132,7 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(231, 11);
+            this.radLabel1.Location = new System.Drawing.Point(230, 11);
             this.radLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(121, 24);
@@ -141,8 +143,9 @@
             // txtBatchBirdsAmount
             // 
             this.txtBatchBirdsAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtBatchBirdsAmount.Enabled = false;
             this.txtBatchBirdsAmount.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBatchBirdsAmount.Location = new System.Drawing.Point(231, 104);
+            this.txtBatchBirdsAmount.Location = new System.Drawing.Point(213, 104);
             this.txtBatchBirdsAmount.Margin = new System.Windows.Forms.Padding(2);
             this.txtBatchBirdsAmount.MaxLength = 50;
             this.txtBatchBirdsAmount.Name = "txtBatchBirdsAmount";
@@ -154,7 +157,7 @@
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(231, 75);
+            this.radLabel3.Location = new System.Drawing.Point(230, 75);
             this.radLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(126, 24);
@@ -173,6 +176,7 @@
             this.BtnGuardar.TabIndex = 93;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.ThemeName = "TelerikMetroBlue";
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // BtnCancelar
             // 
@@ -189,7 +193,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(185, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(167, 36);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(41, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

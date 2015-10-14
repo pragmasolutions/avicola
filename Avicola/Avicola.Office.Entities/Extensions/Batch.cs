@@ -39,5 +39,24 @@ namespace Avicola.Office.Entities
                 return String.Join(", ", CurrentStageBarns.Select(bb => bb.Barn.Name));
             }
         }
+
+        public DateTime CurrentStageStartDate
+        {
+            get
+            {
+                if (this.StageId == Stage.BREEDING)
+                {
+                    return this.BreedingDate.GetValueOrDefault();
+                }
+                else if (this.StageId == Stage.REBREEDING)
+                {
+                    return this.BreedingDate.GetValueOrDefault();
+                }
+                else
+                {
+                    return this.PostureDate.GetValueOrDefault();
+                }
+            }
+        }
     }
 }

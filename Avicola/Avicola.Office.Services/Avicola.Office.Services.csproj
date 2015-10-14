@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\BatchBarnDto.cs" />
+    <Compile Include="Dtos\MoveNextStageDto.cs" />
     <Compile Include="StageService.cs" />
     <Compile Include="BatchMedicineService.cs" />
     <Compile Include="Dtos\BatchMedicineDto.cs" />

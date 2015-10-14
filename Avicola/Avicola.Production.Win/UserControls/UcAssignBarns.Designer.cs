@@ -36,7 +36,7 @@
             // 
             // btnAddBarn
             // 
-            this.btnAddBarn.Location = new System.Drawing.Point(18, 12);
+            this.btnAddBarn.Location = new System.Drawing.Point(3, 3);
             this.btnAddBarn.Name = "btnAddBarn";
             this.btnAddBarn.Size = new System.Drawing.Size(110, 24);
             this.btnAddBarn.TabIndex = 0;
@@ -48,9 +48,9 @@
             this.BarnsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BarnsContainer.Location = new System.Drawing.Point(18, 50);
+            this.BarnsContainer.Location = new System.Drawing.Point(3, 33);
             this.BarnsContainer.Name = "BarnsContainer";
-            this.BarnsContainer.Size = new System.Drawing.Size(795, 83);
+            this.BarnsContainer.Size = new System.Drawing.Size(826, 114);
             this.BarnsContainer.TabIndex = 1;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BarnsContainer.GetChildAt(0).GetChildAt(1))).Width = 0F;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BarnsContainer.GetChildAt(0).GetChildAt(1))).LeftWidth = 0F;

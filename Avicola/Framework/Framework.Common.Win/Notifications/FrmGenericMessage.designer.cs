@@ -60,7 +60,7 @@
             // picImagen
             // 
             this.picImagen.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.picImagen.Image = global::Framework.WinForm.Comun.Resources.Resource.Error;
+            this.picImagen.Image = global::Framework.Common.Win.Resources.Resource.Error;
             this.picImagen.Location = new System.Drawing.Point(23, 31);
             this.picImagen.Name = "picImagen";
             this.picImagen.Size = new System.Drawing.Size(100, 93);

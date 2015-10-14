@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Framework.Common.Win.Resources;
 using Framework.WinForm.Comun.Notification;
-using Framework.WinForm.Comun.Resources;
 
 namespace Framework.Common.Win.Notifications
 {
