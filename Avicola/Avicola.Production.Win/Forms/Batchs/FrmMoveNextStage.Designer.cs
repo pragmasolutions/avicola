@@ -63,7 +63,7 @@
             this.ucAssignBarns.Location = new System.Drawing.Point(12, 70);
             this.ucAssignBarns.MessageBoxDisplayService = null;
             this.ucAssignBarns.Name = "ucAssignBarns";
-            this.ucAssignBarns.Size = new System.Drawing.Size(905, 395);
+            this.ucAssignBarns.Size = new System.Drawing.Size(832, 395);
             this.ucAssignBarns.StageId = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucAssignBarns.TabIndex = 0;
             // 
@@ -171,7 +171,7 @@
             // 
             this.BtnGuardar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardar.Location = new System.Drawing.Point(714, 492);
+            this.BtnGuardar.Location = new System.Drawing.Point(648, 498);
             this.BtnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(96, 24);
@@ -184,7 +184,7 @@
             // 
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(820, 492);
+            this.BtnCancelar.Location = new System.Drawing.Point(748, 498);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(96, 24);
@@ -206,7 +206,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 533);
+            this.ClientSize = new System.Drawing.Size(856, 533);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.BtnCancelar);

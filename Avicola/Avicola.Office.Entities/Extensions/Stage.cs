@@ -34,7 +34,7 @@ namespace Avicola.Office.Entities
             {
                 return REBREEDING;
             }
-            else if (stageId == BREEDING)
+            else if (stageId == REBREEDING)
             {
                 return POSTURE;
             }

@@ -68,6 +68,8 @@ namespace Avicola.Production.Win.UserControls
                                               BarnName = barn.Name
                                           };
 
+            ucBarnAssigned.Dock = DockStyle.Top;
+
             BarnsAssignedControls.Add(ucBarnAssigned);
             BarnsContainer.Controls.Add(ucBarnAssigned);
         }

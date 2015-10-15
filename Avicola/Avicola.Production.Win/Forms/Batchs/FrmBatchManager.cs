@@ -28,6 +28,8 @@ namespace Avicola.Production.Win.Forms.Batchs
             _serviceFactory = serviceFactory;
 
             InitializeComponent();
+
+            btnMoveNextStage.RootElement.UseDefaultDisabledPaint = true;
         }
 
         private void FrmBatchManager_Load(object sender, EventArgs e)
@@ -46,6 +48,8 @@ namespace Avicola.Production.Win.Forms.Batchs
             txtLineaGenetica.Text = _stateController.CurrentSelectedBatch.GeneticLineName;
             txtNumero.Text = _stateController.CurrentSelectedBatch.Number.ToString();
             txtSemanaActual.Text = _stateController.CurrentSelectedBatch.Week.ToString();
+
+            btnMoveNextStage.Enabled = _stateController.CurrentSelectedBatch.StageId != Stage.POSTURE;
         }
 
         private void btnEstandares_Click(object sender, EventArgs e)
