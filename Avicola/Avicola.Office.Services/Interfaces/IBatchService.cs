@@ -13,7 +13,16 @@ namespace Avicola.Office.Services.Interfaces
     public interface IBatchService : IService
     {
         IList<BatchDto> GetAllActive();
+
+        BatchDto GetActiveById(Guid batchId);
+
         IList<Batch> GetAllActiveComplete();
+
+        Batch GetByIdComplete(Guid batchId);
+
+        int GetBirdsAmount(Guid batchId);
+
+        void MoveNextStage(MoveNextStageDto nextStageDto);
 
         int GetNextNumber();
 

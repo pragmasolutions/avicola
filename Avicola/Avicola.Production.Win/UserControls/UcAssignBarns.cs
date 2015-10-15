@@ -36,6 +36,11 @@ namespace Avicola.Production.Win.UserControls
             get { return BarnsAssignedControls.Select(x => x.BarnAssigned).ToList(); }
         }
 
+        public decimal BirdsAmountDecimal
+        {
+            get { return BarnsAssigned.Select(x => x.BirdsAmount).DefaultIfEmpty(0).Sum(); }
+        }
+
         private void btnAddBarn_Click(object sender, EventArgs e)
         {
             using (var form = FormFactory.Create<FrmBarnSelection>())
@@ -62,6 +67,8 @@ namespace Avicola.Production.Win.UserControls
                                               BarnCapacity = barn.Capacity ?? 0,
                                               BarnName = barn.Name
                                           };
+
+            ucBarnAssigned.Dock = DockStyle.Top;
 
             BarnsAssignedControls.Add(ucBarnAssigned);
             BarnsContainer.Controls.Add(ucBarnAssigned);

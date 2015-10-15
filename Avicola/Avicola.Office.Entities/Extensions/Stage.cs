@@ -16,12 +16,11 @@ namespace Avicola.Office.Entities
 
         public static string NextStage(Guid stageId)
         {
-
             if (stageId == BREEDING)
             {
                 return "Re Cría";
             }
-            else if (stageId == BREEDING)
+            else if (stageId == REBREEDING)
             {
                 return "Posture";
             }
@@ -31,12 +30,11 @@ namespace Avicola.Office.Entities
 
         public static Guid NextStageId(Guid stageId)
         {
-
             if (stageId == BREEDING)
             {
                 return REBREEDING;
             }
-            else if (stageId == BREEDING)
+            else if (stageId == REBREEDING)
             {
                 return POSTURE;
             }

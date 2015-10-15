@@ -433,9 +433,11 @@
     <Content Include="Resources\Images\edit.ico" />
     <Content Include="Resources\Images\green-check.png" />
     <Content Include="Resources\Images\LOGO.JPG" />
+    <Content Include="Resources\Images\MoveNext.png" />
     <Content Include="Resources\Images\Next.png" />
     <Content Include="Resources\Images\notes-icon.png" />
     <Content Include="Resources\Images\Pencil.png" />
+    <Content Include="Resources\Images\Remove.png" />
     <Content Include="Resources\Images\Standards\Agua.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

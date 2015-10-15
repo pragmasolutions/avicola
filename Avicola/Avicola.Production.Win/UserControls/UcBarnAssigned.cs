@@ -25,8 +25,8 @@ namespace Avicola.Production.Win.UserControls
         {
             get
             {
-                int birdsAmount;
-                _barnAssigned.BirdsAmount = int.TryParse(txtBirdsAmount.Text, out birdsAmount) ? birdsAmount : 0;
+                _barnAssigned.BirdsAmount = (int)txtBirdsAmount.Value;
+                _barnAssigned.InitialFood = (int)txtInitialFood.Value;
 
                 return _barnAssigned;
             }
@@ -36,6 +36,7 @@ namespace Avicola.Production.Win.UserControls
 
                 txtBarnCapacity.Text = _barnAssigned.BarnCapacity.ToString();
                 txtBirdsAmount.Text = _barnAssigned.BirdsAmount.ToString();
+                txtBirdsAmount.Maximum = _barnAssigned.BarnCapacity;
                 lbBarnName.Text = _barnAssigned.BarnName;
             }
         }
@@ -60,5 +61,6 @@ namespace Avicola.Production.Win.UserControls
         public int BarnCapacity { get; set; }
         public string BarnName { get; set; }
         public int BirdsAmount { get; set; }
+        public int InitialFood { get; set; }
     }
 }

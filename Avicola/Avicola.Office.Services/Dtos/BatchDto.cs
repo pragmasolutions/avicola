@@ -24,7 +24,7 @@ namespace Avicola.Office.Services.Dtos
         public DateTime? ArrivedToBarn { get; set; }
         public DateTime? EndDate { get; set; }
         public System.Guid? StageId { get; set; }
-        public Stage Stage { get; set; }
+        public string StageName { get; set; }
         public IList<BatchBarnDto> BatchBarns { get; set; }
 
         public int Week
@@ -34,11 +34,6 @@ namespace Avicola.Office.Services.Dtos
                 var daysDifference = (DateTime.Today.Date - DateOfBirth.Date).TotalDays + 1;
                 return Convert.ToInt32(Math.Ceiling(daysDifference / 7d));
             }
-        }
-
-        public string StageName
-        {
-            get { return this.Stage.Name; }
         }
 
         public string Barns

@@ -10,6 +10,7 @@ namespace Avicola.Web.Extensions
     {
         public static Object ToJSON(this Batch instance)
         {
+            var weeksAge = Math.Ceiling(DateTime.Now.Subtract(instance.DateOfBirth).Days / (double)7);
             return new
             {
                 instance.Id,
@@ -24,7 +25,7 @@ namespace Avicola.Web.Extensions
                         sgl.Standard.AggregateOperation,
                         sgl.Standard.AllowDecimal,
                         sgl.Standard.MeasureUnity,
-                        StandardItems = sgl.StandardItems.Where(sql => !sgl.IsDeleted).OrderBy(s => s.Sequence).Select(si => new
+                        StandardItems = sgl.StandardItems.Where(sql => !sgl.IsDeleted && sql.Sequence <= weeksAge).OrderBy(s => s.Sequence).Select(si => new
                         {
                             si.Value1,
                             si.Value2,

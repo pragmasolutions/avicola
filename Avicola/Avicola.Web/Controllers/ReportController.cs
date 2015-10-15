@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Avicola.Office.Entities;
 using Avicola.Office.Services.Interfaces;
 using Avicola.Reports;
+using Avicola.Web.Extensions;
 using Avicola.Web.Models.Reports;
 
 namespace Avicola.Web.Controllers
@@ -101,5 +102,60 @@ namespace Avicola.Web.Controllers
             }
             return null;
         }
+
+        public ActionResult BatchStandardFollowUp(BatchStandardFollowUpModel model)
+        {
+            var activeBatches = _batchService.GetAllActiveComplete().OrderBy(b => b.Number).ToList();
+            ViewBag.BatchesSelectList = new SelectList(activeBatches, "Id", "Name");
+            ViewBag.Standards = new SelectList(new List<SelectListItem>(), "Value", "Text");
+            return View(model);
+        }
+
+        public ActionResult GetStandards(Guid? id)
+        {
+            var batch = _batchService.GetById(id.GetValueOrDefault());
+            var result = batch.GeneticLine.StandardGeneticLines.Where(sgl => !sgl.IsDeleted)
+                            .Select(sgl => sgl.Standard).Select(x => new { x.Id, x.Name });
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult GenerateBatchStandardFollowUp(Guid batchId, Guid standardId)
+        {
+            var batch = _batchService.GetByIdComplete(batchId);
+
+            var weeksAge = Math.Ceiling(DateTime.Now.Subtract(batch.DateOfBirth).Days / (double)7);
+            var obj = new
+            {
+                batch.Id,
+                Name = String.Format("Lote {0}", batch.Number),
+                GeneticLine = new
+                {
+                    batch.GeneticLine.Name,
+                    Standards = batch.GeneticLine.StandardGeneticLines.Where(sql => !sql.IsDeleted & sql.StandardId == standardId).Select(sgl => new
+                    {
+                        sgl.Standard.Name,
+                        ShowSecondValue = sgl.Standard.StandardTypeId == StandardType.VALUES_RANGE,
+                        sgl.Standard.AggregateOperation,
+                        sgl.Standard.AllowDecimal,
+                        sgl.Standard.MeasureUnity,
+                        StandardItems = sgl.StandardItems.Where(sql => !sgl.IsDeleted && sql.Sequence <= weeksAge).OrderBy(s => s.Sequence).Select(si => new
+                        {
+                            si.Value1,
+                            si.Value2,
+                            si.Sequence,
+                            Measures =
+                                si.Measures.Where(m => !m.IsDeleted && m.BatchId == batch.Id).Select(m => new
+                                {
+                                    m.Value,
+                                    m.StandardItemId
+                                })
+                        })
+                    })
+                }
+            };
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
