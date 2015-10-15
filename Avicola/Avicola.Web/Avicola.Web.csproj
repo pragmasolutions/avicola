@@ -242,6 +242,7 @@
     <Compile Include="Models\Medicines\MedicineForm.cs" />
     <Compile Include="Models\Medicines\MedicineListFiltersModel.cs" />
     <Compile Include="Models\Medicines\MedicineListModel.cs" />
+    <Compile Include="Models\Reports\BatchStandardFollowUpModel.cs" />
     <Compile Include="Models\Vaccines\VaccineForm.cs" />
     <Compile Include="Models\Vaccines\VaccineListFiltersModel.cs" />
     <Compile Include="Models\Vaccines\VaccineListModel.cs" />
@@ -302,6 +303,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\avicola-spinner.js" />
+    <Content Include="Scripts\app\reports-batch-standard-followup.js" />
     <Content Include="Scripts\app\reports-measures-followup.js" />
     <Content Include="Scripts\app\reports.js" />
     <Content Include="Scripts\app\office-create-standard.js" />
@@ -852,6 +854,7 @@
     <Content Include="Views\Medicine\Detail.cshtml" />
     <Content Include="Views\Medicine\Create.cshtml" />
     <Content Include="Views\Medicine\_Filters.cshtml" />
+    <Content Include="Views\Report\BatchStandardFollowUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
