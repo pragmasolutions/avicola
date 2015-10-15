@@ -68,7 +68,7 @@ namespace Avicola.Production.Win.Forms.Batchs
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (ValidateForm())
+            if (!ValidateForm())
             {
                 this.DialogResult = DialogResult.None;
                 return;
