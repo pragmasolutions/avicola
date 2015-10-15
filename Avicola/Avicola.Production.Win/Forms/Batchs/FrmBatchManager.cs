@@ -26,6 +26,7 @@ namespace Avicola.Production.Win.Forms.Batchs
 
             _stateController = stateController;
             _serviceFactory = serviceFactory;
+
             InitializeComponent();
         }
 
@@ -138,7 +139,20 @@ namespace Avicola.Production.Win.Forms.Batchs
         {
             using (var frm = FormFactory.Create<FrmMoveNextStage>())
             {
+                frm.BatchStageChanged += FrmOnBatchStageChanged;
                 frm.ShowDialog();
+            }
+        }
+
+        private void FrmOnBatchStageChanged(object sender, EventArgs eventArgs)
+        {
+            using (var service = _serviceFactory.Create<IBatchService>())
+            {
+                var updatedBatch = service.GetActiveById(_stateController.CurrentSelectedBatch.Id);
+
+                _stateController.CurrentSelectedBatch = updatedBatch;
+
+                TransitionManager.LoadBatchManagerView();
             }
         }
     }

@@ -25,7 +25,7 @@ namespace Avicola.Production.Win.UserControls
         {
             get
             {
-                _barnAssigned.BirdsAmount = (int) txtBirdsAmount.Value;
+                _barnAssigned.BirdsAmount = (int)txtBirdsAmount.Value;
                 _barnAssigned.InitialFood = (int)txtInitialFood.Value;
 
                 return _barnAssigned;
@@ -36,6 +36,7 @@ namespace Avicola.Production.Win.UserControls
 
                 txtBarnCapacity.Text = _barnAssigned.BarnCapacity.ToString();
                 txtBirdsAmount.Text = _barnAssigned.BirdsAmount.ToString();
+                txtBirdsAmount.Maximum = _barnAssigned.BarnCapacity;
                 lbBarnName.Text = _barnAssigned.BarnName;
             }
         }

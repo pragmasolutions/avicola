@@ -50,7 +50,7 @@ namespace Avicola.Office.Entities
                 }
                 else if (this.StageId == Stage.REBREEDING)
                 {
-                    return this.BreedingDate.GetValueOrDefault();
+                    return this.ReBreedingDate.GetValueOrDefault();
                 }
                 else
                 {

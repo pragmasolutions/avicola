@@ -39,7 +39,7 @@ namespace Avicola.Production.Win.Forms.Barns
             using (var service = _serviceFactory.Create<IBarnService>())
             {
                 var barns = service.GetAllByStage(StageId)
-                    .TakeWhile(x => !ExcludedBarns.Any(y => x.Id == y))
+                    .Where(x => !ExcludedBarns.Any(y => x.Id == y))
                     .ToList();
 
                 ddlBarns.ValueMember = "Id";

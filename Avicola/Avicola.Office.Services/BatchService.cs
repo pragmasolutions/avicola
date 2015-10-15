@@ -36,6 +36,16 @@ namespace Avicola.Office.Services
                     .ToList();
         }
 
+        public BatchDto GetActiveById(Guid batchId)
+        {
+            return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted && x.Id == batchId,
+                                     x => x.BatchBarns,
+                                     x => x.BatchBarns.Select(bb => bb.Barn))
+                     .Project()
+                     .To<BatchDto>()
+                     .FirstOrDefault();
+        }
+
         public IList<Batch> GetAllActiveComplete()
         {
             return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted,
@@ -71,8 +81,8 @@ namespace Avicola.Office.Services
                 Uow.Measures.GetAll(
                     x =>
                         x.BatchId == batchId &&
-                        x.StandardItem.StandardGeneticLine.Standard.Name.Contains(MortalityStandardName) ||
-                        x.StandardItem.StandardGeneticLine.Standard.Name.Contains(DiscardStandardName) &&
+                        (x.StandardItem.StandardGeneticLine.Standard.Name.Contains(MortalityStandardName) ||
+                        x.StandardItem.StandardGeneticLine.Standard.Name.Contains(DiscardStandardName)) &&
                         x.Date >= startStageDate &&
                         x.Date <= endStageDate,
                     x => x.StandardItem.StandardGeneticLine.Standard);

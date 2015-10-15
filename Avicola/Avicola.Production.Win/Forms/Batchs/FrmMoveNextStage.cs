@@ -11,6 +11,7 @@ using Avicola.Office.Entities;
 using Avicola.Office.Services.Dtos;
 using Avicola.Office.Services.Interfaces;
 using Avicola.Production.Win.Infrastructure;
+using Castle.Core.Internal;
 using Castle.DynamicProxy.Generators.Emitters;
 using Framework.WinForm.Comun.Notification;
 using Telerik.WinControls;
@@ -36,6 +37,16 @@ namespace Avicola.Production.Win.Forms.Batchs
             InitializeComponent();
         }
 
+        public event EventHandler BatchStageChanged;
+
+        private void OnBatchStageChanged()
+        {
+            if (BatchStageChanged != null)
+            {
+                BatchStageChanged(this, new EventArgs());
+            }
+        }
+
         private void FrmMoveNextStage_Load(object sender, EventArgs e)
         {
             dtpDate.Value = DateTime.Today;
@@ -57,25 +68,18 @@ namespace Avicola.Production.Win.Forms.Batchs
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (!ucAssignBarns.BarnsAssigned.Any())
+            if (ValidateForm())
             {
-                MessageBoxDisplayService.ShowError("Debe asignar al menos un galpon para pasar a la siguiente etapa");
                 this.DialogResult = DialogResult.None;
                 return;
             }
 
-            if (_currentBirdsAmount != ucAssignBarns.BirdsAmountDecimal)
-            {
-                MessageBoxDisplayService.ShowError("La cantidad de aves del lote no puede ser diferente a la asiganada a los galpones");
-                this.DialogResult = DialogResult.None;
-                return;
-            }
-            
             using (var service = _serviceFactory.Create<IBatchService>())
             {
                 var moveNextStageDto = new MoveNextStageDto();
 
                 moveNextStageDto.BatchId = _stateController.CurrentSelectedBatch.Id;
+                moveNextStageDto.NextStageStartDate = dtpDate.Value;
 
                 foreach (var barnAssigned in ucAssignBarns.BarnsAssigned)
                 {
@@ -88,7 +92,35 @@ namespace Avicola.Production.Win.Forms.Batchs
                 }
 
                 service.MoveNextStage(moveNextStageDto);
+
+                OnBatchStageChanged();
             }
+        }
+
+        private bool ValidateForm()
+        {
+            this.FormErrorProvider.Clear();
+
+            if (dtpDate.Text.IsNullOrEmpty())
+            {
+                this.FormErrorProvider.SetError(dtpDate, "Debe ingresar una fecha");
+                return false;
+            }
+
+            if (!ucAssignBarns.BarnsAssigned.Any())
+            {
+                MessageBoxDisplayService.ShowError("Debe asignar al menos un galpon para pasar a la siguiente etapa");
+                return false;
+            }
+
+            if (_currentBirdsAmount != ucAssignBarns.BirdsAmountDecimal)
+            {
+                MessageBoxDisplayService.ShowError(
+                    "La cantidad de aves del lote no puede ser diferente a la asiganada a los galpones");
+                return false;
+            }
+
+            return true;
         }
     }
 }

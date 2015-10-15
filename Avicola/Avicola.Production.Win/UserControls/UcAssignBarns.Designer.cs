@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.btnAddBarn = new Telerik.WinControls.UI.RadButton();
-            this.BarnsContainer = new Telerik.WinControls.UI.RadPanel();
+            this.BarnsContainer = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddBarn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BarnsContainer)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddBarn
             // 
+            this.btnAddBarn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddBarn.Location = new System.Drawing.Point(3, 3);
             this.btnAddBarn.Name = "btnAddBarn";
             this.btnAddBarn.Size = new System.Drawing.Size(110, 24);
@@ -48,15 +48,11 @@
             this.BarnsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.BarnsContainer.AutoScroll = true;
             this.BarnsContainer.Location = new System.Drawing.Point(3, 33);
             this.BarnsContainer.Name = "BarnsContainer";
-            this.BarnsContainer.Size = new System.Drawing.Size(826, 114);
+            this.BarnsContainer.Size = new System.Drawing.Size(874, 114);
             this.BarnsContainer.TabIndex = 1;
-            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BarnsContainer.GetChildAt(0).GetChildAt(1))).Width = 0F;
-            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BarnsContainer.GetChildAt(0).GetChildAt(1))).LeftWidth = 0F;
-            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BarnsContainer.GetChildAt(0).GetChildAt(1))).TopWidth = 0F;
-            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BarnsContainer.GetChildAt(0).GetChildAt(1))).RightWidth = 0F;
-            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BarnsContainer.GetChildAt(0).GetChildAt(1))).BottomWidth = 0F;
             // 
             // UcAssignBarns
             // 
@@ -65,10 +61,9 @@
             this.Controls.Add(this.BarnsContainer);
             this.Controls.Add(this.btnAddBarn);
             this.Name = "UcAssignBarns";
-            this.Size = new System.Drawing.Size(832, 150);
+            this.Size = new System.Drawing.Size(880, 150);
             this.Load += new System.EventHandler(this.UcAssignBarns_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnAddBarn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BarnsContainer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -76,6 +71,6 @@
         #endregion
 
         private Telerik.WinControls.UI.RadButton btnAddBarn;
-        private Telerik.WinControls.UI.RadPanel BarnsContainer;
+        private System.Windows.Forms.FlowLayoutPanel BarnsContainer;
     }
 }

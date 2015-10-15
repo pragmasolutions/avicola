@@ -64,12 +64,13 @@
             this.radSeparator1.Location = new System.Drawing.Point(158, 36);
             this.radSeparator1.Name = "radSeparator1";
             this.radSeparator1.ShowShadow = false;
-            this.radSeparator1.Size = new System.Drawing.Size(476, 10);
+            this.radSeparator1.Size = new System.Drawing.Size(563, 10);
             this.radSeparator1.TabIndex = 1;
             this.radSeparator1.Text = "radSeparator1";
             // 
             // radLabel2
             // 
+            this.radLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel2.Location = new System.Drawing.Point(27, 80);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(60, 16);
@@ -78,14 +79,15 @@
             // 
             // txtBarnCapacity
             // 
-            this.txtBarnCapacity.Location = new System.Drawing.Point(97, 76);
+            this.txtBarnCapacity.Location = new System.Drawing.Point(106, 76);
             this.txtBarnCapacity.Name = "txtBarnCapacity";
             this.txtBarnCapacity.Size = new System.Drawing.Size(100, 24);
             this.txtBarnCapacity.TabIndex = 3;
             // 
             // radLabel3
             // 
-            this.radLabel3.Location = new System.Drawing.Point(207, 80);
+            this.radLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel3.Location = new System.Drawing.Point(225, 80);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(121, 16);
             this.radLabel3.TabIndex = 4;
@@ -94,17 +96,33 @@
             // btnRemoveBarn
             // 
             this.btnRemoveBarn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveBarn.Location = new System.Drawing.Point(662, 26);
+            this.btnRemoveBarn.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemoveBarn.Image = global::Avicola.Production.Win.Properties.Resources.Remove;
+            this.btnRemoveBarn.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnRemoveBarn.Location = new System.Drawing.Point(738, 26);
             this.btnRemoveBarn.Name = "btnRemoveBarn";
             this.btnRemoveBarn.Size = new System.Drawing.Size(43, 24);
             this.btnRemoveBarn.TabIndex = 6;
             this.btnRemoveBarn.Text = "X";
+            this.btnRemoveBarn.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRemoveBarn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemoveBarn.Click += new System.EventHandler(this.btnRemoveBarn_Click);
+            ((Telerik.WinControls.UI.RadButtonElement)(this.btnRemoveBarn.GetChildAt(0))).Image = global::Avicola.Production.Win.Properties.Resources.Remove;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.btnRemoveBarn.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.btnRemoveBarn.GetChildAt(0))).ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.btnRemoveBarn.GetChildAt(0))).TextAlignment = System.Drawing.ContentAlignment.TopCenter;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.btnRemoveBarn.GetChildAt(0))).Text = "X";
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btnRemoveBarn.GetChildAt(0).GetChildAt(2))).Width = 0F;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btnRemoveBarn.GetChildAt(0).GetChildAt(2))).LeftWidth = 0F;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btnRemoveBarn.GetChildAt(0).GetChildAt(2))).TopWidth = 0F;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btnRemoveBarn.GetChildAt(0).GetChildAt(2))).RightWidth = 0F;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btnRemoveBarn.GetChildAt(0).GetChildAt(2))).BottomWidth = 0F;
+            ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btnRemoveBarn.GetChildAt(0).GetChildAt(2))).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
             // 
             // txtInitialFood
             // 
             this.txtInitialFood.DecimalPlaces = 2;
-            this.txtInitialFood.Location = new System.Drawing.Point(583, 76);
+            this.txtInitialFood.Location = new System.Drawing.Point(628, 76);
             this.txtInitialFood.Margin = new System.Windows.Forms.Padding(2);
             this.txtInitialFood.Maximum = new decimal(new int[] {
             100000000,
@@ -118,18 +136,18 @@
             // 
             // radLabel1
             // 
-            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(467, 79);
+            this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.Location = new System.Drawing.Point(503, 81);
             this.radLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(106, 18);
+            this.radLabel1.Size = new System.Drawing.Size(105, 16);
             this.radLabel1.TabIndex = 94;
             this.radLabel1.Text = "Alimento Inicial (kg)";
             this.radLabel1.ThemeName = "TelerikMetroBlue";
             // 
             // txtBirdsAmount
             // 
-            this.txtBirdsAmount.Location = new System.Drawing.Point(338, 76);
+            this.txtBirdsAmount.Location = new System.Drawing.Point(365, 76);
             this.txtBirdsAmount.Margin = new System.Windows.Forms.Padding(2);
             this.txtBirdsAmount.Maximum = new decimal(new int[] {
             10000000,
@@ -155,7 +173,7 @@
             this.Controls.Add(this.radSeparator1);
             this.Controls.Add(this.lbBarnName);
             this.Name = "UcBarnAssigned";
-            this.Size = new System.Drawing.Size(719, 121);
+            this.Size = new System.Drawing.Size(795, 121);
             ((System.ComponentModel.ISupportInitialize)(this.lbBarnName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSeparator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
