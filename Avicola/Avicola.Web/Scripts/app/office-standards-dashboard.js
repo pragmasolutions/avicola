@@ -294,7 +294,8 @@
                     layout: 'vertical',
                     align: 'right',
                     verticalAlign: 'middle',
-                    borderWidth: 0
+                    borderWidth: 0,
+                    
                 },
                 series: series
             });
