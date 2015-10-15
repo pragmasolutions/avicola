@@ -27,6 +27,14 @@ namespace Avicola.Office.Services
             return Uow.Barns.GetAll();
         }
 
+        public IList<Barn> GetAllByStage(Guid stageId)
+        {
+            return Uow.Barns.GetAll()
+                .Where(x => x.StageId == stageId)
+                .OrderBy(x => x.Name)
+                .ToList();
+        }
+
         public List<BarnDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)
         {
             var pagingCriteria = new PagingCriteria();

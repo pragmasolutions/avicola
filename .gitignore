@@ -199,3 +199,4 @@ licenses.licx
 Avicola/Avicola.Production.Win/App.config
 Avicola/Avicola.Production.Win/App.config
 Avicola/Avicola.Office.Data/App.Config
+*.licx

@@ -9,6 +9,7 @@ using Avicola.Common.Win;
 using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Properties;
 using Framework.Data.Repository;
+using Framework.WinForm.Comun.Notification;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
@@ -39,6 +40,8 @@ namespace Avicola.Production.Win.Forms
         protected IFormFactory FormFactory { get; set; }
 
         protected IUowFactory UowFactory { get; set; }
+
+        protected IMessageBoxDisplayService MessageBoxDisplayService { get; set; }
 
         public ITransitionManager TransitionManager { get; set; }
 

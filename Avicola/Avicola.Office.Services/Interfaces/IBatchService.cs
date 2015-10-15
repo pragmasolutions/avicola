@@ -15,6 +15,10 @@ namespace Avicola.Office.Services.Interfaces
         IList<BatchDto> GetAllActive();
         IList<Batch> GetAllActiveComplete();
 
+        int GetBirdsAmount(Guid batchId);
+
+        void MoveNextStage(MoveNextStageDto nextStageDto);
+
         int GetNextNumber();
 
         void Create(Batch batch);

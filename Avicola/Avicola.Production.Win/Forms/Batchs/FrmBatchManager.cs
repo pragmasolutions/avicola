@@ -133,5 +133,13 @@ namespace Avicola.Production.Win.Forms.Batchs
             var frm = FormFactory.Create<FrmBatchMedicinesList>();
             frm.ShowDialog();
         }
+
+        private void btnMoveNextStage_Click(object sender, EventArgs e)
+        {
+            using (var frm = FormFactory.Create<FrmMoveNextStage>())
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }

@@ -23,6 +23,8 @@ namespace Avicola.Office.Data.Interfaces
         IRepository<Medicine> Medicines { get; }
         IRepository<Stage> Stages { get; }
 
+        IRepository<BatchBarn> BatchBarns { get; }
+
         OfficeEntities DbContext { get; }
     }
 }

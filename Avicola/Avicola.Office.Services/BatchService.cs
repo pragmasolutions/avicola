@@ -15,7 +15,11 @@ namespace Avicola.Office.Services
 {
     public class BatchService : ServiceBase, IBatchService
     {
+        public const string MortalityStandardName = "Mortandad";
+        public const string DiscardStandardName = "Descarte";
+
         private readonly IBarnService _barnService;
+
         public BatchService(IOfficeUow uow, IBarnService barnService)
         {
             Uow = uow;
@@ -24,8 +28,8 @@ namespace Avicola.Office.Services
 
         public IList<BatchDto> GetAllActive()
         {
-            return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted, 
-                                    x => x.BatchBarns, 
+            return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted,
+                                    x => x.BatchBarns,
                                     x => x.BatchBarns.Select(bb => bb.Barn))
                     .Project()
                     .To<BatchDto>()
@@ -54,6 +58,32 @@ namespace Avicola.Office.Services
             {
                 return 1;
             }
+        }
+
+        public int GetBirdsAmount(Guid batchId)
+        {
+            var batch = this.GetById(batchId);
+
+            var startStageDate = batch.CurrentStageStartDate;
+            var endStageDate = DateTime.Today;
+
+            var measures =
+                Uow.Measures.GetAll(
+                    x =>
+                        x.BatchId == batchId &&
+                        x.StandardItem.StandardGeneticLine.Standard.Name.Contains(MortalityStandardName) ||
+                        x.StandardItem.StandardGeneticLine.Standard.Name.Contains(DiscardStandardName) &&
+                        x.Date >= startStageDate &&
+                        x.Date <= endStageDate,
+                    x => x.StandardItem.StandardGeneticLine.Standard);
+
+            var batchBarn = Uow.BatchBarns.GetAll(x => x.BatchId == batchId && x.Barn.StageId == batch.StageId, x => x.Barn);
+
+            var initialBirds = batchBarn.Select(x => x.InitialBirds).DefaultIfEmpty(0).Sum();
+
+            var deathBirds = measures.Select(x => x.Value).DefaultIfEmpty(0).Sum();
+
+            return (int)Math.Floor(initialBirds - deathBirds);
         }
 
         public void Create(Batch batch)
@@ -133,6 +163,46 @@ namespace Avicola.Office.Services
         public IQueryable<Batch> GetAll()
         {
             return Uow.Batches.GetAll();
+        }
+
+
+        public void MoveNextStage(MoveNextStageDto nextStageDto)
+        {
+            var batch = GetById(nextStageDto.BatchId);
+
+            if (batch.StageId == Stage.POSTURE)
+            {
+                throw new ApplicationException("El lote ya se encuentra en la ultima etapa de postura");
+            }
+
+            var nextStage = Stage.NextStageId(batch.StageId);
+
+            batch.StageId = nextStage;
+
+            if (nextStage == Stage.REBREEDING)
+            {
+                batch.ReBreedingDate = nextStageDto.NextStageStartDate;
+            }
+            else if (nextStage == Stage.POSTURE)
+            {
+                batch.PostureDate = nextStageDto.NextStageStartDate;
+            }
+
+            Uow.Batches.Edit(batch);
+
+            foreach (var barn in nextStageDto.BarnsAssigned)
+            {
+                Uow.BatchBarns.Add(new BatchBarn()
+                                   {
+                                       BatchId = batch.Id,
+                                       BarnId = barn.BarnId,
+                                       FoodClassId = batch.FoodClassId,
+                                       InitialBirds = (int) barn.InitialBirds,
+                                       StartingFood = barn.StartingFood
+                                   });
+            }
+
+            Uow.Commit();
         }
     }
 }
