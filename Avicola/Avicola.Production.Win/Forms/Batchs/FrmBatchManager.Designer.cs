@@ -318,6 +318,7 @@
             // 
             // btnMedicine
             // 
+            this.btnMedicine.Image = ((System.Drawing.Image)(resources.GetObject("btnMedicine.Image")));
             this.btnMedicine.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnMedicine.Location = new System.Drawing.Point(519, 199);
             this.btnMedicine.Name = "btnMedicine";

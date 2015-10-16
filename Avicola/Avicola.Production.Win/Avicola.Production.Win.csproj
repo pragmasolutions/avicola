@@ -433,6 +433,7 @@
     <Content Include="Resources\Images\edit.ico" />
     <Content Include="Resources\Images\green-check.png" />
     <Content Include="Resources\Images\LOGO.JPG" />
+    <Content Include="Resources\Images\medicne.png" />
     <Content Include="Resources\Images\MoveNext.png" />
     <Content Include="Resources\Images\Next.png" />
     <Content Include="Resources\Images\notes-icon.png" />
@@ -464,6 +465,7 @@
     </Content>
     <Content Include="Resources\Images\vaccine.png" />
     <None Include="Resources\Logo.png" />
+    <None Include="Resources\medicine.png" />
     <Content Include="Resources\Wrong.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

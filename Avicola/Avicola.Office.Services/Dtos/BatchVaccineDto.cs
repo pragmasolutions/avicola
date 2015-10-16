@@ -14,5 +14,7 @@ namespace Avicola.Office.Services.Dtos
         public DateTime? EndDate { get; set; }
         public bool IsDeleted { get; set; }
         public string VaccineName { get; set; }
+        public int Week { get; set; }
+        public int Day { get; set; }     
     }
 }
