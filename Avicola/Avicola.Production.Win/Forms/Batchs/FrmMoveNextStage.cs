@@ -64,6 +64,7 @@ namespace Avicola.Production.Win.Forms.Batchs
             ucAssignBarns.FormFactory = this.FormFactory;
             ucAssignBarns.MessageBoxDisplayService = this.MessageBoxDisplayService;
             ucAssignBarns.StageId = Stage.NextStageId(_stateController.CurrentSelectedBatch.StageId.GetValueOrDefault());
+            ucAssignBarns.CurrentBatchBirds = _currentBirdsAmount;
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)

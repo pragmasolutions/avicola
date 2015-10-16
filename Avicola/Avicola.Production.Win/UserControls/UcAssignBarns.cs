@@ -27,6 +27,8 @@ namespace Avicola.Production.Win.UserControls
 
         public Guid StageId { get; set; }
 
+        public decimal CurrentBatchBirds { get; set; }
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
         public IList<UcBarnAssigned> BarnsAssignedControls { get; set; }
 
@@ -39,6 +41,11 @@ namespace Avicola.Production.Win.UserControls
         public decimal BirdsAmountDecimal
         {
             get { return BarnsAssigned.Select(x => x.BirdsAmount).DefaultIfEmpty(0).Sum(); }
+        }
+
+        public decimal RemainBirdsAmount
+        {
+            get { return CurrentBatchBirds - BirdsAmountDecimal; }
         }
 
         private void btnAddBarn_Click(object sender, EventArgs e)
@@ -60,12 +67,12 @@ namespace Avicola.Production.Win.UserControls
             ucBarnAssigned.FormFactory = this.FormFactory;
             ucBarnAssigned.BarnRemoved += UcBarnAssignedOnBarnRemoved;
             
-            //TODO: Calcular la cantidad de aves en el galpon por defecto
             ucBarnAssigned.BarnAssigned = new BarnAssigned()
                                           {
                                               BarnId = barn.Id,
                                               BarnCapacity = barn.Capacity ?? 0,
-                                              BarnName = barn.Name
+                                              BarnName = barn.Name,
+                                              BirdsAmount = (int) (RemainBirdsAmount > barn.Capacity ? barn.Capacity.GetValueOrDefault() : RemainBirdsAmount)
                                           };
 
             ucBarnAssigned.Dock = DockStyle.Top;
