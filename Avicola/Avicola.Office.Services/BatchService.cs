@@ -58,6 +58,19 @@ namespace Avicola.Office.Services
                                     x => x.GeneticLine.StandardGeneticLines.Select(sgl => sgl.StandardItems)).ToList();
         }
 
+        public Batch GetByIdComplete(Guid batchId)
+        {
+            return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted,
+                                    x => x.BatchBarns,
+                                    x => x.BatchBarns.Select(bb => bb.Barn),
+                                    x => x.Measures,
+                                    x => x.GeneticLine,
+                                    x => x.GeneticLine.StandardGeneticLines,
+                                    x => x.GeneticLine.StandardGeneticLines.Select(sgl => sgl.Standard),
+                                    x => x.GeneticLine.StandardGeneticLines.Select(sgl => sgl.StandardItems))
+                                   .First(x => x.Id == batchId);
+        }
+
         public int GetNextNumber()
         {
             if (Uow.Batches.GetAll().Any())
