@@ -57,7 +57,7 @@
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(11, 11);
+            this.radLabel2.Location = new System.Drawing.Point(11, 12);
             this.radLabel2.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(76, 24);
@@ -69,7 +69,7 @@
             // 
             this.dtpStartDate.CustomFormat = "";
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.Location = new System.Drawing.Point(11, 40);
+            this.dtpStartDate.Location = new System.Drawing.Point(11, 38);
             this.dtpStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(157, 24);
@@ -145,7 +145,7 @@
             // 
             this.dtpEndDate.CustomFormat = "";
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.Location = new System.Drawing.Point(11, 92);
+            this.dtpEndDate.Location = new System.Drawing.Point(11, 90);
             this.dtpEndDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(157, 24);
@@ -157,7 +157,7 @@
             // txtObservation
             // 
             this.txtObservation.AutoSize = false;
-            this.txtObservation.Location = new System.Drawing.Point(11, 197);
+            this.txtObservation.Location = new System.Drawing.Point(11, 194);
             this.txtObservation.MaxLength = 500;
             this.txtObservation.Multiline = true;
             this.txtObservation.Name = "txtObservation";
@@ -166,10 +166,10 @@
             // 
             // ddlMedicines
             // 
-            this.ddlMedicines.Location = new System.Drawing.Point(9, 144);
+            this.ddlMedicines.Location = new System.Drawing.Point(11, 142);
             this.ddlMedicines.Margin = new System.Windows.Forms.Padding(2);
             this.ddlMedicines.Name = "ddlMedicines";
-            this.ddlMedicines.Size = new System.Drawing.Size(159, 24);
+            this.ddlMedicines.Size = new System.Drawing.Size(260, 24);
             this.ddlMedicines.TabIndex = 91;
             this.ddlMedicines.Text = "Seleccione medicamento";
             // 
@@ -177,10 +177,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 346);
+            this.ClientSize = new System.Drawing.Size(276, 346);
             this.ControlBox = false;
-            this.Controls.Add(this.txtObservation);
             this.Controls.Add(this.ddlMedicines);
+            this.Controls.Add(this.txtObservation);
             this.Controls.Add(this.dtpEndDate);
             this.Controls.Add(this.radLabel3);
             this.Controls.Add(this.radLabel2);

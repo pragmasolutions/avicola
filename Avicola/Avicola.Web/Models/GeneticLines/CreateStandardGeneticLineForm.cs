@@ -17,10 +17,11 @@ namespace Avicola.Web.Models.GeneticLines
         {
             if (StandardGeneticLine.Id != Guid.Empty)
             {
+                var activeList = StandardGeneticLine.StandardItems.Where(x => !x.IsDeleted).OrderBy(x => x.Sequence).ToList();
+
                 if (StandardGeneticLine.Standard.AllowDecimal)
                 {
                     StandardItems = new List<StandardItemModel>();
-                    var activeList = StandardGeneticLine.StandardItems.Where(x => !x.IsDeleted).OrderBy(x => x.Sequence).ToList();
                     for (int i = 0; i < activeList.Count; i++)
                     {
                         var item = activeList.ElementAt(i);
@@ -37,7 +38,6 @@ namespace Avicola.Web.Models.GeneticLines
                 else
                 {
                     IntegerStandardItems = new List<StandardItemIntegerModel>();
-                    var activeList = StandardGeneticLine.StandardItems.Where(x => !x.IsDeleted).OrderBy(x => x.Sequence).ToList();
                     for (int i = 0; i < activeList.Count; i++)
                     {
                         var item = activeList.ElementAt(i);
@@ -57,12 +57,8 @@ namespace Avicola.Web.Models.GeneticLines
                 if (StandardGeneticLine.Standard.AllowDecimal)
                 {
                     StandardItems = new List<StandardItemModel>();
-
-                    int initialSequence = GetInitialSequence();
                     
-                    //int finalSequence = GetFinalSequence();
-                    int finalSequence = 10; //TODO: ARREGLAR ESTO!!!
-                    for (int i = initialSequence; i < finalSequence; i++)
+                    for (int i = 0; i < StandardGeneticLine.GeneticLine.ProductionWeeks; i++)
                     {
                         StandardItems.Add(new StandardItemModel
                         {
@@ -76,11 +72,7 @@ namespace Avicola.Web.Models.GeneticLines
                 {
                     IntegerStandardItems = new List<StandardItemIntegerModel>();
 
-                    int initialSequence = GetInitialSequence();
-                    //int finalSequence = GetFinalSequence();
-                    int finalSequence = 10; //TODO: ARREGLAR ESTO!!!
-
-                    for (int i = initialSequence; i < finalSequence; i++)
+                    for (int i = 0; i < StandardGeneticLine.GeneticLine.ProductionWeeks; i++)
                     {
                         IntegerStandardItems.Add(new StandardItemIntegerModel
                         {
@@ -125,12 +117,5 @@ namespace Avicola.Web.Models.GeneticLines
 
             return item;
         }
-
-        private int GetInitialSequence()
-        {
-            //return this.StageId == Stage.POSTURE ? StandardGeneticLine.GeneticLine.WeeksInBreeding : 0;
-            return 0; //TODO: ARREGLAR ESTO!!!
-        }
-
     }
 }
