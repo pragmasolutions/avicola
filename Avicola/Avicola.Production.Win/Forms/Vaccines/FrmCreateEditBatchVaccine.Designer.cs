@@ -72,7 +72,7 @@
             this.dtpStartDate.Location = new System.Drawing.Point(11, 40);
             this.dtpStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(145, 20);
+            this.dtpStartDate.Size = new System.Drawing.Size(145, 24);
             this.dtpStartDate.TabIndex = 87;
             this.dtpStartDate.TabStop = false;
             this.dtpStartDate.Text = "14/09/2015";
@@ -148,7 +148,7 @@
             this.dtpEndDate.Location = new System.Drawing.Point(11, 92);
             this.dtpEndDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(145, 20);
+            this.dtpEndDate.Size = new System.Drawing.Size(145, 24);
             this.dtpEndDate.TabIndex = 88;
             this.dtpEndDate.TabStop = false;
             this.dtpEndDate.Text = "14/09/2015";
@@ -159,7 +159,7 @@
             this.txtRecommendedDate.Location = new System.Drawing.Point(11, 197);
             this.txtRecommendedDate.MaxLength = 10;
             this.txtRecommendedDate.Name = "txtRecommendedDate";
-            this.txtRecommendedDate.Size = new System.Drawing.Size(143, 20);
+            this.txtRecommendedDate.Size = new System.Drawing.Size(143, 24);
             this.txtRecommendedDate.TabIndex = 92;
             // 
             // ddlVaccines
@@ -167,7 +167,7 @@
             this.ddlVaccines.Location = new System.Drawing.Point(9, 144);
             this.ddlVaccines.Margin = new System.Windows.Forms.Padding(2);
             this.ddlVaccines.Name = "ddlVaccines";
-            this.ddlVaccines.Size = new System.Drawing.Size(145, 20);
+            this.ddlVaccines.Size = new System.Drawing.Size(261, 24);
             this.ddlVaccines.TabIndex = 91;
             this.ddlVaccines.Text = "Seleccione vacuna";
             this.ddlVaccines.SelectedValueChanged += new System.EventHandler(this.ddlVaccines_SelectedValueChanged);

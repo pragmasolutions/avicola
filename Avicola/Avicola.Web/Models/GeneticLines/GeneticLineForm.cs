@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
@@ -22,7 +23,6 @@ namespace Avicola.Web.Models.GeneticLines
 
         [Required]
         [Display(Name = "Ciclo de vida (en semanas)")]
-        [Range(1, 10000)]
         public int ProductionWeeks { get; set; }
         
         [HiddenInput]
@@ -31,6 +31,7 @@ namespace Avicola.Web.Models.GeneticLines
         public GeneticLine ToGeneticLine()
         {
             var geneticLine = Mapper.Map<GeneticLineForm, GeneticLine>(this);
+            geneticLine.ProductionWeeks = 120;
             return geneticLine;
         }
 
