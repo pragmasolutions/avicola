@@ -61,6 +61,13 @@ namespace Avicola.Production.Win.Forms.Vaccines
             using (var batchVaccineService = _serviceFactory.Create<IBatchVaccineService>())
             {
                 var batchVaccines = batchVaccineService.GetByBatchId(_stateController.CurrentSelectedBatch.Id).OrderBy(x => x.CreatedDate).ToList();
+                foreach (var batchVaccine in batchVaccines)
+                {
+                    var weeksDays = DateHelper.DateDiffInWeek(batch.DateOfBirth, batchVaccine.CreatedDate);
+                    batchVaccine.Week = weeksDays.Weeks;
+                    batchVaccine.Day = weeksDays.Days;
+                }
+
                 gvBatchVaccines.DataSource = batchVaccines;
             }
         }
