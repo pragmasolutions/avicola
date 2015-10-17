@@ -4,7 +4,6 @@
 	[BarnId] [uniqueidentifier] NOT NULL,
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[InitialBirds] [int] NOT NULL,
-	[StartingFood] [decimal](18, 2) NOT NULL,
 	[FoodClassId] [uniqueidentifier] NOT NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_BatchBarn] PRIMARY KEY CLUSTERED 

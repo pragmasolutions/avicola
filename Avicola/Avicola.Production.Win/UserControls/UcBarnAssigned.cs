@@ -29,7 +29,6 @@ namespace Avicola.Production.Win.UserControls
             get
             {
                 _barnAssigned.BirdsAmount = (int)txtBirdsAmount.Value;
-                _barnAssigned.InitialFood = (int)txtInitialFood.Value;
 
                 return _barnAssigned;
             }
@@ -67,12 +66,6 @@ namespace Avicola.Production.Win.UserControls
                 return false;
             }
 
-            if (txtInitialFood.Text.IsNullOrEmpty())
-            {
-                this.ErrorProvider.SetError(txtInitialFood, string.Format(Resources.RequiredField, lbInitialFood.Text));
-                return false;
-            }
-
             if (txtBirdsAmount.Value < 1)
             {
                 this.ErrorProvider.SetError(txtBirdsAmount, string.Format(Resources.GreatherThan, lbBirdsAmount.Text, 0));
@@ -92,9 +85,5 @@ namespace Avicola.Production.Win.UserControls
         [Required]
         [Range(1, int.MaxValue)]
         public int BirdsAmount { get; set; }
-
-        [Required]
-        [Range(0, int.MaxValue)]
-        public int InitialFood { get; set; }
     }
 }

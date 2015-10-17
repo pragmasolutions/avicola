@@ -253,8 +253,7 @@ namespace Avicola.Office.Services
                                        BatchId = batch.Id,
                                        BarnId = barn.BarnId,
                                        FoodClassId = batch.FoodClassId,
-                                       InitialBirds = (int)barn.InitialBirds,
-                                       StartingFood = barn.StartingFood
+                                       InitialBirds = (int)barn.InitialBirds
                                    });
             }
 

@@ -71,6 +71,7 @@ namespace Avicola.Production.Win.Forms.Batchs
             txtNumber.ReadOnly = true;
 
             txtInitialBirds.Maximum = int.MaxValue;
+            txtStartingFood.Maximum = int.MaxValue;
 
             ucAssignBarns.FormFactory = this.FormFactory;
             ucAssignBarns.MessageBoxDisplayService = this.MessageBoxDisplayService;
@@ -161,12 +162,11 @@ namespace Avicola.Production.Win.Forms.Batchs
                                              BatchId = batch.Id,
                                              BarnId = barnAssigned.BarnId,
                                              FoodClassId = batch.FoodClassId,
-                                             StartingFood = barnAssigned.InitialFood,
                                              InitialBirds = barnAssigned.BirdsAmount
                                          });
                 }
 
-                batch.StartingFood = ucAssignBarns.BarnsAssigned.Select(x => x.InitialFood).DefaultIfEmpty(0).Sum();
+                batch.StartingFood = txtStartingFood.Value;
 
                 using (var service = _serviceFactory.Create<IBatchService>())
                 {
@@ -185,6 +185,7 @@ namespace Avicola.Production.Win.Forms.Batchs
                 InitialBirds = string.IsNullOrEmpty(txtInitialBirds.Text)
                                     ? (int?)null
                                     : Convert.ToInt32(txtInitialBirds.Text),
+                StartingFood = txtStartingFood.Value,
                 DateOfBirth = dtpDateOfBirth.Value.ToZeroTime(),
                 EntranceDate = dtpEntranceDate.Value.ToZeroTime(),
                 FoodClassId = ddlFoodClass.SelectedValue == null

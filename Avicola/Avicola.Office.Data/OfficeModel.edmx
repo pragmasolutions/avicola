@@ -44,7 +44,6 @@
           <Property Name="BarnId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="InitialBirds" Type="int" Nullable="false" />
-          <Property Name="StartingFood" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="FoodClassId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
@@ -1090,7 +1089,6 @@
           <Property Name="BarnId" Type="Guid" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="InitialBirds" Type="Int32" Nullable="false" />
-          <Property Name="StartingFood" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="FoodClassId" Type="Guid" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Barn" Relationship="Avicola.OfficeModel.FK_BatchBarn_Barn" FromRole="BatchBarn" ToRole="Barn" />
@@ -1573,7 +1571,6 @@
               <MappingFragment StoreEntitySet="BatchBarn">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="FoodClassId" ColumnName="FoodClassId" />
-                <ScalarProperty Name="StartingFood" ColumnName="StartingFood" />
                 <ScalarProperty Name="InitialBirds" ColumnName="InitialBirds" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="BarnId" ColumnName="BarnId" />

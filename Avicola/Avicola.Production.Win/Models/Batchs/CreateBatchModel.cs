@@ -29,6 +29,10 @@ namespace Avicola.Production.Win.Models.Batchs
         [Required(ErrorMessage = "El campo fecha  de ingreso es requerido")]
         public DateTime? EntranceDate { get; set; }
 
+        [Required(ErrorMessage = "El campo alimento inicial es requerido")]
+        [Range(0, int.MaxValue, ErrorMessage = "El campo campo alimento inicial debe ser mayor o igual 0")]
+        public decimal? StartingFood { get; set; }
+
         public Batch ToBatch()
         {
             var batch = new Batch
@@ -37,6 +41,7 @@ namespace Avicola.Production.Win.Models.Batchs
                 DateOfBirth = this.DateOfBirth.GetValueOrDefault(),
                 GeneticLineId = this.GeneticLineId.GetValueOrDefault(),
                 FoodClassId = this.FoodClassId.GetValueOrDefault(),
+                StartingFood = this.StartingFood.GetValueOrDefault(),
             };
             return batch;
         }

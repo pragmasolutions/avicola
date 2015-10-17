@@ -27,7 +27,5 @@ namespace Avicola.Office.Services.Dtos
         public Guid BarnId { get; set; }
 
         public decimal InitialBirds { get; set; }
-
-        public decimal StartingFood { get; set; }
     }
 }

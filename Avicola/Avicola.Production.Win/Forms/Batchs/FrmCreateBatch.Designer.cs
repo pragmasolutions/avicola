@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ddlFoodClass = new Telerik.WinControls.UI.RadDropDownList();
             this.ddlGeneticLine = new Telerik.WinControls.UI.RadDropDownList();
-            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.dtpDateOfBirth = new Telerik.WinControls.UI.RadDateTimePicker();
@@ -47,9 +45,11 @@
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.dtpEntranceDate = new Telerik.WinControls.UI.RadDateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlFoodClass)).BeginInit();
+            this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
+            this.txtStartingFood = new Telerik.WinControls.UI.RadSpinEditor();
+            this.ddlFoodClass = new Telerik.WinControls.UI.RadDropDownList();
+            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ddlGeneticLine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDateOfBirth)).BeginInit();
@@ -63,37 +63,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEntranceDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStartingFood)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlFoodClass)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ddlFoodClass
-            // 
-            this.ddlFoodClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlFoodClass.Location = new System.Drawing.Point(31, 119);
-            this.ddlFoodClass.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlFoodClass.Name = "ddlFoodClass";
-            this.ddlFoodClass.Size = new System.Drawing.Size(142, 25);
-            this.ddlFoodClass.TabIndex = 95;
             // 
             // ddlGeneticLine
             // 
             this.ddlGeneticLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlGeneticLine.Location = new System.Drawing.Point(569, 50);
+            this.ddlGeneticLine.Location = new System.Drawing.Point(568, 50);
             this.ddlGeneticLine.Margin = new System.Windows.Forms.Padding(2);
             this.ddlGeneticLine.Name = "ddlGeneticLine";
             this.ddlGeneticLine.Size = new System.Drawing.Size(150, 25);
             this.ddlGeneticLine.TabIndex = 94;
-            // 
-            // radLabel5
-            // 
-            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(29, 91);
-            this.radLabel5.Margin = new System.Windows.Forms.Padding(2);
-            this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(123, 24);
-            this.radLabel5.TabIndex = 92;
-            this.radLabel5.Text = "Tipo de alimento";
-            this.radLabel5.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel4
             // 
@@ -122,7 +106,7 @@
             this.dtpDateOfBirth.CustomFormat = "";
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(207, 50);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(208, 50);
             this.dtpDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(145, 25);
@@ -157,9 +141,10 @@
             // 
             // BtnGuardar
             // 
+            this.BtnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnGuardar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardar.Location = new System.Drawing.Point(688, 491);
+            this.BtnGuardar.Location = new System.Drawing.Point(567, 491);
             this.BtnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(75, 24);
@@ -170,9 +155,10 @@
             // 
             // BtnCancelar
             // 
+            this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(773, 491);
+            this.BtnCancelar.Location = new System.Drawing.Point(652, 491);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 24);
@@ -197,14 +183,14 @@
             this.ucAssignBarns.Location = new System.Drawing.Point(28, 159);
             this.ucAssignBarns.MessageBoxDisplayService = null;
             this.ucAssignBarns.Name = "ucAssignBarns";
-            this.ucAssignBarns.Size = new System.Drawing.Size(850, 298);
+            this.ucAssignBarns.Size = new System.Drawing.Size(690, 298);
             this.ucAssignBarns.StageId = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucAssignBarns.TabIndex = 96;
             // 
             // txtInitialBirds
             // 
             this.txtInitialBirds.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitialBirds.Location = new System.Drawing.Point(392, 119);
+            this.txtInitialBirds.Location = new System.Drawing.Point(208, 120);
             this.txtInitialBirds.Name = "txtInitialBirds";
             this.txtInitialBirds.Size = new System.Drawing.Size(145, 25);
             this.txtInitialBirds.TabIndex = 97;
@@ -213,7 +199,7 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(389, 91);
+            this.radLabel1.Location = new System.Drawing.Point(210, 91);
             this.radLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(170, 24);
@@ -223,7 +209,7 @@
             // 
             // ucStageSelection
             // 
-            this.ucStageSelection.Location = new System.Drawing.Point(207, 120);
+            this.ucStageSelection.Location = new System.Drawing.Point(28, 120);
             this.ucStageSelection.Name = "ucStageSelection";
             this.ucStageSelection.Size = new System.Drawing.Size(145, 25);
             this.ucStageSelection.TabIndex = 98;
@@ -231,7 +217,7 @@
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(205, 91);
+            this.radLabel3.Location = new System.Drawing.Point(26, 91);
             this.radLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(53, 24);
@@ -255,7 +241,7 @@
             this.dtpEntranceDate.CustomFormat = "";
             this.dtpEntranceDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEntranceDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEntranceDate.Location = new System.Drawing.Point(390, 50);
+            this.dtpEntranceDate.Location = new System.Drawing.Point(388, 50);
             this.dtpEntranceDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpEntranceDate.Name = "dtpEntranceDate";
             this.dtpEntranceDate.Size = new System.Drawing.Size(145, 25);
@@ -264,12 +250,56 @@
             this.dtpEntranceDate.Text = "14/09/2015";
             this.dtpEntranceDate.Value = new System.DateTime(2015, 9, 14, 10, 20, 19, 820);
             // 
+            // radLabel7
+            // 
+            this.radLabel7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel7.Location = new System.Drawing.Point(390, 91);
+            this.radLabel7.Margin = new System.Windows.Forms.Padding(2);
+            this.radLabel7.Name = "radLabel7";
+            this.radLabel7.Size = new System.Drawing.Size(144, 24);
+            this.radLabel7.TabIndex = 98;
+            this.radLabel7.Text = "Alimento Inicial (Kg)";
+            this.radLabel7.ThemeName = "TelerikMetroBlue";
+            // 
+            // txtStartingFood
+            // 
+            this.txtStartingFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStartingFood.Location = new System.Drawing.Point(388, 120);
+            this.txtStartingFood.Name = "txtStartingFood";
+            this.txtStartingFood.Size = new System.Drawing.Size(145, 25);
+            this.txtStartingFood.TabIndex = 99;
+            this.txtStartingFood.TabStop = false;
+            // 
+            // ddlFoodClass
+            // 
+            this.ddlFoodClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlFoodClass.Location = new System.Drawing.Point(568, 120);
+            this.ddlFoodClass.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlFoodClass.Name = "ddlFoodClass";
+            this.ddlFoodClass.Size = new System.Drawing.Size(150, 25);
+            this.ddlFoodClass.TabIndex = 101;
+            // 
+            // radLabel5
+            // 
+            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel5.Location = new System.Drawing.Point(567, 91);
+            this.radLabel5.Margin = new System.Windows.Forms.Padding(2);
+            this.radLabel5.Name = "radLabel5";
+            this.radLabel5.Size = new System.Drawing.Size(123, 24);
+            this.radLabel5.TabIndex = 100;
+            this.radLabel5.Text = "Tipo de alimento";
+            this.radLabel5.ThemeName = "TelerikMetroBlue";
+            // 
             // FrmCreateBatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 526);
+            this.ClientSize = new System.Drawing.Size(737, 526);
             this.ControlBox = false;
+            this.Controls.Add(this.ddlFoodClass);
+            this.Controls.Add(this.radLabel5);
+            this.Controls.Add(this.radLabel7);
+            this.Controls.Add(this.txtStartingFood);
             this.Controls.Add(this.radLabel6);
             this.Controls.Add(this.dtpEntranceDate);
             this.Controls.Add(this.radLabel3);
@@ -277,9 +307,7 @@
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.txtInitialBirds);
             this.Controls.Add(this.ucAssignBarns);
-            this.Controls.Add(this.ddlFoodClass);
             this.Controls.Add(this.ddlGeneticLine);
-            this.Controls.Add(this.radLabel5);
             this.Controls.Add(this.radLabel4);
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.dtpDateOfBirth);
@@ -299,9 +327,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Lote";
             this.Load += new System.EventHandler(this.FrmCreateBatch_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ddlFoodClass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlGeneticLine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDateOfBirth)).EndInit();
@@ -315,6 +341,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEntranceDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStartingFood)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlFoodClass)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -330,9 +360,7 @@
         private Telerik.WinControls.UI.RadDateTimePicker dtpDateOfBirth;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadLabel radLabel4;
-        private Telerik.WinControls.UI.RadLabel radLabel5;
         private Telerik.WinControls.UI.RadDropDownList ddlGeneticLine;
-        private Telerik.WinControls.UI.RadDropDownList ddlFoodClass;
         private System.Windows.Forms.ErrorProvider pbvBatch;
         private UserControls.UcAssignBarns ucAssignBarns;
         private Telerik.WinControls.UI.RadLabel radLabel1;
@@ -341,5 +369,9 @@
         private UserControls.UcStageSelection ucStageSelection;
         private Telerik.WinControls.UI.RadLabel radLabel6;
         private Telerik.WinControls.UI.RadDateTimePicker dtpEntranceDate;
+        private Telerik.WinControls.UI.RadDropDownList ddlFoodClass;
+        private Telerik.WinControls.UI.RadLabel radLabel5;
+        private Telerik.WinControls.UI.RadLabel radLabel7;
+        private Telerik.WinControls.UI.RadSpinEditor txtStartingFood;
     }
 }

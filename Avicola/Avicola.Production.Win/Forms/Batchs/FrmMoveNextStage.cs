@@ -93,8 +93,7 @@ namespace Avicola.Production.Win.Forms.Batchs
                     moveNextStageDto.BarnsAssigned.Add(new BarnsAssignedDto()
                                           {
                                               BarnId = barnAssigned.BarnId,
-                                              InitialBirds = barnAssigned.BirdsAmount,
-                                              StartingFood = barnAssigned.InitialFood
+                                              InitialBirds = barnAssigned.BirdsAmount
                                           });
                 }
 

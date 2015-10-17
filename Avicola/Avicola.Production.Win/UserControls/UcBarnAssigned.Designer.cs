@@ -34,8 +34,6 @@
             this.txtBarnCapacity = new Telerik.WinControls.UI.RadTextBox();
             this.lbBirdsAmount = new Telerik.WinControls.UI.RadLabel();
             this.btnRemoveBarn = new Telerik.WinControls.UI.RadButton();
-            this.txtInitialFood = new Telerik.WinControls.UI.RadSpinEditor();
-            this.lbInitialFood = new Telerik.WinControls.UI.RadLabel();
             this.txtBirdsAmount = new Telerik.WinControls.UI.RadSpinEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbBarnName)).BeginInit();
@@ -44,8 +42,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBarnCapacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbBirdsAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRemoveBarn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInitialFood)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbInitialFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirdsAmount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +61,7 @@
             this.radSeparator1.Location = new System.Drawing.Point(158, 36);
             this.radSeparator1.Name = "radSeparator1";
             this.radSeparator1.ShowShadow = false;
-            this.radSeparator1.Size = new System.Drawing.Size(563, 10);
+            this.radSeparator1.Size = new System.Drawing.Size(349, 10);
             this.radSeparator1.TabIndex = 1;
             this.radSeparator1.Text = "radSeparator1";
             // 
@@ -100,7 +96,7 @@
             this.btnRemoveBarn.BackColor = System.Drawing.Color.Transparent;
             this.btnRemoveBarn.Image = global::Avicola.Production.Win.Properties.Resources.Remove;
             this.btnRemoveBarn.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnRemoveBarn.Location = new System.Drawing.Point(738, 26);
+            this.btnRemoveBarn.Location = new System.Drawing.Point(524, 26);
             this.btnRemoveBarn.Name = "btnRemoveBarn";
             this.btnRemoveBarn.Size = new System.Drawing.Size(43, 24);
             this.btnRemoveBarn.TabIndex = 6;
@@ -119,32 +115,6 @@
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btnRemoveBarn.GetChildAt(0).GetChildAt(2))).RightWidth = 0F;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btnRemoveBarn.GetChildAt(0).GetChildAt(2))).BottomWidth = 0F;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.btnRemoveBarn.GetChildAt(0).GetChildAt(2))).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            // 
-            // txtInitialFood
-            // 
-            this.txtInitialFood.DecimalPlaces = 2;
-            this.txtInitialFood.Location = new System.Drawing.Point(628, 76);
-            this.txtInitialFood.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInitialFood.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.txtInitialFood.Name = "txtInitialFood";
-            this.txtInitialFood.Size = new System.Drawing.Size(119, 24);
-            this.txtInitialFood.TabIndex = 95;
-            this.txtInitialFood.TabStop = false;
-            // 
-            // lbInitialFood
-            // 
-            this.lbInitialFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbInitialFood.Location = new System.Drawing.Point(503, 81);
-            this.lbInitialFood.Margin = new System.Windows.Forms.Padding(2);
-            this.lbInitialFood.Name = "lbInitialFood";
-            this.lbInitialFood.Size = new System.Drawing.Size(105, 16);
-            this.lbInitialFood.TabIndex = 94;
-            this.lbInitialFood.Text = "Alimento Inicial (kg)";
-            this.lbInitialFood.ThemeName = "TelerikMetroBlue";
             // 
             // txtBirdsAmount
             // 
@@ -165,16 +135,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtBirdsAmount);
-            this.Controls.Add(this.txtInitialFood);
             this.Controls.Add(this.btnRemoveBarn);
-            this.Controls.Add(this.lbInitialFood);
             this.Controls.Add(this.txtBarnCapacity);
             this.Controls.Add(this.lbBirdsAmount);
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radSeparator1);
             this.Controls.Add(this.lbBarnName);
             this.Name = "UcBarnAssigned";
-            this.Size = new System.Drawing.Size(795, 121);
+            this.Size = new System.Drawing.Size(581, 121);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbBarnName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSeparator1)).EndInit();
@@ -182,8 +150,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBarnCapacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbBirdsAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRemoveBarn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInitialFood)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbInitialFood)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirdsAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -198,8 +164,6 @@
         private Telerik.WinControls.UI.RadTextBox txtBarnCapacity;
         private Telerik.WinControls.UI.RadLabel lbBirdsAmount;
         private Telerik.WinControls.UI.RadButton btnRemoveBarn;
-        private Telerik.WinControls.UI.RadSpinEditor txtInitialFood;
-        private Telerik.WinControls.UI.RadLabel lbInitialFood;
         private Telerik.WinControls.UI.RadSpinEditor txtBirdsAmount;
     }
 }
