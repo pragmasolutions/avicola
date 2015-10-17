@@ -270,6 +270,15 @@
     <Compile Include="UserControls\UcLoadMeasuresSummary.Designer.cs">
       <DependentUpon>UcLoadMeasuresSummary.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UcSelectionBaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcStageSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcStageSelection.Designer.cs">
+      <DependentUpon>UcStageSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcStandardSelecction.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -359,6 +368,9 @@
     <EmbeddedResource Include="UserControls\UcBarnAssigned.resx">
       <DependentUpon>UcBarnAssigned.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcBase.resx">
+      <DependentUpon>UcBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcLoadWeeklyMeasures.resx">
       <DependentUpon>UcLoadWeeklyMeasures.cs</DependentUpon>
     </EmbeddedResource>
@@ -367,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcLoadMeasuresSummary.resx">
       <DependentUpon>UcLoadMeasuresSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcStageSelection.resx">
+      <DependentUpon>UcStageSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcStandardSelecction.resx">
       <DependentUpon>UcStandardSelecction.cs</DependentUpon>

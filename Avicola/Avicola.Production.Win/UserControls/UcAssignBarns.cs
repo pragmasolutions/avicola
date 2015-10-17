@@ -48,6 +48,21 @@ namespace Avicola.Production.Win.UserControls
             get { return CurrentBatchBirds - BirdsAmountDecimal; }
         }
 
+        public bool ValidateControl()
+        {
+            bool isValid = true;
+
+            foreach (var ucBarnAssigned in BarnsAssignedControls)
+            {
+                if (!ucBarnAssigned.ValidateControl())
+                {
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
         private void btnAddBarn_Click(object sender, EventArgs e)
         {
             using (var form = FormFactory.Create<FrmBarnSelection>())
@@ -85,6 +100,12 @@ namespace Avicola.Production.Win.UserControls
         {
             BarnsAssignedControls.Remove(ucBarnAssigned);
             BarnsContainer.Controls.Remove(ucBarnAssigned);
+        }
+
+        public void ClearAsignations()
+        {
+            BarnsAssignedControls.Clear();
+            BarnsContainer.Controls.Clear();
         }
     }
 }

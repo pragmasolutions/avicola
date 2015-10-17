@@ -110,7 +110,7 @@ namespace Avicola.Production.Win.Forms.Batchs
 
             if (!ucAssignBarns.BarnsAssigned.Any())
             {
-                MessageBoxDisplayService.ShowError("Debe asignar al menos un galpon para pasar a la siguiente etapa");
+                MessageBoxDisplayService.ShowError("Debe asignar al menos un galpón para pasar a la siguiente etapa");
                 return false;
             }
 

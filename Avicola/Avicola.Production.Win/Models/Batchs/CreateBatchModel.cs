@@ -13,34 +13,30 @@ namespace Avicola.Production.Win.Models.Batchs
 {
     public class CreateBatchModel
     {
-        [Required]
+        [Required(ErrorMessage = "El campo linea genética es requerido")]
         public Guid? GeneticLineId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo tipo de alimento es requerido")]
         public Guid? FoodClassId { get; set; }
 
-        [Required]
-        [Range(0, int.MaxValue)]
-        public decimal? StartingFood { get; set; }
-
-        [Required]
-        [Range(1, int.MaxValue)]
+        [Required(ErrorMessage = "El campo cantidad de aves inicial es requerido")]
+        [Range(1, int.MaxValue, ErrorMessage = "El campo cantidad de aves inicial debe ser mayor a 0")]
         public int? InitialBirds { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo fecha  de nac. es requerido")]
         public DateTime? DateOfBirth { get; set; }
 
+        [Required(ErrorMessage = "El campo fecha  de ingreso es requerido")]
+        public DateTime? EntranceDate { get; set; }
 
         public Batch ToBatch()
         {
             var batch = new Batch
             {
                 InitialBirds = this.InitialBirds.GetValueOrDefault(),
-                StartingFood = this.StartingFood.GetValueOrDefault(),
                 DateOfBirth = this.DateOfBirth.GetValueOrDefault(),
                 GeneticLineId = this.GeneticLineId.GetValueOrDefault(),
                 FoodClassId = this.FoodClassId.GetValueOrDefault(),
-                //StageId = Stage.BREEDING
             };
             return batch;
         }

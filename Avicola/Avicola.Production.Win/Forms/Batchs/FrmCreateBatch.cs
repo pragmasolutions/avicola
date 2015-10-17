@@ -13,18 +13,37 @@ using Telerik.WinControls;
 using System.Linq;
 using Avicola.Office.Entities;
 using Avicola.Production.Win.Models.Batchs;
+using Framework.WinForm.Comun.Notification;
 
 namespace Avicola.Production.Win.Forms.Batchs
 {
     public partial class FrmCreateBatch : EditFormBase
     {
         private readonly IServiceFactory _serviceFactory;
+        private Stage _currentStageSelected;
 
-        public FrmCreateBatch(IFormFactory formFactory, IServiceFactory serviceFactory)
+        public FrmCreateBatch(IFormFactory formFactory, IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService)
         {
             FormFactory = formFactory;
+            MessageBoxDisplayService = messageBoxDisplayService;
+
             _serviceFactory = serviceFactory;
+
             InitializeComponent();
+        }
+
+        public Stage CurrentStageSelected
+        {
+            get { return _currentStageSelected; }
+            set
+            {
+                if (_currentStageSelected != value)
+                {
+                    _currentStageSelected = value;
+
+                    ucAssignBarns.StageId = _currentStageSelected.Id;
+                }
+            }
         }
 
         private void FrmCreateBatch_Load(object sender, EventArgs e)
@@ -46,8 +65,56 @@ namespace Avicola.Production.Win.Forms.Batchs
             }
 
             dtpDateOfBirth.Value = DateTime.Now;
+            dtpEntranceDate.Value = DateTime.Now;
+
             txtNumber.Text = GetNextNumber().ToString();
             txtNumber.ReadOnly = true;
+
+            txtInitialBirds.Maximum = int.MaxValue;
+
+            ucAssignBarns.FormFactory = this.FormFactory;
+            ucAssignBarns.MessageBoxDisplayService = this.MessageBoxDisplayService;
+
+            using (var stageService = _serviceFactory.Create<IStageService>())
+            {
+                var stages = stageService.GetAll().ToList();
+                ucStageSelection.Stages = stages;
+            }
+
+            ucStageSelection.StageSelected += StageSelected;
+
+            ToggleEnableAssignBarns(ucStageSelection.SelectedStage);
+        }
+
+        private void StageSelected(object sender, Stage stage)
+        {
+            ToggleEnableAssignBarns(stage);
+        }
+
+        private void ToggleEnableAssignBarns(Stage stage)
+        {
+            if (CurrentStageSelected != stage && !ucAssignBarns.BarnsAssigned.Any())
+            {
+                CurrentStageSelected = stage;
+                ucAssignBarns.Enabled = true;
+            }
+            else if (CurrentStageSelected != stage && ucAssignBarns.BarnsAssigned.Any())
+            {
+                MessageBoxDisplayService
+                    .ShowConfirmationDialog(
+                        "Si cambia el estado del batch perdera todos las asignaciones de galpones cargadas en este formulario. Desea Continuar?",
+                        "Cambiar Estado",
+                        () =>
+                        {
+                            ucAssignBarns.ClearAsignations();
+
+                            CurrentStageSelected = stage;
+                        });
+            }
+            else if (stage == null && !ucAssignBarns.BarnsAssigned.Any())
+            {
+                ucAssignBarns.Enabled = false;
+            }
         }
 
         private int GetNextNumber()
@@ -70,7 +137,36 @@ namespace Avicola.Production.Win.Forms.Batchs
             {
                 var batchModel = GetBatch();
                 var batch = batchModel.ToBatch();
+
                 batch.Number = GetNextNumber();
+                batch.StageId = ucStageSelection.SelectedStage.Id;
+
+                if (ucStageSelection.SelectedStage.Id == Stage.BREEDING)
+                {
+                    batch.BreedingDate = batchModel.EntranceDate;
+                }
+                else if (ucStageSelection.SelectedStage.Id == Stage.REBREEDING)
+                {
+                    batch.ReBreedingDate = batchModel.EntranceDate;
+                }
+                else if (ucStageSelection.SelectedStage.Id == Stage.POSTURE)
+                {
+                    batch.PostureDate = batchModel.EntranceDate;
+                }
+
+                foreach (var barnAssigned in ucAssignBarns.BarnsAssigned)
+                {
+                    batch.BatchBarns.Add(new BatchBarn()
+                                         {
+                                             BatchId = batch.Id,
+                                             BarnId = barnAssigned.BarnId,
+                                             FoodClassId = batch.FoodClassId,
+                                             StartingFood = barnAssigned.InitialFood,
+                                             InitialBirds = barnAssigned.BirdsAmount
+                                         });
+                }
+
+                batch.StartingFood = ucAssignBarns.BarnsAssigned.Select(x => x.InitialFood).DefaultIfEmpty(0).Sum();
 
                 using (var service = _serviceFactory.Create<IBatchService>())
                 {
@@ -86,13 +182,11 @@ namespace Avicola.Production.Win.Forms.Batchs
         {
             var batch = new CreateBatchModel
             {
-                InitialBirds = string.IsNullOrEmpty(txtInitialBirds.Text) 
+                InitialBirds = string.IsNullOrEmpty(txtInitialBirds.Text)
                                     ? (int?)null
                                     : Convert.ToInt32(txtInitialBirds.Text),
                 DateOfBirth = dtpDateOfBirth.Value.ToZeroTime(),
-                StartingFood = string.IsNullOrEmpty(txtInitialFood.Text)
-                                    ? (decimal?)null
-                                    : Convert.ToDecimal(txtInitialFood.Text),
+                EntranceDate = dtpEntranceDate.Value.ToZeroTime(),
                 FoodClassId = ddlFoodClass.SelectedValue == null
                                 ? (Guid?)null
                                 : Guid.Parse(ddlFoodClass.SelectedValue.ToString()),
@@ -100,17 +194,44 @@ namespace Avicola.Production.Win.Forms.Batchs
                                 ? (Guid?)null
                                 : Guid.Parse(ddlGeneticLine.SelectedValue.ToString())
             };
-            
+
             return batch;
         }
 
         protected override void ValidateControls()
         {
             this.ValidateControl(txtInitialBirds, "InitialBirds");
-            this.ValidateControl(txtInitialFood, "StartingFood");
             this.ValidateControl(ddlFoodClass, "FoodClassId");
             this.ValidateControl(ddlGeneticLine, "GeneticLineId");
             this.ValidateControl(dtpDateOfBirth, "DateOfBirth");
+        }
+
+        protected override bool ValidarForm()
+        {
+            if (!base.ValidarForm())
+            {
+                return false;
+            }
+
+            if (!ucAssignBarns.BarnsAssigned.Any())
+            {
+                MessageBoxDisplayService.ShowError("Debe asignar al menos un galpón al lote");
+                return false;
+            }
+
+            if (!ucAssignBarns.ValidateControl())
+            {
+                return false;
+            }
+
+            if (txtInitialBirds.Value != ucAssignBarns.BirdsAmountDecimal)
+            {
+                MessageBoxDisplayService.ShowError(
+                    "La cantidad de aves del lote no puede ser diferente a la asiganada a los galpones");
+                return false;
+            }
+
+            return true;
         }
 
         protected override object GetEntity()
@@ -131,6 +252,5 @@ namespace Avicola.Production.Win.Forms.Batchs
         {
             this.Close();
         }
-
     }
 }

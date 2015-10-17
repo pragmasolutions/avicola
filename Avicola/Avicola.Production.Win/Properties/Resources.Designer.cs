@@ -148,6 +148,15 @@ namespace Avicola.Production.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El campo {0} debe ser mayor a {1}.
+        /// </summary>
+        internal static string GreatherThan {
+            get {
+                return ResourceManager.GetString("GreatherThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap LOGO {
@@ -173,6 +182,15 @@ namespace Avicola.Production.Win.Properties {
             get {
                 object obj = ResourceManager.GetObject("Remove", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El campo {0} es requerido.
+        /// </summary>
+        internal static string RequiredField {
+            get {
+                return ResourceManager.GetString("RequiredField", resourceCulture);
             }
         }
         

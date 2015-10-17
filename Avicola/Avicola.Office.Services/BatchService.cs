@@ -111,8 +111,13 @@ namespace Avicola.Office.Services
 
         public void Create(Batch batch)
         {
-            var geneticLine = Uow.GeneticLines.Get(batch.GeneticLineId);
+            foreach (var batchBarn in batch.BatchBarns)
+            {
+                Uow.BatchBarns.Add(batchBarn);
+            }
+
             Uow.Batches.Add(batch);
+
             Uow.Commit();
         }
 
@@ -220,7 +225,7 @@ namespace Avicola.Office.Services
                                        BatchId = batch.Id,
                                        BarnId = barn.BarnId,
                                        FoodClassId = batch.FoodClassId,
-                                       InitialBirds = (int) barn.InitialBirds,
+                                       InitialBirds = (int)barn.InitialBirds,
                                        StartingFood = barn.StartingFood
                                    });
             }
