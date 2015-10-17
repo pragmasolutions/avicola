@@ -21,6 +21,8 @@ namespace Avicola.Office.Services.Interfaces
         Batch GetByIdComplete(Guid batchId);
 
         int GetBirdsAmount(Guid batchId);
+        
+        decimal GetCurrentStageFoodEntry(Guid batchId);
 
         void MoveNextStage(MoveNextStageDto nextStageDto);
 

@@ -111,6 +111,9 @@
     <Compile Include="Stage.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StageChange.cs">
+      <DependentUpon>OfficeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Standard.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>

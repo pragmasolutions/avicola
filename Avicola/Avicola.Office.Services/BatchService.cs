@@ -16,6 +16,7 @@ namespace Avicola.Office.Services
     public class BatchService : ServiceBase, IBatchService
     {
         public const string MortalityStandardName = "Mortandad";
+        public const string FoodEntryStandardName = "Ingreso de Alimento";
         public const string DiscardStandardName = "Descarte";
 
         private readonly IBarnService _barnService;
@@ -100,13 +101,45 @@ namespace Avicola.Office.Services
                         x.Date <= endStageDate,
                     x => x.StandardItem.StandardGeneticLine.Standard);
 
-            var batchBarn = Uow.BatchBarns.GetAll(x => x.BatchId == batchId && x.Barn.StageId == batch.StageId, x => x.Barn);
-
-            var initialBirds = batchBarn.Select(x => x.InitialBirds).DefaultIfEmpty(0).Sum();
+            var initialBirds = GetInitialBirds(batchId, batch.StageId);
 
             var deathBirds = measures.Select(x => x.Value).DefaultIfEmpty(0).Sum();
 
             return (int)Math.Floor(initialBirds - deathBirds);
+        }
+
+        public int GetInitialBirds(Guid batchId, Guid stageId)
+        {
+            var batchBarn = Uow.BatchBarns.GetAll(x => x.BatchId == batchId && x.Barn.StageId == stageId, x => x.Barn);
+
+            if (!batchBarn.Any())
+            {
+                throw new ApplicationException("El lote no tiene asignado ningun galpon para la etapa solicitada");
+            }
+
+            var initialBirds = batchBarn.Select(x => x.InitialBirds).DefaultIfEmpty(0).Sum();
+            return (int)Math.Floor((decimal)initialBirds);
+        }
+
+        public decimal GetCurrentStageFoodEntry(Guid batchId)
+        {
+            var batch = this.GetById(batchId);
+
+            var startStageDate = batch.CurrentStageStartDate;
+            var endStageDate = DateTime.Today;
+
+            var measures =
+                Uow.Measures.GetAll(
+                    x =>
+                        x.BatchId == batchId &&
+                        x.StandardItem.StandardGeneticLine.Standard.Name.Contains(FoodEntryStandardName) &&
+                        x.Date >= startStageDate &&
+                        x.Date <= endStageDate,
+                    x => x.StandardItem.StandardGeneticLine.Standard);
+
+            var foodEntry = measures.Select(x => x.Value).DefaultIfEmpty(0).Sum();
+
+            return foodEntry;
         }
 
         public void Create(Batch batch)
@@ -158,16 +191,6 @@ namespace Avicola.Office.Services
         {
             var batch = GetById(batchId);
 
-
-            //chequeamos que no tenga medidas de precria para fechas posteriores
-            //foreach (var measure in batch.Measures)
-            //{
-            //    if (measure.Date > arrivedToBarn && measure.StandardItem.StandardGeneticLine.StageId == Stage.BREEDING)
-            //    {
-            //        return "Existen medidas cargadas para estandares de cría y pre-cría posteriores a la fecha seleccionada";
-            //    }
-            //}
-
             //ahora chequeo que el galpon este disponible
             var availableBarns = _barnService.GetAllAvailable();
             if (availableBarns.All(b => b.Id != barnId))
@@ -175,24 +198,15 @@ namespace Avicola.Office.Services
                 return "El galpón seleccionado ya no se encuentra disponible";
             }
 
-            //var today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-            //if (arrivedToBarn <= today)
-            //{
-            //    batch.StageId = Stage.POSTURE;
-            //}
-            //batch.ArrivedToBarn = arrivedToBarn;
-            //batch.BarnId = barnId;
             Uow.Batches.Edit(batch);
             Uow.Commit();
             return null;
         }
 
-
         public IQueryable<Batch> GetAll()
         {
             return Uow.Batches.GetAll();
         }
-
 
         public void MoveNextStage(MoveNextStageDto nextStageDto)
         {
@@ -203,7 +217,21 @@ namespace Avicola.Office.Services
                 throw new ApplicationException("El lote ya se encuentra en la ultima etapa de postura");
             }
 
+            var currentStage = batch.StageId;
             var nextStage = Stage.NextStageId(batch.StageId);
+
+            var stageChange = new StageChange();
+
+            stageChange.BatchId = batch.Id;
+            stageChange.StageFromId = currentStage;
+            stageChange.StageToId = nextStage;
+            stageChange.CurrentFoodStock = nextStageDto.CurrentFoodStock;
+
+            stageChange.FoodEntryDuringPeriod = GetCurrentStageFoodEntry(batch.Id);
+            stageChange.StageFromInitialBirds = GetInitialBirds(batch.Id, currentStage);
+            stageChange.StageFromIFinalBirds = GetBirdsAmount(batch.Id);
+
+            Uow.StageChanges.Add(stageChange);
 
             batch.StageId = nextStage;
 

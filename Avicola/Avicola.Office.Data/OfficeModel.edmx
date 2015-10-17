@@ -143,6 +143,21 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="StageChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="BatchId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StageFromId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StageToId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StageFromInitialBirds" Type="int" Nullable="false" />
+          <Property Name="StageFromIFinalBirds" Type="int" Nullable="false" />
+          <Property Name="FoodEntryDuringPeriod" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CurrentFoodStock" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Standard">
           <Key>
             <PropertyRef Name="Id" />
@@ -378,6 +393,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StageChange_Batch">
+          <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
+          <End Role="StageChange" Type="Self.StageChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StageChange">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StageChange_StageFrom">
+          <End Role="Stage" Type="Self.Stage" Multiplicity="1" />
+          <End Role="StageChange" Type="Self.StageChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StageChange">
+              <PropertyRef Name="StageFromId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StageChange_StageTo">
+          <End Role="Stage" Type="Self.Stage" Multiplicity="1" />
+          <End Role="StageChange" Type="Self.StageChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StageChange">
+              <PropertyRef Name="StageToId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Standard_DataLoadType">
           <End Role="DataLoadType" Type="Self.DataLoadType" Multiplicity="1" />
           <End Role="Standard" Type="Self.Standard" Multiplicity="*" />
@@ -471,6 +522,7 @@
           <EntitySet Name="Measure" EntityType="Self.Measure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stage" EntityType="Self.Stage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StageChange" EntityType="Self.StageChange" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Standard" EntityType="Self.Standard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StandardGeneticLine" EntityType="Self.StandardGeneticLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StandardItem" EntityType="Self.StandardItem" Schema="dbo" store:Type="Tables" />
@@ -535,6 +587,18 @@
           <AssociationSet Name="FK_Measure_StandardItem" Association="Self.FK_Measure_StandardItem">
             <End Role="StandardItem" EntitySet="StandardItem" />
             <End Role="Measure" EntitySet="Measure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StageChange_Batch" Association="Self.FK_StageChange_Batch">
+            <End Role="Batch" EntitySet="Batch" />
+            <End Role="StageChange" EntitySet="StageChange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StageChange_StageFrom" Association="Self.FK_StageChange_StageFrom">
+            <End Role="Stage" EntitySet="Stage" />
+            <End Role="StageChange" EntitySet="StageChange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StageChange_StageTo" Association="Self.FK_StageChange_StageTo">
+            <End Role="Stage" EntitySet="Stage" />
+            <End Role="StageChange" EntitySet="StageChange" />
           </AssociationSet>
           <AssociationSet Name="FK_Standard_DataLoadType" Association="Self.FK_Standard_DataLoadType">
             <End Role="DataLoadType" EntitySet="DataLoadType" />
@@ -858,6 +922,19 @@
             <End Role="Medicine" EntitySet="Medicines" />
             <End Role="BatchMedicine" EntitySet="BatchMedicines" />
           </AssociationSet>
+          <EntitySet Name="StageChanges" EntityType="Avicola.OfficeModel.StageChange" />
+          <AssociationSet Name="FK_StageChange_Batch" Association="Avicola.OfficeModel.FK_StageChange_Batch">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="StageChange" EntitySet="StageChanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StageChange_StageFrom" Association="Avicola.OfficeModel.FK_StageChange_StageFrom">
+            <End Role="Stage" EntitySet="Stages" />
+            <End Role="StageChange" EntitySet="StageChanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StageChange_StageTo" Association="Avicola.OfficeModel.FK_StageChange_StageTo">
+            <End Role="Stage" EntitySet="Stages" />
+            <End Role="StageChange" EntitySet="StageChanges" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="BatchVaccine">
           <Key>
@@ -883,6 +960,8 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Barns" Relationship="Avicola.OfficeModel.FK_Barn_Stage" FromRole="Stage" ToRole="Barn" />
           <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_Stage" FromRole="Stage" ToRole="Batch" />
+          <NavigationProperty Name="StageChangesTo" Relationship="Avicola.OfficeModel.FK_StageChange_StageFrom" FromRole="Stage" ToRole="StageChange" />
+          <NavigationProperty Name="StageChangesFrom" Relationship="Avicola.OfficeModel.FK_StageChange_StageTo" FromRole="Stage" ToRole="StageChange" />
         </EntityType>
         <EntityType Name="StandardType">
           <Key>
@@ -1080,6 +1159,7 @@
           <Property Name="BreedingDate" Type="DateTime" Precision="7" />
           <Property Name="ReBreedingDate" Type="DateTime" Precision="7" />
           <Property Name="PostureDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="StageChanges" Relationship="Avicola.OfficeModel.FK_StageChange_Batch" FromRole="Batch" ToRole="StageChange" />
         </EntityType>
         <Association Name="FK_Batch_FoodClass">
           <End Type="Avicola.OfficeModel.FoodClass" Role="FoodClass" Multiplicity="1" />
@@ -1196,6 +1276,60 @@
             </Principal>
             <Dependent Role="BatchMedicine">
               <PropertyRef Name="MedicineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StageChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="BatchId" Type="Guid" Nullable="false" />
+          <Property Name="StageFromId" Type="Guid" Nullable="false" />
+          <Property Name="StageToId" Type="Guid" Nullable="false" />
+          <Property Name="StageFromInitialBirds" Type="Int32" Nullable="false" />
+          <Property Name="FoodEntryDuringPeriod" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="CurrentFoodStock" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Batch" Relationship="Avicola.OfficeModel.FK_StageChange_Batch" FromRole="StageChange" ToRole="Batch" />
+          <NavigationProperty Name="StageFrom" Relationship="Avicola.OfficeModel.FK_StageChange_StageFrom" FromRole="StageChange" ToRole="Stage" />
+          <NavigationProperty Name="StageTo" Relationship="Avicola.OfficeModel.FK_StageChange_StageTo" FromRole="StageChange" ToRole="Stage" />
+          <Property Name="StageFromIFinalBirds" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_StageChange_Batch">
+          <End Type="Avicola.OfficeModel.Batch" Role="Batch" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.StageChange" Role="StageChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StageChange">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StageChange_StageFrom">
+          <End Type="Avicola.OfficeModel.Stage" Role="Stage" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.StageChange" Role="StageChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StageChange">
+              <PropertyRef Name="StageFromId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StageChange_StageTo">
+          <End Type="Avicola.OfficeModel.Stage" Role="Stage" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.StageChange" Role="StageChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StageChange">
+              <PropertyRef Name="StageToId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1473,6 +1607,22 @@
               <MappingFragment StoreEntitySet="Medicine">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StageChanges">
+            <EntityTypeMapping TypeName="Avicola.OfficeModel.StageChange">
+              <MappingFragment StoreEntitySet="StageChange">
+                <ScalarProperty Name="StageFromIFinalBirds" ColumnName="StageFromIFinalBirds" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CurrentFoodStock" ColumnName="CurrentFoodStock" />
+                <ScalarProperty Name="FoodEntryDuringPeriod" ColumnName="FoodEntryDuringPeriod" />
+                <ScalarProperty Name="StageFromInitialBirds" ColumnName="StageFromInitialBirds" />
+                <ScalarProperty Name="StageToId" ColumnName="StageToId" />
+                <ScalarProperty Name="StageFromId" ColumnName="StageFromId" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

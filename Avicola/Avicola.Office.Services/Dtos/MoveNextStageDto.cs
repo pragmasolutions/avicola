@@ -17,6 +17,8 @@ namespace Avicola.Office.Services.Dtos
 
         public DateTime NextStageStartDate { get; set; }
 
+        public decimal CurrentFoodStock { get; set; }
+
         public IList<BarnsAssignedDto> BarnsAssigned { get; set; }
     }
 

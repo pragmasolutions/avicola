@@ -42,6 +42,10 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_Batch" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.Medicine" Width="1.5" PointX="12.375" PointY="0.875" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchMedicine_Medicine" />
+        <EntityTypeShape EntityType="Avicola.OfficeModel.StageChange" Width="1.5" PointX="9.75" PointY="15" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_StageChange_Batch" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_StageChange_StageFrom" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_StageChange_StageTo" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

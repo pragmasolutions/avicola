@@ -24,6 +24,7 @@ namespace Avicola.Production.Win.Forms.Batchs
         private readonly IServiceFactory _serviceFactory;
         private readonly IBatchService _batchService;
         private decimal _currentBirdsAmount;
+        private decimal _currentFoodEntry;
 
         public FrmMoveNextStage(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService,
             IStateController stateController, IServiceFactory serviceFactory)
@@ -57,8 +58,12 @@ namespace Avicola.Production.Win.Forms.Batchs
             using (var service = _serviceFactory.Create<IBatchService>())
             {
                 _currentBirdsAmount = service.GetBirdsAmount(_stateController.CurrentSelectedBatch.Id);
+                _currentFoodEntry = service.GetCurrentStageFoodEntry(_stateController.CurrentSelectedBatch.Id);
 
                 txtBatchBirdsAmount.Text = _currentBirdsAmount.ToString("n0");
+                txtFoodEntry.Text = _currentFoodEntry.ToString("n0");
+
+                txtCurrentStockFood.Maximum = _currentFoodEntry;
             }
 
             ucAssignBarns.FormFactory = this.FormFactory;
@@ -81,7 +86,8 @@ namespace Avicola.Production.Win.Forms.Batchs
 
                 moveNextStageDto.BatchId = _stateController.CurrentSelectedBatch.Id;
                 moveNextStageDto.NextStageStartDate = dtpDate.Value;
-
+                moveNextStageDto.CurrentFoodStock = txtCurrentStockFood.Value;
+                
                 foreach (var barnAssigned in ucAssignBarns.BarnsAssigned)
                 {
                     moveNextStageDto.BarnsAssigned.Add(new BarnsAssignedDto()
