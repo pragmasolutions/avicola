@@ -57,9 +57,11 @@ namespace Avicola.Production.Win.Forms.Batchs
             }
             else
             {
-                var frm = FormFactory.Create<FrmCreateBatch>();
-                frm.BatchCreated += FrmOnBatchCreated;
-                frm.Show();
+                using (var frm = FormFactory.Create<FrmCreateBatch>())
+                {
+                    frm.BatchCreated += FrmOnBatchCreated;
+                    frm.ShowDialog();
+                }
             }
         }
 
