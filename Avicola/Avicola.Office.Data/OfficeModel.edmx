@@ -44,7 +44,6 @@
           <Property Name="BarnId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="InitialBirds" Type="int" Nullable="false" />
-          <Property Name="FoodClassId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="BatchMedicine">
@@ -281,18 +280,6 @@
             </Principal>
             <Dependent Role="BatchBarn">
               <PropertyRef Name="BatchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BatchBarn_FoodClass">
-          <End Role="FoodClass" Type="Self.FoodClass" Multiplicity="1" />
-          <End Role="BatchBarn" Type="Self.BatchBarn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FoodClass">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BatchBarn">
-              <PropertyRef Name="FoodClassId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -551,10 +538,6 @@
             <End Role="Batch" EntitySet="Batch" />
             <End Role="BatchBarn" EntitySet="BatchBarn" />
           </AssociationSet>
-          <AssociationSet Name="FK_BatchBarn_FoodClass" Association="Self.FK_BatchBarn_FoodClass">
-            <End Role="FoodClass" EntitySet="FoodClass" />
-            <End Role="BatchBarn" EntitySet="BatchBarn" />
-          </AssociationSet>
           <AssociationSet Name="FK_BatchMedicine_Batch" Association="Self.FK_BatchMedicine_Batch">
             <End Role="Batch" EntitySet="Batch" />
             <End Role="BatchMedicine" EntitySet="BatchMedicine" />
@@ -668,7 +651,6 @@
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Measures" Relationship="Avicola.OfficeModel.FK_Measure_FoodClass" FromRole="FoodClass" ToRole="Measure" />
-          <NavigationProperty Name="BatchBarns" Relationship="Avicola.OfficeModel.FK_BatchBarn_FoodClass" FromRole="FoodClass" ToRole="BatchBarn" />
           <NavigationProperty Name="Batches" Relationship="Avicola.OfficeModel.FK_Batch_FoodClass" FromRole="FoodClass" ToRole="Batch" />
         </EntityType>
         <EntityType Name="GeneticLine">
@@ -879,10 +861,6 @@
             <End Role="Barn" EntitySet="Barns" />
             <End Role="BatchBarn" EntitySet="BatchBarns" />
           </AssociationSet>
-          <AssociationSet Name="FK_BatchBarn_FoodClass" Association="Avicola.OfficeModel.FK_BatchBarn_FoodClass">
-            <End Role="FoodClass" EntitySet="FoodClasses" />
-            <End Role="BatchBarn" EntitySet="BatchBarns" />
-          </AssociationSet>
           <EntitySet Name="Batches" EntityType="Avicola.OfficeModel.Batch" />
           <AssociationSet Name="FK_Batch_FoodClass" Association="Avicola.OfficeModel.FK_Batch_FoodClass">
             <End Role="FoodClass" EntitySet="FoodClasses" />
@@ -1089,10 +1067,8 @@
           <Property Name="BarnId" Type="Guid" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="InitialBirds" Type="Int32" Nullable="false" />
-          <Property Name="FoodClassId" Type="Guid" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Barn" Relationship="Avicola.OfficeModel.FK_BatchBarn_Barn" FromRole="BatchBarn" ToRole="Barn" />
-          <NavigationProperty Name="FoodClass" Relationship="Avicola.OfficeModel.FK_BatchBarn_FoodClass" FromRole="BatchBarn" ToRole="FoodClass" />
           <NavigationProperty Name="Batch" Relationship="Avicola.OfficeModel.FK_BatchBarn_Batch" FromRole="BatchBarn" ToRole="Batch" />
         </EntityType>
         <Association Name="FK_Barn_Stage">
@@ -1116,18 +1092,6 @@
             </Principal>
             <Dependent Role="BatchBarn">
               <PropertyRef Name="BarnId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BatchBarn_FoodClass">
-          <End Type="Avicola.OfficeModel.FoodClass" Role="FoodClass" Multiplicity="1" />
-          <End Type="Avicola.OfficeModel.BatchBarn" Role="BatchBarn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FoodClass">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BatchBarn">
-              <PropertyRef Name="FoodClassId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1570,7 +1534,6 @@
             <EntityTypeMapping TypeName="Avicola.OfficeModel.BatchBarn">
               <MappingFragment StoreEntitySet="BatchBarn">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="FoodClassId" ColumnName="FoodClassId" />
                 <ScalarProperty Name="InitialBirds" ColumnName="InitialBirds" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="BarnId" ColumnName="BarnId" />

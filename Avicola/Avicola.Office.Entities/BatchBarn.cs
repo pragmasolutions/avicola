@@ -20,11 +20,9 @@ namespace Avicola.Office.Entities
         public System.Guid BarnId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public int InitialBirds { get; set; }
-        public System.Guid FoodClassId { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual Barn Barn { get; set; }
-        public virtual FoodClass FoodClass { get; set; }
         public virtual Batch Batch { get; set; }
     }
 }

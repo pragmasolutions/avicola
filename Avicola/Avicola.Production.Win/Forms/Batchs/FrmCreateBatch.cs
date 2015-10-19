@@ -161,7 +161,6 @@ namespace Avicola.Production.Win.Forms.Batchs
                                          {
                                              BatchId = batch.Id,
                                              BarnId = barnAssigned.BarnId,
-                                             FoodClassId = batch.FoodClassId,
                                              InitialBirds = barnAssigned.BirdsAmount
                                          });
                 }
