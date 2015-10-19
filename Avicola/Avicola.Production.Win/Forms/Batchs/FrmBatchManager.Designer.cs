@@ -34,7 +34,7 @@
             this.btnShowBatchSelectionView = new Telerik.WinControls.UI.RadButton();
             this.lbBatchTitle = new Telerik.WinControls.UI.RadLabel();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new Telerik.WinControls.UI.RadGroupBox();
             this.txtFechaNacimiento = new Telerik.WinControls.UI.RadTextBox();
             this.label7 = new Telerik.WinControls.UI.RadLabel();
             this.txtFechaIngresoGalpon = new Telerik.WinControls.UI.RadTextBox();
@@ -49,7 +49,7 @@
             this.label3 = new Telerik.WinControls.UI.RadLabel();
             this.label2 = new Telerik.WinControls.UI.RadLabel();
             this.label1 = new Telerik.WinControls.UI.RadLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.btnMedicine = new Telerik.WinControls.UI.RadButton();
             this.btnMoveNextStage = new Telerik.WinControls.UI.RadButton();
             this.btnEliminarLote = new Telerik.WinControls.UI.RadButton();
@@ -63,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lbBatchTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaNacimiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label7)).BeginInit();
@@ -78,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.label3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMedicine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMoveNextStage)).BeginInit();
@@ -151,6 +153,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.groupBox2.Controls.Add(this.txtFechaNacimiento);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtFechaIngresoGalpon);
@@ -166,12 +169,16 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.HeaderText = "Detall de lote";
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1000, 222);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detall de lote";
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.groupBox2.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Text = "Detall de lote";
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.groupBox2.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.groupBox2.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtFechaNacimiento
             // 
@@ -301,6 +308,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.groupBox1.Controls.Add(this.btnMedicine);
             this.groupBox1.Controls.Add(this.btnMoveNextStage);
             this.groupBox1.Controls.Add(this.btnEliminarLote);
@@ -309,18 +317,22 @@
             this.groupBox1.Controls.Add(this.btnVacunas);
             this.groupBox1.Controls.Add(this.btnEstandares);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.HeaderText = "Operación";
             this.groupBox1.Location = new System.Drawing.Point(3, 231);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1000, 364);
+            this.groupBox1.Size = new System.Drawing.Size(1000, 380);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operación";
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.groupBox1.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Text = "Operación";
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.groupBox1.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.groupBox1.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnMedicine
             // 
             this.btnMedicine.Image = ((System.Drawing.Image)(resources.GetObject("btnMedicine.Image")));
             this.btnMedicine.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnMedicine.Location = new System.Drawing.Point(519, 199);
+            this.btnMedicine.Location = new System.Drawing.Point(519, 209);
             this.btnMedicine.Name = "btnMedicine";
             this.btnMedicine.Size = new System.Drawing.Size(230, 159);
             this.btnMedicine.TabIndex = 14;
@@ -332,7 +344,7 @@
             // 
             this.btnMoveNextStage.Image = ((System.Drawing.Image)(resources.GetObject("btnMoveNextStage.Image")));
             this.btnMoveNextStage.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnMoveNextStage.Location = new System.Drawing.Point(754, 25);
+            this.btnMoveNextStage.Location = new System.Drawing.Point(754, 35);
             this.btnMoveNextStage.Margin = new System.Windows.Forms.Padding(2);
             this.btnMoveNextStage.Name = "btnMoveNextStage";
             this.btnMoveNextStage.Size = new System.Drawing.Size(230, 158);
@@ -354,7 +366,7 @@
             // 
             this.btnEliminarLote.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarLote.Image")));
             this.btnEliminarLote.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnEliminarLote.Location = new System.Drawing.Point(280, 198);
+            this.btnEliminarLote.Location = new System.Drawing.Point(280, 208);
             this.btnEliminarLote.Name = "btnEliminarLote";
             this.btnEliminarLote.Size = new System.Drawing.Size(230, 159);
             this.btnEliminarLote.TabIndex = 13;
@@ -366,7 +378,7 @@
             // 
             this.btnEndBatch.Image = ((System.Drawing.Image)(resources.GetObject("btnEndBatch.Image")));
             this.btnEndBatch.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnEndBatch.Location = new System.Drawing.Point(39, 198);
+            this.btnEndBatch.Location = new System.Drawing.Point(39, 208);
             this.btnEndBatch.Name = "btnEndBatch";
             this.btnEndBatch.Size = new System.Drawing.Size(230, 159);
             this.btnEndBatch.TabIndex = 12;
@@ -378,7 +390,7 @@
             // 
             this.btnObservaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnObservaciones.Image")));
             this.btnObservaciones.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnObservaciones.Location = new System.Drawing.Point(519, 25);
+            this.btnObservaciones.Location = new System.Drawing.Point(519, 35);
             this.btnObservaciones.Name = "btnObservaciones";
             this.btnObservaciones.Size = new System.Drawing.Size(230, 159);
             this.btnObservaciones.TabIndex = 10;
@@ -390,7 +402,7 @@
             // 
             this.btnVacunas.Image = ((System.Drawing.Image)(resources.GetObject("btnVacunas.Image")));
             this.btnVacunas.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnVacunas.Location = new System.Drawing.Point(280, 25);
+            this.btnVacunas.Location = new System.Drawing.Point(280, 35);
             this.btnVacunas.Name = "btnVacunas";
             this.btnVacunas.Size = new System.Drawing.Size(230, 159);
             this.btnVacunas.TabIndex = 9;
@@ -402,7 +414,7 @@
             // 
             this.btnEstandares.Image = ((System.Drawing.Image)(resources.GetObject("btnEstandares.Image")));
             this.btnEstandares.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnEstandares.Location = new System.Drawing.Point(39, 25);
+            this.btnEstandares.Location = new System.Drawing.Point(39, 35);
             this.btnEstandares.Name = "btnEstandares";
             this.btnEstandares.Size = new System.Drawing.Size(230, 159);
             this.btnEstandares.TabIndex = 8;
@@ -433,6 +445,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lbBatchTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaNacimiento)).EndInit();
@@ -449,6 +462,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.label3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnMedicine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMoveNextStage)).EndInit();
@@ -464,7 +478,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
+        private Telerik.WinControls.UI.RadGroupBox groupBox2;
         private Telerik.WinControls.UI.RadTextBox txtFechaIngresoGalpon;
         private Telerik.WinControls.UI.RadTextBox txtGalpon;
         private Telerik.WinControls.UI.RadTextBox txtSemanaActual;
@@ -477,7 +491,7 @@
         private Telerik.WinControls.UI.RadLabel label3;
         private Telerik.WinControls.UI.RadLabel label2;
         private Telerik.WinControls.UI.RadLabel label1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private Telerik.WinControls.UI.RadGroupBox groupBox1;
         private Telerik.WinControls.UI.RadButton btnObservaciones;
         private Telerik.WinControls.UI.RadButton btnVacunas;
         private Telerik.WinControls.UI.RadButton btnEstandares;

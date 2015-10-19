@@ -253,5 +253,10 @@ namespace Avicola.Production.Win.Forms.Batchs
         {
             this.Close();
         }
+
+        private void txtInitialBirds_ValueChanged(object sender, EventArgs e)
+        {
+            ucAssignBarns.CurrentBatchBirds = txtInitialBirds.Value;
+        }
     }
 }

@@ -76,6 +76,12 @@ namespace Avicola.Production.Win.UserControls
 
         private void FormOnBarnSelected(object sender, Barn barn)
         {
+            if (RemainBirdsAmount <= 0)
+            {
+                MessageBoxDisplayService.ShowError("Ya se han asignado el total de aves del lote a los galpones");
+                return;
+            }
+
             var ucBarnAssigned = new UcBarnAssigned();
 
             ucBarnAssigned.MessageBoxDisplayService = this.MessageBoxDisplayService;
@@ -89,8 +95,6 @@ namespace Avicola.Production.Win.UserControls
                                               BarnName = barn.Name,
                                               BirdsAmount = (int) (RemainBirdsAmount > barn.Capacity ? barn.Capacity.GetValueOrDefault() : RemainBirdsAmount)
                                           };
-
-            ucBarnAssigned.Dock = DockStyle.Top;
 
             BarnsAssignedControls.Add(ucBarnAssigned);
             BarnsContainer.Controls.Add(ucBarnAssigned);

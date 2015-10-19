@@ -195,6 +195,7 @@
             this.txtInitialBirds.Size = new System.Drawing.Size(145, 25);
             this.txtInitialBirds.TabIndex = 97;
             this.txtInitialBirds.TabStop = false;
+            this.txtInitialBirds.ValueChanged += new System.EventHandler(this.txtInitialBirds_ValueChanged);
             // 
             // radLabel1
             // 

@@ -43,9 +43,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtCurrentStockFood = new Telerik.WinControls.UI.RadSpinEditor();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
+            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             this.txtFoodEntry = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentStage)).BeginInit();
@@ -60,9 +60,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentStockFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
             this.radGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFoodEntry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +79,7 @@
             this.ucAssignBarns.Location = new System.Drawing.Point(12, 210);
             this.ucAssignBarns.MessageBoxDisplayService = null;
             this.ucAssignBarns.Name = "ucAssignBarns";
-            this.ucAssignBarns.Size = new System.Drawing.Size(832, 255);
+            this.ucAssignBarns.Size = new System.Drawing.Size(732, 255);
             this.ucAssignBarns.StageId = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucAssignBarns.TabIndex = 0;
             // 
@@ -187,7 +187,7 @@
             // 
             this.BtnGuardar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardar.Location = new System.Drawing.Point(648, 498);
+            this.BtnGuardar.Location = new System.Drawing.Point(548, 486);
             this.BtnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(96, 24);
@@ -200,7 +200,7 @@
             // 
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(748, 498);
+            this.BtnCancelar.Location = new System.Drawing.Point(648, 486);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(96, 24);
@@ -241,6 +241,17 @@
             this.radGroupBox1.TabIndex = 97;
             this.radGroupBox1.Text = "Consumo";
             // 
+            // radLabel5
+            // 
+            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel5.Location = new System.Drawing.Point(233, 29);
+            this.radLabel5.Margin = new System.Windows.Forms.Padding(2);
+            this.radLabel5.Name = "radLabel5";
+            this.radLabel5.Size = new System.Drawing.Size(123, 24);
+            this.radLabel5.TabIndex = 95;
+            this.radLabel5.Text = "Stock Actual (Kg)";
+            this.radLabel5.ThemeName = "TelerikMetroBlue";
+            // 
             // txtFoodEntry
             // 
             this.txtFoodEntry.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -266,22 +277,11 @@
             this.radLabel4.Text = "Ingreso Total de Alimento (Kg)";
             this.radLabel4.ThemeName = "TelerikMetroBlue";
             // 
-            // radLabel5
-            // 
-            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(233, 29);
-            this.radLabel5.Margin = new System.Windows.Forms.Padding(2);
-            this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(123, 24);
-            this.radLabel5.TabIndex = 95;
-            this.radLabel5.Text = "Stock Actual (Kg)";
-            this.radLabel5.ThemeName = "TelerikMetroBlue";
-            // 
             // FrmMoveNextStage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 533);
+            this.ClientSize = new System.Drawing.Size(778, 533);
             this.Controls.Add(this.radGroupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BtnGuardar);
@@ -320,9 +320,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
             this.radGroupBox1.ResumeLayout(false);
             this.radGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFoodEntry)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
