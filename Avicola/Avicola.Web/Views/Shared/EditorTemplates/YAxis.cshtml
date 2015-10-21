@@ -1,0 +1,12 @@
+﻿@using Avicola.Office.Entities
+@using Framework.Common.Web.Extensions
+@model int?
+@{
+    var list = new List<KeyValuePair<int, string>>
+    {
+        new KeyValuePair<int, string>(0, "IZQUIERDO") ,
+        new KeyValuePair<int, string>(1, "DERECHO") 
+    };
+}
+
+@Html.DropDownList("", new SelectList(list, "Key", "Value", Model), "Seleccione Eje", new { @class = "form-control select2-control" })

@@ -25,6 +25,7 @@ namespace Avicola.Web.Extensions
                         sgl.Standard.AggregateOperation,
                         sgl.Standard.AllowDecimal,
                         sgl.Standard.MeasureUnity,
+                        sgl.Standard.YAxis,
                         StandardItems = sgl.StandardItems.Where(sql => !sgl.IsDeleted && sql.Sequence <= weeksAge).OrderBy(s => s.Sequence).Select(si => new
                         {
                             si.Value1,

@@ -855,6 +855,8 @@
     <Content Include="Views\Medicine\Create.cshtml" />
     <Content Include="Views\Medicine\_Filters.cshtml" />
     <Content Include="Views\Report\BatchStandardFollowUp.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\YAxis.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\YAxis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
