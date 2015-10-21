@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Avicola.Office.Data.Interfaces;
 using Avicola.Office.Entities;
@@ -30,21 +31,23 @@ namespace Avicola.Office.Services
         public IList<BatchDto> GetAllActive()
         {
             return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted,
+                                    x => x.GeneticLine,
+                                    x => x.Stage,
                                     x => x.BatchBarns,
                                     x => x.BatchBarns.Select(bb => bb.Barn))
-                    .Project()
-                    .To<BatchDto>()
+                                    .Select(Mapper.Map<Batch, BatchDto>)
                     .ToList();
         }
 
         public BatchDto GetActiveById(Guid batchId)
         {
             return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted && x.Id == batchId,
-                                     x => x.BatchBarns,
-                                     x => x.BatchBarns.Select(bb => bb.Barn))
-                     .Project()
-                     .To<BatchDto>()
-                     .FirstOrDefault();
+                x => x.GeneticLine,
+                x => x.Stage,
+                x => x.BatchBarns,
+                x => x.BatchBarns.Select(bb => bb.Barn))
+                .Select(Mapper.Map<Batch, BatchDto>)
+                .FirstOrDefault();
         }
 
         public IList<Batch> GetAllActiveComplete()

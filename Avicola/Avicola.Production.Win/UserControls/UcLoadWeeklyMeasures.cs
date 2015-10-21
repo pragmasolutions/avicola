@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -9,17 +10,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Avicola.Office.Entities;
+using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Models.Measures;
 
 namespace Avicola.Production.Win.UserControls
 {
     public partial class UcLoadWeeklyMeasures : UserControl
     {
+        private readonly IStateController _stateController;
         private IList<LoadWeeklyStandardMeasures> _loadWeeklyStandardMeasures;
         private LoadWeeklyStandardMeasures _currentWeeklyStandardMeasures;
 
-        public UcLoadWeeklyMeasures()
+        public UcLoadWeeklyMeasures(IStateController stateController)
         {
+            _stateController = stateController;
             InitializeComponent();
         }
 
@@ -76,14 +80,25 @@ namespace Avicola.Production.Win.UserControls
             txtDateTo.Text = weeklyStandardMeasure.DateTo.ToShortDateString();
             MeasureValue = weeklyStandardMeasure.Value;
 
-            if (DateTime.Today.Date < weeklyStandardMeasure.DateFrom.Date)
-            {
-                txtValue.Enabled = false;
-            }
-            else
+            if (weeklyStandardMeasure.DateFrom.Date <= DateTime.Today.Date &&
+                weeklyStandardMeasure.DateTo.Date >= _stateController.CurrentSelectedBatch.CurrentStageStartDate)
             {
                 txtValue.Enabled = true;
             }
+            else
+            {
+                txtValue.Enabled = false;
+            }
+
+            //if (DateTime.Today.Date < weeklyStandardMeasure.DateFrom.Date || 
+            //    weeklyStandardMeasure.DateTo.Date < _stateController.CurrentSelectedBatch.CurrentStageStartDate)
+            //{
+            //    txtValue.Enabled = false;
+            //}
+            //else
+            //{
+            //    txtValue.Enabled = true;
+            //}
         }
 
         private void ucWeekSelection_CurrentWeekChanged(object sender, int e)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucLoadDailyMeasures = new Avicola.Production.Win.UserControls.UcLoadDailyMeasures(_serviceFactory);
+            this.ucLoadDailyMeasures = new Avicola.Production.Win.UserControls.UcLoadDailyMeasures(_serviceFactory, _stateController);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lbCurrentStandard = new Telerik.WinControls.UI.RadLabel();

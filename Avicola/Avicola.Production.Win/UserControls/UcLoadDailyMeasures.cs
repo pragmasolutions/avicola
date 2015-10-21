@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Avicola.Office.Entities;
 using Avicola.Office.Services.Interfaces;
+using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Models.Measures;
 using Avicola.Production.Win.Properties;
 using Telerik.WinControls.UI;
@@ -18,13 +19,15 @@ namespace Avicola.Production.Win.UserControls
 {
     public partial class UcLoadDailyMeasures : UserControl
     {
+        private readonly IStateController _stateController;
         private IList<LoadDailyStandardMeasures> _loadDailyStandardMeasures;
         private LoadDailyStandardMeasures _currentDailyStandardMeasure;
 
         
 
-        public UcLoadDailyMeasures(IServiceFactory serviceFactory)
+        public UcLoadDailyMeasures(IServiceFactory serviceFactory, IStateController stateController)
         {
+            _stateController = stateController;
             _serviceFactory = serviceFactory;
             InitializeComponent();
             gvDailyMeasures.TableElement.RowHeight = GlobalConstants.DefaultRowHeight;
@@ -139,7 +142,7 @@ namespace Avicola.Production.Win.UserControls
 
             if (measure != null)
             {
-                var editMeasure = measure.Date.Date <= DateTime.Today && (e.Column.Name == "Value" || e.Column.Name == "FoodClassId");
+                var editMeasure = measure.Date.Date <= DateTime.Today && (e.Column.Name == "Value" || e.Column.Name == "FoodClassId") && measure.Date >= _stateController.CurrentSelectedBatch.CurrentStageStartDate;
 
                 if (!editMeasure)
                 {

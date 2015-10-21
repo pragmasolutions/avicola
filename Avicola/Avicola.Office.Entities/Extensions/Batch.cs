@@ -24,6 +24,18 @@ namespace Avicola.Office.Entities
             }
         }
 
+        public string Barns
+        {
+            get
+            {
+                if (!this.BatchBarns.Any())
+                    return string.Empty;
+
+                var currentStageBarns = this.BatchBarns.Where(bb => bb.Barn.StageId == this.StageId).Select(bb => bb.Barn.Name).ToArray();
+                return String.Join(", ", currentStageBarns);
+            }
+        }
+
         public IList<BatchBarn> CurrentStageBarns
         {
             get
@@ -57,6 +69,31 @@ namespace Avicola.Office.Entities
                     return this.PostureDate.GetValueOrDefault();
                 }
             }
+        }
+
+        public int CurrentStageStartWeek
+        {
+            get
+            {
+                if (this.StageId == Stage.BREEDING)
+                {
+                    return GetWeeks(this.DateOfBirth, this.BreedingDate.GetValueOrDefault());
+                }
+                else if (this.StageId == Stage.REBREEDING)
+                {
+                    return GetWeeks(this.DateOfBirth, this.ReBreedingDate.GetValueOrDefault());
+                }
+                else
+                {
+                    return GetWeeks(this.DateOfBirth, this.PostureDate.GetValueOrDefault());
+                }
+            }
+        }
+
+        private int GetWeeks(DateTime dateFrom, DateTime dateTo)
+        {
+            var daysDifference = (dateTo.Date - dateFrom.Date).TotalDays + 1;
+            return Convert.ToInt32(Math.Ceiling(daysDifference / 7d));
         }
     }
 }
