@@ -252,6 +252,12 @@
     <Compile Include="UserControls\UcBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UserControls\UcBatchBarnDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcBatchBarnDetails.Designer.cs">
+      <DependentUpon>UcBatchBarnDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcLoadWeeklyMeasures.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -370,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcBase.resx">
       <DependentUpon>UcBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcBatchBarnDetails.resx">
+      <DependentUpon>UcBatchBarnDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcLoadWeeklyMeasures.resx">
       <DependentUpon>UcLoadWeeklyMeasures.cs</DependentUpon>

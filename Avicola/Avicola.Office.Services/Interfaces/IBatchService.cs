@@ -41,5 +41,7 @@ namespace Avicola.Office.Services.Interfaces
         IQueryable<Batch> GetAll();
 
         DateTime GetEndDateById(Guid batchId);
+
+        IList<BatchBarnDetailDto> GetBarnsDetails(Guid batchId);
     }
 }

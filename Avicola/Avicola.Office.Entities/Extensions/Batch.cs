@@ -54,21 +54,7 @@ namespace Avicola.Office.Entities
 
         public DateTime CurrentStageStartDate
         {
-            get
-            {
-                if (this.StageId == Stage.BREEDING)
-                {
-                    return this.BreedingDate.GetValueOrDefault();
-                }
-                else if (this.StageId == Stage.REBREEDING)
-                {
-                    return this.ReBreedingDate.GetValueOrDefault();
-                }
-                else
-                {
-                    return this.PostureDate.GetValueOrDefault();
-                }
-            }
+            get { return GetDateByState(this.StageId); }
         }
 
         public int CurrentStageStartWeek
@@ -87,6 +73,22 @@ namespace Avicola.Office.Entities
                 {
                     return GetWeeks(this.DateOfBirth, this.PostureDate.GetValueOrDefault());
                 }
+            }
+        }
+
+        public DateTime GetDateByState(Guid stageId)
+        {
+            if (stageId == Stage.BREEDING)
+            {
+                return this.BreedingDate.GetValueOrDefault();
+            }
+            else if (stageId == Stage.REBREEDING)
+            {
+                return this.ReBreedingDate.GetValueOrDefault();
+            }
+            else
+            {
+                return this.PostureDate.GetValueOrDefault();
             }
         }
 
