@@ -68,5 +68,12 @@ namespace Avicola.Production.Win.Forms
             var view = FormFactory.Create<FrmEnterWeeklyMeasures>();
             LoadView(view);
         }
+
+
+        public void LoadEnterSilosEmptyingView()
+        {
+            var view = FormFactory.Create<FrmEnterSilosEmptying>();
+            LoadView(view);
+        }
     }
 }

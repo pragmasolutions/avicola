@@ -57,6 +57,7 @@
             this.ucStandardSelecction.Size = new System.Drawing.Size(1018, 445);
             this.ucStandardSelecction.TabIndex = 13;
             this.ucStandardSelecction.StandardSelected += new System.EventHandler<Avicola.Office.Entities.Standard>(this.ucStandardSelecction_StandardSelected);
+            this.ucStandardSelecction.SilosEmptyingSelected += new System.EventHandler(this.ucStandardSelecction_SilosEmptyingSelected);
             // 
             // tableLayoutPanel1
             // 

@@ -63,6 +63,11 @@ namespace Avicola.Production.Win.Forms.Standards
             
         }
 
+        private void ucStandardSelecction_SilosEmptyingSelected(object sender, EventArgs e)
+        {
+            TransitionManager.LoadEnterSilosEmptyingView();
+        }
+
         private void btnShowBatchManagerView_Click(object sender, EventArgs e)
         {
             TransitionManager.LoadBatchManagerView();

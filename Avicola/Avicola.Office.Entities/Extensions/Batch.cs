@@ -71,6 +71,18 @@ namespace Avicola.Office.Entities
             }
         }
 
+        public DateTime CurrentBatchStartDate
+        {
+            get
+            {
+                if (this.BreedingDate != null)
+                    return this.BreedingDate.GetValueOrDefault();
+                if (this.ReBreedingDate != null)
+                    return this.ReBreedingDate.GetValueOrDefault();
+                return this.PostureDate.GetValueOrDefault();
+            }
+        }
+
         public int CurrentStageStartWeek
         {
             get
