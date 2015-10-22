@@ -12,6 +12,7 @@ using Telerik.WinControls.UI;
 using Avicola.Production.Win.Forms.Observations;
 using Avicola.Production.Win.Forms.Vaccines;
 using Avicola.Production.Win.Forms.Medicines;
+using Avicola.Production.Win.UserControls;
 
 namespace Avicola.Production.Win.Forms.Batchs
 {
@@ -41,15 +42,30 @@ namespace Avicola.Production.Win.Forms.Batchs
 
             lbBatchTitle.Text = Resources.Batch + " " + _stateController.CurrentSelectedBatch.Number;
             txtEtapa.Text = _stateController.CurrentSelectedBatch.StageName;
-            txtFechaIngresoGalpon.Text = _stateController.CurrentSelectedBatch.ArrivedToBarn == null
-                ? string.Empty
-                : _stateController.CurrentSelectedBatch.ArrivedToBarn.GetValueOrDefault().ToShortDateString();
             txtFechaNacimiento.Text = _stateController.CurrentSelectedBatch.DateOfBirth.ToShortDateString();
             txtLineaGenetica.Text = _stateController.CurrentSelectedBatch.GeneticLineName;
             txtNumero.Text = _stateController.CurrentSelectedBatch.Number.ToString();
             txtSemanaActual.Text = _stateController.CurrentSelectedBatch.Week.ToString();
 
             btnMoveNextStage.Enabled = _stateController.CurrentSelectedBatch.StageId != Stage.POSTURE;
+
+            LoadBatchProgress();
+        }
+
+        private void LoadBatchProgress()
+        {
+            using (var batchService = _serviceFactory.Create<IBatchService>())
+            {
+                var batchBarnsDetails = batchService.GetBarnsDetails(_stateController.CurrentSelectedBatch.Id);
+
+                foreach (var batchBarnDetailDto in batchBarnsDetails)
+                {
+                    StageProgressContainer.Controls.Add(new UcBatchBarnDetails()
+                                            {
+                                                BatchBarnDetail = batchBarnDetailDto
+                                            });
+                }
+            }
         }
 
         private void btnEstandares_Click(object sender, EventArgs e)
@@ -61,7 +77,7 @@ namespace Avicola.Production.Win.Forms.Batchs
         {
             OpenEndBatchForm();
         }
-        
+
         private void OpenEndBatchForm()
         {
             var form = Application.OpenForms.OfType<FrmEndBatch>().FirstOrDefault();

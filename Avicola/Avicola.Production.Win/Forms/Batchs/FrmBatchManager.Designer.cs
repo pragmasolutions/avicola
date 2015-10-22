@@ -34,19 +34,17 @@
             this.btnShowBatchSelectionView = new Telerik.WinControls.UI.RadButton();
             this.lbBatchTitle = new Telerik.WinControls.UI.RadLabel();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
+            this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
+            this.radPageViewPage1 = new Telerik.WinControls.UI.RadPageViewPage();
             this.groupBox2 = new Telerik.WinControls.UI.RadGroupBox();
             this.txtFechaNacimiento = new Telerik.WinControls.UI.RadTextBox();
             this.label7 = new Telerik.WinControls.UI.RadLabel();
-            this.txtFechaIngresoGalpon = new Telerik.WinControls.UI.RadTextBox();
-            this.txtGalpon = new Telerik.WinControls.UI.RadTextBox();
             this.txtSemanaActual = new Telerik.WinControls.UI.RadTextBox();
             this.txtEtapa = new Telerik.WinControls.UI.RadTextBox();
             this.txtLineaGenetica = new Telerik.WinControls.UI.RadTextBox();
             this.txtNumero = new Telerik.WinControls.UI.RadTextBox();
             this.label6 = new Telerik.WinControls.UI.RadLabel();
-            this.label5 = new Telerik.WinControls.UI.RadLabel();
             this.label4 = new Telerik.WinControls.UI.RadLabel();
-            this.label3 = new Telerik.WinControls.UI.RadLabel();
             this.label2 = new Telerik.WinControls.UI.RadLabel();
             this.label1 = new Telerik.WinControls.UI.RadLabel();
             this.groupBox1 = new Telerik.WinControls.UI.RadGroupBox();
@@ -57,26 +55,27 @@
             this.btnObservaciones = new Telerik.WinControls.UI.RadButton();
             this.btnVacunas = new Telerik.WinControls.UI.RadButton();
             this.btnEstandares = new Telerik.WinControls.UI.RadButton();
+            this.pvProgress = new Telerik.WinControls.UI.RadPageViewPage();
+            this.StageProgressContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnShowBatchSelectionView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbBatchTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
+            this.radPageView1.SuspendLayout();
+            this.radPageViewPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaNacimiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechaIngresoGalpon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGalpon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSemanaActual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEtapa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLineaGenetica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).BeginInit();
@@ -88,6 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnObservaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVacunas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEstandares)).BeginInit();
+            this.pvProgress.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,7 +104,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1029, 688);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1043, 828);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // tableLayoutPanel3
@@ -142,38 +142,58 @@
             // radPanel1
             // 
             this.radPanel1.AutoScroll = true;
-            this.radPanel1.Controls.Add(this.groupBox2);
-            this.radPanel1.Controls.Add(this.groupBox1);
+            this.radPanel1.Controls.Add(this.radPageView1);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel1.Location = new System.Drawing.Point(3, 71);
+            this.radPanel1.Location = new System.Drawing.Point(3, 85);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1023, 614);
+            this.radPanel1.Size = new System.Drawing.Size(1037, 740);
             this.radPanel1.TabIndex = 14;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel1.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+            // 
+            // radPageView1
+            // 
+            this.radPageView1.Controls.Add(this.radPageViewPage1);
+            this.radPageView1.Controls.Add(this.pvProgress);
+            this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radPageView1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radPageView1.Location = new System.Drawing.Point(0, 0);
+            this.radPageView1.Name = "radPageView1";
+            this.radPageView1.SelectedPage = this.radPageViewPage1;
+            this.radPageView1.Size = new System.Drawing.Size(1037, 740);
+            this.radPageView1.TabIndex = 13;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).StripButtons = Telerik.WinControls.UI.StripViewButtons.None;
+            ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Datos Generales";
+            ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // radPageViewPage1
+            // 
+            this.radPageViewPage1.Controls.Add(this.groupBox2);
+            this.radPageViewPage1.Controls.Add(this.groupBox1);
+            this.radPageViewPage1.ItemSize = new System.Drawing.SizeF(171F, 39F);
+            this.radPageViewPage1.Location = new System.Drawing.Point(5, 45);
+            this.radPageViewPage1.Name = "radPageViewPage1";
+            this.radPageViewPage1.Size = new System.Drawing.Size(1027, 690);
+            this.radPageViewPage1.Text = "Datos Generales";
             // 
             // groupBox2
             // 
             this.groupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.groupBox2.Controls.Add(this.txtFechaNacimiento);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtFechaIngresoGalpon);
-            this.groupBox2.Controls.Add(this.txtGalpon);
             this.groupBox2.Controls.Add(this.txtSemanaActual);
             this.groupBox2.Controls.Add(this.txtEtapa);
             this.groupBox2.Controls.Add(this.txtLineaGenetica);
             this.groupBox2.Controls.Add(this.txtNumero);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.HeaderText = "Detall de lote";
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Location = new System.Drawing.Point(5, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1000, 222);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detall de lote";
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.groupBox2.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Text = "Detall de lote";
@@ -183,7 +203,7 @@
             // txtFechaNacimiento
             // 
             this.txtFechaNacimiento.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaNacimiento.Location = new System.Drawing.Point(799, 65);
+            this.txtFechaNacimiento.Location = new System.Drawing.Point(534, 65);
             this.txtFechaNacimiento.Name = "txtFechaNacimiento";
             this.txtFechaNacimiento.ReadOnly = true;
             this.txtFechaNacimiento.Size = new System.Drawing.Size(185, 34);
@@ -192,29 +212,11 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(795, 37);
+            this.label7.Location = new System.Drawing.Point(530, 37);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(163, 30);
             this.label7.TabIndex = 12;
             this.label7.Text = "Fecha Nacimiento";
-            // 
-            // txtFechaIngresoGalpon
-            // 
-            this.txtFechaIngresoGalpon.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(542, 153);
-            this.txtFechaIngresoGalpon.Name = "txtFechaIngresoGalpon";
-            this.txtFechaIngresoGalpon.ReadOnly = true;
-            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(185, 34);
-            this.txtFechaIngresoGalpon.TabIndex = 11;
-            // 
-            // txtGalpon
-            // 
-            this.txtGalpon.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGalpon.Location = new System.Drawing.Point(542, 65);
-            this.txtGalpon.Name = "txtGalpon";
-            this.txtGalpon.ReadOnly = true;
-            this.txtGalpon.Size = new System.Drawing.Size(185, 34);
-            this.txtGalpon.TabIndex = 10;
             // 
             // txtSemanaActual
             // 
@@ -261,15 +263,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Etapa";
             // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(538, 126);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(209, 30);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Fecha ingreso a galpón";
-            // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -278,15 +271,6 @@
             this.label4.Size = new System.Drawing.Size(137, 30);
             this.label4.TabIndex = 3;
             this.label4.Text = "Semana Actual";
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(538, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 30);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Galpón";
             // 
             // label2
             // 
@@ -318,10 +302,10 @@
             this.groupBox1.Controls.Add(this.btnEstandares);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.HeaderText = "Operación";
-            this.groupBox1.Location = new System.Drawing.Point(3, 231);
+            this.groupBox1.Location = new System.Drawing.Point(5, 231);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1000, 380);
-            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operación";
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.groupBox1.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Text = "Operación";
@@ -338,7 +322,6 @@
             this.btnMedicine.TabIndex = 14;
             this.btnMedicine.Text = "Registrar medicamento";
             this.btnMedicine.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnMedicine.Click += new System.EventHandler(this.btnMedicine_Click);
             // 
             // btnMoveNextStage
             // 
@@ -352,7 +335,6 @@
             this.btnMoveNextStage.Text = "Pasar de Estado";
             this.btnMoveNextStage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMoveNextStage.TextWrap = true;
-            this.btnMoveNextStage.Click += new System.EventHandler(this.btnMoveNextStage_Click);
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnMoveNextStage.GetChildAt(0))).Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnMoveNextStage.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnMoveNextStage.GetChildAt(0))).ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -372,7 +354,6 @@
             this.btnEliminarLote.TabIndex = 13;
             this.btnEliminarLote.Text = "Eliminar lote";
             this.btnEliminarLote.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEliminarLote.Click += new System.EventHandler(this.btnEliminarLote_Click);
             // 
             // btnEndBatch
             // 
@@ -384,7 +365,6 @@
             this.btnEndBatch.TabIndex = 12;
             this.btnEndBatch.Text = "Finalizar lote";
             this.btnEndBatch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEndBatch.Click += new System.EventHandler(this.btnEndBatch_Click);
             // 
             // btnObservaciones
             // 
@@ -396,7 +376,6 @@
             this.btnObservaciones.TabIndex = 10;
             this.btnObservaciones.Text = "Registrar Observación";
             this.btnObservaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnObservaciones.Click += new System.EventHandler(this.btnObservaciones_Click);
             // 
             // btnVacunas
             // 
@@ -408,7 +387,6 @@
             this.btnVacunas.TabIndex = 9;
             this.btnVacunas.Text = "Registrar vacunación";
             this.btnVacunas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnVacunas.Click += new System.EventHandler(this.btnVacunas_Click);
             // 
             // btnEstandares
             // 
@@ -420,14 +398,30 @@
             this.btnEstandares.TabIndex = 8;
             this.btnEstandares.Text = "Ingresar valores de estandares";
             this.btnEstandares.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEstandares.Click += new System.EventHandler(this.btnEstandares_Click);
+            // 
+            // pvProgress
+            // 
+            this.pvProgress.Controls.Add(this.StageProgressContainer);
+            this.pvProgress.ItemSize = new System.Drawing.SizeF(101F, 39F);
+            this.pvProgress.Location = new System.Drawing.Point(5, 45);
+            this.pvProgress.Name = "pvProgress";
+            this.pvProgress.Size = new System.Drawing.Size(1027, 690);
+            this.pvProgress.Text = "Progreso";
+            // 
+            // StageProgressContainer
+            // 
+            this.StageProgressContainer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.StageProgressContainer.Location = new System.Drawing.Point(0, 0);
+            this.StageProgressContainer.Name = "StageProgressContainer";
+            this.StageProgressContainer.Size = new System.Drawing.Size(814, 690);
+            this.StageProgressContainer.TabIndex = 0;
             // 
             // FrmBatchManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1029, 688);
+            this.ClientSize = new System.Drawing.Size(1043, 828);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -445,21 +439,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.lbBatchTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
+            this.radPageView1.ResumeLayout(false);
+            this.radPageViewPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaNacimiento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechaIngresoGalpon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGalpon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSemanaActual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEtapa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLineaGenetica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumero)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).EndInit();
@@ -471,6 +464,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnObservaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVacunas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEstandares)).EndInit();
+            this.pvProgress.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -478,34 +472,34 @@
 
         #endregion
 
+        private Telerik.WinControls.UI.RadLabel lbBatchTitle;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Telerik.WinControls.UI.RadPanel radPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private Telerik.WinControls.UI.RadButton btnShowBatchSelectionView;
+        private Telerik.WinControls.UI.RadPageView radPageView1;
+        private Telerik.WinControls.UI.RadPageViewPage radPageViewPage1;
         private Telerik.WinControls.UI.RadGroupBox groupBox2;
-        private Telerik.WinControls.UI.RadTextBox txtFechaIngresoGalpon;
-        private Telerik.WinControls.UI.RadTextBox txtGalpon;
+        private Telerik.WinControls.UI.RadTextBox txtFechaNacimiento;
+        private Telerik.WinControls.UI.RadLabel label7;
         private Telerik.WinControls.UI.RadTextBox txtSemanaActual;
         private Telerik.WinControls.UI.RadTextBox txtEtapa;
         private Telerik.WinControls.UI.RadTextBox txtLineaGenetica;
         private Telerik.WinControls.UI.RadTextBox txtNumero;
         private Telerik.WinControls.UI.RadLabel label6;
-        private Telerik.WinControls.UI.RadLabel label5;
         private Telerik.WinControls.UI.RadLabel label4;
-        private Telerik.WinControls.UI.RadLabel label3;
         private Telerik.WinControls.UI.RadLabel label2;
         private Telerik.WinControls.UI.RadLabel label1;
         private Telerik.WinControls.UI.RadGroupBox groupBox1;
+        private Telerik.WinControls.UI.RadButton btnMedicine;
+        private Telerik.WinControls.UI.RadButton btnMoveNextStage;
+        private Telerik.WinControls.UI.RadButton btnEliminarLote;
+        private Telerik.WinControls.UI.RadButton btnEndBatch;
         private Telerik.WinControls.UI.RadButton btnObservaciones;
         private Telerik.WinControls.UI.RadButton btnVacunas;
         private Telerik.WinControls.UI.RadButton btnEstandares;
-        private Telerik.WinControls.UI.RadLabel lbBatchTitle;
-        private Telerik.WinControls.UI.RadButton btnEndBatch;
-        private Telerik.WinControls.UI.RadButton btnEliminarLote;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Telerik.WinControls.UI.RadPanel radPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private Telerik.WinControls.UI.RadButton btnShowBatchSelectionView;
-        private Telerik.WinControls.UI.RadTextBox txtFechaNacimiento;
-        private Telerik.WinControls.UI.RadLabel label7;
-        private Telerik.WinControls.UI.RadButton btnMedicine;
-        private Telerik.WinControls.UI.RadButton btnMoveNextStage;
+        private Telerik.WinControls.UI.RadPageViewPage pvProgress;
+        private System.Windows.Forms.FlowLayoutPanel StageProgressContainer;
 
 
     }

@@ -261,5 +261,39 @@ namespace Avicola.Office.Services
 
             Uow.Commit();
         }
+
+        public IList<BatchBarnDetailDto> GetBarnsDetails(Guid batchId)
+        {
+
+            var detailList = new List<BatchBarnDetailDto>();
+
+            var batch = Uow.Batches.Get(batchId);
+            
+            var barnsBatches = Uow.BatchBarns.GetAll(x => x.BatchId == batchId, x => x.Batch.Stage)
+                .OrderBy(x => x.CreatedDate)
+                .Project()
+                .To<BatchBarnDto>()
+                .ToList();
+
+            var barnsGrouped = barnsBatches.GroupBy(x => x.BarnStageName);
+
+            foreach (IGrouping<string, BatchBarnDto> barnsBatch in barnsGrouped)
+            {
+                if (!barnsBatch.Any())
+                {
+                    continue;
+                }
+
+                detailList.Add(new BatchBarnDetailDto()
+                               {
+                                   BatchBarns = barnsBatch.ToList(),
+                                   StageDetails =
+                                       string.Format("{0} ({1})", barnsBatch.Key,
+                                           batch.GetDateByState(barnsBatch.First().BarnStageId).ToShortDateString())
+                               });
+            }
+
+            return detailList;
+        }
     }
 }
