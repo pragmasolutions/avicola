@@ -22,7 +22,7 @@ namespace Avicola.Office.Entities
             }
             else if (stageId == REBREEDING)
             {
-                return "Posture";
+                return "Postura";
             }
 
             return String.Empty;
