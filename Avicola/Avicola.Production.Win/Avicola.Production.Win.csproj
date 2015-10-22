@@ -164,6 +164,12 @@
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.Designer.cs">
       <DependentUpon>FrmCreateMeasureWizard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Measure\FrmEnterSilosEmptying.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Measure\FrmEnterSilosEmptying.Designer.cs">
+      <DependentUpon>FrmEnterSilosEmptying.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Measure\FrmEnterWeeklyMeasures.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -323,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Measure\FrmEnterSilosEmptying.resx">
+      <DependentUpon>FrmEnterSilosEmptying.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Measure\FrmEnterWeeklyMeasures.resx">
       <DependentUpon>FrmEnterWeeklyMeasures.cs</DependentUpon>
@@ -485,6 +494,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Standards\Temperatura.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Standards\Vaciamiento de Silos.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\vaccine.png" />

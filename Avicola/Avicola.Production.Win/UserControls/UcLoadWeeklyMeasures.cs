@@ -81,7 +81,7 @@ namespace Avicola.Production.Win.UserControls
             MeasureValue = weeklyStandardMeasure.Value;
 
             if (weeklyStandardMeasure.DateFrom.Date <= DateTime.Today.Date &&
-                weeklyStandardMeasure.DateTo.Date >= _stateController.CurrentSelectedBatch.CurrentStageStartDate)
+                weeklyStandardMeasure.DateTo.Date >= _stateController.CurrentSelectedBatch.CurrentBatchStartDate)
             {
                 txtValue.Enabled = true;
             }

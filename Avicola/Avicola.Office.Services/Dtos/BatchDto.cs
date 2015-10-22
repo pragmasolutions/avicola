@@ -29,5 +29,7 @@ namespace Avicola.Office.Services.Dtos
         public string Barns { get; set; }
         public DateTime CurrentStageStartDate { get; set; }
         public int CurrentStageStartWeek { get; set; }
+        public DateTime CurrentBatchStartDate { get; set; }
+        
     }
 }

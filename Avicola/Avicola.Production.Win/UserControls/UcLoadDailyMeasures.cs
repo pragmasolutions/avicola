@@ -142,7 +142,7 @@ namespace Avicola.Production.Win.UserControls
 
             if (measure != null)
             {
-                var editMeasure = measure.Date.Date <= DateTime.Today && (e.Column.Name == "Value" || e.Column.Name == "FoodClassId") && measure.Date >= _stateController.CurrentSelectedBatch.CurrentStageStartDate;
+                var editMeasure = measure.Date.Date <= DateTime.Today && (e.Column.Name == "Value" || e.Column.Name == "FoodClassId") && measure.Date >= _stateController.CurrentSelectedBatch.CurrentBatchStartDate;
 
                 if (!editMeasure)
                 {
