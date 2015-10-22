@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Production.Win.Forms.Batchs;
 using Avicola.Production.Win.Forms.Measure;
+using Avicola.Production.Win.Forms.SiloEmptyings;
 using Avicola.Production.Win.Forms.Standards;
 using Avicola.Production.Win.Infrastructure;
 using Telerik.WinControls;

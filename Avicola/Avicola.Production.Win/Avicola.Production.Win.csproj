@@ -164,10 +164,16 @@
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.Designer.cs">
       <DependentUpon>FrmCreateMeasureWizard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Measure\FrmEnterSilosEmptying.cs">
+    <Compile Include="Forms\SiloEmptyings\FrmCreateEditSiloEmptying.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Measure\FrmEnterSilosEmptying.Designer.cs">
+    <Compile Include="Forms\SiloEmptyings\FrmCreateEditSiloEmptying.Designer.cs">
+      <DependentUpon>FrmCreateEditSiloEmptying.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SiloEmptyings\FrmEnterSilosEmptying.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SiloEmptyings\FrmEnterSilosEmptying.Designer.cs">
       <DependentUpon>FrmEnterSilosEmptying.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Measure\FrmEnterWeeklyMeasures.cs">
@@ -324,7 +330,10 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Measure\FrmEnterSilosEmptying.resx">
+    <EmbeddedResource Include="Forms\SiloEmptyings\FrmCreateEditSiloEmptying.resx">
+      <DependentUpon>FrmCreateEditSiloEmptying.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SiloEmptyings\FrmEnterSilosEmptying.resx">
       <DependentUpon>FrmEnterSilosEmptying.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Measure\FrmEnterWeeklyMeasures.resx">

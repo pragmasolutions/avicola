@@ -45,6 +45,8 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_StageChange_Batch" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_StageChange_StageFrom" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_StageChange_StageTo" />
+        <EntityTypeShape EntityType="Avicola.OfficeModel.SiloEmptying" Width="1.5" PointX="9.75" PointY="19.875" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_SiloEmptying_Batch" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -132,6 +132,16 @@
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="SiloEmptying">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BatchId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Stage">
           <Key>
             <PropertyRef Name="Id" />
@@ -380,6 +390,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SiloEmptying_Batch">
+          <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
+          <End Role="SiloEmptying" Type="Self.SiloEmptying" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SiloEmptying">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StageChange_Batch">
           <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
           <End Role="StageChange" Type="Self.StageChange" Multiplicity="*" />
@@ -508,6 +530,7 @@
           <EntitySet Name="GeneticLine" EntityType="Self.GeneticLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Measure" EntityType="Self.Measure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiloEmptying" EntityType="Self.SiloEmptying" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stage" EntityType="Self.Stage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StageChange" EntityType="Self.StageChange" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Standard" EntityType="Self.Standard" Schema="dbo" store:Type="Tables" />
@@ -570,6 +593,10 @@
           <AssociationSet Name="FK_Measure_StandardItem" Association="Self.FK_Measure_StandardItem">
             <End Role="StandardItem" EntitySet="StandardItem" />
             <End Role="Measure" EntitySet="Measure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiloEmptying_Batch" Association="Self.FK_SiloEmptying_Batch">
+            <End Role="Batch" EntitySet="Batch" />
+            <End Role="SiloEmptying" EntitySet="SiloEmptying" />
           </AssociationSet>
           <AssociationSet Name="FK_StageChange_Batch" Association="Self.FK_StageChange_Batch">
             <End Role="Batch" EntitySet="Batch" />
@@ -914,6 +941,11 @@
             <End Role="Stage" EntitySet="Stages" />
             <End Role="StageChange" EntitySet="StageChanges" />
           </AssociationSet>
+          <EntitySet Name="SiloEmptyings" EntityType="Avicola.OfficeModel.SiloEmptying" />
+          <AssociationSet Name="FK_SiloEmptying_Batch" Association="Avicola.OfficeModel.FK_SiloEmptying_Batch">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="SiloEmptying" EntitySet="SiloEmptyings" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="BatchVaccine">
           <Key>
@@ -1124,6 +1156,7 @@
           <Property Name="ReBreedingDate" Type="DateTime" Precision="7" />
           <Property Name="PostureDate" Type="DateTime" Precision="7" />
           <NavigationProperty Name="StageChanges" Relationship="Avicola.OfficeModel.FK_StageChange_Batch" FromRole="Batch" ToRole="StageChange" />
+          <NavigationProperty Name="SiloEmptyings" Relationship="Avicola.OfficeModel.FK_SiloEmptying_Batch" FromRole="Batch" ToRole="SiloEmptying" />
         </EntityType>
         <Association Name="FK_Batch_FoodClass">
           <End Type="Avicola.OfficeModel.FoodClass" Role="FoodClass" Multiplicity="1" />
@@ -1294,6 +1327,29 @@
             </Principal>
             <Dependent Role="StageChange">
               <PropertyRef Name="StageToId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SiloEmptying">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="BatchId" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Batch" Relationship="Avicola.OfficeModel.FK_SiloEmptying_Batch" FromRole="SiloEmptying" ToRole="Batch" />
+        </EntityType>
+        <Association Name="FK_SiloEmptying_Batch">
+          <End Type="Avicola.OfficeModel.Batch" Role="Batch" Multiplicity="1" />
+          <End Type="Avicola.OfficeModel.SiloEmptying" Role="SiloEmptying" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SiloEmptying">
+              <PropertyRef Name="BatchId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1587,6 +1643,17 @@
                 <ScalarProperty Name="StageFromId" ColumnName="StageFromId" />
                 <ScalarProperty Name="BatchId" ColumnName="BatchId" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiloEmptyings">
+            <EntityTypeMapping TypeName="Avicola.OfficeModel.SiloEmptying">
+              <MappingFragment StoreEntitySet="SiloEmptying">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

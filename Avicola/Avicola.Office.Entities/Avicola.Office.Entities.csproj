@@ -108,6 +108,9 @@
     <Compile Include="ReportBreedingMeasuresFollowUpRow.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SiloEmptying.cs">
+      <DependentUpon>OfficeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Stage.cs">
       <DependentUpon>OfficeModel.tt</DependentUpon>
     </Compile>

@@ -24,6 +24,7 @@ namespace Avicola.Office.Data.Interfaces
         IRepository<Stage> Stages { get; }
         IRepository<StageChange> StageChanges { get; }
         IRepository<BatchBarn> BatchBarns { get; }
+        IRepository<SiloEmptying> SiloEmptyings { get; }
 
         OfficeEntities DbContext { get; }
     }

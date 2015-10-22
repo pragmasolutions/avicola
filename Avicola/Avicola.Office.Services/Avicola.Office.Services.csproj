@@ -58,8 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SiloEmptyingService.cs" />
     <Compile Include="Dtos\BatchBarnDto.cs" />
     <Compile Include="Dtos\MoveNextStageDto.cs" />
+    <Compile Include="Interfaces\ISiloEmptyingService.cs" />
     <Compile Include="StageService.cs" />
     <Compile Include="BatchMedicineService.cs" />
     <Compile Include="Dtos\BatchMedicineDto.cs" />
