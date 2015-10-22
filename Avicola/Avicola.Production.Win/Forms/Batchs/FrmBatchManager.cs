@@ -42,9 +42,6 @@ namespace Avicola.Production.Win.Forms.Batchs
 
             lbBatchTitle.Text = Resources.Batch + " " + _stateController.CurrentSelectedBatch.Number;
             txtEtapa.Text = _stateController.CurrentSelectedBatch.StageName;
-            txtFechaIngresoGalpon.Text = _stateController.CurrentSelectedBatch.ArrivedToBarn == null
-                ? string.Empty
-                : _stateController.CurrentSelectedBatch.ArrivedToBarn.GetValueOrDefault().ToShortDateString();
             txtFechaNacimiento.Text = _stateController.CurrentSelectedBatch.DateOfBirth.ToShortDateString();
             txtLineaGenetica.Text = _stateController.CurrentSelectedBatch.GeneticLineName;
             txtNumero.Text = _stateController.CurrentSelectedBatch.Number.ToString();

@@ -39,16 +39,12 @@
             this.groupBox2 = new Telerik.WinControls.UI.RadGroupBox();
             this.txtFechaNacimiento = new Telerik.WinControls.UI.RadTextBox();
             this.label7 = new Telerik.WinControls.UI.RadLabel();
-            this.txtFechaIngresoGalpon = new Telerik.WinControls.UI.RadTextBox();
-            this.txtGalpon = new Telerik.WinControls.UI.RadTextBox();
             this.txtSemanaActual = new Telerik.WinControls.UI.RadTextBox();
             this.txtEtapa = new Telerik.WinControls.UI.RadTextBox();
             this.txtLineaGenetica = new Telerik.WinControls.UI.RadTextBox();
             this.txtNumero = new Telerik.WinControls.UI.RadTextBox();
             this.label6 = new Telerik.WinControls.UI.RadLabel();
-            this.label5 = new Telerik.WinControls.UI.RadLabel();
             this.label4 = new Telerik.WinControls.UI.RadLabel();
-            this.label3 = new Telerik.WinControls.UI.RadLabel();
             this.label2 = new Telerik.WinControls.UI.RadLabel();
             this.label1 = new Telerik.WinControls.UI.RadLabel();
             this.groupBox1 = new Telerik.WinControls.UI.RadGroupBox();
@@ -74,16 +70,12 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaNacimiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechaIngresoGalpon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGalpon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSemanaActual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEtapa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLineaGenetica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).BeginInit();
@@ -166,11 +158,11 @@
             this.radPageView1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.pvProgress;
+            this.radPageView1.SelectedPage = this.radPageViewPage1;
             this.radPageView1.Size = new System.Drawing.Size(1037, 740);
             this.radPageView1.TabIndex = 13;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).StripButtons = Telerik.WinControls.UI.StripViewButtons.None;
-            ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Progreso";
+            ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Datos Generales";
             ((Telerik.WinControls.UI.RadPageViewLabelElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // radPageViewPage1
@@ -188,16 +180,12 @@
             this.groupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.groupBox2.Controls.Add(this.txtFechaNacimiento);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtFechaIngresoGalpon);
-            this.groupBox2.Controls.Add(this.txtGalpon);
             this.groupBox2.Controls.Add(this.txtSemanaActual);
             this.groupBox2.Controls.Add(this.txtEtapa);
             this.groupBox2.Controls.Add(this.txtLineaGenetica);
             this.groupBox2.Controls.Add(this.txtNumero);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -215,7 +203,7 @@
             // txtFechaNacimiento
             // 
             this.txtFechaNacimiento.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaNacimiento.Location = new System.Drawing.Point(799, 65);
+            this.txtFechaNacimiento.Location = new System.Drawing.Point(534, 65);
             this.txtFechaNacimiento.Name = "txtFechaNacimiento";
             this.txtFechaNacimiento.ReadOnly = true;
             this.txtFechaNacimiento.Size = new System.Drawing.Size(185, 34);
@@ -224,29 +212,11 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(795, 37);
+            this.label7.Location = new System.Drawing.Point(530, 37);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(163, 30);
             this.label7.TabIndex = 12;
             this.label7.Text = "Fecha Nacimiento";
-            // 
-            // txtFechaIngresoGalpon
-            // 
-            this.txtFechaIngresoGalpon.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaIngresoGalpon.Location = new System.Drawing.Point(542, 153);
-            this.txtFechaIngresoGalpon.Name = "txtFechaIngresoGalpon";
-            this.txtFechaIngresoGalpon.ReadOnly = true;
-            this.txtFechaIngresoGalpon.Size = new System.Drawing.Size(185, 34);
-            this.txtFechaIngresoGalpon.TabIndex = 11;
-            // 
-            // txtGalpon
-            // 
-            this.txtGalpon.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGalpon.Location = new System.Drawing.Point(542, 65);
-            this.txtGalpon.Name = "txtGalpon";
-            this.txtGalpon.ReadOnly = true;
-            this.txtGalpon.Size = new System.Drawing.Size(185, 34);
-            this.txtGalpon.TabIndex = 10;
             // 
             // txtSemanaActual
             // 
@@ -293,15 +263,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Etapa";
             // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(538, 126);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(209, 30);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Fecha ingreso a galpón";
-            // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -310,15 +271,6 @@
             this.label4.Size = new System.Drawing.Size(137, 30);
             this.label4.TabIndex = 3;
             this.label4.Text = "Semana Actual";
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(538, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 30);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Galpón";
             // 
             // label2
             // 
@@ -495,16 +447,12 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaNacimiento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechaIngresoGalpon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGalpon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSemanaActual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEtapa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLineaGenetica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumero)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).EndInit();
@@ -534,16 +482,12 @@
         private Telerik.WinControls.UI.RadGroupBox groupBox2;
         private Telerik.WinControls.UI.RadTextBox txtFechaNacimiento;
         private Telerik.WinControls.UI.RadLabel label7;
-        private Telerik.WinControls.UI.RadTextBox txtFechaIngresoGalpon;
-        private Telerik.WinControls.UI.RadTextBox txtGalpon;
         private Telerik.WinControls.UI.RadTextBox txtSemanaActual;
         private Telerik.WinControls.UI.RadTextBox txtEtapa;
         private Telerik.WinControls.UI.RadTextBox txtLineaGenetica;
         private Telerik.WinControls.UI.RadTextBox txtNumero;
         private Telerik.WinControls.UI.RadLabel label6;
-        private Telerik.WinControls.UI.RadLabel label5;
         private Telerik.WinControls.UI.RadLabel label4;
-        private Telerik.WinControls.UI.RadLabel label3;
         private Telerik.WinControls.UI.RadLabel label2;
         private Telerik.WinControls.UI.RadLabel label1;
         private Telerik.WinControls.UI.RadGroupBox groupBox1;
