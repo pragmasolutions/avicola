@@ -72,10 +72,11 @@ namespace Avicola.Production.Win.Forms.SiloEmptyings
             {
                 using (var service = _serviceFactory.Create<ISiloEmptyingService>())
                 {
-                    var validDate = service.VerifyDate(_batch.Id, dtpDate.Value, _emptyingId);
+                    var validDate = service.VerifyDate(_batch.Id, dtpDate.Value.ToZeroTime(), _emptyingId);
                     if (!validDate)
                     {
                         this.FormErrorProvider.SetError(dtpDate, "Ya existe un vaciamiento de silo registrado para la fecha ingresada");
+                        this.DialogResult = DialogResult.None;
                     }
                     else
                     {
@@ -100,7 +101,7 @@ namespace Avicola.Production.Win.Forms.SiloEmptyings
 
         private void GetSiloEmptyingEdit()
         {
-            _siloEmptying.Date = dtpDate.Value;
+            _siloEmptying.Date = dtpDate.Value.ToZeroTime();
         }
 
         private SiloEmptying GetSiloEmptyingCreate()
@@ -109,7 +110,7 @@ namespace Avicola.Production.Win.Forms.SiloEmptyings
             {
                 Id = Guid.NewGuid(),
                 CreatedDate = DateTime.Now,
-                Date = dtpDate.Value,
+                Date = dtpDate.Value.ToZeroTime(),
                 IsDeleted = false,
                 BatchId = _stateController.CurrentSelectedBatch.Id
             };
