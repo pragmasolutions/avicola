@@ -10,9 +10,6 @@ BEGIN
 		Fecha datetime
 	)
 
-	DECLARE @StageId UNIQUEIDENTIFIER 
-	SET @StageId = '096debd6-c537-4569-8b97-53a3c3e82a39'
-
 	DECLARE @Items TABLE
 	(
 		Semana int,
@@ -59,7 +56,7 @@ BEGIN
 			ON B.FoodClassId = FC.Id
 	WHERE B.Id = @BatchId
 
-	SET @EndDate = (SELECT DATEADD(DAY, -1, DATEADD(WEEK, @WeeksInBreeding, @StartDate)))
+	SET @EndDate = (SELECT DATEADD(DAY, -1, DATEADD(WEEK, 120, @StartDate)))
 
 	INSERT INTO @Dias (Fecha)
 	SELECT thedate FROM dbo.ExplodeDates(@StartDate, @EndDate) as d
