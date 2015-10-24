@@ -22,8 +22,9 @@ namespace Avicola.Office.Data.Interfaces
         IRepository<Vaccine> Vaccines { get; }
         IRepository<Medicine> Medicines { get; }
         IRepository<Stage> Stages { get; }
-
+        IRepository<StageChange> StageChanges { get; }
         IRepository<BatchBarn> BatchBarns { get; }
+        IRepository<SiloEmptying> SiloEmptyings { get; }
 
         OfficeEntities DbContext { get; }
     }

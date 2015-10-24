@@ -13,5 +13,6 @@ namespace Avicola.Production.Win.Infrastructure
         void LoadStandardSelectionView();
         void LoadEnterDailyStandardView();
         void LoadEnterWeeklyStandardView();
+        void LoadEnterSilosEmptyingView();
     }
 }

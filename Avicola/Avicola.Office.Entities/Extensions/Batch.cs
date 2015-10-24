@@ -24,6 +24,18 @@ namespace Avicola.Office.Entities
             }
         }
 
+        public string Barns
+        {
+            get
+            {
+                if (!this.BatchBarns.Any())
+                    return string.Empty;
+
+                var currentStageBarns = this.BatchBarns.Where(bb => bb.Barn.StageId == this.StageId).Select(bb => bb.Barn.Name).ToArray();
+                return String.Join(", ", currentStageBarns);
+            }
+        }
+
         public IList<BatchBarn> CurrentStageBarns
         {
             get
@@ -42,21 +54,60 @@ namespace Avicola.Office.Entities
 
         public DateTime CurrentStageStartDate
         {
+            get { return GetDateByState(this.StageId); }
+        }
+
+        public DateTime CurrentBatchStartDate
+        {
+            get
+            {
+                if (this.BreedingDate != null)
+                    return this.BreedingDate.GetValueOrDefault();
+                if (this.ReBreedingDate != null)
+                    return this.ReBreedingDate.GetValueOrDefault();
+                return this.PostureDate.GetValueOrDefault();
+            }
+        }
+
+        public int CurrentStageStartWeek
+        {
             get
             {
                 if (this.StageId == Stage.BREEDING)
                 {
-                    return this.BreedingDate.GetValueOrDefault();
+                    return GetWeeks(this.DateOfBirth, this.BreedingDate.GetValueOrDefault());
                 }
                 else if (this.StageId == Stage.REBREEDING)
                 {
-                    return this.ReBreedingDate.GetValueOrDefault();
+                    return GetWeeks(this.DateOfBirth, this.ReBreedingDate.GetValueOrDefault());
                 }
                 else
                 {
-                    return this.PostureDate.GetValueOrDefault();
+                    return GetWeeks(this.DateOfBirth, this.PostureDate.GetValueOrDefault());
                 }
             }
+        }
+
+        public DateTime GetDateByState(Guid stageId)
+        {
+            if (stageId == Stage.BREEDING)
+            {
+                return this.BreedingDate.GetValueOrDefault();
+            }
+            else if (stageId == Stage.REBREEDING)
+            {
+                return this.ReBreedingDate.GetValueOrDefault();
+            }
+            else
+            {
+                return this.PostureDate.GetValueOrDefault();
+            }
+        }
+
+        private int GetWeeks(DateTime dateFrom, DateTime dateTo)
+        {
+            var daysDifference = (dateTo.Date - dateFrom.Date).TotalDays + 1;
+            return Convert.ToInt32(Math.Ceiling(daysDifference / 7d));
         }
     }
 }

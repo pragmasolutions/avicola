@@ -164,6 +164,18 @@
     <Compile Include="Forms\Measure\FrmCreateMeasureWizard.Designer.cs">
       <DependentUpon>FrmCreateMeasureWizard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SiloEmptyings\FrmCreateEditSiloEmptying.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SiloEmptyings\FrmCreateEditSiloEmptying.Designer.cs">
+      <DependentUpon>FrmCreateEditSiloEmptying.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SiloEmptyings\FrmEnterSilosEmptying.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SiloEmptyings\FrmEnterSilosEmptying.Designer.cs">
+      <DependentUpon>FrmEnterSilosEmptying.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Measure\FrmEnterWeeklyMeasures.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +264,12 @@
     <Compile Include="UserControls\UcBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UserControls\UcBatchBarnDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcBatchBarnDetails.Designer.cs">
+      <DependentUpon>UcBatchBarnDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcLoadWeeklyMeasures.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -318,6 +336,12 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SiloEmptyings\FrmCreateEditSiloEmptying.resx">
+      <DependentUpon>FrmCreateEditSiloEmptying.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SiloEmptyings\FrmEnterSilosEmptying.resx">
+      <DependentUpon>FrmEnterSilosEmptying.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Measure\FrmEnterWeeklyMeasures.resx">
       <DependentUpon>FrmEnterWeeklyMeasures.cs</DependentUpon>
     </EmbeddedResource>
@@ -370,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcBase.resx">
       <DependentUpon>UcBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcBatchBarnDetails.resx">
+      <DependentUpon>UcBatchBarnDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcLoadWeeklyMeasures.resx">
       <DependentUpon>UcLoadWeeklyMeasures.cs</DependentUpon>
@@ -476,6 +503,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Standards\Temperatura.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Standards\Vaciamiento de Silos.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\vaccine.png" />

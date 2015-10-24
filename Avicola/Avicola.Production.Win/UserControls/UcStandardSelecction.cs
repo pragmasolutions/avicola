@@ -24,6 +24,7 @@ namespace Avicola.Production.Win.UserControls
         }
 
         public event EventHandler<Standard> StandardSelected;
+        public event EventHandler SilosEmptyingSelected;
 
         public List<Standard> Standards 
         {
@@ -31,6 +32,7 @@ namespace Avicola.Production.Win.UserControls
             {
                 StandardButtonsPanel.Controls.Clear();
 
+                var assemblyPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
                 foreach (var standard in value)
                 {
                     var radButton = new RadButton();
@@ -41,7 +43,7 @@ namespace Avicola.Production.Win.UserControls
                     radButton.Width = 200;
                     radButton.Height = 200;
 
-                    var assemblyPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                    
                     if (assemblyPath != null)
                     {
                         string imagePath = Path.Combine(assemblyPath, string.Format(StandardImagesBaseFolder, standard.Name));
@@ -57,6 +59,30 @@ namespace Avicola.Production.Win.UserControls
 
                     StandardButtonsPanel.Controls.Add(radButton);
                 }
+
+                var siloButon = new RadButton
+                {
+                    Text = "Vaciamiento de Silos",
+                    TextAlignment = ContentAlignment.BottomCenter,
+                    ImageAlignment = ContentAlignment.MiddleCenter,
+                    Width = 200,
+                    Height = 200
+                };
+
+                if (assemblyPath != null)
+                {
+                    string imagePath = Path.Combine(assemblyPath, string.Format(StandardImagesBaseFolder, "Vaciamiento de Silos"));
+
+                    if (File.Exists(imagePath))
+                    {
+                        siloButon.Image = Image.FromFile(imagePath);
+                    }
+                }
+
+                siloButon.Click += SilosEmptying_Click;
+                siloButon.Tag = siloButon;
+
+                StandardButtonsPanel.Controls.Add(siloButon);
             } 
         }
 
@@ -72,6 +98,14 @@ namespace Avicola.Production.Win.UserControls
                 {
                     OnStandardSelected(standard);
                 }
+            }
+        }
+
+        private void SilosEmptying_Click(object sender, EventArgs e)
+        {
+            if (SilosEmptyingSelected != null)
+            {
+                SilosEmptyingSelected(sender, e);
             }
         }
 

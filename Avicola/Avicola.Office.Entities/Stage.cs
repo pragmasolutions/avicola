@@ -20,6 +20,8 @@ namespace Avicola.Office.Entities
         {
             this.Barns = new HashSet<Barn>();
             this.Batches = new HashSet<Batch>();
+            this.StageChangesTo = new HashSet<StageChange>();
+            this.StageChangesFrom = new HashSet<StageChange>();
         }
     
         public System.Guid Id { get; set; }
@@ -31,5 +33,9 @@ namespace Avicola.Office.Entities
         public virtual ICollection<Barn> Barns { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Batch> Batches { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StageChange> StageChangesTo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StageChange> StageChangesFrom { get; set; }
     }
 }

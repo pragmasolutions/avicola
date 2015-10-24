@@ -35,6 +35,11 @@ namespace Avicola.Web.Models.Standards
         public Guid StandardTypeId { get; set; }
 
         [Required]
+        [Display(Name = "Eje de Referencia")]
+        [UIHint("YAxis")]
+        public int? YAxis { get; set; }
+
+        [Required]
         [Display(Name = "Acepta valores decimales")]
         public bool AllowDecimal { get; set; }
 
@@ -47,8 +52,8 @@ namespace Avicola.Web.Models.Standards
         
         public Standard ToStandard()
         {
-            var shop = Mapper.Map<StandardForm, Standard>(this);
-            return shop;
+            var standard = Mapper.Map<StandardForm, Standard>(this);
+            return standard;
         }
 
         public static StandardForm FromStandard(Standard standard)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Avicola.Office.Data.Interfaces;
 using Avicola.Office.Entities;
@@ -16,6 +17,7 @@ namespace Avicola.Office.Services
     public class BatchService : ServiceBase, IBatchService
     {
         public const string MortalityStandardName = "Mortandad";
+        public const string FoodEntryStandardName = "Ingreso de Alimento";
         public const string DiscardStandardName = "Descarte";
 
         private readonly IBarnService _barnService;
@@ -29,21 +31,23 @@ namespace Avicola.Office.Services
         public IList<BatchDto> GetAllActive()
         {
             return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted,
+                                    x => x.GeneticLine,
+                                    x => x.Stage,
                                     x => x.BatchBarns,
                                     x => x.BatchBarns.Select(bb => bb.Barn))
-                    .Project()
-                    .To<BatchDto>()
+                                    .Select(Mapper.Map<Batch, BatchDto>)
                     .ToList();
         }
 
         public BatchDto GetActiveById(Guid batchId)
         {
             return Uow.Batches.GetAll(x => !x.EndDate.HasValue && !x.IsDeleted && x.Id == batchId,
-                                     x => x.BatchBarns,
-                                     x => x.BatchBarns.Select(bb => bb.Barn))
-                     .Project()
-                     .To<BatchDto>()
-                     .FirstOrDefault();
+                x => x.GeneticLine,
+                x => x.Stage,
+                x => x.BatchBarns,
+                x => x.BatchBarns.Select(bb => bb.Barn))
+                .Select(Mapper.Map<Batch, BatchDto>)
+                .FirstOrDefault();
         }
 
         public IList<Batch> GetAllActiveComplete()
@@ -100,13 +104,45 @@ namespace Avicola.Office.Services
                         x.Date <= endStageDate,
                     x => x.StandardItem.StandardGeneticLine.Standard);
 
-            var batchBarn = Uow.BatchBarns.GetAll(x => x.BatchId == batchId && x.Barn.StageId == batch.StageId, x => x.Barn);
-
-            var initialBirds = batchBarn.Select(x => x.InitialBirds).DefaultIfEmpty(0).Sum();
+            var initialBirds = GetInitialBirds(batchId, batch.StageId);
 
             var deathBirds = measures.Select(x => x.Value).DefaultIfEmpty(0).Sum();
 
             return (int)Math.Floor(initialBirds - deathBirds);
+        }
+
+        public int GetInitialBirds(Guid batchId, Guid stageId)
+        {
+            var batchBarn = Uow.BatchBarns.GetAll(x => x.BatchId == batchId && x.Barn.StageId == stageId, x => x.Barn);
+
+            if (!batchBarn.Any())
+            {
+                throw new ApplicationException("El lote no tiene asignado ningun galpon para la etapa solicitada");
+            }
+
+            var initialBirds = batchBarn.Select(x => x.InitialBirds).DefaultIfEmpty(0).Sum();
+            return (int)Math.Floor((decimal)initialBirds);
+        }
+
+        public decimal GetCurrentStageFoodEntry(Guid batchId)
+        {
+            var batch = this.GetById(batchId);
+
+            var startStageDate = batch.CurrentStageStartDate;
+            var endStageDate = DateTime.Today;
+
+            var measures =
+                Uow.Measures.GetAll(
+                    x =>
+                        x.BatchId == batchId &&
+                        x.StandardItem.StandardGeneticLine.Standard.Name.Contains(FoodEntryStandardName) &&
+                        x.Date >= startStageDate &&
+                        x.Date <= endStageDate,
+                    x => x.StandardItem.StandardGeneticLine.Standard);
+
+            var foodEntry = measures.Select(x => x.Value).DefaultIfEmpty(0).Sum();
+
+            return foodEntry;
         }
 
         public void Create(Batch batch)
@@ -158,16 +194,6 @@ namespace Avicola.Office.Services
         {
             var batch = GetById(batchId);
 
-
-            //chequeamos que no tenga medidas de precria para fechas posteriores
-            //foreach (var measure in batch.Measures)
-            //{
-            //    if (measure.Date > arrivedToBarn && measure.StandardItem.StandardGeneticLine.StageId == Stage.BREEDING)
-            //    {
-            //        return "Existen medidas cargadas para estandares de cría y pre-cría posteriores a la fecha seleccionada";
-            //    }
-            //}
-
             //ahora chequeo que el galpon este disponible
             var availableBarns = _barnService.GetAllAvailable();
             if (availableBarns.All(b => b.Id != barnId))
@@ -175,24 +201,15 @@ namespace Avicola.Office.Services
                 return "El galpón seleccionado ya no se encuentra disponible";
             }
 
-            //var today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-            //if (arrivedToBarn <= today)
-            //{
-            //    batch.StageId = Stage.POSTURE;
-            //}
-            //batch.ArrivedToBarn = arrivedToBarn;
-            //batch.BarnId = barnId;
             Uow.Batches.Edit(batch);
             Uow.Commit();
             return null;
         }
 
-
         public IQueryable<Batch> GetAll()
         {
             return Uow.Batches.GetAll();
         }
-
 
         public void MoveNextStage(MoveNextStageDto nextStageDto)
         {
@@ -203,7 +220,21 @@ namespace Avicola.Office.Services
                 throw new ApplicationException("El lote ya se encuentra en la ultima etapa de postura");
             }
 
+            var currentStage = batch.StageId;
             var nextStage = Stage.NextStageId(batch.StageId);
+
+            var stageChange = new StageChange();
+
+            stageChange.BatchId = batch.Id;
+            stageChange.StageFromId = currentStage;
+            stageChange.StageToId = nextStage;
+            stageChange.CurrentFoodStock = nextStageDto.CurrentFoodStock;
+
+            stageChange.FoodEntryDuringPeriod = GetCurrentStageFoodEntry(batch.Id);
+            stageChange.StageFromInitialBirds = GetInitialBirds(batch.Id, currentStage);
+            stageChange.StageFromIFinalBirds = GetBirdsAmount(batch.Id);
+
+            Uow.StageChanges.Add(stageChange);
 
             batch.StageId = nextStage;
 
@@ -224,13 +255,45 @@ namespace Avicola.Office.Services
                                    {
                                        BatchId = batch.Id,
                                        BarnId = barn.BarnId,
-                                       FoodClassId = batch.FoodClassId,
-                                       InitialBirds = (int)barn.InitialBirds,
-                                       StartingFood = barn.StartingFood
+                                       InitialBirds = (int)barn.InitialBirds
                                    });
             }
 
             Uow.Commit();
+        }
+
+        public IList<BatchBarnDetailDto> GetBarnsDetails(Guid batchId)
+        {
+
+            var detailList = new List<BatchBarnDetailDto>();
+
+            var batch = Uow.Batches.Get(batchId);
+            
+            var barnsBatches = Uow.BatchBarns.GetAll(x => x.BatchId == batchId, x => x.Batch.Stage)
+                .OrderBy(x => x.CreatedDate)
+                .Project()
+                .To<BatchBarnDto>()
+                .ToList();
+
+            var barnsGrouped = barnsBatches.GroupBy(x => x.BarnStageName);
+
+            foreach (IGrouping<string, BatchBarnDto> barnsBatch in barnsGrouped)
+            {
+                if (!barnsBatch.Any())
+                {
+                    continue;
+                }
+
+                detailList.Add(new BatchBarnDetailDto()
+                               {
+                                   BatchBarns = barnsBatch.ToList(),
+                                   StageDetails =
+                                       string.Format("{0} ({1})", barnsBatch.Key,
+                                           batch.GetDateByState(barnsBatch.First().BarnStageId).ToShortDateString())
+                               });
+            }
+
+            return detailList;
         }
     }
 }

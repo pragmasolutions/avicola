@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ucLoadWeeklyMeasures = new Avicola.Production.Win.UserControls.UcLoadWeeklyMeasures();
+            this.ucLoadWeeklyMeasures = new Avicola.Production.Win.UserControls.UcLoadWeeklyMeasures(_stateController);
             this.lbCurrentStandard = new Telerik.WinControls.UI.RadLabel();
             this.btnShowStandardSelection = new Telerik.WinControls.UI.RadButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();

@@ -1,0 +1,6 @@
+﻿@model int?
+@{
+    var value = Model.HasValue ? Model.Value == 0 ? "IZQUIERDO" : "DERECHO" : String.Empty;
+}
+
+@Html.TextBox("", value, new { @class = "form-control", @readonly = true })

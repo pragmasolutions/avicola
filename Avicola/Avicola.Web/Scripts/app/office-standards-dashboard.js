@@ -174,7 +174,7 @@
             return result;
         },
         generateChart = function (batch, container) {
-            var categories = [],
+            var weeks = [],
                 series = [],
                 colors = [],
                 availableColors = [
@@ -192,19 +192,21 @@
                     data: [],
                     dashStyle: 'shortdot',
                     lineWidth: 1.5,
-                    showInLegend: false
+                    showInLegend: false,
+                    yAxis: standard.YAxis
                 }
-
+                
                 var measureSerie = {
                     name: '[*] ' + name,
                     data: [],
-                    lineWidth: 3
+                    lineWidth: 3,
+                    yAxis: standard.YAxis
                 }
 
                 for (var i = 0; i < standard.StandardItems.length; i++) {
                     var item = standard.StandardItems[i];
 
-                    categories.push(i + 1);
+                    weeks.push(i + 1);
                     firstSerie.data.push(item.Value1);
 
                     if (item.Measures.length > 0) {
@@ -236,7 +238,8 @@
                         data: [],
                         dashStyle: 'shortdot',
                         lineWidth: 1.5,
-                        showInLegend: false
+                        showInLegend: false,
+                        yAxis: standard.YAxis
                     }
                     for (i = 0; i < standard.StandardItems.length; i++) {
                         item = standard.StandardItems[i];
@@ -248,6 +251,25 @@
                 }
             }
 
+            var yAxis = [
+                {
+                    title: {
+                        text: 'Valor',
+                        style: {
+                            color: Highcharts.getOptions().colors[0]
+                        }
+                    }
+                },
+                {
+                    title: {
+                        text: 'Valor 2',
+                        style: {
+                            color: Highcharts.getOptions().colors[2]
+                        }
+                    },
+                    opposite: true
+                }
+            ];
 
             $(container).find('.content').highcharts({
                 colors: colors,
@@ -260,20 +282,9 @@
                     x: -20
                 },
                 xAxis: {
-                    categories: categories
+                    categories: weeks
                 },
-                yAxis: {
-                    title: {
-                        text: 'Valor'
-                    },
-                    plotLines: [
-                        {
-                            value: 0,
-                            width: 1,
-                            color: '#808080'
-                        }
-                    ]
-                },
+                yAxis: yAxis,
                 tooltip: {
                     formatter: function () {
                         var standard = this.series.name.split('(')[0].trim();

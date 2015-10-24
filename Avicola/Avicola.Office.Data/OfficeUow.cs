@@ -36,6 +36,9 @@ namespace Avicola.Office.Data
         public IRepository<Medicine> Medicines { get { return GetStandardRepo<Medicine>(); } }
         public IRepository<BatchBarn> BatchBarns { get { return GetStandardRepo<BatchBarn>(); } }
         public IRepository<Stage> Stages { get { return GetStandardRepo<Stage>(); } }
+        public IRepository<StageChange> StageChanges { get { return GetStandardRepo<StageChange>(); } }
+        public IRepository<SiloEmptying> SiloEmptyings { get { return GetStandardRepo<SiloEmptying>(); } }
+
 
         public string ConnectionString
         {
@@ -115,5 +118,7 @@ namespace Avicola.Office.Data
         }
 
         #endregion
+
+
     }
 }

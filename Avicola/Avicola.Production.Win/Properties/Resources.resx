@@ -169,4 +169,7 @@
   <data name="GreatherThan" xml:space="preserve">
     <value>El campo {0} debe ser mayor a {1}</value>
   </data>
+  <data name="MeasureNotEditable" xml:space="preserve">
+    <value>No puede editar la medida. La fecha de la medida es mayor a la fecha actual o la misma corresponde a otra etapa</value>
+  </data>
 </root>

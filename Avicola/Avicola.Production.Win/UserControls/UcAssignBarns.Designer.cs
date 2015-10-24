@@ -52,9 +52,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BarnsContainer.AutoScroll = true;
-            this.BarnsContainer.Location = new System.Drawing.Point(3, 62);
+            this.BarnsContainer.Location = new System.Drawing.Point(0, 65);
             this.BarnsContainer.Name = "BarnsContainer";
-            this.BarnsContainer.Size = new System.Drawing.Size(874, 179);
+            this.BarnsContainer.Size = new System.Drawing.Size(880, 179);
             this.BarnsContainer.TabIndex = 1;
             // 
             // radLabel1

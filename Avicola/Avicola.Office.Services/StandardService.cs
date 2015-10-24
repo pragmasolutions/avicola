@@ -20,7 +20,7 @@ namespace Avicola.Office.Services
         private readonly IBatchService _batchService;
         private readonly IClock _clock;
 
-        public StandardService(IOfficeUow uow,IBatchService batchService, IClock clock)
+        public StandardService(IOfficeUow uow, IBatchService batchService, IClock clock)
         {
             _batchService = batchService;
             _clock = clock;
@@ -90,6 +90,7 @@ namespace Avicola.Office.Services
 
             currentStandard.Name = standard.Name;
             currentStandard.DataLoadTypeId = standard.DataLoadTypeId;
+            currentStandard.YAxis = standard.YAxis;
 
             Uow.Standards.Edit(currentStandard);
             Uow.Commit();

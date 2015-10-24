@@ -25,27 +25,11 @@ namespace Avicola.Office.Services.Dtos
         public DateTime? EndDate { get; set; }
         public System.Guid? StageId { get; set; }
         public string StageName { get; set; }
-        public IList<BatchBarnDto> BatchBarns { get; set; }
-
-        public int Week
-        {
-            get
-            {
-                var daysDifference = (DateTime.Today.Date - DateOfBirth.Date).TotalDays + 1;
-                return Convert.ToInt32(Math.Ceiling(daysDifference / 7d));
-            }
-        }
-
-        public string Barns
-        {
-            get
-            {
-                if (!this.BatchBarns.Any())
-                    return string.Empty;
-
-                var currentStageBarns = this.BatchBarns.Where(bb => bb.Barn.StageId == this.StageId).Select(bb => bb.Barn.Name).ToArray();
-                return String.Join(", ", currentStageBarns);
-            }
-        }
+        public int Week { get; set; }
+        public string Barns { get; set; }
+        public DateTime CurrentStageStartDate { get; set; }
+        public int CurrentStageStartWeek { get; set; }
+        public DateTime CurrentBatchStartDate { get; set; }
+        
     }
 }

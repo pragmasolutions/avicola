@@ -41,6 +41,11 @@
             this.BtnGuardar = new Telerik.WinControls.UI.RadButton();
             this.BtnCancelar = new Telerik.WinControls.UI.RadButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtCurrentStockFood = new Telerik.WinControls.UI.RadSpinEditor();
+            this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
+            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
+            this.txtFoodEntry = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentStage)).BeginInit();
@@ -52,6 +57,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.BtnGuardar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnCancelar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentStockFood)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
+            this.radGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFoodEntry)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,11 +70,16 @@
             // 
             this.ucAssignBarns.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAssignBarns.CurrentBatchBirds = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.ucAssignBarns.FormFactory = null;
-            this.ucAssignBarns.Location = new System.Drawing.Point(12, 70);
+            this.ucAssignBarns.Location = new System.Drawing.Point(12, 210);
             this.ucAssignBarns.MessageBoxDisplayService = null;
             this.ucAssignBarns.Name = "ucAssignBarns";
-            this.ucAssignBarns.Size = new System.Drawing.Size(832, 395);
+            this.ucAssignBarns.Size = new System.Drawing.Size(732, 255);
             this.ucAssignBarns.StageId = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucAssignBarns.TabIndex = 0;
             // 
@@ -171,7 +187,7 @@
             // 
             this.BtnGuardar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardar.Location = new System.Drawing.Point(648, 498);
+            this.BtnGuardar.Location = new System.Drawing.Point(548, 486);
             this.BtnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(96, 24);
@@ -184,7 +200,7 @@
             // 
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(748, 498);
+            this.BtnCancelar.Location = new System.Drawing.Point(648, 486);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(96, 24);
@@ -202,11 +218,71 @@
             this.pictureBox1.TabIndex = 95;
             this.pictureBox1.TabStop = false;
             // 
+            // txtCurrentStockFood
+            // 
+            this.txtCurrentStockFood.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentStockFood.Location = new System.Drawing.Point(235, 54);
+            this.txtCurrentStockFood.Name = "txtCurrentStockFood";
+            this.txtCurrentStockFood.Size = new System.Drawing.Size(100, 28);
+            this.txtCurrentStockFood.TabIndex = 96;
+            this.txtCurrentStockFood.TabStop = false;
+            // 
+            // radGroupBox1
+            // 
+            this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox1.Controls.Add(this.radLabel5);
+            this.radGroupBox1.Controls.Add(this.txtFoodEntry);
+            this.radGroupBox1.Controls.Add(this.txtCurrentStockFood);
+            this.radGroupBox1.Controls.Add(this.radLabel4);
+            this.radGroupBox1.HeaderText = "Consumo";
+            this.radGroupBox1.Location = new System.Drawing.Point(12, 89);
+            this.radGroupBox1.Name = "radGroupBox1";
+            this.radGroupBox1.Size = new System.Drawing.Size(732, 100);
+            this.radGroupBox1.TabIndex = 97;
+            this.radGroupBox1.Text = "Consumo";
+            // 
+            // radLabel5
+            // 
+            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel5.Location = new System.Drawing.Point(233, 29);
+            this.radLabel5.Margin = new System.Windows.Forms.Padding(2);
+            this.radLabel5.Name = "radLabel5";
+            this.radLabel5.Size = new System.Drawing.Size(123, 24);
+            this.radLabel5.TabIndex = 95;
+            this.radLabel5.Text = "Stock Actual (Kg)";
+            this.radLabel5.ThemeName = "TelerikMetroBlue";
+            // 
+            // txtFoodEntry
+            // 
+            this.txtFoodEntry.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFoodEntry.Enabled = false;
+            this.txtFoodEntry.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFoodEntry.Location = new System.Drawing.Point(15, 54);
+            this.txtFoodEntry.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFoodEntry.MaxLength = 50;
+            this.txtFoodEntry.Name = "txtFoodEntry";
+            this.txtFoodEntry.Size = new System.Drawing.Size(145, 28);
+            this.txtFoodEntry.TabIndex = 93;
+            this.txtFoodEntry.TabStop = false;
+            this.txtFoodEntry.ThemeName = "TelerikMetroBlue";
+            // 
+            // radLabel4
+            // 
+            this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel4.Location = new System.Drawing.Point(13, 29);
+            this.radLabel4.Margin = new System.Windows.Forms.Padding(2);
+            this.radLabel4.Name = "radLabel4";
+            this.radLabel4.Size = new System.Drawing.Size(216, 24);
+            this.radLabel4.TabIndex = 94;
+            this.radLabel4.Text = "Ingreso Total de Alimento (Kg)";
+            this.radLabel4.ThemeName = "TelerikMetroBlue";
+            // 
             // FrmMoveNextStage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 533);
+            this.ClientSize = new System.Drawing.Size(778, 533);
+            this.Controls.Add(this.radGroupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.BtnCancelar);
@@ -240,6 +316,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.BtnGuardar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnCancelar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentStockFood)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
+            this.radGroupBox1.ResumeLayout(false);
+            this.radGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFoodEntry)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -260,5 +343,10 @@
         private Telerik.WinControls.UI.RadButton BtnGuardar;
         private Telerik.WinControls.UI.RadButton BtnCancelar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Telerik.WinControls.UI.RadSpinEditor txtCurrentStockFood;
+        private Telerik.WinControls.UI.RadGroupBox radGroupBox1;
+        private Telerik.WinControls.UI.RadLabel radLabel5;
+        private Telerik.WinControls.UI.RadTextBox txtFoodEntry;
+        private Telerik.WinControls.UI.RadLabel radLabel4;
     }
 }

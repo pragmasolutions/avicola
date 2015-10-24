@@ -23,6 +23,8 @@ namespace Avicola.Office.Entities
             this.BatchObservations = new HashSet<BatchObservation>();
             this.BatchVaccines = new HashSet<BatchVaccine>();
             this.Measures = new HashSet<Measure>();
+            this.StageChanges = new HashSet<StageChange>();
+            this.SiloEmptyings = new HashSet<SiloEmptying>();
         }
     
         public System.Guid Id { get; set; }
@@ -53,5 +55,9 @@ namespace Avicola.Office.Entities
         public virtual ICollection<BatchVaccine> BatchVaccines { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Measure> Measures { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StageChange> StageChanges { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SiloEmptying> SiloEmptyings { get; set; }
     }
 }

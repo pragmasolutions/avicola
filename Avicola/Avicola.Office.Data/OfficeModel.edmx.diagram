@@ -30,7 +30,6 @@
         <EntityTypeShape EntityType="Avicola.OfficeModel.BatchBarn" Width="1.5" PointX="12.75" PointY="11.25" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Barn_Stage" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchBarn_Barn" />
-        <AssociationConnector Association="Avicola.OfficeModel.FK_BatchBarn_FoodClass" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.Batch" Width="1.5" PointX="7.5" PointY="7.125" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_FoodClass" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_Batch_GeneticLine" />
@@ -42,6 +41,12 @@
         <AssociationConnector Association="Avicola.OfficeModel.FK_Measure_Batch" />
         <EntityTypeShape EntityType="Avicola.OfficeModel.Medicine" Width="1.5" PointX="12.375" PointY="0.875" />
         <AssociationConnector Association="Avicola.OfficeModel.FK_BatchMedicine_Medicine" />
+        <EntityTypeShape EntityType="Avicola.OfficeModel.StageChange" Width="1.5" PointX="9.75" PointY="15" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_StageChange_Batch" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_StageChange_StageFrom" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_StageChange_StageTo" />
+        <EntityTypeShape EntityType="Avicola.OfficeModel.SiloEmptying" Width="1.5" PointX="9.75" PointY="19.875" />
+        <AssociationConnector Association="Avicola.OfficeModel.FK_SiloEmptying_Batch" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

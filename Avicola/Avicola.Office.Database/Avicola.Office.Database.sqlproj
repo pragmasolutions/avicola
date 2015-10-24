@@ -87,6 +87,8 @@
     <Build Include="dbo\Tables\BatchMedicine.sql" />
     <Build Include="dbo\Stored Procedures\Report_BatchMedicine.sql" />
     <Build Include="dbo\Tables\BatchBarn.sql" />
+    <Build Include="dbo\Tables\StageChange.sql" />
+    <Build Include="dbo\Tables\SiloEmptying.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Avicola.Office.Database.refactorlog" />
