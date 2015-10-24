@@ -107,6 +107,7 @@
             this.dtpDate.TabStop = false;
             this.dtpDate.Text = "14/09/2015";
             this.dtpDate.Value = new System.DateTime(2015, 9, 14, 10, 20, 19, 820);
+            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // txtCurrentStage
             // 

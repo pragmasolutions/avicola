@@ -95,6 +95,10 @@
           <DataField>Stock</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="ConsumoRealPorAve">
+          <DataField>ConsumoRealPorAve</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="Mes">
           <DataField>Mes</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -3394,7 +3398,18 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Consumo mensual</Value>
+                                      <Value>Consumo mensual </Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>(kg  por ave por dia)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -3406,7 +3421,7 @@
                               <rd:DefaultName>Textbox74</rd:DefaultName>
                               <Top>69.88278mm</Top>
                               <Left>86.89076mm</Left>
-                              <Height>5mm</Height>
+                              <Height>10mm</Height>
                               <Width>30.27812mm</Width>
                               <ZIndex>33</ZIndex>
                               <Style>
@@ -3447,9 +3462,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Last(Fields!ConsumoAlimentoAcumulado.Value)</Value>
+                                      <Value>=SUM(Fields!ConsumoRealPorAve.Value) / Count(Fields!ConsumoRealPorAve.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>n2</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3457,7 +3473,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>69.88278mm</Top>
+                              <Top>70.23556mm</Top>
                               <Left>118.93277mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3510,7 +3526,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>74.88278mm</Top>
+                              <Top>79.88278mm</Top>
                               <Left>86.89076mm</Left>
                               <Height>5mm</Height>
                               <Width>30.27812mm</Width>
@@ -3563,7 +3579,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>74.88278mm</Top>
+                              <Top>79.88278mm</Top>
                               <Left>118.93277mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3904,6 +3920,7 @@
                             </Border>
                           </Style>
                         </Rectangle>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -5310,6 +5327,8 @@
     </ReportParameter>
     <ReportParameter Name="StageId">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>Stage Id</Prompt>
     </ReportParameter>
   </ReportParameters>

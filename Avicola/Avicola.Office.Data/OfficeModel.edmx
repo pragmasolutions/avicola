@@ -1033,6 +1033,7 @@
           <Property Type="String" Name="Clase" Nullable="true" MaxLength="200" />
           <Property Type="Int32" Name="AvesAlInicio" Nullable="true" />
           <Property Type="Decimal" Name="AlimentoAlInicio" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ConsumoRealPorAve" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <EntityType Name="Vaccine">
           <Key>
@@ -1529,6 +1530,7 @@
                 <ScalarProperty Name="Clase" ColumnName="Clase" />
                 <ScalarProperty Name="AvesAlInicio" ColumnName="AvesAlInicio" />
                 <ScalarProperty Name="AlimentoAlInicio" ColumnName="AlimentoAlInicio" />
+                <ScalarProperty Name="ConsumoRealPorAve" ColumnName="ConsumoRealPorAve" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

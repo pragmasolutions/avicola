@@ -85,7 +85,7 @@ namespace Avicola.Web.Controllers
                                   {"BatchId", model.BatchId.ToString()},
                                   {"DateFrom", null},
                                   {"DateTo", null},
-                                  {"StageId", model.StageId.ToString()}
+                                  {"StageId", null}
                               };
 
                 reportFactory.SetPathCompleto(Server.MapPath("~/Reports/MeasuresFollowUp.rdl"))

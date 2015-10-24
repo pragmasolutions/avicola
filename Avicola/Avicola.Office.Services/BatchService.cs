@@ -87,12 +87,12 @@ namespace Avicola.Office.Services
             }
         }
 
-        public int GetBirdsAmount(Guid batchId)
+        public int GetBirdsAmount(Guid batchId, DateTime date)
         {
             var batch = this.GetById(batchId);
 
             var startStageDate = batch.CurrentStageStartDate;
-            var endStageDate = DateTime.Today;
+            var endStageDate = date;
 
             var measures =
                 Uow.Measures.GetAll(
@@ -124,12 +124,12 @@ namespace Avicola.Office.Services
             return (int)Math.Floor((decimal)initialBirds);
         }
 
-        public decimal GetCurrentStageFoodEntry(Guid batchId)
+        public decimal GetCurrentStageFoodEntry(Guid batchId, DateTime date)
         {
             var batch = this.GetById(batchId);
 
             var startStageDate = batch.CurrentStageStartDate;
-            var endStageDate = DateTime.Today;
+            var endStageDate = date;
 
             var measures =
                 Uow.Measures.GetAll(
@@ -230,9 +230,9 @@ namespace Avicola.Office.Services
             stageChange.StageToId = nextStage;
             stageChange.CurrentFoodStock = nextStageDto.CurrentFoodStock;
 
-            stageChange.FoodEntryDuringPeriod = GetCurrentStageFoodEntry(batch.Id);
+            stageChange.FoodEntryDuringPeriod = GetCurrentStageFoodEntry(batch.Id, nextStageDto.NextStageStartDate);
             stageChange.StageFromInitialBirds = GetInitialBirds(batch.Id, currentStage);
-            stageChange.StageFromIFinalBirds = GetBirdsAmount(batch.Id);
+            stageChange.StageFromIFinalBirds = GetBirdsAmount(batch.Id, nextStageDto.NextStageStartDate);
 
             Uow.StageChanges.Add(stageChange);
 
@@ -268,7 +268,7 @@ namespace Avicola.Office.Services
             var detailList = new List<BatchBarnDetailDto>();
 
             var batch = Uow.Batches.Get(batchId);
-            
+
             var barnsBatches = Uow.BatchBarns.GetAll(x => x.BatchId == batchId, x => x.Batch.Stage)
                 .OrderBy(x => x.CreatedDate)
                 .Project()

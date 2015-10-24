@@ -55,21 +55,27 @@ namespace Avicola.Production.Win.Forms.Batchs
             txtCurrentStage.Text = _stateController.CurrentSelectedBatch.StageName;
             txtNextStage.Text = Stage.NextStage(_stateController.CurrentSelectedBatch.StageId.GetValueOrDefault());
 
+            UpdateBirdsAndFoodEntry();
+
+            ucAssignBarns.FormFactory = this.FormFactory;
+            ucAssignBarns.MessageBoxDisplayService = this.MessageBoxDisplayService;
+            ucAssignBarns.StageId = Stage.NextStageId(_stateController.CurrentSelectedBatch.StageId.GetValueOrDefault());
+        }
+
+        private void UpdateBirdsAndFoodEntry()
+        {
             using (var service = _serviceFactory.Create<IBatchService>())
             {
-                _currentBirdsAmount = service.GetBirdsAmount(_stateController.CurrentSelectedBatch.Id);
-                _currentFoodEntry = service.GetCurrentStageFoodEntry(_stateController.CurrentSelectedBatch.Id);
+                _currentBirdsAmount = service.GetBirdsAmount(_stateController.CurrentSelectedBatch.Id, dtpDate.Value);
+                _currentFoodEntry = service.GetCurrentStageFoodEntry(_stateController.CurrentSelectedBatch.Id, dtpDate.Value);
 
                 txtBatchBirdsAmount.Text = _currentBirdsAmount.ToString("n0");
                 txtFoodEntry.Text = _currentFoodEntry.ToString("n0");
 
                 txtCurrentStockFood.Maximum = _currentFoodEntry;
-            }
 
-            ucAssignBarns.FormFactory = this.FormFactory;
-            ucAssignBarns.MessageBoxDisplayService = this.MessageBoxDisplayService;
-            ucAssignBarns.StageId = Stage.NextStageId(_stateController.CurrentSelectedBatch.StageId.GetValueOrDefault());
-            ucAssignBarns.CurrentBatchBirds = _currentBirdsAmount;
+                ucAssignBarns.CurrentBatchBirds = _currentBirdsAmount;
+            }
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -127,6 +133,11 @@ namespace Avicola.Production.Win.Forms.Batchs
             }
 
             return true;
+        }
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateBirdsAndFoodEntry();
         }
     }
 }
