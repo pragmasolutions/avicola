@@ -60,7 +60,6 @@ namespace Avicola.Production.Win.Forms.Standards
             {
                 TransitionManager.LoadEnterWeeklyStandardView();
             }
-            
         }
 
         private void ucStandardSelecction_SilosEmptyingSelected(object sender, EventArgs e)

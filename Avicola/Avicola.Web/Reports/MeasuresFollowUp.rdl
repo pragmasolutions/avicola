@@ -260,7 +260,7 @@
             </Paragraphs>
             <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
             <rd:DefaultName>ReportTitle</rd:DefaultName>
-            <Top>2mm</Top>
+            <Top>0mm</Top>
             <Left>1.35042cm</Left>
             <Height>10.16mm</Height>
             <Width>139.7mm</Width>
@@ -283,7 +283,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>96.53412mm</Height>
+                  <Height>97.5078mm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3927,9 +3927,9 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>16.21367mm</Top>
+            <Top>12.48833mm</Top>
             <Left>0mm</Left>
-            <Height>96.53412mm</Height>
+            <Height>97.5078mm</Height>
             <Width>168.3689mm</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -3942,7 +3942,7 @@
             <Source>Embedded</Source>
             <Value>logo</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>2mm</Top>
+            <Top>0mm</Top>
             <Left>1.397mm</Left>
             <Height>10.72444mm</Height>
             <Width>10.34333mm</Width>
@@ -4376,7 +4376,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>VACUNAS POR LOTE</Value>
+                    <Value>VACUNACIONES</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -4415,7 +4415,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>OBSERVACIONES POR LOTE</Value>
+                    <Value>OBSERVACIONES</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -4427,7 +4427,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox84</rd:DefaultName>
-            <Top>142.28882mm</Top>
+            <Top>137.19881mm</Top>
             <Left>4.27188mm</Left>
             <Height>5.35278mm</Height>
             <Width>156.88512mm</Width>
@@ -4699,7 +4699,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>BatchObservation</DataSetName>
-            <Top>149.40549mm</Top>
+            <Top>144.31548mm</Top>
             <Left>3.937mm</Left>
             <Height>10.4125mm</Height>
             <Width>156.88512mm</Width>
@@ -4720,7 +4720,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>MEDICAMENTOS POR LOTE</Value>
+                    <Value>MEDICAMENTOS</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -4732,7 +4732,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox84</rd:DefaultName>
-            <Top>165.043mm</Top>
+            <Top>156.77799mm</Top>
             <Left>3.937mm</Left>
             <Height>5.35278mm</Height>
             <Width>156.88512mm</Width>
@@ -5215,7 +5215,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>BatchMedicine</DataSetName>
-            <Top>171.80689mm</Top>
+            <Top>163.54188mm</Top>
             <Left>4.27188mm</Left>
             <Height>12mm</Height>
             <Width>156.55024mm</Width>
@@ -5230,7 +5230,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>196.26794mm</Height>
+        <Height>176.15957mm</Height>
         <Style>
           <Border>
             <Style>None</Style>
