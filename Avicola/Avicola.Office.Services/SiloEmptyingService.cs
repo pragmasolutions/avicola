@@ -55,5 +55,14 @@ namespace Avicola.Office.Services
             Uow.SiloEmptyings.Delete(emptyingId);
             Uow.Commit();
         }
+
+
+        public bool VerifyDate(Guid batchId, DateTime date, Guid siloEmptyingId)
+        {
+            var existing = Uow.SiloEmptyings.GetAll().FirstOrDefault(s => s.BatchId == batchId
+                                                                          && s.Date == date
+                                                                          && s.Id != siloEmptyingId);
+            return existing == null;
+        }
     }
 }

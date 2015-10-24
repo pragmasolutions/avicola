@@ -17,5 +17,7 @@ namespace Avicola.Office.Services.Interfaces
         void Edit(SiloEmptying _siloEmptying);
 
         void Delete(Guid emptyingId);
+
+        bool VerifyDate(Guid batchId, DateTime date, Guid siloEmptyingId);
     }
 }

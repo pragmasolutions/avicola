@@ -70,28 +70,31 @@ namespace Avicola.Production.Win.Forms.SiloEmptyings
             }
             else
             {
-                if (_emptyingId == Guid.Empty)
+                using (var service = _serviceFactory.Create<ISiloEmptyingService>())
                 {
-                    var siloEmptying = GetSiloEmptyingCreate();
-                    using (var service = _serviceFactory.Create<ISiloEmptyingService>())
+                    var validDate = service.VerifyDate(_batch.Id, dtpDate.Value, _emptyingId);
+                    if (!validDate)
                     {
-                        service.Create(siloEmptying);
+                        this.FormErrorProvider.SetError(dtpDate, "Ya existe un vaciamiento de silo registrado para la fecha ingresada");
                     }
-
-                    OnSiloEmptyingCreated(siloEmptying);
-                }
-                else
-                {
-                    GetSiloEmptyingEdit();
-                    using (var service = _serviceFactory.Create<ISiloEmptyingService>())
+                    else
                     {
-                        service.Edit(_siloEmptying);
+                        if (_emptyingId == Guid.Empty)
+                        {
+                            var siloEmptying = GetSiloEmptyingCreate();
+                            service.Create(siloEmptying);
+
+                            OnSiloEmptyingCreated(siloEmptying);
+                        }
+                        else
+                        {
+                            GetSiloEmptyingEdit();
+                            service.Edit(_siloEmptying);
+                            OnSiloEmptyingCreated(_siloEmptying);
+                        }
+                        this.Close();
                     }
-
-                    OnSiloEmptyingCreated(_siloEmptying);
                 }
-
-                this.Close();
             }
         }
 
