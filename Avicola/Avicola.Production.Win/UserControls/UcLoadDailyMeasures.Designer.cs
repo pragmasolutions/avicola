@@ -120,8 +120,10 @@ namespace Avicola.Production.Win.UserControls
             this.gvDailyMeasures.Name = "gvDailyMeasures";
             this.gvDailyMeasures.Size = new System.Drawing.Size(580, 215);
             this.gvDailyMeasures.TabIndex = 5;
+            this.gvDailyMeasures.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.gvDailyMeasures_RowFormatting);
             this.gvDailyMeasures.CellBeginEdit += new Telerik.WinControls.UI.GridViewCellCancelEventHandler(this.gvDailyMeasures_CellBeginEdit);
             this.gvDailyMeasures.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gvDailyMeasures_CellValueChanged);
+            this.gvDailyMeasures.ToolTipTextNeeded += new Telerik.WinControls.ToolTipTextNeededEventHandler(this.gvDailyMeasures_ToolTipTextNeeded);
             // 
             // lbAggregate
             // 
@@ -181,7 +183,7 @@ namespace Avicola.Production.Win.UserControls
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.33238F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.66762F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanel2.Controls.Add(this.lbAggregate, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSave, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtTotal, 1, 0);

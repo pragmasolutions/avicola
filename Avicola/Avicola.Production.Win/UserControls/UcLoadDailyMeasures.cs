@@ -13,6 +13,7 @@ using Avicola.Office.Services.Interfaces;
 using Avicola.Production.Win.Infrastructure;
 using Avicola.Production.Win.Models.Measures;
 using Avicola.Production.Win.Properties;
+using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.UserControls
@@ -23,7 +24,7 @@ namespace Avicola.Production.Win.UserControls
         private IList<LoadDailyStandardMeasures> _loadDailyStandardMeasures;
         private LoadDailyStandardMeasures _currentDailyStandardMeasure;
 
-        
+
 
         public UcLoadDailyMeasures(IServiceFactory serviceFactory, IStateController stateController)
         {
@@ -59,7 +60,7 @@ namespace Avicola.Production.Win.UserControls
                 ucWeekSelection.Current = firstWeek.Week;
 
                 UpdateCurrentDailyStandardMeasure(firstWeek);
-                
+
                 UpdateTotal();
             }
         }
@@ -142,7 +143,7 @@ namespace Avicola.Production.Win.UserControls
 
             if (measure != null)
             {
-                var editMeasure = measure.Date.Date <= DateTime.Today && (e.Column.Name == "Value" || e.Column.Name == "FoodClassId") && measure.Date >= _stateController.CurrentSelectedBatch.CurrentBatchStartDate;
+                var editMeasure = CanEditMeasure(measure) && (e.Column.Name == "Value" || e.Column.Name == "FoodClassId");
 
                 if (!editMeasure)
                 {
@@ -165,6 +166,42 @@ namespace Avicola.Production.Win.UserControls
             dropdown.DataSource = FoodClasses;
             dropdown.ValueMember = "Id";
             dropdown.DisplayMember = "Name";
+        }
+
+        private void gvDailyMeasures_RowFormatting(object sender, RowFormattingEventArgs e)
+        {
+            var measure = e.RowElement.Data.DataBoundItem as DailyStandardMeasure;
+
+            if (measure != null)
+            {
+                if (!CanEditMeasure(measure))
+                {
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.GradientStyle = GradientStyles.Solid;
+                    e.RowElement.BackColor = Color.LightGray;
+                }
+            }
+        }
+
+        private bool CanEditMeasure(DailyStandardMeasure measure)
+        {
+            return measure.Date.Date <= DateTime.Today && measure.Date.Date >= _stateController.CurrentSelectedBatch.CurrentBatchStartDate;
+        }
+
+        private void gvDailyMeasures_ToolTipTextNeeded(object sender, ToolTipTextNeededEventArgs e)
+        {
+            GridDataCellElement cell = sender as GridDataCellElement;
+
+            if (cell != null)
+            {
+                var measure = cell.RowElement.Data.DataBoundItem as DailyStandardMeasure;
+
+                if (!CanEditMeasure(measure))
+                {
+                    e.ToolTipText =
+                        Resources.MeasureNotEditable;
+                }
+            }
         }
     }
 }
