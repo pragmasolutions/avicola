@@ -57,7 +57,7 @@
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(11, 11);
+            this.radLabel2.Location = new System.Drawing.Point(13, 11);
             this.radLabel2.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(47, 24);
@@ -69,10 +69,10 @@
             // 
             this.dtpObservationDate.CustomFormat = "";
             this.dtpObservationDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpObservationDate.Location = new System.Drawing.Point(11, 40);
+            this.dtpObservationDate.Location = new System.Drawing.Point(13, 36);
             this.dtpObservationDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpObservationDate.Name = "dtpObservationDate";
-            this.dtpObservationDate.Size = new System.Drawing.Size(145, 20);
+            this.dtpObservationDate.Size = new System.Drawing.Size(145, 24);
             this.dtpObservationDate.TabIndex = 87;
             this.dtpObservationDate.TabStop = false;
             this.dtpObservationDate.Text = "14/09/2015";
@@ -83,11 +83,11 @@
             // 
             this.txtWeek.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtWeek.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWeek.Location = new System.Drawing.Point(11, 89);
+            this.txtWeek.Location = new System.Drawing.Point(13, 86);
             this.txtWeek.Margin = new System.Windows.Forms.Padding(2);
             this.txtWeek.MaxLength = 50;
             this.txtWeek.Name = "txtWeek";
-            this.txtWeek.Size = new System.Drawing.Size(145, 25);
+            this.txtWeek.Size = new System.Drawing.Size(145, 28);
             this.txtWeek.TabIndex = 81;
             this.txtWeek.TabStop = false;
             this.txtWeek.ThemeName = "TelerikMetroBlue";
@@ -95,7 +95,7 @@
             // metroLabel1
             // 
             this.metroLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroLabel1.Location = new System.Drawing.Point(11, 64);
+            this.metroLabel1.Location = new System.Drawing.Point(13, 61);
             this.metroLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(62, 24);
@@ -137,11 +137,11 @@
             // 
             this.txtDay.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDay.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDay.Location = new System.Drawing.Point(11, 143);
+            this.txtDay.Location = new System.Drawing.Point(13, 140);
             this.txtDay.Margin = new System.Windows.Forms.Padding(2);
             this.txtDay.MaxLength = 50;
             this.txtDay.Name = "txtDay";
-            this.txtDay.Size = new System.Drawing.Size(145, 25);
+            this.txtDay.Size = new System.Drawing.Size(145, 28);
             this.txtDay.TabIndex = 85;
             this.txtDay.TabStop = false;
             this.txtDay.ThemeName = "TelerikMetroBlue";
@@ -149,7 +149,7 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(13, 118);
+            this.radLabel1.Location = new System.Drawing.Point(13, 115);
             this.radLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(30, 24);
@@ -160,7 +160,7 @@
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(13, 172);
+            this.radLabel3.Location = new System.Drawing.Point(13, 169);
             this.radLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(92, 24);
@@ -172,7 +172,7 @@
             // 
             this.txtObservation.AutoSize = false;
             this.txtObservation.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservation.Location = new System.Drawing.Point(13, 200);
+            this.txtObservation.Location = new System.Drawing.Point(13, 194);
             this.txtObservation.Margin = new System.Windows.Forms.Padding(2);
             this.txtObservation.MaxLength = 50;
             this.txtObservation.Multiline = true;

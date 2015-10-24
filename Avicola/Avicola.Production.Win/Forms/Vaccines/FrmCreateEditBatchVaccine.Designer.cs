@@ -69,7 +69,7 @@
             // 
             this.dtpStartDate.CustomFormat = "";
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.Location = new System.Drawing.Point(11, 40);
+            this.dtpStartDate.Location = new System.Drawing.Point(11, 37);
             this.dtpStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(145, 24);
@@ -81,7 +81,7 @@
             // metroLabel1
             // 
             this.metroLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroLabel1.Location = new System.Drawing.Point(11, 64);
+            this.metroLabel1.Location = new System.Drawing.Point(11, 63);
             this.metroLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(28, 24);
@@ -122,7 +122,7 @@
             // lblRecommendedDate
             // 
             this.lblRecommendedDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecommendedDate.Location = new System.Drawing.Point(11, 168);
+            this.lblRecommendedDate.Location = new System.Drawing.Point(11, 167);
             this.lblRecommendedDate.Margin = new System.Windows.Forms.Padding(2);
             this.lblRecommendedDate.Name = "lblRecommendedDate";
             this.lblRecommendedDate.Size = new System.Drawing.Size(149, 24);
@@ -133,7 +133,7 @@
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(11, 116);
+            this.radLabel3.Location = new System.Drawing.Point(11, 115);
             this.radLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(57, 24);
@@ -145,7 +145,7 @@
             // 
             this.dtpEndDate.CustomFormat = "";
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.Location = new System.Drawing.Point(11, 92);
+            this.dtpEndDate.Location = new System.Drawing.Point(11, 89);
             this.dtpEndDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(145, 24);
@@ -156,7 +156,7 @@
             // 
             // txtRecommendedDate
             // 
-            this.txtRecommendedDate.Location = new System.Drawing.Point(11, 197);
+            this.txtRecommendedDate.Location = new System.Drawing.Point(11, 193);
             this.txtRecommendedDate.MaxLength = 10;
             this.txtRecommendedDate.Name = "txtRecommendedDate";
             this.txtRecommendedDate.Size = new System.Drawing.Size(143, 24);
@@ -164,7 +164,7 @@
             // 
             // ddlVaccines
             // 
-            this.ddlVaccines.Location = new System.Drawing.Point(9, 144);
+            this.ddlVaccines.Location = new System.Drawing.Point(11, 141);
             this.ddlVaccines.Margin = new System.Windows.Forms.Padding(2);
             this.ddlVaccines.Name = "ddlVaccines";
             this.ddlVaccines.Size = new System.Drawing.Size(261, 24);
