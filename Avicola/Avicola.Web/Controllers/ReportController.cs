@@ -64,6 +64,10 @@ namespace Avicola.Web.Controllers
         {
             var activeBatches = _batchService.GetAllActiveComplete().OrderBy(b => b.Number).ToList();
             ViewBag.BatchesSelectList = new SelectList(activeBatches, "Id", "Name");
+
+            model.To = DateTime.Today;
+            model.From = model.To.Value.AddMonths(-1);
+
             return View(model);
         }
 
@@ -71,7 +75,8 @@ namespace Avicola.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                model.To = model.To ?? DateTime.Today;
+                
                 var dataset = _reportService.BreedingMeasuresFollowUp(model.BatchId, model.From.AbsoluteStart(),
                     model.To.AbsoluteEnd());
 

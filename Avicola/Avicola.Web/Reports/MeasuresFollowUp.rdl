@@ -1596,14 +1596,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="ConsumoRealPorAve">
+                                          <Textbox Name="ConsumoPorAve">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!ConsumoRealPorAve.Value * 1000</Value>
+                                                    <Value>=Fields!ConsumoPorAve.Value</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
                                                     </Style>
@@ -1614,7 +1614,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>ConsumoRealPorAve</rd:DefaultName>
+                                            <rd:DefaultName>ConsumoPorAve</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -3460,7 +3460,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=SUM(Fields!ConsumoRealPorAve.Value) / Count(Fields!ConsumoRealPorAve.Value)</Value>
+                                      <Value>=(SUM(Fields!ConsumoRealPorAve.Value) / Count(Fields!ConsumoRealPorAve.Value)) * 1000</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                         <Format>n2</Format>
@@ -3977,13 +3977,13 @@
                   <Width>20.129mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>15.0367mm</Width>
+                  <Width>20.01656mm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>16.93353mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>91.11602mm</Width>
+                  <Width>86.47104mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -4372,7 +4372,7 @@
             <Top>125.11617mm</Top>
             <Left>4.27188mm</Left>
             <Height>10.31875mm</Height>
-            <Width>156.55024mm</Width>
+            <Width>156.88512mm</Width>
             <ZIndex>3</ZIndex>
             <Visibility>
               <Hidden>=IIF(CountRows("BatchVaccine") &gt; 0, False, True)</Hidden>
@@ -4773,19 +4773,19 @@
                   <Width>13.33499mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>19.42612mm</Width>
+                  <Width>20.53165mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>15.73958mm</Width>
+                  <Width>19.61391mm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>16.93353mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>36.92612mm</Width>
+                  <Width>31.97744mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>54.1899mm</Width>
+                  <Width>54.15872mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -5313,13 +5313,15 @@
       <Prompt>Batch Id</Prompt>
     </ReportParameter>
     <ReportParameter Name="DateFrom">
-      <DataType>DateTime</DataType>
+      <DataType>String</DataType>
       <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>Date From</Prompt>
     </ReportParameter>
     <ReportParameter Name="DateTo">
-      <DataType>DateTime</DataType>
+      <DataType>String</DataType>
       <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>Date To</Prompt>
     </ReportParameter>
   </ReportParameters>
@@ -5421,6 +5423,6 @@ kqppB4CYtYT32dBavs/k9twrzwTofMFI6taGZrkj375kDiGWgm5+38P/B/Lb+P+NANKhhx7ayyRIYhd2
 xoRG/L7bbrtNGO/DBHVabmObAxUgchv+FFksU6ZMMc1K9gtl2Pg9slXcPfjeryPfNo4hQEgqGuvX8cy6+e2PP+nHyW/jn/TziYwIiqUyd4qBb8CENgBkjmBgpyE21H7u2J1HXiVDAoz3jRw50lZIIfOf+XNoFUxZUpdoY04Zk2AZw2LMjmu467tr+5q8G/62+02Ia5O2RlAIwG/4nH/SLyO/jX/Sr0MwKzl+aCvyAn01nS/jw+gOEL5M/3PIXc+ZeBDX2vB6vp8T5DjllFOsBATLG0MbPsOf9OuQ38Y/6bch8gQZs4PQFsy03nzzzS1q55jfAQat46t5NiR/IHLkC2iOSTubMGGCTYJlzIxADVN5Nry/P+m3I7+Nf9J/nginAwRAgO/39NNPGxjIKmEWOIVkzznnHBvLYk4b0/4BD58ztMC5RA2JkDKGxfUA9Ia/8yf9PuS38U/6k/6kX5f8Nv5Jf9Kf9GuSBPwfUq/rG5FP1k0AAAAASUVORK5CYII=</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
-  <rd:ReportUnitType>Mm</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>f69b2465-c7f5-4807-90da-656e56df275b</rd:ReportID>
 </Report>

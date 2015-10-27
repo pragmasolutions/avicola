@@ -42,10 +42,13 @@
         
     },
     submit = function () {
-        if ($('#StageId').val() == '') {
-            alert('Por favor complete todos los filtros');
+
+        if (!$formRefreshReport.valid()) {
             return false;
         }
+
+        $('.validation-summary-errors').remove();
+
         var url = '/Report/GenerateMeasuresFollowUp';
         var data = $formRefreshReport.serialize();
         url += '?' + data;
