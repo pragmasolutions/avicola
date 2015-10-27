@@ -223,6 +223,19 @@
                         measureSerie.data.push(null);
                     }
                 }
+
+                var lastMeasureValue = measureSerie.data[measureSerie.data.length - 1];
+
+                var referenceData = {
+                    y: lastMeasureValue,
+                    dataLabels: {
+                        enabled: true,
+                        format: standard.Name
+                    }
+                }
+
+                measureSerie.data.push(referenceData);
+
                 series.push(firstSerie);
                 colors.push(color);
 
