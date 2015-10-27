@@ -14,9 +14,9 @@ namespace Avicola.Office.Services.Interfaces
     {
 
         List<ReportBreedingMeasuresFollowUpRow> BreedingMeasuresFollowUp(Guid batchId, DateTime? dateFrom, DateTime? dateTo);
-        List<ReportBatchObservations> BatchObservation(Guid batchId, Guid stageId);
-        List<ReportBatchVaccines> BatchVaccine(Guid batchId, Guid stageId);
-        List<ReportBatchMedicines> BatchMedicine(Guid batchId, Guid stageId);
+        List<ReportBatchObservations> BatchObservation(Guid batchId, DateTime? from, DateTime? to);
+        List<ReportBatchVaccines> BatchVaccine(Guid batchId, DateTime? from, DateTime? to);
+        List<ReportBatchMedicines> BatchMedicine(Guid batchId, DateTime? from, DateTime? to);
 
     }
 }

@@ -1,11 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[Report_BatchMedicine]
 	@BatchId UNIQUEIDENTIFIER,
-	@StageId UNIQUEIDENTIFIER
+	@DateFrom DATETIME = NULL,
+	@DateTo DATETIME = NULL
 AS
 BEGIN
-	
-	DECLARE @StageName VARCHAR(50)
-	SET @StageName = (SELECT TOP 1 LOWER(Name) FROM Stage WHERE Id = @StageId)
 	
 	SELECT 
 		B.Number,
@@ -19,8 +17,8 @@ BEGIN
 		ON B.GeneticLineId = GL.Id INNER JOIN Medicine M
 		ON BM.MedicineId = M.Id
 	WHERE B.Id = BatchId 
-		--AND ((@StageName = 'cría y precría' AND BM.CreatedDate < DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth))
-		--OR (@StageName = 'postura' AND BM.CreatedDate > DATEADD(DAY, (GL.WeeksInBreeding * 7), B.DateOfBirth)))
+		AND (@DateFrom IS NULL OR BM.StartDate >= @DateFrom) 
+		AND (@DateTo IS NULL OR BM.StartDate <= @DateTo)
 	ORDER BY BM.CreatedDate 
 END
 GO

@@ -24,19 +24,19 @@ namespace Avicola.Office.Services
             return Uow.DbContext.ReportBreedingMeasuresFollowUpRow(batchId, dateFrom, dateTo).ToList();
         }
 
-        public List<ReportBatchObservations> BatchObservation(Guid batchId, Guid stageId)
+        public List<ReportBatchObservations> BatchObservation(Guid batchId, DateTime? from, DateTime? to)
         {
-            return Uow.DbContext.ReportBatchObservation(batchId, stageId).ToList();
+            return Uow.DbContext.ReportBatchObservation(batchId, from, to).ToList();
         }
 
-        public List<ReportBatchVaccines> BatchVaccine(Guid batchId, Guid stageId)
+        public List<ReportBatchVaccines> BatchVaccine(Guid batchId, DateTime? from, DateTime? to)
         {
-            return Uow.DbContext.ReportBatchVaccine(batchId, stageId).ToList();
+            return Uow.DbContext.ReportBatchVaccine(batchId, from, to).ToList();
         }
 
-        public List<ReportBatchMedicines> BatchMedicine(Guid batchId, Guid stageId)
+        public List<ReportBatchMedicines> BatchMedicine(Guid batchId, DateTime? from, DateTime? to)
         {
-            return Uow.DbContext.ReportBatchMedicine(batchId, stageId).ToList();
+            return Uow.DbContext.ReportBatchMedicine(batchId, from, to).ToList();
         }
     }
 }

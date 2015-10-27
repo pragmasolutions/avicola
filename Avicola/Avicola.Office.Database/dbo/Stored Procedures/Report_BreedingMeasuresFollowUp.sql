@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[Report_BreedingMeasuresFollowUp]
 	@BatchId UNIQUEIDENTIFIER,
-	@DateFrom DATETIME = NULL,
-	@DateTo DATETIME = NULL
+	@DateFrom DATETIME2 = NULL,
+	@DateTo DATETIME2 = NULL
 
 AS
 BEGIN
@@ -73,9 +73,9 @@ BEGIN
 	DECLARE @RebreedingDate date
 	DECLARE @PostureInitialBirds decimal(18,2)
 	DECLARE @PostureInitialFood decimal(18,2)
-	DECLARE @BreedingStageId UNIQUEIDENTIFIER = CAST('0FB44F39-CDB4-4564-AA3D-DF5E30D3BD0F' AS UNIQUEIDENTIFIER)
-	DECLARE @ReBreedingStageId UNIQUEIDENTIFIER = CAST('50F38EC7-4A04-4A9E-B2E4-6B9BC59D57DA' AS UNIQUEIDENTIFIER)
-	DECLARE @PostureStageId UNIQUEIDENTIFIER = CAST('0FB44F39-CDB4-4564-AA3D-DF5E30D3BD0F' AS UNIQUEIDENTIFIER)
+	DECLARE @BreedingStageId UNIQUEIDENTIFIER = '0FB44F39-CDB4-4564-AA3D-DF5E30D3BD0F'
+	DECLARE @ReBreedingStageId UNIQUEIDENTIFIER = '50F38EC7-4A04-4A9E-B2E4-6B9BC59D57DA'
+	DECLARE @PostureStageId UNIQUEIDENTIFIER = '0FB44F39-CDB4-4564-AA3D-DF5E30D3BD0F'
 
 	SELECT @BreedingDate = B.BreedingDate,@RebreedingDate = B.ReBreedingDate,@PostureDate = B.PostureDate FROM Batch B WHERE B.Id = @BatchId 
 
@@ -85,13 +85,13 @@ BEGIN
 
 	WHERE BB.BatchId = @BatchId AND B.StageId = @PostureStageId
 
-						DECLARE @FoodEntry TABLE
+	DECLARE @FoodEntryDuringPosture TABLE
 	(
 		Date datetime,
 		Amount decimal(18,2)
 	)
 
-														INSERT INTO @FoodEntry (Date, Amount)
+	INSERT INTO @FoodEntryDuringPosture (Date, Amount)
 	SELECT M.Date,M.Value FROM Measure M
 					INNER JOIN StandardItem SI
 						ON M.StandardItemId = SI.Id
@@ -106,13 +106,13 @@ BEGIN
 			AND SI.IsDeleted = 0
 			AND SGL.IsDeleted = 0
 
-						DECLARE @BirdsDead TABLE
+	DECLARE @BirdsDeadDuringPosture TABLE
 	(
 		Date datetime,
 		Amount decimal(18,2)
 	)
 
-														INSERT INTO @BirdsDead (Date, Amount)
+	INSERT INTO @BirdsDeadDuringPosture (Date, Amount)
 	SELECT M.Date,M.Value FROM Measure M
 						INNER JOIN StandardItem SI
 							ON M.StandardItemId = SI.Id
@@ -128,10 +128,10 @@ BEGIN
 			AND SGL.IsDeleted = 0
 
 	DECLARE @FoodConsumption TABLE
-(
-	DateLimit datetime,
-	ConsumptionPerBirdPorDay decimal(18,2)
-)
+	(
+		DateLimit datetime,
+		ConsumptionPerBirdPorDay decimal(18,2)
+	)
 
 	INSERT INTO @FoodConsumption (DateLimit, ConsumptionPerBirdPorDay)
 	SELECT DateLimit = @RebreedingDate,ConsumptionPerBirdPorDay = ((SG.FoodEntryDuringPeriod - SG.CurrentFoodStock) / ((SG.StageFromIFinalBirds + SG.StageFromIFinalBirds) / 2)) / DATEDIFF(DAY,@BreedingDate,@RebreedingDate)
@@ -148,8 +148,8 @@ BEGIN
 	FROM SiloEmptying SE 
 		   OUTER APPLY(SELECT TOP 1  SG.CurrentFoodStock FROM StageChange SG WHERE SG.BatchId = @BatchId AND SG.StageToId = @PostureStageId) PS	
 		   OUTER APPLY(SELECT TOP 1 PSE.Date FROM SiloEmptying PSE  WHERE PSE.Date < SE.Date AND SE.BatchId = @BatchId ORDER BY PSE.Date) PSE	
-		   OUTER APPLY(SELECT TotalEntryAmount = SUM(FE.Amount) FROM @FoodEntry FE WHERE  FE.Date BETWEEN  ISNULL(PSE.Date,@PostureDate) AND SE.Date) FE	
-		   OUTER APPLY(SELECT BirdsAverage = (@PostureInitialBirds + (@PostureInitialBirds - ISNULL(SUM(BD.Amount),0))) / 2 FROM @BirdsDead BD WHERE BD.Date BETWEEN  ISNULL(PSE.Date,@PostureDate) AND SE.Date) BD			
+		   OUTER APPLY(SELECT TotalEntryAmount = SUM(FE.Amount) FROM @FoodEntryDuringPosture FE WHERE  FE.Date BETWEEN  ISNULL(PSE.Date,@PostureDate) AND SE.Date) FE	
+		   OUTER APPLY(SELECT BirdsAverage = (@PostureInitialBirds + (@PostureInitialBirds - ISNULL(SUM(BD.Amount),0))) / 2 FROM @BirdsDeadDuringPosture BD WHERE BD.Date BETWEEN  ISNULL(PSE.Date,@PostureDate) AND SE.Date) BD			
 	WHERE SE.IsDeleted = 0 AND  SE.BatchId = @BatchId
 
 	

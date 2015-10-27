@@ -140,8 +140,11 @@
           <QueryParameter Name="@BatchId">
             <Value>=Parameters!BatchId.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="@StageId">
-            <Value>=Parameters!StageId.Value</Value>
+          <QueryParameter Name="@DateFrom">
+            <Value>=Parameters!DateFrom.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DateTo">
+            <Value>=Parameters!DateTo.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <CommandType>StoredProcedure</CommandType>
@@ -177,8 +180,11 @@
           <QueryParameter Name="@BatchId">
             <Value>=Parameters!BatchId.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="@StageId">
-            <Value>=Parameters!StageId.Value</Value>
+          <QueryParameter Name="@DateFrom">
+            <Value>=Parameters!DateFrom.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DateTo">
+            <Value>=Parameters!DateTo.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <CommandType>StoredProcedure</CommandType>
@@ -206,8 +212,11 @@
           <QueryParameter Name="@BatchId">
             <Value>=Parameters!BatchId.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="@StageId">
-            <Value>=Parameters!StageId.Value</Value>
+          <QueryParameter Name="@DateFrom">
+            <Value>=Parameters!DateFrom.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DateTo">
+            <Value>=Parameters!DateTo.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <CommandType>StoredProcedure</CommandType>
@@ -1587,14 +1596,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="ConsumoPorAve">
+                                          <Textbox Name="ConsumoRealPorAve">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!ConsumoPorAve.Value</Value>
+                                                    <Value>=Fields!ConsumoRealPorAve.Value * 1000</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
                                                     </Style>
@@ -1605,7 +1614,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>ConsumoPorAve</rd:DefaultName>
+                                            <rd:DefaultName>ConsumoRealPorAve</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1772,7 +1781,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox45</rd:DefaultName>
-                              <Top>11.21833mm</Top>
+                              <Top>11.14499mm</Top>
                               <Left>17.60688mm</Left>
                               <Height>5.92666mm</Height>
                               <Width>30.59724mm</Width>
@@ -1985,7 +1994,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox49</rd:DefaultName>
-                              <Top>11.00667mm</Top>
+                              <Top>11.14499mm</Top>
                               <Left>57.9961mm</Left>
                               <Height>6.13833mm</Height>
                               <Width>28.89466mm</Width>
@@ -2039,7 +2048,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox50</rd:DefaultName>
-                              <Top>11.00667mm</Top>
+                              <Top>11.14499mm</Top>
                               <Left>86.89076mm</Left>
                               <Height>6.13833mm</Height>
                               <Width>21.21333mm</Width>
@@ -2253,7 +2262,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox63</rd:DefaultName>
-                              <Top>11.00667mm</Top>
+                              <Top>11.14499mm</Top>
                               <Left>107.73777mm</Left>
                               <Height>6.13833mm</Height>
                               <Width>11.59445mm</Width>
@@ -2360,10 +2369,10 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox65</rd:DefaultName>
-                              <Top>10.72166mm</Top>
+                              <Top>11.14499mm</Top>
                               <Left>119.33222mm</Left>
                               <Height>6.34999mm</Height>
-                              <Width>26.505mm</Width>
+                              <Width>31.02165mm</Width>
                               <ZIndex>13</ZIndex>
                               <Style>
                                 <Border>
@@ -2418,7 +2427,7 @@
                               <Top>4.86555mm</Top>
                               <Left>131.63222mm</Left>
                               <Height>5.92666mm</Height>
-                              <Width>14.205mm</Width>
+                              <Width>18.72165mm</Width>
                               <ZIndex>14</ZIndex>
                               <Style>
                                 <Border>
@@ -3406,22 +3415,11 @@
                                   </TextRuns>
                                   <Style />
                                 </Paragraph>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>(kg  por ave por dia)</Value>
-                                      <Style>
-                                        <FontSize>8pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style />
-                                </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
                               <Top>69.88278mm</Top>
                               <Left>86.89076mm</Left>
-                              <Height>10mm</Height>
+                              <Height>5.35278mm</Height>
                               <Width>30.27812mm</Width>
                               <ZIndex>33</ZIndex>
                               <Style>
@@ -3920,7 +3918,6 @@
                             </Border>
                           </Style>
                         </Rectangle>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -5324,12 +5321,6 @@
       <DataType>DateTime</DataType>
       <Nullable>true</Nullable>
       <Prompt>Date To</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="StageId">
-      <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>Stage Id</Prompt>
     </ReportParameter>
   </ReportParameters>
   <EmbeddedImages>

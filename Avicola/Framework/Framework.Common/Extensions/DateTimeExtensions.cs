@@ -26,7 +26,7 @@ namespace Framework.Common.Extentensions
         /// </summary>
         public static DateTime AbsoluteEnd(this DateTime dateTime)
         {
-            return AbsoluteStart(dateTime).AddDays(1).AddTicks(-1);
+            return AbsoluteStart(dateTime).AddDays(1).AddMilliseconds(-1);
         }
 
         public static DateTime? AbsoluteEnd(this DateTime? dateTime)

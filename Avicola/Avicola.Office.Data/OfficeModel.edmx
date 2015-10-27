@@ -500,15 +500,18 @@
         </Association>
         <Function Name="Report_BatchMedicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BatchId" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="StageId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="DateTo" Type="datetime" Mode="In" />
         </Function>
         <Function Name="Report_BatchObservation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BatchId" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="StageId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="DateTo" Type="datetime" Mode="In" />
         </Function>
         <Function Name="Report_BatchVaccine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BatchId" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="StageId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="DateTo" Type="datetime" Mode="In" />
         </Function>
         <Function Name="Report_BreedingMeasuresFollowUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BatchId" Type="uniqueidentifier" Mode="In" />
@@ -870,16 +873,19 @@
           </AssociationSet>
           <FunctionImport Name="ReportBatchObservation" ReturnType="Collection(Avicola.OfficeModel.ReportBatchObservations)">
             <Parameter Name="BatchId" Mode="In" Type="Guid" />
-            <Parameter Name="StageId" Mode="In" Type="Guid" />
+            <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="DateTo" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ReportBatchVaccine" ReturnType="Collection(Avicola.OfficeModel.ReportBatchVaccines)">
             <Parameter Name="BatchId" Mode="In" Type="Guid" />
-            <Parameter Name="StageId" Mode="In" Type="Guid" />
+            <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="DateTo" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="BatchMedicines" EntityType="Avicola.OfficeModel.BatchMedicine" />
           <FunctionImport Name="ReportBatchMedicine" ReturnType="Collection(Avicola.OfficeModel.ReportBatchMedicines)">
             <Parameter Name="BatchId" Mode="In" Type="Guid" />
-            <Parameter Name="StageId" Mode="In" Type="Guid" />
+            <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="DateTo" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="BatchBarns" EntityType="Avicola.OfficeModel.BatchBarn" />
           <AssociationSet Name="FK_Barn_Stage" Association="Avicola.OfficeModel.FK_Barn_Stage">

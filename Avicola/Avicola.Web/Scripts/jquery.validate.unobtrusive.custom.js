@@ -40,4 +40,23 @@
         return this.optional(element) || value != $(param).val();
     }, '');
 
+    // definition for the isdateafter validation rule
+    $.validator.addMethod('isdateafter', function (value, element, params) {
+        value = Globalize.parseDate(value);
+        var otherDate = Globalize.parseDate($(params.compareTo).val());
+        
+        if (!value || !otherDate)
+            return true;
+
+        return value > otherDate || (value.getTime() === otherDate.getTime() && params.allowEqualDates);
+    });
+
+    $.validator.unobtrusive.adapters.add('isdateafter', ['propertytested', 'allowequaldates'], function (options) {
+        options.rules['isdateafter'] = {
+            'allowEqualDates': options.params['allowequaldates'],
+            'compareTo': '#' + options.params['propertytested']
+        };
+        options.messages['isdateafter'] = options.message;
+    });
+
 })(jQuery)

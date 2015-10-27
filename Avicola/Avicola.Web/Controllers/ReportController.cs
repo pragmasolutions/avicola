@@ -8,6 +8,7 @@ using Avicola.Office.Services.Interfaces;
 using Avicola.Reports;
 using Avicola.Web.Extensions;
 using Avicola.Web.Models.Reports;
+using Framework.Common.Extentensions;
 
 namespace Avicola.Web.Controllers
 {
@@ -47,18 +48,18 @@ namespace Avicola.Web.Controllers
             if (id != null)
             {
                 var batch = _batchService.GetById(id.GetValueOrDefault());
-                list.Add(new Stage(){ Name = "Cría y Pre-Cría", Id = Stage.BREEDING});
+                list.Add(new Stage() { Name = "Cría y Pre-Cría", Id = Stage.BREEDING });
 
                 //if (DateTime.Now >= batch.CalculatedPostureStartDate)
                 //{
                 //    list.Add(new Stage() { Name = "Postura", Id = Stage.POSTURE });
                 //}
             }
-            var result = list.Select(x => new {x.Id, x.Name});
+            var result = list.Select(x => new { x.Id, x.Name });
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        
+
         public ActionResult MeasuresFollowUp(MeasuresFollowUpFilterModel model)
         {
             var activeBatches = _batchService.GetAllActiveComplete().OrderBy(b => b.Number).ToList();
@@ -71,21 +72,20 @@ namespace Avicola.Web.Controllers
             if (ModelState.IsValid)
             {
 
-                var dataset = model.StageId == Stage.BREEDING
-                    ? _reportService.BreedingMeasuresFollowUp(model.BatchId, DateTime.Now.AddMonths(-5),
-                        DateTime.Now.AddMonths(1)).ToList()
-                    : null;
-                var dsBatchObservation = _reportService.BatchObservation(model.BatchId, model.StageId);
-                var dsBatchVaccine = _reportService.BatchVaccine(model.BatchId, model.StageId);
-                var dsBatchMedicine = _reportService.BatchMedicine(model.BatchId, model.StageId);
+                var dataset = _reportService.BreedingMeasuresFollowUp(model.BatchId, model.From.AbsoluteStart(),
+                    model.To.AbsoluteEnd());
+
+                var dsBatchObservation = _reportService.BatchObservation(model.BatchId, model.From, model.To);
+                var dsBatchVaccine = _reportService.BatchVaccine(model.BatchId, model.From, model.To);
+                var dsBatchMedicine = _reportService.BatchMedicine(model.BatchId, model.From, model.To);
+
                 var reportFactory = new ReportFactory();
 
                 var parameters = new Dictionary<string, string>
                               {
                                   {"BatchId", model.BatchId.ToString()},
-                                  {"DateFrom", null},
-                                  {"DateTo", null},
-                                  {"StageId", null}
+                                  {"DateFrom", model.From.ToShortDateString()},
+                                  {"DateTo", model.From.ToShortDateString()},
                               };
 
                 reportFactory.SetPathCompleto(Server.MapPath("~/Reports/MeasuresFollowUp.rdl"))
@@ -93,12 +93,12 @@ namespace Avicola.Web.Controllers
                     .SetDataSource("BatchObservation", dsBatchObservation)
                     .SetDataSource("BatchVaccine", dsBatchVaccine)
                     .SetDataSource("BatchMedicine", dsBatchMedicine)
-                    .SetParametro(parameters); 
+                    .SetParametro(parameters);
 
                 byte[] archivo = reportFactory.Renderizar(model.ReportType);
 
                 return File(archivo, reportFactory.MimeType);
-                
+
             }
             return null;
         }
