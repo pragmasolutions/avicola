@@ -199,7 +199,7 @@
                 var measureSerie = {
                     name: '[*] ' + name,
                     data: [],
-                    lineWidth: 3,
+                    lineWidth: 1,
                     yAxis: standard.YAxis
                 }
 
@@ -209,39 +209,46 @@
                     weeks.push(i + 1);
                     firstSerie.data.push(item.Value1);
 
+                    var lastNotNullMeasure;
                     if (item.Measures.length > 0) {
                         var sum = 0;
                         for (var k = 0; k < item.Measures.length; k++) {
                             sum += item.Measures[k].Value;
                         }
+
+                        var weekValue = null;
                         if (standard.AggregateOperation == 'AVG') {
-                            measureSerie.data.push(sum / item.Measures.length);
+                            weekValue = sum / item.Measures.length;
                         } else {
-                            measureSerie.data.push(sum);
+                            weekValue = sum;
                         }
+                        lastNotNullMeasure = {
+                            x: item.Sequence - 1,
+                            y: weekValue
+                        }
+                        measureSerie.data.push(lastNotNullMeasure);
+                        
                     } else {
-                        measureSerie.data.push(null);
+                        measureSerie.data.push({
+                            x: item.Sequence - 1,
+                            y: null
+                        });
                     }
                 }
 
-                var lastMeasureValue = measureSerie.data[measureSerie.data.length - 1];
-
-                var referenceData = {
-                    y: lastMeasureValue,
-                    dataLabels: {
+                if (lastNotNullMeasure != null) {
+                    lastNotNullMeasure.dataLabels = {
                         enabled: true,
                         format: standard.Name
-                    }
+                    };
                 }
-
-                measureSerie.data.push(referenceData);
 
                 series.push(firstSerie);
                 colors.push(color);
 
-                if ($.grep(measureSerie.data, function (x) { return x != null }).length > 0) {
+                if ($.grep(measureSerie.data, function (x) { return x.y != null }).length > 0) {
                     series.push(measureSerie);
-                    colors.push(color);
+                    colors.push('black');
                 }
 
                 if (standard.ShowSecondValue) {
@@ -285,10 +292,26 @@
             ];
 
             $(container).find('.content').highcharts({
+                chart: {
+                    type: 'spline'
+                },
                 colors: colors,
                 title: {
                     text: batch.Name,
                     x: -20 //center
+                },
+                plotOptions: {
+                    series: {
+                        connectNulls: true
+                    },
+                    marker: {
+                        enabled: true
+                    },
+                    spline: {
+                        marker: {
+                            enabled: true
+                        }
+                    }
                 },
                 subtitle: {
                     text: 'Línea genética: ' + batch.GeneticLine.Name,
