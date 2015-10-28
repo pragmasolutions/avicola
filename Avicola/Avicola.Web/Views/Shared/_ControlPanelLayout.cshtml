@@ -29,6 +29,10 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Líneas Genéticas", "Index", new { controller = "GeneticLine" })</li>
                             <li>@Html.ActionLink("Estándares", "Index", new { controller = "Standard" })</li>
+                            <li>@Html.ActionLink("Galpones", "Index", new { controller = "Barn" })</li>
+                            <li>@Html.ActionLink("Clases de Alimento", "Index", new { controller = "FoodClass" })</li>
+                            <li>@Html.ActionLink("Vacunas", "Index", new { controller = "Vaccine" })</li>
+                            <li>@Html.ActionLink("Medicamentos", "Index", new { controller = "Medicine" })</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -43,16 +47,15 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Clientes", "Index", new { controller = "Client" })</li>
                             <li>@Html.ActionLink("Depósitos", "Index", new { controller = "Deposit" })</li>
-                            <li>@Html.ActionLink("Galpónes", "Index", new {controller = "Barn"})</li>
                             <li>@Html.ActionLink("Proveedores", "Index", new { controller = "Provider" })</li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Reporte 1", "Report1", new {controller = "Report"})</li>
-                            <li>@Html.ActionLink("Reporte 2", "Report1", new {controller = "Report"})</li>
-                            <li>@Html.ActionLink("Reporte 3", "Report1", new {controller = "Report"})</li>
+                            <span class="report-group">Producción</span>
+                            <li>@Html.ActionLink("Seguimiento de Medidas", "MeasuresFollowUp", new { controller = "Report" })</li>
+                            <li>@Html.ActionLink("Estándar Individual por Lote", "BatchStandardFollowUp", new { controller = "Report" })</li>
                         </ul>
                     </li>
                 </ul>
@@ -74,6 +77,5 @@
     @Scripts.Render("~/bundles/app")
     @RenderSection("scripts", required: false)
     @Html.Partial("_Alerts")
-
 </body>
 </html>

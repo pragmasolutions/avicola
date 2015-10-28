@@ -192,7 +192,7 @@
                     data: [],
                     dashStyle: 'shortdot',
                     lineWidth: 1.5,
-                    showInLegend: false,
+                    showInLegend: true,
                     yAxis: standard.YAxis
                 }
                 
@@ -200,7 +200,8 @@
                     name: '[*] ' + name,
                     data: [],
                     lineWidth: 1,
-                    yAxis: standard.YAxis
+                    yAxis: standard.YAxis,
+                    showInLegend: false
                 }
 
                 for (var i = 0; i < standard.StandardItems.length; i++) {
@@ -258,7 +259,7 @@
                         data: [],
                         dashStyle: 'shortdot',
                         lineWidth: 1.5,
-                        showInLegend: false,
+                        showInLegend: true,
                         yAxis: standard.YAxis
                     }
                     for (i = 0; i < standard.StandardItems.length; i++) {
@@ -340,9 +341,12 @@
                 legend: {
                     layout: 'vertical',
                     align: 'right',
-                    verticalAlign: 'middle',
-                    borderWidth: 0,
-                    
+                    verticalAlign: 'top',
+                    y: 50,
+                    x: -75,
+                    borderWidth: 1,
+                    floating: true,
+                    backgroundColor: 'gainsboro'
                 },
                 series: series
             });
