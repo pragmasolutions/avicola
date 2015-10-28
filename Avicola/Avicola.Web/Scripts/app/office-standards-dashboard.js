@@ -2,7 +2,7 @@
     var _lastData,
 
         refresh = function () {
-            $.getJSON("/ControlPanel/GetAllActive", function (data) {
+            $.getJSON("/ControlPanel/GetAllActive?random=" + Math.random(), function(data) {
                 _lastData = mergeFatalitiesAndDiscarded(data);
 
                 var height = $(window).height();
@@ -10,11 +10,11 @@
 
                 buildLayout(data.length);
 
-                $container.find('.chart-block').each(function (i, block) {
+                $container.find('.chart-block').each(function(i, block) {
                     generateChart(data[i], block);
                 });
 
-
+                setTimeout(refresh, 6000 * 4);
             });
         },
         getContainer = function (width, height) {
