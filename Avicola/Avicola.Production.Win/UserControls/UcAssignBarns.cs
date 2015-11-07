@@ -71,6 +71,7 @@ namespace Avicola.Production.Win.UserControls
                 form.ExcludedBarns = BarnsAssignedControls.Select(x => x.BarnAssigned.BarnId).ToList();
                 form.BarnSelected += FormOnBarnSelected;
                 form.ShowDialog();
+                BarnsControl();
             }
         }
 
@@ -104,12 +105,23 @@ namespace Avicola.Production.Win.UserControls
         {
             BarnsAssignedControls.Remove(ucBarnAssigned);
             BarnsContainer.Controls.Remove(ucBarnAssigned);
+            BarnsControl();
         }
 
         public void ClearAsignations()
         {
             BarnsAssignedControls.Clear();
             BarnsContainer.Controls.Clear();
+            BarnsControl();
+        }
+
+        public void BarnsControl()
+        {
+            var stageCria = new Guid("096DEBD6-C537-4569-8B97-53A3C3E82A39");
+            if (StageId == stageCria)
+            {
+                btnAddBarn.Enabled = BarnsAssignedControls.Count == 0;
+            }
         }
     }
 }

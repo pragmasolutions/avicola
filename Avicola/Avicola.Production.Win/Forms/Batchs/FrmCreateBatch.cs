@@ -94,6 +94,7 @@ namespace Avicola.Production.Win.Forms.Batchs
 
         private void ToggleEnableAssignBarns(Stage stage)
         {
+            
             if (CurrentStageSelected != stage && !ucAssignBarns.BarnsAssigned.Any())
             {
                 CurrentStageSelected = stage;
