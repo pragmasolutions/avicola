@@ -91,7 +91,13 @@ namespace Avicola.Production.Win.UserControls
         {
             if (_currentDailyStandardMeasure != null && ucWeekSelection.Current != _currentDailyStandardMeasure.Week)
             {
-                var newWeek = _loadDailyStandardMeasures.First(x => x.Week == ucWeekSelection.Current);
+                var newWeek = _loadDailyStandardMeasures.FirstOrDefault(x => x.Week == ucWeekSelection.Current);
+
+                if (newWeek == null)
+                {
+                    ucWeekSelection.Current = _loadDailyStandardMeasures.First().Week;
+                    return;
+                }
 
                 UpdateCurrentDailyStandardMeasure(newWeek);
 

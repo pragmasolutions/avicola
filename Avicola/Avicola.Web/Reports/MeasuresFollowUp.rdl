@@ -111,9 +111,17 @@
           <DataField>FechaNacimiento</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="AlimentoInicialMes">
+          <DataField>AlimentoInicialMes</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="Lote">
           <DataField>Lote</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ConsumoTotalMes">
+          <DataField>ConsumoTotalMes</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="LineaGenetica">
           <DataField>LineaGenetica</DataField>
@@ -291,12 +299,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>168.3689mm</Width>
+                  <Width>185.70555mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>97.5078mm</Height>
+                  <Height>91.1578mm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -306,46 +314,46 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>7.29166mm</Width>
+                                    <Width>6.69891mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>9.60966mm</Width>
+                                    <Width>9.97116mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>11.64167mm</Width>
+                                    <Width>12.12327mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>9.54833mm</Width>
+                                    <Width>11.01169mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>8.70167mm</Width>
+                                    <Width>21.90247mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>10.25389mm</Width>
+                                    <Width>15.05157mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>13.72033mm</Width>
+                                    <Width>16.22503mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>15.05166mm</Width>
+                                    <Width>15.14523mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>11.24167mm</Width>
+                                    <Width>12.81225mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>9.97166mm</Width>
+                                    <Width>16.64615mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>11.59445mm</Width>
+                                    <Width>16.29337mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>16.18167mm</Width>
+                                    <Width>11.88476mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>14.84mm</Width>
+                                    <Width>1.81185mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>18.015mm</Width>
+                                    <Width>17.42225mm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -986,90 +994,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox33">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>Total</Value>
-                                                    <Style>
-                                                      <FontSize>7pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>(Kg)</Value>
-                                                    <Style>
-                                                      <FontSize>7pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Textbox33</rd:DefaultName>
-                                            <Style>
-                                              <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <VerticalAlign>Middle</VerticalAlign>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixCell>
-                                      <TablixCell>
-                                        <CellContents>
-                                          <Textbox Name="Textbox36">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>ACUM</Value>
-                                                    <Style>
-                                                      <FontSize>7pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Textbox36</rd:DefaultName>
-                                            <Style>
-                                              <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <VerticalAlign>Middle</VerticalAlign>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixCell>
-                                      <TablixCell>
-                                        <CellContents>
-                                          <Textbox Name="Textbox42">
+                                          <Textbox Name="Textbox7">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1079,6 +1004,7 @@
                                                     <Value>Consumo</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
+                                                      <Format>n2</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1089,9 +1015,10 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Alim/Ave</Value>
+                                                    <Value>Alim/Ave / Dia</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
+                                                      <Format>n2</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1105,6 +1032,7 @@
                                                     <Value>(gr)</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
+                                                      <Format>n2</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1113,7 +1041,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox42</rd:DefaultName>
+                                            <rd:DefaultName>Textbox7</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1126,8 +1054,11 @@
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
+                                          <ColSpan>3</ColSpan>
                                         </CellContents>
                                       </TablixCell>
+                                      <TablixCell />
+                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="Textbox39">
@@ -1525,17 +1456,17 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="ConsumoAlimento">
+                                          <Textbox Name="Textbox19">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!ConsumoAlimento.Value</Value>
+                                                    <Value>=Fields!ConsumoRealPorAve.Value * 1000</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
-                                                      <Color>Red</Color>
+                                                      <Format>n2</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1544,7 +1475,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>ConsumoAlimento</rd:DefaultName>
+                                            <rd:DefaultName>Textbox19</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1557,78 +1488,11 @@
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
+                                          <ColSpan>3</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell>
-                                        <CellContents>
-                                          <Textbox Name="IngresoAlimentoAcumulado1">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>=Fields!ConsumoAlimentoAcumulado.Value</Value>
-                                                    <Style>
-                                                      <FontSize>7pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>IngresoAlimentoAcumulado1</rd:DefaultName>
-                                            <Style>
-                                              <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <VerticalAlign>Middle</VerticalAlign>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixCell>
-                                      <TablixCell>
-                                        <CellContents>
-                                          <Textbox Name="ConsumoPorAve">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>=Fields!ConsumoPorAve.Value</Value>
-                                                    <Style>
-                                                      <FontSize>7pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>ConsumoPorAve</rd:DefaultName>
-                                            <Style>
-                                              <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <VerticalAlign>Middle</VerticalAlign>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixCell>
+                                      <TablixCell />
+                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="Stock">
@@ -1700,10 +1564,10 @@
                                 </TablixMembers>
                               </TablixRowHierarchy>
                               <DataSetName>DataSet1</DataSetName>
-                              <Top>17.14499mm</Top>
-                              <Left>0.70555mm</Left>
+                              <Top>13.44082mm</Top>
+                              <Left>0.70556mm</Left>
                               <Height>20.18167mm</Height>
-                              <Width>167.66332mm</Width>
+                              <Width>184.99996mm</Width>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1727,8 +1591,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox1</rd:DefaultName>
-                              <Top>11.14499mm</Top>
-                              <Left>0.70555mm</Left>
+                              <Top>7.44082mm</Top>
+                              <Left>0.70556mm</Left>
                               <Height>6mm</Height>
                               <Width>16.90132mm</Width>
                               <ZIndex>1</ZIndex>
@@ -1781,8 +1645,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox45</rd:DefaultName>
-                              <Top>11.14499mm</Top>
-                              <Left>17.60688mm</Left>
+                              <Top>7.44082mm</Top>
+                              <Left>17.60689mm</Left>
                               <Height>5.92666mm</Height>
                               <Width>30.59724mm</Width>
                               <ZIndex>2</ZIndex>
@@ -1834,8 +1698,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox1</rd:DefaultName>
-                              <Top>4.86555mm</Top>
-                              <Left>0.70555mm</Left>
+                              <Top>1.16138mm</Top>
+                              <Left>0.70556mm</Left>
                               <Height>6mm</Height>
                               <Width>16.90132mm</Width>
                               <ZIndex>3</ZIndex>
@@ -1888,8 +1752,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox45</rd:DefaultName>
-                              <Top>4.93889mm</Top>
-                              <Left>17.60688mm</Left>
+                              <Top>1.23472mm</Top>
+                              <Left>17.60689mm</Left>
                               <Height>5.92666mm</Height>
                               <Width>30.59724mm</Width>
                               <ZIndex>4</ZIndex>
@@ -1941,8 +1805,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox48</rd:DefaultName>
-                              <Top>4.86833mm</Top>
-                              <Left>57.9961mm</Left>
+                              <Top>1.16416mm</Top>
+                              <Left>57.99611mm</Left>
                               <Height>5.99722mm</Height>
                               <Width>13.843mm</Width>
                               <ZIndex>5</ZIndex>
@@ -1994,8 +1858,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox49</rd:DefaultName>
-                              <Top>11.14499mm</Top>
-                              <Left>57.9961mm</Left>
+                              <Top>7.44082mm</Top>
+                              <Left>57.99611mm</Left>
                               <Height>6.13833mm</Height>
                               <Width>28.89466mm</Width>
                               <ZIndex>6</ZIndex>
@@ -2048,8 +1912,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox50</rd:DefaultName>
-                              <Top>11.14499mm</Top>
-                              <Left>86.89076mm</Left>
+                              <Top>7.44082mm</Top>
+                              <Left>86.89077mm</Left>
                               <Height>6.13833mm</Height>
                               <Width>21.21333mm</Width>
                               <ZIndex>7</ZIndex>
@@ -2101,8 +1965,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox51</rd:DefaultName>
-                              <Top>4.93889mm</Top>
-                              <Left>98.13243mm</Left>
+                              <Top>1.23472mm</Top>
+                              <Left>98.13244mm</Left>
                               <Height>5.92666mm</Height>
                               <Width>9.97166mm</Width>
                               <ZIndex>8</ZIndex>
@@ -2155,8 +2019,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox52</rd:DefaultName>
-                              <Top>4.86833mm</Top>
-                              <Left>71.96611mm</Left>
+                              <Top>1.16416mm</Top>
+                              <Left>71.96612mm</Left>
                               <Height>5.99722mm</Height>
                               <Width>26.16632mm</Width>
                               <ZIndex>9</ZIndex>
@@ -2209,8 +2073,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Lote</rd:DefaultName>
-                              <Top>4.86833mm</Top>
-                              <Left>108.10409mm</Left>
+                              <Top>1.16416mm</Top>
+                              <Left>108.1041mm</Left>
                               <Height>5.99722mm</Height>
                               <Width>11.22812mm</Width>
                               <ZIndex>10</ZIndex>
@@ -2262,8 +2126,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox63</rd:DefaultName>
-                              <Top>11.14499mm</Top>
-                              <Left>107.73777mm</Left>
+                              <Top>7.44082mm</Top>
+                              <Left>107.73778mm</Left>
                               <Height>6.13833mm</Height>
                               <Width>11.59445mm</Width>
                               <ZIndex>11</ZIndex>
@@ -2315,8 +2179,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox64</rd:DefaultName>
-                              <Top>4.86555mm</Top>
-                              <Left>119.33222mm</Left>
+                              <Top>1.16138mm</Top>
+                              <Left>119.33223mm</Left>
                               <Height>5.92666mm</Height>
                               <Width>12.3mm</Width>
                               <ZIndex>12</ZIndex>
@@ -2369,8 +2233,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox65</rd:DefaultName>
-                              <Top>11.14499mm</Top>
-                              <Left>119.33222mm</Left>
+                              <Top>7.44082mm</Top>
+                              <Left>119.33223mm</Left>
                               <Height>6.34999mm</Height>
                               <Width>31.02165mm</Width>
                               <ZIndex>13</ZIndex>
@@ -2424,8 +2288,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox66</rd:DefaultName>
-                              <Top>4.86555mm</Top>
-                              <Left>131.63222mm</Left>
+                              <Top>1.16138mm</Top>
+                              <Left>131.63223mm</Left>
                               <Height>5.92666mm</Height>
                               <Width>18.72165mm</Width>
                               <ZIndex>14</ZIndex>
@@ -2479,7 +2343,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox73</rd:DefaultName>
-                              <Top>40.21667mm</Top>
+                              <Top>35.98334mm</Top>
                               <Left>0.33867mm</Left>
                               <Height>4.86833mm</Height>
                               <Width>168.03023mm</Width>
@@ -2533,7 +2397,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>54.88279mm</Top>
+                              <Top>50.64946mm</Top>
                               <Left>4.27188mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
@@ -2586,7 +2450,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>54.88279mm</Top>
+                              <Top>50.64946mm</Top>
                               <Left>38.79688mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -2639,7 +2503,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>59.88279mm</Top>
+                              <Top>55.64946mm</Top>
                               <Left>4.27188mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
@@ -2692,7 +2556,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>59.88279mm</Top>
+                              <Top>55.64946mm</Top>
                               <Left>38.79688mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -2745,7 +2609,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>64.88278mm</Top>
+                              <Top>60.64945mm</Top>
                               <Left>4.27188mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
@@ -2798,7 +2662,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>64.88278mm</Top>
+                              <Top>60.64945mm</Top>
                               <Left>38.79688mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -2851,7 +2715,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>69.88278mm</Top>
+                              <Top>65.64945mm</Top>
                               <Left>4.27188mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
@@ -2904,7 +2768,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>69.88278mm</Top>
+                              <Top>65.64945mm</Top>
                               <Left>38.79688mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -2957,7 +2821,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>74.88278mm</Top>
+                              <Top>70.64945mm</Top>
                               <Left>4.27188mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
@@ -3010,7 +2874,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>74.88278mm</Top>
+                              <Top>70.64945mm</Top>
                               <Left>38.79688mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3065,7 +2929,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox84</rd:DefaultName>
-                              <Top>46.49612mm</Top>
+                              <Top>42.26279mm</Top>
                               <Left>3.937mm</Left>
                               <Height>5.35278mm</Height>
                               <Width>77.08411mm</Width>
@@ -3099,7 +2963,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>54.88278mm</Top>
+                              <Top>50.64945mm</Top>
                               <Left>86.89076mm</Left>
                               <Height>5mm</Height>
                               <Width>30.27812mm</Width>
@@ -3142,9 +3006,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=First(Fields!Stock.Value) + First(Fields!ConsumoAlimento.Value)</Value>
+                                      <Value>=Fields!AlimentoInicialMes.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>n2</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3152,7 +3017,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>54.88278mm</Top>
+                              <Top>50.64945mm</Top>
                               <Left>118.93277mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3205,7 +3070,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>59.88278mm</Top>
+                              <Top>55.64945mm</Top>
                               <Left>86.89076mm</Left>
                               <Height>5mm</Height>
                               <Width>30.27812mm</Width>
@@ -3248,9 +3113,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Last(Fields!IngresoAlimentoAcumulado.Value)</Value>
+                                      <Value>=Sum(Fields!IngresoAlimento.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>n2</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3258,7 +3124,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>59.88278mm</Top>
+                              <Top>55.64945mm</Top>
                               <Left>118.93277mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3311,7 +3177,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>64.88278mm</Top>
+                              <Top>60.64945mm</Top>
                               <Left>86.89076mm</Left>
                               <Height>5mm</Height>
                               <Width>30.27812mm</Width>
@@ -3354,9 +3220,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=First(Fields!Stock.Value) + First(Fields!ConsumoAlimento.Value) + Last(Fields!IngresoAlimentoAcumulado.Value)</Value>
+                                      <Value>=Fields!AlimentoInicialMes.Value + SUM(Fields!IngresoAlimento.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>n2</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3364,7 +3231,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>64.88278mm</Top>
+                              <Top>60.29667mm</Top>
                               <Left>118.93277mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3407,7 +3274,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Consumo mensual </Value>
+                                      <Value>Consumo por ave por dia</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -3417,9 +3284,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>69.88278mm</Top>
+                              <Top>65.29667mm</Top>
                               <Left>86.89076mm</Left>
-                              <Height>5.35278mm</Height>
+                              <Height>8.58889mm</Height>
                               <Width>30.27812mm</Width>
                               <ZIndex>33</ZIndex>
                               <Style>
@@ -3471,7 +3338,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>70.23556mm</Top>
+                              <Top>66.00223mm</Top>
                               <Left>118.93277mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3524,7 +3391,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>79.88278mm</Top>
+                              <Top>75.64945mm</Top>
                               <Left>86.89076mm</Left>
                               <Height>5mm</Height>
                               <Width>30.27812mm</Width>
@@ -3567,9 +3434,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Last(Fields!Stock.Value)</Value>
+                                      <Value>=LAST(Fields!Stock.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>n2</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3577,7 +3445,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>79.88278mm</Top>
+                              <Top>75.64945mm</Top>
                               <Left>118.93277mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3632,7 +3500,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox84</rd:DefaultName>
-                              <Top>46.49611mm</Top>
+                              <Top>42.26278mm</Top>
                               <Left>86.89076mm</Left>
                               <Height>5.35278mm</Height>
                               <Width>74.26624mm</Width>
@@ -3666,7 +3534,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>79.88278mm</Top>
+                              <Top>75.64945mm</Top>
                               <Left>4.27188mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
@@ -3720,7 +3588,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>79.55857mm</Top>
+                              <Top>75.32524mm</Top>
                               <Left>38.79688mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3753,7 +3621,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>84.91134mm</Top>
+                              <Top>80.67801mm</Top>
                               <Left>4.27188mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
@@ -3807,7 +3675,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>84.91134mm</Top>
+                              <Top>80.67801mm</Top>
                               <Left>38.79688mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3840,7 +3708,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>89.91134mm</Top>
+                              <Top>85.67801mm</Top>
                               <Left>4.27188mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
@@ -3883,7 +3751,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Sum(Fields!Aves.Value) / (Last(Fields!DiaDelMes.Value) - First(Fields!DiaDelMes.Value))</Value>
+                                      <Value>=Variables!PromedioDeAves.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                         <Format>0.00</Format>
@@ -3894,7 +3762,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>89.91134mm</Top>
+                              <Top>85.67801mm</Top>
                               <Left>38.79688mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
@@ -3936,15 +3804,20 @@
                     <GroupExpressions>
                       <GroupExpression>=Fields!Mes.Value</GroupExpression>
                     </GroupExpressions>
+                    <Variables>
+                      <Variable Name="PromedioDeAves">
+                        <Value>=Sum(Fields!Aves.Value) / Count(Fields!DiaDelMes.Value)</Value>
+                      </Variable>
+                    </Variables>
                   </Group>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>12.48833mm</Top>
-            <Left>0mm</Left>
-            <Height>97.5078mm</Height>
-            <Width>168.3689mm</Width>
+            <Left>1.10553mm</Left>
+            <Height>91.1578mm</Height>
+            <Width>185.70555mm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -5251,7 +5124,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>169.00389mm</Width>
+      <Width>186.81108mm</Width>
       <Page>
         <PageFooter>
           <Height>11.43mm</Height>
@@ -5276,7 +5149,7 @@
               </Paragraphs>
               <rd:DefaultName>ExecutionTime</rd:DefaultName>
               <Top>5.08mm</Top>
-              <Left>101.6mm</Left>
+              <Left>100.6594mm</Left>
               <Height>6.35mm</Height>
               <Width>50.8mm</Width>
               <Style>
@@ -5298,8 +5171,8 @@
         </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
-        <LeftMargin>2cm</LeftMargin>
-        <RightMargin>2cm</RightMargin>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
         <TopMargin>2cm</TopMargin>
         <BottomMargin>2cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>

@@ -31,25 +31,11 @@ namespace Avicola.Office.Services
                             x.StandardGeneticLine.StandardId == standardId &&
                             x.StandardGeneticLine.GeneticLineId == geneticLineId,
                     includes: x => x.StandardGeneticLine.Standard)
-                    .Where(e => !e.IsDeleted)
+                    .Where(e => !e.IsDeleted && !e.StandardGeneticLine.IsDeleted && !e.StandardGeneticLine.Standard.IsDeleted)
                     .OrderBy(x => x.Sequence)
                     .ToList();
 
-
-            //var geneticLine = Uow.GeneticLines.Get(geneticLineId);
-
-            //if (stageId == Stage.BREEDING && items.Count != geneticLine.WeeksInBreeding)
-            //{
-            //    throw new ApplicationException("La cantidad de standard items de semanas no puede ser differente a la cantidad de semanas en cria");
-            //}
-
-            //if (stageId == Stage.POSTURE && items.Count != geneticLine.ProductionWeeks - geneticLine.WeeksInBreeding)
-            //{
-            //    throw new ApplicationException("La cantidad de standard items de semanas no puede ser differente a la cantidad de semanas en postura");
-            //}
-
             return items;
         }
-
     }
 }
