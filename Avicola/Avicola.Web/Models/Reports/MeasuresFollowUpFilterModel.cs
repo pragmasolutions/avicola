@@ -20,17 +20,8 @@ namespace Avicola.Web.Models.Reports
         Inactive = 1
     }
 
-    public class MeasuresFollowUpFilterModel : ReporteModelBase , IValidatableObject
+    public class MeasuresFollowUpFilterModel : BatchReportModel , IValidatableObject
     {
-        [DataType(DataType.Date)]
-        [Display(Name = "Estado")]
-        [UIHint("BatchStatusId")]
-        public BatchStatusEnum BatchStatus { get; set; }
-
-        [Display(Name = "Lote")]
-        [Required]
-        public Guid BatchId { get; set; }
-
         [Display(Name = "Desde")]
         [DataType(DataType.Date)]
         public DateTime? From { get; set; }
@@ -54,5 +45,17 @@ namespace Avicola.Web.Models.Reports
 
             yield return ValidationResult.Success;
         }
+    }
+
+    public class BatchReportModel : ReporteModelBase
+    {
+        [DataType(DataType.Date)]
+        [Display(Name = "Estado")]
+        [UIHint("BatchStatusId")]
+        public BatchStatusEnum BatchStatus { get; set; }
+
+        [Display(Name = "Lote")]
+        [Required]
+        public Guid BatchId { get; set; }
     }
 }

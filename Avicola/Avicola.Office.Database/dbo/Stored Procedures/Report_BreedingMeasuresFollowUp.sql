@@ -12,6 +12,7 @@ BEGIN
 
 	DECLARE @Items TABLE
 	(
+		Stage varchar(200),
 		Semana int,
 		Dia int,
 		Fecha datetime,
@@ -156,7 +157,7 @@ BEGIN
 	WHERE SG.BatchId = @BatchId
 	AND SG.StageToId = @ReBreedingStageId
 	UNION
-	SELECT DateFrom = @RebreedingDate, DateLimit = @PostureDate,ConsumptionPorDay = (SG.FoodEntryDuringPeriod - SG.CurrentFoodStock) / (DATEDIFF(DAY,@RebreedingDate,@PostureDate) + 1), ConsumptionPerBirdPorDay = ((SG.FoodEntryDuringPeriod - SG.CurrentFoodStock) / ((SG.StageFromIFinalBirds + SG.StageFromIFinalBirds) / 2)) / (DATEDIFF(DAY,@RebreedingDate,@PostureDate) + 1)
+	SELECT  DateFrom = @RebreedingDate, DateLimit = @PostureDate,ConsumptionPorDay = (SG.FoodEntryDuringPeriod - SG.CurrentFoodStock) / (DATEDIFF(DAY,@RebreedingDate,@PostureDate) + 1), ConsumptionPerBirdPorDay = ((SG.FoodEntryDuringPeriod - SG.CurrentFoodStock) / ((SG.StageFromIFinalBirds + SG.StageFromIFinalBirds) / 2)) / (DATEDIFF(DAY,@RebreedingDate,@PostureDate) + 1)
 	FROM StageChange SG
 	WHERE SG.BatchId = @BatchId
 	AND SG.StageToId = @PostureStageId
@@ -344,9 +345,15 @@ BEGIN
 			  ORDER BY I2.Fecha DESC), @StartingFood)
 	FROM @Items I
 
+	UPDATE I
+	SET Stage = (CASE WHEN I.Fecha >= @DateOfBirth AND I.Fecha < @RebreedingDate THEN 'CRÍA' 
+	 WHEN I.Fecha >= @RebreedingDate AND I.Fecha < @PostureDate THEN 'RECRÍA' 
+	 WHEN I.Fecha >= @PostureDate THEN 'POSTURA' 
+	 ELSE NULL END)
+	FROM @Items I
 
 	SELECT I.*,
-			FechaNacimiento = @StartingFoodClass,
+			FechaNacimiento = @DateOfBirth,
 			Lote = @BatchNumber,
 			LineaGenetica = @GeneticLine,
 			Clase = @StartingFoodClass,

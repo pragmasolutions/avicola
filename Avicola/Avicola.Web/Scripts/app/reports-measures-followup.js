@@ -42,14 +42,14 @@
         
     },
     submit = function () {
-
+         
         if (!$formRefreshReport.valid()) {
             return false;
         }
 
         $('.validation-summary-errors').remove();
 
-        var url = '/Report/GenerateMeasuresFollowUp';
+        var url = $formRefreshReport.attr('action');
         var data = $formRefreshReport.serialize();
         url += '?' + data;
         $(this).attr('href', url);

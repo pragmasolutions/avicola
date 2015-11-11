@@ -49,11 +49,6 @@ namespace Avicola.Web.Controllers
             {
                 var batch = _batchService.GetById(id.GetValueOrDefault());
                 list.Add(new Stage() { Name = "Cría y Pre-Cría", Id = Stage.BREEDING });
-
-                //if (DateTime.Now >= batch.CalculatedPostureStartDate)
-                //{
-                //    list.Add(new Stage() { Name = "Postura", Id = Stage.POSTURE });
-                //}
             }
             var result = list.Select(x => new { x.Id, x.Name });
             return Json(result, JsonRequestBehavior.AllowGet);
@@ -76,7 +71,7 @@ namespace Avicola.Web.Controllers
             if (ModelState.IsValid)
             {
                 model.To = model.To ?? DateTime.Today;
-                
+
                 var dataset = _reportService.BreedingMeasuresFollowUp(model.BatchId, model.From.AbsoluteStart(),
                     model.To.AbsoluteEnd());
 
@@ -98,6 +93,42 @@ namespace Avicola.Web.Controllers
                     .SetDataSource("BatchObservation", dsBatchObservation)
                     .SetDataSource("BatchVaccine", dsBatchVaccine)
                     .SetDataSource("BatchMedicine", dsBatchMedicine)
+                    .SetParametro(parameters);
+
+                byte[] archivo = reportFactory.Renderizar(model.ReportType);
+
+                return File(archivo, reportFactory.MimeType);
+
+            }
+            return null;
+        }
+
+        public ActionResult BatchStagesSummary(BatchReportModel model)
+        {
+            var activeBatches = _batchService.GetAllActiveComplete().OrderBy(b => b.Number).ToList();
+
+            ViewBag.BatchesSelectList = new SelectList(activeBatches, "Id", "Name");
+
+            return View(model);
+        }
+
+        public ActionResult GenerateBatchStagesSummatry(BatchReportModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dataset = _reportService.BreedingMeasuresFollowUp(model.BatchId, null, null);
+
+                var reportFactory = new ReportFactory();
+
+                var parameters = new Dictionary<string, string>
+                              {
+                                  {"BatchId", model.BatchId.ToString()},
+                                  {"DateFrom", null},
+                                  {"DateTo", null}
+                              };
+
+                reportFactory.SetPathCompleto(Server.MapPath("~/Reports/BatchStagesSummary.rdl"))
+                    .SetDataSource("DataSet1", dataset)
                     .SetParametro(parameters);
 
                 byte[] archivo = reportFactory.Renderizar(model.ReportType);

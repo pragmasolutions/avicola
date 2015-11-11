@@ -31,7 +31,7 @@ namespace Avicola.Office.Entities
         public Nullable<decimal> Stock { get; set; }
         public string Mes { get; set; }
         public Nullable<int> DiaDelMes { get; set; }
-        public string FechaNacimiento { get; set; }
+        public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public Nullable<int> Lote { get; set; }
         public string LineaGenetica { get; set; }
         public string Clase { get; set; }
@@ -41,5 +41,6 @@ namespace Avicola.Office.Entities
         public Nullable<decimal> AlimentoInicialMes { get; set; }
         public Nullable<decimal> ConsumoTotalMes { get; set; }
         public Nullable<decimal> ConsumoDiario { get; set; }
+        public string Stage { get; set; }
     }
 }
