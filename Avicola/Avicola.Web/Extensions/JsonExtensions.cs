@@ -18,7 +18,7 @@ namespace Avicola.Web.Extensions
                 GeneticLine = new
                 {
                     instance.GeneticLine.Name,
-                    Standards = instance.GeneticLine.StandardGeneticLines.Where(sql => !sql.IsDeleted).Select(sgl => new
+                    Standards = instance.GeneticLine.StandardGeneticLines.Where(sgl => !sgl.IsDeleted).Select(sgl => new
                     {
                         sgl.Standard.Name,
                         ShowSecondValue = sgl.Standard.StandardTypeId == StandardType.VALUES_RANGE,
@@ -26,7 +26,7 @@ namespace Avicola.Web.Extensions
                         sgl.Standard.AllowDecimal,
                         sgl.Standard.MeasureUnity,
                         sgl.Standard.YAxis,
-                        StandardItems = sgl.StandardItems.Where(sql => !sgl.IsDeleted && sql.Sequence <= weeksAge).OrderBy(s => s.Sequence).Select(si => new
+                        StandardItems = sgl.StandardItems.Where(si => !si.IsDeleted && si.Sequence <= weeksAge).OrderBy(s => s.Sequence).Select(si => new
                         {
                             si.Value1,
                             si.Value2,

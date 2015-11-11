@@ -6,6 +6,7 @@
                 _lastData = mergeFatalitiesAndDiscarded(data);
 
                 var height = $(window).height();
+
                 $container = $('.main-container').empty().height(height - 60);
 
                 buildLayout(data.length);
@@ -149,6 +150,7 @@
         },
         
         getDifferences = function (batchName, standardName, week, value) {
+            
             var result = '<br/><br/>';
             var batch = $.grep(_lastData, function (x) { return x.Name == batchName })[0];
             var standard = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name == standardName })[0];
@@ -182,8 +184,11 @@
                     '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
                 ];
 
+            var maxSequence = 10;
+
             for (var j = 0; j < batch.GeneticLine.Standards.length; j++) {
                 var color = availableColors.pop();
+                
                 var standard = batch.GeneticLine.Standards[j];
 
                 var name = standard.Name + ' (' + standard.MeasureUnity + ')';
@@ -192,7 +197,7 @@
                     data: [],
                     dashStyle: 'shortdot',
                     lineWidth: 1.5,
-                    showInLegend: true,
+                    showInLegend: false,
                     yAxis: standard.YAxis
                 }
                 
@@ -201,13 +206,12 @@
                     data: [],
                     lineWidth: 1,
                     yAxis: standard.YAxis,
-                    showInLegend: false
+                    showInLegend: true
                 }
 
                 for (var i = 0; i < standard.StandardItems.length; i++) {
                     var item = standard.StandardItems[i];
 
-                    weeks.push(i + 1);
                     firstSerie.data.push(item.Value1);
 
                     var lastNotNullMeasure;
@@ -228,6 +232,12 @@
                             y: weekValue
                         }
                         measureSerie.data.push(lastNotNullMeasure);
+
+                        var maxSequenceTemp = item.Sequence;
+                        
+                        if (maxSequenceTemp > maxSequence) {
+                            maxSequence = maxSequenceTemp;
+                        }
                         
                     } else {
                         measureSerie.data.push({
@@ -236,20 +246,21 @@
                         });
                     }
                 }
-
+                
                 if (lastNotNullMeasure != null) {
                     lastNotNullMeasure.dataLabels = {
                         enabled: true,
                         format: standard.Name
                     };
+                    lastNotNullMeasure = null;
                 }
 
                 series.push(firstSerie);
-                colors.push(color);
-
+                colors.push('black');
+                
                 if ($.grep(measureSerie.data, function (x) { return x.y != null }).length > 0) {
                     series.push(measureSerie);
-                    colors.push('black');
+                    colors.push(color);
                 }
 
                 if (standard.ShowSecondValue) {
@@ -259,7 +270,7 @@
                         data: [],
                         dashStyle: 'shortdot',
                         lineWidth: 1.5,
-                        showInLegend: true,
+                        showInLegend: false,
                         yAxis: standard.YAxis
                     }
                     for (i = 0; i < standard.StandardItems.length; i++) {
@@ -268,8 +279,12 @@
                         secondSerie.data.push(item.Value2);
                     }
                     series.push(secondSerie);
-                    colors.push(color);
+                    colors.push('black');
                 }
+            }
+
+           for (var i = 0; i < maxSequence; i++) {
+                weeks.push(i + 1);
             }
 
             var yAxis = [
@@ -291,7 +306,7 @@
                     opposite: true
                 }
             ];
-
+             
             $(container).find('.content').highcharts({
                 chart: {
                     type: 'spline'
@@ -319,7 +334,8 @@
                     x: -20
                 },
                 xAxis: {
-                    categories: weeks
+                    categories: weeks,
+                    max: maxSequence - 1
                 },
                 yAxis: yAxis,
                 tooltip: {
@@ -342,7 +358,7 @@
                     layout: 'vertical',
                     align: 'right',
                     verticalAlign: 'top',
-                    y: 50,
+                    y: 25,
                     x: -75,
                     borderWidth: 1,
                     floating: true,
