@@ -318,7 +318,10 @@
                 },
                 plotOptions: {
                     series: {
-                        connectNulls: true
+                        connectNulls: true,
+                        dataLabels : {
+                            allowOverlap : true
+                        }
                     },
                     marker: {
                         enabled: true
