@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,8 +8,10 @@ using System.Windows.Forms;
 using Avicola.Common.Win.Mappings;
 using Avicola.Production.Win.Forms;
 using Avicola.Production.Win.Forms.Measure;
+using Avicola.Production.Win.Infrastructure;
 using Framework.Common.Win.CustomProviders;
 using Framework.Ioc;
+using Framework.Sync;
 using Ninject;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
@@ -47,6 +50,9 @@ namespace Avicola.Production.Win
                 //Set global container.
                 Ioc.Container = new NinjectIocContainer(kernel);
 
+                SyncManager syncManager = new SyncManager();
+                syncManager.Setup(AppSettings.SyncTables);    
+
                 //Config log4net
                 //log4net.Config.DOMConfigurator.Configure();
 
@@ -83,22 +89,8 @@ namespace Avicola.Production.Win
             //Application.Exit();
         }
 
-        //private static string GetGlobalExeptionMessage(Exception ex)
-        //{
-        //    //LogManager.GetLogger("errors").Error(ex);
-
-        //    //var mensaje = string.Format("Ha ocurrido un error.\r\n\n" +
-        //    //                            "{0}\r\n\n" +
-        //    //                            "por favor contactese con soporte",
-        //    //                            ex.Message);
-
-        //    //return mensaje;
-        //}
-
         private static void ApplicationOnThreadException(object sender, ThreadExceptionEventArgs threadExceptionEventArgs)
         {
-            //var mesange = GetGlobalExeptionMessage(threadExceptionEventArgs.Exception);
-            //MessageBoxDisplayService.ShowError(mesange);
         }
     }
 }

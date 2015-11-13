@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -69,6 +70,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -237,6 +239,7 @@
       <DependentUpon>FrmBatchVaccinesList.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalConstants.cs" />
+    <Compile Include="Infrastructure\AppSettings.cs" />
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
     <Compile Include="Infrastructure\ITransitionManager.cs" />
     <Compile Include="Infrastructure\StateController.cs" />
@@ -461,6 +464,10 @@
     <ProjectReference Include="..\Framework\Framework.Ioc.Ninject\Framework.Ioc.Ninject.csproj">
       <Project>{E764FE19-BDC2-4D35-9A83-F29FBA4B61B2}</Project>
       <Name>Framework.Ioc.Ninject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Sync\Framework.Sync.csproj">
+      <Project>{F98F1B54-2795-4D67-927F-D4C05B0D34F4}</Project>
+      <Name>Framework.Sync</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

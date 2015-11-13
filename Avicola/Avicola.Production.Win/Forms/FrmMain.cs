@@ -11,16 +11,20 @@ using Avicola.Production.Win.Forms.Measure;
 using Avicola.Production.Win.Forms.SiloEmptyings;
 using Avicola.Production.Win.Forms.Standards;
 using Avicola.Production.Win.Infrastructure;
+using Framework.Sync;
+using Framework.WinForm.Comun.Notification;
 using Telerik.WinControls;
+using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms
 {
-    public partial class FrmMain : FrmBase , ITransitionManager
+    public partial class FrmMain : FrmBase, ITransitionManager
     {
-        public FrmMain(IFormFactory formFactory)
+        public FrmMain(IFormFactory formFactory,IMessageBoxDisplayService messageBoxDisplayService)
         {
             FormFactory = formFactory;
-
+            MessageBoxDisplayService = messageBoxDisplayService;
+            
             InitializeComponent();
         }
 
@@ -75,6 +79,27 @@ namespace Avicola.Production.Win.Forms
         {
             var view = FormFactory.Create<FrmEnterSilosEmptying>();
             LoadView(view);
+        }
+
+        private async void btnSync_Click(object sender, EventArgs e)
+        {
+            SyncManager syncManager = new SyncManager();
+
+            WaitingBar.Visible = true;
+
+            WaitingBar.StartWaiting();
+
+            btnSync.Enabled = false;
+
+            await syncManager.Sync();
+
+            btnSync.Enabled = true;
+
+            WaitingBar.StopWaiting();
+
+            WaitingBar.Visible = false;
+            
+            MessageBoxDisplayService.ShowSuccess("Sincronizacion Finalizada con Exito");
         }
     }
 }
