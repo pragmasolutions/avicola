@@ -65,6 +65,7 @@
             this.WaitingBar.Size = new System.Drawing.Size(130, 24);
             this.WaitingBar.TabIndex = 2;
             this.WaitingBar.Text = "Sincronozando";
+            this.WaitingBar.Visible = false;
             this.WaitingBar.WaitingSpeed = 100;
             // 
             // FrmMain
