@@ -591,18 +591,6 @@
       <Project>{8d1c1fdf-6a6d-4354-aaed-cd35a57734ad}</Project>
       <Name>Avicola.Data.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Avicola.Office.Data\Avicola.Office.Data.csproj">
-      <Project>{6bffa4f1-929d-4838-b780-c999ce56ef38}</Project>
-      <Name>Avicola.Office.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avicola.Office.Entities\Avicola.Office.Entities.csproj">
-      <Project>{37f66cd2-c14c-4273-b4c2-09e434f63a7d}</Project>
-      <Name>Avicola.Office.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avicola.Office.Services\Avicola.Office.Services.csproj">
-      <Project>{36c18611-d925-45a2-83b8-ae98ec89e74b}</Project>
-      <Name>Avicola.Office.Services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Avicola.Reports\Avicola.Reports.csproj">
       <Project>{4be11c27-fb2e-46f9-8fac-59c559448e6f}</Project>
       <Name>Avicola.Reports</Name>

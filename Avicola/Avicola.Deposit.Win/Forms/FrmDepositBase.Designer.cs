@@ -1,6 +1,6 @@
-﻿namespace Avicola.Deposit.Win
+﻿namespace Avicola.Deposit.Win.Forms
 {
-    partial class Form1
+    partial class FrmDepositBase
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // FrmDepositBase
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.Name = "FrmDepositBase";
+            this.Text = "FrmDepositBase";
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-

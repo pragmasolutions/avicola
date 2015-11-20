@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using Avicola.Common.Win;
-using Avicola.Production.Win.Infrastructure;
-using Avicola.Production.Win.Properties;
-using Framework.Data.Repository;
 using Framework.WinForm.Comun.Notification;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
-namespace Avicola.Production.Win.Forms
+namespace Avicola.Common.Win.Forms
 {
     public partial class FrmBase : Telerik.WinControls.UI.RadForm
     {
@@ -31,19 +22,14 @@ namespace Avicola.Production.Win.Forms
         {
             this.FormErrorProvider = new ErrorProvider(this);
             this.FormErrorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-            this.FormErrorProvider.Icon = Icon.FromHandle(Resources.ErrorIcon.GetHicon());
-            this.Icon = Icon.FromHandle(Resources.LOGO.GetHicon());
+            this.FormErrorProvider.Icon = Icon.FromHandle(Resources.Wrong.GetHicon());
+            this.Icon = Icon.FromHandle(Resources.Logo.GetHicon());
         }
 
-        protected IUow Uow { get; set; }
 
         protected IFormFactory FormFactory { get; set; }
 
-        protected IUowFactory UowFactory { get; set; }
-
         protected IMessageBoxDisplayService MessageBoxDisplayService { get; set; }
-
-        public ITransitionManager TransitionManager { get; set; }
 
         protected virtual void Grilla_CellFormatting(object sender, CellFormattingEventArgs e)
         {

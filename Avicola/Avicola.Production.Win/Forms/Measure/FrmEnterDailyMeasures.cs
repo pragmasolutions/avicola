@@ -14,7 +14,7 @@ using Telerik.WinControls;
 
 namespace Avicola.Production.Win.Forms.Measure
 {
-    public partial class FrmEnterDailyMeasures : FrmBase
+    public partial class FrmEnterDailyMeasures : FrmProductionBase
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly IStateController _stateController;

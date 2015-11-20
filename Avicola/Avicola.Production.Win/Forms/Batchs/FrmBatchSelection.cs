@@ -10,7 +10,7 @@ using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms.Batchs
 {
-    public partial class FrmBatchSelection : FrmBase
+    public partial class FrmBatchSelection : FrmProductionBase
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly IStateController _stateController;

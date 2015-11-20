@@ -8,7 +8,7 @@ using Framework.Common.Validation;
 
 namespace Avicola.Production.Win.Forms
 {
-    public class EditFormBase : FrmBase
+    public class EditFormBase : FrmProductionBase
     {
         public EditFormBase()
         {

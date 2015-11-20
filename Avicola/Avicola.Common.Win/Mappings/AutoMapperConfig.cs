@@ -5,14 +5,14 @@ using System.Reflection;
 using AutoMapper;
 using Framework.Common.Mapping;
 
-namespace Avicola.Production.Win
+namespace Avicola.Common.Win.Mappings
 {
     public class AutoMapperConfig
     {
         public static void Execute()
         {
             var types = Assembly
-                           .GetExecutingAssembly()
+                           .GetEntryAssembly()
                            .GetReferencedAssemblies()
                            .Where(x => x.Name.StartsWith("Avicola") || x.Name.StartsWith("Framework"))
                            .Select(x => Assembly.Load(x))

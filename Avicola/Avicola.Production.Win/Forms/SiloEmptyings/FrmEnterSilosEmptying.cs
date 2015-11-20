@@ -16,7 +16,7 @@ using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms.SiloEmptyings
 {
-    public partial class FrmEnterSilosEmptying : FrmBase
+    public partial class FrmEnterSilosEmptying : FrmProductionBase
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly IStateController _stateController;

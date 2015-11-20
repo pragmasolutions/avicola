@@ -16,7 +16,7 @@ using Avicola.Production.Win.UserControls;
 
 namespace Avicola.Production.Win.Forms.Batchs
 {
-    public partial class FrmBatchManager : FrmBase
+    public partial class FrmBatchManager : FrmProductionBase
     {
         private readonly IStateController _stateController;
         private readonly IServiceFactory _serviceFactory;

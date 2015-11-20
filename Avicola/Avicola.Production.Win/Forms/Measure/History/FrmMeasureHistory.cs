@@ -6,7 +6,7 @@ using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms.Measure.History
 {
-    public partial class FrmMeasureHistory : FrmBase
+    public partial class FrmMeasureHistory : FrmProductionBase
     {
         private readonly IServiceFactory _serviceFactory;
         private BatchDto _selectedBatch;

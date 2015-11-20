@@ -1,4 +1,4 @@
-﻿namespace Avicola.Production.Win.Forms
+﻿namespace Avicola.Common.Win.Forms
 {
     partial class FrmBase
     {

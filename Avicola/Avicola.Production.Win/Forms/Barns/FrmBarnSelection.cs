@@ -16,7 +16,7 @@ using Avicola.Production.Win.Models.Batchs;
 
 namespace Avicola.Production.Win.Forms.Barns
 {
-    public partial class FrmBarnSelection : FrmBase
+    public partial class FrmBarnSelection : FrmProductionBase
     {
         private readonly IServiceFactory _serviceFactory;
 

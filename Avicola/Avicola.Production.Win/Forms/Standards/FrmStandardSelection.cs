@@ -11,7 +11,7 @@ using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Win.Forms.Standards
 {
-    public partial class FrmStandardSelection : FrmBase
+    public partial class FrmStandardSelection : FrmProductionBase
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly IStateController _stateController;
