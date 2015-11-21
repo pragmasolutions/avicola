@@ -36,13 +36,13 @@
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvPendingOrders = new Telerik.WinControls.UI.RadGridView();
+            this.gvPendingOrders = new Telerik.WinControls.UI.RadGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lbTitle = new Telerik.WinControls.UI.RadLabel();
             this.btnBackToDepositManager = new Telerik.WinControls.UI.RadButton();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingOrders.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPendingOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPendingOrders.MasterTemplate)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBackToDepositManager)).BeginInit();
@@ -53,7 +53,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvPendingOrders, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.gvPendingOrders, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -64,22 +64,22 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1038, 551);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // dgvPendingOrders
+            // gvPendingOrders
             // 
-            this.dgvPendingOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPendingOrders.Location = new System.Drawing.Point(8, 63);
-            this.dgvPendingOrders.Margin = new System.Windows.Forms.Padding(8);
+            this.gvPendingOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gvPendingOrders.Location = new System.Drawing.Point(8, 63);
+            this.gvPendingOrders.Margin = new System.Windows.Forms.Padding(8);
             // 
             // 
             // 
-            this.dgvPendingOrders.MasterTemplate.AllowAddNewRow = false;
-            this.dgvPendingOrders.MasterTemplate.AllowColumnReorder = false;
-            this.dgvPendingOrders.MasterTemplate.AllowDeleteRow = false;
-            this.dgvPendingOrders.MasterTemplate.AllowDragToGroup = false;
-            this.dgvPendingOrders.MasterTemplate.AllowEditRow = false;
-            this.dgvPendingOrders.MasterTemplate.AllowRowReorder = true;
-            this.dgvPendingOrders.MasterTemplate.AutoGenerateColumns = false;
-            this.dgvPendingOrders.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            this.gvPendingOrders.MasterTemplate.AllowAddNewRow = false;
+            this.gvPendingOrders.MasterTemplate.AllowColumnReorder = false;
+            this.gvPendingOrders.MasterTemplate.AllowDeleteRow = false;
+            this.gvPendingOrders.MasterTemplate.AllowDragToGroup = false;
+            this.gvPendingOrders.MasterTemplate.AllowEditRow = false;
+            this.gvPendingOrders.MasterTemplate.AllowRowReorder = true;
+            this.gvPendingOrders.MasterTemplate.AutoGenerateColumns = false;
+            this.gvPendingOrders.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.FieldName = "OrderId";
             gridViewTextBoxColumn1.HeaderText = "OrderId";
             gridViewTextBoxColumn1.IsVisible = false;
@@ -110,20 +110,20 @@
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.Name = "BuildOrder";
             gridViewCommandColumn1.Width = 47;
-            this.dgvPendingOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            this.gvPendingOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
             gridViewCommandColumn1});
-            this.dgvPendingOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
-            this.dgvPendingOrders.Name = "dgvPendingOrders";
-            this.dgvPendingOrders.ReadOnly = true;
-            this.dgvPendingOrders.Size = new System.Drawing.Size(1022, 480);
-            this.dgvPendingOrders.TabIndex = 8;
-            this.dgvPendingOrders.Text = "radGridView1";
-            this.dgvPendingOrders.ThemeName = "TelerikMetroBlue";
+            this.gvPendingOrders.MasterTemplate.EnablePaging = true;
+            this.gvPendingOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.gvPendingOrders.Name = "gvPendingOrders";
+            this.gvPendingOrders.ReadOnly = true;
+            this.gvPendingOrders.Size = new System.Drawing.Size(1022, 480);
+            this.gvPendingOrders.TabIndex = 8;
+            this.gvPendingOrders.ThemeName = "TelerikMetroBlue";
             // 
             // tableLayoutPanel2
             // 
@@ -172,9 +172,10 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "FrmPendingOrders";
+            this.Load += new System.EventHandler(this.FrmPendingOrders_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingOrders.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPendingOrders.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPendingOrders)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
@@ -187,7 +188,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Telerik.WinControls.UI.RadGridView dgvPendingOrders;
+        private Telerik.WinControls.UI.RadGridView gvPendingOrders;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Telerik.WinControls.UI.RadLabel lbTitle;
         private Telerik.WinControls.UI.RadButton btnBackToDepositManager;

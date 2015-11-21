@@ -34,11 +34,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -147,6 +156,10 @@
       <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>
       <Name>Avicola.Common.Win</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Avicola.Sales.Services\Avicola.Sales.Services.csproj">
+      <Project>{B72272A4-AB34-4F49-BFBC-75C0C600B120}</Project>
+      <Name>Avicola.Sales.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Avicola.Services.Common\Avicola.Services.Common.csproj">
       <Project>{d99a9f23-dbbf-4a12-a9d7-a4b6380c9fa4}</Project>
       <Name>Avicola.Services.Common</Name>
@@ -154,6 +167,10 @@
     <ProjectReference Include="..\Framework\Framework.Common.Win\Framework.Common.Win.csproj">
       <Project>{EC452900-1B92-4E17-833B-6FE4285C37F5}</Project>
       <Name>Framework.Common.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
+      <Project>{492B8264-0C10-4AFE-A15F-8A82E60ADE68}</Project>
+      <Name>Framework.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Ioc.Ninject\Framework.Ioc.Ninject.csproj">
       <Project>{E764FE19-BDC2-4D35-9A83-F29FBA4B61B2}</Project>

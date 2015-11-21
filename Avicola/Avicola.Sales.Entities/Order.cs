@@ -27,7 +27,7 @@ namespace Avicola.Sales.Entities
     
         public virtual Client Client { get; set; }
         public virtual Driver Driver { get; set; }
-        public virtual OrderStatus OrderStatu { get; set; }
+        public virtual OrderStatus OrderStatus { get; set; }
         public virtual Truck Truck { get; set; }
     }
 }
