@@ -28,7 +28,7 @@ namespace Avicola.Common.Win.Forms
 
 
         protected IFormFactory FormFactory { get; set; }
-
+        
         protected IMessageBoxDisplayService MessageBoxDisplayService { get; set; }
 
         protected virtual void Grilla_CellFormatting(object sender, CellFormattingEventArgs e)

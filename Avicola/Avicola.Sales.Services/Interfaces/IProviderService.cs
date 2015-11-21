@@ -14,8 +14,8 @@ namespace Avicola.Sales.Services.Interfaces
 
         Provider GetByName(string name);
 
-        List<ProviderDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize,
-            out int pageTotal);
+        List<ProviderDto> GetAll(string sortBy, string sortDirection, string criteria, 
+                        int pageIndex, int pageSize, out int pageTotal);
 
         void Create(Provider provider);
 
