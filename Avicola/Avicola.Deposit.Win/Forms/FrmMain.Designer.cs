@@ -1,4 +1,4 @@
-﻿namespace Avicola.Production.Win.Forms
+﻿namespace Avicola.Deposit.Win.Forms
 {
     partial class FrmMain
     {

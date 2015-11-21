@@ -1,28 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Avicola.Common.Win;
-using Avicola.Common.Win.Forms;
-using Avicola.Deposit.Win.Forms;
 using Avicola.Deposit.Win.Infrastructure;
+using Avicola.Services.Common.Interfaces;
 using Framework.Sync;
 using Framework.WinForm.Comun.Notification;
-using Telerik.WinControls;
-using Telerik.WinControls.UI;
 
-namespace Avicola.Production.Win.Forms
+
+namespace Avicola.Deposit.Win.Forms
 {
     public partial class FrmMain : FrmDepositBase, ITransitionManager
     {
-        public FrmMain(IFormFactory formFactory,IMessageBoxDisplayService messageBoxDisplayService)
+        private readonly IServiceFactory _serviceFactory;
+
+        public FrmMain(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;
             MessageBoxDisplayService = messageBoxDisplayService;
-            
+            _serviceFactory = serviceFactory;
+
             InitializeComponent();
         }
 

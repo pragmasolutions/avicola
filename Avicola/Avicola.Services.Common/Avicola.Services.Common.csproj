@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\IServiceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

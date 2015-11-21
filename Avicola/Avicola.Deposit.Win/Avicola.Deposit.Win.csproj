@@ -98,6 +98,7 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -125,6 +126,10 @@
     <ProjectReference Include="..\Avicola.Common.Win\Avicola.Common.Win.csproj">
       <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>
       <Name>Avicola.Common.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Services.Common\Avicola.Services.Common.csproj">
+      <Project>{d99a9f23-dbbf-4a12-a9d7-a4b6380c9fa4}</Project>
+      <Name>Avicola.Services.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Common.Win\Framework.Common.Win.csproj">
       <Project>{EC452900-1B92-4E17-833B-6FE4285C37F5}</Project>
