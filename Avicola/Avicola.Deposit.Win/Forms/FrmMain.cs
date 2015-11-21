@@ -1,33 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Avicola.Common.Win;
-using Avicola.Common.Win.Forms;
-using Avicola.Deposit.Win.Forms;
 using Avicola.Deposit.Win.Infrastructure;
+using Avicola.Services.Common.Interfaces;
 using Framework.Sync;
 using Framework.WinForm.Comun.Notification;
-using Telerik.WinControls;
-using Telerik.WinControls.UI;
 
-namespace Avicola.Production.Win.Forms
+
+namespace Avicola.Deposit.Win.Forms
 {
     public partial class FrmMain : FrmDepositBase, ITransitionManager
     {
-        public FrmMain(IFormFactory formFactory,IMessageBoxDisplayService messageBoxDisplayService)
+        private readonly IServiceFactory _serviceFactory;
+
+        public FrmMain(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;
             MessageBoxDisplayService = messageBoxDisplayService;
-            
+            _serviceFactory = serviceFactory;
+
             InitializeComponent();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            LoadDepositManagerView();
         }
 
         public void LoadView(FrmDepositBase form)
@@ -41,6 +38,12 @@ namespace Avicola.Production.Win.Forms
             form.Show();
         }
 
+        public void LoadDepositManagerView()
+        {
+            var view = FormFactory.Create<FrmDepositManager>();
+            LoadView(view);
+        }
+
         private async void btnSync_Click(object sender, EventArgs e)
         {
             SyncManager syncManager = new SyncManager();
@@ -51,14 +54,14 @@ namespace Avicola.Production.Win.Forms
 
             btnSync.Enabled = false;
 
-            //await syncManager.Sync();
+            await syncManager.Sync();
 
             btnSync.Enabled = true;
 
             WaitingBar.StopWaiting();
 
             WaitingBar.Visible = false;
-            
+
             MessageBoxDisplayService.ShowSuccess("Sincronizacion Finalizada con Exito");
         }
     }

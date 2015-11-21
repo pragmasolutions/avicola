@@ -7,13 +7,13 @@ using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Common.Win.IoC;
 using Avicola.Common.Win.Mappings;
-using Avicola.Production.Win.Forms;
 using Framework.Common.Win.CustomProviders;
 using Framework.Ioc;
 using Framework.Sync;
 using Ninject;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
+using Avicola.Deposit.Win.Forms;
 
 namespace Avicola.Deposit.Win
 {
@@ -43,7 +43,7 @@ namespace Avicola.Deposit.Win
             using (var kernel = new StandardKernel())
             {
                 //Configurar bindings
-                IoCConfig.Configure(kernel);
+                IoCConfigBase.Configure(kernel);
 
                 //Set global container.
                 Ioc.Container = new NinjectIocContainer(kernel);
