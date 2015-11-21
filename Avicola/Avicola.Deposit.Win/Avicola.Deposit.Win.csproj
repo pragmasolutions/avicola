@@ -34,11 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,6 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\EditFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FrmDepositBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +101,12 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Stock\FrmAddStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Stock\FrmAddStock.Designer.cs">
+      <DependentUpon>FrmAddStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
     <Compile Include="Infrastructure\ITransitionManager.cs" />
     <Compile Include="Infrastructure\StateController.cs" />
@@ -108,7 +121,9 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Forms\Stock\FrmAddStock.resx">
+      <DependentUpon>FrmAddStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -144,6 +159,10 @@
     <ProjectReference Include="..\Framework\Framework.Common.Win\Framework.Common.Win.csproj">
       <Project>{EC452900-1B92-4E17-833B-6FE4285C37F5}</Project>
       <Name>Framework.Common.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
+      <Project>{492b8264-0c10-4afe-a15f-8a82e60ade68}</Project>
+      <Name>Framework.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Ioc.Ninject\Framework.Ioc.Ninject.csproj">
       <Project>{E764FE19-BDC2-4D35-9A83-F29FBA4B61B2}</Project>

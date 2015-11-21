@@ -12,8 +12,7 @@ namespace Avicola.Deposit.Win.Forms
     public partial class FrmDepositManager : FrmDepositBase
     {
         private readonly IServiceFactory _serviceFactory;
-        private readonly ITransitionManager _transitionManager;
-
+        
         public FrmDepositManager(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService, IServiceFactory serviceFactory)
         {
             FormFactory = formFactory;

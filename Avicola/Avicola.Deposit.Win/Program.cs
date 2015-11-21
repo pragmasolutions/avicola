@@ -14,6 +14,7 @@ using Ninject;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Avicola.Deposit.Win.Forms;
+using Avicola.Deposit.Win;
 
 namespace Avicola.Deposit.Win
 {
@@ -43,7 +44,7 @@ namespace Avicola.Deposit.Win
             using (var kernel = new StandardKernel())
             {
                 //Configurar bindings
-                IoCConfigBase.Configure(kernel);
+                IoCConfig.Configure(kernel);
 
                 //Set global container.
                 Ioc.Container = new NinjectIocContainer(kernel);
