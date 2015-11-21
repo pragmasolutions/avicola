@@ -14,6 +14,8 @@ namespace Avicola.Sales.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class SalesEntities : DbContext
     {
@@ -38,5 +40,14 @@ namespace Avicola.Sales.Data
         public virtual DbSet<Truck> Trucks { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
+    
+        public virtual ObjectResult<DepositStock> StockGetByDeposit(Nullable<System.Guid> depositId)
+        {
+            var depositIdParameter = depositId.HasValue ?
+                new ObjectParameter("DepositId", depositId) :
+                new ObjectParameter("DepositId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DepositStock>("StockGetByDeposit", depositIdParameter);
+        }
     }
 }

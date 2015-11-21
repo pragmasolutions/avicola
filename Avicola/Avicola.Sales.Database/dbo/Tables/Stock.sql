@@ -3,9 +3,6 @@
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[DepositId] [uniqueidentifier] NOT NULL,
 	[ProductId] [uniqueidentifier] NOT NULL,
-	[CurrentBoxes] [int] NOT NULL,
-	[CurrentMaples] [int] NOT NULL,
-	[CurrentEggs] [int] NOT NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
  CONSTRAINT [PK_Stock] PRIMARY KEY CLUSTERED 
 (
