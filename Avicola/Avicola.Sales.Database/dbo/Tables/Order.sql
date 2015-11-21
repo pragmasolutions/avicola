@@ -5,6 +5,7 @@
     [Dozens] INT NOT NULL, 
     [ClientId] UNIQUEIDENTIFIER NOT NULL, 
     [OrderStatusId] UNIQUEIDENTIFIER NOT NULL, 
+	[PreparedDate] DATETIME2 NULL, 
     [DispatchedDate] DATETIME2 NULL, 
     [TruckId] UNIQUEIDENTIFIER NULL, 
     [DriverId] UNIQUEIDENTIFIER NULL, 

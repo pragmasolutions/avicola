@@ -53,10 +53,10 @@
             // BtnAgregar
             // 
             this.BtnAgregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAgregar.Location = new System.Drawing.Point(467, 271);
-            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnAgregar.Location = new System.Drawing.Point(623, 334);
+            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(75, 24);
+            this.BtnAgregar.Size = new System.Drawing.Size(100, 30);
             this.BtnAgregar.TabIndex = 82;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.ThemeName = "TelerikMetroBlue";
@@ -66,10 +66,10 @@
             // 
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(552, 271);
-            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnCancelar.Location = new System.Drawing.Point(736, 334);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(75, 24);
+            this.BtnCancelar.Size = new System.Drawing.Size(100, 30);
             this.BtnCancelar.TabIndex = 83;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.ThemeName = "TelerikMetroBlue";
@@ -81,7 +81,8 @@
             // 
             // gvBatchVaccines
             // 
-            this.gvBatchVaccines.Location = new System.Drawing.Point(2, 12);
+            this.gvBatchVaccines.Location = new System.Drawing.Point(3, 15);
+            this.gvBatchVaccines.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // 
             // 
@@ -94,25 +95,25 @@
             gridViewTextBoxColumn2.FieldName = "VaccineName";
             gridViewTextBoxColumn2.HeaderText = "Vacuna";
             gridViewTextBoxColumn2.Name = "VaccineName";
-            gridViewTextBoxColumn2.Width = 233;
+            gridViewTextBoxColumn2.Width = 312;
             gridViewTextBoxColumn3.FieldName = "StartDate";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn3.HeaderText = "Comienzo";
             gridViewTextBoxColumn3.Name = "StartDate";
-            gridViewTextBoxColumn3.Width = 74;
+            gridViewTextBoxColumn3.Width = 99;
             gridViewTextBoxColumn4.FieldName = "EndDate";
             gridViewTextBoxColumn4.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn4.HeaderText = "Fin";
             gridViewTextBoxColumn4.Name = "EndDate";
-            gridViewTextBoxColumn4.Width = 76;
+            gridViewTextBoxColumn4.Width = 102;
             gridViewTextBoxColumn5.FieldName = "Week";
             gridViewTextBoxColumn5.HeaderText = "Semana";
             gridViewTextBoxColumn5.Name = "Week";
-            gridViewTextBoxColumn5.Width = 80;
+            gridViewTextBoxColumn5.Width = 107;
             gridViewTextBoxColumn6.FieldName = "Day";
             gridViewTextBoxColumn6.HeaderText = "Día";
             gridViewTextBoxColumn6.Name = "Day";
-            gridViewTextBoxColumn6.Width = 68;
+            gridViewTextBoxColumn6.Width = 119;
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.Image = global::Avicola.Production.Win.Properties.Resources.Data_Edit;
             gridViewCommandColumn1.ImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -140,21 +141,21 @@
             this.gvBatchVaccines.Name = "gvBatchVaccines";
             this.gvBatchVaccines.ReadOnly = true;
             this.gvBatchVaccines.ShowGroupPanel = false;
-            this.gvBatchVaccines.Size = new System.Drawing.Size(625, 244);
+            this.gvBatchVaccines.Size = new System.Drawing.Size(833, 300);
             this.gvBatchVaccines.TabIndex = 84;
             this.gvBatchVaccines.Text = "radGridView1";
             this.gvBatchVaccines.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvBatchVaccines_CommandCellClick);
             // 
             // FrmBatchVaccinesList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 306);
+            this.ClientSize = new System.Drawing.Size(851, 391);
             this.Controls.Add(this.gvBatchVaccines);
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.BtnCancelar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmBatchVaccinesList";
             // 
             // 

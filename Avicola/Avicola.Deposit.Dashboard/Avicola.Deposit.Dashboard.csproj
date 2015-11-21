@@ -85,6 +85,24 @@
     <Content Include="Images\huevoSinCascara.jpg" />
     <Content Include="Images\huevo_roto.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Avicola.Common.Win\Avicola.Common.Win.csproj">
+      <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>
+      <Name>Avicola.Common.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Common.Win\Framework.Common.Win.csproj">
+      <Project>{ec452900-1b92-4e17-833b-6fe4285c37f5}</Project>
+      <Name>Framework.Common.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
+      <Project>{492b8264-0c10-4afe-a15f-8a82e60ade68}</Project>
+      <Name>Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
+      <Project>{cb41f702-99fb-49ae-8bc0-1b7f0193efab}</Project>
+      <Name>Framework.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
