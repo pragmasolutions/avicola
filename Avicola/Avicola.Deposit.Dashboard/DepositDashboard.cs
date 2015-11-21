@@ -4,19 +4,26 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Avicola.Common.Win.Forms;
+using Avicola.Sales.Entities;
+using Avicola.Sales.Services.Interfaces;
+using Framework.Data.Repository;
 using Telerik.WinControls.UI;
 
 namespace Avicola.Deposit.Dashboard
 {
     public partial class DepositDashboard : FrmBase
     {
-        public DepositDashboard()
+        private IServiceFactory _serviceFactory;
+
+        public DepositDashboard(IServiceFactory serviceFactory)
         {
             InitializeComponent();
+            _serviceFactory = serviceFactory;
         }
 
         private void DepositDashboard_Load(object sender, EventArgs e)
@@ -28,6 +35,17 @@ namespace Avicola.Deposit.Dashboard
             this.dgvPendingOrders.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             this.dgvPendingOrders.Columns[1].BestFit();
             this.dgvPendingOrders.ShowGroupPanel = false;
+
+            RefreshDashboard();
+        }
+
+        private void RefreshDashboard()
+        {
+            using (var orderService = _serviceFactory.Create<IOrderService>())
+            {
+                int total;
+                var prepared = orderService.GetAll("PreparedDate", "desc", new Guid[] { OrderStatus.FINISHED, OrderStatus.SENT }, 1, 20, out total);
+            }
         }
     }
 }
