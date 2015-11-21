@@ -67,7 +67,8 @@ namespace Avicola.Deposit.Win.Forms
 
         public void LoadPendingOrdersView()
         {
-
+            var view = FormFactory.Create<FrmPendingOrders>();
+            LoadView(view);
         }
     }
 }
