@@ -586,7 +586,7 @@
           <Property Name="DriverId" Type="Guid" />
           <NavigationProperty Name="Client" Relationship="Avicola.SalesModel.FK_Order_Client" FromRole="Order" ToRole="Client" />
           <NavigationProperty Name="Driver" Relationship="Avicola.SalesModel.FK_Order_Driver" FromRole="Order" ToRole="Driver" />
-          <NavigationProperty Name="OrderStatu" Relationship="Avicola.SalesModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatu" />
+          <NavigationProperty Name="OrderStatus" Relationship="Avicola.SalesModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatu" />
           <NavigationProperty Name="Truck" Relationship="Avicola.SalesModel.FK_Order_Truck" FromRole="Order" ToRole="Truck" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="PreparedDate" Type="DateTime" Precision="7" />

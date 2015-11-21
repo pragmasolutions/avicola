@@ -34,11 +34,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,6 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\EditFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FrmDepositBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +115,12 @@
     <Compile Include="Forms\FrmPendingOrders.Designer.cs">
       <DependentUpon>FrmPendingOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Stock\FrmAddStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Stock\FrmAddStock.Designer.cs">
+      <DependentUpon>FrmAddStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
     <Compile Include="Infrastructure\ITransitionManager.cs" />
     <Compile Include="Infrastructure\StateController.cs" />
@@ -118,6 +139,9 @@
       <DependentUpon>FrmPendingOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Forms\Stock\FrmAddStock.resx">
+      <DependentUpon>FrmAddStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -146,6 +170,10 @@
     <ProjectReference Include="..\Avicola.Common.Win\Avicola.Common.Win.csproj">
       <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>
       <Name>Avicola.Common.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Sales.Services\Avicola.Sales.Services.csproj">
+      <Project>{B72272A4-AB34-4F49-BFBC-75C0C600B120}</Project>
+      <Name>Avicola.Sales.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Avicola.Services.Common\Avicola.Services.Common.csproj">
       <Project>{d99a9f23-dbbf-4a12-a9d7-a4b6380c9fa4}</Project>

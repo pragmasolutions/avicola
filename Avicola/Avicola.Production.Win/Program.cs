@@ -15,6 +15,7 @@ using Framework.Sync;
 using Ninject;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
+using Telerik.WinControls.UI.Localization;
 
 namespace Avicola.Production.Win
 {
@@ -41,6 +42,7 @@ namespace Avicola.Production.Win
 
             RadWizardLocalizationProvider.CurrentProvider = new CustomRadWizardLocalizationProvider();
             RadMessageLocalizationProvider.CurrentProvider = new CustomRadMessageLocalizationProvider();
+            RadGridLocalizationProvider.CurrentProvider = new CustomRadGridViewLocalizationProvider();
 
             using (var kernel = new StandardKernel())
             {
