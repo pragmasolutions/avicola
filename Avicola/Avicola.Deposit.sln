@@ -56,6 +56,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Common.Win", "Fra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Sync", "Framework\Framework.Sync\Framework.Sync.csproj", "{F98F1B54-2795-4D67-927F-D4C05B0D34F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Deposit.Dashboard", "Avicola.Deposit.Dashboard\Avicola.Deposit.Dashboard.csproj", "{D0730E5B-27E2-418E-88F1-3DD2544AD4AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -185,6 +187,12 @@ Global
 		{F98F1B54-2795-4D67-927F-D4C05B0D34F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F98F1B54-2795-4D67-927F-D4C05B0D34F4}.tekove|Any CPU.ActiveCfg = Release|Any CPU
 		{F98F1B54-2795-4D67-927F-D4C05B0D34F4}.tekove|Any CPU.Build.0 = Release|Any CPU
+		{D0730E5B-27E2-418E-88F1-3DD2544AD4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0730E5B-27E2-418E-88F1-3DD2544AD4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0730E5B-27E2-418E-88F1-3DD2544AD4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0730E5B-27E2-418E-88F1-3DD2544AD4AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0730E5B-27E2-418E-88F1-3DD2544AD4AB}.tekove|Any CPU.ActiveCfg = Release|Any CPU
+		{D0730E5B-27E2-418E-88F1-3DD2544AD4AB}.tekove|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

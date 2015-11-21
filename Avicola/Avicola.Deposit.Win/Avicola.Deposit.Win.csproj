@@ -75,6 +75,7 @@
     <Reference Include="TelerikCommon, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IoCConfig.cs" />
     <Compile Include="Forms\FrmDepositBase.cs">
       <SubType>Form</SubType>
     </Compile>
