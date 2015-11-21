@@ -84,31 +84,33 @@
             gridViewTextBoxColumn1.HeaderText = "OrderId";
             gridViewTextBoxColumn1.IsVisible = false;
             gridViewTextBoxColumn1.Name = "OrderId";
-            gridViewTextBoxColumn2.FieldName = "Client";
+            gridViewTextBoxColumn2.FieldName = "ClientName";
             gridViewTextBoxColumn2.HeaderText = "Cliente";
             gridViewTextBoxColumn2.MaxWidth = 5000;
             gridViewTextBoxColumn2.MinWidth = 200;
-            gridViewTextBoxColumn2.Name = "Client";
+            gridViewTextBoxColumn2.Name = "ClientName";
             gridViewTextBoxColumn2.Width = 325;
             gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
-            gridViewTextBoxColumn3.FieldName = "OrderDate";
+            gridViewTextBoxColumn3.FieldName = "CreatedDate";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
             gridViewTextBoxColumn3.MinWidth = 120;
-            gridViewTextBoxColumn3.Name = "OrderDate";
+            gridViewTextBoxColumn3.Name = "CreatedDate";
             gridViewTextBoxColumn3.Width = 195;
             gridViewTextBoxColumn4.FieldName = "Dozens";
             gridViewTextBoxColumn4.HeaderText = "Docenas";
             gridViewTextBoxColumn4.MinWidth = 120;
             gridViewTextBoxColumn4.Name = "Dozens";
             gridViewTextBoxColumn4.Width = 195;
-            gridViewTextBoxColumn5.FieldName = "Status";
+            gridViewTextBoxColumn5.FieldName = "OrderStatusName";
             gridViewTextBoxColumn5.HeaderText = "Estado";
-            gridViewTextBoxColumn5.Name = "Status";
+            gridViewTextBoxColumn5.Name = "OrderStatusName";
             gridViewTextBoxColumn5.Width = 244;
             gridViewCommandColumn1.DefaultText = "Armar";
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.Name = "BuildOrder";
+            gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewCommandColumn1.UseDefaultText = true;
             gridViewCommandColumn1.Width = 47;
             this.gvPendingOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
@@ -121,6 +123,7 @@
             this.gvPendingOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvPendingOrders.Name = "gvPendingOrders";
             this.gvPendingOrders.ReadOnly = true;
+            this.gvPendingOrders.ShowGroupPanelScrollbars = false;
             this.gvPendingOrders.Size = new System.Drawing.Size(1022, 480);
             this.gvPendingOrders.TabIndex = 8;
             this.gvPendingOrders.ThemeName = "TelerikMetroBlue";

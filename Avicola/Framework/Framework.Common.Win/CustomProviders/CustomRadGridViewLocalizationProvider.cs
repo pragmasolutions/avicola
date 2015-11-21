@@ -214,6 +214,10 @@ namespace Framework.Common.Win.CustomProviders
                     return "Desagrupar columna";
                 case RadGridStringId.UnpinMenuItem:
                     return "Desapilar";
+                case RadGridStringId.PagingPanelPagesLabel:
+                    return "Pag.";
+                case RadGridStringId.PagingPanelOfPagesLabel:
+                    return "de";
                 default:
                     return base.GetLocalizedString(id);
             }
