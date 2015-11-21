@@ -12,7 +12,6 @@ namespace Avicola.Deposit.Win.Forms
     public partial class FrmDepositManager : FrmDepositBase
     {
         private readonly IServiceFactory _serviceFactory;
-        private readonly ITransitionManager _transitionManager;
 
         public FrmDepositManager(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService, IServiceFactory serviceFactory)
         {
@@ -25,15 +24,15 @@ namespace Avicola.Deposit.Win.Forms
 
         private void FrmDepositManager_Load(object sender, EventArgs e)
         {
-
-
         }
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-
         }
 
-       
+        private void btnOrders_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadPendingOrdersView();
+        }
     }
 }

@@ -2,5 +2,6 @@
 {
     public interface ITransitionManager
     {
+        void LoadPendingOrdersView();
     }
 }

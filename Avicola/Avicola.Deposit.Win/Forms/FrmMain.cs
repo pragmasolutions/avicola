@@ -64,5 +64,10 @@ namespace Avicola.Deposit.Win.Forms
 
             MessageBoxDisplayService.ShowSuccess("Sincronizacion Finalizada con Exito");
         }
+
+        public void LoadPendingOrdersView()
+        {
+
+        }
     }
 }
