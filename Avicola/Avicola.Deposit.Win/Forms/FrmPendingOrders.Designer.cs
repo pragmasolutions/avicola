@@ -127,6 +127,7 @@
             this.gvPendingOrders.Size = new System.Drawing.Size(1022, 480);
             this.gvPendingOrders.TabIndex = 8;
             this.gvPendingOrders.ThemeName = "TelerikMetroBlue";
+            this.gvPendingOrders.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvPendingOrders_CommandCellClick);
             // 
             // tableLayoutPanel2
             // 

@@ -38,12 +38,6 @@ namespace Avicola.Deposit.Win.Forms
             form.Show();
         }
 
-        public void LoadDepositManagerView()
-        {
-            var view = FormFactory.Create<FrmDepositManager>();
-            LoadView(view);
-        }
-
         private async void btnSync_Click(object sender, EventArgs e)
         {
             SyncManager syncManager = new SyncManager();
@@ -65,10 +59,21 @@ namespace Avicola.Deposit.Win.Forms
             MessageBoxDisplayService.ShowSuccess("Sincronizacion Finalizada con Exito");
         }
 
+        public void LoadDepositManagerView()
+        {
+            var view = FormFactory.Create<FrmDepositManager>();
+            LoadView(view);
+        }
+
         public void LoadPendingOrdersView()
         {
             var view = FormFactory.Create<FrmPendingOrders>();
             LoadView(view);
+        }
+
+        public void LoadBuildOrderView()
+        {
+            throw new NotImplementedException();
         }
     }
 }
