@@ -45,10 +45,14 @@
     <Compile Include="Deposit.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DepositStock.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Driver.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Deposit.cs" />
+    <Compile Include="Extensions\DepositStock.cs" />
     <Compile Include="Extensions\Driver.cs" />
     <Compile Include="Extensions\Order.cs" />
     <Compile Include="Extensions\OrderStatus.cs" />

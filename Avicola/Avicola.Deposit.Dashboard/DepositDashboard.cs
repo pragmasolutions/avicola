@@ -41,10 +41,9 @@ namespace Avicola.Deposit.Dashboard
 
         private void RefreshDashboard()
         {
-            using (var orderService = _serviceFactory.Create<IOrderService>())
+            using (var stockService = _serviceFactory.Create<IStockService>())
             {
                 int total;
-                var prepared = orderService.GetAll("PreparedDate", "desc", new Guid[] { OrderStatus.FINISHED, OrderStatus.SENT }, 1, 20, out total);
             }
         }
     }

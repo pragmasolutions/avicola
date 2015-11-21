@@ -24,6 +24,7 @@ namespace Avicola.Sales.Entities
         public Nullable<System.Guid> TruckId { get; set; }
         public Nullable<System.Guid> DriverId { get; set; }
         public bool IsDeleted { get; set; }
+        public Nullable<System.DateTime> PreparedDate { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Driver Driver { get; set; }
