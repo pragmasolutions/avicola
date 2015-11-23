@@ -43,14 +43,9 @@ namespace Avicola.Sales.Services
             return Uow.Stocks.GetAll();
         }
 
-        public List<StockDto> GetByDeposit(Guid depositId)
+        public List<DepositStock> GetByDeposit(Guid depositId)
         {
-            throw new NotImplementedException();
-            //var list = Uow.StockEntries.GetAll(x => x.Stock.DepositId == depositId && !x.IsDeleted);
-            //return list.GroupBy(x => x.StockId).Select(item => new StockDto()
-            //{
-            //    Id = item.
-            //})
+            return Uow.DbContext.StockGetByDeposit(depositId).ToList();
         }
     }
 }

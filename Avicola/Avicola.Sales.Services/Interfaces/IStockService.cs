@@ -13,7 +13,7 @@ namespace Avicola.Sales.Services.Interfaces
 
         Stock GetById(Guid id);
 
-        List<StockDto> GetByDeposit(Guid depositId);
+        List<DepositStock> GetByDeposit(Guid depositId);
 
         void Create(Stock stock);
     }
