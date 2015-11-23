@@ -96,6 +96,7 @@
     <Compile Include="Forms\FrmBase.Designer.cs">
       <DependentUpon>FrmBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="IFormFactory.cs" />
     <Compile Include="IoC\IoCConfig.cs" />
     <Compile Include="Mappings\AutoMapperConfig.cs" />

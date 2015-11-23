@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Deposit.Win.Infrastructure;
+using Avicola.Sales.Services.Dtos;
 using Avicola.Services.Common.Interfaces;
 using Framework.Sync;
 using Framework.WinForm.Comun.Notification;
@@ -71,9 +72,10 @@ namespace Avicola.Deposit.Win.Forms
             LoadView(view);
         }
 
-        public void LoadBuildOrderView()
+        public void LoadBuildOrderView(OrderDto order)
         {
             var view = FormFactory.Create<FrmBuildOrder>();
+            view.Order = order;
             LoadView(view);
         }
     }

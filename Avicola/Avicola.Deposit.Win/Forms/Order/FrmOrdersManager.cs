@@ -25,6 +25,8 @@ namespace Avicola.Deposit.Win.Forms
         {
             _serviceFactory = serviceFactory;
             InitializeComponent();
+
+            gvOrders.TableElement.RowHeight = Avicola.Common.Win.GlobalConstants.DefaultRowHeight;
         }
 
         public IList<OrderStatus> OrderStatuses
@@ -98,7 +100,7 @@ namespace Avicola.Deposit.Win.Forms
 
             if (commandCell.ColumnInfo.Name == GlobalConstants.BuildOrderColumnName)
             {
-                TransitionManager.LoadBuildOrderView();
+                TransitionManager.LoadBuildOrderView(order);
             }
         }
 

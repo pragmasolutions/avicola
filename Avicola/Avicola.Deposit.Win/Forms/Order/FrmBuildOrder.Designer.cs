@@ -30,6 +30,7 @@
         {
             this.btnCancel = new Telerik.WinControls.UI.RadButton();
             this.btnBuildOrder = new Telerik.WinControls.UI.RadButton();
+            this.ucOrderDetails = new Avicola.Deposit.Win.UserControls.UcOrderDetails();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -55,18 +56,28 @@
             this.btnBuildOrder.Text = "Armar";
             this.btnBuildOrder.Click += new System.EventHandler(this.btnBuildOrder_Click);
             // 
+            // ucOrderDetails
+            // 
+            this.ucOrderDetails.Location = new System.Drawing.Point(12, 12);
+            this.ucOrderDetails.Name = "ucOrderDetails";
+            this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
+            this.ucOrderDetails.TabIndex = 2;
+            // 
             // FrmBuildOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(738, 403);
+            this.Controls.Add(this.ucOrderDetails);
             this.Controls.Add(this.btnBuildOrder);
             this.Controls.Add(this.btnCancel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmBuildOrder";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "Armar Pedido";
+            this.Load += new System.EventHandler(this.FrmBuildOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -78,5 +89,6 @@
 
         private Telerik.WinControls.UI.RadButton btnCancel;
         private Telerik.WinControls.UI.RadButton btnBuildOrder;
+        private UserControls.UcOrderDetails ucOrderDetails;
     }
 }

@@ -61,7 +61,7 @@ namespace Avicola.Deposit.Win.Forms
 
             if (commandCell.ColumnInfo.Name == GlobalConstants.BuildOrderColumnName)
             {
-                TransitionManager.LoadBuildOrderView();
+                TransitionManager.LoadBuildOrderView(order);
             }
         }
     }

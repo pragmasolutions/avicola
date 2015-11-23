@@ -1,9 +1,11 @@
-﻿namespace Avicola.Deposit.Win.Infrastructure
+﻿using Avicola.Sales.Services.Dtos;
+
+namespace Avicola.Deposit.Win.Infrastructure
 {
     public interface ITransitionManager
     {
         void LoadOrdersManagerView();
         void LoadDepositManagerView();
-        void LoadBuildOrderView ();
+        void LoadBuildOrderView(OrderDto order);
     }
 }

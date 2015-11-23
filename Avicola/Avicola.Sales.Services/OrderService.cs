@@ -58,6 +58,8 @@ namespace Avicola.Sales.Services
             var order = InternalGet(orderId);
 
             order.OrderStatusId = OrderStatus.IN_PROGESS;
+
+            Uow.Commit();
         }
 
         public void SendOrder(Guid orderId)
@@ -65,6 +67,8 @@ namespace Avicola.Sales.Services
             var order = InternalGet(orderId);
 
             order.OrderStatusId = OrderStatus.SENT;
+
+            Uow.Commit();
         }
 
         public void FinishOrder(Guid orderId)
@@ -72,6 +76,8 @@ namespace Avicola.Sales.Services
             var order = InternalGet(orderId);
 
             order.OrderStatusId = OrderStatus.FINISHED;
+
+            Uow.Commit();
         }
 
         private Order InternalGet(Guid orderId)

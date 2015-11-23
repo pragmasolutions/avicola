@@ -31,7 +31,7 @@ namespace Avicola.Production.Win.UserControls
             _stateController = stateController;
             _serviceFactory = serviceFactory;
             InitializeComponent();
-            gvDailyMeasures.TableElement.RowHeight = GlobalConstants.DefaultRowHeight;
+            gvDailyMeasures.TableElement.RowHeight = Avicola.Common.Win.GlobalConstants.DefaultRowHeight;
         }
 
         public event EventHandler SaveClick;

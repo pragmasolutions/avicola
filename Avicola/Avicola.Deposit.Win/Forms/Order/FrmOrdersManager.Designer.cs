@@ -91,7 +91,7 @@
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.Location = new System.Drawing.Point(106, 3);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(206, 41);
+            this.lbTitle.Size = new System.Drawing.Size(923, 41);
             this.lbTitle.TabIndex = 13;
             this.lbTitle.Text = "{{Orders Title}}";
             // 
@@ -145,35 +145,47 @@
             gridViewTextBoxColumn2.MaxWidth = 5000;
             gridViewTextBoxColumn2.MinWidth = 200;
             gridViewTextBoxColumn2.Name = "ClientName";
-            gridViewTextBoxColumn2.Width = 228;
+            gridViewTextBoxColumn2.Width = 200;
             gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
             gridViewTextBoxColumn3.FieldName = "CreatedDate";
-            gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy H:mm}";
             gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
             gridViewTextBoxColumn3.MinWidth = 120;
             gridViewTextBoxColumn3.Name = "CreatedDate";
-            gridViewTextBoxColumn3.Width = 137;
+            gridViewTextBoxColumn3.Width = 120;
             gridViewTextBoxColumn4.FieldName = "Dozens";
             gridViewTextBoxColumn4.HeaderText = "Docenas";
             gridViewTextBoxColumn4.MinWidth = 120;
             gridViewTextBoxColumn4.Name = "Dozens";
-            gridViewTextBoxColumn4.Width = 137;
+            gridViewTextBoxColumn4.Width = 120;
             gridViewTextBoxColumn5.FieldName = "OrderStatusName";
             gridViewTextBoxColumn5.HeaderText = "Estado";
             gridViewTextBoxColumn5.Name = "OrderStatusName";
-            gridViewTextBoxColumn5.Width = 171;
+            gridViewTextBoxColumn5.Width = 146;
             gridViewCommandColumn1.DefaultText = "Armar";
             gridViewCommandColumn1.HeaderText = "";
+            gridViewCommandColumn1.MaxWidth = 70;
+            gridViewCommandColumn1.MinWidth = 70;
             gridViewCommandColumn1.Name = "BuildOrder";
             gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn1.UseDefaultText = true;
-            gridViewCommandColumn1.Width = 32;
+            gridViewCommandColumn1.Width = 70;
+            gridViewCommandColumn2.DefaultText = "Enviar";
             gridViewCommandColumn2.HeaderText = "";
+            gridViewCommandColumn2.MaxWidth = 70;
+            gridViewCommandColumn2.MinWidth = 70;
             gridViewCommandColumn2.Name = "SendOrder";
-            gridViewCommandColumn2.Width = 44;
+            gridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewCommandColumn2.UseDefaultText = true;
+            gridViewCommandColumn2.Width = 70;
+            gridViewCommandColumn3.DefaultText = "Finalizar";
             gridViewCommandColumn3.HeaderText = "";
+            gridViewCommandColumn3.MaxWidth = 70;
+            gridViewCommandColumn3.MinWidth = 70;
             gridViewCommandColumn3.Name = "FinishOrder";
-            gridViewCommandColumn3.Width = 47;
+            gridViewCommandColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewCommandColumn3.UseDefaultText = true;
+            gridViewCommandColumn3.Width = 70;
             this.gvOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
