@@ -8,6 +8,7 @@ using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Avicola.Common.Win;
 using Avicola.Common.Win.Forms;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Interfaces;
@@ -43,7 +44,16 @@ namespace Avicola.Deposit.Dashboard
         {
             using (var stockService = _serviceFactory.Create<IStockService>())
             {
-                int total;
+                var stocks = stockService.GetByDeposit(Configuration.AppSettings.DepositId);
+
+                var eggs = stocks.FirstOrDefault(s => s.ProductId == Product.EGG);
+                txtEgg.Text = (eggs != null) ? eggs.TotalEggs.ToString() : string.Empty;
+
+                var brokenEggs = stocks.FirstOrDefault(s => s.ProductId == Product.BROKEN_EGG);
+                txtBrokenEgg.Text = (brokenEggs != null) ? brokenEggs.TotalEggs.ToString() : string.Empty;
+
+                var noShellEggs = stocks.FirstOrDefault(s => s.ProductId == Product.EGG);
+                txtEggWithNoShell.Text = (noShellEggs != null) ? noShellEggs.TotalEggs.ToString() : string.Empty;
             }
         }
     }
