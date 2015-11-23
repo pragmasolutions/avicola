@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IOrderStatusService.cs" />
+    <Compile Include="OrderStatusService.cs" />
     <Compile Include="OrderService.cs" />
     <Compile Include="DepositService.cs" />
     <Compile Include="Dtos\OrderDto.cs" />

@@ -109,10 +109,22 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmPendingOrders.cs">
+    <Compile Include="Forms\Order\FrmBuildOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmPendingOrders.Designer.cs">
+    <Compile Include="Forms\Order\FrmBuildOrder.Designer.cs">
+      <DependentUpon>FrmBuildOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\FrmOrdersManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FrmOrdersManager.Designer.cs">
+      <DependentUpon>FrmOrdersManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\FrmPendingOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FrmPendingOrders.Designer.cs">
       <DependentUpon>FrmPendingOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Stock\FrmAddStock.cs">
@@ -136,7 +148,13 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmPendingOrders.resx">
+    <EmbeddedResource Include="Forms\Order\FrmBuildOrder.resx">
+      <DependentUpon>FrmBuildOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FrmOrdersManager.resx">
+      <DependentUpon>FrmOrdersManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FrmPendingOrders.resx">
       <DependentUpon>FrmPendingOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -172,6 +190,10 @@
       <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>
       <Name>Avicola.Common.Win</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Avicola.Sales.Entities\Avicola.Sales.Entities.csproj">
+      <Project>{8C6CDBD9-F5DE-4FE9-B7C5-178967C2B5AB}</Project>
+      <Name>Avicola.Sales.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Avicola.Sales.Services\Avicola.Sales.Services.csproj">
       <Project>{B72272A4-AB34-4F49-BFBC-75C0C600B120}</Project>
       <Name>Avicola.Sales.Services</Name>
@@ -187,6 +209,10 @@
     <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
       <Project>{492B8264-0C10-4AFE-A15F-8A82E60ADE68}</Project>
       <Name>Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
+      <Project>{CB41F702-99FB-49AE-8BC0-1B7F0193EFAB}</Project>
+      <Name>Framework.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Ioc.Ninject\Framework.Ioc.Ninject.csproj">
       <Project>{E764FE19-BDC2-4D35-9A83-F29FBA4B61B2}</Project>

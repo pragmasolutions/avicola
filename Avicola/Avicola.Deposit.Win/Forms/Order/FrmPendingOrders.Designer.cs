@@ -146,6 +146,7 @@
             // 
             // lbTitle
             // 
+            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.Location = new System.Drawing.Point(106, 3);
             this.lbTitle.Name = "lbTitle";
@@ -155,8 +156,8 @@
             // 
             // btnBackToDepositManager
             // 
-            this.btnBackToDepositManager.Location = new System.Drawing.Point(8, 8);
-            this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8);
+            this.btnBackToDepositManager.Location = new System.Drawing.Point(8, 12);
+            this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";
             this.btnBackToDepositManager.Size = new System.Drawing.Size(87, 24);
             this.btnBackToDepositManager.TabIndex = 10;

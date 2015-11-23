@@ -8,7 +8,7 @@ using Framework.Common.Validation;
 
 namespace Avicola.Deposit.Win.Forms
 {
-    public class EditFormBase : FrmBase
+    public class EditFormBase : FrmDepositBase
     {
         public EditFormBase()
         {
