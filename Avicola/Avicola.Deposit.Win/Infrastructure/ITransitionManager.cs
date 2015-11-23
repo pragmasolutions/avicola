@@ -3,7 +3,7 @@
     public interface ITransitionManager
     {
         void LoadPendingOrdersView();
-
         void LoadDepositManagerView();
+        void LoadBuildOrderView ();
     }
 }

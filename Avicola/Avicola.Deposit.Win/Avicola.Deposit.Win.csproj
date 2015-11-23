@@ -121,6 +121,7 @@
     <Compile Include="Forms\Stock\FrmAddStock.Designer.cs">
       <DependentUpon>FrmAddStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
     <Compile Include="Infrastructure\ITransitionManager.cs" />
     <Compile Include="Infrastructure\StateController.cs" />
