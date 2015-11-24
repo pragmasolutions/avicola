@@ -21,6 +21,7 @@ namespace Avicola.Deposit.Dashboard
     public partial class DepositDashboard : FrmBase
     {
         private IServiceFactory _serviceFactory;
+        private Timer _refreshTimer;
 
         public DepositDashboard(IServiceFactory serviceFactory)
         {
@@ -37,7 +38,16 @@ namespace Avicola.Deposit.Dashboard
             this.dgvPendingOrders.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             this.dgvPendingOrders.Columns[1].BestFit();
             this.dgvPendingOrders.ShowGroupPanel = false;
+            _refreshTimer = new Timer();
+            _refreshTimer.Interval = 60000; //One minute
+            _refreshTimer.Tick += RefreshTimerOnTick;
+            _refreshTimer.Start();
+            RefreshDashboard();
+            
+        }
 
+        private void RefreshTimerOnTick(object sender, EventArgs eventArgs)
+        {
             RefreshDashboard();
         }
 
