@@ -34,9 +34,9 @@ namespace Avicola.Sales.Services
 
             Expression<Func<Order, bool>> where = x => statusId.Any(y => y == x.OrderStatusId);
 
-            var results = Uow.Orders.GetAll(pagingCriteria, where, 
-                x => x.Client, x => 
-                x.Truck, 
+            var results = Uow.Orders.GetAll(pagingCriteria, where,
+                x => x.Client, x =>
+                x.Truck,
                 x => x.Driver,
                 x => x.OrderStatus);
 
@@ -61,7 +61,7 @@ namespace Avicola.Sales.Services
         {
             int total;
             return GetAll(string.Empty, String.Empty,
-                new[] {OrderStatus.PENDING, OrderStatus.IN_PROGESS, OrderStatus.FINISHED, OrderStatus.SENT}, 1,
+                new[] { OrderStatus.PENDING, OrderStatus.IN_PROGESS, OrderStatus.FINISHED, OrderStatus.SENT }, 1,
                 int.MaxValue, out total);
         }
 
@@ -71,10 +71,11 @@ namespace Avicola.Sales.Services
             return GetAll(string.Empty, String.Empty, statusIds, 1, int.MaxValue, out total);
         }
 
-        public void BuildOrder(Guid orderId)
+        public void BuildOrder(Guid orderId, Guid depositId)
         {
             var order = InternalGet(orderId);
 
+            order.DepositId = depositId;
             order.OrderStatusId = OrderStatus.IN_PROGESS;
 
             Uow.Commit();
@@ -90,7 +91,7 @@ namespace Avicola.Sales.Services
             Uow.Commit();
         }
 
-        public void SendOrder(Guid orderId,Guid driverId,Guid truckId)
+        public void SendOrder(Guid orderId, Guid driverId, Guid truckId)
         {
             var order = InternalGet(orderId);
 

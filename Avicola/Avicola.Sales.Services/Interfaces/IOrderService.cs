@@ -15,7 +15,7 @@ namespace Avicola.Sales.Services.Interfaces
         List<OrderDto> GetOrdersByStatus(Guid[] statusIds);
         List<OrderDto> GetActiveOrders();
         OrderDto Get(Guid orderId);
-        void BuildOrder(Guid orderId);
+        void BuildOrder(Guid orderId, Guid depositId);
         void SendOrder(Guid orderId, Guid driverId, Guid truckId);
         void FinishOrder(Guid orderId);
     }

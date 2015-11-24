@@ -29,12 +29,20 @@ namespace Avicola.Deposit.Win.Forms
 
         private void btnBuildOrder_Click(object sender, EventArgs e)
         {
+            this.FormErrorProvider.Clear();
+
+            if (ucDepositSelection.SelectedDeposit == null)
+            {
+                this.FormErrorProvider.SetError(ucDepositSelection, "El campo deposito es requerido");
+                return;
+            }
+
             _messageBoxDisplayService.ShowConfirmationDialog("Esta seguro que desea armar este pedido?","Armar Pedido",
                 () =>
                 {
                     using (var service = _serviceFactory.Create<IOrderService>())
                     {
-                        service.BuildOrder(Order.Id);
+                        service.BuildOrder(Order.Id,ucDepositSelection.SelectedDeposit.Id);
 
                         TransitionManager.LoadOrdersManagerView();
                     }
@@ -54,6 +62,11 @@ namespace Avicola.Deposit.Win.Forms
             }
 
             ucOrderDetails.Order = Order;
+
+            using (var service = _serviceFactory.Create<IDepositService>())
+            {
+                ucDepositSelection.Deposits = service.GetAll();
+            }
         }
     }
 }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
+using Avicola.Services.Common;
 
 namespace Avicola.Sales.Services.Interfaces
 {
-    public interface IDepositService
+    public interface IDepositService : IService
     {
-        IQueryable<Deposit> GetAll();
+        IList<Deposit> GetAll();
 
         Deposit GetById(Guid id);
 

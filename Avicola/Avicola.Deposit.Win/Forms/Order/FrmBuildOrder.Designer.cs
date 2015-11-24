@@ -31,8 +31,11 @@
             this.btnCancel = new Telerik.WinControls.UI.RadButton();
             this.btnBuildOrder = new Telerik.WinControls.UI.RadButton();
             this.ucOrderDetails = new Avicola.Deposit.Win.UserControls.UcOrderDetails();
+            this.ucDepositSelection = new Avicola.Deposit.Win.UserControls.UcDepositSelection();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,10 +68,27 @@
             this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
             this.ucOrderDetails.TabIndex = 2;
             // 
+            // ucDepositSelection
+            // 
+            this.ucDepositSelection.Location = new System.Drawing.Point(290, 40);
+            this.ucDepositSelection.Name = "ucDepositSelection";
+            this.ucDepositSelection.Size = new System.Drawing.Size(284, 28);
+            this.ucDepositSelection.TabIndex = 3;
+            // 
+            // radLabel1
+            // 
+            this.radLabel1.Location = new System.Drawing.Point(293, 15);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(73, 22);
+            this.radLabel1.TabIndex = 4;
+            this.radLabel1.Text = "Deposito";
+            // 
             // FrmBuildOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(738, 403);
+            this.Controls.Add(this.radLabel1);
+            this.Controls.Add(this.ucDepositSelection);
             this.Controls.Add(this.ucOrderDetails);
             this.Controls.Add(this.btnBuildOrder);
             this.Controls.Add(this.btnCancel);
@@ -82,8 +102,10 @@
             this.Load += new System.EventHandler(this.FrmBuildOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -92,5 +114,7 @@
         private Telerik.WinControls.UI.RadButton btnCancel;
         private Telerik.WinControls.UI.RadButton btnBuildOrder;
         private UserControls.UcOrderDetails ucOrderDetails;
+        private UserControls.UcDepositSelection ucDepositSelection;
+        private Telerik.WinControls.UI.RadLabel radLabel1;
     }
 }
