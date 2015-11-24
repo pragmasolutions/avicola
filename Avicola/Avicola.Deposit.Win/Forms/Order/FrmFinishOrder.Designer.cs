@@ -1,6 +1,6 @@
 ﻿namespace Avicola.Deposit.Win.Forms
 {
-    partial class FrmBuildOrder
+    partial class FrmFinishOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.btnCancel = new Telerik.WinControls.UI.RadButton();
-            this.btnBuildOrder = new Telerik.WinControls.UI.RadButton();
+            this.btnFinishOrder = new Telerik.WinControls.UI.RadButton();
             this.ucOrderDetails = new Avicola.Deposit.Win.UserControls.UcOrderDetails();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFinishOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,16 +47,16 @@
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnBuildOrder
+            // btnFinishOrder
             // 
-            this.btnBuildOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuildOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuildOrder.Location = new System.Drawing.Point(500, 367);
-            this.btnBuildOrder.Name = "btnBuildOrder";
-            this.btnBuildOrder.Size = new System.Drawing.Size(110, 24);
-            this.btnBuildOrder.TabIndex = 1;
-            this.btnBuildOrder.Text = "Armar";
-            this.btnBuildOrder.Click += new System.EventHandler(this.btnBuildOrder_Click);
+            this.btnFinishOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinishOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinishOrder.Location = new System.Drawing.Point(500, 367);
+            this.btnFinishOrder.Name = "btnFinishOrder";
+            this.btnFinishOrder.Size = new System.Drawing.Size(110, 24);
+            this.btnFinishOrder.TabIndex = 1;
+            this.btnFinishOrder.Text = "Finalizar";
+            this.btnFinishOrder.Click += new System.EventHandler(this.btnFinishOrder_Click);
             // 
             // ucOrderDetails
             // 
@@ -65,15 +65,15 @@
             this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
             this.ucOrderDetails.TabIndex = 2;
             // 
-            // FrmBuildOrder
+            // FrmFinishOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(738, 403);
             this.Controls.Add(this.ucOrderDetails);
-            this.Controls.Add(this.btnBuildOrder);
+            this.Controls.Add(this.btnFinishOrder);
             this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmBuildOrder";
+            this.Name = "FrmFinishOrder";
             // 
             // 
             // 
@@ -81,7 +81,7 @@
             this.Text = "Armar Pedido";
             this.Load += new System.EventHandler(this.FrmBuildOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFinishOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -90,7 +90,7 @@
         #endregion
 
         private Telerik.WinControls.UI.RadButton btnCancel;
-        private Telerik.WinControls.UI.RadButton btnBuildOrder;
+        private Telerik.WinControls.UI.RadButton btnFinishOrder;
         private UserControls.UcOrderDetails ucOrderDetails;
     }
 }

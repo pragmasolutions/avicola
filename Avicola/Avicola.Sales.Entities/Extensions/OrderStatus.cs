@@ -26,7 +26,7 @@ namespace Avicola.Sales.Entities
                 {
                     return 1;
                 }
-                else if (this.Id == SENT)
+                else if (this.Id == FINISHED)
                 {
                     return 2;
                 }

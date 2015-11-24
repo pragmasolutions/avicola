@@ -48,70 +48,74 @@
             // 
             // txtCreatedDate
             // 
-            this.txtCreatedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCreatedDate.Enabled = false;
+            this.txtCreatedDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCreatedDate.Location = new System.Drawing.Point(16, 28);
             this.txtCreatedDate.Name = "txtCreatedDate";
-            this.txtCreatedDate.Size = new System.Drawing.Size(224, 25);
+            this.txtCreatedDate.Size = new System.Drawing.Size(224, 28);
             this.txtCreatedDate.TabIndex = 0;
             // 
             // txtClient
             // 
-            this.txtClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClient.Location = new System.Drawing.Point(16, 79);
+            this.txtClient.Enabled = false;
+            this.txtClient.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClient.Location = new System.Drawing.Point(16, 85);
             this.txtClient.Name = "txtClient";
-            this.txtClient.Size = new System.Drawing.Size(224, 25);
+            this.txtClient.Size = new System.Drawing.Size(224, 28);
             this.txtClient.TabIndex = 1;
             // 
             // txtStatus
             // 
-            this.txtStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStatus.Location = new System.Drawing.Point(16, 133);
+            this.txtStatus.Enabled = false;
+            this.txtStatus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStatus.Location = new System.Drawing.Point(16, 142);
             this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(224, 25);
+            this.txtStatus.Size = new System.Drawing.Size(224, 28);
             this.txtStatus.TabIndex = 2;
             // 
             // radLabel1
             // 
-            this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel1.Location = new System.Drawing.Point(16, 4);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(103, 21);
+            this.radLabel1.Size = new System.Drawing.Size(99, 24);
             this.radLabel1.TabIndex = 3;
             this.radLabel1.Text = "Fecha Pedido";
             // 
             // radLabel2
             // 
-            this.radLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel2.Location = new System.Drawing.Point(16, 58);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(56, 21);
+            this.radLabel2.Size = new System.Drawing.Size(55, 24);
             this.radLabel2.TabIndex = 4;
             this.radLabel2.Text = "Cliente";
             // 
             // radLabel3
             // 
-            this.radLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(16, 111);
+            this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel3.Location = new System.Drawing.Point(16, 116);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(56, 21);
+            this.radLabel3.Size = new System.Drawing.Size(53, 24);
             this.radLabel3.TabIndex = 4;
             this.radLabel3.Text = "Estado";
             // 
             // radLabel4
             // 
-            this.radLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.Location = new System.Drawing.Point(16, 163);
+            this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel4.Location = new System.Drawing.Point(16, 174);
             this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(68, 21);
+            this.radLabel4.Size = new System.Drawing.Size(66, 24);
             this.radLabel4.TabIndex = 6;
             this.radLabel4.Text = "Docenas";
             // 
             // txtDozens
             // 
-            this.txtDozens.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDozens.Location = new System.Drawing.Point(16, 185);
+            this.txtDozens.Enabled = false;
+            this.txtDozens.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDozens.Location = new System.Drawing.Point(16, 201);
             this.txtDozens.Name = "txtDozens";
-            this.txtDozens.Size = new System.Drawing.Size(224, 25);
+            this.txtDozens.Size = new System.Drawing.Size(224, 28);
             this.txtDozens.TabIndex = 5;
             // 
             // UcOrderDetails
@@ -127,7 +131,7 @@
             this.Controls.Add(this.txtClient);
             this.Controls.Add(this.txtCreatedDate);
             this.Name = "UcOrderDetails";
-            this.Size = new System.Drawing.Size(258, 222);
+            this.Size = new System.Drawing.Size(258, 248);
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStatus)).EndInit();

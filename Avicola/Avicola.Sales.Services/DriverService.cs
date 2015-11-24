@@ -22,9 +22,9 @@ namespace Avicola.Sales.Services
             Uow = uow;
         }
 
-        public IQueryable<Driver> GetAll()
+        public IList<Driver> GetAll()
         {
-            return Uow.Drivers.GetAll(whereClause: null, includes: x => x.Truck);
+            return Uow.Drivers.GetAll(whereClause: null, includes: x => x.Truck).ToList();
         }
 
         public List<DriverDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)

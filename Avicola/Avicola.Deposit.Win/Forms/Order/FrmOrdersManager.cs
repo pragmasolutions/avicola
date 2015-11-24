@@ -20,6 +20,7 @@ namespace Avicola.Deposit.Win.Forms
     {
         private readonly IServiceFactory _serviceFactory;
         private IList<OrderStatus> _orderStatuses;
+        private IDictionary<Guid, IList<OrderDto>> _ordersCached;
 
         public FrmOrdersManager(IServiceFactory serviceFactory)
         {
@@ -35,15 +36,25 @@ namespace Avicola.Deposit.Win.Forms
             {
                 if (_orderStatuses == null)
                 {
-                    using (var service = _serviceFactory.Create<IOrderStatusService>())
-                    {
-                        _orderStatuses = service.GetActiveStatus();
-                    }
+                    LoadOrderStatus();
                 }
 
                 return _orderStatuses;
-            } 
-        }  
+            }
+        }
+
+        public IDictionary<Guid, IList<OrderDto>> OrderCached
+        {
+            get
+            {
+                if (_ordersCached == null)
+                {
+                    LoadOrders();
+                }
+
+                return _ordersCached;
+            }
+        }
 
         private void btnBackToDepositManager_Click(object sender, EventArgs e)
         {
@@ -54,26 +65,60 @@ namespace Avicola.Deposit.Win.Forms
         {
             LoadOrderStatus();
 
+            LoadOrders();
+
+            UpdateStatusNumberOfOrders();
+
+            tvOrderStatus.DataSource = OrderStatuses;
+
             tvOrderStatus.SelectedNode = tvOrderStatus.Nodes.First();
+        }
+
+        private void LoadOrders()
+        {
+            _ordersCached = new Dictionary<Guid, IList<OrderDto>>();
+
+            using (var service = _serviceFactory.Create<IOrderService>())
+            {
+                var orders = service.GetActiveOrders();
+
+                foreach (var status in OrderStatuses)
+                {
+                    if (!_ordersCached.ContainsKey(status.Id))
+                    {
+                        _ordersCached.Add(status.Id, orders.Where(x => x.OrderStatusId == status.Id).ToList());
+                    }
+                }
+            }
         }
 
         private void LoadOrdersByStatus(Guid status)
         {
-            using (var service = _serviceFactory.Create<IOrderService>())
-            {
-                var orders = service.GetOrdersByStatus(status);
-
-                gvOrders.DataSource = orders;
-            }
+            gvOrders.DataSource = OrderCached[status];
 
             lbTitle.Text = OrderStatuses.First(x => x.Id == status).Name;
         }
 
         private void LoadOrderStatus()
         {
-            tvOrderStatus.DataSource = OrderStatuses;
+            using (var service = _serviceFactory.Create<IOrderStatusService>())
+            {
+                _orderStatuses = service.GetActiveStatus();
+            }
         }
-        
+
+        private void UpdateStatusNumberOfOrders()
+        {
+            foreach (var status in OrderStatuses)
+            {
+                IList<OrderDto> orders = new List<OrderDto>();
+
+                var numberOfOrders = _ordersCached.TryGetValue(status.Id, out orders) ? orders.Count : 0;
+
+                status.Name = status.Name + string.Format(" ({0})", numberOfOrders);
+            }
+        }
+
         private void tvOrders_SelectedNodeChanged(object sender, RadTreeViewEventArgs e)
         {
             var statusSelected = e.Node.DataBoundItem as OrderStatus;
@@ -102,6 +147,14 @@ namespace Avicola.Deposit.Win.Forms
             {
                 TransitionManager.LoadBuildOrderView(order);
             }
+            else if (commandCell.ColumnInfo.Name == GlobalConstants.FinishOrderColumnName)
+            {
+                TransitionManager.LoadFinishOrderView(order);
+            }
+            else if (commandCell.ColumnInfo.Name == GlobalConstants.SendOrderColumnName)
+            {
+                TransitionManager.LoadSendOrderView(order);
+            }
         }
 
         private void gvOrders_CellFormatting(object sender, CellFormattingEventArgs e)
@@ -115,14 +168,14 @@ namespace Avicola.Deposit.Win.Forms
                     e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.PENDING;
                 }
 
-                if (e.CellElement.ColumnInfo.Name == GlobalConstants.SendOrderColumnName)
+                if (e.CellElement.ColumnInfo.Name == GlobalConstants.FinishOrderColumnName)
                 {
                     e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.IN_PROGESS;
                 }
 
-                if (e.CellElement.ColumnInfo.Name == GlobalConstants.FinishOrderColumnName)
+                if (e.CellElement.ColumnInfo.Name == GlobalConstants.SendOrderColumnName)
                 {
-                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.SENT;
+                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.FINISHED;
                 }
             }
         }

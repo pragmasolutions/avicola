@@ -24,7 +24,7 @@ namespace Avicola.Sales.Services
         public List<OrderStatus> GetActiveStatus()
         {
             return
-                Uow.OrderStatuses.GetAll(x => x.Id != OrderStatus.FINISHED).ToArray().OrderBy(x => x.Postion).ToList();
+                Uow.OrderStatuses.GetAll().ToArray().OrderBy(x => x.Postion).ToList();
         }
     }
 }

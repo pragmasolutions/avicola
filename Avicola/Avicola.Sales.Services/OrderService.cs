@@ -34,11 +34,15 @@ namespace Avicola.Sales.Services
 
             Expression<Func<Order, bool>> where = x => statusId.Any(y => y == x.OrderStatusId);
 
-            var results = Uow.Orders.GetAll(pagingCriteria, where);
+            var results = Uow.Orders.GetAll(pagingCriteria, where, 
+                x => x.Client, x => 
+                x.Truck, 
+                x => x.Driver,
+                x => x.OrderStatus);
 
             pageTotal = results.PagedMetadata.TotalItemCount;
 
-            return results.Entities.Project().To<OrderDto>().ToList();
+            return results.Entities.AsEnumerable().Select(Mapper.Map<Order, OrderDto>).ToList();
         }
 
         public List<OrderDto> GetPendingOrders()
@@ -51,6 +55,14 @@ namespace Avicola.Sales.Services
         {
             int total;
             return GetAll(string.Empty, String.Empty, new[] { statusId }, 1, int.MaxValue, out total);
+        }
+
+        public List<OrderDto> GetActiveOrders()
+        {
+            int total;
+            return GetAll(string.Empty, String.Empty,
+                new[] {OrderStatus.PENDING, OrderStatus.IN_PROGESS, OrderStatus.FINISHED, OrderStatus.SENT}, 1,
+                int.MaxValue, out total);
         }
 
         public List<OrderDto> GetOrdersByStatus(Guid[] statusIds)
@@ -68,20 +80,24 @@ namespace Avicola.Sales.Services
             Uow.Commit();
         }
 
-        public void SendOrder(Guid orderId)
-        {
-            var order = InternalGet(orderId);
-
-            order.OrderStatusId = OrderStatus.SENT;
-
-            Uow.Commit();
-        }
-
         public void FinishOrder(Guid orderId)
         {
             var order = InternalGet(orderId);
 
+            order.PreparedDate = _clock.Now;
             order.OrderStatusId = OrderStatus.FINISHED;
+
+            Uow.Commit();
+        }
+
+        public void SendOrder(Guid orderId,Guid driverId,Guid truckId)
+        {
+            var order = InternalGet(orderId);
+
+            order.DispatchedDate = _clock.Now;
+            order.OrderStatusId = OrderStatus.SENT;
+            order.DriverId = driverId;
+            order.TruckId = truckId;
 
             Uow.Commit();
         }
