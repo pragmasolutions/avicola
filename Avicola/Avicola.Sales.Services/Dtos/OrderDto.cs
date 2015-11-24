@@ -13,5 +13,9 @@ namespace Avicola.Sales.Services.Dtos
         public DateTime? PreparedDate { get; set; }
         public DateTime CreatedDate { get; set; }
         public int Dozens { get; set; }
+        public Guid? DepositId { get; set; }
+
+        //To know if we can start preparing this order based on the current stock
+        public string CanStartPreparing { get; set; }
     }
 }

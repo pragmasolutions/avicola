@@ -33,13 +33,14 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DepositDashboard));
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -146,34 +147,40 @@
             gridViewTextBoxColumn1.HeaderText = "OrderId";
             gridViewTextBoxColumn1.IsVisible = false;
             gridViewTextBoxColumn1.Name = "OrderId";
-            gridViewTextBoxColumn2.FieldName = "Client";
+            gridViewTextBoxColumn2.FieldName = "ClientName";
             gridViewTextBoxColumn2.HeaderText = "Cliente";
             gridViewTextBoxColumn2.MaxWidth = 5000;
             gridViewTextBoxColumn2.MinWidth = 200;
-            gridViewTextBoxColumn2.Name = "Client";
+            gridViewTextBoxColumn2.Name = "ClientName";
             gridViewTextBoxColumn2.Width = 200;
             gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
-            gridViewTextBoxColumn3.FieldName = "OrderDate";
+            gridViewTextBoxColumn3.FieldName = "CreatedDate";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
-            gridViewTextBoxColumn3.MinWidth = 120;
-            gridViewTextBoxColumn3.Name = "OrderDate";
-            gridViewTextBoxColumn3.Width = 120;
+            gridViewTextBoxColumn3.MinWidth = 90;
+            gridViewTextBoxColumn3.Name = "CreatedDate";
+            gridViewTextBoxColumn3.Width = 90;
             gridViewTextBoxColumn4.FieldName = "Dozens";
             gridViewTextBoxColumn4.HeaderText = "Docenas";
-            gridViewTextBoxColumn4.MinWidth = 120;
+            gridViewTextBoxColumn4.MinWidth = 0;
             gridViewTextBoxColumn4.Name = "Dozens";
-            gridViewTextBoxColumn4.Width = 120;
-            gridViewTextBoxColumn5.FieldName = "Status";
+            gridViewTextBoxColumn4.Width = 80;
+            gridViewTextBoxColumn5.FieldName = "OrderStatusName";
             gridViewTextBoxColumn5.HeaderText = "Estado";
-            gridViewTextBoxColumn5.Name = "Status";
-            gridViewTextBoxColumn5.Width = 150;
+            gridViewTextBoxColumn5.Name = "OrderStatusName";
+            gridViewTextBoxColumn5.Width = 120;
+            gridViewTextBoxColumn6.FieldName = "CanStartPreparing";
+            gridViewTextBoxColumn6.HeaderText = "Stock Suficiente";
+            gridViewTextBoxColumn6.MinWidth = 130;
+            gridViewTextBoxColumn6.Name = "CanStartPreparing";
+            gridViewTextBoxColumn6.Width = 130;
             this.dgvPendingOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5});
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6});
             this.dgvPendingOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.dgvPendingOrders.Name = "dgvPendingOrders";
             this.dgvPendingOrders.ReadOnly = true;
@@ -181,6 +188,7 @@
             this.dgvPendingOrders.TabIndex = 7;
             this.dgvPendingOrders.Text = "radGridView1";
             this.dgvPendingOrders.ThemeName = "TelerikMetroBlue";
+            this.dgvPendingOrders.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.dgvPendingOrders_CellFormatting);
             // 
             // label6
             // 
@@ -400,40 +408,40 @@
             // 
             // 
             // 
-            gridViewTextBoxColumn6.FieldName = "OrderId";
-            gridViewTextBoxColumn6.HeaderText = "OrderId";
-            gridViewTextBoxColumn6.IsVisible = false;
-            gridViewTextBoxColumn6.Name = "OrderId";
-            gridViewTextBoxColumn7.FieldName = "Client";
-            gridViewTextBoxColumn7.HeaderText = "Cliente";
-            gridViewTextBoxColumn7.MaxWidth = 5000;
-            gridViewTextBoxColumn7.MinWidth = 1;
-            gridViewTextBoxColumn7.Name = "Client";
-            gridViewTextBoxColumn7.Width = 200;
-            gridViewTextBoxColumn8.DataType = typeof(System.DateTime);
-            gridViewTextBoxColumn8.FieldName = "OrderDate";
-            gridViewTextBoxColumn8.FormatString = "{0: dd/M/yyyy}";
-            gridViewTextBoxColumn8.HeaderText = "Fecha Pedido";
+            gridViewTextBoxColumn7.FieldName = "OrderId";
+            gridViewTextBoxColumn7.HeaderText = "OrderId";
+            gridViewTextBoxColumn7.IsVisible = false;
+            gridViewTextBoxColumn7.Name = "OrderId";
+            gridViewTextBoxColumn8.FieldName = "Client";
+            gridViewTextBoxColumn8.HeaderText = "Cliente";
+            gridViewTextBoxColumn8.MaxWidth = 5000;
             gridViewTextBoxColumn8.MinWidth = 1;
-            gridViewTextBoxColumn8.Name = "OrderDate";
-            gridViewTextBoxColumn8.Width = 120;
-            gridViewTextBoxColumn9.FieldName = "Dozens";
-            gridViewTextBoxColumn9.HeaderText = "Docenas";
+            gridViewTextBoxColumn8.Name = "Client";
+            gridViewTextBoxColumn8.Width = 200;
+            gridViewTextBoxColumn9.DataType = typeof(System.DateTime);
+            gridViewTextBoxColumn9.FieldName = "OrderDate";
+            gridViewTextBoxColumn9.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn9.HeaderText = "Fecha Pedido";
             gridViewTextBoxColumn9.MinWidth = 1;
-            gridViewTextBoxColumn9.Name = "Dozens";
-            gridViewTextBoxColumn9.Width = 80;
-            gridViewTextBoxColumn10.FieldName = "PreparedDate";
-            gridViewTextBoxColumn10.FormatString = "{0: dd/M/yyyy}";
-            gridViewTextBoxColumn10.HeaderText = "Fecha Armado";
+            gridViewTextBoxColumn9.Name = "OrderDate";
+            gridViewTextBoxColumn9.Width = 120;
+            gridViewTextBoxColumn10.FieldName = "Dozens";
+            gridViewTextBoxColumn10.HeaderText = "Docenas";
             gridViewTextBoxColumn10.MinWidth = 1;
-            gridViewTextBoxColumn10.Name = "PreparedDate";
-            gridViewTextBoxColumn10.Width = 120;
+            gridViewTextBoxColumn10.Name = "Dozens";
+            gridViewTextBoxColumn10.Width = 80;
+            gridViewTextBoxColumn11.FieldName = "PreparedDate";
+            gridViewTextBoxColumn11.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn11.HeaderText = "Fecha Armado";
+            gridViewTextBoxColumn11.MinWidth = 1;
+            gridViewTextBoxColumn11.Name = "PreparedDate";
+            gridViewTextBoxColumn11.Width = 120;
             this.dgvPreparedOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn6,
             gridViewTextBoxColumn7,
             gridViewTextBoxColumn8,
             gridViewTextBoxColumn9,
-            gridViewTextBoxColumn10});
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11});
             this.dgvPreparedOrders.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.dgvPreparedOrders.Name = "dgvPreparedOrders";
             this.dgvPreparedOrders.ReadOnly = true;

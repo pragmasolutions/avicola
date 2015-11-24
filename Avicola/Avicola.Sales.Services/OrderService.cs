@@ -53,6 +53,12 @@ namespace Avicola.Sales.Services
             return GetAll(string.Empty, String.Empty, new[] { statusId }, 1, int.MaxValue, out total);
         }
 
+        public List<OrderDto> GetOrdersByStatus(Guid[] statusIds)
+        {
+            int total;
+            return GetAll(string.Empty, String.Empty, statusIds, 1, int.MaxValue, out total);
+        }
+
         public void BuildOrder(Guid orderId)
         {
             var order = InternalGet(orderId);

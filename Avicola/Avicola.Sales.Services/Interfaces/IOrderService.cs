@@ -12,6 +12,7 @@ namespace Avicola.Sales.Services.Interfaces
         List<OrderDto> GetAll(string sortBy, string sortDirection, Guid[] statusId, int pageIndex, int pageSize, out int pageTotal);
         List<OrderDto> GetPendingOrders();
         List<OrderDto> GetOrdersByStatus(Guid statusId);
+        List<OrderDto> GetOrdersByStatus(Guid[] statusIds);
         OrderDto Get(Guid orderId);
         void BuildOrder(Guid orderId);
         void SendOrder(Guid orderId);
