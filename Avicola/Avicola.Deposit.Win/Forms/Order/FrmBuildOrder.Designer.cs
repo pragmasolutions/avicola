@@ -33,9 +33,11 @@
             this.ucOrderDetails = new Avicola.Deposit.Win.UserControls.UcOrderDetails();
             this.ucDepositSelection = new Avicola.Deposit.Win.UserControls.UcDepositSelection();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.lbTitle = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,30 +65,41 @@
             // 
             // ucOrderDetails
             // 
-            this.ucOrderDetails.Location = new System.Drawing.Point(12, 12);
+            this.ucOrderDetails.Location = new System.Drawing.Point(12, 60);
             this.ucOrderDetails.Name = "ucOrderDetails";
             this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
             this.ucOrderDetails.TabIndex = 2;
             // 
             // ucDepositSelection
             // 
-            this.ucDepositSelection.Location = new System.Drawing.Point(290, 40);
+            this.ucDepositSelection.Location = new System.Drawing.Point(290, 88);
             this.ucDepositSelection.Name = "ucDepositSelection";
             this.ucDepositSelection.Size = new System.Drawing.Size(284, 28);
             this.ucDepositSelection.TabIndex = 3;
             // 
             // radLabel1
             // 
-            this.radLabel1.Location = new System.Drawing.Point(293, 15);
+            this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.Location = new System.Drawing.Point(287, 64);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(73, 22);
+            this.radLabel1.Size = new System.Drawing.Size(69, 21);
             this.radLabel1.TabIndex = 4;
             this.radLabel1.Text = "Deposito";
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(12, 13);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(193, 41);
+            this.lbTitle.TabIndex = 14;
+            this.lbTitle.Text = "Armar Pedido";
             // 
             // FrmBuildOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(738, 403);
+            this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.ucDepositSelection);
             this.Controls.Add(this.ucOrderDetails);
@@ -103,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,5 +130,6 @@
         private UserControls.UcOrderDetails ucOrderDetails;
         private UserControls.UcDepositSelection ucDepositSelection;
         private Telerik.WinControls.UI.RadLabel radLabel1;
+        private Telerik.WinControls.UI.RadLabel lbTitle;
     }
 }

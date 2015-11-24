@@ -31,8 +31,10 @@
             this.btnCancel = new Telerik.WinControls.UI.RadButton();
             this.btnFinishOrder = new Telerik.WinControls.UI.RadButton();
             this.ucOrderDetails = new Avicola.Deposit.Win.UserControls.UcOrderDetails();
+            this.lbTitle = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFinishOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,15 +62,25 @@
             // 
             // ucOrderDetails
             // 
-            this.ucOrderDetails.Location = new System.Drawing.Point(12, 12);
+            this.ucOrderDetails.Location = new System.Drawing.Point(12, 60);
             this.ucOrderDetails.Name = "ucOrderDetails";
             this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
             this.ucOrderDetails.TabIndex = 2;
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(12, 12);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(220, 41);
+            this.lbTitle.TabIndex = 15;
+            this.lbTitle.Text = "Finalizar Pedido";
             // 
             // FrmFinishOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(738, 403);
+            this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.ucOrderDetails);
             this.Controls.Add(this.btnFinishOrder);
             this.Controls.Add(this.btnCancel);
@@ -82,8 +94,10 @@
             this.Load += new System.EventHandler(this.FrmBuildOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFinishOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -92,5 +106,6 @@
         private Telerik.WinControls.UI.RadButton btnCancel;
         private Telerik.WinControls.UI.RadButton btnFinishOrder;
         private UserControls.UcOrderDetails ucOrderDetails;
+        private Telerik.WinControls.UI.RadLabel lbTitle;
     }
 }
