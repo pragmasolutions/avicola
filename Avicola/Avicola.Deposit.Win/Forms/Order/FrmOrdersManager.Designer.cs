@@ -33,6 +33,9 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
@@ -145,23 +148,40 @@
             gridViewTextBoxColumn2.MaxWidth = 5000;
             gridViewTextBoxColumn2.MinWidth = 200;
             gridViewTextBoxColumn2.Name = "ClientName";
-            gridViewTextBoxColumn2.Width = 203;
+            gridViewTextBoxColumn2.Width = 200;
             gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
             gridViewTextBoxColumn3.FieldName = "CreatedDate";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy H:mm}";
             gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
-            gridViewTextBoxColumn3.MinWidth = 120;
+            gridViewTextBoxColumn3.MinWidth = 80;
             gridViewTextBoxColumn3.Name = "CreatedDate";
-            gridViewTextBoxColumn3.Width = 122;
+            gridViewTextBoxColumn3.Width = 80;
             gridViewTextBoxColumn4.FieldName = "Dozens";
             gridViewTextBoxColumn4.HeaderText = "Docenas";
-            gridViewTextBoxColumn4.MinWidth = 120;
+            gridViewTextBoxColumn4.MinWidth = 60;
             gridViewTextBoxColumn4.Name = "Dozens";
-            gridViewTextBoxColumn4.Width = 122;
+            gridViewTextBoxColumn4.Width = 60;
             gridViewTextBoxColumn5.FieldName = "OrderStatusName";
             gridViewTextBoxColumn5.HeaderText = "Estado";
+            gridViewTextBoxColumn5.MinWidth = 60;
             gridViewTextBoxColumn5.Name = "OrderStatusName";
-            gridViewTextBoxColumn5.Width = 149;
+            gridViewTextBoxColumn5.Width = 60;
+            gridViewDateTimeColumn1.FieldName = "DispatchedDate";
+            gridViewDateTimeColumn1.FormatString = "{0: dd/M/yyyy H:mm}";
+            gridViewDateTimeColumn1.HeaderText = "Fecha Envio";
+            gridViewDateTimeColumn1.MinWidth = 80;
+            gridViewDateTimeColumn1.Name = "DispatchedDate";
+            gridViewDateTimeColumn1.Width = 80;
+            gridViewTextBoxColumn6.FieldName = "DriverName";
+            gridViewTextBoxColumn6.HeaderText = "Conductor";
+            gridViewTextBoxColumn6.MinWidth = 120;
+            gridViewTextBoxColumn6.Name = "DriverName";
+            gridViewTextBoxColumn6.Width = 120;
+            gridViewTextBoxColumn7.FieldName = "Truck";
+            gridViewTextBoxColumn7.HeaderText = "Camión";
+            gridViewTextBoxColumn7.MinWidth = 120;
+            gridViewTextBoxColumn7.Name = "Truck";
+            gridViewTextBoxColumn7.Width = 120;
             gridViewCommandColumn1.DefaultText = "Armar";
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.MaxWidth = 70;
@@ -192,6 +212,9 @@
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
+            gridViewDateTimeColumn1,
+            gridViewTextBoxColumn6,
+            gridViewTextBoxColumn7,
             gridViewCommandColumn1,
             gridViewCommandColumn2,
             gridViewCommandColumn3});

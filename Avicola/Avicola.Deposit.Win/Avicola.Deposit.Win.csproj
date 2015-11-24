@@ -152,6 +152,18 @@
     <Compile Include="Infrastructure\StateController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UcTruckSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcTruckSelection.Designer.cs">
+      <DependentUpon>UcTruckSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcDriverSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcDriverSelection.Designer.cs">
+      <DependentUpon>UcDriverSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcOrderDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -196,6 +208,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\UcTruckSelection.resx">
+      <DependentUpon>UcTruckSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcDriverSelection.resx">
+      <DependentUpon>UcDriverSelection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcOrderDetails.resx">
       <DependentUpon>UcOrderDetails.cs</DependentUpon>
     </EmbeddedResource>

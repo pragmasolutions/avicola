@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
+using Avicola.Services.Common;
 
 namespace Avicola.Sales.Services.Interfaces
 {
-    public interface ITruckService
+    public interface ITruckService : IService
     {
-        IQueryable<Truck> GetAll();
+        IList<Truck> GetAll();
 
         Truck GetById(Guid id);
 

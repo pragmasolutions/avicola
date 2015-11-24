@@ -34,11 +34,15 @@ namespace Avicola.Sales.Services
 
             Expression<Func<Order, bool>> where = x => statusId.Any(y => y == x.OrderStatusId);
 
-            var results = Uow.Orders.GetAll(pagingCriteria, where);
+            var results = Uow.Orders.GetAll(pagingCriteria, where, 
+                x => x.Client, x => 
+                x.Truck, 
+                x => x.Driver,
+                x => x.OrderStatus);
 
             pageTotal = results.PagedMetadata.TotalItemCount;
 
-            return results.Entities.Project().To<OrderDto>().ToList();
+            return results.Entities.AsEnumerable().Select(Mapper.Map<Order, OrderDto>).ToList();
         }
 
         public List<OrderDto> GetPendingOrders()

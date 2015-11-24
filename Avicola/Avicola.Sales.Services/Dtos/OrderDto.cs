@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using Avicola.Sales.Entities;
 using Framework.Common.Mapping;
 
@@ -13,5 +14,8 @@ namespace Avicola.Sales.Services.Dtos
         public DateTime? PreparedDate { get; set; }
         public DateTime CreatedDate { get; set; }
         public int Dozens { get; set; }
+        public DateTime? DispatchedDate { get; set; }
+        public string DriverName { get; set; }
+        public string Truck { get; set; }
     }
 }

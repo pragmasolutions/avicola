@@ -29,12 +29,26 @@ namespace Avicola.Deposit.Win.Forms
 
         private void btnSendOrder_Click(object sender, EventArgs e)
         {
-            _messageBoxDisplayService.ShowConfirmationDialog("Esta seguro que desea enviar este pedido?","Armar Pedido",
+            this.FormErrorProvider.Clear();
+
+            if (ucDriverSelection.SelectedDriver == null)
+            {
+                this.FormErrorProvider.SetError(ucDriverSelection, "El campo conductor es requerido");
+                return;
+            }
+
+            if (ucTruckSelection.SelectedTruck == null)
+            {
+                this.FormErrorProvider.SetError(ucTruckSelection, "El campo camión es requerido");
+                return;
+            }
+
+            _messageBoxDisplayService.ShowConfirmationDialog("Esta seguro que desea enviar este pedido?", "Armar Pedido",
                 () =>
                 {
                     using (var service = _serviceFactory.Create<IOrderService>())
                     {
-                        service.BuildOrder(Order.Id);
+                        service.SendOrder(Order.Id, ucDriverSelection.SelectedDriver.Id, ucTruckSelection.SelectedTruck.Id);
 
                         TransitionManager.LoadOrdersManagerView();
                     }
@@ -54,6 +68,17 @@ namespace Avicola.Deposit.Win.Forms
             }
 
             ucOrderDetails.Order = Order;
+
+
+            using (var service = _serviceFactory.Create<IDriverService>())
+            {
+                ucDriverSelection.Drivers = service.GetAll();
+            }
+
+            using (var service = _serviceFactory.Create<ITruckService>())
+            {
+                ucTruckSelection.Trucks = service.GetAll();
+            }
         }
     }
 }
