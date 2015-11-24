@@ -65,6 +65,12 @@ namespace Avicola.Sales.Services
                 int.MaxValue, out total);
         }
 
+        public List<OrderDto> GetOrdersByStatus(Guid[] statusIds)
+        {
+            int total;
+            return GetAll(string.Empty, String.Empty, statusIds, 1, int.MaxValue, out total);
+        }
+
         public void BuildOrder(Guid orderId)
         {
             var order = InternalGet(orderId);
@@ -87,7 +93,7 @@ namespace Avicola.Sales.Services
         public void SendOrder(Guid orderId,Guid driverId,Guid truckId)
         {
             var order = InternalGet(orderId);
-            
+
             order.DispatchedDate = _clock.Now;
             order.OrderStatusId = OrderStatus.SENT;
             order.DriverId = driverId;

@@ -17,5 +17,9 @@ namespace Avicola.Sales.Services.Dtos
         public DateTime? DispatchedDate { get; set; }
         public string DriverName { get; set; }
         public string Truck { get; set; }
+        public Guid? DepositId { get; set; }
+
+        //To know if we can start preparing this order based on the current stock
+        public string CanStartPreparing { get; set; }
     }
 }

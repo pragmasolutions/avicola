@@ -26,6 +26,7 @@
         <AssociationConnector Association="Avicola.SalesModel.FK_Order_Driver" />
         <AssociationConnector Association="Avicola.SalesModel.FK_Order_OrderStatus" />
         <AssociationConnector Association="Avicola.SalesModel.FK_Order_Truck" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Order_Deposit" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

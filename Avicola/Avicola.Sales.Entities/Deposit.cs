@@ -19,6 +19,7 @@ namespace Avicola.Sales.Entities
         public Deposit()
         {
             this.Stocks = new HashSet<Stock>();
+            this.Orders = new HashSet<Order>();
         }
     
         public System.Guid Id { get; set; }
@@ -28,5 +29,7 @@ namespace Avicola.Sales.Entities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stocks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

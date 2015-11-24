@@ -25,10 +25,12 @@ namespace Avicola.Sales.Entities
         public Nullable<System.Guid> DriverId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> PreparedDate { get; set; }
+        public Nullable<System.Guid> DepositId { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Driver Driver { get; set; }
         public virtual OrderStatus OrderStatus { get; set; }
         public virtual Truck Truck { get; set; }
+        public virtual Deposit Deposit { get; set; }
     }
 }
