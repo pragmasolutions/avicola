@@ -412,30 +412,30 @@
             gridViewTextBoxColumn7.HeaderText = "OrderId";
             gridViewTextBoxColumn7.IsVisible = false;
             gridViewTextBoxColumn7.Name = "OrderId";
-            gridViewTextBoxColumn8.FieldName = "Client";
+            gridViewTextBoxColumn8.FieldName = "ClientName";
             gridViewTextBoxColumn8.HeaderText = "Cliente";
             gridViewTextBoxColumn8.MaxWidth = 5000;
             gridViewTextBoxColumn8.MinWidth = 1;
-            gridViewTextBoxColumn8.Name = "Client";
+            gridViewTextBoxColumn8.Name = "ClientName";
             gridViewTextBoxColumn8.Width = 200;
             gridViewTextBoxColumn9.DataType = typeof(System.DateTime);
-            gridViewTextBoxColumn9.FieldName = "OrderDate";
+            gridViewTextBoxColumn9.FieldName = "CreatedDate";
             gridViewTextBoxColumn9.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn9.HeaderText = "Fecha Pedido";
             gridViewTextBoxColumn9.MinWidth = 1;
-            gridViewTextBoxColumn9.Name = "OrderDate";
-            gridViewTextBoxColumn9.Width = 120;
+            gridViewTextBoxColumn9.Name = "CreatedDate";
+            gridViewTextBoxColumn9.Width = 100;
             gridViewTextBoxColumn10.FieldName = "Dozens";
             gridViewTextBoxColumn10.HeaderText = "Docenas";
             gridViewTextBoxColumn10.MinWidth = 1;
             gridViewTextBoxColumn10.Name = "Dozens";
-            gridViewTextBoxColumn10.Width = 80;
+            gridViewTextBoxColumn10.Width = 70;
             gridViewTextBoxColumn11.FieldName = "PreparedDate";
             gridViewTextBoxColumn11.FormatString = "{0: dd/M/yyyy}";
             gridViewTextBoxColumn11.HeaderText = "Fecha Armado";
             gridViewTextBoxColumn11.MinWidth = 1;
             gridViewTextBoxColumn11.Name = "PreparedDate";
-            gridViewTextBoxColumn11.Width = 120;
+            gridViewTextBoxColumn11.Width = 100;
             this.dgvPreparedOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn7,
             gridViewTextBoxColumn8,
