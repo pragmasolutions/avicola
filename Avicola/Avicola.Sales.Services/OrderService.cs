@@ -53,6 +53,14 @@ namespace Avicola.Sales.Services
             return GetAll(string.Empty, String.Empty, new[] { statusId }, 1, int.MaxValue, out total);
         }
 
+        public List<OrderDto> GetActiveOrders()
+        {
+            int total;
+            return GetAll(string.Empty, String.Empty,
+                new[] {OrderStatus.PENDING, OrderStatus.IN_PROGESS, OrderStatus.FINISHED, OrderStatus.SENT}, 1,
+                int.MaxValue, out total);
+        }
+
         public void BuildOrder(Guid orderId)
         {
             var order = InternalGet(orderId);
@@ -62,20 +70,24 @@ namespace Avicola.Sales.Services
             Uow.Commit();
         }
 
-        public void SendOrder(Guid orderId)
-        {
-            var order = InternalGet(orderId);
-
-            order.OrderStatusId = OrderStatus.SENT;
-
-            Uow.Commit();
-        }
-
         public void FinishOrder(Guid orderId)
         {
             var order = InternalGet(orderId);
 
+            order.PreparedDate = _clock.Now;
             order.OrderStatusId = OrderStatus.FINISHED;
+
+            Uow.Commit();
+        }
+
+        public void SendOrder(Guid orderId,Guid driverId,Guid truckId)
+        {
+            var order = InternalGet(orderId);
+            
+            order.DispatchedDate = _clock.Now;
+            order.OrderStatusId = OrderStatus.SENT;
+            order.DriverId = driverId;
+            order.TruckId = truckId;
 
             Uow.Commit();
         }

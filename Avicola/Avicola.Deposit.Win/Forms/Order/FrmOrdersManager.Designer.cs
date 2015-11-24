@@ -97,6 +97,7 @@
             // 
             // btnBackToDepositManager
             // 
+            this.btnBackToDepositManager.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToDepositManager.Location = new System.Drawing.Point(8, 12);
             this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";
@@ -123,8 +124,7 @@
             // gvOrders
             // 
             this.gvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gvOrders.Location = new System.Drawing.Point(214, 8);
-            this.gvOrders.Margin = new System.Windows.Forms.Padding(8);
+            this.gvOrders.Location = new System.Drawing.Point(209, 3);
             // 
             // 
             // 
@@ -145,23 +145,23 @@
             gridViewTextBoxColumn2.MaxWidth = 5000;
             gridViewTextBoxColumn2.MinWidth = 200;
             gridViewTextBoxColumn2.Name = "ClientName";
-            gridViewTextBoxColumn2.Width = 200;
+            gridViewTextBoxColumn2.Width = 203;
             gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
             gridViewTextBoxColumn3.FieldName = "CreatedDate";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy H:mm}";
             gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
             gridViewTextBoxColumn3.MinWidth = 120;
             gridViewTextBoxColumn3.Name = "CreatedDate";
-            gridViewTextBoxColumn3.Width = 120;
+            gridViewTextBoxColumn3.Width = 122;
             gridViewTextBoxColumn4.FieldName = "Dozens";
             gridViewTextBoxColumn4.HeaderText = "Docenas";
             gridViewTextBoxColumn4.MinWidth = 120;
             gridViewTextBoxColumn4.Name = "Dozens";
-            gridViewTextBoxColumn4.Width = 120;
+            gridViewTextBoxColumn4.Width = 122;
             gridViewTextBoxColumn5.FieldName = "OrderStatusName";
             gridViewTextBoxColumn5.HeaderText = "Estado";
             gridViewTextBoxColumn5.Name = "OrderStatusName";
-            gridViewTextBoxColumn5.Width = 146;
+            gridViewTextBoxColumn5.Width = 149;
             gridViewCommandColumn1.DefaultText = "Armar";
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.MaxWidth = 70;
@@ -170,19 +170,19 @@
             gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn1.UseDefaultText = true;
             gridViewCommandColumn1.Width = 70;
-            gridViewCommandColumn2.DefaultText = "Enviar";
+            gridViewCommandColumn2.DefaultText = "Finalizar";
             gridViewCommandColumn2.HeaderText = "";
             gridViewCommandColumn2.MaxWidth = 70;
             gridViewCommandColumn2.MinWidth = 70;
-            gridViewCommandColumn2.Name = "SendOrder";
+            gridViewCommandColumn2.Name = "FinishOrder";
             gridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn2.UseDefaultText = true;
             gridViewCommandColumn2.Width = 70;
-            gridViewCommandColumn3.DefaultText = "Finalizar";
+            gridViewCommandColumn3.DefaultText = "Enviar";
             gridViewCommandColumn3.HeaderText = "";
             gridViewCommandColumn3.MaxWidth = 70;
             gridViewCommandColumn3.MinWidth = 70;
-            gridViewCommandColumn3.Name = "FinishOrder";
+            gridViewCommandColumn3.Name = "SendOrder";
             gridViewCommandColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn3.UseDefaultText = true;
             gridViewCommandColumn3.Width = 70;
@@ -200,7 +200,7 @@
             this.gvOrders.Name = "gvOrders";
             this.gvOrders.ReadOnly = true;
             this.gvOrders.ShowGroupPanelScrollbars = false;
-            this.gvOrders.Size = new System.Drawing.Size(810, 469);
+            this.gvOrders.Size = new System.Drawing.Size(820, 479);
             this.gvOrders.TabIndex = 9;
             this.gvOrders.ThemeName = "TelerikMetroBlue";
             this.gvOrders.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.gvOrders_CellFormatting);
@@ -214,7 +214,7 @@
             this.tvOrderStatus.Name = "tvOrderStatus";
             this.tvOrderStatus.Size = new System.Drawing.Size(200, 479);
             this.tvOrderStatus.TabIndex = 10;
-            this.tvOrderStatus.Text = "radTreeView1";
+            this.tvOrderStatus.ThemeName = "TelerikMetroBlue";
             this.tvOrderStatus.ValueMember = "Id";
             this.tvOrderStatus.SelectedNodeChanged += new Telerik.WinControls.UI.RadTreeView.RadTreeViewEventHandler(this.tvOrders_SelectedNodeChanged);
             // 
