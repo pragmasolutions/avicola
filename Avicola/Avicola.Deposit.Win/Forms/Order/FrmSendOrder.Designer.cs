@@ -35,10 +35,12 @@
             this.ucTruckSelection = new Avicola.Deposit.Win.UserControls.UcTruckSelection();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
+            this.lbTitle = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +68,7 @@
             // 
             // ucOrderDetails
             // 
-            this.ucOrderDetails.Location = new System.Drawing.Point(12, 12);
+            this.ucOrderDetails.Location = new System.Drawing.Point(12, 59);
             this.ucOrderDetails.Name = "ucOrderDetails";
             this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
             this.ucOrderDetails.TabIndex = 2;
@@ -74,7 +76,8 @@
             // ucDriverSelection
             // 
             this.ucDriverSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucDriverSelection.Location = new System.Drawing.Point(278, 40);
+            this.ucDriverSelection.Location = new System.Drawing.Point(278, 87);
+            this.ucDriverSelection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucDriverSelection.Name = "ucDriverSelection";
             this.ucDriverSelection.Size = new System.Drawing.Size(284, 28);
             this.ucDriverSelection.TabIndex = 3;
@@ -82,7 +85,8 @@
             // ucTruckSelection
             // 
             this.ucTruckSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucTruckSelection.Location = new System.Drawing.Point(278, 97);
+            this.ucTruckSelection.Location = new System.Drawing.Point(278, 144);
+            this.ucTruckSelection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucTruckSelection.Name = "ucTruckSelection";
             this.ucTruckSelection.Size = new System.Drawing.Size(284, 28);
             this.ucTruckSelection.TabIndex = 4;
@@ -90,7 +94,7 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(278, 16);
+            this.radLabel1.Location = new System.Drawing.Point(278, 63);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(79, 21);
             this.radLabel1.TabIndex = 5;
@@ -99,16 +103,26 @@
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(279, 74);
+            this.radLabel2.Location = new System.Drawing.Point(279, 121);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(61, 21);
             this.radLabel2.TabIndex = 6;
             this.radLabel2.Text = "Camión";
             // 
+            // lbTitle
+            // 
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(12, 12);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(191, 41);
+            this.lbTitle.TabIndex = 16;
+            this.lbTitle.Text = "Enviar Pedido";
+            // 
             // FrmSendOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(738, 403);
+            this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.ucTruckSelection);
@@ -128,6 +142,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSendOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -143,5 +158,6 @@
         private UserControls.UcTruckSelection ucTruckSelection;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadLabel radLabel2;
+        private Telerik.WinControls.UI.RadLabel lbTitle;
     }
 }
