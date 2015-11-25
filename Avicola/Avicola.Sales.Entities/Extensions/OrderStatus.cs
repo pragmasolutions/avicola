@@ -13,5 +13,26 @@ namespace Avicola.Sales.Entities
         public static readonly Guid FINISHED = new Guid("CAA647AB-0049-47AE-A4F4-6CFE50C4EE48");
         public static readonly Guid IN_PROGESS = new Guid("279ABF04-CAF4-4EF5-8113-CFADADF34D31");
         public static readonly Guid PENDING = new Guid("B3C0D4A0-B223-47B1-891C-FE4D23EEE9E3");
+
+        public int Postion
+        {
+            get
+            {
+                if (this.Id == PENDING)
+                {
+                    return 0;
+                }
+                else if (this.Id == IN_PROGESS)
+                {
+                    return 1;
+                }
+                else if (this.Id == FINISHED)
+                {
+                    return 2;
+                }
+
+                return 3;
+            }
+        }
     }
 }

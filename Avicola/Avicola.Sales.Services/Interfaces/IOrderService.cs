@@ -9,16 +9,14 @@ namespace Avicola.Sales.Services.Interfaces
 {
     public interface IOrderService : IService
     {
-        IQueryable<Order> GetAll();
-
-        Order GetById(Guid id);
-
         List<OrderDto> GetAll(string sortBy, string sortDirection, Guid[] statusId, int pageIndex, int pageSize, out int pageTotal);
-
-        void Create(Order order);
-
-        void Edit(Order order);
-
-        void Delete(Guid orderId);
+        List<OrderDto> GetPendingOrders();
+        List<OrderDto> GetOrdersByStatus(Guid statusId);
+        List<OrderDto> GetOrdersByStatus(Guid[] statusIds);
+        List<OrderDto> GetActiveOrders();
+        OrderDto Get(Guid orderId);
+        void BuildOrder(Guid orderId, Guid depositId);
+        void SendOrder(Guid orderId, Guid driverId, Guid truckId);
+        void FinishOrder(Guid orderId);
     }
 }

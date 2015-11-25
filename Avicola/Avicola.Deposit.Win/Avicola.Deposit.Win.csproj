@@ -34,12 +34,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL" />
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Factory, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Factory.3.2.0.0\lib\net45-full\Ninject.Extensions.Factory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -148,10 +168,40 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmPendingOrders.cs">
+    <Compile Include="Forms\Order\FrmFinishOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmPendingOrders.Designer.cs">
+    <Compile Include="Forms\Order\FrmFinishOrder.Designer.cs">
+      <DependentUpon>FrmFinishOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\FrmHistoryManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FrmHistoryManager.Designer.cs">
+      <DependentUpon>FrmHistoryManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\FrmSendOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FrmSendOrder.Designer.cs">
+      <DependentUpon>FrmSendOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\FrmBuildOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FrmBuildOrder.Designer.cs">
+      <DependentUpon>FrmBuildOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\FrmOrdersManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FrmOrdersManager.Designer.cs">
+      <DependentUpon>FrmOrdersManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\FrmPendingOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FrmPendingOrders.Designer.cs">
       <DependentUpon>FrmPendingOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Stock\FrmAddStock.cs">
@@ -160,11 +210,36 @@
     <Compile Include="Forms\Stock\FrmAddStock.Designer.cs">
       <DependentUpon>FrmAddStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
     <Compile Include="Infrastructure\ITransitionManager.cs" />
     <Compile Include="Infrastructure\StateController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UcDepositSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcDepositSelection.Designer.cs">
+      <DependentUpon>UcDepositSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcTruckSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcTruckSelection.Designer.cs">
+      <DependentUpon>UcTruckSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcDriverSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcDriverSelection.Designer.cs">
+      <DependentUpon>UcDriverSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcOrderDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcOrderDetails.Designer.cs">
+      <DependentUpon>UcOrderDetails.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FrmDepositBase.resx">
       <DependentUpon>FrmDepositBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,7 +249,22 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmPendingOrders.resx">
+    <EmbeddedResource Include="Forms\Order\FrmFinishOrder.resx">
+      <DependentUpon>FrmFinishOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FrmHistoryManager.resx">
+      <DependentUpon>FrmHistoryManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FrmSendOrder.resx">
+      <DependentUpon>FrmSendOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FrmBuildOrder.resx">
+      <DependentUpon>FrmBuildOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FrmOrdersManager.resx">
+      <DependentUpon>FrmOrdersManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FrmPendingOrders.resx">
       <DependentUpon>FrmPendingOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Stock\FrmAddStock.resx">
@@ -191,6 +281,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\UcDepositSelection.resx">
+      <DependentUpon>UcDepositSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcTruckSelection.resx">
+      <DependentUpon>UcTruckSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcDriverSelection.resx">
+      <DependentUpon>UcDriverSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcOrderDetails.resx">
+      <DependentUpon>UcOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -210,6 +312,14 @@
       <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>
       <Name>Avicola.Common.Win</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Avicola.Sales.Entities\Avicola.Sales.Entities.csproj">
+      <Project>{8C6CDBD9-F5DE-4FE9-B7C5-178967C2B5AB}</Project>
+      <Name>Avicola.Sales.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Sales.Services\Avicola.Sales.Services.csproj">
+      <Project>{B72272A4-AB34-4F49-BFBC-75C0C600B120}</Project>
+      <Name>Avicola.Sales.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Avicola.Services.Common\Avicola.Services.Common.csproj">
       <Project>{d99a9f23-dbbf-4a12-a9d7-a4b6380c9fa4}</Project>
       <Name>Avicola.Services.Common</Name>
@@ -221,6 +331,10 @@
     <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
       <Project>{492b8264-0c10-4afe-a15f-8a82e60ade68}</Project>
       <Name>Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
+      <Project>{CB41F702-99FB-49AE-8BC0-1B7F0193EFAB}</Project>
+      <Name>Framework.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Ioc.Ninject\Framework.Ioc.Ninject.csproj">
       <Project>{E764FE19-BDC2-4D35-9A83-F29FBA4B61B2}</Project>
@@ -239,7 +353,7 @@
     <None Include="Resources\Image\orders.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UserControls\" />
+    <Content Include="Resources\Image\cabinet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

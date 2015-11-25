@@ -55,6 +55,8 @@
           <Property Name="Dozens" Type="int" Nullable="false" />
           <Property Name="ClientId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="OrderStatusId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreparedDate" Type="datetime2" Precision="7" />
+          <Property Name="DepositId" Type="uniqueidentifier" />
           <Property Name="DispatchedDate" Type="datetime2" Precision="7" />
           <Property Name="TruckId" Type="uniqueidentifier" />
           <Property Name="DriverId" Type="uniqueidentifier" />
@@ -112,9 +114,6 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="DepositId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="CurrentBoxes" Type="int" Nullable="false" />
-          <Property Name="CurrentMaples" Type="int" Nullable="false" />
-          <Property Name="CurrentEggs" Type="int" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StockEntry">
@@ -162,6 +161,18 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Deposit">
+          <End Role="Deposit" Type="Self.Deposit" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deposit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DepositId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -261,6 +272,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Stock_GetByDeposit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DepositId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <EntityContainer Name="AvicolaSalesModelStoreContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Deposit" EntityType="Self.Deposit" Schema="dbo" store:Type="Tables" />
@@ -279,6 +293,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
             <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Deposit" Association="Self.FK_Order_Deposit">
+            <End Role="Deposit" EntitySet="Deposit" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Driver" Association="Self.FK_Order_Driver">
@@ -345,6 +363,7 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK_Stock_Deposit" FromRole="Deposit" ToRole="Stock" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Avicola.SalesModel.FK_Order_Deposit" FromRole="Deposit" ToRole="Order" />
         </EntityType>
         <EntityType Name="Driver">
           <Key>
@@ -409,9 +428,6 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="DepositId" Type="Guid" Nullable="false" />
           <Property Name="ProductId" Type="Guid" Nullable="false" />
-          <Property Name="CurrentBoxes" Type="Int32" Nullable="false" />
-          <Property Name="CurrentMaples" Type="Int32" Nullable="false" />
-          <Property Name="CurrentEggs" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Deposit" Relationship="Self.FK_Stock_Deposit" FromRole="Stock" ToRole="Deposit" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Stock_Product" FromRole="Stock" ToRole="Product" />
           <NavigationProperty Name="StockEntries" Relationship="Self.FK_StockEntry_Stock" FromRole="Stock" ToRole="StockEntry" />
@@ -570,6 +586,13 @@
             <End Role="Truck" EntitySet="Trucks" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
+          <FunctionImport Name="StockGetByDeposit" ReturnType="Collection(Avicola.SalesModel.DepositStock)">
+          <Parameter Name="DepositId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <AssociationSet Name="FK_Order_Deposit" Association="Avicola.SalesModel.FK_Order_Deposit">
+            <End Role="Deposit" EntitySet="Deposits" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Order">
           <Key>
@@ -585,9 +608,12 @@
           <Property Name="DriverId" Type="Guid" />
           <NavigationProperty Name="Client" Relationship="Avicola.SalesModel.FK_Order_Client" FromRole="Order" ToRole="Client" />
           <NavigationProperty Name="Driver" Relationship="Avicola.SalesModel.FK_Order_Driver" FromRole="Order" ToRole="Driver" />
-          <NavigationProperty Name="OrderStatu" Relationship="Avicola.SalesModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatu" />
+          <NavigationProperty Name="OrderStatus" Relationship="Avicola.SalesModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatu" />
           <NavigationProperty Name="Truck" Relationship="Avicola.SalesModel.FK_Order_Truck" FromRole="Order" ToRole="Truck" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="PreparedDate" Type="DateTime" Precision="7" />
+          <Property Name="DepositId" Type="Guid" />
+          <NavigationProperty Name="Deposit" Relationship="Avicola.SalesModel.FK_Order_Deposit" FromRole="Order" ToRole="Deposit" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -644,6 +670,25 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="TruckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="DepositStock">
+          <Property Type="Guid" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Boxes" Nullable="true" />
+          <Property Type="Int32" Name="Maples" Nullable="true" />
+          <Property Type="Int32" Name="Eggs" Nullable="true" />
+        </ComplexType>
+        <Association Name="FK_Order_Deposit">
+          <End Type="Avicola.SalesModel.Deposit" Role="Deposit" Multiplicity="0..1" />
+          <End Type="Avicola.SalesModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deposit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DepositId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -743,10 +788,7 @@
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="DepositId" ColumnName="DepositId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="CurrentBoxes" ColumnName="CurrentBoxes" />
-                <ScalarProperty Name="CurrentMaples" ColumnName="CurrentMaples" />
-                <ScalarProperty Name="CurrentEggs" ColumnName="CurrentEggs" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StockEntries">
@@ -778,6 +820,8 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="DepositId" ColumnName="DepositId" />
+                <ScalarProperty Name="PreparedDate" ColumnName="PreparedDate" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="TruckId" ColumnName="TruckId" />
@@ -800,6 +844,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="StockGetByDeposit" FunctionName="Avicola.SalesModel.Store.Stock_GetByDeposit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Avicola.SalesModel.DepositStock">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Boxes" ColumnName="Boxes" />
+                <ScalarProperty Name="Maples" ColumnName="Maples" />
+                <ScalarProperty Name="Eggs" ColumnName="Eggs" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

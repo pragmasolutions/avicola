@@ -22,9 +22,9 @@ namespace Avicola.Sales.Services
             Uow = uow;
         }
 
-        public IQueryable<Truck> GetAll()
+        public IList<Truck> GetAll()
         {
-            return Uow.Trucks.GetAll();
+            return Uow.Trucks.GetAll().ToList();
         }
 
         public List<TruckDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)

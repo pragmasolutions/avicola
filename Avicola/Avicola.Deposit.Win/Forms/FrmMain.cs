@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Deposit.Win.Infrastructure;
+using Avicola.Sales.Services.Dtos;
 using Avicola.Services.Common.Interfaces;
 using Framework.Sync;
 using Framework.WinForm.Comun.Notification;
@@ -38,12 +39,6 @@ namespace Avicola.Deposit.Win.Forms
             form.Show();
         }
 
-        public void LoadDepositManagerView()
-        {
-            var view = FormFactory.Create<FrmDepositManager>();
-            LoadView(view);
-        }
-
         private async void btnSync_Click(object sender, EventArgs e)
         {
             SyncManager syncManager = new SyncManager();
@@ -65,9 +60,42 @@ namespace Avicola.Deposit.Win.Forms
             MessageBoxDisplayService.ShowSuccess("Sincronizacion Finalizada con Exito");
         }
 
-        public void LoadPendingOrdersView()
+        public void LoadDepositManagerView()
         {
-            var view = FormFactory.Create<FrmPendingOrders>();
+            var view = FormFactory.Create<FrmDepositManager>();
+            LoadView(view);
+        }
+
+        public void LoadOrdersManagerView()
+        {
+            var view = FormFactory.Create<FrmOrdersManager>();
+            LoadView(view);
+        }
+
+        public void LoadBuildOrderView(OrderDto order)
+        {
+            var view = FormFactory.Create<FrmBuildOrder>();
+            view.Order = order;
+            LoadView(view);
+        }
+
+        public void LoadFinishOrderView(OrderDto order)
+        {
+            var view = FormFactory.Create<FrmFinishOrder>();
+            view.Order = order;
+            LoadView(view);
+        }
+
+        public void LoadSendOrderView(OrderDto order)
+        {
+            var view = FormFactory.Create<FrmSendOrder>();
+            view.Order = order;
+            LoadView(view);
+        }
+
+        public void LoadHistoryManagerView()
+        {
+            var view = FormFactory.Create<FrmHistoryManager>();
             LoadView(view);
         }
     }

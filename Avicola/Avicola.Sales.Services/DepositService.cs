@@ -22,9 +22,9 @@ namespace Avicola.Sales.Services
             Uow = uow;
         }
 
-        public IQueryable<Deposit> GetAll()
+        public IList<Deposit> GetAll()
         {
-            return Uow.Deposits.GetAll();
+            return Uow.Deposits.GetAll().ToList();
         }
 
         public List<DepositDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)

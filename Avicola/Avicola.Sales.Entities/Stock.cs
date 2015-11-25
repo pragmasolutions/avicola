@@ -25,9 +25,6 @@ namespace Avicola.Sales.Entities
         public System.DateTime CreatedDate { get; set; }
         public System.Guid DepositId { get; set; }
         public System.Guid ProductId { get; set; }
-        public int CurrentBoxes { get; set; }
-        public int CurrentMaples { get; set; }
-        public int CurrentEggs { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual Deposit Deposit { get; set; }

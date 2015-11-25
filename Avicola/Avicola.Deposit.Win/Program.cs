@@ -15,6 +15,7 @@ using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Avicola.Deposit.Win.Forms;
 using Avicola.Deposit.Win;
+using Telerik.WinControls.UI.Localization;
 
 namespace Avicola.Deposit.Win
 {
@@ -40,6 +41,7 @@ namespace Avicola.Deposit.Win
 
             RadWizardLocalizationProvider.CurrentProvider = new CustomRadWizardLocalizationProvider();
             RadMessageLocalizationProvider.CurrentProvider = new CustomRadMessageLocalizationProvider();
+            RadGridLocalizationProvider.CurrentProvider = new CustomRadGridViewLocalizationProvider();
 
             using (var kernel = new StandardKernel())
             {
