@@ -158,6 +158,12 @@
     <Compile Include="UserControls\UcDepositSelection.Designer.cs">
       <DependentUpon>UcDepositSelection.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UcEggsAmount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcEggsAmount.Designer.cs">
+      <DependentUpon>UcEggsAmount.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcTruckSelection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UcDepositSelection.resx">
       <DependentUpon>UcDepositSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcEggsAmount.resx">
+      <DependentUpon>UcEggsAmount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcTruckSelection.resx">
       <DependentUpon>UcTruckSelection.cs</DependentUpon>

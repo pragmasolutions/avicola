@@ -35,10 +35,11 @@ namespace Avicola.Sales.Services
             Expression<Func<Order, bool>> where = x => statusId.Any(y => y == x.OrderStatusId);
 
             var results = Uow.Orders.GetAll(pagingCriteria, where,
-                x => x.Client, x =>
-                x.Truck,
+                x => x.Client, 
+                x => x.Truck,
                 x => x.Driver,
-                x => x.OrderStatus);
+                x => x.OrderStatus,
+                x => x.Deposit);
 
             pageTotal = results.PagedMetadata.TotalItemCount;
 
@@ -81,12 +82,24 @@ namespace Avicola.Sales.Services
             Uow.Commit();
         }
 
-        public void FinishOrder(Guid orderId)
+        public void FinishOrder(Guid orderId, int boxes, int mapples, int eggsUnits)
         {
             var order = InternalGet(orderId);
 
+            var totalEggs = (boxes * DepositStock.EggsPerBox + mapples * DepositStock.EggsPerMapple + eggsUnits);
+
+            var totalDozens = totalEggs / 12M;
+
+            if (totalDozens != order.Dozens)
+            {
+                throw new ApplicationException("La cantidad de docenas no coincide con la cajas mapples y huevos especificados");
+            }
+
             order.PreparedDate = _clock.Now;
             order.OrderStatusId = OrderStatus.FINISHED;
+            order.Boxes = boxes;
+            order.Maples = mapples;
+            order.Eggs = eggsUnits;
 
             Uow.Commit();
         }

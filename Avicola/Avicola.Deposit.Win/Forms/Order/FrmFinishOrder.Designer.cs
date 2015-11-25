@@ -32,6 +32,7 @@
             this.btnFinishOrder = new Telerik.WinControls.UI.RadButton();
             this.ucOrderDetails = new Avicola.Deposit.Win.UserControls.UcOrderDetails();
             this.lbTitle = new Telerik.WinControls.UI.RadLabel();
+            this.ucEggsAmount = new Avicola.Deposit.Win.UserControls.UcEggsAmount();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFinishOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
@@ -76,10 +77,18 @@
             this.lbTitle.TabIndex = 15;
             this.lbTitle.Text = "Finalizar Pedido";
             // 
+            // ucEggsAmount
+            // 
+            this.ucEggsAmount.Location = new System.Drawing.Point(266, 38);
+            this.ucEggsAmount.Name = "ucEggsAmount";
+            this.ucEggsAmount.Size = new System.Drawing.Size(384, 255);
+            this.ucEggsAmount.TabIndex = 16;
+            // 
             // FrmFinishOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(738, 403);
+            this.Controls.Add(this.ucEggsAmount);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.ucOrderDetails);
             this.Controls.Add(this.btnFinishOrder);
@@ -107,5 +116,6 @@
         private Telerik.WinControls.UI.RadButton btnFinishOrder;
         private UserControls.UcOrderDetails ucOrderDetails;
         private Telerik.WinControls.UI.RadLabel lbTitle;
+        private UserControls.UcEggsAmount ucEggsAmount;
     }
 }

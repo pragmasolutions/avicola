@@ -57,6 +57,9 @@
           <Property Name="OrderStatusId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PreparedDate" Type="datetime2" Precision="7" />
           <Property Name="DepositId" Type="uniqueidentifier" />
+          <Property Name="Boxes" Type="int" />
+          <Property Name="Maples" Type="int" />
+          <Property Name="Eggs" Type="int" />
           <Property Name="DispatchedDate" Type="datetime2" Precision="7" />
           <Property Name="TruckId" Type="uniqueidentifier" />
           <Property Name="DriverId" Type="uniqueidentifier" />
@@ -614,6 +617,9 @@
           <Property Name="PreparedDate" Type="DateTime" Precision="7" />
           <Property Name="DepositId" Type="Guid" />
           <NavigationProperty Name="Deposit" Relationship="Avicola.SalesModel.FK_Order_Deposit" FromRole="Order" ToRole="Deposit" />
+          <Property Name="Boxes" Type="Int32" />
+          <Property Name="Maples" Type="Int32" />
+          <Property Name="Eggs" Type="Int32" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -820,6 +826,9 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Eggs" ColumnName="Eggs" />
+                <ScalarProperty Name="Maples" ColumnName="Maples" />
+                <ScalarProperty Name="Boxes" ColumnName="Boxes" />
                 <ScalarProperty Name="DepositId" ColumnName="DepositId" />
                 <ScalarProperty Name="PreparedDate" ColumnName="PreparedDate" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />

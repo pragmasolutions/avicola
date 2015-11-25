@@ -26,6 +26,9 @@ namespace Avicola.Sales.Entities
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> PreparedDate { get; set; }
         public Nullable<System.Guid> DepositId { get; set; }
+        public Nullable<int> Boxes { get; set; }
+        public Nullable<int> Maples { get; set; }
+        public Nullable<int> Eggs { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Driver Driver { get; set; }
