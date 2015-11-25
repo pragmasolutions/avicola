@@ -14,5 +14,26 @@ namespace Avicola.Deposit.Win.Forms.Stock
         {
             InitializeComponent();
         }
+
+        private void radButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ckdProvider_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
+        {
+            ddlProviders.Visible = true;
+        }
+
+        private void ckdOwn_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
+        {
+            ddlProviders.Visible = false;
+        }
+
+        private void FrmAddStock_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
