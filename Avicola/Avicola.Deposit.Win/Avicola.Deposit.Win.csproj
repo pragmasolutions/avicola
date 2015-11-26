@@ -72,77 +72,25 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.WinControls, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.ChartView, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.ChartView.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls.GridView, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.GridView.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.GridView, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.GridView.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls.Themes.TelerikMetroBlue, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.Themes.TelerikMetroBlue.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.PdfViewer, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.PdfViewer.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls.UI, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.PivotGrid, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.PivotGrid.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RadChart, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RadChart.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RadDiagram, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RadDiagram.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RadDock, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RadDock.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RadMarkupEditor, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RadMarkupEditor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RichTextEditor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.Scheduler, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.Scheduler.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.Themes.HighContrastBlack, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.Themes.HighContrastBlack.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.Themes.Office2007Black, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.Themes.Office2007Black.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.Themes.TelerikMetroBlue, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.Themes.TelerikMetroBlue.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.UI, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.UI.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.UI.Design, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.UI.Design.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TelerikCommon, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\TelerikCommon.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TelerikData, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\TelerikData.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls.UI.Design, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.UI.Design.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

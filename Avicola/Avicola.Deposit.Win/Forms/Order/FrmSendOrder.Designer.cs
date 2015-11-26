@@ -48,7 +48,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(616, 367);
+            this.btnCancel.Location = new System.Drawing.Point(616, 598);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 24);
             this.btnCancel.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             this.btnSendOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSendOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendOrder.Location = new System.Drawing.Point(500, 367);
+            this.btnSendOrder.Location = new System.Drawing.Point(500, 598);
             this.btnSendOrder.Name = "btnSendOrder";
             this.btnSendOrder.Size = new System.Drawing.Size(110, 24);
             this.btnSendOrder.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             this.ucOrderDetails.Location = new System.Drawing.Point(12, 59);
             this.ucOrderDetails.Name = "ucOrderDetails";
-            this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
+            this.ucOrderDetails.Size = new System.Drawing.Size(260, 460);
             this.ucOrderDetails.TabIndex = 2;
             // 
             // ucDriverSelection
@@ -121,7 +121,7 @@
             // FrmSendOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(738, 403);
+            this.ClientSize = new System.Drawing.Size(738, 634);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radLabel1);

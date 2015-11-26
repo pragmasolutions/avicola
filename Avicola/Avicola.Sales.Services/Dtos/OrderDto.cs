@@ -21,5 +21,8 @@ namespace Avicola.Sales.Services.Dtos
         public string DepositName { get; set; }
         //To know if we can start preparing this order based on the current stock
         public string CanStartPreparing { get; set; }
+        public int? Boxes { get; set; }
+        public int? Maples { get; set; }
+        public int? Eggs { get; set; }
     }
 }
