@@ -79,6 +79,13 @@ namespace Avicola.Deposit.Win.Forms
             LoadView(view);
         }
 
+        public void LoadCancelBuildedOrderView(OrderDto order)
+        {
+            var view = FormFactory.Create<FrmCancelBuildedOrder>();
+            view.Order = order;
+            LoadView(view);
+        }
+
         public void LoadFinishOrderView(OrderDto order)
         {
             var view = FormFactory.Create<FrmFinishOrder>();

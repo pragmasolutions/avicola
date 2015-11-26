@@ -35,7 +35,7 @@ namespace Avicola.Sales.Services
             Expression<Func<Order, bool>> where = x => statusId.Any(y => y == x.OrderStatusId);
 
             var results = Uow.Orders.GetAll(pagingCriteria, where,
-                x => x.Client, 
+                x => x.Client,
                 x => x.Truck,
                 x => x.Driver,
                 x => x.OrderStatus,
@@ -78,6 +78,21 @@ namespace Avicola.Sales.Services
 
             order.DepositId = depositId;
             order.OrderStatusId = OrderStatus.IN_PROGESS;
+
+            Uow.Commit();
+        }
+
+        public void CancelBuildedOrder(Guid orderId)
+        {
+            var order = InternalGet(orderId);
+
+            if (order.OrderStatusId != OrderStatus.IN_PROGESS)
+            {
+                throw new ApplicationException("Para cancelar la orden armada debe estar en el estado en proceso");
+            }
+
+            order.OrderStatusId = OrderStatus.PENDING;
+            order.DepositId = null;
 
             Uow.Commit();
         }

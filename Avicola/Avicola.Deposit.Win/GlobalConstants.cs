@@ -9,6 +9,7 @@ namespace Avicola.Deposit.Win
     public class GlobalConstants
     {
         public const string BuildOrderColumnName = "BuildOrder";
+        public const string CancelBuildedOrderColumnName = "CancelBuildedOrder";
         public const string SendOrderColumnName = "SendOrder";
         public const string FinishOrderColumnName = "FinishOrder";
     }

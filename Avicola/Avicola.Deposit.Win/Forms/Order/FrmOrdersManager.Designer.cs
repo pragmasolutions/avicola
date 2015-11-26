@@ -40,6 +40,7 @@
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn4 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -95,7 +96,7 @@
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.Location = new System.Drawing.Point(119, 3);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(206, 41);
+            this.lbTitle.Size = new System.Drawing.Size(1044, 41);
             this.lbTitle.TabIndex = 13;
             this.lbTitle.Text = "{{Orders Title}}";
             // 
@@ -196,22 +197,30 @@
             gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn1.UseDefaultText = true;
             gridViewCommandColumn1.Width = 70;
-            gridViewCommandColumn2.DefaultText = "Finalizar";
+            gridViewCommandColumn2.DefaultText = "Pasar a Pendiente";
+            gridViewCommandColumn2.FieldName = "CancelBuildedOrder";
             gridViewCommandColumn2.HeaderText = "";
-            gridViewCommandColumn2.MaxWidth = 70;
             gridViewCommandColumn2.MinWidth = 70;
-            gridViewCommandColumn2.Name = "FinishOrder";
+            gridViewCommandColumn2.Name = "CancelBuildedOrder";
             gridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn2.UseDefaultText = true;
             gridViewCommandColumn2.Width = 70;
-            gridViewCommandColumn3.DefaultText = "Enviar";
+            gridViewCommandColumn3.DefaultText = "Finalizar";
             gridViewCommandColumn3.HeaderText = "";
             gridViewCommandColumn3.MaxWidth = 70;
             gridViewCommandColumn3.MinWidth = 70;
-            gridViewCommandColumn3.Name = "SendOrder";
+            gridViewCommandColumn3.Name = "FinishOrder";
             gridViewCommandColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn3.UseDefaultText = true;
             gridViewCommandColumn3.Width = 70;
+            gridViewCommandColumn4.DefaultText = "Enviar";
+            gridViewCommandColumn4.HeaderText = "";
+            gridViewCommandColumn4.MaxWidth = 70;
+            gridViewCommandColumn4.MinWidth = 70;
+            gridViewCommandColumn4.Name = "SendOrder";
+            gridViewCommandColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewCommandColumn4.UseDefaultText = true;
+            gridViewCommandColumn4.Width = 70;
             this.gvOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -224,7 +233,8 @@
             gridViewTextBoxColumn8,
             gridViewCommandColumn1,
             gridViewCommandColumn2,
-            gridViewCommandColumn3});
+            gridViewCommandColumn3,
+            gridViewCommandColumn4});
             this.gvOrders.MasterTemplate.EnablePaging = true;
             this.gvOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvOrders.Name = "gvOrders";

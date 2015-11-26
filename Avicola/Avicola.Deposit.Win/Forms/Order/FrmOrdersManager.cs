@@ -147,6 +147,10 @@ namespace Avicola.Deposit.Win.Forms
             {
                 TransitionManager.LoadBuildOrderView(order);
             }
+            else if (commandCell.ColumnInfo.Name == GlobalConstants.CancelBuildedOrderColumnName)
+            {
+                TransitionManager.LoadCancelBuildedOrderView(order);
+            }
             else if (commandCell.ColumnInfo.Name == GlobalConstants.FinishOrderColumnName)
             {
                 TransitionManager.LoadFinishOrderView(order);
@@ -166,6 +170,11 @@ namespace Avicola.Deposit.Win.Forms
                 if (e.CellElement.ColumnInfo.Name == GlobalConstants.BuildOrderColumnName)
                 {
                     e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.PENDING;
+                }
+
+                if (e.CellElement.ColumnInfo.Name == GlobalConstants.CancelBuildedOrderColumnName)
+                {
+                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.IN_PROGESS;
                 }
 
                 if (e.CellElement.ColumnInfo.Name == GlobalConstants.FinishOrderColumnName)
