@@ -99,5 +99,11 @@ namespace Avicola.Deposit.Win.Forms
             view.Order = order;
             LoadView(view);
         }
+
+        public void LoadHistoryManagerView()
+        {
+            var view = FormFactory.Create<FrmHistoryManager>();
+            LoadView(view);
+        }
     }
 }

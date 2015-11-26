@@ -34,5 +34,11 @@ namespace Avicola.Deposit.Win.Forms
         {
             TransitionManager.LoadOrdersManagerView();
         }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadHistoryManagerView();
+        }
+
     }
 }
