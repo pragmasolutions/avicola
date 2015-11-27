@@ -12,12 +12,12 @@ using IServiceFactory = Avicola.Services.Common.Interfaces.IServiceFactory;
 
 namespace Avicola.Deposit.Win.Forms
 {
-    public partial class FrmFinishOrder : EditFormBase
+    public partial class FrmCancelBuildedOrder : EditFormBase
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly IMessageBoxDisplayService _messageBoxDisplayService;
 
-        public FrmFinishOrder(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService)
+        public FrmCancelBuildedOrder(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService)
         {
             _serviceFactory = serviceFactory;
             _messageBoxDisplayService = messageBoxDisplayService;
@@ -27,20 +27,14 @@ namespace Avicola.Deposit.Win.Forms
 
         public OrderDto Order { get; set; }
 
-        private void btnFinishOrder_Click(object sender, EventArgs e)
+        private void btnCancelBuildedOrder_Click(object sender, EventArgs e)
         {
-            if (ucEggsAmount.TotalDozens != Order.Dozens)
-            {
-                _messageBoxDisplayService.ShowError("El total de docenas debe ser igual al solicitado en el pedido");
-                return;
-            }
-
-            _messageBoxDisplayService.ShowConfirmationDialog("Esta seguro que desea finalizar el armado este pedido?", "Finalizar Pedido",
+            _messageBoxDisplayService.ShowConfirmationDialog("Esta seguro que desea cancelar el armado de este pedido?", "Cancelar Armado de Pedido",
                 () =>
                 {
                     using (var service = _serviceFactory.Create<IOrderService>())
                     {
-                        service.FinishOrder(Order.Id, ucEggsAmount.Boxes, ucEggsAmount.Mapples, ucEggsAmount.Eggs);
+                        service.CancelBuildedOrder(Order.Id);
 
                         TransitionManager.LoadOrdersManagerView();
                     }

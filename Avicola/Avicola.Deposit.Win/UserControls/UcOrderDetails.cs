@@ -28,6 +28,19 @@ namespace Avicola.Deposit.Win.UserControls
                 txtClient.Text = order.ClientName;
                 txtStatus.Text = order.OrderStatusName;
                 txtDozens.Text = order.Dozens.ToString();
+
+                if (order.Boxes.HasValue || order.Maples.HasValue || order.Eggs.HasValue)
+                {
+                    gbOrderBuildDetails.Visible = true;
+
+                    txtBoxes.Text = order.Boxes.GetValueOrDefault().ToString();
+                    txtMapples.Text = order.Maples.GetValueOrDefault().ToString();
+                    txtEggsUnits.Text = order.Eggs.GetValueOrDefault().ToString();
+                }
+                else
+                {
+                    gbOrderBuildDetails.Visible = false;
+                }
             }
         }
     }

@@ -48,6 +48,28 @@ namespace Avicola.Sales.Services
             return Uow.DbContext.StockGetByDeposit(depositId).ToList();
         }
 
+        internal void UpdateStock(Guid depositId,Guid productId , int boxes, int mapples, int eggsUnit)
+        {
+            var stock = Uow.Stocks.Get(x => x.DepositId == depositId && x.ProductId == productId);
+
+            if (stock == null)
+            {
+                throw new ApplicationException(
+                    "Debe exister una entidad stock para el producto antes de actualizar el stock");
+            }
+
+            var stockEntry = new StockEntry();
+
+            stockEntry.Id = Guid.NewGuid();
+            stockEntry.StockId = productId;
+
+            stockEntry.Boxes = boxes;
+            stockEntry.Maples = mapples;
+            stockEntry.Eggs = eggsUnit;
+            stockEntry.CreatedDate = _clock.Now;
+            stockEntry.ShiftId = Guid.Empty;
+        }
+
         public Stock GetExistStock(Guid depositId, Guid productId)
         {
             return Uow.Stocks.Get(x => x.DepositId == depositId && x.ProductId == productId);

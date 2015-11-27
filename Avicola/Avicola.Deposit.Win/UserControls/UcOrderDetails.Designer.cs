@@ -36,6 +36,13 @@
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.txtDozens = new Telerik.WinControls.UI.RadTextBox();
+            this.gbOrderBuildDetails = new Telerik.WinControls.UI.RadGroupBox();
+            this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
+            this.txtBoxes = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
+            this.txtMapples = new Telerik.WinControls.UI.RadTextBox();
+            this.txtEggsUnits = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStatus)).BeginInit();
@@ -44,6 +51,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDozens)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gbOrderBuildDetails)).BeginInit();
+            this.gbOrderBuildDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMapples)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCreatedDate
@@ -118,10 +133,83 @@
             this.txtDozens.Size = new System.Drawing.Size(224, 28);
             this.txtDozens.TabIndex = 5;
             // 
+            // gbOrderBuildDetails
+            // 
+            this.gbOrderBuildDetails.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.gbOrderBuildDetails.Controls.Add(this.radLabel7);
+            this.gbOrderBuildDetails.Controls.Add(this.txtEggsUnits);
+            this.gbOrderBuildDetails.Controls.Add(this.radLabel6);
+            this.gbOrderBuildDetails.Controls.Add(this.txtMapples);
+            this.gbOrderBuildDetails.Controls.Add(this.txtBoxes);
+            this.gbOrderBuildDetails.Controls.Add(this.radLabel5);
+            this.gbOrderBuildDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbOrderBuildDetails.HeaderText = "Detalle Armado";
+            this.gbOrderBuildDetails.Location = new System.Drawing.Point(3, 235);
+            this.gbOrderBuildDetails.Name = "gbOrderBuildDetails";
+            this.gbOrderBuildDetails.Size = new System.Drawing.Size(252, 218);
+            this.gbOrderBuildDetails.TabIndex = 10;
+            this.gbOrderBuildDetails.Text = "Detalle Armado";
+            ((Telerik.WinControls.UI.GroupBoxHeader)(this.gbOrderBuildDetails.GetChildAt(0).GetChildAt(1))).Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // radLabel7
+            // 
+            this.radLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel7.Location = new System.Drawing.Point(13, 33);
+            this.radLabel7.Name = "radLabel7";
+            this.radLabel7.Size = new System.Drawing.Size(47, 21);
+            this.radLabel7.TabIndex = 7;
+            this.radLabel7.Text = "Cajas";
+            // 
+            // radLabel6
+            // 
+            this.radLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel6.Location = new System.Drawing.Point(13, 147);
+            this.radLabel6.Name = "radLabel6";
+            this.radLabel6.Size = new System.Drawing.Size(121, 21);
+            this.radLabel6.TabIndex = 9;
+            this.radLabel6.Text = "Huevos (unidad)";
+            // 
+            // txtBoxes
+            // 
+            this.txtBoxes.Enabled = false;
+            this.txtBoxes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxes.Location = new System.Drawing.Point(13, 58);
+            this.txtBoxes.Name = "txtBoxes";
+            this.txtBoxes.Size = new System.Drawing.Size(224, 28);
+            this.txtBoxes.TabIndex = 6;
+            // 
+            // radLabel5
+            // 
+            this.radLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel5.Location = new System.Drawing.Point(13, 90);
+            this.radLabel5.Name = "radLabel5";
+            this.radLabel5.Size = new System.Drawing.Size(66, 21);
+            this.radLabel5.TabIndex = 8;
+            this.radLabel5.Text = "Mapples";
+            // 
+            // txtMapples
+            // 
+            this.txtMapples.Enabled = false;
+            this.txtMapples.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMapples.Location = new System.Drawing.Point(13, 115);
+            this.txtMapples.Name = "txtMapples";
+            this.txtMapples.Size = new System.Drawing.Size(224, 28);
+            this.txtMapples.TabIndex = 7;
+            // 
+            // txtEggsUnits
+            // 
+            this.txtEggsUnits.Enabled = false;
+            this.txtEggsUnits.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEggsUnits.Location = new System.Drawing.Point(13, 172);
+            this.txtEggsUnits.Name = "txtEggsUnits";
+            this.txtEggsUnits.Size = new System.Drawing.Size(224, 28);
+            this.txtEggsUnits.TabIndex = 7;
+            // 
             // UcOrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gbOrderBuildDetails);
             this.Controls.Add(this.radLabel4);
             this.Controls.Add(this.txtDozens);
             this.Controls.Add(this.radLabel3);
@@ -131,7 +219,7 @@
             this.Controls.Add(this.txtClient);
             this.Controls.Add(this.txtCreatedDate);
             this.Name = "UcOrderDetails";
-            this.Size = new System.Drawing.Size(258, 248);
+            this.Size = new System.Drawing.Size(258, 456);
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStatus)).EndInit();
@@ -140,6 +228,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDozens)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gbOrderBuildDetails)).EndInit();
+            this.gbOrderBuildDetails.ResumeLayout(false);
+            this.gbOrderBuildDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMapples)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,6 +252,13 @@
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadLabel radLabel4;
+        private Telerik.WinControls.UI.RadGroupBox gbOrderBuildDetails;
+        private Telerik.WinControls.UI.RadLabel radLabel7;
+        private Telerik.WinControls.UI.RadTextBox txtEggsUnits;
+        private Telerik.WinControls.UI.RadLabel radLabel6;
+        private Telerik.WinControls.UI.RadTextBox txtMapples;
+        private Telerik.WinControls.UI.RadTextBox txtBoxes;
+        private Telerik.WinControls.UI.RadLabel radLabel5;
 
     }
 }

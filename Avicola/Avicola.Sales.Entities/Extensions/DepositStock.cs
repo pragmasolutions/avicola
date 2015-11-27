@@ -9,12 +9,15 @@ namespace Avicola.Sales.Entities
 {
     public partial class DepositStock
     {
+        public const int EggsPerBox = 360;
+        public const int EggsPerMapple = 30;
+
         public int TotalEggs
         {
             get
             {
-                var mappleEggs = Maples * 12 * 2.5;
-                var boxesEggs = Boxes * 30 * 12;
+                var mappleEggs = Maples * EggsPerMapple;
+                var boxesEggs = Boxes * EggsPerMapple;
 
                 return Convert.ToInt32(mappleEggs + boxesEggs + Eggs);
             }

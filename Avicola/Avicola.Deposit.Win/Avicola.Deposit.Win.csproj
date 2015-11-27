@@ -72,77 +72,25 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.WinControls, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.ChartView, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.ChartView.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls.GridView, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.GridView.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.GridView, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.GridView.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls.Themes.TelerikMetroBlue, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.Themes.TelerikMetroBlue.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.PdfViewer, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.PdfViewer.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls.UI, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.PivotGrid, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.PivotGrid.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RadChart, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RadChart.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RadDiagram, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RadDiagram.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RadDock, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RadDock.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RadMarkupEditor, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RadMarkupEditor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.RichTextEditor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.Scheduler, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.Scheduler.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.Themes.HighContrastBlack, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.Themes.HighContrastBlack.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.Themes.Office2007Black, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.Themes.Office2007Black.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.Themes.TelerikMetroBlue, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.Themes.TelerikMetroBlue.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.UI, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.UI.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.WinControls.UI.Design, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\Telerik.WinControls.UI.Design.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TelerikCommon, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\TelerikCommon.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TelerikData, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2015.3.1104.40\TelerikData.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Telerik.WinControls.UI.Design, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Bin40\Telerik.WinControls.UI.Design.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +115,12 @@
     </Compile>
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order\FrmCancelBuildedOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FrmCancelBuildedOrder.Designer.cs">
+      <DependentUpon>FrmCancelBuildedOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Order\FrmFinishOrder.cs">
       <SubType>Form</SubType>
@@ -223,6 +177,12 @@
     <Compile Include="UserControls\UcDepositSelection.Designer.cs">
       <DependentUpon>UcDepositSelection.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UcEggsAmount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcEggsAmount.Designer.cs">
+      <DependentUpon>UcEggsAmount.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcTruckSelection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -249,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FrmCancelBuildedOrder.resx">
+      <DependentUpon>FrmCancelBuildedOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\FrmFinishOrder.resx">
       <DependentUpon>FrmFinishOrder.cs</DependentUpon>
@@ -284,6 +247,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UcDepositSelection.resx">
       <DependentUpon>UcDepositSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcEggsAmount.resx">
+      <DependentUpon>UcEggsAmount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcTruckSelection.resx">
       <DependentUpon>UcTruckSelection.cs</DependentUpon>
