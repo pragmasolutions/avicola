@@ -13,11 +13,11 @@ using Framework.Data.Helpers;
 
 namespace Avicola.Sales.Services
 {
-    public class StockService : ServiceBase, IStockService
+    public class ShiftService : ServiceBase, IShiftService
     {
         private readonly IClock _clock;
 
-        public StockService(ISalesUow uow, IClock clock)
+        public ShiftService(ISalesUow uow, IClock clock)
         {
             _clock = clock;
             Uow = uow;
@@ -32,25 +32,15 @@ namespace Avicola.Sales.Services
             return Uow.Providers.Get(x => x.Name == name && !x.IsDeleted);
         }
 
-        public void Create(Stock stock)
+        public void Create(Shift shift)
         {
-            Uow.Stocks.Add(stock);
+            Uow.Shifts.Add(shift);
             Uow.Commit();
         }
         
-        IQueryable<Stock> IStockService.GetAll()
+        IQueryable<Shift> IShiftService.GetAll()
         {
-            return Uow.Stocks.GetAll();
-        }
-
-        public List<DepositStock> GetByDeposit(Guid depositId)
-        {
-            return Uow.DbContext.StockGetByDeposit(depositId).ToList();
-        }
-
-        public Stock GetExistStock(Guid depositId, Guid productId)
-        {
-            return Uow.Stocks.Get(x => x.DepositId == depositId && x.ProductId == productId);
+            return Uow.Shifts.GetAll();
         }
     }
 }

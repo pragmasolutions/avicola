@@ -10,5 +10,6 @@ namespace Avicola.Deposit.Win.Infrastructure
         void LoadFinishOrderView(OrderDto order);
         void LoadSendOrderView(OrderDto order);
         void LoadHistoryManagerView();
+        void LoadAddStockView();
     }
 }

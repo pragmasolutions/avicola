@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Avicola.Common.Win;
+using Avicola.Deposit.Win.Forms.Stock;
 using Avicola.Deposit.Win.Infrastructure;
 using Avicola.Sales.Services.Dtos;
 using Avicola.Services.Common.Interfaces;
@@ -96,6 +97,12 @@ namespace Avicola.Deposit.Win.Forms
         public void LoadHistoryManagerView()
         {
             var view = FormFactory.Create<FrmHistoryManager>();
+            LoadView(view);
+        }
+
+        public void LoadAddStockView()
+        {
+            var view = FormFactory.Create<FrmAddStock>();
             LoadView(view);
         }
     }
