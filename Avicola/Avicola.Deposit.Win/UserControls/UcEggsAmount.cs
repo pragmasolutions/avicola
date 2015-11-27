@@ -70,5 +70,19 @@ namespace Avicola.Deposit.Win.UserControls
             txtTotalEggs.Text = TotalEggs.ToString();
             txtTotalDozens.Text = TotalDozens.ToString("n2");
         }
+
+        public void ResetControls()
+        {
+            txtBoxes.NullableValue = null;
+            txtMapples.NullableValue = null;
+            txtEggsUnits.NullableValue = null;
+            txtTotalDozens.Text = null;
+            txtTotalEggs.Text = null;
+        }
+
+        public bool IsValid()
+        {
+            return (this.TotalEggs != 0);
+        }
     }
 }
