@@ -70,11 +70,12 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1172, 649);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1563, 799);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -85,30 +86,32 @@
             this.tableLayoutPanel2.Controls.Add(this.lbTitle, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnBackToDepositManager, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1166, 54);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1555, 66);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // lbTitle
             // 
             this.lbTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(119, 3);
+            this.lbTitle.Location = new System.Drawing.Point(159, 4);
+            this.lbTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(1044, 41);
+            this.lbTitle.Size = new System.Drawing.Size(257, 51);
             this.lbTitle.TabIndex = 13;
             this.lbTitle.Text = "{{Orders Title}}";
             // 
             // btnBackToDepositManager
             // 
             this.btnBackToDepositManager.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackToDepositManager.Location = new System.Drawing.Point(8, 12);
-            this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
+            this.btnBackToDepositManager.Location = new System.Drawing.Point(11, 15);
+            this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(11, 15, 11, 10);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";
-            this.btnBackToDepositManager.Size = new System.Drawing.Size(87, 24);
+            this.btnBackToDepositManager.Size = new System.Drawing.Size(116, 30);
             this.btnBackToDepositManager.TabIndex = 10;
             this.btnBackToDepositManager.Text = "Volver";
             this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);
@@ -121,17 +124,19 @@
             this.tableLayoutPanel3.Controls.Add(this.gvOrders, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.tvOrderStatus, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 63);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 78);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1166, 583);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1555, 717);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // gvOrders
             // 
             this.gvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gvOrders.Location = new System.Drawing.Point(177, 3);
+            this.gvOrders.Location = new System.Drawing.Point(237, 4);
+            this.gvOrders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // 
             // 
@@ -152,45 +157,45 @@
             gridViewTextBoxColumn2.MaxWidth = 5000;
             gridViewTextBoxColumn2.MinWidth = 200;
             gridViewTextBoxColumn2.Name = "ClientName";
-            gridViewTextBoxColumn2.Width = 200;
+            gridViewTextBoxColumn2.Width = 231;
             gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
             gridViewTextBoxColumn3.FieldName = "CreatedDate";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy H:mm}";
             gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
             gridViewTextBoxColumn3.MinWidth = 80;
             gridViewTextBoxColumn3.Name = "CreatedDate";
-            gridViewTextBoxColumn3.Width = 80;
+            gridViewTextBoxColumn3.Width = 92;
             gridViewTextBoxColumn4.FieldName = "Dozens";
             gridViewTextBoxColumn4.HeaderText = "Docenas";
             gridViewTextBoxColumn4.MinWidth = 60;
             gridViewTextBoxColumn4.Name = "Dozens";
-            gridViewTextBoxColumn4.Width = 60;
+            gridViewTextBoxColumn4.Width = 69;
             gridViewTextBoxColumn5.FieldName = "OrderStatusName";
             gridViewTextBoxColumn5.HeaderText = "Estado";
             gridViewTextBoxColumn5.MinWidth = 60;
             gridViewTextBoxColumn5.Name = "OrderStatusName";
-            gridViewTextBoxColumn5.Width = 60;
+            gridViewTextBoxColumn5.Width = 69;
             gridViewTextBoxColumn6.FieldName = "DepositName";
             gridViewTextBoxColumn6.HeaderText = "Deposito";
             gridViewTextBoxColumn6.MinWidth = 100;
             gridViewTextBoxColumn6.Name = "DepositName";
-            gridViewTextBoxColumn6.Width = 100;
+            gridViewTextBoxColumn6.Width = 115;
             gridViewDateTimeColumn1.FieldName = "DispatchedDate";
             gridViewDateTimeColumn1.FormatString = "{0: dd/M/yyyy H:mm}";
             gridViewDateTimeColumn1.HeaderText = "Fecha Envio";
             gridViewDateTimeColumn1.MinWidth = 80;
             gridViewDateTimeColumn1.Name = "DispatchedDate";
-            gridViewDateTimeColumn1.Width = 80;
+            gridViewDateTimeColumn1.Width = 92;
             gridViewTextBoxColumn7.FieldName = "DriverName";
             gridViewTextBoxColumn7.HeaderText = "Conductor";
             gridViewTextBoxColumn7.MinWidth = 120;
             gridViewTextBoxColumn7.Name = "DriverName";
-            gridViewTextBoxColumn7.Width = 120;
+            gridViewTextBoxColumn7.Width = 139;
             gridViewTextBoxColumn8.FieldName = "Truck";
             gridViewTextBoxColumn8.HeaderText = "Camión";
             gridViewTextBoxColumn8.MinWidth = 120;
             gridViewTextBoxColumn8.Name = "Truck";
-            gridViewTextBoxColumn8.Width = 120;
+            gridViewTextBoxColumn8.Width = 139;
             gridViewCommandColumn1.DefaultText = "Armar";
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.MaxWidth = 70;
@@ -202,11 +207,11 @@
             gridViewCommandColumn2.DefaultText = "Pasar a Pendiente";
             gridViewCommandColumn2.FieldName = "CancelBuildedOrder";
             gridViewCommandColumn2.HeaderText = "";
-            gridViewCommandColumn2.MinWidth = 100;
+            gridViewCommandColumn2.MinWidth = 130;
             gridViewCommandColumn2.Name = "CancelBuildedOrder";
             gridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn2.UseDefaultText = true;
-            gridViewCommandColumn2.Width = 100;
+            gridViewCommandColumn2.Width = 149;
             gridViewCommandColumn3.DefaultText = "Finalizar";
             gridViewCommandColumn3.HeaderText = "";
             gridViewCommandColumn3.MaxWidth = 70;
@@ -242,7 +247,7 @@
             this.gvOrders.Name = "gvOrders";
             this.gvOrders.ReadOnly = true;
             this.gvOrders.ShowGroupPanelScrollbars = false;
-            this.gvOrders.Size = new System.Drawing.Size(986, 577);
+            this.gvOrders.Size = new System.Drawing.Size(1314, 709);
             this.gvOrders.TabIndex = 9;
             this.gvOrders.ThemeName = "TelerikMetroBlue";
             this.gvOrders.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvOrders_CommandCellClick);
@@ -251,9 +256,10 @@
             // 
             this.tvOrderStatus.DisplayMember = "Name";
             this.tvOrderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvOrderStatus.Location = new System.Drawing.Point(3, 3);
+            this.tvOrderStatus.Location = new System.Drawing.Point(4, 4);
+            this.tvOrderStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tvOrderStatus.Name = "tvOrderStatus";
-            this.tvOrderStatus.Size = new System.Drawing.Size(168, 577);
+            this.tvOrderStatus.Size = new System.Drawing.Size(225, 709);
             this.tvOrderStatus.TabIndex = 10;
             this.tvOrderStatus.ThemeName = "TelerikMetroBlue";
             this.tvOrderStatus.ValueMember = "Id";
@@ -261,11 +267,12 @@
             // 
             // FrmOrdersManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 649);
+            this.ClientSize = new System.Drawing.Size(1563, 799);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "FrmOrdersManager";
             // 
             // 
