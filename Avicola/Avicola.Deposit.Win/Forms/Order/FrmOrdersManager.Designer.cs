@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
@@ -49,6 +50,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.gvOrders = new Telerik.WinControls.UI.RadGridView();
             this.tvOrderStatus = new Telerik.WinControls.UI.RadTreeView();
+            this.NewOrdersAlert = new Telerik.WinControls.UI.RadDesktopAlert(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
@@ -200,11 +202,11 @@
             gridViewCommandColumn2.DefaultText = "Pasar a Pendiente";
             gridViewCommandColumn2.FieldName = "CancelBuildedOrder";
             gridViewCommandColumn2.HeaderText = "";
-            gridViewCommandColumn2.MinWidth = 70;
+            gridViewCommandColumn2.MinWidth = 100;
             gridViewCommandColumn2.Name = "CancelBuildedOrder";
             gridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn2.UseDefaultText = true;
-            gridViewCommandColumn2.Width = 70;
+            gridViewCommandColumn2.Width = 100;
             gridViewCommandColumn3.DefaultText = "Finalizar";
             gridViewCommandColumn3.HeaderText = "";
             gridViewCommandColumn3.MaxWidth = 70;
@@ -243,7 +245,6 @@
             this.gvOrders.Size = new System.Drawing.Size(986, 577);
             this.gvOrders.TabIndex = 9;
             this.gvOrders.ThemeName = "TelerikMetroBlue";
-            this.gvOrders.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.gvOrders_CellFormatting);
             this.gvOrders.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvOrders_CommandCellClick);
             // 
             // tvOrderStatus
@@ -295,5 +296,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Telerik.WinControls.UI.RadGridView gvOrders;
         private Telerik.WinControls.UI.RadTreeView tvOrderStatus;
+        private Telerik.WinControls.UI.RadDesktopAlert NewOrdersAlert;
     }
 }
