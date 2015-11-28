@@ -37,7 +37,7 @@ namespace Avicola.Sales.Services
             Uow.Stocks.Add(stock);
             Uow.Commit();
         }
-
+        
         IQueryable<Stock> IStockService.GetAll()
         {
             return Uow.Stocks.GetAll();
@@ -68,6 +68,11 @@ namespace Avicola.Sales.Services
             stockEntry.Eggs = eggsUnit;
             stockEntry.CreatedDate = _clock.Now;
             stockEntry.ShiftId = Guid.Empty;
+        }
+
+        public Stock GetExistStock(Guid depositId, Guid productId)
+        {
+            return Uow.Stocks.Get(x => x.DepositId == depositId && x.ProductId == productId);
         }
     }
 }

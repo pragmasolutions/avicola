@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IOrderStatusService.cs" />
+    <Compile Include="Interfaces\IShiftService.cs" />
+    <Compile Include="Interfaces\IProductService.cs" />
+    <Compile Include="Interfaces\IStockEntryService.cs" />
     <Compile Include="OrderStatusService.cs" />
     <Compile Include="OrderService.cs" />
     <Compile Include="DepositService.cs" />
@@ -72,6 +75,9 @@
     <Compile Include="Interfaces\IServiceFactory.cs" />
     <Compile Include="Interfaces\ITruckService.cs" />
     <Compile Include="ClientService.cs" />
+    <Compile Include="ShiftService.cs" />
+    <Compile Include="ProductService.cs" />
+    <Compile Include="StockEntryService.cs" />
     <Compile Include="StockService.cs" />
     <Compile Include="ProviderService.cs" />
     <Compile Include="TruckService.cs" />

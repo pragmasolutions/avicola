@@ -25,6 +25,11 @@ namespace Avicola.Deposit.Win.UserControls
         {
             set
             {
+                Sales.Entities.Deposit item = new Sales.Entities.Deposit();
+                item.Name = "Seleccione un depósito..";
+                item.Id = Guid.Empty;
+                value.Insert(0, item);
+
                 ddlDeposits.ValueMember = "Id";
                 ddlDeposits.DisplayMember = "Name";
                 ddlDeposits.DataSource = value;
@@ -47,6 +52,16 @@ namespace Avicola.Deposit.Win.UserControls
         private void ddlDeposits_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
             OnDepositSelected(SelectedDeposit);
+        }
+
+        public bool ValidateControl()
+        {
+           return this.SelectedDeposit.Id != Guid.Empty;
+        }
+
+        public void Reset()
+        {
+            ddlDeposits.SelectedIndex = 0;
         }
     }
 }

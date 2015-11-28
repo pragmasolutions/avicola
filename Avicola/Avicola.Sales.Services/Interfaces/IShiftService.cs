@@ -7,16 +7,12 @@ using Avicola.Services.Common;
 
 namespace Avicola.Sales.Services.Interfaces
 {
-    public interface IStockService : IService
+    public interface IShiftService : IService
     {
-        IQueryable<Stock> GetAll();
+        IQueryable<Shift> GetAll();
 
         Stock GetById(Guid id);
 
-        List<DepositStock> GetByDeposit(Guid depositId);
-
-        Stock GetExistStock(Guid depositId, Guid productId);
-
-        void Create(Stock stock);
+        void Create(Shift shift);
     }
 }

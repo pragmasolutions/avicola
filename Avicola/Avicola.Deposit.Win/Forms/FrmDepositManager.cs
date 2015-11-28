@@ -28,6 +28,7 @@ namespace Avicola.Deposit.Win.Forms
 
         private void btnStock_Click(object sender, EventArgs e)
         {
+            TransitionManager.LoadAddStockView();
         }
 
         private void btnOrders_Click(object sender, EventArgs e)
