@@ -6,7 +6,7 @@ using Avicola.Sales.Services.Dtos;
 
 namespace Avicola.Sales.Services.Interfaces
 {
-    public interface IClientService
+    public interface IClientService : IDisposable
     {
         IQueryable<Client> GetAll();
 

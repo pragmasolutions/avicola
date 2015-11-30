@@ -48,15 +48,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Sales.Services", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Reports", "Avicola.Reports\Avicola.Reports.csproj", "{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Deposit.Win", "Avicola.Deposit.Win\Avicola.Deposit.Win.csproj", "{127ED51A-90CA-43F6-8A9A-9F74E178E07C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Common.Win", "Avicola.Common.Win\Avicola.Common.Win.csproj", "{FFD31016-B795-4D15-90BB-59C09D02CE95}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Common.Win", "Framework\Framework.Common.Win\Framework.Common.Win.csproj", "{EC452900-1B92-4E17-833B-6FE4285C37F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Sync", "Framework\Framework.Sync\Framework.Sync.csproj", "{F98F1B54-2795-4D67-927F-D4C05B0D34F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Deposit.Dashboard", "Avicola.Deposit.Dashboard\Avicola.Deposit.Dashboard.csproj", "{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Sales.Win", "Avicola.Sales.Win\Avicola.Sales.Win.csproj", "{127ED51A-90CA-43F6-8A9A-9F74E178E07C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,12 +161,6 @@ Global
 		{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}.tekove|Any CPU.ActiveCfg = Release|Any CPU
 		{4BE11C27-FB2E-46F9-8FAC-59C559448E6F}.tekove|Any CPU.Build.0 = Release|Any CPU
-		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.tekove|Any CPU.ActiveCfg = Release|Any CPU
-		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.tekove|Any CPU.Build.0 = Release|Any CPU
 		{FFD31016-B795-4D15-90BB-59C09D02CE95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FFD31016-B795-4D15-90BB-59C09D02CE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD31016-B795-4D15-90BB-59C09D02CE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -187,12 +179,12 @@ Global
 		{F98F1B54-2795-4D67-927F-D4C05B0D34F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F98F1B54-2795-4D67-927F-D4C05B0D34F4}.tekove|Any CPU.ActiveCfg = Release|Any CPU
 		{F98F1B54-2795-4D67-927F-D4C05B0D34F4}.tekove|Any CPU.Build.0 = Release|Any CPU
-		{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}.tekove|Any CPU.ActiveCfg = Release|Any CPU
-		{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}.tekove|Any CPU.Build.0 = Release|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.tekove|Any CPU.ActiveCfg = Release|Any CPU
+		{127ED51A-90CA-43F6-8A9A-9F74E178E07C}.tekove|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

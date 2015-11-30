@@ -29,6 +29,9 @@ namespace Avicola.Sales.Entities
         public Nullable<int> Boxes { get; set; }
         public Nullable<int> Maples { get; set; }
         public Nullable<int> Eggs { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
+        public string City { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Driver Driver { get; set; }
