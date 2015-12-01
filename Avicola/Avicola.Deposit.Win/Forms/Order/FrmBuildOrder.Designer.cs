@@ -34,10 +34,12 @@
             this.ucDepositSelection = new Avicola.Deposit.Win.UserControls.UcDepositSelection();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.lbTitle = new Telerik.WinControls.UI.RadLabel();
+            this.btnBackToDepositManager = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackToDepositManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,14 +67,14 @@
             // 
             // ucOrderDetails
             // 
-            this.ucOrderDetails.Location = new System.Drawing.Point(12, 60);
+            this.ucOrderDetails.Location = new System.Drawing.Point(0, 110);
             this.ucOrderDetails.Name = "ucOrderDetails";
             this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
             this.ucOrderDetails.TabIndex = 2;
             // 
             // ucDepositSelection
             // 
-            this.ucDepositSelection.Location = new System.Drawing.Point(290, 88);
+            this.ucDepositSelection.Location = new System.Drawing.Point(290, 138);
             this.ucDepositSelection.Name = "ucDepositSelection";
             this.ucDepositSelection.Size = new System.Drawing.Size(284, 28);
             this.ucDepositSelection.TabIndex = 3;
@@ -80,7 +82,7 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(287, 64);
+            this.radLabel1.Location = new System.Drawing.Point(287, 114);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(69, 21);
             this.radLabel1.TabIndex = 4;
@@ -89,16 +91,27 @@
             // lbTitle
             // 
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(12, 13);
+            this.lbTitle.Location = new System.Drawing.Point(12, 56);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(193, 41);
             this.lbTitle.TabIndex = 14;
             this.lbTitle.Text = "Armar Pedido";
             // 
+            // btnBackToDepositManager
+            // 
+            this.btnBackToDepositManager.Location = new System.Drawing.Point(17, 21);
+            this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
+            this.btnBackToDepositManager.Name = "btnBackToDepositManager";
+            this.btnBackToDepositManager.Size = new System.Drawing.Size(87, 24);
+            this.btnBackToDepositManager.TabIndex = 15;
+            this.btnBackToDepositManager.Text = "Volver";
+            this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);
+            // 
             // FrmBuildOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(738, 403);
+            this.Controls.Add(this.btnBackToDepositManager);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.ucDepositSelection);
@@ -117,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnBuildOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackToDepositManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,5 +145,6 @@
         private UserControls.UcDepositSelection ucDepositSelection;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadLabel lbTitle;
+        private Telerik.WinControls.UI.RadButton btnBackToDepositManager;
     }
 }
