@@ -8,5 +8,14 @@ namespace Avicola.Common.Win
         {
             get { return ConfigurationManager.AppSettings["syncTables"]; }
         }
+
+        public static int RefreshOrdersInterval
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["RefreshOrdersInterval"];
+                return int.Parse(value);
+            }
+        }
     }
 }

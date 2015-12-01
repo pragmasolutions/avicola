@@ -9,6 +9,7 @@ using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
 using Avicola.Sales.Services.Interfaces;
 using Avicola.Services.Common.Exceptions;
+using Framework.Common.Extentensions;
 using Framework.Common.Utility;
 using Framework.Data.Helpers;
 
@@ -16,6 +17,7 @@ namespace Avicola.Sales.Services
 {
     public class OrderService : ServiceBase, IOrderService
     {
+        private const int WeeksBeforeToConsiderOrdersActive = 1;
         private readonly IClock _clock;
 
         public OrderService(ISalesUow uow, IClock clock)
@@ -23,7 +25,7 @@ namespace Avicola.Sales.Services
             _clock = clock;
             Uow = uow;
         }
-        public List<OrderDto> GetAll(string sortBy, string sortDirection, Guid[] statusId, int pageIndex, int pageSize, out int pageTotal)
+        public List<OrderDto> GetAll(string sortBy, string sortDirection, Guid[] statusId, DateTime? from, DateTime? to, int pageIndex, int pageSize, out int pageTotal)
         {
             var pagingCriteria = new PagingCriteria();
 
@@ -32,7 +34,9 @@ namespace Avicola.Sales.Services
             pagingCriteria.SortBy = !string.IsNullOrEmpty(sortBy) ? sortBy : "CreatedDate";
             pagingCriteria.SortDirection = !string.IsNullOrEmpty(sortDirection) ? sortDirection : "DESC";
 
-            Expression<Func<Order, bool>> where = x => statusId.Any(y => y == x.OrderStatusId);
+            Expression<Func<Order, bool>> where = x => statusId.Any(y => y == x.OrderStatusId)
+                                                   && (!from.HasValue || x.CreatedDate >= from)
+                                                   && (!to.HasValue || x.CreatedDate <= to);
 
             var results = Uow.Orders.GetAll(pagingCriteria, where,
                 x => x.Client,
@@ -49,27 +53,30 @@ namespace Avicola.Sales.Services
         public List<OrderDto> GetPendingOrders()
         {
             int total;
-            return GetAll(string.Empty, String.Empty, new[] { OrderStatus.PENDING }, 1, int.MaxValue, out total);
+            return GetAll(string.Empty, String.Empty, new[] { OrderStatus.PENDING }, null, null, 1, int.MaxValue, out total);
         }
 
         public List<OrderDto> GetOrdersByStatus(Guid statusId)
         {
             int total;
-            return GetAll(string.Empty, String.Empty, new[] { statusId }, 1, int.MaxValue, out total);
+            return GetAll(string.Empty, String.Empty, new[] { statusId }, null, null, 1, int.MaxValue, out total);
         }
 
         public List<OrderDto> GetActiveOrders()
         {
             int total;
             return GetAll(string.Empty, String.Empty,
-                new[] { OrderStatus.PENDING, OrderStatus.IN_PROGESS, OrderStatus.FINISHED, OrderStatus.SENT }, 1,
+                new[] {OrderStatus.PENDING, OrderStatus.IN_PROGESS, OrderStatus.FINISHED, OrderStatus.SENT},
+                _clock.Now.AddWeeks(-WeeksBeforeToConsiderOrdersActive)
+                    .AbsoluteStart(),
+                _clock.Now.AbsoluteEnd(), 1,
                 int.MaxValue, out total);
         }
 
         public List<OrderDto> GetOrdersByStatus(Guid[] statusIds)
         {
             int total;
-            return GetAll(string.Empty, String.Empty, statusIds, 1, int.MaxValue, out total);
+            return GetAll(string.Empty, String.Empty, statusIds, null, null, 1, int.MaxValue, out total);
         }
 
         public void BuildOrder(Guid orderId, Guid depositId)

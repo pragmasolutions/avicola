@@ -7,6 +7,7 @@ using System.Linq;
 using System.Media;
 using System.Text;
 using System.Windows.Forms;
+using Avicola.Common.Win;
 using Avicola.Common.Win.Forms;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
@@ -228,7 +229,7 @@ namespace Avicola.Deposit.Win.Forms
         private void StartRefreshTimer()
         {
             _refreshOrdersTimer = new Timer();
-            _refreshOrdersTimer.Interval = 1 * 60 * 1000;
+            _refreshOrdersTimer.Interval = AppSettings.RefreshOrdersInterval * 60 * 1000;
             _refreshOrdersTimer.Tick += RefreshOrdersTimer_Tick;
             _refreshOrdersTimer.Start();
         }
