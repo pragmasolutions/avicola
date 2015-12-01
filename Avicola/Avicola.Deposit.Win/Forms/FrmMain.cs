@@ -5,8 +5,10 @@ using Avicola.Deposit.Win.Forms.Stock;
 using Avicola.Deposit.Win.Infrastructure;
 using Avicola.Sales.Services.Dtos;
 using Avicola.Services.Common.Interfaces;
+using Framework.Logging;
 using Framework.Sync;
 using Framework.WinForm.Comun.Notification;
+using log4net;
 
 
 namespace Avicola.Deposit.Win.Forms
@@ -14,12 +16,14 @@ namespace Avicola.Deposit.Win.Forms
     public partial class FrmMain : FrmDepositBase, ITransitionManager
     {
         private readonly IServiceFactory _serviceFactory;
+        private readonly ILogger _logger;
 
-        public FrmMain(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService, IServiceFactory serviceFactory)
+        public FrmMain(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService, IServiceFactory serviceFactory,ILogger logger)
         {
             FormFactory = formFactory;
             MessageBoxDisplayService = messageBoxDisplayService;
             _serviceFactory = serviceFactory;
+            _logger = logger;
 
             InitializeComponent();
         }
@@ -42,7 +46,7 @@ namespace Avicola.Deposit.Win.Forms
 
         private async void btnSync_Click(object sender, EventArgs e)
         {
-            SyncManager syncManager = new SyncManager();
+            SyncManager syncManager = new SyncManager(_logger);
 
             WaitingBar.Visible = true;
 

@@ -36,6 +36,7 @@ namespace Avicola.Common.Win.IoC
             kernel.Bind<IIocContainer>().To<NinjectIocContainer>().InSingletonScope();
             kernel.Rebind<IClock>().To<Clock>().InSingletonScope();
             kernel.Rebind<IMessageBoxDisplayService>().To<MessageBoxDisplayService>().InSingletonScope();
+            kernel.Rebind<Framework.Logging.ILogger>().To<Framework.Logging.Log4Net.Logger>().InSingletonScope().WithConstructorArgument("loggerName", "Production");
         }
     }
 }
