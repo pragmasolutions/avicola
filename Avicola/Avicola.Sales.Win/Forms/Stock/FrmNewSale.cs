@@ -27,11 +27,11 @@ namespace Avicola.Sales.Win.Forms.Stock
         {
             using (var clientService = _serviceFactory.Create<IClientService>())
             {
-                var deposits = clientService.GetAll().OrderBy(x => x.Name).ToList();
+                var clients = clientService.GetAll().OrderBy(x => x.Name).ToList();
                 ddlClient.ValueMember = "Id";
                 ddlClient.DisplayMember = "Name";
-                ddlClient.DataSource = deposits;
-                ddlClient.Items.Insert(0, new RadListDataItem("(SELECCIONE CLIENTE)"));
+                clients.Insert(0, new Client{ Name = "(SELECCIONE CLIENTE)"});
+                ddlClient.DataSource = clients;
             }
         }
 
@@ -112,7 +112,18 @@ namespace Avicola.Sales.Win.Forms.Stock
 
         private void ddlClient_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-
+            var clientId = Guid.Parse(ddlClient.SelectedValue.ToString());
+            if (clientId != Guid.Empty)
+            {
+                using (var service = _serviceFactory.Create<IClientService>())
+                {
+                    var client = service.GetById(Guid.Parse(clientId.ToString()));
+                    txtAddress.Text = client.Address;
+                    txtPhone.Text = client.Tel1;
+                    txtCity.Text = client.City;
+                }
+            }
+            
         }
 
     }
