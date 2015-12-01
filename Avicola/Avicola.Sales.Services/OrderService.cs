@@ -160,5 +160,12 @@ namespace Avicola.Sales.Services
 
             return Mapper.Map<Order, OrderDto>(order);
         }
+
+
+        public void Create(Order order)
+        {
+            Uow.Orders.Add(order);
+            Uow.Commit();
+        }
     }
 }

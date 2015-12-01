@@ -6,6 +6,7 @@ using Avicola.Sales.Win.Model;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services;
 using Framework.WinForm.Comun.Notification;
+using Org.BouncyCastle.Utilities.IO;
 using Telerik.WinControls.UI;
 
 namespace Avicola.Sales.Win.Forms.Stock
@@ -23,7 +24,7 @@ namespace Avicola.Sales.Win.Forms.Stock
             InitializeComponent();
         }
 
-        private void FrmAddStock_Load(object sender, EventArgs e)
+        private void FrmNewSale_Load(object sender, EventArgs e)
         {
             using (var clientService = _serviceFactory.Create<IClientService>())
             {
@@ -37,12 +38,12 @@ namespace Avicola.Sales.Win.Forms.Stock
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            TransitionManager.LoadSalesManagerView();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            var esValido = this.ValidateControls();
+            var esValido = this.ValidarForm();
 
             if (!esValido)
             {
@@ -50,65 +51,60 @@ namespace Avicola.Sales.Win.Forms.Stock
             }
             else
             {
-                var stockEntryModel = GetStockEntry();
-                var stockEntry = stockEntryModel.ToStockEntry();
+                var model = GetOrder();
+                var order = model.ToOrder();
 
-                using (var service = _serviceFactory.Create<IStockEntryService>())
+                using (var service = _serviceFactory.Create<IOrderService>())
                 {
-                    try
-                    {
-                        
-                        ResetControls();
-                    }
-                    catch (Exception)
-                    {
-                        _messageBoxDisplayService.ShowError("La venta se realizó correctamente.");
-                    }
+                    
+                    service.Create(order);
+                    ResetControls();
+                    _messageBoxDisplayService.ShowSuccess("La venta se realizó correctamente.");
                 }
             }
         }
 
         private void ResetControls()
         {
-            //ucEggsAmount.ResetControls();
-            //ddlProducts.SelectedIndex = 0;
-            //ddlProviders.SelectedIndex = 0;
-            //ddlShifts.SelectedIndex = 0;
-            //ckdOwn.IsChecked = true;
-            pbvStockEntry.Clear();
+            ddlClient.SelectedIndex = 0;
+            txtAddress.Text = string.Empty;
+            txtCity.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+            txtDozens.Value = 0;
         }
         
-        private CreateStockEntryModel GetStockEntry()
+        private CreateOrderModel GetOrder()
         {
-            var stockEntry = new CreateStockEntryModel
+            var order = new CreateOrderModel
             {
-                //Boxes = ucEggsAmount.Boxes,
-                //Maples = ucEggsAmount.Mapples,
-                //Eggs = ucEggsAmount.Eggs,
-                //ShiftId = ddlShifts.SelectedValue == null
-                //                ? (Guid?)null
-                //                : Guid.Parse(ddlShifts.SelectedValue.ToString()),
-                //ProviderId = ckdOwn.IsChecked
-                //                ? (Guid?)null
-                //                : Guid.Parse(ddlProviders.SelectedValue.ToString())
+                ClientId = Guid.Parse(ddlClient.SelectedValue.ToString()),
+                Dozens = Convert.ToInt32(txtDozens.Value),
+                Address = txtAddress.Text,
+                City = txtCity.Text,
+                PhoneNumber = txtPhone.Text
             };
 
-            return stockEntry;
+            return order;
         }
-
-        private bool ValidateControls()
+        protected override void ValidateControls()
         {
-            this.FormErrorProvider.Dispose();
+            this.ValidateControl(txtDozens, "Dozens");
+            this.ValidateControl(txtCity, "City");
+            this.ValidateControl(txtAddress, "Address");
+            this.ValidateControl(txtPhone, "PhoneNumber");
+            if (ddlClient.SelectedValue.ToString() == Guid.Empty.ToString())
+            {
+                this.FormErrorProvider.SetError(ddlClient, "La cantidad de docenas debe ser mayor a cero.");
 
-            
-
-            return true;
+            }
         }
 
-        private void btnBackToSalesManager_Click(object sender, EventArgs e)
+        protected override object GetEntity()
         {
-            TransitionManager.LoadSalesManagerView();
+            return GetOrder();
         }
+        
+
 
         private void ddlClient_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
@@ -125,6 +121,7 @@ namespace Avicola.Sales.Win.Forms.Stock
             }
             
         }
+
 
     }
 }
