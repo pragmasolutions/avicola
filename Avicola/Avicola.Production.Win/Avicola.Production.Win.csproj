@@ -56,6 +56,9 @@
     <Reference Include="Framework.Ioc">
       <HintPath>..\Framework\Framework.Ioc\bin\Debug\Framework.Ioc.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Framework\Framework.Logging.Log4Net\bin\Debug\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -463,6 +466,14 @@
     <ProjectReference Include="..\Framework\Framework.Ioc.Ninject\Framework.Ioc.Ninject.csproj">
       <Project>{E764FE19-BDC2-4D35-9A83-F29FBA4B61B2}</Project>
       <Name>Framework.Ioc.Ninject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Logging.Log4Net\Framework.Logging.Log4Net.csproj">
+      <Project>{a7bed685-d711-4227-84b4-feec8edf460c}</Project>
+      <Name>Framework.Logging.Log4Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Logging\Framework.Logging.csproj">
+      <Project>{f307cee1-72c8-491f-8867-0f3ebe3f7dbf}</Project>
+      <Name>Framework.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Sync\Framework.Sync.csproj">
       <Project>{F98F1B54-2795-4D67-927F-D4C05B0D34F4}</Project>

@@ -11,6 +11,7 @@ using Avicola.Production.Win.Forms.Measure;
 using Avicola.Production.Win.Forms.SiloEmptyings;
 using Avicola.Production.Win.Forms.Standards;
 using Avicola.Production.Win.Infrastructure;
+using Framework.Logging;
 using Framework.Sync;
 using Framework.WinForm.Comun.Notification;
 using Telerik.WinControls;
@@ -20,8 +21,11 @@ namespace Avicola.Production.Win.Forms
 {
     public partial class FrmMain : FrmProductionBase, ITransitionManager
     {
-        public FrmMain(IFormFactory formFactory,IMessageBoxDisplayService messageBoxDisplayService)
+        private readonly ILogger _logger;
+
+        public FrmMain(IFormFactory formFactory,IMessageBoxDisplayService messageBoxDisplayService,ILogger logger)
         {
+            _logger = logger;
             FormFactory = formFactory;
             MessageBoxDisplayService = messageBoxDisplayService;
             
@@ -83,7 +87,7 @@ namespace Avicola.Production.Win.Forms
 
         private async void btnSync_Click(object sender, EventArgs e)
         {
-            SyncManager syncManager = new SyncManager();
+            SyncManager syncManager = new SyncManager(_logger);
 
             WaitingBar.Visible = true;
 

@@ -55,5 +55,10 @@ namespace Avicola.Deposit.Win.Forms
 
             ucOrderDetails.Order = Order;
         }
+
+        private void btnBackToDepositManager_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadOrdersManagerView();
+        }
     }
 }

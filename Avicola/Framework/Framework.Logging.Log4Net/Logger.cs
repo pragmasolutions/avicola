@@ -12,12 +12,10 @@ namespace Framework.Logging.Log4Net
     /// </summary>
     public class Logger : ILogger
     {
-        private const string LoggerName = "AdoNetAppender";
-
         private readonly ILog _logger = null;
         private readonly IClock _clock;
 
-        private Logger(string loggerName, IClock clock)
+        public Logger(string loggerName, IClock clock)
         {
             // Create the log4net logger
             if (_logger == null)
@@ -28,8 +26,7 @@ namespace Framework.Logging.Log4Net
             _clock = clock;
         }
 
-        public void Log(LogLevel logLevel, Exception exception, Type loggingType,
-                        bool notifyAdministrator, string stringFormat, params object[] args)
+        public void Log(LogLevel logLevel, Exception exception, Type loggingType, bool notifyAdministrator, string stringFormat, params object[] args)
         {
             ParamValidator.AssertIsNotEmpty(stringFormat, "stringFormat");
 
@@ -47,8 +44,7 @@ namespace Framework.Logging.Log4Net
                                                                         ? loggingType.ToString()
                                                                         : null,
                                                        TimeStamp = _clock.Now,
-                                                       Message = string.Format(stringFormat, args),
-                                                       LoggerName = LoggerName,
+                                                       Message = string.Format(stringFormat, args)
                                                    };
 
                 LoggingEvent logEvent = new LoggingEvent(logData);
@@ -88,6 +84,16 @@ namespace Framework.Logging.Log4Net
                 default:
                     return Level.Debug;
             }
+        }
+
+        public void Log(string message)
+        {
+            _logger.Info(message);
+        }
+
+        public void LogError(string message,Exception ex)
+        {
+            _logger.Error(message, ex);
         }
     }
 }

@@ -68,5 +68,10 @@ namespace Avicola.Deposit.Win.Forms
                 ucDepositSelection.Deposits = service.GetAll();
             }
         }
+
+        private void btnBackToDepositManager_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadOrdersManagerView();
+        }
     }
 }

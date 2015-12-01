@@ -15,6 +15,8 @@ using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Avicola.Deposit.Win.Forms;
 using Avicola.Deposit.Win;
+using Framework.Logging;
+using log4net.Config;
 using Telerik.WinControls.UI.Localization;
 
 namespace Avicola.Deposit.Win
@@ -39,6 +41,9 @@ namespace Avicola.Deposit.Win
             AutoMapperConfig.Execute();
             MetadataTypesRegister.InstallForThisAssembly();
 
+            //Config log4net
+            XmlConfigurator.Configure();
+
             RadWizardLocalizationProvider.CurrentProvider = new CustomRadWizardLocalizationProvider();
             RadMessageLocalizationProvider.CurrentProvider = new CustomRadMessageLocalizationProvider();
             RadGridLocalizationProvider.CurrentProvider = new CustomRadGridViewLocalizationProvider();
@@ -51,8 +56,8 @@ namespace Avicola.Deposit.Win
                 //Set global container.
                 Ioc.Container = new NinjectIocContainer(kernel);
 
-                //SyncManager syncManager = new SyncManager();
-                //syncManager.Setup(AppSettings.SyncTables);
+                SyncManager syncManager = new SyncManager(kernel.Get<ILogger>());
+                syncManager.Setup(AppSettings.SyncTables);
 
                 var mainForm = kernel.Get<FrmMain>();
 

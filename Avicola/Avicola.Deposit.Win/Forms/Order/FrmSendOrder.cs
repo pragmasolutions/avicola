@@ -80,5 +80,10 @@ namespace Avicola.Deposit.Win.Forms
                 ucTruckSelection.Trucks = service.GetAll();
             }
         }
+
+        private void btnBackToDepositManager_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadOrdersManagerView();
+        }
     }
 }

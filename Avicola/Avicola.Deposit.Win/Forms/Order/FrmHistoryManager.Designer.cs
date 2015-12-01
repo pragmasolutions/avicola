@@ -41,16 +41,16 @@
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.gvOrders = new Telerik.WinControls.UI.RadGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lbTitle = new Telerik.WinControls.UI.RadLabel();
             this.btnBackToDepositManager = new Telerik.WinControls.UI.RadButton();
-            this.gvOrders = new Telerik.WinControls.UI.RadGridView();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOrders.MasterTemplate)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBackToDepositManager)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOrders.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,57 +62,17 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1384, 678);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1038, 551);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel2.Controls.Add(this.lbTitle, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnBackToDepositManager, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1376, 66);
-            this.tableLayoutPanel2.TabIndex = 9;
-            // 
-            // lbTitle
-            // 
-            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(141, 4);
-            this.lbTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(497, 51);
-            this.lbTitle.TabIndex = 13;
-            this.lbTitle.Text = "Historial de pedidos enviados";
-            // 
-            // btnBackToDepositManager
-            // 
-            this.btnBackToDepositManager.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackToDepositManager.Location = new System.Drawing.Point(11, 15);
-            this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(11, 15, 11, 10);
-            this.btnBackToDepositManager.Name = "btnBackToDepositManager";
-            this.btnBackToDepositManager.Size = new System.Drawing.Size(115, 30);
-            this.btnBackToDepositManager.TabIndex = 10;
-            this.btnBackToDepositManager.Text = "Volver";
-            this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);
             // 
             // gvOrders
             // 
             this.gvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gvOrders.Location = new System.Drawing.Point(4, 78);
-            this.gvOrders.Margin = new System.Windows.Forms.Padding(4);
+            this.gvOrders.Location = new System.Drawing.Point(3, 63);
             // 
             // 
             // 
@@ -133,40 +93,40 @@
             gridViewTextBoxColumn2.MaxWidth = 5000;
             gridViewTextBoxColumn2.MinWidth = 200;
             gridViewTextBoxColumn2.Name = "ClientName";
-            gridViewTextBoxColumn2.Width = 294;
+            gridViewTextBoxColumn2.Width = 220;
             gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
             gridViewTextBoxColumn3.FieldName = "CreatedDate";
             gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy H:mm}";
             gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
             gridViewTextBoxColumn3.MinWidth = 80;
             gridViewTextBoxColumn3.Name = "CreatedDate";
-            gridViewTextBoxColumn3.Width = 117;
+            gridViewTextBoxColumn3.Width = 88;
             gridViewTextBoxColumn4.FieldName = "Dozens";
             gridViewTextBoxColumn4.HeaderText = "Docenas";
             gridViewTextBoxColumn4.MinWidth = 60;
             gridViewTextBoxColumn4.Name = "Dozens";
-            gridViewTextBoxColumn4.Width = 88;
+            gridViewTextBoxColumn4.Width = 66;
             gridViewTextBoxColumn5.FieldName = "OrderStatusName";
             gridViewTextBoxColumn5.HeaderText = "Estado";
             gridViewTextBoxColumn5.MinWidth = 60;
             gridViewTextBoxColumn5.Name = "OrderStatusName";
-            gridViewTextBoxColumn5.Width = 88;
+            gridViewTextBoxColumn5.Width = 66;
             gridViewDateTimeColumn1.FieldName = "DispatchedDate";
             gridViewDateTimeColumn1.FormatString = "{0: dd/M/yyyy H:mm}";
             gridViewDateTimeColumn1.HeaderText = "Fecha Envio";
             gridViewDateTimeColumn1.MinWidth = 80;
             gridViewDateTimeColumn1.Name = "DispatchedDate";
-            gridViewDateTimeColumn1.Width = 117;
+            gridViewDateTimeColumn1.Width = 88;
             gridViewTextBoxColumn6.FieldName = "DriverName";
             gridViewTextBoxColumn6.HeaderText = "Conductor";
             gridViewTextBoxColumn6.MinWidth = 120;
             gridViewTextBoxColumn6.Name = "DriverName";
-            gridViewTextBoxColumn6.Width = 177;
+            gridViewTextBoxColumn6.Width = 132;
             gridViewTextBoxColumn7.FieldName = "Truck";
             gridViewTextBoxColumn7.HeaderText = "Camión";
             gridViewTextBoxColumn7.MinWidth = 120;
             gridViewTextBoxColumn7.Name = "Truck";
-            gridViewTextBoxColumn7.Width = 274;
+            gridViewTextBoxColumn7.Width = 151;
             gridViewCommandColumn1.DefaultText = "Armar";
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.MaxWidth = 70;
@@ -208,20 +168,56 @@
             this.gvOrders.Name = "gvOrders";
             this.gvOrders.ReadOnly = true;
             this.gvOrders.ShowGroupPanelScrollbars = false;
-            this.gvOrders.Size = new System.Drawing.Size(1376, 596);
+            this.gvOrders.Size = new System.Drawing.Size(1032, 485);
             this.gvOrders.TabIndex = 10;
             this.gvOrders.ThemeName = "TelerikMetroBlue";
             this.gvOrders.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.gvOrders_CellFormatting);
             this.gvOrders.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvOrders_CommandCellClick);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel2.Controls.Add(this.lbTitle, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnBackToDepositManager, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1032, 54);
+            this.tableLayoutPanel2.TabIndex = 9;
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(106, 3);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(398, 41);
+            this.lbTitle.TabIndex = 13;
+            this.lbTitle.Text = "Historial de pedidos enviados";
+            // 
+            // btnBackToDepositManager
+            // 
+            this.btnBackToDepositManager.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackToDepositManager.Location = new System.Drawing.Point(8, 12);
+            this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
+            this.btnBackToDepositManager.Name = "btnBackToDepositManager";
+            this.btnBackToDepositManager.Size = new System.Drawing.Size(86, 24);
+            this.btnBackToDepositManager.TabIndex = 10;
+            this.btnBackToDepositManager.Text = "Volver";
+            this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);
+            // 
             // FrmHistoryManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 678);
+            this.ClientSize = new System.Drawing.Size(1038, 551);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmHistoryManager";
             // 
             // 
@@ -230,12 +226,12 @@
             this.Text = "FrmPendingOrders";
             this.Load += new System.EventHandler(this.FrmPendingOrders_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gvOrders.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOrders)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBackToDepositManager)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOrders.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

@@ -60,6 +60,12 @@
     <Compile Include="SyncManager.cs" />
     <Compile Include="SyncProgress.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.Logging\Framework.Logging.csproj">
+      <Project>{F307CEE1-72C8-491F-8867-0F3EBE3F7DBF}</Project>
+      <Name>Framework.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

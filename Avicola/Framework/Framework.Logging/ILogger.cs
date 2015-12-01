@@ -19,9 +19,17 @@ namespace Framework.Logging
         void Log(LogLevel logLevel, Exception exception, Type loggingType, bool notifyAdministrator, string stringFormat, params object[] args);
 
         /// <summary>
-        /// Logs a message to the system.
+        /// Logs an exception to the system.
         /// </summary>
         /// <param name="exception">The exception that generated the message, if any.</param>
         void Log(Exception exception);
+
+        /// <summary>
+        /// Logs a message to the system.
+        /// </summary>
+        /// <param name="message"></param>
+        void Log(string message);
+
+        void LogError(string message, Exception ex);
     }
 }

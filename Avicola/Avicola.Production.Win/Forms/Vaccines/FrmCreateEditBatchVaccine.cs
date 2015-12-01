@@ -57,7 +57,7 @@ namespace Avicola.Production.Win.Forms.Vaccines
                 ddlVaccines.ValueMember = "Id";
                 ddlVaccines.DisplayMember = "Name";
                 Vaccine item = new Vaccine();
-                item.Name = "Selecciona una vacuna..";
+                item.Name = "Seleccione una vacuna..";
                 item.Id = Guid.Empty;
                 vaccines.Insert(0,item);
                 ddlVaccines.DataSource = vaccines;

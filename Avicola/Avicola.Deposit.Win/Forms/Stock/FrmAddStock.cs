@@ -84,7 +84,7 @@ namespace Avicola.Deposit.Win.Forms.Stock
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            TransitionManager.LoadDepositManagerView();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -183,7 +183,7 @@ namespace Avicola.Deposit.Win.Forms.Stock
 
         private void btnBackToDepositManager_Click(object sender, EventArgs e)
         {
-            TransitionManager.LoadDepositManagerView();
+           
         }
 
     }

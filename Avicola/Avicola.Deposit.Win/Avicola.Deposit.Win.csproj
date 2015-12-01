@@ -47,6 +47,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -310,6 +314,10 @@
     <ProjectReference Include="..\Framework\Framework.Ioc\Framework.Ioc.csproj">
       <Project>{9F222811-5858-42ED-958F-96C228D67808}</Project>
       <Name>Framework.Ioc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Logging\Framework.Logging.csproj">
+      <Project>{F307CEE1-72C8-491F-8867-0F3EBE3F7DBF}</Project>
+      <Name>Framework.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Sync\Framework.Sync.csproj">
       <Project>{F98F1B54-2795-4D67-927F-D4C05B0D34F4}</Project>
