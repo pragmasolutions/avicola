@@ -54,6 +54,9 @@
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Dozens" Type="int" Nullable="false" />
           <Property Name="ClientId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="OrderStatusId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PreparedDate" Type="datetime2" Precision="7" />
           <Property Name="DepositId" Type="uniqueidentifier" />
@@ -620,6 +623,9 @@
           <Property Name="Boxes" Type="Int32" />
           <Property Name="Maples" Type="Int32" />
           <Property Name="Eggs" Type="Int32" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -826,6 +832,9 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Eggs" ColumnName="Eggs" />
                 <ScalarProperty Name="Maples" ColumnName="Maples" />
                 <ScalarProperty Name="Boxes" ColumnName="Boxes" />

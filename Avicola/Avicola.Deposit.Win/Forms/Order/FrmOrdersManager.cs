@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Windows.Forms;
+using Avicola.Common.Win;
 using Avicola.Common.Win.Forms;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
@@ -21,6 +23,7 @@ namespace Avicola.Deposit.Win.Forms
         private readonly IServiceFactory _serviceFactory;
         private IList<OrderStatus> _orderStatuses;
         private IDictionary<Guid, IList<OrderDto>> _ordersCached;
+        private Timer _refreshOrdersTimer;
 
         public FrmOrdersManager(IServiceFactory serviceFactory)
         {
@@ -28,6 +31,8 @@ namespace Avicola.Deposit.Win.Forms
             InitializeComponent();
 
             gvOrders.TableElement.RowHeight = Avicola.Common.Win.GlobalConstants.DefaultRowHeight;
+
+            StartRefreshTimer();
         }
 
         public IList<OrderStatus> OrderStatuses
@@ -67,11 +72,22 @@ namespace Avicola.Deposit.Win.Forms
 
             LoadOrders();
 
-            UpdateStatusNumberOfOrders();
+            BindStatusTreeView();
+        }
 
-            tvOrderStatus.DataSource = OrderStatuses;
+        private void BindStatusTreeView()
+        {
+            var orderStatus = OrderStatuses.Select(x => new OrderStatus()
+                                                        {
+                                                            Id = x.Id,
+                                                            Name = x.Name + string.Format(" ({0})", OrderCached[x.Id].Count)
+                                                        }).ToList();
 
-            tvOrderStatus.SelectedNode = tvOrderStatus.Nodes.First();
+            var currentSelectedNodeIndex = tvOrderStatus.SelectedNode != null ? tvOrderStatus.SelectedNode.Index : 0;
+
+            tvOrderStatus.DataSource = orderStatus;
+
+            tvOrderStatus.SelectedNode = tvOrderStatus.Nodes[currentSelectedNodeIndex];
         }
 
         private void LoadOrders()
@@ -94,9 +110,39 @@ namespace Avicola.Deposit.Win.Forms
 
         private void LoadOrdersByStatus(Guid status)
         {
-            gvOrders.DataSource = OrderCached[status];
+            SetCommandColumnVisibility(status);
 
+            gvOrders.DataSource = OrderCached[status];
+            
             lbTitle.Text = OrderStatuses.First(x => x.Id == status).Name;
+        }
+
+        private void SetCommandColumnVisibility(Guid status)
+        {
+            if (status == OrderStatus.PENDING)
+            {
+                gvOrders.Columns[GlobalConstants.BuildOrderColumnName].IsVisible = true;
+
+                gvOrders.Columns[GlobalConstants.FinishOrderColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.CancelBuildedOrderColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.SendOrderColumnName].IsVisible = false;
+            }
+            else if (status == OrderStatus.IN_PROGESS)
+            {
+                gvOrders.Columns[GlobalConstants.FinishOrderColumnName].IsVisible = true;
+                gvOrders.Columns[GlobalConstants.CancelBuildedOrderColumnName].IsVisible = true;
+
+                gvOrders.Columns[GlobalConstants.BuildOrderColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.SendOrderColumnName].IsVisible = false;
+            }
+            else if (status == OrderStatus.FINISHED)
+            {
+                gvOrders.Columns[GlobalConstants.SendOrderColumnName].IsVisible = true;
+
+                gvOrders.Columns[GlobalConstants.BuildOrderColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.FinishOrderColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.CancelBuildedOrderColumnName].IsVisible = false;
+            }
         }
 
         private void LoadOrderStatus()
@@ -107,25 +153,16 @@ namespace Avicola.Deposit.Win.Forms
             }
         }
 
-        private void UpdateStatusNumberOfOrders()
-        {
-            foreach (var status in OrderStatuses)
-            {
-                IList<OrderDto> orders = new List<OrderDto>();
-
-                var numberOfOrders = _ordersCached.TryGetValue(status.Id, out orders) ? orders.Count : 0;
-
-                status.Name = status.Name + string.Format(" ({0})", numberOfOrders);
-            }
-        }
-
         private void tvOrders_SelectedNodeChanged(object sender, RadTreeViewEventArgs e)
         {
-            var statusSelected = e.Node.DataBoundItem as OrderStatus;
-
-            if (statusSelected != null)
+            if (e.Node != null)
             {
-                LoadOrdersByStatus(statusSelected.Id);
+                var statusSelected = e.Node.DataBoundItem as OrderStatus;
+
+                if (statusSelected != null)
+                {
+                    LoadOrdersByStatus(statusSelected.Id);
+                }
             }
         }
 
@@ -187,6 +224,40 @@ namespace Avicola.Deposit.Win.Forms
                     e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.FINISHED;
                 }
             }
+        }
+
+        private void StartRefreshTimer()
+        {
+            _refreshOrdersTimer = new Timer();
+            _refreshOrdersTimer.Interval = AppSettings.RefreshOrdersInterval * 60 * 1000;
+            _refreshOrdersTimer.Tick += RefreshOrdersTimer_Tick;
+            _refreshOrdersTimer.Start();
+        }
+
+        private void RefreshOrdersTimer_Tick(object sender, EventArgs eventArgs)
+        {
+            var lastPendingOrderCount = OrderCached[OrderStatus.PENDING].Count();
+
+            LoadOrders();
+
+            BindStatusTreeView();
+
+            var newPendingOrderCount = OrderCached[OrderStatus.PENDING].Count();
+
+            if (newPendingOrderCount > lastPendingOrderCount)
+            {
+                ShowNewOrdersAlert();
+            }
+        }
+
+        private void ShowNewOrdersAlert()
+        {
+            this.NewOrdersAlert.CaptionText = "Nuevo Pedido";
+            this.NewOrdersAlert.ContentText = "Se ha ingresado un nuevo pedido y esta listo para ser armado";
+            this.NewOrdersAlert.PlaySound = true;
+            this.NewOrdersAlert.SoundToPlay = SystemSounds.Asterisk;
+
+            this.NewOrdersAlert.Show();
         }
     }
 }
