@@ -32,38 +32,36 @@
             this.pbvStockEntry = new System.Windows.Forms.ErrorProvider(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbTitle = new Telerik.WinControls.UI.RadLabel();
-            this.btnBackToSalesManager = new Telerik.WinControls.UI.RadButton();
+            this.txtPhone = new Telerik.WinControls.UI.RadTextBox();
+            this.txtCity = new Telerik.WinControls.UI.RadTextBox();
+            this.txtAddress = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.ddlClient = new Telerik.WinControls.UI.RadDropDownList();
             this.lblClient = new Telerik.WinControls.UI.RadLabel();
             this.btnCancelar = new Telerik.WinControls.UI.RadButton();
             this.btnAceptar = new Telerik.WinControls.UI.RadButton();
-            this.ddlClient = new Telerik.WinControls.UI.RadDropDownList();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
-            this.txtAddress = new Telerik.WinControls.UI.RadTextBox();
-            this.txctCity = new Telerik.WinControls.UI.RadTextBox();
-            this.txtPhone = new Telerik.WinControls.UI.RadTextBox();
+            this.lbTitle = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbvStockEntry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBackToSalesManager)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancelar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAceptar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlClient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAddress)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txctCity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +84,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.txtPhone);
-            this.splitContainer1.Panel2.Controls.Add(this.txctCity);
+            this.splitContainer1.Panel2.Controls.Add(this.txtCity);
             this.splitContainer1.Panel2.Controls.Add(this.txtAddress);
             this.splitContainer1.Panel2.Controls.Add(this.radLabel4);
             this.splitContainer1.Panel2.Controls.Add(this.radLabel2);
@@ -97,7 +95,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnCancelar);
             this.splitContainer1.Panel2.Controls.Add(this.btnAceptar);
             this.splitContainer1.Size = new System.Drawing.Size(935, 745);
-            this.splitContainer1.SplitterDistance = 86;
+            this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -107,93 +105,46 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.26248F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.73752F));
             this.tableLayoutPanel2.Controls.Add(this.lbTitle, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnBackToSalesManager, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(935, 86);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(935, 60);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
-            // lbTitle
+            // txtPhone
             // 
-            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(156, 4);
-            this.lbTitle.Margin = new System.Windows.Forms.Padding(4);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(775, 51);
-            this.lbTitle.TabIndex = 13;
-            this.lbTitle.Text = "Nueva Venta";
+            this.txtPhone.Location = new System.Drawing.Point(520, 155);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(371, 28);
+            this.txtPhone.TabIndex = 33;
             // 
-            // btnBackToSalesManager
+            // txtCity
             // 
-            this.btnBackToSalesManager.Location = new System.Drawing.Point(11, 15);
-            this.btnBackToSalesManager.Margin = new System.Windows.Forms.Padding(11, 15, 11, 10);
-            this.btnBackToSalesManager.Name = "btnBackToSalesManager";
-            this.btnBackToSalesManager.Size = new System.Drawing.Size(116, 30);
-            this.btnBackToSalesManager.TabIndex = 10;
-            this.btnBackToSalesManager.Text = "Volver";
-            this.btnBackToSalesManager.Click += new System.EventHandler(this.btnBackToSalesManager_Click);
+            this.txtCity.Location = new System.Drawing.Point(520, 57);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(371, 28);
+            this.txtCity.TabIndex = 32;
             // 
-            // lblClient
+            // txtAddress
             // 
-            this.lblClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.lblClient.Location = new System.Drawing.Point(67, 25);
-            this.lblClient.Margin = new System.Windows.Forms.Padding(4);
-            this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(69, 26);
-            this.lblClient.TabIndex = 13;
-            this.lblClient.Text = "Cliente";
-            this.lblClient.ThemeName = "TelerikMetroBlue";
+            this.txtAddress.Location = new System.Drawing.Point(67, 156);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(337, 28);
+            this.txtAddress.TabIndex = 31;
             // 
-            // btnCancelar
+            // radLabel4
             // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(819, 608);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(100, 30);
-            this.btnCancelar.TabIndex = 26;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.ThemeName = "TelerikMetroBlue";
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(711, 608);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(100, 30);
-            this.btnAceptar.TabIndex = 24;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.ThemeName = "TelerikMetroBlue";
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-            // 
-            // ddlClient
-            // 
-            this.ddlClient.AutoSize = false;
-            this.ddlClient.Location = new System.Drawing.Point(65, 58);
-            this.ddlClient.Name = "ddlClient";
-            this.ddlClient.Size = new System.Drawing.Size(299, 33);
-            this.ddlClient.TabIndex = 30;
-            this.ddlClient.Text = " ";
-            this.ddlClient.ThemeName = "TelerikMetroBlue";
-            this.ddlClient.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.ddlClient_SelectedIndexChanged);
-            // 
-            // radLabel1
-            // 
-            this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.radLabel1.Location = new System.Drawing.Point(520, 25);
-            this.radLabel1.Margin = new System.Windows.Forms.Padding(4);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(70, 26);
-            this.radLabel1.TabIndex = 14;
-            this.radLabel1.Text = "Ciudad";
-            this.radLabel1.ThemeName = "TelerikMetroBlue";
+            this.radLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.radLabel4.Location = new System.Drawing.Point(520, 122);
+            this.radLabel4.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel4.Name = "radLabel4";
+            this.radLabel4.Size = new System.Drawing.Size(84, 26);
+            this.radLabel4.TabIndex = 15;
+            this.radLabel4.Text = "Teléfono";
+            this.radLabel4.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel2
             // 
@@ -217,37 +168,73 @@
             this.radLabel3.Text = "Cliente";
             this.radLabel3.ThemeName = "TelerikMetroBlue";
             // 
-            // radLabel4
+            // radLabel1
             // 
-            this.radLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.radLabel4.Location = new System.Drawing.Point(520, 122);
-            this.radLabel4.Margin = new System.Windows.Forms.Padding(4);
-            this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(84, 26);
-            this.radLabel4.TabIndex = 15;
-            this.radLabel4.Text = "Teléfono";
-            this.radLabel4.ThemeName = "TelerikMetroBlue";
+            this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.radLabel1.Location = new System.Drawing.Point(520, 25);
+            this.radLabel1.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(70, 26);
+            this.radLabel1.TabIndex = 14;
+            this.radLabel1.Text = "Ciudad";
+            this.radLabel1.ThemeName = "TelerikMetroBlue";
             // 
-            // txtAddress
+            // ddlClient
             // 
-            this.txtAddress.Location = new System.Drawing.Point(67, 156);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(337, 28);
-            this.txtAddress.TabIndex = 31;
+            this.ddlClient.AutoSize = false;
+            this.ddlClient.Location = new System.Drawing.Point(65, 58);
+            this.ddlClient.Name = "ddlClient";
+            this.ddlClient.Size = new System.Drawing.Size(299, 33);
+            this.ddlClient.TabIndex = 30;
+            this.ddlClient.Text = " ";
+            this.ddlClient.ThemeName = "TelerikMetroBlue";
+            this.ddlClient.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.ddlClient_SelectedIndexChanged);
             // 
-            // txctCity
+            // lblClient
             // 
-            this.txctCity.Location = new System.Drawing.Point(520, 57);
-            this.txctCity.Name = "txctCity";
-            this.txctCity.Size = new System.Drawing.Size(371, 28);
-            this.txctCity.TabIndex = 32;
+            this.lblClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.lblClient.Location = new System.Drawing.Point(67, 25);
+            this.lblClient.Margin = new System.Windows.Forms.Padding(4);
+            this.lblClient.Name = "lblClient";
+            this.lblClient.Size = new System.Drawing.Size(69, 26);
+            this.lblClient.TabIndex = 13;
+            this.lblClient.Text = "Cliente";
+            this.lblClient.ThemeName = "TelerikMetroBlue";
             // 
-            // txtPhone
+            // btnCancelar
             // 
-            this.txtPhone.Location = new System.Drawing.Point(520, 155);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(371, 28);
-            this.txtPhone.TabIndex = 33;
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Location = new System.Drawing.Point(819, 631);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(100, 30);
+            this.btnCancelar.TabIndex = 26;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.ThemeName = "TelerikMetroBlue";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptar.Location = new System.Drawing.Point(711, 631);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(100, 30);
+            this.btnAceptar.TabIndex = 24;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.ThemeName = "TelerikMetroBlue";
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(4, 4);
+            this.lbTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(223, 51);
+            this.lbTitle.TabIndex = 14;
+            this.lbTitle.Text = "Nueva Venta";
             // 
             // FrmNewSale
             // 
@@ -273,19 +260,18 @@
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBackToSalesManager)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancelar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAceptar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlClient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAddress)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txctCity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -299,15 +285,14 @@
         private Telerik.WinControls.UI.RadButton btnCancelar;
         private Telerik.WinControls.UI.RadButton btnAceptar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private Telerik.WinControls.UI.RadLabel lbTitle;
-        private Telerik.WinControls.UI.RadButton btnBackToSalesManager;
         private Telerik.WinControls.UI.RadDropDownList ddlClient;
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadTextBox txtPhone;
-        private Telerik.WinControls.UI.RadTextBox txctCity;
+        private Telerik.WinControls.UI.RadTextBox txtCity;
         private Telerik.WinControls.UI.RadTextBox txtAddress;
+        private Telerik.WinControls.UI.RadLabel lbTitle;
     }
 }
