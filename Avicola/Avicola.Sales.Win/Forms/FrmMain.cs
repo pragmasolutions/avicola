@@ -1,25 +1,29 @@
 ﻿using System;
 using System.Windows.Forms;
 using Avicola.Common.Win;
-using Avicola.Sales.Win.Forms.Stock;
 using Avicola.Sales.Win.Infrastructure;
 using Avicola.Sales.Services.Dtos;
+using Avicola.Sales.Win.Forms.Sales;
 using Avicola.Services.Common.Interfaces;
 using Framework.Sync;
 using Framework.WinForm.Comun.Notification;
+using Framework.Logging;
 
 
 namespace Avicola.Sales.Win.Forms
 {
     public partial class FrmMain : FrmSalesBase, ITransitionManager
     {
+        private readonly ILogger _logger;
         private readonly IServiceFactory _serviceFactory;
 
-        public FrmMain(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService, IServiceFactory serviceFactory)
+        public FrmMain(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService,
+            IServiceFactory serviceFactory, ILogger logger)
         {
             FormFactory = formFactory;
             MessageBoxDisplayService = messageBoxDisplayService;
             _serviceFactory = serviceFactory;
+            _logger = logger;
 
             InitializeComponent();
         }
@@ -42,7 +46,7 @@ namespace Avicola.Sales.Win.Forms
 
         private async void btnSync_Click(object sender, EventArgs e)
         {
-            SyncManager syncManager = new SyncManager();
+            SyncManager syncManager = new SyncManager(_logger);
 
             WaitingBar.Visible = true;
 

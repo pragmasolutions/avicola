@@ -1,4 +1,4 @@
-﻿namespace Avicola.Sales.Win.Forms.Stock
+﻿namespace Avicola.Sales.Win.Forms.Sales
 {
     partial class FrmNewSale
     {
@@ -43,6 +43,7 @@
             this.lblClient = new Telerik.WinControls.UI.RadLabel();
             this.btnCancelar = new Telerik.WinControls.UI.RadButton();
             this.btnAceptar = new Telerik.WinControls.UI.RadButton();
+            this.btnAddClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbvStockEntry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
@@ -152,7 +153,7 @@
             this.ddlClient.AutoSize = false;
             this.ddlClient.Location = new System.Drawing.Point(84, 126);
             this.ddlClient.Name = "ddlClient";
-            this.ddlClient.Size = new System.Drawing.Size(339, 33);
+            this.ddlClient.Size = new System.Drawing.Size(294, 33);
             this.ddlClient.TabIndex = 36;
             this.ddlClient.Text = " ";
             this.ddlClient.ThemeName = "TelerikMetroBlue";
@@ -191,11 +192,22 @@
             this.btnAceptar.ThemeName = "TelerikMetroBlue";
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // btnAddClient
+            // 
+            this.btnAddClient.Image = global::Avicola.Sales.Win.Properties.Resources.plus;
+            this.btnAddClient.Location = new System.Drawing.Point(385, 125);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(38, 34);
+            this.btnAddClient.TabIndex = 49;
+            this.btnAddClient.UseVisualStyleBackColor = true;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
+            // 
             // FrmNewSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(935, 394);
             this.ControlBox = false;
+            this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.radLabel5);
             this.Controls.Add(this.txtDozens);
@@ -255,5 +267,6 @@
         private Telerik.WinControls.UI.RadLabel lblClient;
         private Telerik.WinControls.UI.RadButton btnCancelar;
         private Telerik.WinControls.UI.RadButton btnAceptar;
+        private System.Windows.Forms.Button btnAddClient;
     }
 }

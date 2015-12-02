@@ -1,25 +1,29 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using Avicola.Common.Win;
 using Avicola.Sales.Services.Interfaces;
 using Avicola.Sales.Win.Model;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services;
+using Avicola.Sales.Win.Forms.Clients;
 using Framework.WinForm.Comun.Notification;
 using Org.BouncyCastle.Utilities.IO;
 using Telerik.WinControls.UI;
 
-namespace Avicola.Sales.Win.Forms.Stock
+namespace Avicola.Sales.Win.Forms.Sales
 {
     public partial class FrmNewSale : EditFormBase
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly IMessageBoxDisplayService _messageBoxDisplayService;
 
-        public FrmNewSale(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService)
+        public FrmNewSale(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService,
+                            IFormFactory formFactory)
         {
             _serviceFactory = serviceFactory;
             _messageBoxDisplayService = messageBoxDisplayService;
+            FormFactory = formFactory;
 
             InitializeComponent();
         }
@@ -122,6 +126,21 @@ namespace Avicola.Sales.Win.Forms.Stock
             
         }
 
+        private void btnAddClient_Click(object sender, EventArgs e)
+        {
+            var form = Application.OpenForms.OfType<FrmCreateEditClient>().FirstOrDefault();
+            if (form != null)
+            {
+                form.Activate();
+            }
+            else
+            {
+                var frm = FormFactory.Create<FrmCreateEditClient>(Guid.Empty);
+                frm.ShowDialog();
+            }
 
+            //UpdateGrid();
+        
+        }
     }
 }
