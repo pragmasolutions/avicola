@@ -299,12 +299,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>185.70555mm</Width>
+                  <Width>182.42851mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>91.1578mm</Height>
+                  <Height>88.54245mm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -326,7 +326,7 @@
                                     <Width>11.01169mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>21.90247mm</Width>
+                                    <Width>18.62545mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>15.05157mm</Width>
@@ -344,7 +344,7 @@
                                     <Width>16.64615mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>16.29337mm</Width>
+                                    <Width>20.00489mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>17.42225mm</Width>
@@ -743,7 +743,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>TOT</Value>
+                                                    <Value>TOTAL</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
                                                     </Style>
@@ -1006,21 +1006,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Alim/Ave / Dia</Value>
-                                                    <Style>
-                                                      <FontSize>7pt</FontSize>
-                                                      <Format>n2</Format>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>(gr)</Value>
+                                                    <Value>Alim/Ave/Dia(gr)</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
                                                       <Format>n2</Format>
@@ -1550,7 +1536,7 @@
                               <Top>13.44082mm</Top>
                               <Left>0.70556mm</Left>
                               <Height>20.18167mm</Height>
-                              <Width>181.28844mm</Width>
+                              <Width>181.72294mm</Width>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -2380,8 +2366,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>50.64946mm</Top>
-                              <Left>4.27188mm</Left>
+                              <Top>48.5139mm</Top>
+                              <Left>3.86923mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
                               <ZIndex>16</ZIndex>
@@ -2433,8 +2419,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>50.64946mm</Top>
-                              <Left>38.79688mm</Left>
+                              <Top>48.5139mm</Top>
+                              <Left>38.39423mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>17</ZIndex>
@@ -2486,8 +2472,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>55.64946mm</Top>
-                              <Left>4.27188mm</Left>
+                              <Top>53.5139mm</Top>
+                              <Left>3.86923mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
                               <ZIndex>18</ZIndex>
@@ -2539,8 +2525,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>55.64946mm</Top>
-                              <Left>38.79688mm</Left>
+                              <Top>53.5139mm</Top>
+                              <Left>38.39423mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>19</ZIndex>
@@ -2592,8 +2578,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>60.64945mm</Top>
-                              <Left>4.27188mm</Left>
+                              <Top>58.51389mm</Top>
+                              <Left>3.86923mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
                               <ZIndex>20</ZIndex>
@@ -2645,8 +2631,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>60.64945mm</Top>
-                              <Left>38.79688mm</Left>
+                              <Top>58.51389mm</Top>
+                              <Left>38.39423mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>21</ZIndex>
@@ -2698,8 +2684,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>65.64945mm</Top>
-                              <Left>4.27188mm</Left>
+                              <Top>63.51389mm</Top>
+                              <Left>3.86923mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
                               <ZIndex>22</ZIndex>
@@ -2751,8 +2737,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>65.64945mm</Top>
-                              <Left>38.79688mm</Left>
+                              <Top>63.51389mm</Top>
+                              <Left>38.39423mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>23</ZIndex>
@@ -2804,8 +2790,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>70.64945mm</Top>
-                              <Left>4.27188mm</Left>
+                              <Top>68.51389mm</Top>
+                              <Left>3.86923mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
                               <ZIndex>24</ZIndex>
@@ -2857,8 +2843,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>70.64945mm</Top>
-                              <Left>38.79688mm</Left>
+                              <Top>68.51389mm</Top>
+                              <Left>38.39423mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>25</ZIndex>
@@ -2946,8 +2932,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>50.64945mm</Top>
-                              <Left>86.89076mm</Left>
+                              <Top>48.51389mm</Top>
+                              <Left>86.48811mm</Left>
                               <Height>5mm</Height>
                               <Width>37.40439mm</Width>
                               <ZIndex>27</ZIndex>
@@ -3000,8 +2986,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>50.64945mm</Top>
-                              <Left>126.05904mm</Left>
+                              <Top>48.51389mm</Top>
+                              <Left>125.65639mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>28</ZIndex>
@@ -3053,8 +3039,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>55.64945mm</Top>
-                              <Left>86.89076mm</Left>
+                              <Top>53.51389mm</Top>
+                              <Left>86.48811mm</Left>
                               <Height>5mm</Height>
                               <Width>37.40439mm</Width>
                               <ZIndex>29</ZIndex>
@@ -3107,8 +3093,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>55.64945mm</Top>
-                              <Left>126.05904mm</Left>
+                              <Top>53.51389mm</Top>
+                              <Left>125.65639mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>30</ZIndex>
@@ -3160,8 +3146,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>60.64945mm</Top>
-                              <Left>86.89076mm</Left>
+                              <Top>58.51389mm</Top>
+                              <Left>86.48811mm</Left>
                               <Height>5mm</Height>
                               <Width>37.40439mm</Width>
                               <ZIndex>31</ZIndex>
@@ -3214,8 +3200,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>60.64945mm</Top>
-                              <Left>126.14467mm</Left>
+                              <Top>58.51389mm</Top>
+                              <Left>125.74202mm</Left>
                               <Height>5mm</Height>
                               <Width>42.1386mm</Width>
                               <ZIndex>32</ZIndex>
@@ -3267,8 +3253,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>65.64945mm</Top>
-                              <Left>86.89076mm</Left>
+                              <Top>63.51389mm</Top>
+                              <Left>86.48811mm</Left>
                               <Height>4.67579mm</Height>
                               <Width>37.40438mm</Width>
                               <ZIndex>33</ZIndex>
@@ -3321,8 +3307,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>65.67802mm</Top>
-                              <Left>126.05904mm</Left>
+                              <Top>63.54246mm</Top>
+                              <Left>125.65639mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>34</ZIndex>
@@ -3374,8 +3360,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>70.32524mm</Top>
-                              <Left>87.24354mm</Left>
+                              <Top>68.18968mm</Top>
+                              <Left>86.84089mm</Left>
                               <Height>5mm</Height>
                               <Width>37.40439mm</Width>
                               <ZIndex>35</ZIndex>
@@ -3428,8 +3414,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>70.32524mm</Top>
-                              <Left>126.05904mm</Left>
+                              <Top>68.18968mm</Top>
+                              <Left>125.65639mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>36</ZIndex>
@@ -3517,8 +3503,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>75.64945mm</Top>
-                              <Left>4.27188mm</Left>
+                              <Top>73.51389mm</Top>
+                              <Left>3.86923mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
                               <ZIndex>38</ZIndex>
@@ -3571,8 +3557,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>75.32524mm</Top>
-                              <Left>38.79688mm</Left>
+                              <Top>73.18968mm</Top>
+                              <Left>38.39423mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>39</ZIndex>
@@ -3604,8 +3590,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>80.67801mm</Top>
-                              <Left>4.27188mm</Left>
+                              <Top>78.54245mm</Top>
+                              <Left>3.86923mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
                               <ZIndex>40</ZIndex>
@@ -3658,8 +3644,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>80.67801mm</Top>
-                              <Left>38.79688mm</Left>
+                              <Top>78.54245mm</Top>
+                              <Left>38.39423mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>41</ZIndex>
@@ -3691,8 +3677,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
-                              <Top>85.67801mm</Top>
-                              <Left>4.27188mm</Left>
+                              <Top>83.54245mm</Top>
+                              <Left>3.86923mm</Left>
                               <Height>5mm</Height>
                               <Width>32.76111mm</Width>
                               <ZIndex>42</ZIndex>
@@ -3745,8 +3731,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>85.67801mm</Top>
-                              <Left>38.79688mm</Left>
+                              <Top>83.54245mm</Top>
+                              <Left>38.39423mm</Left>
                               <Height>5mm</Height>
                               <Width>42.22423mm</Width>
                               <ZIndex>43</ZIndex>
@@ -3799,8 +3785,8 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>12.48833mm</Top>
             <Left>1.10553mm</Left>
-            <Height>91.1578mm</Height>
-            <Width>185.70555mm</Width>
+            <Height>88.54245mm</Height>
+            <Width>182.4285mm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -4225,8 +4211,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>BatchVaccine</DataSetName>
-            <Top>125.11617mm</Top>
-            <Left>4.27188mm</Left>
+            <Top>111.09602mm</Top>
+            <Left>4.60676mm</Left>
             <Height>10.31875mm</Height>
             <Width>156.88512mm</Width>
             <ZIndex>3</ZIndex>
@@ -4258,8 +4244,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox84</rd:DefaultName>
-            <Top>117.9995mm</Top>
-            <Left>4.27188mm</Left>
+            <Top>103.97935mm</Top>
+            <Left>4.60676mm</Left>
             <Height>5.35278mm</Height>
             <Width>156.88512mm</Width>
             <ZIndex>4</ZIndex>
@@ -4297,8 +4283,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox84</rd:DefaultName>
-            <Top>137.19881mm</Top>
-            <Left>4.27188mm</Left>
+            <Top>123.17866mm</Top>
+            <Left>4.60676mm</Left>
             <Height>5.35278mm</Height>
             <Width>156.88512mm</Width>
             <ZIndex>5</ZIndex>
@@ -4569,8 +4555,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>BatchObservation</DataSetName>
-            <Top>144.31548mm</Top>
-            <Left>3.937mm</Left>
+            <Top>130.29533mm</Top>
+            <Left>4.27188mm</Left>
             <Height>10.4125mm</Height>
             <Width>156.88512mm</Width>
             <ZIndex>6</ZIndex>
@@ -4602,8 +4588,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox84</rd:DefaultName>
-            <Top>156.77799mm</Top>
-            <Left>3.937mm</Left>
+            <Top>142.75784mm</Top>
+            <Left>4.27188mm</Left>
             <Height>5.35278mm</Height>
             <Width>156.88512mm</Width>
             <ZIndex>7</ZIndex>
@@ -5085,8 +5071,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>BatchMedicine</DataSetName>
-            <Top>163.54188mm</Top>
-            <Left>4.27188mm</Left>
+            <Top>149.52173mm</Top>
+            <Left>4.60676mm</Left>
             <Height>12mm</Height>
             <Width>156.55024mm</Width>
             <ZIndex>8</ZIndex>
@@ -5100,14 +5086,14 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>176.15957mm</Height>
+        <Height>162.82457mm</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>186.81108mm</Width>
+      <Width>184.06402mm</Width>
       <Page>
         <PageFooter>
           <Height>11.43mm</Height>
