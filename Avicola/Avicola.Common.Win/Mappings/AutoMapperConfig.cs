@@ -11,9 +11,14 @@ namespace Avicola.Common.Win.Mappings
     {
         public static void Execute()
         {
-            var types = Assembly
-                           .GetEntryAssembly()
-                           .GetReferencedAssemblies()
+            var assemblies = Assembly
+                .GetEntryAssembly()
+                .GetReferencedAssemblies()
+                .ToList();
+
+            assemblies.Add(Assembly.GetEntryAssembly().GetName());
+
+            var types = assemblies
                            .Where(x => x.Name.StartsWith("Avicola") || x.Name.StartsWith("Framework"))
                            .Select(x => Assembly.Load(x))
                            .SelectMany(x => x.GetTypes())
