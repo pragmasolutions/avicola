@@ -12,6 +12,7 @@ using Avicola.Production.Win.Infrastructure;
 using Framework.Common.Win.CustomProviders;
 using Framework.Ioc;
 using Framework.Sync;
+using log4net.Config;
 using Ninject;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
@@ -38,7 +39,9 @@ namespace Avicola.Production.Win
 
             AutoMapperConfig.Execute();
             MetadataTypesRegister.InstallForThisAssembly();
-            
+
+            //Config log4net
+            XmlConfigurator.Configure();
 
             RadWizardLocalizationProvider.CurrentProvider = new CustomRadWizardLocalizationProvider();
             RadMessageLocalizationProvider.CurrentProvider = new CustomRadMessageLocalizationProvider();
@@ -52,8 +55,8 @@ namespace Avicola.Production.Win
                 //Set global container.
                 Ioc.Container = new NinjectIocContainer(kernel);
 
-                SyncManager syncManager = new SyncManager();
-                syncManager.Setup(AppSettings.SyncTables);    
+                //SyncManager syncManager = new SyncManager(kernel.Get<Framework.Logging.ILogger>());
+                //syncManager.Setup(AppSettings.SyncTables);    
 
                 //Config log4net
                 //log4net.Config.DOMConfigurator.Configure();

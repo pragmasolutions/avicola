@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Framework.Logging;
 using Microsoft.Synchronization;
 using Microsoft.Synchronization.Data;
 using Microsoft.Synchronization.Data.SqlServer;
@@ -15,21 +16,21 @@ namespace Framework.Sync
     {
         private readonly string _sqllocalConnectionString;
         private readonly string _sqlazureConnectionString;
-        //public static string sqlazureConnectionString = @"Server=tcp:o4n0izerd2.database.windows.net,1433;Database=Avicola.Office;User ID=maxikioscos_admin@o4n0izerd2;Password=Quilombito69;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        //public static string sqllocalConnectionString = @"Data Source=.\SQL2012;Initial Catalog=Avicola.Office;Integrated Security=True";
+        private readonly ILogger _logger;
         public static readonly string scopeName = "alltablesyncgroup";
 
-
-        public SyncManager()
+        public SyncManager(ILogger logger)
             : this(ConfigurationManager.AppSettings["sqllocalConnectionString"],
-                   ConfigurationManager.AppSettings["sqlazureConnectionString"])
+                   ConfigurationManager.AppSettings["sqlazureConnectionString"],
+                   logger)
         {
         }
-        
-        public SyncManager(string sqllocalConnectionString, string sqlazureConnectionString)
+
+        public SyncManager(string sqllocalConnectionString, string sqlazureConnectionString, ILogger logger)
         {
             _sqllocalConnectionString = sqllocalConnectionString;
             _sqlazureConnectionString = sqlazureConnectionString;
+            _logger = logger;
         }
 
         public void Setup(string tableNames)
@@ -63,64 +64,27 @@ namespace Framework.Sync
                     myScope.Tables.Add(tableDescription);
                 }
 
-                //DbSyncTableDescription Barn = SqlSyncDescriptionBuilder.GetDescriptionForTable("Barn", sqlServerConn);
-                //DbSyncTableDescription Batch = SqlSyncDescriptionBuilder.GetDescriptionForTable("Batch", sqlServerConn);
-                //DbSyncTableDescription BatchBarn = SqlSyncDescriptionBuilder.GetDescriptionForTable("BatchBarn", sqlServerConn);
-                //DbSyncTableDescription BatchMedicine = SqlSyncDescriptionBuilder.GetDescriptionForTable("BatchMedicine", sqlServerConn);
-                //DbSyncTableDescription BatchObservation = SqlSyncDescriptionBuilder.GetDescriptionForTable("BatchObservation", sqlServerConn);
-                //DbSyncTableDescription BatchVaccine = SqlSyncDescriptionBuilder.GetDescriptionForTable("BatchVaccine", sqlServerConn);
-                //DbSyncTableDescription DataLoadType = SqlSyncDescriptionBuilder.GetDescriptionForTable("DataLoadType", sqlServerConn);
-                //DbSyncTableDescription FoodClass = SqlSyncDescriptionBuilder.GetDescriptionForTable("FoodClass", sqlServerConn);
-
-                //DbSyncTableDescription GeneticLine = SqlSyncDescriptionBuilder.GetDescriptionForTable("GeneticLine", sqlServerConn);
-                //DbSyncTableDescription Measure = SqlSyncDescriptionBuilder.GetDescriptionForTable("Measure", sqlServerConn);
-                //DbSyncTableDescription Medicine = SqlSyncDescriptionBuilder.GetDescriptionForTable("Medicine", sqlServerConn);
-                //DbSyncTableDescription SiloEmptying = SqlSyncDescriptionBuilder.GetDescriptionForTable("SiloEmptying", sqlServerConn);
-                //DbSyncTableDescription Stage = SqlSyncDescriptionBuilder.GetDescriptionForTable("Stage", sqlServerConn);
-                //DbSyncTableDescription StageChange = SqlSyncDescriptionBuilder.GetDescriptionForTable("StageChange", sqlServerConn);
-                //DbSyncTableDescription Standard = SqlSyncDescriptionBuilder.GetDescriptionForTable("Standard", sqlServerConn);
-
-                //DbSyncTableDescription StandardGeneticLine = SqlSyncDescriptionBuilder.GetDescriptionForTable("StandardGeneticLine", sqlServerConn);
-                //DbSyncTableDescription StandardItem = SqlSyncDescriptionBuilder.GetDescriptionForTable("StandardItem", sqlServerConn);
-                //DbSyncTableDescription StandardType = SqlSyncDescriptionBuilder.GetDescriptionForTable("StandardType", sqlServerConn);
-                //DbSyncTableDescription Vaccine = SqlSyncDescriptionBuilder.GetDescriptionForTable("Vaccine", sqlServerConn);
-
-
-                //// Add the tables from above to the scope
-                //myScope.Tables.Add(DataLoadType); 
-                //myScope.Tables.Add(FoodClass);
-                //myScope.Tables.Add(GeneticLine);
-                //myScope.Tables.Add(Medicine);
-                //myScope.Tables.Add(Stage);
-                //myScope.Tables.Add(StandardType);
-                //myScope.Tables.Add(Vaccine);
-                //myScope.Tables.Add(Barn);
-                //myScope.Tables.Add(Batch);
-                //myScope.Tables.Add(Standard);
-                //myScope.Tables.Add(BatchBarn);
-                //myScope.Tables.Add(BatchMedicine);
-                //myScope.Tables.Add(BatchObservation);
-                //myScope.Tables.Add(BatchVaccine);
-                //myScope.Tables.Add(SiloEmptying);
-                //myScope.Tables.Add(StageChange);
-                //myScope.Tables.Add(StandardGeneticLine);
-                //myScope.Tables.Add(StandardItem);
-                //myScope.Tables.Add(Measure);
-
                 // Setup SQL Server for sync
                 SqlSyncScopeProvisioning sqlServerProv = new SqlSyncScopeProvisioning(sqlServerConn, myScope);
                 if (!sqlServerProv.ScopeExists(scopeName))
                 {
-                    // Apply the scope provisioning.
+                    _logger.Log("Provisioning SQL Server for sync " + DateTime.Now);
                     sqlServerProv.Apply();
+                    _logger.Log("Done Provisioning SQL Server for sync " + DateTime.Now);
                 }
+                else
+                    _logger.Log("SQL Server Database server already provisioned for sync " + DateTime.Now);
 
                 // Setup SQL Azure for sync
                 SqlSyncScopeProvisioning sqlAzureProv = new SqlSyncScopeProvisioning(sqlAzureConn, myScope);
                 if (!sqlAzureProv.ScopeExists(scopeName))
                 {
+                    _logger.Log("Provisioning SQL Azure for sync " + DateTime.Now);
                     sqlAzureProv.Apply();
+                    _logger.Log("Done Provisioning SQL Azure for sync " + DateTime.Now);
                 }
+                else
+                    _logger.Log("SQL Azure Database server already provisioned for sync " + DateTime.Now);
             }
             finally
             {
@@ -157,16 +121,43 @@ namespace Framework.Sync
 
                 orch.SessionProgress += (sender, args) =>
                                         {
-                                            OnProgressChange(new SyncProgressEventArgs((int) args.CompletedWork,(int) args.TotalWork));
+                                            OnProgressChange(new SyncProgressEventArgs((int)args.CompletedWork, (int)args.TotalWork));
                                         };
 
-                await Task.Run(() => orch.Synchronize());
+                _logger.Log(string.Format("ScopeName={0} ", scopeName.ToUpper()));
+                _logger.Log(string.Format("Starting Sync " + DateTime.Now));
+
+                var stat = await Task.Run(() => orch.Synchronize());
+
+                LogStatistics(stat);
             }
             finally
             {
                 if (sqlAzureConn != null) sqlAzureConn.Close();
                 if (sqlServerConn != null) sqlServerConn.Close();
             }
+        }
+
+        public void LogStatistics(SyncOperationStatistics syncStats)
+        {
+            string message;
+
+            message = "\tSync Start Time :" + syncStats.SyncStartTime.ToString();
+            _logger.Log(message);
+            message = "\tSync End Time   :" + syncStats.SyncEndTime.ToString();
+            _logger.Log(message);
+            message = "\tUpload Changes Applied :" + syncStats.UploadChangesApplied.ToString();
+            _logger.Log(message);
+            message = "\tUpload Changes Failed  :" + syncStats.UploadChangesFailed.ToString();
+            _logger.Log(message);
+            message = "\tUpload Changes Total   :" + syncStats.UploadChangesTotal.ToString();
+            _logger.Log(message);
+            message = "\tDownload Changes Applied :" + syncStats.DownloadChangesApplied.ToString();
+            _logger.Log(message);
+            message = "\tDownload Changes Failed  :" + syncStats.DownloadChangesFailed.ToString();
+            _logger.Log(message);
+            message = "\tDownload Changes Total   :" + syncStats.DownloadChangesTotal.ToString();
+            _logger.Log(message);
         }
     }
 }

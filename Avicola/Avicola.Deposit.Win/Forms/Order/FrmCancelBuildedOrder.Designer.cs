@@ -32,9 +32,11 @@
             this.btnCancelBuildedOrder = new Telerik.WinControls.UI.RadButton();
             this.ucOrderDetails = new Avicola.Deposit.Win.UserControls.UcOrderDetails();
             this.lbTitle = new Telerik.WinControls.UI.RadLabel();
+            this.btnBackToDepositManager = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancelBuildedOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackToDepositManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +64,7 @@
             // 
             // ucOrderDetails
             // 
-            this.ucOrderDetails.Location = new System.Drawing.Point(12, 60);
+            this.ucOrderDetails.Location = new System.Drawing.Point(0, 108);
             this.ucOrderDetails.Name = "ucOrderDetails";
             this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
             this.ucOrderDetails.TabIndex = 2;
@@ -70,16 +72,27 @@
             // lbTitle
             // 
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(12, 12);
+            this.lbTitle.Location = new System.Drawing.Point(12, 52);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(343, 41);
             this.lbTitle.TabIndex = 15;
             this.lbTitle.Text = "Pasar Pedido a Pendiente";
             // 
+            // btnBackToDepositManager
+            // 
+            this.btnBackToDepositManager.Location = new System.Drawing.Point(17, 17);
+            this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
+            this.btnBackToDepositManager.Name = "btnBackToDepositManager";
+            this.btnBackToDepositManager.Size = new System.Drawing.Size(87, 24);
+            this.btnBackToDepositManager.TabIndex = 16;
+            this.btnBackToDepositManager.Text = "Volver";
+            this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);
+            // 
             // FrmCancelBuildedOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(738, 403);
+            this.Controls.Add(this.btnBackToDepositManager);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.ucOrderDetails);
             this.Controls.Add(this.btnCancelBuildedOrder);
@@ -95,6 +108,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancelBuildedOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackToDepositManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -107,5 +121,6 @@
         private Telerik.WinControls.UI.RadButton btnCancelBuildedOrder;
         private UserControls.UcOrderDetails ucOrderDetails;
         private Telerik.WinControls.UI.RadLabel lbTitle;
+        private Telerik.WinControls.UI.RadButton btnBackToDepositManager;
     }
 }
