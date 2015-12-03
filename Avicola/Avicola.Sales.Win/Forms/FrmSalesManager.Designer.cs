@@ -31,16 +31,19 @@
             this.groupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.btnSalesHistory = new Telerik.WinControls.UI.RadButton();
             this.btnNewSale = new Telerik.WinControls.UI.RadButton();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalesHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNewSale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.groupBox1.Controls.Add(this.radButton1);
             this.groupBox1.Controls.Add(this.btnSalesHistory);
             this.groupBox1.Controls.Add(this.btnNewSale);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -85,6 +88,18 @@
             this.btnNewSale.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNewSale.Click += new System.EventHandler(this.btnNewSale_Click);
             // 
+            // radButton1
+            // 
+            this.radButton1.Image = global::Avicola.Sales.Win.Properties.Resources.customers;
+            this.radButton1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radButton1.Location = new System.Drawing.Point(647, 43);
+            this.radButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(307, 196);
+            this.radButton1.TabIndex = 11;
+            this.radButton1.Text = "Clientes";
+            this.radButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // FrmSalesManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -105,6 +120,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnSalesHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNewSale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -115,6 +131,7 @@
         private Telerik.WinControls.UI.RadGroupBox groupBox1;
         private Telerik.WinControls.UI.RadButton btnNewSale;
         private Telerik.WinControls.UI.RadButton btnSalesHistory;
+        private Telerik.WinControls.UI.RadButton radButton1;
 
     }
 }

@@ -30,12 +30,17 @@ namespace Avicola.Sales.Win.Forms.Sales
 
         private void FrmNewSale_Load(object sender, EventArgs e)
         {
+            RefreshClientsDropdown();
+        }
+
+        private void RefreshClientsDropdown()
+        {
             using (var clientService = _serviceFactory.Create<IClientService>())
             {
                 var clients = clientService.GetAll().OrderBy(x => x.Name).ToList();
                 ddlClient.ValueMember = "Id";
                 ddlClient.DisplayMember = "Name";
-                clients.Insert(0, new Client{ Name = "(SELECCIONE CLIENTE)"});
+                clients.Insert(0, new Client { Name = "(SELECCIONE CLIENTE)" });
                 ddlClient.DataSource = clients;
             }
         }
@@ -112,18 +117,20 @@ namespace Avicola.Sales.Win.Forms.Sales
 
         private void ddlClient_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            var clientId = Guid.Parse(ddlClient.SelectedValue.ToString());
-            if (clientId != Guid.Empty)
+            if (ddlClient.SelectedValue != null)
             {
-                using (var service = _serviceFactory.Create<IClientService>())
+                var clientId = Guid.Parse(ddlClient.SelectedValue.ToString());
+                if (clientId != Guid.Empty)
                 {
-                    var client = service.GetById(Guid.Parse(clientId.ToString()));
-                    txtAddress.Text = client.Address;
-                    txtPhone.Text = client.Tel1;
-                    txtCity.Text = client.City;
+                    using (var service = _serviceFactory.Create<IClientService>())
+                    {
+                        var client = service.GetById(Guid.Parse(clientId.ToString()));
+                        txtAddress.Text = client.Address;
+                        txtPhone.Text = client.Tel1;
+                        txtCity.Text = client.City;
+                    }
                 }
             }
-            
         }
 
         private void btnAddClient_Click(object sender, EventArgs e)
@@ -136,11 +143,20 @@ namespace Avicola.Sales.Win.Forms.Sales
             else
             {
                 var frm = FormFactory.Create<FrmCreateEditClient>(Guid.Empty);
+                frm.ClientCreated += new EventHandler<Client>(ClientCreated);
                 frm.ShowDialog();
             }
 
             //UpdateGrid();
         
+        }
+
+        private void ClientCreated(object sender, Client client)
+        {
+            RefreshClientsDropdown();
+            ddlClient.SelectedValue = client.Id;
+
+            ddlClient_SelectedIndexChanged(null, null);
         }
     }
 }

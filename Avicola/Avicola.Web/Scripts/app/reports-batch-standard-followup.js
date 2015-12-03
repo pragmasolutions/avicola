@@ -51,7 +51,8 @@
         var url = '/Report/GenerateBatchStandardFollowUp?' + data;
 
         $.getJSON(url, function (data) {
-            _lastData = data;
+            _lastData = mergeFatalitiesAndDiscarded(data);
+            convertFatalitiesToPercentage();
             generateChart(data);
         });
         return false;
@@ -74,9 +75,9 @@
             if (value == standardItem.Value1) {
                 result += '<span><b style="color: green;">Valor óptimo</b></span>';
             } else if (value > standardItem.Value1) {
-                result += '<span><b style="color: red;">' + (value - standardItem.Value1) + ' ' + standard.MeasureUnity + '</b> por encima del valor óptimo</span>';
+                result += '<span><b style="color: red;">' + Highcharts.numberFormat((value - standardItem.Value1), 2) + ' ' + standard.MeasureUnity + '</b> por encima del valor óptimo</span>';
             } else {
-                result += '<span><b style="color: red;">' + (standardItem.Value1 - value) + ' ' + standard.MeasureUnity + '</b> por debajo del valor óptimo</span>';
+                result += '<span><b style="color: red;">' + Highcharts.numberFormat((standardItem.Value1 - value), 2) + ' ' + standard.MeasureUnity + '</b> por debajo del valor óptimo</span>';
             }
         }
         return result;
@@ -187,7 +188,7 @@
                     var standard = this.series.name.split('(')[0].trim();
                     var measure = this.series.name.split('(')[1].split(')')[0];
 
-                    var firstPart = 'Semana <b>' + this.x + '</b><br/>' + standard + ': <b>' + this.y + '</b> ' + measure;
+                    var firstPart = 'Semana <b>' + this.x + '</b><br/>' + standard + ': <b>' + Highcharts.numberFormat(this.y, 2) + '</b> ' + measure;
 
                     if (this.series.name.indexOf('[*]') == -1) {
                         return firstPart;
@@ -203,6 +204,54 @@
             },
             series: series
         });
+    },
+    mergeFatalitiesAndDiscarded = function (batch) {
+        
+        var fatalities = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name == 'Mortandad' })[0];
+        var discarded = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name == 'Descarte' })[0];
+
+        if (fatalities && discarded) {
+            for (var j = 0; j < discarded.StandardItems.length; j++) {
+                var discardedItem = discarded.StandardItems[j];
+                var fatalityItem = fatalities.StandardItems[j];
+
+                for (var k = 0; k < discardedItem.Measures.length; k++) {
+                    var measure = discardedItem.Measures[k];
+                    fatalityItem.Measures.push({ Value: measure.Value });
+                }
+            }
+
+            batch.GeneticLine.Standards = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name != 'Descarte' });
+        }
+       
+        return batch;
+    },
+    convertFatalitiesToPercentage = function () {
+        var standard = _lastData.GeneticLine.Standards[0];
+        if (standard.Name == 'Mortandad') {
+            standard.MeasureUnity = '% aves';
+            var remainingBirds = _lastData.InitialBirds;
+            var acum = 0;
+            for (var i = 0; i < standard.StandardItems.length; i++) {
+                var item = standard.StandardItems[i];
+
+                var count = 0;
+                for (var j = 0; j < item.Measures.length; j++) {
+                    var measure = item.Measures[j];
+                    count += measure.Value;
+                }
+
+                acum += (count * 100) / remainingBirds;
+
+                item.Measures = [
+                    {
+                        Value: acum
+                    }
+                ];
+                remainingBirds -= count;
+            }
+        }
+
     }
 
     init();

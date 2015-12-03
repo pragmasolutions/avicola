@@ -4,7 +4,7 @@
         refresh = function () {
             $.getJSON("/ControlPanel/GetAllActive?random=" + Math.random(), function(data) {
                 _lastData = mergeFatalitiesAndDiscarded(data);
-
+                convertFatalitiesToPercentage();
                 var height = $(window).height();
 
                 $container = $('.main-container').empty().height(height - 60);
@@ -18,6 +18,38 @@
                 setTimeout(refresh, 6000 * 4);
             });
         },
+        convertFatalitiesToPercentage = function () {
+            for (var k = 0; k < _lastData.length; k++) {
+                var batch = _lastData[k];
+
+                var standard = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name == 'Mortandad' })[0];
+                if (standard) {
+                    standard.MeasureUnity = '% aves';
+                    var remainingBirds = batch.InitialBirds;
+                    var acum = 0;
+                    for (var i = 0; i < standard.StandardItems.length; i++) {
+                        var item = standard.StandardItems[i];
+
+                        var count = 0;
+                        for (var j = 0; j < item.Measures.length; j++) {
+                            var measure = item.Measures[j];
+                            count += measure.Value;
+                        }
+
+                        acum += (count * 100) / remainingBirds;
+
+                        item.Measures = [
+                            {
+                                Value: acum
+                            }
+                        ];
+                        remainingBirds -= count;
+                    }
+                }
+            }
+            
+
+        }
         getContainer = function (width, height) {
             var widthCol = 0;
             switch (width) {
@@ -57,7 +89,7 @@
                         .append(getContainer(100, 50));
                     break;
                 case 4:
-                    $container.append()
+                    $container.append(getContainer(50, 50))
                         .append(getContainer(50, 50))
                         .append(getContainer(50, 50))
                         .append(getContainer(50, 50));
@@ -160,17 +192,17 @@
                 if (value >= standardItem.Value1 && value <= standardItem.Value2) {
                     result += '<span><b style="color: green;">Dentro del rango óptimo</b></span>';
                 } else if (value > standardItem.Value2) {
-                    result += '<span><b style="color: red;">' + (value - standardItem.Value2) + ' ' + standard.MeasureUnity + '</b> por encima del máximo óptimo</span>';
+                    result += '<span><b style="color: red;">' + Highcharts.numberFormat((value - standardItem.Value2), 2) + ' ' + standard.MeasureUnity + '</b> por encima del máximo óptimo</span>';
                 } else {
-                    result += '<span><b style="color: red;">' + (standardItem.Value1 - value) + ' ' + standard.MeasureUnity + '</b> por debajo del mínimo óptimo</span>';
+                    result += '<span><b style="color: red;">' + Highcharts.numberFormat((standardItem.Value1 - value), 2) + ' ' + standard.MeasureUnity + '</b> por debajo del mínimo óptimo</span>';
                 }
             } else {
                 if (value == standardItem.Value1) {
                     result += '<span><b style="color: green;">Valor óptimo</b></span>';
                 } else if (value > standardItem.Value1) {
-                    result += '<span><b style="color: red;">' + (value - standardItem.Value1) + ' ' + standard.MeasureUnity + '</b> por encima del valor óptimo</span>';
+                    result += '<span><b style="color: red;">' + Highcharts.numberFormat((value - standardItem.Value1), 2) + ' ' + standard.MeasureUnity + '</b> por encima del valor óptimo</span>';
                 } else {
-                    result += '<span><b style="color: red;">' + (standardItem.Value1 - value) + ' ' + standard.MeasureUnity + '</b> por debajo del valor óptimo</span>';
+                    result += '<span><b style="color: red;">' + Highcharts.numberFormat((standardItem.Value1 - value), 2) + ' ' + standard.MeasureUnity + '</b> por debajo del valor óptimo</span>';
                 }
             }
             return result;
@@ -346,7 +378,7 @@
                         var standard = this.series.name.split('(')[0].trim();
                         var measure = this.series.name.split('(')[1].split(')')[0];
 
-                        var firstPart = 'Semana <b>' + this.x + '</b><br/>' + standard + ': <b>' + this.y + '</b> ' + measure;
+                        var firstPart = 'Semana <b>' + this.x + '</b><br/>' + standard + ': <b>' + Highcharts.numberFormat(this.y, 2) + '</b> ' + measure;
 
                         if (this.series.name.indexOf('[*]') == -1) {
                             return firstPart;

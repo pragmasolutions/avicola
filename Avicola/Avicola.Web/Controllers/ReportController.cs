@@ -161,14 +161,18 @@ namespace Avicola.Web.Controllers
             var batch = _batchService.GetByIdComplete(batchId);
 
             var weeksAge = Math.Ceiling(DateTime.Now.Subtract(batch.DateOfBirth).Days / (double)7);
+            var standardIds = standardId == Standard.Death
+                ? new List<Guid> {Standard.Death, Standard.Remove}
+                : new List<Guid> {standardId};
             var obj = new
             {
                 batch.Id,
                 Name = String.Format("Lote {0}", batch.Number),
+                batch.InitialBirds,
                 GeneticLine = new
                 {
                     batch.GeneticLine.Name,
-                    Standards = batch.GeneticLine.StandardGeneticLines.Where(sql => !sql.IsDeleted & sql.StandardId == standardId).Select(sgl => new
+                    Standards = batch.GeneticLine.StandardGeneticLines.Where(sql => !sql.IsDeleted & standardIds.Contains(sql.StandardId)).Select(sgl => new
                     {
                         sgl.Standard.Name,
                         ShowSecondValue = sgl.Standard.StandardTypeId == StandardType.VALUES_RANGE,
