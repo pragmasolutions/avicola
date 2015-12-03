@@ -147,44 +147,39 @@ namespace Avicola.Deposit.Win.Forms.Stock
         private bool ValidateControls()
         {
             this.FormErrorProvider.Dispose();
+            var result = true;
 
             if (!ucDepositSelection.ValidateControl())
             {
                 this.FormErrorProvider.SetError(ucDepositSelection, "El campo depósito es requerido");
-                return false;
+                result = false;
             }
 
             if (Guid.Parse(ddlProducts.SelectedValue.ToString()) == Guid.Empty)
             {
                 this.FormErrorProvider.SetError(ddlProducts, "El campo producto es requerido");
-                return false;
+                result = false;
             }
 
             if (ckdProvider.IsChecked && Guid.Parse(ddlProviders.SelectedValue.ToString()) == Guid.Empty)
             {
                 this.FormErrorProvider.SetError(ddlProviders, "El campo proveedor es requerido");
-                return false;
+                result = false;
             }
 
             if (Guid.Parse(ddlShifts.SelectedValue.ToString()) == Guid.Empty)
             {
                 this.FormErrorProvider.SetError(ddlShifts, "El campo turno es requerido");
-                return false;
+                result = false;
             }
            
             if (!ucEggsAmount.IsValid())
             {
                 _messageBoxDisplayService.ShowWarning("La cantidad de huevos no puede ser 0.");
-                return false;
+                result = false;
             }
 
-            return true;
+            return result;
         }
-
-        private void btnBackToDepositManager_Click(object sender, EventArgs e)
-        {
-           
-        }
-
     }
 }
