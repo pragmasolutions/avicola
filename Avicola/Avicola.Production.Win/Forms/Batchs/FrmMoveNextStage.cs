@@ -67,7 +67,11 @@ namespace Avicola.Production.Win.Forms.Batchs
             using (var service = _serviceFactory.Create<IBatchService>())
             {
                 _currentBirdsAmount = service.GetBirdsAmount(_stateController.CurrentSelectedBatch.Id, dtpDate.Value);
-                _currentFoodEntry = service.GetCurrentStageFoodEntry(_stateController.CurrentSelectedBatch.Id, dtpDate.Value);
+
+                var nextStage = _stateController.CurrentSelectedBatch.StageId == Stage.BREEDING
+                                        ? Stage.REBREEDING
+                                        : Stage.POSTURE;
+                _currentFoodEntry = service.GetCurrentStageFoodEntry(_stateController.CurrentSelectedBatch.Id, dtpDate.Value, nextStage);
 
                 txtBatchBirdsAmount.Text = _currentBirdsAmount.ToString("n0");
                 txtFoodEntry.Text = _currentFoodEntry.ToString("n0");

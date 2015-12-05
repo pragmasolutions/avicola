@@ -124,24 +124,34 @@ namespace Avicola.Office.Services
             return (int)Math.Floor((decimal)initialBirds);
         }
 
-        public decimal GetCurrentStageFoodEntry(Guid batchId, DateTime date)
+        public decimal GetCurrentStageFoodEntry(Guid batchId, DateTime date, Guid toStageId)
         {
             var batch = this.GetById(batchId);
 
-            var startStageDate = batch.CurrentStageStartDate;
+            var startStageDate = toStageId == Stage.REBREEDING
+                                    ? batch.DateOfBirth
+                                    : batch.ReBreedingDate;
             var endStageDate = date;
 
             var measures =
                 Uow.Measures.GetAll(
                     x =>
                         x.BatchId == batchId &&
-                        x.StandardItem.StandardGeneticLine.Standard.Name.Contains(FoodEntryStandardName) &&
+                        x.StandardItem.StandardGeneticLine.StandardId == Standard.FoodEntry &&
                         x.Date >= startStageDate &&
                         x.Date <= endStageDate,
                     x => x.StandardItem.StandardGeneticLine.Standard);
 
             var foodEntry = measures.Select(x => x.Value).DefaultIfEmpty(0).Sum();
-
+            if (toStageId == Stage.REBREEDING)
+            {
+                foodEntry += batch.StartingFood;
+            }
+            else
+            {
+                var rebreedingChange = Uow.StageChanges.Get(x => x.BatchId == batchId && x.StageToId == Stage.REBREEDING);
+                foodEntry += rebreedingChange.CurrentFoodStock;
+            }
             return foodEntry;
         }
 
@@ -230,7 +240,7 @@ namespace Avicola.Office.Services
             stageChange.StageToId = nextStage;
             stageChange.CurrentFoodStock = nextStageDto.CurrentFoodStock;
 
-            stageChange.FoodEntryDuringPeriod = GetCurrentStageFoodEntry(batch.Id, nextStageDto.NextStageStartDate);
+            stageChange.FoodEntryDuringPeriod = GetCurrentStageFoodEntry(batch.Id, nextStageDto.NextStageStartDate, nextStage);
             stageChange.StageFromInitialBirds = GetInitialBirds(batch.Id, currentStage);
             stageChange.StageFromIFinalBirds = GetBirdsAmount(batch.Id, nextStageDto.NextStageStartDate);
 
@@ -294,6 +304,43 @@ namespace Avicola.Office.Services
             }
 
             return detailList;
+        }
+
+
+        public void RecalculateFoodEntry(Guid batchId)
+        {
+            var stageChanges = Uow.StageChanges.GetAll().Where(x => x.BatchId == batchId).ToList();
+            if (stageChanges.Any())
+            {
+                var batch = Uow.Batches.Get(batchId);
+                foreach (var stageChange in stageChanges)
+                {
+                    var date = stageChange.StageToId == Stage.REBREEDING
+                                                                ? batch.ReBreedingDate
+                                                                : batch.PostureDate;
+                    var food = GetCurrentStageFoodEntry(batchId, date.GetValueOrDefault(), stageChange.StageToId);
+                    stageChange.FoodEntryDuringPeriod = food;
+                }
+                Uow.Commit();
+            }
+        }
+
+        public void RecalculateBirds(Guid batchId)
+        {
+            var stageChanges = Uow.StageChanges.GetAll().Where(x => x.BatchId == batchId).ToList();
+            if (stageChanges.Any())
+            {
+                var batch = Uow.Batches.Get(batchId);
+                foreach (var stageChange in stageChanges)
+                {
+                    var date = stageChange.StageToId == Stage.REBREEDING
+                                                                ? batch.ReBreedingDate
+                                                                : batch.PostureDate;
+                    var birds = GetBirdsAmount(batchId, date.GetValueOrDefault());
+                    stageChange.StageFromIFinalBirds = birds;
+                }
+                Uow.Commit();
+            }
         }
     }
 }
