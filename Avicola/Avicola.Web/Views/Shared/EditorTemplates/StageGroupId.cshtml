@@ -1,0 +1,14 @@
+﻿@using Avicola.Office.Entities
+@using Avicola.Office.Services.Interfaces
+@using Framework.Common.Web.Extensions
+@model int?
+@{
+    var items = new List<SelectListItem>
+    {
+        new SelectListItem() {Text = "Cría y Re-Cría", Value = "1"},
+        new SelectListItem() {Text = "Postura", Value = "2"}
+    };    
+}
+
+
+@Html.DropDownList("", new SelectList(items, "Value", "Text", Model), "Completo", new { @class = "form-control select2-control" })

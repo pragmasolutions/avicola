@@ -152,7 +152,12 @@ namespace Avicola.Web.Controllers
             var batch = _batchService.GetById(id.GetValueOrDefault());
             var result = batch.GeneticLine.StandardGeneticLines.Where(sgl => !sgl.IsDeleted)
                             .Select(sgl => sgl.Standard).Select(x => new { x.Id, x.Name });
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var response = new
+            {
+                Standards = result,
+                HidePosture = batch.StageId != Stage.POSTURE
+            };
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -169,6 +174,7 @@ namespace Avicola.Web.Controllers
                 batch.Id,
                 Name = String.Format("Lote {0}", batch.Number),
                 batch.InitialBirds,
+                FirstHalf = batch.StageId == Stage.BREEDING || batch.StageId == Stage.REBREEDING,
                 GeneticLine = new
                 {
                     batch.GeneticLine.Name,

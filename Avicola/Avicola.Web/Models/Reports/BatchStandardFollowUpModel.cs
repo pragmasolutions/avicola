@@ -21,5 +21,9 @@ namespace Avicola.Web.Models.Reports
         [Display(Name = "Estándar")]
         [Required]
         public Guid StandardId { get; set; }
+
+        [Display(Name = "Etapa")]
+        [UIHint("StageGroupId")]
+        public int? StageGroupId { get; set; }
     }
 }
