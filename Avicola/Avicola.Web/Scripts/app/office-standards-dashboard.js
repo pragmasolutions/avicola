@@ -259,7 +259,7 @@
                     ? $.grep(standard.StandardItems, function(x) { return x.Sequence < 18; })
                     : $.grep(standard.StandardItems, function(x) { return x.Sequence >= 16; });
                 for (var i = 0; i < items.length; i++) {
-                    var item = standard.StandardItems[i];
+                    var item = items[i];
 
                     firstSerie.data.push(item.Value1);
 
@@ -277,7 +277,7 @@
                             weekValue = sum;
                         }
                         lastNotNullMeasure = {
-                            x: item.Sequence - 1,
+                            x: i,
                             y: weekValue
                         }
                         measureSerie.data.push(lastNotNullMeasure);
