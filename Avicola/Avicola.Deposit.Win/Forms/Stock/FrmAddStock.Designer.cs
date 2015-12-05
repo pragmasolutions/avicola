@@ -126,7 +126,7 @@
             // 
             this.ddlProducts.AutoSize = false;
             this.ddlProducts.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.ddlProducts.Location = new System.Drawing.Point(49, 109);
+            this.ddlProducts.Location = new System.Drawing.Point(49, 108);
             this.ddlProducts.Name = "ddlProducts";
             this.ddlProducts.Size = new System.Drawing.Size(284, 27);
             this.ddlProducts.TabIndex = 15;
@@ -135,7 +135,7 @@
             // radLabel6
             // 
             this.radLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.radLabel6.Location = new System.Drawing.Point(50, 86);
+            this.radLabel6.Location = new System.Drawing.Point(50, 85);
             this.radLabel6.Name = "radLabel6";
             this.radLabel6.Size = new System.Drawing.Size(69, 21);
             this.radLabel6.TabIndex = 28;
@@ -144,7 +144,7 @@
             // 
             // ucDepositSelection
             // 
-            this.ucDepositSelection.Location = new System.Drawing.Point(49, 51);
+            this.ucDepositSelection.Location = new System.Drawing.Point(49, 50);
             this.ucDepositSelection.Name = "ucDepositSelection";
             this.ucDepositSelection.Size = new System.Drawing.Size(284, 28);
             this.ucDepositSelection.TabIndex = 14;
@@ -152,7 +152,7 @@
             // radLabel5
             // 
             this.radLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.radLabel5.Location = new System.Drawing.Point(49, 27);
+            this.radLabel5.Location = new System.Drawing.Point(49, 26);
             this.radLabel5.Name = "radLabel5";
             this.radLabel5.Size = new System.Drawing.Size(69, 21);
             this.radLabel5.TabIndex = 13;
@@ -163,7 +163,7 @@
             // 
             this.ddlProviders.AutoSize = false;
             this.ddlProviders.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.ddlProviders.Location = new System.Drawing.Point(48, 250);
+            this.ddlProviders.Location = new System.Drawing.Point(48, 249);
             this.ddlProviders.Name = "ddlProviders";
             this.ddlProviders.Size = new System.Drawing.Size(284, 27);
             this.ddlProviders.TabIndex = 16;
@@ -173,7 +173,7 @@
             // ckdProvider
             // 
             this.ckdProvider.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.ckdProvider.Location = new System.Drawing.Point(49, 225);
+            this.ckdProvider.Location = new System.Drawing.Point(49, 224);
             this.ckdProvider.Name = "ckdProvider";
             this.ckdProvider.Size = new System.Drawing.Size(95, 21);
             this.ckdProvider.TabIndex = 27;
@@ -186,7 +186,7 @@
             // 
             this.ckdOwn.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckdOwn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.ckdOwn.Location = new System.Drawing.Point(49, 200);
+            this.ckdOwn.Location = new System.Drawing.Point(49, 199);
             this.ckdOwn.Name = "ckdOwn";
             this.ckdOwn.Size = new System.Drawing.Size(109, 21);
             this.ckdOwn.TabIndex = 25;
@@ -199,7 +199,7 @@
             // 
             this.ddlShifts.AutoSize = false;
             this.ddlShifts.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.ddlShifts.Location = new System.Drawing.Point(49, 166);
+            this.ddlShifts.Location = new System.Drawing.Point(49, 165);
             this.ddlShifts.Name = "ddlShifts";
             this.ddlShifts.Size = new System.Drawing.Size(284, 27);
             this.ddlShifts.TabIndex = 19;
@@ -208,7 +208,7 @@
             // radLabel4
             // 
             this.radLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.radLabel4.Location = new System.Drawing.Point(50, 142);
+            this.radLabel4.Location = new System.Drawing.Point(50, 141);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(48, 21);
             this.radLabel4.TabIndex = 23;

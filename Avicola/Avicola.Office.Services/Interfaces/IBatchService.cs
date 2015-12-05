@@ -22,7 +22,7 @@ namespace Avicola.Office.Services.Interfaces
 
         int GetBirdsAmount(Guid batchId, DateTime date);
 
-        decimal GetCurrentStageFoodEntry(Guid batchId, DateTime date);
+        decimal GetCurrentStageFoodEntry(Guid batchId, DateTime date, Guid toStageId);
 
         void MoveNextStage(MoveNextStageDto nextStageDto);
 
@@ -43,5 +43,9 @@ namespace Avicola.Office.Services.Interfaces
         DateTime GetEndDateById(Guid batchId);
 
         IList<BatchBarnDetailDto> GetBarnsDetails(Guid batchId);
+
+        void RecalculateFoodEntry(Guid guid);
+
+        void RecalculateBirds(Guid guid);
     }
 }

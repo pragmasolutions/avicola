@@ -287,6 +287,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Image\customers.png" />
     <Content Include="Resources\Image\new-sale.png" />
     <Content Include="Resources\Image\plus.png" />
     <Content Include="Resources\Image\sales-history.png" />

@@ -15,6 +15,8 @@ namespace Avicola.Web.Extensions
             {
                 instance.Id,
                 Name = String.Format("Lote {0} [ Galpón: {1}]", instance.Number, instance.CurrentStageBarnNames),
+                instance.InitialBirds,
+                FirstHalf = instance.StageId == Stage.BREEDING || instance.StageId == Stage.REBREEDING,
                 GeneticLine = new
                 {
                     instance.GeneticLine.Name,
