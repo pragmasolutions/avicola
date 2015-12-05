@@ -216,7 +216,21 @@
                     '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
                 ];
 
-            var maxSequence = 10;
+            var maxSequence = batch.FirstHalf ? 17 : 120;
+            var batchSequence = 0;
+            for (var l = 0; l < batch.GeneticLine.Standards.length; l++) {
+                var s = batch.GeneticLine.Standards[l];
+                for (var m = 0; m < s.StandardItems.length; m++) {
+                    var x = s.StandardItems[m];
+                    if (x.Sequence > batchSequence) {
+                        batchSequence = x.Sequence;
+                    }
+                }
+            }
+
+            if (batchSequence < maxSequence) {
+                maxSequence = batchSequence;
+            }
 
             for (var j = 0; j < batch.GeneticLine.Standards.length; j++) {
                 var color = availableColors.pop();
@@ -241,7 +255,10 @@
                     showInLegend: true
                 }
 
-                for (var i = 0; i < standard.StandardItems.length; i++) {
+                var items = batch.FirstHalf
+                    ? $.grep(standard.StandardItems, function(x) { return x.Sequence < 18; })
+                    : $.grep(standard.StandardItems, function(x) { return x.Sequence >= 16; });
+                for (var i = 0; i < items.length; i++) {
                     var item = standard.StandardItems[i];
 
                     firstSerie.data.push(item.Value1);
@@ -305,8 +322,8 @@
                         showInLegend: false,
                         yAxis: standard.YAxis
                     }
-                    for (i = 0; i < standard.StandardItems.length; i++) {
-                        item = standard.StandardItems[i];
+                    for (i = 0; i < items.length; i++) {
+                        item = items[i];
 
                         secondSerie.data.push(item.Value2);
                     }
@@ -315,7 +332,8 @@
                 }
             }
 
-           for (var i = 0; i < maxSequence; i++) {
+            var minSequence = batch.FirstHalf ? 0 : 15;
+            for (i = minSequence; i < maxSequence; i++) {
                 weeks.push(i + 1);
             }
 
@@ -370,7 +388,7 @@
                 },
                 xAxis: {
                     categories: weeks,
-                    max: maxSequence - 1
+                    //max: maxSequence
                 },
                 yAxis: yAxis,
                 tooltip: {
