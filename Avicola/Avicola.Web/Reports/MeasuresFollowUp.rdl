@@ -35,6 +35,10 @@
           <DataField>Semana</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="Stage">
+          <DataField>Stage</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Dia">
           <DataField>Dia</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -95,8 +99,8 @@
           <DataField>Stock</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="ConsumoRealPorAve">
-          <DataField>ConsumoRealPorAve</DataField>
+        <Field Name="ConsumoTotalPorDiaPerido">
+          <DataField>ConsumoTotalPorDiaPerido</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Mes">
@@ -109,7 +113,7 @@
         </Field>
         <Field Name="FechaNacimiento">
           <DataField>FechaNacimiento</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="AlimentoInicialMes">
           <DataField>AlimentoInicialMes</DataField>
@@ -121,6 +125,10 @@
         </Field>
         <Field Name="ConsumoTotalMes">
           <DataField>ConsumoTotalMes</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ConsumoDiario">
+          <DataField>ConsumoDiario</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="LineaGenetica">
@@ -282,7 +290,7 @@
             <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
             <rd:DefaultName>ReportTitle</rd:DefaultName>
             <Top>0mm</Top>
-            <Left>1.35042cm</Left>
+            <Left>1.27987cm</Left>
             <Height>10.16mm</Height>
             <Width>139.7mm</Width>
             <Style>
@@ -299,7 +307,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>185.70555mm</Width>
+                  <Width>185mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -314,40 +322,40 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>6.69891mm</Width>
+                                    <Width>6.59154mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>9.97116mm</Width>
+                                    <Width>13.01298mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>12.12327mm</Width>
+                                    <Width>12.0159mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>11.01169mm</Width>
+                                    <Width>10.90432mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>21.90247mm</Width>
+                                    <Width>21.7951mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>15.05157mm</Width>
+                                    <Width>14.9442mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>16.22503mm</Width>
+                                    <Width>16.11766mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>15.14523mm</Width>
+                                    <Width>15.03786mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>22.79734mm</Width>
+                                    <Width>22.68997mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>16.64615mm</Width>
+                                    <Width>16.53878mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>16.29337mm</Width>
+                                    <Width>16.186mm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>17.42225mm</Width>
+                                    <Width>17.31488mm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -1006,7 +1014,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Alim/Ave / Dia</Value>
+                                                    <Value>Alim/Dia</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
                                                       <Format>n2</Format>
@@ -1174,7 +1182,7 @@
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
-                                                  <TextAlign>Center</TextAlign>
+                                                  <TextAlign>Right</TextAlign>
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
@@ -1210,7 +1218,7 @@
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
-                                                  <TextAlign>Center</TextAlign>
+                                                  <TextAlign>Right</TextAlign>
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
@@ -1245,7 +1253,7 @@
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
-                                                  <TextAlign>Center</TextAlign>
+                                                  <TextAlign>Right</TextAlign>
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
@@ -1280,7 +1288,7 @@
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
-                                                  <TextAlign>Center</TextAlign>
+                                                  <TextAlign>Right</TextAlign>
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
@@ -1316,7 +1324,7 @@
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
-                                                  <TextAlign>Center</TextAlign>
+                                                  <TextAlign>Right</TextAlign>
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
@@ -1352,7 +1360,7 @@
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
-                                                  <TextAlign>Center</TextAlign>
+                                                  <TextAlign>Right</TextAlign>
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
@@ -1423,7 +1431,7 @@
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
-                                                  <TextAlign>Center</TextAlign>
+                                                  <TextAlign>Right</TextAlign>
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
@@ -1444,14 +1452,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox19">
+                                          <Textbox Name="ConsumoDiario">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!ConsumoRealPorAve.Value * 1000</Value>
+                                                    <Value>=Fields!ConsumoDiario.Value</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
                                                       <Format>n2</Format>
@@ -1459,11 +1467,11 @@
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
-                                                  <TextAlign>Center</TextAlign>
+                                                  <TextAlign>Right</TextAlign>
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox19</rd:DefaultName>
+                                            <rd:DefaultName>ConsumoDiario</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1494,7 +1502,7 @@
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
-                                                  <TextAlign>Center</TextAlign>
+                                                  <TextAlign>Right</TextAlign>
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
@@ -1550,7 +1558,7 @@
                               <Top>13.44082mm</Top>
                               <Left>0.70556mm</Left>
                               <Height>20.18167mm</Height>
-                              <Width>181.28844mm</Width>
+                              <Width>183.14919mm</Width>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1577,7 +1585,7 @@
                               <Top>7.44082mm</Top>
                               <Left>0.70556mm</Left>
                               <Height>6mm</Height>
-                              <Width>16.90132mm</Width>
+                              <Width>19.60452mm</Width>
                               <ZIndex>1</ZIndex>
                               <Style>
                                 <Border>
@@ -1604,6 +1612,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -1629,7 +1638,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox45</rd:DefaultName>
                               <Top>7.26583mm</Top>
-                              <Left>17.60689mm</Left>
+                              <Left>20.66286mm</Left>
                               <Height>6.13833mm</Height>
                               <Width>30.59724mm</Width>
                               <ZIndex>2</ZIndex>
@@ -1658,6 +1667,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -1684,7 +1694,7 @@
                               <Top>1.16138mm</Top>
                               <Left>0.70556mm</Left>
                               <Height>6mm</Height>
-                              <Width>16.90132mm</Width>
+                              <Width>19.60452mm</Width>
                               <ZIndex>3</ZIndex>
                               <Style>
                                 <Border>
@@ -1711,6 +1721,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -1735,8 +1746,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox45</rd:DefaultName>
-                              <Top>1.19805mm</Top>
-                              <Left>17.60689mm</Left>
+                              <Top>1.33917mm</Top>
+                              <Left>20.66286mm</Left>
                               <Height>5.92666mm</Height>
                               <Width>30.59724mm</Width>
                               <ZIndex>4</ZIndex>
@@ -1765,6 +1776,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -1818,6 +1830,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -1871,6 +1884,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -1898,7 +1912,7 @@
                               <Top>7.37166mm</Top>
                               <Left>86.89077mm</Left>
                               <Height>6.13833mm</Height>
-                              <Width>21.21333mm</Width>
+                              <Width>21.1mm</Width>
                               <ZIndex>7</ZIndex>
                               <Style>
                                 <Border>
@@ -1925,6 +1939,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -1978,6 +1993,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -2032,6 +2048,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -2086,6 +2103,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -2139,6 +2157,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -2192,6 +2211,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -2246,6 +2266,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -2301,6 +2322,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -3310,7 +3332,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=(SUM(Fields!ConsumoRealPorAve.Value) / Count(Fields!ConsumoRealPorAve.Value)) * 1000</Value>
+                                      <Value>=((SUM(Fields!ConsumoTotalPorDiaPerido.Value) / Count(Fields!ConsumoTotalPorDiaPerido.Value)) / Count(Fields!ConsumoTotalPorDiaPerido.Value) / Variables!PromedioDeAves.Value) * 1000</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                         <Format>n2</Format>
@@ -3375,7 +3397,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox74</rd:DefaultName>
                               <Top>70.32524mm</Top>
-                              <Left>87.24354mm</Left>
+                              <Left>86.89075mm</Left>
                               <Height>5mm</Height>
                               <Width>37.40439mm</Width>
                               <ZIndex>35</ZIndex>
@@ -3737,7 +3759,7 @@
                                       <Value>=Variables!PromedioDeAves.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00</Format>
+                                        <Format>n0</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3769,6 +3791,7 @@
                             </Border>
                           </Style>
                         </Rectangle>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -3789,7 +3812,7 @@
                     </GroupExpressions>
                     <Variables>
                       <Variable Name="PromedioDeAves">
-                        <Value>=Sum(Fields!Aves.Value) / Count(Fields!DiaDelMes.Value)</Value>
+                        <Value>=Floor(Sum(Fields!Aves.Value) / Count(Fields!DiaDelMes.Value))</Value>
                       </Variable>
                     </Variables>
                   </Group>
@@ -3800,7 +3823,7 @@
             <Top>12.48833mm</Top>
             <Left>1.10553mm</Left>
             <Height>91.1578mm</Height>
-            <Width>185.70555mm</Width>
+            <Width>185mm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -3830,16 +3853,16 @@
                   <Width>13.33499mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>20.129mm</Width>
+                  <Width>26.51817mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>20.01656mm</Width>
+                  <Width>26.93773mm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>16.93353mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>86.47104mm</Width>
+                  <Width>95.33265mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -4042,7 +4065,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -4225,10 +4248,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>BatchVaccine</DataSetName>
-            <Top>125.11617mm</Top>
+            <Top>115.59117mm</Top>
             <Left>4.27188mm</Left>
             <Height>10.31875mm</Height>
-            <Width>156.88512mm</Width>
+            <Width>179.05707mm</Width>
             <ZIndex>3</ZIndex>
             <Visibility>
               <Hidden>=IIF(CountRows("BatchVaccine") &gt; 0, False, True)</Hidden>
@@ -4258,10 +4281,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox84</rd:DefaultName>
-            <Top>117.9995mm</Top>
+            <Top>108.4745mm</Top>
             <Left>4.27188mm</Left>
             <Height>5.35278mm</Height>
-            <Width>156.88512mm</Width>
+            <Width>179.05707mm</Width>
             <ZIndex>4</ZIndex>
             <Visibility>
               <Hidden>=IIF(CountRows("BatchVaccine") &gt; 0, False, True)</Hidden>
@@ -4297,10 +4320,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox84</rd:DefaultName>
-            <Top>137.19881mm</Top>
+            <Top>127.67381mm</Top>
             <Left>4.27188mm</Left>
             <Height>5.35278mm</Height>
-            <Width>156.88512mm</Width>
+            <Width>179.05707mm</Width>
             <ZIndex>5</ZIndex>
             <Visibility>
               <Hidden>=IIF(CountRows("BatchObservation") &gt; 0, False, True)</Hidden>
@@ -4324,10 +4347,10 @@
                   <Width>13.66987mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>20.129mm</Width>
+                  <Width>26.51817mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>123.08625mm</Width>
+                  <Width>139.20391mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -4460,7 +4483,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -4569,10 +4592,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>BatchObservation</DataSetName>
-            <Top>144.31548mm</Top>
+            <Top>134.79048mm</Top>
             <Left>3.937mm</Left>
             <Height>10.4125mm</Height>
-            <Width>156.88512mm</Width>
+            <Width>179.39195mm</Width>
             <ZIndex>6</ZIndex>
             <Visibility>
               <Hidden>=IIF(CountRows("BatchObservation") &gt; 0, False, True)</Hidden>
@@ -4602,10 +4625,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox84</rd:DefaultName>
-            <Top>156.77799mm</Top>
+            <Top>147.25299mm</Top>
             <Left>3.937mm</Left>
             <Height>5.35278mm</Height>
-            <Width>156.88512mm</Width>
+            <Width>179.39195mm</Width>
             <ZIndex>7</ZIndex>
             <Visibility>
               <Hidden>=IIF(CountRows("BatchMedicine") &gt; 0, False, True)</Hidden>
@@ -4629,13 +4652,13 @@
                   <Width>13.33499mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>20.53165mm</Width>
+                  <Width>26.51817mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>19.61391mm</Width>
+                  <Width>26.93773mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>16.93353mm</Width>
+                  <Width>26.13002mm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>31.97744mm</Width>
@@ -4879,7 +4902,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -4913,7 +4936,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>CreatedDate2</rd:DefaultName>
@@ -4946,7 +4971,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>StartDate1</rd:DefaultName>
@@ -4979,7 +5006,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>EndDate1</rd:DefaultName>
@@ -5085,10 +5114,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>BatchMedicine</DataSetName>
-            <Top>163.54188mm</Top>
+            <Top>154.01688mm</Top>
             <Left>4.27188mm</Left>
             <Height>12mm</Height>
-            <Width>156.55024mm</Width>
+            <Width>179.05707mm</Width>
             <ZIndex>8</ZIndex>
             <Visibility>
               <Hidden>=IIF(CountRows("BatchMedicine") &gt; 0, False, True)</Hidden>
@@ -5100,14 +5129,14 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>176.15957mm</Height>
+        <Height>167.16374mm</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>186.81108mm</Width>
+      <Width>187.10553mm</Width>
       <Page>
         <PageFooter>
           <Height>11.43mm</Height>
@@ -5156,8 +5185,8 @@
         <PageWidth>21cm</PageWidth>
         <LeftMargin>1cm</LeftMargin>
         <RightMargin>1cm</RightMargin>
-        <TopMargin>2cm</TopMargin>
-        <BottomMargin>2cm</BottomMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>

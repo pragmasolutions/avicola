@@ -99,8 +99,8 @@
           <DataField>Stock</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="ConsumoRealPorAve">
-          <DataField>ConsumoRealPorAve</DataField>
+        <Field Name="ConsumoTotalPorDiaPerido">
+          <DataField>ConsumoTotalPorDiaPerido</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Mes">
@@ -864,7 +864,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>RESUMEN DEL </Value>
+                                      <Value>RESUMEN DE </Value>
                                       <Style>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
@@ -1883,7 +1883,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=(SUM(Fields!ConsumoRealPorAve.Value) / Count(Fields!ConsumoRealPorAve.Value)) * 1000</Value>
+                                      <Value>=((Fields!AlimentoInicialMes.Value + SUM(Fields!IngresoAlimento.Value)) / Count(Fields!ConsumoTotalPorDiaPerido.Value) / Variables!PromedioDeAves.Value) * 1000</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                         <Format>n2</Format>
@@ -1894,10 +1894,10 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
-                              <Top>53.97523mm</Top>
-                              <Left>125.3063mm</Left>
+                              <Top>53.94666mm</Top>
+                              <Left>125.39193mm</Left>
                               <Height>5mm</Height>
-                              <Width>42.22423mm</Width>
+                              <Width>42.1386mm</Width>
                               <ZIndex>31</ZIndex>
                               <Style>
                                 <Border>
@@ -2318,7 +2318,7 @@
                                       <Value>=Variables!PromedioDeAves.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00</Format>
+                                        <Format>n0</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -2490,7 +2490,7 @@
                     </Filters>
                     <Variables>
                       <Variable Name="PromedioDeAves">
-                        <Value>=Sum(Fields!Aves.Value) / Count(Fields!DiaDelMes.Value)</Value>
+                        <Value>=Floor(Sum(Fields!Aves.Value) / Count(Fields!DiaDelMes.Value))</Value>
                       </Variable>
                     </Variables>
                   </Group>
@@ -2501,7 +2501,7 @@
             <Top>12.81254mm</Top>
             <Left>1.10553mm</Left>
             <Height>93.27447mm</Height>
-            <Width>182.26597mm</Width>
+            <Width>182.26596mm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -2581,8 +2581,8 @@
         <PageWidth>21cm</PageWidth>
         <LeftMargin>1cm</LeftMargin>
         <RightMargin>1cm</RightMargin>
-        <TopMargin>2cm</TopMargin>
-        <BottomMargin>2cm</BottomMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>

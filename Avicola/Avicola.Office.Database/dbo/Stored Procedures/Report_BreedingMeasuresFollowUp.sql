@@ -28,7 +28,7 @@ BEGIN
 		ConsumoAlimento decimal(18,2),
 		ConsumoAlimentoAcumulado decimal(18,2),
 		ConsumoPorAve int,
-		ConsumoRealPorAve decimal(18,6),
+		ConsumoTotalPorDiaPerido decimal(18,6),
 		Stock decimal(18,2),
 		Mes varchar(14),
 		DiaDelMes int,
@@ -143,38 +143,73 @@ BEGIN
 			AND SGL.IsDeleted = 0
 
     --CARGAR TABLA TEMPORAL CON CONSUMOS POR ETAPAS Y VACIAMIENTOS DE SILO
-	DECLARE @FoodConsumption TABLE
+	DECLARE @ConsumoAlimentoPorPeriodo TABLE
 	(
-	    DateFrom datetime,
-		DateLimit datetime,
-		ConsumptionPerDay decimal(18,6),
-		ConsumptionPerBirdPorDay decimal(18,6)
+	    Desde datetime,
+		Hasta datetime,
+		ConsumoDiario decimal(18,6),
+		ConsumoTotal decimal(18,6)
 	)
 
-	INSERT INTO @FoodConsumption (DateFrom, DateLimit,ConsumptionPerDay, ConsumptionPerBirdPorDay)
-	SELECT DateFrom = @BreedingDate, DateLimit = @RebreedingDate,ConsumptionPorDay = (SG.FoodEntryDuringPeriod + @StartingFood - SG.CurrentFoodStock) / (DATEDIFF(DAY,@BreedingDate,@RebreedingDate) + 1),ConsumptionPerBirdPorDay = ((SG.FoodEntryDuringPeriod + @StartingFood - SG.CurrentFoodStock) / ((SG.StageFromIFinalBirds + SG.StageFromIFinalBirds) / 2)) / (DATEDIFF(DAY,@BreedingDate,@RebreedingDate) + 1)
+	;WITH ConsumoCTE AS
+	( 
+		SELECT 
+
+		Orden = ROW_NUMBER() OVER(ORDER BY PDM.PrimerDiaDelMes ASC),
+		DateFrom = PDM.PrimerDiaDelMes, 
+		DateTo = EOMONTH(PDM.PrimerDiaDelMes), 
+		IngresoAlimentoDelMes = FE.TotalEntryAmount,
+		DiasDelMes = DDM.DiasDelMes,
+		DiasHastaVaciamiento = DHV.DiasHastaVaciamiento,
+		PrimerDiaDelMes = PDM.PrimerDiaDelMes
+
+		FROM SiloEmptying SE 
+
+			   OUTER APPLY(SELECT TOP 1  SG.CurrentFoodStock FROM StageChange SG WHERE SG.BatchId = @BatchId AND SG.StageToId = @PostureStageId) PS	
+			   OUTER APPLY(SELECT TOP 1 PSE.Date FROM SiloEmptying PSE  WHERE PSE.Date < SE.Date AND PSE.BatchId = @BatchId ORDER BY PSE.Date DESC) PSE	
+			   OUTER APPLY(SELECT DateFrom = CASE WHEN PSE.Date IS NULL THEN @PostureDate ELSE PSE.Date END) DF
+			   
+			   OUTER APPLY (SELECT DiasDelMes = DAY(EOMONTH(DF.DateFrom))) DDM
+			   OUTER APPLY (SELECT PrimerDiaDelMes = DATEFROMPARTS(YEAR(ISNULL(PSE.Date,@PostureDate)),MONTH(ISNULL(PSE.Date,@PostureDate)),1)) PDM
+			   OUTER APPLY (SELECT DiasHastaVaciamiento = DATEDIFF(DAY,PDM.PrimerDiaDelMes,CONVERT(date, SE.Date)) + 1) DHV
+			   OUTER APPLY(SELECT TotalEntryAmount = SUM(FE.Amount) FROM @FoodEntryDuringPosture FE WHERE  FE.Date BETWEEN  ISNULL(PSE.Date,@PostureDate) AND SE.Date) FE	
+		
+		WHERE SE.IsDeleted = 0 AND  SE.BatchId = @BatchId
+	)
+
+	,TempCTE AS
+	(
+		SELECT C.*, 
+			   AlimentoInicialDelMes = @BatchInitialFood,
+			   StockFinal = CAST(((@BatchInitialFood + C.IngresoAlimentoDelMes) - (((@BatchInitialFood + C.IngresoAlimentoDelMes) / C.DiasHastaVaciamiento) * C.DiasDelMes)) AS decimal(18,2)),
+			   ConsumoDelMes = (((@BatchInitialFood + C.IngresoAlimentoDelMes) / C.DiasHastaVaciamiento) * C.DiasDelMes),
+			   ConsumoVaciamiento = @BatchInitialFood + C.IngresoAlimentoDelMes
+		FROM ConsumoCTE C 
+		WHERE C.Orden = 1
+		UNION ALL
+		SELECT C.*,  
+			   AlimentoInicialDelMes = T.StockFinal,
+			   StockFinal = CAST(((T.StockFinal + C.IngresoAlimentoDelMes) - (((T.StockFinal + C.IngresoAlimentoDelMes) / C.DiasHastaVaciamiento) * C.DiasDelMes)) AS decimal(18,2)),
+			   ConsumoDelMes = (((T.StockFinal + C.IngresoAlimentoDelMes) / C.DiasHastaVaciamiento) * C.DiasDelMes),
+			   ConsumoVaciamiento = T.StockFinal + C.IngresoAlimentoDelMes
+		FROM ConsumoCTE C
+				INNER JOIN TempCTE T
+					ON T.Orden + 1 = C.Orden
+	)
+
+	INSERT INTO @ConsumoAlimentoPorPeriodo (Desde, Hasta,ConsumoTotal,ConsumoDiario)
+	SELECT Desde = @BreedingDate, Hasta = @RebreedingDate,ConsumoTotal = SG.FoodEntryDuringPeriod + @StartingFood - SG.CurrentFoodStock, ConsumoDiario = (SG.FoodEntryDuringPeriod + @StartingFood - SG.CurrentFoodStock) / (DATEDIFF(DAY,@BreedingDate,@RebreedingDate) + 1)
 	FROM StageChange SG
 	WHERE SG.BatchId = @BatchId
 	AND SG.StageToId = @ReBreedingStageId
 	UNION
-	SELECT  DateFrom = @RebreedingDate, DateLimit = @PostureDate,ConsumptionPorDay = (SG.FoodEntryDuringPeriod - SG.CurrentFoodStock) / (DATEDIFF(DAY,@RebreedingDate,@PostureDate) + 1), ConsumptionPerBirdPorDay = ((SG.FoodEntryDuringPeriod - SG.CurrentFoodStock) / ((SG.StageFromIFinalBirds + SG.StageFromIFinalBirds) / 2)) / (DATEDIFF(DAY,@RebreedingDate,@PostureDate) + 1)
+	SELECT  Desde = @RebreedingDate, Hasta = @PostureDate,ConsumoTotal = SG.FoodEntryDuringPeriod - SG.CurrentFoodStock , ConsumoDiario = (SG.FoodEntryDuringPeriod - SG.CurrentFoodStock) / (DATEDIFF(DAY,@RebreedingDate,@PostureDate) + 1)
 	FROM StageChange SG
 	WHERE SG.BatchId = @BatchId
 	AND SG.StageToId = @PostureStageId
 	UNION
-	SELECT DateFrom = (CASE WHEN PSE.Date IS NULL THEN @PostureDate ELSE PSE.Date END), DateLimit = SE.Date, 
-	ConsumptionPerDay = TEA.TotalEntryAmount / DC.DaysCount,
-	ConsumptionPerBirdPorDay = TEA.TotalEntryAmount / BD.BirdsAverage / DC.DaysCount
-	FROM SiloEmptying SE 
-		   
-		   OUTER APPLY(SELECT TOP 1  SG.CurrentFoodStock FROM StageChange SG WHERE SG.BatchId = @BatchId AND SG.StageToId = @PostureStageId) PS	
-		   OUTER APPLY(SELECT TOP 1 PSE.Date FROM SiloEmptying PSE  WHERE PSE.Date < SE.Date AND PSE.BatchId = @BatchId ORDER BY PSE.Date) PSE	
-		   OUTER APPLY(SELECT TotalEntryAmount = SUM(FE.Amount) FROM @FoodEntryDuringPosture FE WHERE  FE.Date BETWEEN  ISNULL(PSE.Date,@PostureDate) AND SE.Date) FE	
-		   OUTER APPLY(SELECT BirdsAverage = (@PostureInitialBirds + (@PostureInitialBirds - ISNULL(SUM(BD.Amount),0))) / 2 FROM @BirdsDeadDuringPosture BD WHERE BD.Date BETWEEN  ISNULL(PSE.Date,@PostureDate) AND SE.Date) BD			
-
-		   CROSS APPLY (SELECT TotalEntryAmount = ISNULL((FE.TotalEntryAmount + (CASE WHEN PSE.Date IS NULL THEN (CASE WHEN PS.CurrentFoodStock IS NULL THEN @BatchInitialFood ELSE PS.CurrentFoodStock END) ELSE 0 END)),0)) TEA
-		   CROSS APPLY (SELECT DaysCount = (CASE WHEN PSE.Date IS NULL THEN DATEDIFF(DAY,CONVERT(date, @PostureDate),CONVERT(date, SE.Date)) ELSE DATEDIFF(DAY,CONVERT(date, PSE.Date),CONVERT(date, SE.Date)) END) + 1) DC
-	WHERE SE.IsDeleted = 0 AND  SE.BatchId = @BatchId
+	SELECT Desde = DateFrom,Hasta = DateTo,ConsumoTotal = ConsumoDelMes, ConsumoDiario = ConsumoDelMes / DiasDelMes
+	FROM TempCTE
 
 	UPDATE @Items
 	SET Semana = CEILING(CAST(Secuencia as decimal) / CAST(7 as decimal))
@@ -322,9 +357,9 @@ BEGIN
 	FROM @Items I
 
 	UPDATE I
-	SET ConsumoRealPorAve = ISNULL(FC.ConsumptionPerBirdPorDay,0),ConsumoDiario = ISNULL(FC.ConsumptionPerDay,0)
+	SET ConsumoTotalPorDiaPerido = ISNULL(FC.ConsumoTotal,0),ConsumoDiario = ISNULL(FC.ConsumoDiario,0)
 	FROM @Items I
-		 OUTER APPLY(SELECT * FROM @FoodConsumption FC WHERE I.Fecha >= FC.DateFrom AND I.Fecha <= FC.DateLimit) FC
+		 OUTER APPLY(SELECT * FROM @ConsumoAlimentoPorPeriodo FC WHERE I.Fecha >= FC.Desde AND I.Fecha <= FC.Hasta) FC
 		
 	UPDATE I
 	SET Stock = @StartingFood + ISNULL((SELECT ISNULL(SUM(I2.IngresoAlimento), 0) - ISNULL(SUM(I2.ConsumoAlimento), 0) - (ISNULL(SUM(I2.ConsumoDiario), 0))

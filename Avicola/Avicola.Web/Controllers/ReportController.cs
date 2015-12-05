@@ -116,7 +116,7 @@ namespace Avicola.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dataset = _reportService.BreedingMeasuresFollowUp(model.BatchId, null, null);
+                var dataset = _reportService.BreedingMeasuresFollowUp(model.BatchId, null, DateTime.Today.AbsoluteEnd());
 
                 var reportFactory = new ReportFactory();
 
