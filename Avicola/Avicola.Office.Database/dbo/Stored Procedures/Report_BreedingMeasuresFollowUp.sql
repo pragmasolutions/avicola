@@ -46,6 +46,9 @@ BEGIN
 	DECLARE @BatchNumber int
 	DECLARE @DateOfBirth datetime
 	DECLARE @GeneticLine varchar(200)
+	DECLARE @PostureDate date
+	DECLARE @BreedingDate date
+	DECLARE @RebreedingDate date
 
 	SELECT @StartDate = B.DateOfBirth,
 			@InitialBirds = B.InitialBirds,
@@ -53,7 +56,10 @@ BEGIN
 			@StartingFoodClass = FC.Name,
 			@BatchNumber = B.Number,
 			@DateOfBirth = B.DateOfBirth,
-			@GeneticLine = GL.Name
+			@GeneticLine = GL.Name,
+			@BreedingDate = B.BreedingDate,
+		    @RebreedingDate = B.ReBreedingDate,
+		    @PostureDate = B.PostureDate 
 	FROM Batch B
 		INNER JOIN GeneticLine GL
 			ON B.GeneticLineId = GL.Id
@@ -73,23 +79,16 @@ BEGIN
 	ORDER BY Fecha ASC
 
 	/* ----------------- CALCULO DE CONSUMO -----------------  */
-
-	DECLARE @PostureDate date
-	DECLARE @BreedingDate date
-	DECLARE @RebreedingDate date
-	DECLARE @BatchInitialFood decimal(18,2)
+	
 	DECLARE @PostureInitialBirds decimal(18,2)
 	DECLARE @PostureInitialFood decimal(18,2)
 	DECLARE @BreedingStageId UNIQUEIDENTIFIER = '0FB44F39-CDB4-4564-AA3D-DF5E30D3BD0F'
 	DECLARE @ReBreedingStageId UNIQUEIDENTIFIER = '50F38EC7-4A04-4A9E-B2E4-6B9BC59D57DA'
 	DECLARE @PostureStageId UNIQUEIDENTIFIER = '0FB44F39-CDB4-4564-AA3D-DF5E30D3BD0F'
 
-	--CARGAR DATOS DEL LOTE
-	SELECT @BreedingDate = B.BreedingDate,
-		   @RebreedingDate = B.ReBreedingDate,
-		   @PostureDate = B.PostureDate, 
-		   @BatchInitialFood = B.StartingFood  
-	FROM Batch B WHERE B.Id = @BatchId 
+	--CALCULAR ALIMENTO INICIAL POSTURA
+	SELECT @PostureInitialFood = CurrentFoodStock FROM StageChange WHERE BatchId = @BatchId AND StageToId = @PostureStageId AND IsDeleted = 0
+	SELECT @PostureInitialFood = COALESCE (@PostureInitialFood, @StartingFood, 0)
 
 	--CALCULAR AVES INICIALES DE POSTURA
 	SELECT @PostureInitialBirds = SUM(BB.InitialBirds) 
@@ -180,10 +179,10 @@ BEGIN
 	,TempCTE AS
 	(
 		SELECT C.*, 
-			   AlimentoInicialDelMes = @BatchInitialFood,
-			   StockFinal = CAST(((@BatchInitialFood + C.IngresoAlimentoDelMes) - (((@BatchInitialFood + C.IngresoAlimentoDelMes) / C.DiasHastaVaciamiento) * C.DiasDelMes)) AS decimal(18,2)),
-			   ConsumoDelMes = (((@BatchInitialFood + C.IngresoAlimentoDelMes) / C.DiasHastaVaciamiento) * C.DiasDelMes),
-			   ConsumoVaciamiento = @BatchInitialFood + C.IngresoAlimentoDelMes
+			   AlimentoInicialDelMes = @PostureInitialFood,
+			   StockFinal = CAST(((@PostureInitialFood + C.IngresoAlimentoDelMes) - (((@PostureInitialFood + C.IngresoAlimentoDelMes) / C.DiasHastaVaciamiento) * C.DiasDelMes)) AS decimal(18,2)),
+			   ConsumoDelMes = (((@PostureInitialFood + C.IngresoAlimentoDelMes) / C.DiasHastaVaciamiento) * C.DiasDelMes),
+			   ConsumoVaciamiento = @PostureInitialFood + C.IngresoAlimentoDelMes
 		FROM ConsumoCTE C 
 		WHERE C.Orden = 1
 		UNION ALL
