@@ -13,36 +13,23 @@ namespace Avicola.Sales.Entities
     using System.Collections.Generic;
     
     using Framework.Data.Interfaces;
-    public partial class Order : IEntity
+    public partial class EggClass : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public EggClass()
         {
+            this.ClassificationEggClasses = new HashSet<ClassificationEggClass>();
             this.OrderEggClasses = new HashSet<OrderEggClass>();
         }
     
         public System.Guid Id { get; set; }
         public System.DateTime CreatedDate { get; set; }
-        public System.Guid ClientId { get; set; }
-        public System.Guid OrderStatusId { get; set; }
-        public Nullable<System.DateTime> DispatchedDate { get; set; }
-        public Nullable<System.Guid> TruckId { get; set; }
-        public Nullable<System.Guid> DriverId { get; set; }
         public bool IsDeleted { get; set; }
-        public Nullable<System.DateTime> PreparedDate { get; set; }
-        public Nullable<System.Guid> DepositId { get; set; }
-        public Nullable<int> Boxes { get; set; }
-        public Nullable<int> Maples { get; set; }
-        public Nullable<int> Eggs { get; set; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
-        public string City { get; set; }
+        public string Name { get; set; }
+        public int Sequence { get; set; }
     
-        public virtual Client Client { get; set; }
-        public virtual Driver Driver { get; set; }
-        public virtual OrderStatus OrderStatus { get; set; }
-        public virtual Truck Truck { get; set; }
-        public virtual Deposit Deposit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClassificationEggClass> ClassificationEggClasses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderEggClass> OrderEggClasses { get; set; }
     }

@@ -40,6 +40,11 @@ namespace Avicola.Sales.Data
         public virtual DbSet<Truck> Trucks { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
+        public virtual DbSet<Classification> Classifications { get; set; }
+        public virtual DbSet<ClassificationEggClass> ClassificationEggClasses { get; set; }
+        public virtual DbSet<EggClass> EggClasses { get; set; }
+        public virtual DbSet<EggEquivalence> EggEquivalences { get; set; }
+        public virtual DbSet<OrderEggClass> OrderEggClasses { get; set; }
     
         public virtual ObjectResult<DepositStock> StockGetByDeposit(Nullable<System.Guid> depositId)
         {

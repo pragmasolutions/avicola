@@ -13,30 +13,21 @@ namespace Avicola.Sales.Entities
     using System.Collections.Generic;
     
     using Framework.Data.Interfaces;
-    public partial class StockEntry : IEntity
+    public partial class EggEquivalence : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public StockEntry()
+        public EggEquivalence()
         {
-            this.Classifications = new HashSet<Classification>();
+            this.ClassificationEggClasses = new HashSet<ClassificationEggClass>();
         }
     
         public System.Guid Id { get; set; }
         public System.DateTime CreatedDate { get; set; }
-        public System.Guid ShiftId { get; set; }
-        public System.Guid StockId { get; set; }
-        public int Boxes { get; set; }
-        public int Maples { get; set; }
-        public int Eggs { get; set; }
-        public Nullable<System.Guid> ProviderId { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> EggsAmount { get; set; }
         public bool IsDeleted { get; set; }
-        public int CurrentEggs { get; set; }
-        public System.Guid BarnId { get; set; }
     
-        public virtual Provider Provider { get; set; }
-        public virtual Shift Shift { get; set; }
-        public virtual Stock Stock { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Classification> Classifications { get; set; }
+        public virtual ICollection<ClassificationEggClass> ClassificationEggClasses { get; set; }
     }
 }

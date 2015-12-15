@@ -27,6 +27,17 @@
         <AssociationConnector Association="Avicola.SalesModel.FK_Order_OrderStatus" />
         <AssociationConnector Association="Avicola.SalesModel.FK_Order_Truck" />
         <AssociationConnector Association="Avicola.SalesModel.FK_Order_Deposit" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Classification" Width="1.5" PointX="7.5" PointY="12.75" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.ClassificationEggClass" Width="1.5" PointX="9.75" PointY="13.5" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.EggClass" Width="1.5" PointX="7.5" PointY="19.375" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.EggEquivalence" Width="1.5" PointX="7.5" PointY="16.375" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Classification_StockEntry" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_ClassificationEggClass_Classification" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_ClassificationEggClass_EggClass" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_ClassificationEggClass_EggEquivalence" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.OrderEggClass" Width="1.5" PointX="12.5" PointY="11.125" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_Order_EggClass" />
+        <AssociationConnector Association="Avicola.SalesModel.FK_OrderEggClass_Order" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

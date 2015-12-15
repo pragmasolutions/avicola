@@ -39,6 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classification.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClassificationEggClass.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
@@ -51,10 +57,17 @@
     <Compile Include="Driver.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EggClass.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EggEquivalence.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Deposit.cs" />
     <Compile Include="Extensions\DepositStock.cs" />
     <Compile Include="Extensions\Driver.cs" />
     <Compile Include="Extensions\Order.cs" />
+    <Compile Include="Extensions\EggEquivalence.cs" />
     <Compile Include="Extensions\OrderStatus.cs" />
     <Compile Include="Extensions\Product.cs" />
     <Compile Include="Extensions\Provider.cs" />
@@ -64,6 +77,9 @@
     <Compile Include="Extensions\Truck.cs" />
     <Compile Include="Extensions\Client.cs" />
     <Compile Include="Order.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderEggClass.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderStatus.cs">

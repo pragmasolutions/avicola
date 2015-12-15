@@ -6,6 +6,8 @@
     [Boxes]       INT              NOT NULL,
     [Maples]      INT              NOT NULL,
     [Eggs]        INT              NOT NULL,
+	[CurrentEggs] INT              NOT NULL,
+	[BarnId]		UNIQUEIDENTIFIER NOT NULL,
     [ProviderId]  UNIQUEIDENTIFIER NULL,
     [IsDeleted]   BIT              DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_StockEntry] PRIMARY KEY CLUSTERED ([Id] ASC),

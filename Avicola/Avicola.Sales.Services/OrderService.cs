@@ -112,10 +112,11 @@ namespace Avicola.Sales.Services
 
             var totalDozens = totalEggs / 12M;
 
-            if (totalDozens != order.Dozens)
-            {
-                throw new ApplicationException("La cantidad de docenas no coincide con la cajas mapples y huevos especificados");
-            }
+            //TODO: arreglar esta idiotez con todas las eggClasses
+            //if (totalDozens != order.Dozens)
+            //{
+            //    throw new ApplicationException("La cantidad de docenas no coincide con la cajas mapples y huevos especificados");
+            //}
 
             order.PreparedDate = _clock.Now;
             order.OrderStatusId = OrderStatus.FINISHED;

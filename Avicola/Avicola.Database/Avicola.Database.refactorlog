@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="60fe77d0-8140-44ed-ae79-4cdb0a7006dc" ChangeDateTime="12/15/2015 19:57:30">
+    <Property Name="ElementName" Value="[dbo].[Classification].[ClassificationDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Classification]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ClassificationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fd994854-897b-4ea8-9e69-57f9cbd0ae5a" ChangeDateTime="12/15/2015 19:57:40">
+    <Property Name="ElementName" Value="[dbo].[Classification].[StockEntryId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Classification]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EggClassId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2ae6cea1-2b97-416a-80b2-62e06267c5be" ChangeDateTime="12/15/2015 20:04:10">
+    <Property Name="ElementName" Value="[dbo].[ClassificationEggClass].[Eggs]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ClassificationEggClass]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EggEquivalenceId" />
+  </Operation>
+</Operations>

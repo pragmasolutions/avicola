@@ -5,6 +5,28 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Avicola.SalesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Classification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ClassificationDate" Type="datetime" Nullable="false" />
+          <Property Name="StockEntryId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassificationEggClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ClassificationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EggClassId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EggEquivalenceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Amount" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="Id" />
@@ -46,13 +68,32 @@
           <Property Name="TruckId" Type="uniqueidentifier" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="EggClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EggEquivalence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EggsAmount" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="Dozens" Type="int" Nullable="false" />
           <Property Name="ClientId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="25" Nullable="false" />
@@ -67,6 +108,17 @@
           <Property Name="TruckId" Type="uniqueidentifier" />
           <Property Name="DriverId" Type="uniqueidentifier" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderEggClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Dozens" Type="int" Nullable="false" />
+          <Property Name="EggClassId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -133,6 +185,8 @@
           <Property Name="Boxes" Type="int" Nullable="false" />
           <Property Name="Maples" Type="int" Nullable="false" />
           <Property Name="Eggs" Type="int" Nullable="false" />
+          <Property Name="CurrentEggs" Type="int" Nullable="false" />
+          <Property Name="BarnId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ProviderId" Type="uniqueidentifier" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
@@ -146,6 +200,54 @@
           <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Classification_StockEntry">
+          <End Role="StockEntry" Type="Self.StockEntry" Multiplicity="1" />
+          <End Role="Classification" Type="Self.Classification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockEntry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classification">
+              <PropertyRef Name="StockEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassificationEggClass_Classification">
+          <End Role="Classification" Type="Self.Classification" Multiplicity="1" />
+          <End Role="ClassificationEggClass" Type="Self.ClassificationEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classification">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassificationEggClass">
+              <PropertyRef Name="ClassificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassificationEggClass_EggClass">
+          <End Role="EggClass" Type="Self.EggClass" Multiplicity="1" />
+          <End Role="ClassificationEggClass" Type="Self.ClassificationEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EggClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassificationEggClass">
+              <PropertyRef Name="EggClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassificationEggClass_EggEquivalence">
+          <End Role="EggEquivalence" Type="Self.EggEquivalence" Multiplicity="1" />
+          <End Role="ClassificationEggClass" Type="Self.ClassificationEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EggEquivalence">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassificationEggClass">
+              <PropertyRef Name="EggEquivalenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Driver_Truck">
           <End Role="Truck" Type="Self.Truck" Multiplicity="0..1" />
           <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
@@ -194,6 +296,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_EggClass">
+          <End Role="EggClass" Type="Self.EggClass" Multiplicity="1" />
+          <End Role="OrderEggClass" Type="Self.OrderEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EggClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderEggClass">
+              <PropertyRef Name="EggClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_OrderStatus">
           <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -215,6 +329,18 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="TruckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderEggClass_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderEggClass" Type="Self.OrderEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderEggClass">
+              <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -282,10 +408,15 @@
           <Parameter Name="DepositId" Type="uniqueidentifier" Mode="In" />
         </Function>
         <EntityContainer Name="AvicolaSalesModelStoreContainer">
+          <EntitySet Name="Classification" EntityType="Self.Classification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassificationEggClass" EntityType="Self.ClassificationEggClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Deposit" EntityType="Self.Deposit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EggClass" EntityType="Self.EggClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EggEquivalence" EntityType="Self.EggEquivalence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderEggClass" EntityType="Self.OrderEggClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
@@ -293,6 +424,22 @@
           <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockEntry" EntityType="Self.StockEntry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Classification_StockEntry" Association="Self.FK_Classification_StockEntry">
+            <End Role="StockEntry" EntitySet="StockEntry" />
+            <End Role="Classification" EntitySet="Classification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassificationEggClass_Classification" Association="Self.FK_ClassificationEggClass_Classification">
+            <End Role="Classification" EntitySet="Classification" />
+            <End Role="ClassificationEggClass" EntitySet="ClassificationEggClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassificationEggClass_EggClass" Association="Self.FK_ClassificationEggClass_EggClass">
+            <End Role="EggClass" EntitySet="EggClass" />
+            <End Role="ClassificationEggClass" EntitySet="ClassificationEggClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassificationEggClass_EggEquivalence" Association="Self.FK_ClassificationEggClass_EggEquivalence">
+            <End Role="EggEquivalence" EntitySet="EggEquivalence" />
+            <End Role="ClassificationEggClass" EntitySet="ClassificationEggClass" />
+          </AssociationSet>
           <AssociationSet Name="FK_Driver_Truck" Association="Self.FK_Driver_Truck">
             <End Role="Truck" EntitySet="Truck" />
             <End Role="Driver" EntitySet="Driver" />
@@ -309,6 +456,10 @@
             <End Role="Driver" EntitySet="Driver" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_EggClass" Association="Self.FK_Order_EggClass">
+            <End Role="EggClass" EntitySet="EggClass" />
+            <End Role="OrderEggClass" EntitySet="OrderEggClass" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
             <End Role="OrderStatus" EntitySet="OrderStatus" />
             <End Role="Order" EntitySet="Order" />
@@ -316,6 +467,10 @@
           <AssociationSet Name="FK_Order_Truck" Association="Self.FK_Order_Truck">
             <End Role="Truck" EntitySet="Truck" />
             <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderEggClass_Order" Association="Self.FK_OrderEggClass_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderEggClass" EntitySet="OrderEggClass" />
           </AssociationSet>
           <AssociationSet Name="FK_Stock_Deposit" Association="Self.FK_Stock_Deposit">
             <End Role="Deposit" EntitySet="Deposit" />
@@ -455,6 +610,9 @@
           <NavigationProperty Name="Shift" Relationship="Self.FK_StockEntry_Shift" FromRole="StockEntry" ToRole="Shift" />
           <NavigationProperty Name="Stock" Relationship="Self.FK_StockEntry_Stock" FromRole="StockEntry" ToRole="Stock" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CurrentEggs" Type="Int32" Nullable="false" />
+          <Property Name="BarnId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Classifications" Relationship="Avicola.SalesModel.FK_Classification_StockEntry" FromRole="StockEntry" ToRole="Classification" />
         </EntityType>
         <EntityType Name="Truck">
           <Key>
@@ -599,6 +757,35 @@
             <End Role="Deposit" EntitySet="Deposits" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
+          <EntitySet Name="Classifications" EntityType="Avicola.SalesModel.Classification" />
+          <EntitySet Name="ClassificationEggClasses" EntityType="Avicola.SalesModel.ClassificationEggClass" />
+          <EntitySet Name="EggClasses" EntityType="Avicola.SalesModel.EggClass" />
+          <EntitySet Name="EggEquivalences" EntityType="Avicola.SalesModel.EggEquivalence" />
+          <AssociationSet Name="FK_Classification_StockEntry" Association="Avicola.SalesModel.FK_Classification_StockEntry">
+            <End Role="StockEntry" EntitySet="StockEntries" />
+            <End Role="Classification" EntitySet="Classifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassificationEggClass_Classification" Association="Avicola.SalesModel.FK_ClassificationEggClass_Classification">
+            <End Role="Classification" EntitySet="Classifications" />
+            <End Role="ClassificationEggClass" EntitySet="ClassificationEggClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassificationEggClass_EggClass" Association="Avicola.SalesModel.FK_ClassificationEggClass_EggClass">
+            <End Role="EggClass" EntitySet="EggClasses" />
+            <End Role="ClassificationEggClass" EntitySet="ClassificationEggClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassificationEggClass_EggEquivalence" Association="Avicola.SalesModel.FK_ClassificationEggClass_EggEquivalence">
+            <End Role="EggEquivalence" EntitySet="EggEquivalences" />
+            <End Role="ClassificationEggClass" EntitySet="ClassificationEggClasses" />
+          </AssociationSet>
+          <EntitySet Name="OrderEggClasses" EntityType="Avicola.SalesModel.OrderEggClass" />
+          <AssociationSet Name="FK_Order_EggClass" Association="Avicola.SalesModel.FK_Order_EggClass">
+            <End Role="EggClass" EntitySet="EggClasses" />
+            <End Role="OrderEggClass" EntitySet="OrderEggClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderEggClass_Order" Association="Avicola.SalesModel.FK_OrderEggClass_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderEggClass" EntitySet="OrderEggClasses" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Order">
           <Key>
@@ -606,7 +793,6 @@
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Dozens" Type="Int32" Nullable="false" />
           <Property Name="ClientId" Type="Guid" Nullable="false" />
           <Property Name="OrderStatusId" Type="Guid" Nullable="false" />
           <Property Name="DispatchedDate" Type="DateTime" Precision="7" />
@@ -626,6 +812,7 @@
           <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderEggClasses" Relationship="Avicola.SalesModel.FK_OrderEggClass_Order" FromRole="Order" ToRole="OrderEggClass" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -701,6 +888,141 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="DepositId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Classification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="ClassificationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StockEntryId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="StockEntry" Relationship="Avicola.SalesModel.FK_Classification_StockEntry" FromRole="Classification" ToRole="StockEntry" />
+          <NavigationProperty Name="ClassificationEggClasses" Relationship="Avicola.SalesModel.FK_ClassificationEggClass_Classification" FromRole="Classification" ToRole="ClassificationEggClass" />
+        </EntityType>
+        <EntityType Name="ClassificationEggClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="ClassificationId" Type="Guid" Nullable="false" />
+          <Property Name="EggClassId" Type="Guid" Nullable="false" />
+          <Property Name="EggEquivalenceId" Type="Guid" Nullable="false" />
+          <Property Name="Amount" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Classification" Relationship="Avicola.SalesModel.FK_ClassificationEggClass_Classification" FromRole="ClassificationEggClass" ToRole="Classification" />
+          <NavigationProperty Name="EggClass" Relationship="Avicola.SalesModel.FK_ClassificationEggClass_EggClass" FromRole="ClassificationEggClass" ToRole="EggClass" />
+          <NavigationProperty Name="EggEquivalence" Relationship="Avicola.SalesModel.FK_ClassificationEggClass_EggEquivalence" FromRole="ClassificationEggClass" ToRole="EggEquivalence" />
+        </EntityType>
+        <EntityType Name="EggClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClassificationEggClasses" Relationship="Avicola.SalesModel.FK_ClassificationEggClass_EggClass" FromRole="EggClass" ToRole="ClassificationEggClass" />
+          <NavigationProperty Name="OrderEggClasses" Relationship="Avicola.SalesModel.FK_Order_EggClass" FromRole="EggClass" ToRole="OrderEggClass" />
+        </EntityType>
+        <EntityType Name="EggEquivalence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EggsAmount" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClassificationEggClasses" Relationship="Avicola.SalesModel.FK_ClassificationEggClass_EggEquivalence" FromRole="EggEquivalence" ToRole="ClassificationEggClass" />
+        </EntityType>
+        <Association Name="FK_Classification_StockEntry">
+          <End Type="Avicola.SalesModel.StockEntry" Role="StockEntry" Multiplicity="1" />
+          <End Type="Avicola.SalesModel.Classification" Role="Classification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockEntry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classification">
+              <PropertyRef Name="StockEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassificationEggClass_Classification">
+          <End Type="Avicola.SalesModel.Classification" Role="Classification" Multiplicity="1" />
+          <End Type="Avicola.SalesModel.ClassificationEggClass" Role="ClassificationEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classification">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassificationEggClass">
+              <PropertyRef Name="ClassificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassificationEggClass_EggClass">
+          <End Type="Avicola.SalesModel.EggClass" Role="EggClass" Multiplicity="1" />
+          <End Type="Avicola.SalesModel.ClassificationEggClass" Role="ClassificationEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EggClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassificationEggClass">
+              <PropertyRef Name="EggClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassificationEggClass_EggEquivalence">
+          <End Type="Avicola.SalesModel.EggEquivalence" Role="EggEquivalence" Multiplicity="1" />
+          <End Type="Avicola.SalesModel.ClassificationEggClass" Role="ClassificationEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EggEquivalence">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassificationEggClass">
+              <PropertyRef Name="EggEquivalenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderEggClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Dozens" Type="Int32" Nullable="false" />
+          <Property Name="EggClassId" Type="Guid" Nullable="false" />
+          <Property Name="OrderId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="EggClass" Relationship="Avicola.SalesModel.FK_Order_EggClass" FromRole="OrderEggClass" ToRole="EggClass" />
+          <NavigationProperty Name="Order" Relationship="Avicola.SalesModel.FK_OrderEggClass_Order" FromRole="OrderEggClass" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Order_EggClass">
+          <End Type="Avicola.SalesModel.EggClass" Role="EggClass" Multiplicity="1" />
+          <End Type="Avicola.SalesModel.OrderEggClass" Role="OrderEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EggClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderEggClass">
+              <PropertyRef Name="EggClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderEggClass_Order">
+          <End Type="Avicola.SalesModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="Avicola.SalesModel.OrderEggClass" Role="OrderEggClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderEggClass">
+              <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -806,6 +1128,8 @@
           <EntitySetMapping Name="StockEntries">
             <EntityTypeMapping TypeName="Avicola.SalesModel.StockEntry">
               <MappingFragment StoreEntitySet="StockEntry">
+                <ScalarProperty Name="BarnId" ColumnName="BarnId" />
+                <ScalarProperty Name="CurrentEggs" ColumnName="CurrentEggs" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -846,7 +1170,6 @@
                 <ScalarProperty Name="DispatchedDate" ColumnName="DispatchedDate" />
                 <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="Dozens" ColumnName="Dozens" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -873,6 +1196,64 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Classifications">
+            <EntityTypeMapping TypeName="Avicola.SalesModel.Classification">
+              <MappingFragment StoreEntitySet="Classification">
+                <ScalarProperty Name="StockEntryId" ColumnName="StockEntryId" />
+                <ScalarProperty Name="ClassificationDate" ColumnName="ClassificationDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassificationEggClasses">
+            <EntityTypeMapping TypeName="Avicola.SalesModel.ClassificationEggClass">
+              <MappingFragment StoreEntitySet="ClassificationEggClass">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="EggEquivalenceId" ColumnName="EggEquivalenceId" />
+                <ScalarProperty Name="EggClassId" ColumnName="EggClassId" />
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EggClasses">
+            <EntityTypeMapping TypeName="Avicola.SalesModel.EggClass">
+              <MappingFragment StoreEntitySet="EggClass">
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EggEquivalences">
+            <EntityTypeMapping TypeName="Avicola.SalesModel.EggEquivalence">
+              <MappingFragment StoreEntitySet="EggEquivalence">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="EggsAmount" ColumnName="EggsAmount" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderEggClasses">
+            <EntityTypeMapping TypeName="Avicola.SalesModel.OrderEggClass">
+              <MappingFragment StoreEntitySet="OrderEggClass">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="EggClassId" ColumnName="EggClassId" />
+                <ScalarProperty Name="Dozens" ColumnName="Dozens" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

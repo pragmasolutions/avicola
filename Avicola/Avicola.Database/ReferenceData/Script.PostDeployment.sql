@@ -14,6 +14,8 @@ Post-Deployment Script Template
 :r .\StandardTypes.Data.sql	
 :r .\Standards.Data.sql	
 :r .\Stages.Data.sql	
+:r .\EggClass.Data.sql	
+:r .\EggEquivalence.Data.sql	
 
 :r .\Product.Data.sql	
 :r .\Shifts.Data.sql	
