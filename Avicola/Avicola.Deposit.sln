@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{04EDFCCC-E721-43BB-BA54-CE985478E21B}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Avicola.Sales.Database", "Avicola.Sales.Database\Avicola.Sales.Database.sqlproj", "{AADB21CE-BC0A-4CD1-A602-DC9133469891}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Data.Common", "Avicola.Data.Common\Avicola.Data.Common.csproj", "{8D1C1FDF-6A6D-4354-AAED-CD35A57734AD}"
 EndProject
@@ -58,6 +56,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Sync", "Framework
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avicola.Deposit.Dashboard", "Avicola.Deposit.Dashboard\Avicola.Deposit.Dashboard.csproj", "{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Avicola.Database", "Avicola.Database\Avicola.Database.sqlproj", "{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,14 +65,6 @@ Global
 		tekove|Any CPU = tekove|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AADB21CE-BC0A-4CD1-A602-DC9133469891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AADB21CE-BC0A-4CD1-A602-DC9133469891}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AADB21CE-BC0A-4CD1-A602-DC9133469891}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AADB21CE-BC0A-4CD1-A602-DC9133469891}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AADB21CE-BC0A-4CD1-A602-DC9133469891}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{AADB21CE-BC0A-4CD1-A602-DC9133469891}.tekove|Any CPU.ActiveCfg = Release|Any CPU
-		{AADB21CE-BC0A-4CD1-A602-DC9133469891}.tekove|Any CPU.Build.0 = Release|Any CPU
-		{AADB21CE-BC0A-4CD1-A602-DC9133469891}.tekove|Any CPU.Deploy.0 = Release|Any CPU
 		{8D1C1FDF-6A6D-4354-AAED-CD35A57734AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D1C1FDF-6A6D-4354-AAED-CD35A57734AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D1C1FDF-6A6D-4354-AAED-CD35A57734AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -193,12 +185,20 @@ Global
 		{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}.tekove|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE93704-BB14-4C9D-9FE6-C74E42652FC5}.tekove|Any CPU.Build.0 = Release|Any CPU
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}.tekove|Any CPU.ActiveCfg = Debug|Any CPU
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}.tekove|Any CPU.Build.0 = Debug|Any CPU
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33}.tekove|Any CPU.Deploy.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{AADB21CE-BC0A-4CD1-A602-DC9133469891} = {17209593-382C-41A4-8BAC-7BD5149C77F7}
 		{8D1C1FDF-6A6D-4354-AAED-CD35A57734AD} = {04EDFCCC-E721-43BB-BA54-CE985478E21B}
 		{B9B5DCD6-1E1E-4B47-AF04-FCB2EFBE04E1} = {FD40B3D3-3524-4B78-8519-BB882CE6297E}
 		{CB41F702-99FB-49AE-8BC0-1B7F0193EFAB} = {FD40B3D3-3524-4B78-8519-BB882CE6297E}
@@ -215,5 +215,6 @@ Global
 		{B72272A4-AB34-4F49-BFBC-75C0C600B120} = {17209593-382C-41A4-8BAC-7BD5149C77F7}
 		{EC452900-1B92-4E17-833B-6FE4285C37F5} = {FD40B3D3-3524-4B78-8519-BB882CE6297E}
 		{F98F1B54-2795-4D67-927F-D4C05B0D34F4} = {FD40B3D3-3524-4B78-8519-BB882CE6297E}
+		{042EBD7D-62B1-4C27-AC60-2FF9C25D7B33} = {04EDFCCC-E721-43BB-BA54-CE985478E21B}
 	EndGlobalSection
 EndGlobal
