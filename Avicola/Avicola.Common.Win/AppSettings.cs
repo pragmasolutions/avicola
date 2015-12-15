@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 
 namespace Avicola.Common.Win
 {
@@ -15,6 +16,15 @@ namespace Avicola.Common.Win
             {
                 var value = ConfigurationManager.AppSettings["RefreshOrdersInterval"];
                 return int.Parse(value);
+            }
+        }
+
+        public static System.Guid DepositId
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["DepositId"];
+                return Guid.Parse(value);
             }
         }
     }
