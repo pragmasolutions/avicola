@@ -31,6 +31,10 @@ namespace Avicola.Sales.Data
         public IRepository<Stock> Stocks { get { return GetStandardRepo<Stock>(); } }
         public IRepository<StockEntry> StockEntries { get { return GetStandardRepo<StockEntry>(); } }
         public IRepository<Truck> Trucks { get { return GetStandardRepo<Truck>(); } }
+        public IRepository<EggClass> EggClasses { get { return GetStandardRepo<EggClass>(); } }
+        public IRepository<OrderEggClass> OrderEggClasses { get { return GetStandardRepo<OrderEggClass>(); } }
+        public IRepository<Classification> Classifications { get { return GetStandardRepo<Classification>(); } }
+        public IRepository<ClassificationEggClass> ClassificationEggClasses { get { return GetStandardRepo<ClassificationEggClass>(); } }
 
         public string ConnectionString
         {

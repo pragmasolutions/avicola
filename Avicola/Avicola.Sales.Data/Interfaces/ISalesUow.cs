@@ -17,6 +17,10 @@ namespace Avicola.Sales.Data.Interfaces
         IRepository<Stock> Stocks { get; }
         IRepository<StockEntry> StockEntries { get; }
         IRepository<Truck> Trucks { get; }
+        IRepository<EggClass> EggClasses { get; }
+        IRepository<OrderEggClass> OrderEggClasses { get; }
+        IRepository<Classification> Classifications { get; }
+        IRepository<ClassificationEggClass> ClassificationEggClasses { get; }
 
         SalesEntities DbContext { get; }
     }

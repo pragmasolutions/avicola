@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{417C5260-E088-4CB8-BE01-C42DE91640D3}</ProjectGuid>
+    <ProjectGuid>{127ED51A-90CA-43F6-8A9A-9F74E178E07C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Avicola.Sales.Win</RootNamespace>
@@ -154,6 +154,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UcEggClassSale.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcEggClassSale.Designer.cs">
+      <DependentUpon>UcEggClassSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcSalesSelection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -202,10 +208,14 @@
     <EmbeddedResource Include="Forms\Sales\FrmNewSale.resx">
       <DependentUpon>FrmNewSale.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcEggClassSale.resx">
+      <DependentUpon>UcEggClassSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcSalesSelection.resx">
       <DependentUpon>UcSalesSelection.cs</DependentUpon>

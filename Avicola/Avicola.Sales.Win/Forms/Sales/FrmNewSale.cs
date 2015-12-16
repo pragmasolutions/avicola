@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Avicola.Common.Win;
@@ -7,6 +8,8 @@ using Avicola.Sales.Win.Model;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services;
 using Avicola.Sales.Win.Forms.Clients;
+using Avicola.Sales.Win.UserControls;
+using Framework.Data.Repository;
 using Framework.WinForm.Comun.Notification;
 using Org.BouncyCastle.Utilities.IO;
 using Telerik.WinControls.UI;
@@ -31,6 +34,25 @@ namespace Avicola.Sales.Win.Forms.Sales
         private void FrmNewSale_Load(object sender, EventArgs e)
         {
             RefreshClientsDropdown();
+            LoadEggClasses();
+        }
+
+        private void LoadEggClasses()
+        {
+            using (var service = _serviceFactory.Create<IEggClassService>())
+            {
+                var classes = service.GetAll().OrderBy(x => x.Sequence);
+                foreach (var eggClass in classes)
+                {
+                    flpProducts.Controls.Add(new UcEggClassSale()
+                    {
+                        EggClassId = eggClass.Id,
+                        Dozens = 0,
+                        Name = eggClass.Name
+                    });
+                }
+            }
+            
         }
 
         private void RefreshClientsDropdown()
@@ -60,15 +82,51 @@ namespace Avicola.Sales.Win.Forms.Sales
             }
             else
             {
-                var model = GetOrder();
-                var order = model.ToOrder();
-
-                using (var service = _serviceFactory.Create<IOrderService>())
+                var eggsCount = 0;
+                foreach (UcEggClassSale control in flpProducts.Controls)
                 {
-                    
-                    service.Create(order);
-                    ResetControls();
-                    _messageBoxDisplayService.ShowSuccess("La venta se realizó correctamente.");
+                    if (control.Dozens > 0)
+                    {
+                        eggsCount = control.Dozens;
+                        break;
+                    }
+                }
+                if (eggsCount == 0)
+                {
+                    _messageBoxDisplayService.ShowError("Debe ingresar cantidades al menos para una clase");
+                }
+                else
+                {
+                    var model = GetOrder();
+                    var order = model.ToOrder();
+                    CompleteEggClasses(order);
+                    using (var service = _serviceFactory.Create<IOrderService>())
+                    {
+
+                        service.Create(order);
+                        ResetControls();
+                        _messageBoxDisplayService.ShowSuccess("La venta se realizó correctamente.");
+                    }
+                }
+                
+            }
+        }
+
+        private void CompleteEggClasses(Order order)
+        {
+            order.OrderEggClasses = new List<OrderEggClass>();
+            foreach (UcEggClassSale control in flpProducts.Controls)
+            {
+                if (control.Dozens > 0)
+                {
+                    order.OrderEggClasses.Add(new OrderEggClass()
+                    {
+                        Dozens = control.Dozens,
+                        CreatedDate = DateTime.Now,
+                        EggClassId = control.EggClassId,
+                        Id = Guid.NewGuid(),
+                        IsDeleted = false
+                    });
                 }
             }
         }
@@ -79,7 +137,10 @@ namespace Avicola.Sales.Win.Forms.Sales
             txtAddress.Text = string.Empty;
             txtCity.Text = string.Empty;
             txtPhone.Text = string.Empty;
-            txtDozens.Value = 0;
+            foreach (UcEggClassSale control in flpProducts.Controls)
+            {
+                control.Dozens = 0;
+            }
         }
         
         private CreateOrderModel GetOrder()
@@ -87,7 +148,6 @@ namespace Avicola.Sales.Win.Forms.Sales
             var order = new CreateOrderModel
             {
                 ClientId = Guid.Parse(ddlClient.SelectedValue.ToString()),
-                Dozens = Convert.ToInt32(txtDozens.Value),
                 Address = txtAddress.Text,
                 City = txtCity.Text,
                 PhoneNumber = txtPhone.Text
@@ -97,14 +157,13 @@ namespace Avicola.Sales.Win.Forms.Sales
         }
         protected override void ValidateControls()
         {
-            this.ValidateControl(txtDozens, "Dozens");
+            //this.ValidateControl(txtDozens, "Dozens");
             this.ValidateControl(txtCity, "City");
             this.ValidateControl(txtAddress, "Address");
             this.ValidateControl(txtPhone, "PhoneNumber");
             if (ddlClient.SelectedValue.ToString() == Guid.Empty.ToString())
             {
-                this.FormErrorProvider.SetError(ddlClient, "La cantidad de docenas debe ser mayor a cero.");
-
+                this.FormErrorProvider.SetError(ddlClient, "Debe seleccionar un cliente.");
             }
         }
 

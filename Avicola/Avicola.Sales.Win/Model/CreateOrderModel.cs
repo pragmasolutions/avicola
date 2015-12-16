@@ -26,10 +26,6 @@ namespace Avicola.Sales.Win.Model
         [Required]
         public string PhoneNumber { get; set; }
         
-        [Required]
-        [Range(1, int.MaxValue)]
-        public int? Dozens { get; set; }
-
         public Order ToOrder()
         {
             var order = new Order
@@ -40,7 +36,6 @@ namespace Avicola.Sales.Win.Model
                 City = this.City,
                 Address = this.Address,
                 PhoneNumber = this.PhoneNumber,
-                Dozens = this.Dozens.GetValueOrDefault(),
                 IsDeleted = false,
                 OrderStatusId = OrderStatus.PENDING
             };

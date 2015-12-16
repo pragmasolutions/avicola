@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EggClassService.cs" />
+    <Compile Include="Interfaces\IEggClassService.cs" />
     <Compile Include="Interfaces\IOrderStatusService.cs" />
     <Compile Include="Interfaces\IShiftService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
