@@ -41,5 +41,10 @@ namespace Avicola.Deposit.Win.Forms
             TransitionManager.LoadHistoryManagerView();
         }
 
+        private void btnClassification_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadOpenStockEntriesView();
+        }
+
     }
 }

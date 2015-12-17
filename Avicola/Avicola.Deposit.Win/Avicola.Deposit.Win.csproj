@@ -99,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\Classification\FrmOpenStockEntries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Classification\FrmOpenStockEntries.Designer.cs">
+      <DependentUpon>FrmOpenStockEntries.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditFormBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,9 @@
     <Compile Include="UserControls\UcOrderDetails.Designer.cs">
       <DependentUpon>UcOrderDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Classification\FrmOpenStockEntries.resx">
+      <DependentUpon>FrmOpenStockEntries.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmDepositBase.resx">
       <DependentUpon>FrmDepositBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -328,8 +337,10 @@
     <None Include="Resources\Image\orders.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\167-128.png" />
     <Content Include="Resources\Image\cabinet.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

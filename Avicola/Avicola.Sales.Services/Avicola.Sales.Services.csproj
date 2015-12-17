@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\StockEntryDto.cs" />
     <Compile Include="EggClassService.cs" />
     <Compile Include="Interfaces\IEggClassService.cs" />
     <Compile Include="Interfaces\IOrderStatusService.cs" />

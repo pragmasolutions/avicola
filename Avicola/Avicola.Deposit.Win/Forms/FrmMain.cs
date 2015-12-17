@@ -116,5 +116,11 @@ namespace Avicola.Deposit.Win.Forms
             var view = FormFactory.Create<FrmAddStock>();
             LoadView(view);
         }
+
+        public void LoadOpenStockEntriesView()
+        {
+            var view = FormFactory.Create<FrmOpenStockEntries>();
+            LoadView(view);
+        }
     }
 }

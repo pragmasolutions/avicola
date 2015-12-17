@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Avicola.Sales.Data.Interfaces;
 using Avicola.Sales.Entities;
@@ -24,11 +25,12 @@ namespace Avicola.Sales.Services
             _stockService = stockService;
             Uow = uow;
         }
+
         public StockEntry GetById(Guid id)
         {
             return Uow.StockEntries.Get(x => x.Id == id);
         }
-        
+
         public void Create(StockEntry stockEntry)
         {
             Uow.StockEntries.Add(stockEntry);
@@ -46,7 +48,7 @@ namespace Avicola.Sales.Services
                 stockCreate.DepositId = depositId;
                 stockCreate.CreatedDate = DateTime.Now;
                 stockCreate.IsDeleted = false;
-                
+
                 _stockService.Create(stockCreate);
 
                 stockEntry.StockId = stockCreate.Id;
@@ -58,10 +60,20 @@ namespace Avicola.Sales.Services
 
             this.Create(stockEntry);
         }
-        
+
         IQueryable<StockEntry> IStockEntryService.GetAll()
         {
             return Uow.StockEntries.GetAll();
+        }
+
+
+        public IList<StockEntryDto> GetAllOpen()
+        {
+            return
+                Uow.StockEntries.GetAll(whereClause: x => x.CurrentEggs > 0,includes: x => x.Shift)
+                    .OrderByDescending(x => x.CreatedDate)
+                   .AsEnumerable().Select(Mapper.Map<StockEntry, StockEntryDto>)
+                   .ToList();
         }
     }
 }

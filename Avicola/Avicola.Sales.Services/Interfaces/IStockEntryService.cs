@@ -11,6 +11,8 @@ namespace Avicola.Sales.Services.Interfaces
     {
         IQueryable<StockEntry> GetAll();
 
+        IList<StockEntryDto> GetAllOpen();
+
         StockEntry GetById(Guid id);
         
         void Create(StockEntry stockEntry);
