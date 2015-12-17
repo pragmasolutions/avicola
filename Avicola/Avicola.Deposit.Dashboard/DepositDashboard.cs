@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Common.Win.Forms;
+using Avicola.Deposit.Dashboard.UserControls;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Interfaces;
 using Framework.Data.Repository;
@@ -56,8 +57,15 @@ namespace Avicola.Deposit.Dashboard
             using (var stockService = _serviceFactory.Create<IStockService>())
             {
                 //TODO: get egg classes stock
-                var stocks = stockService.GetByDeposit(Configuration.AppSettings.DepositId);
-
+                var stocks = stockService.GetByEggClass(Configuration.AppSettings.DepositId);
+                foreach (var stock in stocks)
+                {
+                    flpStock.Controls.Add(new UcEggClassStock()
+                    {
+                        EggClassName = stock.Name,
+                        Stock = stock.EggsCount.GetValueOrDefault()
+                    });
+                }
                 
 
                 using (var orderService = _serviceFactory.Create<IOrderService>())

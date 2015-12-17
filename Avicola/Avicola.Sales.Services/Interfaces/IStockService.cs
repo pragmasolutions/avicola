@@ -18,5 +18,7 @@ namespace Avicola.Sales.Services.Interfaces
         Stock GetExistStock(Guid depositId, Guid productId);
 
         void Create(Stock stock);
+
+        List<EggClassStock> GetByEggClass(Guid depositId);
     }
 }

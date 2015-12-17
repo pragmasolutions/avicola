@@ -48,12 +48,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.flpStock = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvPreparedOrders = new Telerik.WinControls.UI.RadGridView();
-            this.flpStock = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -207,6 +207,14 @@
             this.panel1.Size = new System.Drawing.Size(674, 280);
             this.panel1.TabIndex = 0;
             // 
+            // flpStock
+            // 
+            this.flpStock.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpStock.Location = new System.Drawing.Point(10, 58);
+            this.flpStock.Name = "flpStock";
+            this.flpStock.Size = new System.Drawing.Size(652, 206);
+            this.flpStock.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -303,13 +311,6 @@
             this.dgvPreparedOrders.TabIndex = 2;
             this.dgvPreparedOrders.Text = "radGridView1";
             this.dgvPreparedOrders.ThemeName = "TelerikMetroBlue";
-            // 
-            // flpStock
-            // 
-            this.flpStock.Location = new System.Drawing.Point(10, 58);
-            this.flpStock.Name = "flpStock";
-            this.flpStock.Size = new System.Drawing.Size(652, 206);
-            this.flpStock.TabIndex = 1;
             // 
             // DepositDashboard
             // 

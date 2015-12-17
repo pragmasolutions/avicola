@@ -40,7 +40,7 @@ namespace Avicola.Deposit.Dashboard.UserControls
 
         private void UcEggClassStock_Load(object sender, EventArgs e)
         {
-
+            lblStock.Location = new Point(lblName.Location.X + lblName.Width + 10, lblStock.Location.Y);
         }
     }
 }

@@ -74,5 +74,11 @@ namespace Avicola.Sales.Services
         {
             return Uow.Stocks.Get(x => x.DepositId == depositId && x.ProductId == productId);
         }
+
+
+        public List<EggClassStock> GetByEggClass(Guid depositId)
+        {
+            return Uow.DbContext.StockGetByEggClass(depositId).ToList();
+        }
     }
 }
