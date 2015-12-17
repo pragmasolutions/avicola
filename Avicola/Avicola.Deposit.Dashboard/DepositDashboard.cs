@@ -55,16 +55,10 @@ namespace Avicola.Deposit.Dashboard
         {
             using (var stockService = _serviceFactory.Create<IStockService>())
             {
+                //TODO: get egg classes stock
                 var stocks = stockService.GetByDeposit(Configuration.AppSettings.DepositId);
 
-                var eggs = stocks.FirstOrDefault(s => s.ProductId == Product.EGG);
-                txtEgg.Text = (eggs != null) ? eggs.TotalEggs.ToString() : string.Empty;
-
-                var brokenEggs = stocks.FirstOrDefault(s => s.ProductId == Product.BROKEN_EGG);
-                txtBrokenEgg.Text = (brokenEggs != null) ? brokenEggs.TotalEggs.ToString() : string.Empty;
-
-                var noShellEggs = stocks.FirstOrDefault(s => s.ProductId == Product.NO_SHELL_EGG);
-                txtEggWithNoShell.Text = (noShellEggs != null) ? noShellEggs.TotalEggs.ToString() : string.Empty;
+                
 
                 using (var orderService = _serviceFactory.Create<IOrderService>())
                 {
@@ -78,9 +72,9 @@ namespace Avicola.Deposit.Dashboard
                     {
                         if (order.OrderStatusId == OrderStatus.PENDING)
                         {
-                            order.CanStartPreparing = (eggs != null && eggs.TotalEggs >= order.Dozens * 12)
-                                ? "LISTO"
-                                : "FALTA";
+                            //order.CanStartPreparing = (eggs != null && eggs.TotalEggs >= order.Dozens * 12)
+                            //    ? "LISTO"
+                            //    : "FALTA";
                         }
                     }
 

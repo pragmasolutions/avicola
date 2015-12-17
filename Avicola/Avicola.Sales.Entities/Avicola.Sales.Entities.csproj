@@ -60,6 +60,9 @@
     <Compile Include="EggClass.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EggClassStock.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EggEquivalence.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
