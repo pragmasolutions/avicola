@@ -54,12 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\ClassificationDto.cs" />
     <Compile Include="Dtos\StockEntryDto.cs" />
     <Compile Include="EggClassService.cs" />
     <Compile Include="Interfaces\IEggClassService.cs" />
     <Compile Include="Interfaces\IOrderStatusService.cs" />
     <Compile Include="Interfaces\IShiftService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
+    <Compile Include="Interfaces\IClassificationService.cs" />
     <Compile Include="Interfaces\IStockEntryService.cs" />
     <Compile Include="OrderStatusService.cs" />
     <Compile Include="OrderService.cs" />
