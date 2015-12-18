@@ -21,7 +21,8 @@ namespace Avicola.Sales.Entities
         public System.Guid ClassificationId { get; set; }
         public System.Guid EggClassId { get; set; }
         public System.Guid EggEquivalenceId { get; set; }
-        public System.Guid Amount { get; set; }
+        public int Amount { get; set; }
+        public Nullable<int> EggsCount { get; set; }
     
         public virtual Classification Classification { get; set; }
         public virtual EggClass EggClass { get; set; }

@@ -13,6 +13,7 @@
     CONSTRAINT [PK_StockEntry] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_StockEntry_Provider] FOREIGN KEY ([ProviderId]) REFERENCES [dbo].[Provider] ([Id]),
     CONSTRAINT [FK_StockEntry_Shift] FOREIGN KEY ([ShiftId]) REFERENCES [dbo].[Shift] ([Id]),
-    CONSTRAINT [FK_StockEntry_Stock] FOREIGN KEY ([StockId]) REFERENCES [dbo].[Stock] ([Id])
+    CONSTRAINT [FK_StockEntry_Stock] FOREIGN KEY ([StockId]) REFERENCES [dbo].[Stock] ([Id]),
+	CONSTRAINT [FK_StockEntry_Barn] FOREIGN KEY ([BarnId]) REFERENCES [dbo].[Barn] ([Id])
 );
 

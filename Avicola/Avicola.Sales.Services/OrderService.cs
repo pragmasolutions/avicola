@@ -120,9 +120,6 @@ namespace Avicola.Sales.Services
 
             order.PreparedDate = _clock.Now;
             order.OrderStatusId = OrderStatus.FINISHED;
-            order.Boxes = boxes;
-            order.Maples = mapples;
-            order.Eggs = eggsUnits;
 
             Uow.Commit();
         }

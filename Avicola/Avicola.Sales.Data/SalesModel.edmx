@@ -25,7 +25,8 @@
           <Property Name="ClassificationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="EggClassId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="EggEquivalenceId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Amount" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="EggsCount" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -101,9 +102,6 @@
           <Property Name="OrderStatusId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PreparedDate" Type="datetime2" Precision="7" />
           <Property Name="DepositId" Type="uniqueidentifier" />
-          <Property Name="Boxes" Type="int" />
-          <Property Name="Maples" Type="int" />
-          <Property Name="Eggs" Type="int" />
           <Property Name="DispatchedDate" Type="datetime2" Precision="7" />
           <Property Name="TruckId" Type="uniqueidentifier" />
           <Property Name="DriverId" Type="uniqueidentifier" />
@@ -405,6 +403,9 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="Stock_GetByDeposit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DepositId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="Stock_GetByEggClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DepositId" Type="uniqueidentifier" Mode="In" />
         </Function>
         <EntityContainer Name="AvicolaSalesModelStoreContainer">
@@ -786,6 +787,9 @@
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderEggClass" EntitySet="OrderEggClasses" />
           </AssociationSet>
+          <FunctionImport Name="StockGetByEggClass" ReturnType="Collection(Avicola.SalesModel.EggClassStock)">
+          <Parameter Name="DepositId" Mode="In" Type="Guid" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Order">
           <Key>
@@ -806,9 +810,6 @@
           <Property Name="PreparedDate" Type="DateTime" Precision="7" />
           <Property Name="DepositId" Type="Guid" />
           <NavigationProperty Name="Deposit" Relationship="Avicola.SalesModel.FK_Order_Deposit" FromRole="Order" ToRole="Deposit" />
-          <Property Name="Boxes" Type="Int32" />
-          <Property Name="Maples" Type="Int32" />
-          <Property Name="Eggs" Type="Int32" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -913,10 +914,11 @@
           <Property Name="ClassificationId" Type="Guid" Nullable="false" />
           <Property Name="EggClassId" Type="Guid" Nullable="false" />
           <Property Name="EggEquivalenceId" Type="Guid" Nullable="false" />
-          <Property Name="Amount" Type="Guid" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Classification" Relationship="Avicola.SalesModel.FK_ClassificationEggClass_Classification" FromRole="ClassificationEggClass" ToRole="Classification" />
           <NavigationProperty Name="EggClass" Relationship="Avicola.SalesModel.FK_ClassificationEggClass_EggClass" FromRole="ClassificationEggClass" ToRole="EggClass" />
           <NavigationProperty Name="EggEquivalence" Relationship="Avicola.SalesModel.FK_ClassificationEggClass_EggEquivalence" FromRole="ClassificationEggClass" ToRole="EggEquivalence" />
+          <Property Name="EggsCount" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="EggClass">
           <Key>
@@ -1026,6 +1028,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="EggClassStock">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="EggsCount" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1159,9 +1166,6 @@
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Eggs" ColumnName="Eggs" />
-                <ScalarProperty Name="Maples" ColumnName="Maples" />
-                <ScalarProperty Name="Boxes" ColumnName="Boxes" />
                 <ScalarProperty Name="DepositId" ColumnName="DepositId" />
                 <ScalarProperty Name="PreparedDate" ColumnName="PreparedDate" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
@@ -1210,6 +1214,7 @@
           <EntitySetMapping Name="ClassificationEggClasses">
             <EntityTypeMapping TypeName="Avicola.SalesModel.ClassificationEggClass">
               <MappingFragment StoreEntitySet="ClassificationEggClass">
+                <ScalarProperty Name="EggsCount" ColumnName="EggsCount" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="EggEquivalenceId" ColumnName="EggEquivalenceId" />
                 <ScalarProperty Name="EggClassId" ColumnName="EggClassId" />
@@ -1254,6 +1259,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="StockGetByEggClass" FunctionName="Avicola.SalesModel.Store.Stock_GetByEggClass">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Avicola.SalesModel.EggClassStock">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EggsCount" ColumnName="EggsCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
