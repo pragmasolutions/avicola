@@ -122,5 +122,12 @@ namespace Avicola.Deposit.Win.Forms
             var view = FormFactory.Create<FrmOpenStockEntries>();
             LoadView(view);
         }
+
+        public void LoadStockEntryDetailsView(StockEntryDto stockEntry)
+        {
+            var view = FormFactory.Create<FrmStockEntryDetails>();
+            view.StockEntry = stockEntry;
+            LoadView(view);
+        }
     }
 }

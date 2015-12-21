@@ -6,5 +6,8 @@
     <DeployScriptFileName>Avicola.Database.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=.\sql2012;Integrated Security=True;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
+    <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
+    <CreateNewDatabase>False</CreateNewDatabase>
   </PropertyGroup>
 </Project>

@@ -20,7 +20,8 @@ namespace Avicola.Sales.Services.Dtos
         public void CreateMappings(AutoMapper.IConfiguration configuration)
         {
             Mapper.CreateMap<Classification, ClassificationDto>()
-                .ForMember(x => x.TotalClassifiedEggs, opt => opt.ResolveUsing(x => x.ClassificationEggClasses));
+                .ForMember(x => x.TotalClassifiedEggs,
+                    opt => opt.MapFrom(x => x.ClassificationEggClasses.Sum(y => y.EggsCount)));
         }
     }
 }

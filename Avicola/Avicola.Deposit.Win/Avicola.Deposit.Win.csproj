@@ -99,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="Forms\Classification\FrmCreateEditClassification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Classification\FrmCreateEditClassification.Designer.cs">
+      <DependentUpon>FrmCreateEditClassification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Classification\FrmStockEntryDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,12 @@
     <Compile Include="UserControls\UcDepositSelection.Designer.cs">
       <DependentUpon>UcDepositSelection.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UcClassificationEggClassEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcClassificationEggClassEditor.Designer.cs">
+      <DependentUpon>UcClassificationEggClassEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcEggsAmount.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -217,6 +229,9 @@
     <Compile Include="UserControls\UcOrderDetails.Designer.cs">
       <DependentUpon>UcOrderDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Classification\FrmCreateEditClassification.resx">
+      <DependentUpon>FrmCreateEditClassification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Classification\FrmStockEntryDetails.resx">
       <DependentUpon>FrmStockEntryDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +284,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UcDepositSelection.resx">
       <DependentUpon>UcDepositSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcClassificationEggClassEditor.resx">
+      <DependentUpon>UcClassificationEggClassEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcEggsAmount.resx">
       <DependentUpon>UcEggsAmount.cs</DependentUpon>
@@ -347,6 +365,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\167-128.png" />
+    <None Include="Resources\calculator_20x20.png" />
+    <None Include="Resources\Data-Edit.png" />
+    <None Include="Resources\Garbage-Closed.png" />
     <Content Include="Resources\Image\cabinet.png" />
   </ItemGroup>
   <ItemGroup />

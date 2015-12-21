@@ -25,6 +25,7 @@ namespace Avicola.Sales.Entities
         public System.DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime ClassificationDate { get; set; }
+
         public System.Guid StockEntryId { get; set; }
     
         public virtual StockEntry StockEntry { get; set; }

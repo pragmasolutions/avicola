@@ -13,5 +13,7 @@ namespace Avicola.Deposit.Win
         public const string SendOrderColumnName = "SendOrder";
         public const string FinishOrderColumnName = "FinishOrder";
         public const string DetailsColumnName = "Details";
+        public const string EditColumnName = "Edit";
+        public const string DeleteColumnName = "Delete";
     }
 }

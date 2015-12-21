@@ -10,5 +10,10 @@ namespace Avicola.Sales.Services.Interfaces
     public interface IClassificationService : IService
     {
         IList<ClassificationDto> GetByStockEntryId(Guid stockEntryId);
+
+        void Save(Classification classification);
+
+        void Delete(Guid guid);
+        Classification GetById(Guid classificationId);
     }
 }

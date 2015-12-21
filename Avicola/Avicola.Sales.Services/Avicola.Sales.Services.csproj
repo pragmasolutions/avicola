@@ -54,14 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EggEquivalenceService.cs" />
+    <Compile Include="ClassificationEggClassService.cs" />
     <Compile Include="Dtos\ClassificationDto.cs" />
     <Compile Include="Dtos\StockEntryDto.cs" />
     <Compile Include="EggClassService.cs" />
+    <Compile Include="Interfaces\IEggEquivalenceService.cs" />
+    <Compile Include="Interfaces\IClassificationService.cs" />
     <Compile Include="Interfaces\IEggClassService.cs" />
     <Compile Include="Interfaces\IOrderStatusService.cs" />
     <Compile Include="Interfaces\IShiftService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
-    <Compile Include="Interfaces\IClassificationService.cs" />
+    <Compile Include="Interfaces\IClassificationEggClassService.cs" />
     <Compile Include="Interfaces\IStockEntryService.cs" />
     <Compile Include="OrderStatusService.cs" />
     <Compile Include="OrderService.cs" />
@@ -82,6 +86,7 @@
     <Compile Include="ClientService.cs" />
     <Compile Include="ShiftService.cs" />
     <Compile Include="ProductService.cs" />
+    <Compile Include="ClassificationService.cs" />
     <Compile Include="StockEntryService.cs" />
     <Compile Include="StockService.cs" />
     <Compile Include="ProviderService.cs" />

@@ -111,7 +111,7 @@
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.MaxWidth = 70;
             gridViewCommandColumn1.MinWidth = 70;
-            gridViewCommandColumn1.Name = "StockEntryDetails";
+            gridViewCommandColumn1.Name = "Details";
             gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn1.UseDefaultText = true;
             gridViewCommandColumn1.Width = 70;

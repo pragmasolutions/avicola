@@ -73,9 +73,57 @@ namespace Avicola.Deposit.Win.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calculator_20x20 {
+            get {
+                object obj = ResourceManager.GetObject("calculator_20x20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap classification {
             get {
                 object obj = ResourceManager.GetObject("classification", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crear Clasificación.
+        /// </summary>
+        internal static string CreateClassification {
+            get {
+                return ResourceManager.GetString("CreateClassification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Data_Edit {
+            get {
+                object obj = ResourceManager.GetObject("Data_Edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar Clasificación.
+        /// </summary>
+        internal static string EditClassification {
+            get {
+                return ResourceManager.GetString("EditClassification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Garbage_Closed {
+            get {
+                object obj = ResourceManager.GetObject("Garbage_Closed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

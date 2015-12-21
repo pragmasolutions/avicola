@@ -19,6 +19,7 @@ namespace Avicola.Sales.Services.Dtos
         public int Maples { get; set; }
         public int Eggs { get; set; }
         public Guid? ProviderId { get; set; }
+        public int TotalEggs { get; set; }
         public int CurrentEggs { get; set; }
         public System.Guid BarnId { get; set; }
         public string BarnName { get; set; }

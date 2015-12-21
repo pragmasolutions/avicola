@@ -13,5 +13,6 @@ namespace Avicola.Deposit.Win.Infrastructure
         void LoadHistoryManagerView();
         void LoadAddStockView();
         void LoadOpenStockEntriesView();
+        void LoadStockEntryDetailsView(StockEntryDto stockEntry);
     }
 }
