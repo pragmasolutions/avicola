@@ -71,11 +71,13 @@ namespace Avicola.Deposit.Win.Forms
             {
                 form.StockEntry = this.StockEntry;
 
-                form.ClassificationSaved += (o, classification) =>
+                form.ClassificationSaved += (o, currentEggs) =>
                                             {
                                                 form.Close();
 
                                                 LoadClassifications();
+
+                                                txtRemainingEggs.Text = currentEggs.ToString();
                                             };
                 form.ShowDialog();
             }
@@ -112,11 +114,13 @@ namespace Avicola.Deposit.Win.Forms
                     form.StockEntry = this.StockEntry;
                     form.ClassificationId = classification.Id;
 
-                    form.ClassificationSaved += (o, c) =>
+                    form.ClassificationSaved += (o, currentEggs) =>
                     {
                         form.Close();
 
                         LoadClassifications();
+
+                        txtRemainingEggs.Text = currentEggs.ToString();
                     };
                     form.ShowDialog();
                 }
@@ -128,9 +132,11 @@ namespace Avicola.Deposit.Win.Forms
                     {
                         using (var service = _serviceFactory.Create<IClassificationService>())
                         {
-                            service.Delete(classification.Id);
+                            var currentEggs = service.Delete(classification.Id);
 
                             LoadClassifications();
+
+                            txtRemainingEggs.Text = currentEggs.ToString();
                         }
                     });
             }

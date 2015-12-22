@@ -29,8 +29,9 @@ namespace Avicola.Sales.Services
                     .AsEnumerable().Select(Mapper.Map<Classification, ClassificationDto>).ToList();
         }
 
-        public void Save(Classification classification)
+        public int Save(Classification classification)
         {
+            var newCurrentEggs = ValidateClassifedEggsAmounts(classification);
 
             if (classification.Id == Guid.Empty)
             {
@@ -51,7 +52,7 @@ namespace Avicola.Sales.Services
 
                 currentClassification.ClassificationDate = classification.ClassificationDate;
 
-                var currentClassificationClasses = Uow.ClassificationEggClasses.GetAll(whereClause:x => x.ClassificationId == classification.Id);
+                var currentClassificationClasses = Uow.ClassificationEggClasses.GetAll(whereClause: x => x.ClassificationId == classification.Id).ToList();
 
                 foreach (var classificationClasses in classification.ClassificationEggClasses)
                 {
@@ -89,11 +90,65 @@ namespace Avicola.Sales.Services
                 }
             }
 
+            var stockEntry = Uow.StockEntries.Get(classification.StockEntryId);
+
+            var currentEggs = stockEntry.TotalEggs - newCurrentEggs;
+
+            stockEntry.CurrentEggs = currentEggs;
+
             Uow.Commit();
+
+            return currentEggs;
         }
 
+        private int ValidateClassifedEggsAmounts(Classification classification)
+        {
+            var classifications = GetByStockEntryId(classification.StockEntryId);
 
-        public void Delete(Guid classificationId)
+            var untouchClassifications = classifications.Where(x => x.Id != classification.Id);
+
+            var untouchClassifiedEggs = (int)untouchClassifications.Select(x => x.TotalClassifiedEggs).DefaultIfEmpty(0).Sum();
+
+            var eggEquivalence = Uow.EggEquivalences.GetAll().ToList();
+
+            var newClassifiedEggs =
+                classification.ClassificationEggClasses.Select(x => x.Amount * eggEquivalence.Single(y => y.Id == x.EggEquivalenceId).EggsAmount)
+                    .DefaultIfEmpty(0)
+                    .Sum();
+
+            var newTotalClssifiedEggs = untouchClassifiedEggs + newClassifiedEggs;
+
+            var stockEntry = Uow.StockEntries.Get(classification.StockEntryId);
+
+            var isClassificationValid = stockEntry.TotalEggs >= newTotalClssifiedEggs;
+
+            if (!isClassificationValid)
+            {
+                throw new ApplicationException(
+                    "La cantidad de huevos clasificados no puede superar a la cantidad de huevos totales de la partida");
+            }
+
+            return (int) newTotalClssifiedEggs;
+        }
+
+        private int UpdateRemainingEggs(Classification classification)
+        {
+            var stockEntry = Uow.StockEntries.Get(classification.StockEntryId);
+
+            var classifications = GetByStockEntryId(classification.StockEntryId);
+
+            var totalClassifiedEggs = (int)classifications.Sum(x => x.TotalClassifiedEggs);
+
+            var currentEggs = stockEntry.TotalEggs - totalClassifiedEggs;
+
+            stockEntry.CurrentEggs = currentEggs;
+
+            Uow.Commit();
+
+            return stockEntry.CurrentEggs;
+        }
+
+        public int Delete(Guid classificationId)
         {
             var currentClassification = GetById(classificationId);
 
@@ -105,6 +160,8 @@ namespace Avicola.Sales.Services
             Uow.Classifications.Delete(currentClassification);
 
             Uow.Commit();
+
+            return UpdateRemainingEggs(currentClassification);
         }
 
         public Classification GetById(Guid classificationId)

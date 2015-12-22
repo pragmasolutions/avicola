@@ -11,9 +11,9 @@ namespace Avicola.Sales.Services.Interfaces
     {
         IList<ClassificationDto> GetByStockEntryId(Guid stockEntryId);
 
-        void Save(Classification classification);
+        int Save(Classification classification);
 
-        void Delete(Guid guid);
+        int Delete(Guid guid);
         Classification GetById(Guid classificationId);
     }
 }

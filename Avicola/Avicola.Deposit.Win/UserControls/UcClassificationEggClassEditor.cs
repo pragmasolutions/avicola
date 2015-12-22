@@ -19,6 +19,8 @@ namespace Avicola.Deposit.Win.UserControls
         public UcClassificationEggClassEditor()
         {
             InitializeComponent();
+
+            txtAmount.Maximum = int.MaxValue;
         }
 
         public int Amount

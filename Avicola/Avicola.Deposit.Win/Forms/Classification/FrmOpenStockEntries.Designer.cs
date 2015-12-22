@@ -95,10 +95,10 @@
             gridViewTextBoxColumn3.MinWidth = 120;
             gridViewTextBoxColumn3.Name = "ShiftName";
             gridViewTextBoxColumn3.Width = 120;
-            gridViewTextBoxColumn4.FieldName = "CurrentEggs";
+            gridViewTextBoxColumn4.FieldName = "TotalEggs";
             gridViewTextBoxColumn4.HeaderText = "Huevos Totales";
             gridViewTextBoxColumn4.MinWidth = 60;
-            gridViewTextBoxColumn4.Name = "CurrentEggs";
+            gridViewTextBoxColumn4.Name = "TotalEggs";
             gridViewTextBoxColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             gridViewTextBoxColumn4.Width = 220;
             gridViewTextBoxColumn5.FieldName = "CurrentEggs";

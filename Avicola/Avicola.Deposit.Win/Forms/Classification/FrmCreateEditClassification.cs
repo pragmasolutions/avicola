@@ -30,7 +30,7 @@ namespace Avicola.Deposit.Win.Forms
             InitializeComponent();
         }
 
-        public EventHandler<Classification> ClassificationSaved;
+        public EventHandler<int> ClassificationSaved;
 
         public Guid ClassificationId { get; set; }
         public Classification Classification { get; set; }
@@ -121,17 +121,24 @@ namespace Avicola.Deposit.Win.Forms
 
             using (var service = _serviceFactory.Create<IClassificationService>())
             {
-                service.Save(Classification);
+                try
+                {
+                    var currentEggs = service.Save(Classification);
 
-                OnClassificationSaved(Classification);
+                    OnClassificationSaved(currentEggs);
+                }
+                catch (ApplicationException ex)
+                {
+                    _messageBoxDisplayService.ShowWarning(ex.Message);
+                }
             }
         }
 
-        private void OnClassificationSaved(Classification classification)
+        private void OnClassificationSaved(int currentEggs)
         {
             if (ClassificationSaved != null)
             {
-                ClassificationSaved(this, classification);
+                ClassificationSaved(this, currentEggs);
             }
         }
     }
