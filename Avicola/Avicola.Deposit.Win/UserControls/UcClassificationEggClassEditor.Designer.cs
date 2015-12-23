@@ -75,6 +75,7 @@
             this.btnCalculateEggsAmount.Name = "btnCalculateEggsAmount";
             this.btnCalculateEggsAmount.Size = new System.Drawing.Size(29, 24);
             this.btnCalculateEggsAmount.TabIndex = 5;
+            this.btnCalculateEggsAmount.Click += new System.EventHandler(this.btnCalculateEggsAmount_Click);
             // 
             // UcClassificationEggClassEditor
             // 

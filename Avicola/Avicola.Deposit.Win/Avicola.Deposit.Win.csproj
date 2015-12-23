@@ -144,6 +144,12 @@
     <Compile Include="Forms\Order\FrmCancelBuildedOrder.Designer.cs">
       <DependentUpon>FrmCancelBuildedOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Classification\FrmCalculateEggs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Classification\FrmCalculateEggs.Designer.cs">
+      <DependentUpon>FrmCalculateEggs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Order\FrmFinishOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\FrmCancelBuildedOrder.resx">
       <DependentUpon>FrmCancelBuildedOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Classification\FrmCalculateEggs.resx">
+      <DependentUpon>FrmCalculateEggs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\FrmFinishOrder.resx">
       <DependentUpon>FrmFinishOrder.cs</DependentUpon>

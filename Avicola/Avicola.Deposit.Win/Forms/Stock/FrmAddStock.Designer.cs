@@ -218,6 +218,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(706, 495);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 24);
@@ -229,6 +230,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Location = new System.Drawing.Point(625, 495);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 24);
@@ -239,9 +241,9 @@
             // 
             // ucEggsAmount
             // 
-            this.ucEggsAmount.Location = new System.Drawing.Point(405, 3);
+            this.ucEggsAmount.Location = new System.Drawing.Point(372, 26);
             this.ucEggsAmount.Name = "ucEggsAmount";
-            this.ucEggsAmount.Size = new System.Drawing.Size(363, 249);
+            this.ucEggsAmount.Size = new System.Drawing.Size(363, 313);
             this.ucEggsAmount.TabIndex = 29;
             // 
             // FrmAddStock

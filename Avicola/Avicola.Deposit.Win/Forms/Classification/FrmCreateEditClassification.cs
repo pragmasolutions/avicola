@@ -20,12 +20,13 @@ namespace Avicola.Deposit.Win.Forms
     public partial class FrmCreateEditClassification : EditFormBase
     {
         private readonly IServiceFactory _serviceFactory;
-        private readonly IMessageBoxDisplayService _messageBoxDisplayService;
 
-        public FrmCreateEditClassification(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService)
+        public FrmCreateEditClassification(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService,IFormFactory formFactory)
         {
             _serviceFactory = serviceFactory;
-            _messageBoxDisplayService = messageBoxDisplayService;
+
+            MessageBoxDisplayService = messageBoxDisplayService;
+            FormFactory = formFactory;
 
             InitializeComponent();
         }
@@ -77,6 +78,9 @@ namespace Avicola.Deposit.Win.Forms
                     {
                         var control = new UcClassificationEggClassEditor();
 
+                        control.FormFactory = FormFactory;
+                        control.MessageBoxDisplayService = MessageBoxDisplayService;
+
                         control.EggEquivalences = eggEquivalences;
 
                         control.EggClass = eggClass;
@@ -110,7 +114,7 @@ namespace Avicola.Deposit.Win.Forms
             {
                 Classification.ClassificationEggClasses.Clear();
 
-                _messageBoxDisplayService.ShowWarning("La cantidad de huevos a clasificar no puede ser 0. por favor verifique los valores ingresados");
+                MessageBoxDisplayService.ShowWarning("La cantidad de huevos a clasificar no puede ser 0. por favor verifique los valores ingresados");
 
                 return;
             }
@@ -129,7 +133,7 @@ namespace Avicola.Deposit.Win.Forms
                 }
                 catch (ApplicationException ex)
                 {
-                    _messageBoxDisplayService.ShowWarning(ex.Message);
+                    MessageBoxDisplayService.ShowWarning(ex.Message);
                 }
             }
         }

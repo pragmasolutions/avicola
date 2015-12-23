@@ -28,6 +28,11 @@ namespace Avicola.Deposit.Win.UserControls
             get { return (int)(txtMapples.NullableValue ?? 0); }
         }
 
+        public int Dozens
+        {
+            get { return (int)(txtDozens.NullableValue ?? 0); }
+        }
+
         public int Eggs
         {
             get { return (int)(txtEggsUnits.NullableValue ?? 0); }
@@ -39,9 +44,10 @@ namespace Avicola.Deposit.Win.UserControls
             {
                 var boxesEggs = Boxes * DepositStock.EggsPerBox;
                 var mapplesEggs = Mapples * DepositStock.EggsPerMapple;
+                var dozens = Dozens * DepositStock.EggsPerDozens;
                 var eggs = Eggs;
 
-                return boxesEggs + mapplesEggs + eggs;
+                return boxesEggs + mapplesEggs + dozens + eggs;
             }
         }
 
@@ -65,6 +71,11 @@ namespace Avicola.Deposit.Win.UserControls
             UpdateTotals();
         }
 
+        private void txtDozens_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotals();
+        }
+
         private void UpdateTotals()
         {
             txtTotalEggs.Text = TotalEggs.ToString();
@@ -76,6 +87,7 @@ namespace Avicola.Deposit.Win.UserControls
             txtBoxes.NullableValue = null;
             txtMapples.NullableValue = null;
             txtEggsUnits.NullableValue = null;
+            txtDozens.NullableValue = null;
             txtTotalDozens.Text = null;
             txtTotalEggs.Text = null;
         }
@@ -84,5 +96,7 @@ namespace Avicola.Deposit.Win.UserControls
         {
             return (this.TotalEggs != 0);
         }
+
+        
     }
 }

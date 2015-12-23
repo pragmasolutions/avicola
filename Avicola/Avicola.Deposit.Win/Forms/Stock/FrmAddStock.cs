@@ -98,6 +98,7 @@ namespace Avicola.Deposit.Win.Forms.Stock
             else
             {
                 var stockEntryModel = GetStockEntry();
+
                 var stockEntry = stockEntryModel.ToStockEntry();
 
                 using (var service = _serviceFactory.Create<IStockEntryService>())
@@ -105,7 +106,9 @@ namespace Avicola.Deposit.Win.Forms.Stock
                     try
                     {
                         service.Create(stockEntry, ucDepositSelection.SelectedDeposit.Id, Guid.Parse(ddlProducts.SelectedValue.ToString()));
-                        _messageBoxDisplayService.ShowInfo("El stock se agregó correctamente.");
+
+                        _messageBoxDisplayService.ShowSuccess("El stock se agregó correctamente.");
+
                         ResetControls();
                     }
                     catch (Exception)

@@ -38,11 +38,11 @@
             this.txtDozens = new Telerik.WinControls.UI.RadTextBox();
             this.gbOrderBuildDetails = new Telerik.WinControls.UI.RadGroupBox();
             this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
+            this.txtEggsUnits = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
+            this.txtMapples = new Telerik.WinControls.UI.RadTextBox();
             this.txtBoxes = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
-            this.txtMapples = new Telerik.WinControls.UI.RadTextBox();
-            this.txtEggsUnits = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStatus)).BeginInit();
@@ -54,11 +54,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbOrderBuildDetails)).BeginInit();
             this.gbOrderBuildDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMapples)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMapples)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCreatedDate
@@ -160,6 +160,15 @@
             this.radLabel7.TabIndex = 7;
             this.radLabel7.Text = "Cajas";
             // 
+            // txtEggsUnits
+            // 
+            this.txtEggsUnits.Enabled = false;
+            this.txtEggsUnits.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEggsUnits.Location = new System.Drawing.Point(13, 172);
+            this.txtEggsUnits.Name = "txtEggsUnits";
+            this.txtEggsUnits.Size = new System.Drawing.Size(224, 28);
+            this.txtEggsUnits.TabIndex = 7;
+            // 
             // radLabel6
             // 
             this.radLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -168,6 +177,15 @@
             this.radLabel6.Size = new System.Drawing.Size(121, 21);
             this.radLabel6.TabIndex = 9;
             this.radLabel6.Text = "Huevos (unidad)";
+            // 
+            // txtMapples
+            // 
+            this.txtMapples.Enabled = false;
+            this.txtMapples.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMapples.Location = new System.Drawing.Point(13, 115);
+            this.txtMapples.Name = "txtMapples";
+            this.txtMapples.Size = new System.Drawing.Size(224, 28);
+            this.txtMapples.TabIndex = 7;
             // 
             // txtBoxes
             // 
@@ -187,24 +205,6 @@
             this.radLabel5.TabIndex = 8;
             this.radLabel5.Text = "Mapples";
             // 
-            // txtMapples
-            // 
-            this.txtMapples.Enabled = false;
-            this.txtMapples.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMapples.Location = new System.Drawing.Point(13, 115);
-            this.txtMapples.Name = "txtMapples";
-            this.txtMapples.Size = new System.Drawing.Size(224, 28);
-            this.txtMapples.TabIndex = 7;
-            // 
-            // txtEggsUnits
-            // 
-            this.txtEggsUnits.Enabled = false;
-            this.txtEggsUnits.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEggsUnits.Location = new System.Drawing.Point(13, 172);
-            this.txtEggsUnits.Name = "txtEggsUnits";
-            this.txtEggsUnits.Size = new System.Drawing.Size(224, 28);
-            this.txtEggsUnits.TabIndex = 7;
-            // 
             // UcOrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,7 +219,7 @@
             this.Controls.Add(this.txtClient);
             this.Controls.Add(this.txtCreatedDate);
             this.Name = "UcOrderDetails";
-            this.Size = new System.Drawing.Size(258, 456);
+            this.Size = new System.Drawing.Size(259, 463);
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStatus)).EndInit();
@@ -232,11 +232,11 @@
             this.gbOrderBuildDetails.ResumeLayout(false);
             this.gbOrderBuildDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMapples)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMapples)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

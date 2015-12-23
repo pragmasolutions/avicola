@@ -11,6 +11,7 @@ namespace Avicola.Sales.Entities
     {
         public const int EggsPerBox = 360;
         public const int EggsPerMapple = 30;
+        public const int EggsPerDozens = 12;
 
         public int TotalEggs
         {
