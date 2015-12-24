@@ -33,6 +33,8 @@ namespace Avicola.Deposit.Win.Forms.Stock
 
         private void FrmAddStock_Load(object sender, EventArgs e)
         {
+            ucEggsAmount.ShowDozens = false;
+
             using (var depositService = _serviceFactory.Create<IDepositService>())
             {
                 var deposits = depositService.GetAll().OrderBy(x => x.Name).ToList();
@@ -183,6 +185,11 @@ namespace Avicola.Deposit.Win.Forms.Stock
             }
 
             return result;
+        }
+
+        private void btnBackToDepositManager_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadDepositManagerView();
         }
     }
 }

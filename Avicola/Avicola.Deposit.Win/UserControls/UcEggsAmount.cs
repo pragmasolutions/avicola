@@ -13,9 +13,13 @@ namespace Avicola.Deposit.Win.UserControls
 {
     public partial class UcEggsAmount : UserControl
     {
+        private readonly Point _originalLocationBottonContainer;
+
         public UcEggsAmount()
         {
             InitializeComponent();
+
+            _originalLocationBottonContainer = BottomContentContainer.Location;
         }
 
         public int Boxes
@@ -36,6 +40,23 @@ namespace Avicola.Deposit.Win.UserControls
         public int Eggs
         {
             get { return (int)(txtEggsUnits.NullableValue ?? 0); }
+        }
+
+        public bool ShowDozens
+        {
+            set
+            {
+                if (!value)
+                {
+                    DozensContainer.Visible = false;
+                    BottomContentContainer.Location = DozensContainer.Location;
+                }
+                else
+                {
+                    DozensContainer.Visible = true;
+                    BottomContentContainer.Location = _originalLocationBottonContainer;
+                }
+            }
         }
 
         public int TotalEggs
@@ -96,7 +117,5 @@ namespace Avicola.Deposit.Win.UserControls
         {
             return (this.TotalEggs != 0);
         }
-
-        
     }
 }
