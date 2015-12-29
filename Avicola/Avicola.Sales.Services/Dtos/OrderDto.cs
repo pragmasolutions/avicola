@@ -9,6 +9,10 @@ namespace Avicola.Sales.Services.Dtos
     public class OrderDto : IMapFrom<Order>
     {
         public System.Guid Id { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string PhoneNumber { get; set; }
+        public Guid ClientId { get; set; }
         public string ClientName { get; set; }
         public Guid OrderStatusId { get; set; }
         public string OrderStatusName { get; set; }
@@ -20,13 +24,11 @@ namespace Avicola.Sales.Services.Dtos
         public string Truck { get; set; }
         public Guid? DepositId { get; set; }
         public string DepositName { get; set; }
-        //To know if we can start preparing this order based on the current stock
         public string CanStartPreparing { get; set; }
         public int? Boxes { get; set; }
         public int? Maples { get; set; }
         public int? Eggs { get; set; }
         public string ClientAddress { get; set; }
-
         public List<OrderEggClassDto> OrderEggClasses { get; set; }
     }
 }

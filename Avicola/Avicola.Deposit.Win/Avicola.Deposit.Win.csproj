@@ -138,6 +138,12 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Order\FrmEditOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FrmEditOrder.Designer.cs">
+      <DependentUpon>FrmEditOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Order\FrmCancelBuildedOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,7 @@
     <Compile Include="Infrastructure\Interfaces\IStateController.cs" />
     <Compile Include="Infrastructure\ITransitionManager.cs" />
     <Compile Include="Infrastructure\StateController.cs" />
+    <Compile Include="Model\EditOrderModel.cs" />
     <Compile Include="Model\CreateStockEntryModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -252,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FrmEditOrder.resx">
+      <DependentUpon>FrmEditOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\FrmCancelBuildedOrder.resx">
       <DependentUpon>FrmCancelBuildedOrder.cs</DependentUpon>
@@ -373,6 +383,7 @@
     <None Include="Resources\Image\orders.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Image\plus.png" />
     <None Include="Resources\167-128.png" />
     <None Include="Resources\calculator_20x20.png" />
     <None Include="Resources\Data-Edit.png" />
