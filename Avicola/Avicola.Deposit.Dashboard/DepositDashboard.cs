@@ -72,7 +72,7 @@ namespace Avicola.Deposit.Dashboard
                         .Where(x => (x.OrderStatusId == OrderStatus.IN_PROGESS && x.DepositId == Configuration.AppSettings.DepositId)
                                     || x.OrderStatusId == OrderStatus.PENDING)
                         .OrderBy(x => x.OrderStatusId)
-                        .ThenBy(x => x.CreatedDate).ToList();
+                        .ThenBy(x => x.CreatedDate).Take(9).ToList();
 
                     foreach (var order in pending)
                     {
@@ -103,18 +103,50 @@ namespace Avicola.Deposit.Dashboard
         {
             flpCurrentOrders.Controls.Clear();
 
-            foreach (var dto in currentOrders)
+            if (currentOrders.Any())
             {
-                flpCurrentOrders.Controls.Add(new UcOrderBlock()
+                var mainWidth = flpCurrentOrders.Width - 10;
+                var mainHeight = flpCurrentOrders.Height - 10;
+                int blockWidth;
+                int blockHeight;
+
+                if (currentOrders.Count < 3)
                 {
-                    CreatedDate = dto.CreatedDate,
-                    ClientName = dto.ClientName,
-                    Address = dto.ClientAddress,
-                    Status = dto.OrderStatusName,
-                    EggClasses = dto.OrderEggClasses,
-                    CurrentStocks = stocks
-                });
+                    blockWidth = mainWidth / 2;
+                    blockHeight = mainHeight;
+                }
+                else if (currentOrders.Count < 5)
+                {
+                    blockWidth = mainWidth / 2;
+                    blockHeight = mainHeight / 2;
+                }
+                else if (currentOrders.Count < 7)
+                {
+                    blockWidth = mainWidth / 3;
+                    blockHeight = mainHeight / 2;
+                }
+                else 
+                {
+                    blockWidth = mainWidth/3;
+                    blockHeight = mainHeight/3;
+                }
+
+                foreach (var dto in currentOrders)
+                {
+                    flpCurrentOrders.Controls.Add(new UcOrderBlock()
+                    {
+                        CreatedDate = dto.CreatedDate,
+                        ClientName = dto.ClientName,
+                        Address = dto.ClientAddress,
+                        Status = dto.OrderStatusName,
+                        EggClasses = dto.OrderEggClasses,
+                        CurrentStocks = stocks,
+                        Width = blockWidth,
+                        Height = blockHeight
+                    });
+                }
             }
+            
         }
     }
 }
