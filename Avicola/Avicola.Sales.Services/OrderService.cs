@@ -43,7 +43,9 @@ namespace Avicola.Sales.Services
                 x => x.Truck,
                 x => x.Driver,
                 x => x.OrderStatus,
-                x => x.Deposit);
+                x => x.Deposit,
+                x => x.OrderEggClasses,
+                x => x.OrderEggClasses.Select(oec => oec.EggClass));
 
             pageTotal = results.PagedMetadata.TotalItemCount;
 

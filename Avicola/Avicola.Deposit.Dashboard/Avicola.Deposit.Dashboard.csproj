@@ -90,11 +90,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UcEggClassOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcEggClassOrder.Designer.cs">
+      <DependentUpon>UcEggClassOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcEggClassStock.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UcEggClassStock.Designer.cs">
       <DependentUpon>UcEggClassStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcOrderBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcOrderBlock.Designer.cs">
+      <DependentUpon>UcOrderBlock.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DepositDashboard.resx">
       <DependentUpon>DepositDashboard.cs</DependentUpon>
@@ -109,8 +121,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\UcEggClassOrder.resx">
+      <DependentUpon>UcEggClassOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcEggClassStock.resx">
       <DependentUpon>UcEggClassStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcOrderBlock.resx">
+      <DependentUpon>UcOrderBlock.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\OrderEggClassDto.cs" />
     <Compile Include="EggEquivalenceService.cs" />
     <Compile Include="ClassificationEggClassService.cs" />
     <Compile Include="Dtos\ClassificationDto.cs" />

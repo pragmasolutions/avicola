@@ -33,18 +33,10 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvPendingOrders = new Telerik.WinControls.UI.RadGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -54,11 +46,10 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvPreparedOrders = new Telerik.WinControls.UI.RadGridView();
+            this.flpCurrentOrders = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingOrders.MasterTemplate)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -98,8 +89,8 @@
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.dgvPendingOrders, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.flpCurrentOrders, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -108,66 +99,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.98451F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(626, 704);
             this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // dgvPendingOrders
-            // 
-            this.dgvPendingOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPendingOrders.Location = new System.Drawing.Point(10, 87);
-            this.dgvPendingOrders.Margin = new System.Windows.Forms.Padding(10);
-            // 
-            // 
-            // 
-            this.dgvPendingOrders.MasterTemplate.AllowAddNewRow = false;
-            this.dgvPendingOrders.MasterTemplate.AllowColumnReorder = false;
-            this.dgvPendingOrders.MasterTemplate.AllowDeleteRow = false;
-            this.dgvPendingOrders.MasterTemplate.AllowEditRow = false;
-            this.dgvPendingOrders.MasterTemplate.AllowRowReorder = true;
-            gridViewTextBoxColumn1.FieldName = "OrderId";
-            gridViewTextBoxColumn1.HeaderText = "OrderId";
-            gridViewTextBoxColumn1.IsVisible = false;
-            gridViewTextBoxColumn1.Name = "OrderId";
-            gridViewTextBoxColumn2.FieldName = "ClientName";
-            gridViewTextBoxColumn2.HeaderText = "Cliente";
-            gridViewTextBoxColumn2.MaxWidth = 5000;
-            gridViewTextBoxColumn2.MinWidth = 200;
-            gridViewTextBoxColumn2.Name = "ClientName";
-            gridViewTextBoxColumn2.Width = 200;
-            gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
-            gridViewTextBoxColumn3.FieldName = "CreatedDate";
-            gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
-            gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
-            gridViewTextBoxColumn3.MinWidth = 90;
-            gridViewTextBoxColumn3.Name = "CreatedDate";
-            gridViewTextBoxColumn3.Width = 90;
-            gridViewTextBoxColumn4.FieldName = "Dozens";
-            gridViewTextBoxColumn4.HeaderText = "Docenas";
-            gridViewTextBoxColumn4.MinWidth = 0;
-            gridViewTextBoxColumn4.Name = "Dozens";
-            gridViewTextBoxColumn4.Width = 80;
-            gridViewTextBoxColumn5.FieldName = "OrderStatusName";
-            gridViewTextBoxColumn5.HeaderText = "Estado";
-            gridViewTextBoxColumn5.Name = "OrderStatusName";
-            gridViewTextBoxColumn5.Width = 120;
-            gridViewTextBoxColumn6.FieldName = "CanStartPreparing";
-            gridViewTextBoxColumn6.HeaderText = "Stock Suficiente";
-            gridViewTextBoxColumn6.MinWidth = 130;
-            gridViewTextBoxColumn6.Name = "CanStartPreparing";
-            gridViewTextBoxColumn6.Width = 130;
-            this.dgvPendingOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6});
-            this.dgvPendingOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
-            this.dgvPendingOrders.Name = "dgvPendingOrders";
-            this.dgvPendingOrders.ReadOnly = true;
-            this.dgvPendingOrders.Size = new System.Drawing.Size(606, 607);
-            this.dgvPendingOrders.TabIndex = 7;
-            this.dgvPendingOrders.Text = "radGridView1";
-            this.dgvPendingOrders.ThemeName = "TelerikMetroBlue";
-            this.dgvPendingOrders.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.dgvPendingOrders_CellFormatting);
             // 
             // label6
             // 
@@ -270,47 +201,55 @@
             // 
             // 
             // 
-            gridViewTextBoxColumn7.FieldName = "OrderId";
-            gridViewTextBoxColumn7.HeaderText = "OrderId";
-            gridViewTextBoxColumn7.IsVisible = false;
-            gridViewTextBoxColumn7.Name = "OrderId";
-            gridViewTextBoxColumn8.FieldName = "ClientName";
-            gridViewTextBoxColumn8.HeaderText = "Cliente";
-            gridViewTextBoxColumn8.MaxWidth = 5000;
-            gridViewTextBoxColumn8.MinWidth = 1;
-            gridViewTextBoxColumn8.Name = "ClientName";
-            gridViewTextBoxColumn8.Width = 200;
-            gridViewTextBoxColumn9.DataType = typeof(System.DateTime);
-            gridViewTextBoxColumn9.FieldName = "CreatedDate";
-            gridViewTextBoxColumn9.FormatString = "{0: dd/M/yyyy}";
-            gridViewTextBoxColumn9.HeaderText = "Fecha Pedido";
-            gridViewTextBoxColumn9.MinWidth = 1;
-            gridViewTextBoxColumn9.Name = "CreatedDate";
-            gridViewTextBoxColumn9.Width = 100;
-            gridViewTextBoxColumn10.FieldName = "Dozens";
-            gridViewTextBoxColumn10.HeaderText = "Docenas";
-            gridViewTextBoxColumn10.MinWidth = 1;
-            gridViewTextBoxColumn10.Name = "Dozens";
-            gridViewTextBoxColumn10.Width = 70;
-            gridViewTextBoxColumn11.FieldName = "PreparedDate";
-            gridViewTextBoxColumn11.FormatString = "{0: dd/M/yyyy}";
-            gridViewTextBoxColumn11.HeaderText = "Fecha Armado";
-            gridViewTextBoxColumn11.MinWidth = 1;
-            gridViewTextBoxColumn11.Name = "PreparedDate";
-            gridViewTextBoxColumn11.Width = 100;
+            gridViewTextBoxColumn1.FieldName = "OrderId";
+            gridViewTextBoxColumn1.HeaderText = "OrderId";
+            gridViewTextBoxColumn1.IsVisible = false;
+            gridViewTextBoxColumn1.Name = "OrderId";
+            gridViewTextBoxColumn2.FieldName = "ClientName";
+            gridViewTextBoxColumn2.HeaderText = "Cliente";
+            gridViewTextBoxColumn2.MaxWidth = 5000;
+            gridViewTextBoxColumn2.MinWidth = 1;
+            gridViewTextBoxColumn2.Name = "ClientName";
+            gridViewTextBoxColumn2.Width = 200;
+            gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
+            gridViewTextBoxColumn3.FieldName = "CreatedDate";
+            gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
+            gridViewTextBoxColumn3.MinWidth = 1;
+            gridViewTextBoxColumn3.Name = "CreatedDate";
+            gridViewTextBoxColumn3.Width = 100;
+            gridViewTextBoxColumn4.FieldName = "Dozens";
+            gridViewTextBoxColumn4.HeaderText = "Docenas";
+            gridViewTextBoxColumn4.MinWidth = 1;
+            gridViewTextBoxColumn4.Name = "Dozens";
+            gridViewTextBoxColumn4.Width = 70;
+            gridViewTextBoxColumn5.FieldName = "PreparedDate";
+            gridViewTextBoxColumn5.FormatString = "{0: dd/M/yyyy}";
+            gridViewTextBoxColumn5.HeaderText = "Fecha Armado";
+            gridViewTextBoxColumn5.MinWidth = 1;
+            gridViewTextBoxColumn5.Name = "PreparedDate";
+            gridViewTextBoxColumn5.Width = 100;
             this.dgvPreparedOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
-            gridViewTextBoxColumn9,
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11});
-            this.dgvPreparedOrders.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5});
+            this.dgvPreparedOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.dgvPreparedOrders.Name = "dgvPreparedOrders";
             this.dgvPreparedOrders.ReadOnly = true;
             this.dgvPreparedOrders.Size = new System.Drawing.Size(652, 318);
             this.dgvPreparedOrders.TabIndex = 2;
             this.dgvPreparedOrders.Text = "radGridView1";
             this.dgvPreparedOrders.ThemeName = "TelerikMetroBlue";
+            // 
+            // flpCurrentOrders
+            // 
+            this.flpCurrentOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpCurrentOrders.Location = new System.Drawing.Point(3, 80);
+            this.flpCurrentOrders.Name = "flpCurrentOrders";
+            this.flpCurrentOrders.Size = new System.Drawing.Size(620, 621);
+            this.flpCurrentOrders.TabIndex = 7;
             // 
             // DepositDashboard
             // 
@@ -333,8 +272,6 @@
             this.panel6.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingOrders.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendingOrders)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -361,8 +298,8 @@
         private Telerik.WinControls.UI.RadGridView dgvPreparedOrders;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private Telerik.WinControls.UI.RadGridView dgvPendingOrders;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel flpStock;
+        private System.Windows.Forms.FlowLayoutPanel flpCurrentOrders;
     }
 }

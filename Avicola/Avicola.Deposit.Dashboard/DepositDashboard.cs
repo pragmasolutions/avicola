@@ -12,6 +12,7 @@ using Avicola.Common.Win;
 using Avicola.Common.Win.Forms;
 using Avicola.Deposit.Dashboard.UserControls;
 using Avicola.Sales.Entities;
+using Avicola.Sales.Services.Dtos;
 using Avicola.Sales.Services.Interfaces;
 using Framework.Data.Repository;
 using Ninject.Infrastructure.Language;
@@ -36,9 +37,6 @@ namespace Avicola.Deposit.Dashboard
             this.dgvPreparedOrders.Columns[1].BestFit();
             this.dgvPreparedOrders.ShowGroupPanel = false;
 
-            this.dgvPendingOrders.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
-            this.dgvPendingOrders.Columns[1].BestFit();
-            this.dgvPendingOrders.ShowGroupPanel = false;
             _refreshTimer = new Timer();
             _refreshTimer.Interval = 60000; //One minute
             _refreshTimer.Tick += RefreshTimerOnTick;
@@ -91,27 +89,31 @@ namespace Avicola.Deposit.Dashboard
                         .OrderBy(x => x.OrderStatusId)
                         .ThenBy(x => x.CreatedDate).ToList();
 
-                    dgvPendingOrders.DataSource = pending;
+
                     dgvPreparedOrders.DataSource = finished;
+
+                    LoadMainBlock(pending, stocks);
                 }
             }
 
             
         }
 
-        private void dgvPendingOrders_CellFormatting(object sender, CellFormattingEventArgs e)
+        private void LoadMainBlock(List<OrderDto> currentOrders, List<EggClassStock> stocks)
         {
-            if (e.CellElement.ColumnInfo.FieldName == "CanStartPreparing")
+            flpCurrentOrders.Controls.Clear();
+
+            foreach (var dto in currentOrders)
             {
-                e.CellElement.Font = new Font(e.CellElement.Font, FontStyle.Bold);
-                if (e.CellElement.Value == "LISTO")
+                flpCurrentOrders.Controls.Add(new UcOrderBlock()
                 {
-                    e.CellElement.ForeColor = Color.Green;
-                } 
-                else if (e.CellElement.Value == "FALTA")
-                {
-                    e.CellElement.ForeColor = Color.Red;
-                }
+                    CreatedDate = dto.CreatedDate,
+                    ClientName = dto.ClientName,
+                    Address = dto.ClientAddress,
+                    Status = dto.OrderStatusName,
+                    EggClasses = dto.OrderEggClasses,
+                    CurrentStocks = stocks
+                });
             }
         }
     }

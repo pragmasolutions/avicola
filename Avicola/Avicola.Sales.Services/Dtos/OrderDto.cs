@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using Avicola.Sales.Entities;
 using Framework.Common.Mapping;
@@ -24,5 +25,8 @@ namespace Avicola.Sales.Services.Dtos
         public int? Boxes { get; set; }
         public int? Maples { get; set; }
         public int? Eggs { get; set; }
+        public string ClientAddress { get; set; }
+
+        public List<OrderEggClassDto> OrderEggClasses { get; set; }
     }
 }
