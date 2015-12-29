@@ -36,6 +36,12 @@ namespace Avicola.Deposit.Win.Forms
         public void LoadView(FrmDepositBase form)
         {
             form.TopLevel = false;
+
+            foreach (IDisposable control in MainContenPanel.Controls)
+            {
+                control.Dispose();
+            }
+
             MainContenPanel.Controls.Clear();
             MainContenPanel.Controls.Add(form);
             form.FormBorderStyle = FormBorderStyle.None;
@@ -128,6 +134,13 @@ namespace Avicola.Deposit.Win.Forms
             var view = FormFactory.Create<FrmStockEntryDetails>();
             view.StockEntry = stockEntry;
             LoadView(view);
+        }
+
+        public void LoadEditOrderView(OrderDto order)
+        {
+            //var view = FormFactory.Create<FrmEditOrder>();
+            //view.OrderId = order.Id;
+            //LoadView(view);
         }
     }
 }

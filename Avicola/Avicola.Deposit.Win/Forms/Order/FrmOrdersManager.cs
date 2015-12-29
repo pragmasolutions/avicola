@@ -9,9 +9,11 @@ using System.Text;
 using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Common.Win.Forms;
+using Avicola.Deposit.Win.Infrastructure.Interfaces;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
 using Avicola.Sales.Services.Interfaces;
+using Framework.WinForm.Comun.Notification;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using IServiceFactory = Avicola.Services.Common.Interfaces.IServiceFactory;
@@ -21,16 +23,25 @@ namespace Avicola.Deposit.Win.Forms
     public partial class FrmOrdersManager : FrmDepositBase
     {
         private readonly IServiceFactory _serviceFactory;
+        private readonly IStateController _stateController;
         private IList<OrderStatus> _orderStatuses;
         private IDictionary<Guid, IList<OrderDto>> _ordersCached;
         private Timer _refreshOrdersTimer;
+        private OrderStatus _selectedOrderStatus;
 
-        public FrmOrdersManager(IServiceFactory serviceFactory)
+        public FrmOrdersManager(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService,IStateController stateController)
         {
             _serviceFactory = serviceFactory;
+
+            _stateController = stateController;
+
+            MessageBoxDisplayService = messageBoxDisplayService;
+
             InitializeComponent();
 
             gvOrders.TableElement.RowHeight = Avicola.Common.Win.GlobalConstants.DefaultRowHeight;
+
+            gvOrders.CellFormatting += base.Grilla_CellFormatting;
 
             StartRefreshTimer();
         }
@@ -63,10 +74,19 @@ namespace Avicola.Deposit.Win.Forms
 
         private void btnBackToDepositManager_Click(object sender, EventArgs e)
         {
+            _stateController.CurrentOrderStatus = null;
+
             TransitionManager.LoadDepositManagerView();
         }
 
         private void FrmPendingOrders_Load(object sender, EventArgs e)
+        {
+            LoadViewData();
+
+            SelectedCurrentStatus();
+        }
+
+        private void LoadViewData()
         {
             LoadOrderStatus();
 
@@ -113,7 +133,7 @@ namespace Avicola.Deposit.Win.Forms
             SetCommandColumnVisibility(status);
 
             gvOrders.DataSource = OrderCached[status];
-            
+
             lbTitle.Text = OrderStatuses.First(x => x.Id == status).Name;
         }
 
@@ -122,6 +142,8 @@ namespace Avicola.Deposit.Win.Forms
             if (status == OrderStatus.PENDING)
             {
                 gvOrders.Columns[GlobalConstants.BuildOrderColumnName].IsVisible = true;
+                gvOrders.Columns[GlobalConstants.EditColumnName].IsVisible = true;
+                gvOrders.Columns[GlobalConstants.DeleteColumnName].IsVisible = true;
 
                 gvOrders.Columns[GlobalConstants.FinishOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.CancelBuildedOrderColumnName].IsVisible = false;
@@ -131,6 +153,8 @@ namespace Avicola.Deposit.Win.Forms
             {
                 gvOrders.Columns[GlobalConstants.FinishOrderColumnName].IsVisible = true;
                 gvOrders.Columns[GlobalConstants.CancelBuildedOrderColumnName].IsVisible = true;
+                gvOrders.Columns[GlobalConstants.EditColumnName].IsVisible = true;
+                gvOrders.Columns[GlobalConstants.DeleteColumnName].IsVisible = true;
 
                 gvOrders.Columns[GlobalConstants.BuildOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.SendOrderColumnName].IsVisible = false;
@@ -142,6 +166,8 @@ namespace Avicola.Deposit.Win.Forms
                 gvOrders.Columns[GlobalConstants.BuildOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.FinishOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.CancelBuildedOrderColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.EditColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.DeleteColumnName].IsVisible = false;
             }
         }
 
@@ -157,11 +183,11 @@ namespace Avicola.Deposit.Win.Forms
         {
             if (e.Node != null)
             {
-                var statusSelected = e.Node.DataBoundItem as OrderStatus;
-
-                if (statusSelected != null)
+                _selectedOrderStatus = e.Node.DataBoundItem as OrderStatus;
+                    
+                if (_selectedOrderStatus != null)
                 {
-                    LoadOrdersByStatus(statusSelected.Id);
+                    LoadOrdersByStatus(_selectedOrderStatus.Id);
                 }
             }
         }
@@ -180,6 +206,8 @@ namespace Avicola.Deposit.Win.Forms
             if (order == null)
                 return;
 
+            _stateController.CurrentOrderStatus = _selectedOrderStatus;
+
             if (commandCell.ColumnInfo.Name == GlobalConstants.BuildOrderColumnName)
             {
                 TransitionManager.LoadBuildOrderView(order);
@@ -196,33 +224,38 @@ namespace Avicola.Deposit.Win.Forms
             {
                 TransitionManager.LoadSendOrderView(order);
             }
+            else if (commandCell.ColumnInfo.Name == GlobalConstants.EditColumnName)
+            {
+                TransitionManager.LoadEditOrderView(order);
+            }
+            else if (commandCell.ColumnInfo.Name == GlobalConstants.DeleteColumnName)
+            {
+                MessageBoxDisplayService.ShowConfirmationDialog("¿Esta seguro que desea eliminar este pedído?", "Eliminar Pedído",
+                    () =>
+                    {
+                        using (var service = _serviceFactory.Create<IOrderService>())
+                        {
+                            service.Delete(order.Id);
+
+                            LoadViewData();
+                        }
+                    });
+            }
         }
 
-        private void gvOrders_CellFormatting(object sender, CellFormattingEventArgs e)
+        private void SelectedCurrentStatus()
         {
-            var order = e.Row.DataBoundItem as OrderDto;
-
-            if (order != null)
+            if (_stateController.CurrentOrderStatus != null)
             {
-                if (e.CellElement.ColumnInfo.Name == GlobalConstants.BuildOrderColumnName)
-                {
-                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.PENDING;
-                }
+                var selectedNode = tvOrderStatus.Nodes.FirstOrDefault(
+                    x =>
+                    {
+                        var status = x.DataBoundItem as OrderStatus;
 
-                if (e.CellElement.ColumnInfo.Name == GlobalConstants.CancelBuildedOrderColumnName)
-                {
-                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.IN_PROGESS;
-                }
+                        return status != null && status.Id == _stateController.CurrentOrderStatus.Id;
+                    });
 
-                if (e.CellElement.ColumnInfo.Name == GlobalConstants.FinishOrderColumnName)
-                {
-                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.IN_PROGESS;
-                }
-
-                if (e.CellElement.ColumnInfo.Name == GlobalConstants.SendOrderColumnName)
-                {
-                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.FINISHED;
-                }
+                tvOrderStatus.SelectedNode = selectedNode;
             }
         }
 
@@ -252,8 +285,8 @@ namespace Avicola.Deposit.Win.Forms
 
         private void ShowNewOrdersAlert()
         {
-            this.NewOrdersAlert.CaptionText = "Nuevo Pedido";
-            this.NewOrdersAlert.ContentText = "Se ha ingresado un nuevo pedido y esta listo para ser armado";
+            this.NewOrdersAlert.CaptionText = "Nuevo Pedidos";
+            this.NewOrdersAlert.ContentText = "Se han ingresado nuevos pedidos y estan listo para ser armados";
             this.NewOrdersAlert.PlaySound = true;
             this.NewOrdersAlert.SoundToPlay = SystemSounds.Asterisk;
 

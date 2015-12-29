@@ -17,6 +17,9 @@
             {
                 components.Dispose();
             }
+
+            _refreshOrdersTimer.Dispose();
+
             base.Dispose(disposing);
         }
 
@@ -42,6 +45,8 @@
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn4 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn5 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn6 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -98,7 +103,7 @@
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.Location = new System.Drawing.Point(119, 3);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(206, 41);
+            this.lbTitle.Size = new System.Drawing.Size(1044, 41);
             this.lbTitle.TabIndex = 13;
             this.lbTitle.Text = "{{Orders Title}}";
             // 
@@ -223,6 +228,18 @@
             gridViewCommandColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewCommandColumn4.UseDefaultText = true;
             gridViewCommandColumn4.Width = 70;
+            gridViewCommandColumn5.HeaderText = "";
+            gridViewCommandColumn5.Image = global::Avicola.Deposit.Win.Properties.Resources.Data_Edit;
+            gridViewCommandColumn5.MaxWidth = 30;
+            gridViewCommandColumn5.MinWidth = 30;
+            gridViewCommandColumn5.Name = "Edit";
+            gridViewCommandColumn5.Width = 30;
+            gridViewCommandColumn6.HeaderText = "";
+            gridViewCommandColumn6.Image = global::Avicola.Deposit.Win.Properties.Resources.Garbage_Closed;
+            gridViewCommandColumn6.MaxWidth = 30;
+            gridViewCommandColumn6.MinWidth = 30;
+            gridViewCommandColumn6.Name = "Delete";
+            gridViewCommandColumn6.Width = 30;
             this.gvOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -236,7 +253,9 @@
             gridViewCommandColumn1,
             gridViewCommandColumn2,
             gridViewCommandColumn3,
-            gridViewCommandColumn4});
+            gridViewCommandColumn4,
+            gridViewCommandColumn5,
+            gridViewCommandColumn6});
             this.gvOrders.MasterTemplate.EnablePaging = true;
             this.gvOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvOrders.Name = "gvOrders";
@@ -266,7 +285,7 @@
             this.ClientSize = new System.Drawing.Size(1172, 649);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmOrdersManager";
             // 
             // 

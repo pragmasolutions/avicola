@@ -161,10 +161,23 @@ namespace Avicola.Sales.Services
             return Mapper.Map<Order, OrderDto>(order);
         }
 
-
         public void Create(Order order)
         {
             Uow.Orders.Add(order);
+            Uow.Commit();
+        }
+
+        public void Delete(Guid id)
+        {
+            var orderEggsClasses = Uow.OrderEggClasses.GetAll(x => x.OrderId == id);
+
+            foreach (var orderEggsClass in orderEggsClasses)
+            {
+                Uow.OrderEggClasses.Delete(orderEggsClass);
+            }
+
+            Uow.Orders.Delete(id);
+
             Uow.Commit();
         }
     }
