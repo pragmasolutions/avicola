@@ -86,6 +86,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="Forms\Clients\FrmCreateEditClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Clients\FrmCreateEditClient.Designer.cs">
+      <DependentUpon>FrmCreateEditClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FrmBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,14 +106,29 @@
     <Compile Include="IoC\IoCConfig.cs" />
     <Compile Include="Mappings\AutoMapperConfig.cs" />
     <Compile Include="Mappings\MetadataTypesRegister.cs" />
+    <Compile Include="Model\ClientModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UcEggClassSale.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcEggClassSale.Designer.cs">
+      <DependentUpon>UcEggClassSale.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Avicola.Sales.Entities\Avicola.Sales.Entities.csproj">
+      <Project>{8C6CDBD9-F5DE-4FE9-B7C5-178967C2B5AB}</Project>
+      <Name>Avicola.Sales.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Sales.Services\Avicola.Sales.Services.csproj">
+      <Project>{B72272A4-AB34-4F49-BFBC-75C0C600B120}</Project>
+      <Name>Avicola.Sales.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Common.Win\Framework.Common.Win.csproj">
       <Project>{EC452900-1B92-4E17-833B-6FE4285C37F5}</Project>
       <Name>Framework.Common.Win</Name>
@@ -112,6 +136,10 @@
     <ProjectReference Include="..\Framework\Framework.Common\Framework.Common.csproj">
       <Project>{492B8264-0C10-4AFE-A15F-8A82E60ADE68}</Project>
       <Name>Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
+      <Project>{CB41F702-99FB-49AE-8BC0-1B7F0193EFAB}</Project>
+      <Name>Framework.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Ioc.Ninject\Framework.Ioc.Ninject.csproj">
       <Project>{E764FE19-BDC2-4D35-9A83-F29FBA4B61B2}</Project>
@@ -135,6 +163,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\Clients\FrmCreateEditClient.resx">
+      <DependentUpon>FrmCreateEditClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmBase.resx">
       <DependentUpon>FrmBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +173,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcEggClassSale.resx">
+      <DependentUpon>UcEggClassSale.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

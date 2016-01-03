@@ -25,7 +25,9 @@ namespace Avicola.Sales.Services
             _clock = clock;
             Uow = uow;
         }
-        public List<OrderDto> GetAll(string sortBy, string sortDirection, Guid[] statusId, DateTime? from, DateTime? to, int pageIndex, int pageSize, out int pageTotal)
+
+        public List<OrderDto> GetAll(string sortBy, string sortDirection, Guid[] statusId, DateTime? from, DateTime? to,
+            int pageIndex, int pageSize, out int pageTotal)
         {
             var pagingCriteria = new PagingCriteria();
 
@@ -35,8 +37,8 @@ namespace Avicola.Sales.Services
             pagingCriteria.SortDirection = !string.IsNullOrEmpty(sortDirection) ? sortDirection : "DESC";
 
             Expression<Func<Order, bool>> where = x => statusId.Any(y => y == x.OrderStatusId)
-                                                   && (!from.HasValue || x.CreatedDate >= from)
-                                                   && (!to.HasValue || x.CreatedDate <= to);
+                                                       && (!from.HasValue || x.CreatedDate >= from)
+                                                       && (!to.HasValue || x.CreatedDate <= to);
 
             var results = Uow.Orders.GetAll(pagingCriteria, where,
                 x => x.Client,
@@ -55,7 +57,8 @@ namespace Avicola.Sales.Services
         public List<OrderDto> GetPendingOrders()
         {
             int total;
-            return GetAll(string.Empty, String.Empty, new[] { OrderStatus.PENDING }, null, null, 1, int.MaxValue, out total);
+            return GetAll(string.Empty, String.Empty, new[] { OrderStatus.PENDING }, null, null, 1, int.MaxValue,
+                out total);
         }
 
         public List<OrderDto> GetOrdersByStatus(Guid statusId)
@@ -68,7 +71,7 @@ namespace Avicola.Sales.Services
         {
             int total;
             return GetAll(string.Empty, String.Empty,
-                new[] {OrderStatus.PENDING, OrderStatus.IN_PROGESS, OrderStatus.FINISHED, OrderStatus.SENT},
+                new[] { OrderStatus.PENDING, OrderStatus.IN_PROGESS, OrderStatus.FINISHED, OrderStatus.SENT },
                 _clock.Now.AddWeeks(-WeeksBeforeToConsiderOrdersActive)
                     .AbsoluteStart(),
                 _clock.Now.AbsoluteEnd(), 1,
@@ -151,7 +154,7 @@ namespace Avicola.Sales.Services
 
         public OrderDto Get(Guid orderId)
         {
-            var order = Uow.Orders.Get(x => x.Id == orderId, x => x.Client, x => x.OrderStatus, x => x.Driver);
+            var order = Uow.Orders.Get(x => x.Id == orderId, x => x.Client, x => x.OrderStatus, x => x.Driver, x => x.OrderEggClasses);
 
             if (order == null)
             {
@@ -180,5 +183,60 @@ namespace Avicola.Sales.Services
 
             Uow.Commit();
         }
+
+        public void Edit(Order order)
+        {
+            var currentOrder = Uow.Orders.Get(order.Id);
+
+            currentOrder.ClientId = order.ClientId;
+            currentOrder.Address = order.Address;
+            currentOrder.City = order.City;
+            currentOrder.PhoneNumber = order.PhoneNumber;
+
+            Uow.Orders.Edit(currentOrder);
+
+            var currentEggsClasses = Uow.OrderEggClasses.GetAll(x => x.OrderId == order.Id).ToList();
+
+            var currentEggsClassesToDelete = currentEggsClasses.Where(x => !order.OrderEggClasses.Any(y => y.Id == x.Id));
+
+            foreach (var orderEggsClass in currentEggsClassesToDelete)
+            {
+                Uow.OrderEggClasses.Delete(orderEggsClass.Id);
+            }
+
+            foreach (var orderEggsClass in order.OrderEggClasses)
+            {
+                var currentOrderEggsClass =
+                    currentEggsClasses.FirstOrDefault(x => x.Id == orderEggsClass.Id);
+
+                if (currentOrderEggsClass != null)
+                {
+                    if (currentOrderEggsClass.EggClassId != orderEggsClass.EggClassId)
+                    {
+                        throw new ApplicationException();
+                    }
+
+                    currentOrderEggsClass.Dozens = orderEggsClass.Dozens;
+                    currentOrderEggsClass.OrderId = order.Id;
+
+                    Uow.OrderEggClasses.Edit(currentOrderEggsClass);
+                }
+                else
+                {
+                    if (orderEggsClass.Id == Guid.Empty)
+                    {
+                        orderEggsClass.Id = Guid.NewGuid();
+                        Uow.OrderEggClasses.Add(orderEggsClass);
+                    }
+                    else
+                    {
+                        Uow.OrderEggClasses.Delete(orderEggsClass.Id);
+                    }
+                }
+            }
+
+            Uow.Commit();
+        }
     }
 }
+

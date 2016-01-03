@@ -37,10 +37,9 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
@@ -165,37 +164,32 @@
             gridViewTextBoxColumn3.MinWidth = 80;
             gridViewTextBoxColumn3.Name = "CreatedDate";
             gridViewTextBoxColumn3.Width = 80;
-            gridViewTextBoxColumn4.FieldName = "Dozens";
-            gridViewTextBoxColumn4.HeaderText = "Docenas";
+            gridViewTextBoxColumn4.FieldName = "OrderStatusName";
+            gridViewTextBoxColumn4.HeaderText = "Estado";
             gridViewTextBoxColumn4.MinWidth = 60;
-            gridViewTextBoxColumn4.Name = "Dozens";
+            gridViewTextBoxColumn4.Name = "OrderStatusName";
             gridViewTextBoxColumn4.Width = 60;
-            gridViewTextBoxColumn5.FieldName = "OrderStatusName";
-            gridViewTextBoxColumn5.HeaderText = "Estado";
-            gridViewTextBoxColumn5.MinWidth = 60;
-            gridViewTextBoxColumn5.Name = "OrderStatusName";
-            gridViewTextBoxColumn5.Width = 60;
-            gridViewTextBoxColumn6.FieldName = "DepositName";
-            gridViewTextBoxColumn6.HeaderText = "Deposito";
-            gridViewTextBoxColumn6.MinWidth = 100;
-            gridViewTextBoxColumn6.Name = "DepositName";
-            gridViewTextBoxColumn6.Width = 100;
+            gridViewTextBoxColumn5.FieldName = "DepositName";
+            gridViewTextBoxColumn5.HeaderText = "Deposito";
+            gridViewTextBoxColumn5.MinWidth = 100;
+            gridViewTextBoxColumn5.Name = "DepositName";
+            gridViewTextBoxColumn5.Width = 100;
             gridViewDateTimeColumn1.FieldName = "DispatchedDate";
             gridViewDateTimeColumn1.FormatString = "{0: dd/M/yyyy H:mm}";
             gridViewDateTimeColumn1.HeaderText = "Fecha Envio";
             gridViewDateTimeColumn1.MinWidth = 80;
             gridViewDateTimeColumn1.Name = "DispatchedDate";
             gridViewDateTimeColumn1.Width = 80;
-            gridViewTextBoxColumn7.FieldName = "DriverName";
-            gridViewTextBoxColumn7.HeaderText = "Conductor";
+            gridViewTextBoxColumn6.FieldName = "DriverName";
+            gridViewTextBoxColumn6.HeaderText = "Conductor";
+            gridViewTextBoxColumn6.MinWidth = 120;
+            gridViewTextBoxColumn6.Name = "DriverName";
+            gridViewTextBoxColumn6.Width = 120;
+            gridViewTextBoxColumn7.FieldName = "Truck";
+            gridViewTextBoxColumn7.HeaderText = "Camión";
             gridViewTextBoxColumn7.MinWidth = 120;
-            gridViewTextBoxColumn7.Name = "DriverName";
+            gridViewTextBoxColumn7.Name = "Truck";
             gridViewTextBoxColumn7.Width = 120;
-            gridViewTextBoxColumn8.FieldName = "Truck";
-            gridViewTextBoxColumn8.HeaderText = "Camión";
-            gridViewTextBoxColumn8.MinWidth = 120;
-            gridViewTextBoxColumn8.Name = "Truck";
-            gridViewTextBoxColumn8.Width = 120;
             gridViewCommandColumn1.DefaultText = "Armar";
             gridViewCommandColumn1.HeaderText = "";
             gridViewCommandColumn1.MaxWidth = 70;
@@ -246,10 +240,9 @@
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6,
             gridViewDateTimeColumn1,
+            gridViewTextBoxColumn6,
             gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
             gridViewCommandColumn1,
             gridViewCommandColumn2,
             gridViewCommandColumn3,

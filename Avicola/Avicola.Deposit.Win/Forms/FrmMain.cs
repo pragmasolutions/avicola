@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Avicola.Common.Win;
+using Avicola.Deposit.Win.Forms.Order;
 using Avicola.Deposit.Win.Forms.Stock;
 using Avicola.Deposit.Win.Infrastructure;
 using Avicola.Sales.Services.Dtos;
@@ -138,9 +139,9 @@ namespace Avicola.Deposit.Win.Forms
 
         public void LoadEditOrderView(OrderDto order)
         {
-            //var view = FormFactory.Create<FrmEditOrder>();
-            //view.OrderId = order.Id;
-            //LoadView(view);
+            var view = FormFactory.Create<FrmEditOrder>();
+            view.OrderId = order.Id;
+            LoadView(view);
         }
     }
 }
