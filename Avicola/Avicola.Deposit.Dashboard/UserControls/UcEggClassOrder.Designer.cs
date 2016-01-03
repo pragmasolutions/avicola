@@ -39,7 +39,7 @@
             // lblName
             // 
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(4, 4);
+            this.lblName.Location = new System.Drawing.Point(4, -1);
             this.lblName.Margin = new System.Windows.Forms.Padding(4);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(86, 26);
@@ -50,7 +50,7 @@
             // 
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmount.ForeColor = System.Drawing.Color.Gray;
-            this.lblAmount.Location = new System.Drawing.Point(88, 4);
+            this.lblAmount.Location = new System.Drawing.Point(88, -1);
             this.lblAmount.Margin = new System.Windows.Forms.Padding(4);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(101, 25);
@@ -61,7 +61,7 @@
             // 
             this.lblMissingStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMissingStock.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblMissingStock.Location = new System.Drawing.Point(179, 4);
+            this.lblMissingStock.Location = new System.Drawing.Point(179, -1);
             this.lblMissingStock.Margin = new System.Windows.Forms.Padding(4);
             this.lblMissingStock.Name = "lblMissingStock";
             this.lblMissingStock.Size = new System.Drawing.Size(83, 25);
@@ -77,7 +77,7 @@
             this.Controls.Add(this.lblName);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UcEggClassOrder";
-            this.Size = new System.Drawing.Size(205, 39);
+            this.Size = new System.Drawing.Size(205, 29);
             this.Load += new System.EventHandler(this.UcEggClassStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lblName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblAmount)).EndInit();

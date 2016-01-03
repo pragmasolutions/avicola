@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using Avicola.Common.Win;
 using Avicola.Sales.Services.Interfaces;
 using Avicola.Deposit.Win.Model;
+using Avicola.Office.Entities;
+using Avicola.Office.Services.Interfaces;
 using Avicola.Sales.Entities;
 using Framework.WinForm.Comun.Notification;
+using IServiceFactory = Avicola.Sales.Services.Interfaces.IServiceFactory;
 
 namespace Avicola.Deposit.Win.Forms.Stock
 {
@@ -35,10 +39,13 @@ namespace Avicola.Deposit.Win.Forms.Stock
         {
             ucEggsAmount.ShowDozens = false;
 
-            using (var depositService = _serviceFactory.Create<IDepositService>())
+            using (var barnService = _serviceFactory.Create<IBarnService>())
             {
-                var deposits = depositService.GetAll().OrderBy(x => x.Name).ToList();
-                ucDepositSelection.Deposits = deposits;
+                var barns = barnService.GetAll().Where(x => x.StageId == Stage.POSTURE).OrderBy(x => x.Name).ToList();
+                barns.Insert(0, new Barn(){ Id = Guid.Empty, Name = "Seleccione galpón.."});
+                rdlBarn.ValueMember = "Id";
+                rdlBarn.DisplayMember = "Name";
+                rdlBarn.DataSource = barns;
             }
 
             using (var productService = _serviceFactory.Create<IProductService>())
@@ -107,7 +114,7 @@ namespace Avicola.Deposit.Win.Forms.Stock
                 {
                     try
                     {
-                        service.Create(stockEntry, ucDepositSelection.SelectedDeposit.Id, Guid.Parse(ddlProducts.SelectedValue.ToString()));
+                        service.Create(stockEntry, AppSettings.DepositId, Guid.Parse(ddlProducts.SelectedValue.ToString()));
 
                         _messageBoxDisplayService.ShowSuccess("El stock se agregó correctamente.");
 
@@ -143,7 +150,8 @@ namespace Avicola.Deposit.Win.Forms.Stock
                                 : Guid.Parse(ddlShifts.SelectedValue.ToString()),
                 ProviderId = ckdOwn.IsChecked
                                 ? (Guid?)null
-                                : Guid.Parse(ddlProviders.SelectedValue.ToString())
+                                : Guid.Parse(ddlProviders.SelectedValue.ToString()),
+                BarnId = Guid.Parse(rdlBarn.SelectedValue.ToString())
             };
 
             return stockEntry;
@@ -154,9 +162,9 @@ namespace Avicola.Deposit.Win.Forms.Stock
             this.FormErrorProvider.Dispose();
             var result = true;
 
-            if (!ucDepositSelection.ValidateControl())
+            if (Guid.Parse(rdlBarn.SelectedValue.ToString()) == Guid.Empty)
             {
-                this.FormErrorProvider.SetError(ucDepositSelection, "El campo depósito es requerido");
+                this.FormErrorProvider.SetError(rdlBarn, "El campo galpón es requerido");
                 result = false;
             }
 

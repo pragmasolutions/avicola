@@ -38,7 +38,7 @@ namespace Avicola.Deposit.Dashboard
             this.dgvPreparedOrders.ShowGroupPanel = false;
 
             _refreshTimer = new Timer();
-            _refreshTimer.Interval = 60000; //One minute
+            _refreshTimer.Interval = 10000; //One minute
             _refreshTimer.Tick += RefreshTimerOnTick;
             _refreshTimer.Start();
             RefreshDashboard();
@@ -110,7 +110,12 @@ namespace Avicola.Deposit.Dashboard
                 int blockWidth;
                 int blockHeight;
 
-                if (currentOrders.Count < 3)
+                if (currentOrders.Count == 1)
+                {
+                    blockWidth = mainWidth;
+                    blockHeight = mainHeight;
+                }
+                else if (currentOrders.Count < 3)
                 {
                     blockWidth = mainWidth / 2;
                     blockHeight = mainHeight;
@@ -122,13 +127,13 @@ namespace Avicola.Deposit.Dashboard
                 }
                 else if (currentOrders.Count < 7)
                 {
-                    blockWidth = mainWidth / 3;
-                    blockHeight = mainHeight / 2;
+                    blockWidth = mainWidth / 3 - 4;
+                    blockHeight = mainHeight / 2 - 4;
                 }
                 else 
                 {
-                    blockWidth = mainWidth/3;
-                    blockHeight = mainHeight/3;
+                    blockWidth = mainWidth / 3 - 4;
+                    blockHeight = mainHeight / 3 - 4;
                 }
 
                 foreach (var dto in currentOrders)

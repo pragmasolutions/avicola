@@ -12,6 +12,10 @@ namespace Avicola.Deposit.Win.Model
     public class CreateStockEntryModel
     {
         public Guid Id { get; set; }
+
+        [Required]
+        public Guid BarnId { get; set; }
+
         [Required]
         public DateTime CreatedDate { get; set; }
         [Required]
@@ -39,7 +43,9 @@ namespace Avicola.Deposit.Win.Model
                 Boxes = this.Boxes.GetValueOrDefault(),
                 Maples = this.Maples.GetValueOrDefault(),
                 Eggs = this.Eggs.GetValueOrDefault(),
-                IsDeleted = false
+                IsDeleted = false,
+                BarnId = this.BarnId,
+                CurrentEggs = Convert.ToInt32(Maples.GetValueOrDefault() * 30 + Boxes.GetValueOrDefault() * 360 + Eggs.GetValueOrDefault())
             };
 
             if (stockEntry.ProviderId == Guid.Empty)

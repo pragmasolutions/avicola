@@ -16,64 +16,12 @@ namespace Avicola.Deposit.Dashboard.UserControls
     {
         #region Properties
 
-        public DateTime? CreatedDate
-        {
-            get
-            {
-                if (lblCreatedDateValue == null)
-                    return null;
-                return Convert.ToDateTime(lblCreatedDateValue.Text);
-            }
-            set
-            {
-                lblCreatedDateValue.Text = value.GetValueOrDefault().ToShortDateString();
-            }
-        }
-
-        public string Status
-        {
-            get
-            {
-                if (lblStatusValue == null)
-                    return null;
-                return lblStatusValue.Text;
-            }
-            set
-            {
-                lblStatusValue.Text = value;
-            }
-        }
-
-        public string ClientName
-        {
-            get
-            {
-                if (lblClientNameValue == null)
-                    return null;
-                return lblClientNameValue.Text;
-            }
-            set
-            {
-                lblClientNameValue.Text = value;
-            }
-        }
-
-        public string Address
-        {
-            get
-            {
-                if (lblAddressValue == null)
-                    return null;
-                return lblAddressValue.Text;
-            }
-            set
-            {
-                lblAddressValue.Text = value;
-            }
-        }
+        public DateTime? CreatedDate { get; set; }
+        public string Status { get; set; }
+        public string ClientName { get; set; }
+        public string Address { get; set; }
 
         public List<OrderEggClassDto> EggClasses { get; set; }
-
         public List<EggClassStock> CurrentStocks { get; set; }
 
         #endregion
@@ -86,6 +34,10 @@ namespace Avicola.Deposit.Dashboard.UserControls
 
         private void UcOrderBlock_Load(object sender, EventArgs e)
         {
+            lblCreatedDateValue.Text = CreatedDate.GetValueOrDefault().ToShortDateString();
+            lblStatusValue.Text = Status;
+            lblClientNameValue.Text = ClientName;
+            lblAddressValue.Text = Address;
             LoadEggClasses();
         }
 
@@ -93,12 +45,13 @@ namespace Avicola.Deposit.Dashboard.UserControls
         {
             foreach (var dto in EggClasses)
             {
-                flpOrderEggClasses.Controls.Add(new UcEggClassOrder()
+                var uc = new UcEggClassOrder()
                 {
                     EggClassName = dto.EggClassName,
                     Amount = dto.Dozens,
                     CurrentStock = CurrentStocks.FirstOrDefault(x => x.Id == dto.EggClassId).EggsCount.GetValueOrDefault()
-                });
+                };
+                flpOrderEggClasses.Controls.Add(uc);
             }
         }
 

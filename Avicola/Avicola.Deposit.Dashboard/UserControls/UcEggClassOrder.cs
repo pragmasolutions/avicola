@@ -49,10 +49,11 @@ namespace Avicola.Deposit.Dashboard.UserControls
             {
                 _currentStock = value;
                 var difference = _currentStock - Amount * 12;
+                difference = difference*-1;
                 string formattedDifference = _currentStock%12 == 0
                     ? (difference/12).ToString()
                     : (Convert.ToDecimal(difference)/12).ToString("N2");
-                lblMissingStock.Text = difference < 0
+                lblMissingStock.Text = difference > 0
                                         ? String.Format("({0})", formattedDifference)
                                         : string.Empty;
             }
@@ -60,13 +61,19 @@ namespace Avicola.Deposit.Dashboard.UserControls
 
         private void UcEggClassStock_Load(object sender, EventArgs e)
         {
-            lblAmount.Location = new Point(lblName.Location.X + lblName.Width + 8, lblAmount.Location.Y);
-            lblMissingStock.Location = new Point(lblAmount.Location.X + lblAmount.Width + 8, lblAmount.Location.Y);
+            lblAmount.Location = new Point(lblName.Location.X + lblName.Width + 5, lblAmount.Location.Y);
+            lblMissingStock.Location = new Point(lblAmount.Location.X + lblAmount.Width + 5, lblAmount.Location.Y);
 
             if (string.IsNullOrEmpty(lblMissingStock.Text))
             {
                 lblAmount.ForeColor = Color.Green;
+                this.Width = lblAmount.Location.X + lblAmount.Width + 10;
             }
+            else
+            {
+                this.Width = lblMissingStock.Location.X + lblMissingStock.Width + 15;
+            }
+            
         }
 
     }

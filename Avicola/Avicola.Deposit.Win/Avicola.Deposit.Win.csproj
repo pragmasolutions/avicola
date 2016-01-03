@@ -321,12 +321,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Avicola.Common.Win\Avicola.Common.Win.csproj">
       <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>
       <Name>Avicola.Common.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Office.Entities\Avicola.Office.Entities.csproj">
+      <Project>{37f66cd2-c14c-4273-b4c2-09e434f63a7d}</Project>
+      <Name>Avicola.Office.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Office.Services\Avicola.Office.Services.csproj">
+      <Project>{36c18611-d925-45a2-83b8-ae98ec89e74b}</Project>
+      <Name>Avicola.Office.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Avicola.Sales.Entities\Avicola.Sales.Entities.csproj">
       <Project>{8C6CDBD9-F5DE-4FE9-B7C5-178967C2B5AB}</Project>
