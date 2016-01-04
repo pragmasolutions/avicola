@@ -38,6 +38,7 @@
             // 
             // lblName
             // 
+            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(4, -1);
             this.lblName.Margin = new System.Windows.Forms.Padding(4);
@@ -48,6 +49,7 @@
             // 
             // lblAmount
             // 
+            this.lblAmount.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmount.ForeColor = System.Drawing.Color.Gray;
             this.lblAmount.Location = new System.Drawing.Point(88, -1);
@@ -59,6 +61,7 @@
             // 
             // lblMissingStock
             // 
+            this.lblMissingStock.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblMissingStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMissingStock.ForeColor = System.Drawing.Color.Firebrick;
             this.lblMissingStock.Location = new System.Drawing.Point(179, -1);

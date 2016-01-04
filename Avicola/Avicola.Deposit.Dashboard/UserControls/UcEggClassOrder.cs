@@ -18,11 +18,7 @@ namespace Avicola.Deposit.Dashboard.UserControls
             InitializeComponent();
         }
 
-        public string EggClassName
-        {
-            get { return lblName.Text; }
-            set { lblName.Text = value; }
-        }
+        public string EggClassName { get; set; }
 
         private int? _amount;
         public int Amount
@@ -34,7 +30,6 @@ namespace Avicola.Deposit.Dashboard.UserControls
             set
             {
                 _amount = value;
-                lblAmount.Text = String.Format("{0}", _amount);
             }
         }
 
@@ -61,6 +56,17 @@ namespace Avicola.Deposit.Dashboard.UserControls
 
         private void UcEggClassStock_Load(object sender, EventArgs e)
         {
+            lblName.Text = EggClassName;
+            lblAmount.Text = String.Format("{0}", _amount);
+
+            var timer = new Timer {Interval = 100};
+            timer.Tick += TimerOnTick;
+            timer.Start();
+        }
+
+        private void TimerOnTick(object sender, EventArgs eventArgs)
+        {
+            (sender as Timer).Stop();
             lblAmount.Location = new Point(lblName.Location.X + lblName.Width + 5, lblAmount.Location.Y);
             lblMissingStock.Location = new Point(lblAmount.Location.X + lblAmount.Width + 5, lblAmount.Location.Y);
 
@@ -73,8 +79,6 @@ namespace Avicola.Deposit.Dashboard.UserControls
             {
                 this.Width = lblMissingStock.Location.X + lblMissingStock.Width + 15;
             }
-            
         }
-
     }
 }

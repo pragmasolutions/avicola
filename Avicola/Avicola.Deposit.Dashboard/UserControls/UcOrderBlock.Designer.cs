@@ -53,7 +53,7 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(494, 408);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -79,7 +79,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(488, 144);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(488, 114);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // lblClientName
@@ -165,9 +165,9 @@
             // flpOrderEggClasses
             // 
             this.flpOrderEggClasses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpOrderEggClasses.Location = new System.Drawing.Point(3, 153);
+            this.flpOrderEggClasses.Location = new System.Drawing.Point(3, 123);
             this.flpOrderEggClasses.Name = "flpOrderEggClasses";
-            this.flpOrderEggClasses.Size = new System.Drawing.Size(488, 252);
+            this.flpOrderEggClasses.Size = new System.Drawing.Size(488, 282);
             this.flpOrderEggClasses.TabIndex = 1;
             // 
             // UcOrderBlock
