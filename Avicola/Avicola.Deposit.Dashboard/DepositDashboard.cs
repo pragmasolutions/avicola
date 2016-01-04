@@ -56,6 +56,7 @@ namespace Avicola.Deposit.Dashboard
             {
                 //TODO: get egg classes stock
                 var stocks = stockService.GetByEggClass(Configuration.AppSettings.DepositId);
+                flpStock.Controls.Clear();
                 foreach (var stock in stocks)
                 {
                     flpStock.Controls.Add(new UcEggClassStock()
