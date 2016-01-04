@@ -133,7 +133,7 @@ namespace Avicola.Deposit.Win.UserControls
 
         private void SetEggsAmount(int totalEggs)
         {
-            txtAmount.Value = totalEggs;
+            txtAmount.NullableValue = totalEggs;
 
             ddlEggEquivalences.SelectedValue = EggEquivalence.EGGS;
         }
