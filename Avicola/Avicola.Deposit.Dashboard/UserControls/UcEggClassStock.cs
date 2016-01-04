@@ -34,7 +34,12 @@ namespace Avicola.Deposit.Dashboard.UserControls
             set
             {
                 _stock = value;
-                lblStock.Text = String.Format("[{0}]", _stock);
+                int result;
+                var dozens = Convert.ToDecimal(_stock) /12;
+                lblStock.Text = int.TryParse(dozens.ToString(), out result) 
+                        ? String.Format("[{0}]", dozens) 
+                        : String.Format("[{0}]", dozens.ToString("N2"));
+                
             }
         }
 
