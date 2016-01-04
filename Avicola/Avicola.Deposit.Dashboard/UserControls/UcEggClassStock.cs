@@ -18,11 +18,7 @@ namespace Avicola.Deposit.Dashboard.UserControls
             InitializeComponent();
         }
 
-        public string EggClassName
-        {
-            get { return lblName.Text; }
-            set { lblName.Text = value; }
-        }
+        public string EggClassName { get; set; }
 
         private int? _stock;
         public int Stock
@@ -34,18 +30,27 @@ namespace Avicola.Deposit.Dashboard.UserControls
             set
             {
                 _stock = value;
-                int result;
-                var dozens = Convert.ToDecimal(_stock) /12;
-                lblStock.Text = int.TryParse(dozens.ToString(), out result) 
-                        ? String.Format("[{0}]", dozens) 
-                        : String.Format("[{0}]", dozens.ToString("N2"));
-                
             }
         }
 
         private void UcEggClassStock_Load(object sender, EventArgs e)
         {
+            int result;
+            var dozens = Convert.ToDecimal(_stock) / 12;
+            lblStock.Text = int.TryParse(dozens.ToString(), out result)
+                    ? String.Format("[{0}]", dozens)
+                    : String.Format("[{0}]", dozens.ToString("N2"));
+            lblName.Text = EggClassName;
+
+            var timer = new Timer { Interval = 100 };
+            timer.Tick += TimerOnTick;
+            timer.Start();
+        }
+
+        private void TimerOnTick(object sender, EventArgs eventArgs)
+        {
             lblStock.Location = new Point(lblName.Location.X + lblName.Width + 10, lblStock.Location.Y);
+            (sender as Timer).Stop();
         }
     }
 }
