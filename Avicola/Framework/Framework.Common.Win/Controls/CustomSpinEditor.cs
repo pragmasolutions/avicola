@@ -40,6 +40,11 @@ namespace Framework.Common.Win.Controls
             element.RightToLeft = this.RightToLeft == System.Windows.Forms.RightToLeft.Yes;
             this.RootElement.Children.Add(element);
 
+            this.LostFocus += (sender, args) =>
+                              {
+                                  element.SetValueAfterLostFocus();
+                              };
+
             element.ValueChanging += spinElement_ValueChanging;
             element.ValueChanged += spinElement_ValueChanged;
             element.TextChanging += spinElement_TextChanging;
@@ -139,7 +144,7 @@ namespace Framework.Common.Win.Controls
 
             base.OnKeyDown(e);
         }
-
+        
         public override bool Validate()
         {
             if (!this.NullableValue.HasValue)
@@ -181,7 +186,14 @@ namespace Framework.Common.Win.Controls
             this.Validate();
         }
 
-        protected override Type ThemeEffectiveType
+        internal void SetValueAfterLostFocus()
+        {
+            decimal value = this.GetValueFromText();
+            this.NullableValue = this.Constrain(value);
+            this.Validate();
+        }
+
+       protected override Type ThemeEffectiveType
         {
             get
             {
