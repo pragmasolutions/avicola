@@ -17,6 +17,6 @@ namespace Avicola.Office.Services.Interfaces
         List<ReportBatchObservations> BatchObservation(Guid batchId, DateTime? from, DateTime? to);
         List<ReportBatchVaccines> BatchVaccine(Guid batchId, DateTime? from, DateTime? to);
         List<ReportBatchMedicines> BatchMedicine(Guid batchId, DateTime? from, DateTime? to);
-
+        List<ReportOrderDispatchNoteRow> OrderDispatchNote(Guid orderId);
     }
 }

@@ -27,5 +27,14 @@ namespace Avicola.Common.Win
                 return Guid.Parse(value);
             }
         }
+
+        public static bool PrintOrderDispatchNote
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["PrintOrderDispatchNote"];
+                return bool.Parse(value);
+            }
+        }
     }
 }

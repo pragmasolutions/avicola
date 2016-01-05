@@ -38,5 +38,10 @@ namespace Avicola.Office.Services
         {
             return Uow.DbContext.ReportBatchMedicine(batchId, from, to).ToList();
         }
+
+        public List<ReportOrderDispatchNoteRow> OrderDispatchNote(Guid orderId)
+        {
+            return Uow.DbContext.ReportOrderDispatchNote(orderId).ToList();
+        }
     }
 }

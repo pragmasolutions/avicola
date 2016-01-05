@@ -109,6 +109,7 @@
     <Build Include="dbo\Tables\EggEquivalence.sql" />
     <Build Include="dbo\Tables\OrderEggClass.sql" />
     <Build Include="dbo\Stored Procedures\Stock_GetByEggClass.sql" />
+    <Build Include="dbo\Stored Procedures\Report_OrderDispatchNote.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReferenceData\DataLoadType.Data.sql" />

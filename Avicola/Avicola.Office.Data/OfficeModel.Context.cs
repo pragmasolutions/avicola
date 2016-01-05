@@ -125,5 +125,14 @@ namespace Avicola.Office.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportBatchMedicines>("ReportBatchMedicine", batchIdParameter, dateFromParameter, dateToParameter);
         }
+    
+        public virtual ObjectResult<ReportOrderDispatchNoteRow> ReportOrderDispatchNote(Nullable<System.Guid> orderId)
+        {
+            var orderIdParameter = orderId.HasValue ?
+                new ObjectParameter("OrderId", orderId) :
+                new ObjectParameter("OrderId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportOrderDispatchNoteRow>("ReportOrderDispatchNote", orderIdParameter);
+        }
     }
 }

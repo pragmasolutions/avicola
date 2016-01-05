@@ -518,6 +518,9 @@
           <Parameter Name="DateFrom" Type="datetime2" Mode="In" />
           <Parameter Name="DateTo" Type="datetime2" Mode="In" />
         </Function>
+        <Function Name="Report_OrderDispatchNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="StandardGeneticLine_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -952,6 +955,9 @@
             <End Role="Batch" EntitySet="Batches" />
             <End Role="SiloEmptying" EntitySet="SiloEmptyings" />
           </AssociationSet>
+          <FunctionImport Name="ReportOrderDispatchNote" ReturnType="Collection(Avicola.OfficeModel.ReportOrderDispatchNoteRow)">
+            <Parameter Name="OrderId" Mode="In" Type="Guid" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="BatchVaccine">
           <Key>
@@ -1364,6 +1370,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="ReportOrderDispatchNoteRow">
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="DateTime" Name="PreparedDate" Nullable="true" />
+          <Property Type="DateTime" Name="DispatchedDate" Nullable="true" />
+          <Property Type="String" Name="ClientName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="Truck" Nullable="true" MaxLength="263" />
+          <Property Type="String" Name="DriverName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EggClassName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Dozens" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1674,6 +1693,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ReportOrderDispatchNote" FunctionName="Avicola.OfficeModel.Store.Report_OrderDispatchNote">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Avicola.OfficeModel.ReportOrderDispatchNoteRow">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PreparedDate" ColumnName="PreparedDate" />
+                <ScalarProperty Name="DispatchedDate" ColumnName="DispatchedDate" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Truck" ColumnName="Truck" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="EggClassName" ColumnName="EggClassName" />
+                <ScalarProperty Name="Dozens" ColumnName="Dozens" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
