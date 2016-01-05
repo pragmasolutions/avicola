@@ -519,6 +519,9 @@
     <Content Include="Resources\Images\Standards\Peso del huevo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Images\Standards\Producción.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\Standards\Temperatura.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

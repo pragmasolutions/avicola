@@ -25,3 +25,7 @@ SELECT  '41C1FFEE-DE06-4FE4-9DE9-20423822CAC6', N'Agua', 'Litros', 'C4D05E89-69F
 INSERT INTO [dbo].[Standard] ([Id], [Name], [MeasureUnity], [DataLoadTypeId], [StandardTypeId], [AllowDecimal], [AggregateOperation], [CreatedDate], [IsDeleted])
 SELECT  'A755ACAB-4A3C-45FF-B90C-6B851E16A713', N'Peso del huevo', 'g', '939E6F2D-8001-448A-88E2-FEC280FBB055', '7DCE6982-E172-4AFD-9D4D-FADDBA8EBA35', 1, 'AVG', GETDATE(), 0 WHERE NOT EXISTS (SELECT 1 FROM [dbo].[Standard] WHERE Id = 'A755ACAB-4A3C-45FF-B90C-6B851E16A713')
 
+INSERT INTO [dbo].[Standard] ([Id], [Name], [MeasureUnity], [DataLoadTypeId], [StandardTypeId], [AllowDecimal], [AggregateOperation], [CreatedDate], [IsDeleted])
+SELECT  'FCABB235-49D8-4B24-B3DE-D605382F567D', N'Producción', '%', 'C4D05E89-69FB-42F7-8F6A-15C8BC130377', '7DCE6982-E172-4AFD-9D4D-FADDBA8EBA35', 1, 'AVG', GETDATE(), 0 WHERE NOT EXISTS (SELECT 1 FROM [dbo].[Standard] WHERE Id = 'FCABB235-49D8-4B24-B3DE-D605382F567D')
+
+

@@ -39,6 +39,11 @@ namespace Avicola.Production.Win.Forms
 
         public void LoadView(FrmProductionBase form)
         {
+            foreach (IDisposable control in MainContenPanel.Controls)
+            {
+                control.Dispose();
+            }
+
             form.TopLevel = false;
             MainContenPanel.Controls.Clear();
             MainContenPanel.Controls.Add(form);
