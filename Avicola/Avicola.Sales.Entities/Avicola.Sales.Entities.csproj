@@ -95,6 +95,9 @@
     <Compile Include="Provider.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportOrderDispatchNoteRow.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SalesModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

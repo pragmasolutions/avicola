@@ -4,6 +4,7 @@ AS
 BEGIN
 	
 	SELECT 
+		O.DispatchNoteNumber,
 		O.CreatedDate,
 		O.PreparedDate,
 		O.DispatchedDate,

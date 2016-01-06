@@ -74,7 +74,7 @@ namespace Avicola.Deposit.Win.Forms
         {
             using (var rptOrderDispatcNote = new ReportViewer())
             {
-                using (var service = _serviceFactory.Create<IReportService>())
+                using (var service = _serviceFactory.Create<Avicola.Sales.Services.Interfaces.IReportService>())
                 {
                     var orderDispatchNoteData = service.OrderDispatchNote(orderId);
 
@@ -97,7 +97,7 @@ namespace Avicola.Deposit.Win.Forms
             }
         }
 
-        private static void SaveTemporalPdf(ReportViewer rptOrderDispatcNote, List<ReportOrderDispatchNoteRow> orderDispatchNoteData)
+        private static void SaveTemporalPdf(ReportViewer rptOrderDispatcNote, List<Avicola.Sales.Entities.ReportOrderDispatchNoteRow> orderDispatchNoteData)
         {
             rptOrderDispatcNote.LocalReport.DataSources.Clear();
             rptOrderDispatcNote.ProcessingMode = ProcessingMode.Local;

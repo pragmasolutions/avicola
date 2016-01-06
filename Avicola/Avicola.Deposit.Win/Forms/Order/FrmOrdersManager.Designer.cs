@@ -46,6 +46,7 @@
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn4 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn5 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn6 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn7 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -234,6 +235,12 @@
             gridViewCommandColumn6.MinWidth = 30;
             gridViewCommandColumn6.Name = "Delete";
             gridViewCommandColumn6.Width = 30;
+            gridViewCommandColumn7.HeaderText = "";
+            gridViewCommandColumn7.Image = global::Avicola.Deposit.Win.Properties.Resources.Print_16x16;
+            gridViewCommandColumn7.MaxWidth = 30;
+            gridViewCommandColumn7.MinWidth = 30;
+            gridViewCommandColumn7.Name = "PrintDispatchNote";
+            gridViewCommandColumn7.Width = 30;
             this.gvOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -248,7 +255,8 @@
             gridViewCommandColumn3,
             gridViewCommandColumn4,
             gridViewCommandColumn5,
-            gridViewCommandColumn6});
+            gridViewCommandColumn6,
+            gridViewCommandColumn7});
             this.gvOrders.MasterTemplate.EnablePaging = true;
             this.gvOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvOrders.Name = "gvOrders";

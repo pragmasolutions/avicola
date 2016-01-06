@@ -22,6 +22,8 @@ namespace Avicola.Deposit.Win.Forms
 {
     public partial class FrmOrdersManager : FrmDepositBase
     {
+        private const string PrintDispatchNoteColumnName = "PrintDispatchNote";
+
         private readonly IServiceFactory _serviceFactory;
         private readonly IStateController _stateController;
         private IList<OrderStatus> _orderStatuses;
@@ -29,11 +31,13 @@ namespace Avicola.Deposit.Win.Forms
         private Timer _refreshOrdersTimer;
         private OrderStatus _selectedOrderStatus;
 
-        public FrmOrdersManager(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService,IStateController stateController)
+        public FrmOrdersManager(IServiceFactory serviceFactory,IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService,IStateController stateController)
         {
             _serviceFactory = serviceFactory;
 
             _stateController = stateController;
+
+            FormFactory = formFactory;
 
             MessageBoxDisplayService = messageBoxDisplayService;
 
@@ -148,6 +152,7 @@ namespace Avicola.Deposit.Win.Forms
                 gvOrders.Columns[GlobalConstants.FinishOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.CancelBuildedOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.SendOrderColumnName].IsVisible = false;
+                gvOrders.Columns[PrintDispatchNoteColumnName].IsVisible = false;
             }
             else if (status == OrderStatus.IN_PROGESS)
             {
@@ -158,11 +163,24 @@ namespace Avicola.Deposit.Win.Forms
 
                 gvOrders.Columns[GlobalConstants.BuildOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.SendOrderColumnName].IsVisible = false;
+                gvOrders.Columns[PrintDispatchNoteColumnName].IsVisible = false;
             }
             else if (status == OrderStatus.FINISHED)
             {
                 gvOrders.Columns[GlobalConstants.SendOrderColumnName].IsVisible = true;
 
+                gvOrders.Columns[GlobalConstants.BuildOrderColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.FinishOrderColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.CancelBuildedOrderColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.EditColumnName].IsVisible = false;
+                gvOrders.Columns[GlobalConstants.DeleteColumnName].IsVisible = false;
+                gvOrders.Columns[PrintDispatchNoteColumnName].IsVisible = false;
+            }
+            else
+            {
+                gvOrders.Columns[PrintDispatchNoteColumnName].IsVisible = true;
+
+                gvOrders.Columns[GlobalConstants.SendOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.BuildOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.FinishOrderColumnName].IsVisible = false;
                 gvOrders.Columns[GlobalConstants.CancelBuildedOrderColumnName].IsVisible = false;
@@ -227,6 +245,14 @@ namespace Avicola.Deposit.Win.Forms
             else if (commandCell.ColumnInfo.Name == GlobalConstants.EditColumnName)
             {
                 TransitionManager.LoadEditOrderView(order);
+            }
+            else if (commandCell.ColumnInfo.Name == PrintDispatchNoteColumnName)
+            {
+                using (var printForm = FormFactory.Create<FrmPrintDispatchNote>())
+                {
+                    printForm.OrderId = order.Id;
+                    printForm.ShowDialog();
+                }
             }
             else if (commandCell.ColumnInfo.Name == GlobalConstants.DeleteColumnName)
             {

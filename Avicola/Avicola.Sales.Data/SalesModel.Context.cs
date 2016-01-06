@@ -63,5 +63,14 @@ namespace Avicola.Sales.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EggClassStock>("StockGetByEggClass", depositIdParameter);
         }
+    
+        public virtual ObjectResult<ReportOrderDispatchNoteRow> ReportOrderDispatchNote(Nullable<System.Guid> orderId)
+        {
+            var orderIdParameter = orderId.HasValue ?
+                new ObjectParameter("OrderId", orderId) :
+                new ObjectParameter("OrderId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportOrderDispatchNoteRow>("ReportOrderDispatchNote", orderIdParameter);
+        }
     }
 }

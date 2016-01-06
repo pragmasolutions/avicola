@@ -65,6 +65,7 @@
     <Compile Include="Interfaces\IClassificationService.cs" />
     <Compile Include="Interfaces\IEggClassService.cs" />
     <Compile Include="Interfaces\IOrderStatusService.cs" />
+    <Compile Include="Interfaces\IReportService.cs" />
     <Compile Include="Interfaces\IShiftService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IClassificationEggClassService.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Interfaces\IServiceFactory.cs" />
     <Compile Include="Interfaces\ITruckService.cs" />
     <Compile Include="ClientService.cs" />
+    <Compile Include="ReportService.cs" />
     <Compile Include="ShiftService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="ClassificationService.cs" />

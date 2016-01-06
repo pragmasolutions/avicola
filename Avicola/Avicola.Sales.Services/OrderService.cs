@@ -138,6 +138,14 @@ namespace Avicola.Sales.Services
             order.DriverId = driverId;
             order.TruckId = truckId;
 
+            var dispatchNoteNumber =
+                Uow.Orders.GetAll(whereClause: x => x.DispatchNoteNumber.HasValue)
+                    .Select(x => x.DispatchNoteNumber)
+                    .DefaultIfEmpty(1)
+                    .Max();
+
+            order.DispatchNoteNumber = dispatchNoteNumber + 1;
+
             Uow.Commit();
         }
 

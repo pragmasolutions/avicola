@@ -95,6 +95,7 @@
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DispatchNoteNumber" Type="int" />
           <Property Name="ClientId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="25" Nullable="false" />
@@ -402,6 +403,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Report_OrderDispatchNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="Stock_GetByDeposit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DepositId" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -790,6 +794,9 @@
           <FunctionImport Name="StockGetByEggClass" ReturnType="Collection(Avicola.SalesModel.EggClassStock)">
           <Parameter Name="DepositId" Mode="In" Type="Guid" />
           </FunctionImport>
+          <FunctionImport Name="ReportOrderDispatchNote" ReturnType="Collection(Avicola.SalesModel.ReportOrderDispatchNoteRow)">
+            <Parameter Name="OrderId" Mode="In" Type="Guid" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Order">
           <Key>
@@ -814,6 +821,7 @@
           <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="OrderEggClasses" Relationship="Avicola.SalesModel.FK_OrderEggClass_Order" FromRole="Order" ToRole="OrderEggClass" />
+          <Property Name="DispatchNoteNumber" Type="Int32" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -1033,6 +1041,20 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="EggsCount" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="ReportOrderDispatchNoteRow">
+          <Property Type="Int32" Name="DispatchNoteNumber" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="DateTime" Name="PreparedDate" Nullable="true" />
+          <Property Type="DateTime" Name="DispatchedDate" Nullable="true" />
+          <Property Type="String" Name="ClientName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="Truck" Nullable="true" MaxLength="263" />
+          <Property Type="String" Name="DriverName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EggClassName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Dozens" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1163,6 +1185,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="DispatchNoteNumber" ColumnName="DispatchNoteNumber" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
@@ -1265,6 +1288,24 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="EggsCount" ColumnName="EggsCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReportOrderDispatchNote" FunctionName="Avicola.SalesModel.Store.Report_OrderDispatchNote">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Avicola.SalesModel.ReportOrderDispatchNoteRow">
+                <ScalarProperty Name="DispatchNoteNumber" ColumnName="DispatchNoteNumber" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PreparedDate" ColumnName="PreparedDate" />
+                <ScalarProperty Name="DispatchedDate" ColumnName="DispatchedDate" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Truck" ColumnName="Truck" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="EggClassName" ColumnName="EggClassName" />
+                <ScalarProperty Name="Dozens" ColumnName="Dozens" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

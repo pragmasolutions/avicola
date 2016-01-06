@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[Order] (
     [Id]             UNIQUEIDENTIFIER NOT NULL,
     [CreatedDate]    DATETIME2 (7)    NOT NULL,
+	[DispatchNoteNumber]        INT   NULL,
     [ClientId]       UNIQUEIDENTIFIER NOT NULL,
     [Address]        VARCHAR (200)    DEFAULT ('') NOT NULL,
     [PhoneNumber]    VARCHAR (25)     DEFAULT ('') NOT NULL,
