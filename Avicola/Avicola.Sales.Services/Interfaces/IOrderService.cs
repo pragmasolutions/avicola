@@ -18,7 +18,7 @@ namespace Avicola.Sales.Services.Interfaces
         void BuildOrder(Guid orderId, Guid depositId);
         void CancelBuildedOrder(Guid orderId);
         void SendOrder(Guid orderId, Guid driverId, Guid truckId);
-        void FinishOrder(Guid orderId, int boxes, int mapples, int eggsUnits);
+        void FinishOrder(Guid orderId);
         void Create(Order order);
         void Delete(Guid id);
         void Edit(Order order);

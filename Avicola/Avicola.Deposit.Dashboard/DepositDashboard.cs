@@ -15,6 +15,7 @@ using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
 using Avicola.Sales.Services.Interfaces;
 using Framework.Data.Repository;
+using Framework.WinForm.Comun.Notification;
 using Ninject.Infrastructure.Language;
 using Telerik.WinControls.UI;
 
@@ -25,10 +26,13 @@ namespace Avicola.Deposit.Dashboard
         private IServiceFactory _serviceFactory;
         private Timer _refreshTimer;
 
-        public DepositDashboard(IServiceFactory serviceFactory)
+        public DepositDashboard(IServiceFactory serviceFactory,IMessageBoxDisplayService messageBoxDisplayService)
         {
             InitializeComponent();
+
             _serviceFactory = serviceFactory;
+
+            MessageBoxDisplayService = messageBoxDisplayService;
         }
 
         private void DepositDashboard_Load(object sender, EventArgs e)
@@ -96,12 +100,15 @@ namespace Avicola.Deposit.Dashboard
                     LoadMainBlock(pending, stocks);
                 }
             }
-
-            
         }
 
         private void LoadMainBlock(List<OrderDto> currentOrders, List<EggClassStock> stocks)
         {
+            foreach (UcOrderBlock orderControl in flpCurrentOrders.Controls)
+            {
+                orderControl.OrderFinished -= OrderControl_OrderFinished;
+            }
+
             flpCurrentOrders.Controls.Clear();
 
             if (currentOrders.Any())
@@ -139,20 +146,36 @@ namespace Avicola.Deposit.Dashboard
 
                 foreach (var dto in currentOrders)
                 {
-                    flpCurrentOrders.Controls.Add(new UcOrderBlock()
-                    {
-                        CreatedDate = dto.CreatedDate,
-                        ClientName = dto.ClientName,
-                        Address = dto.ClientAddress,
-                        Status = dto.OrderStatusName,
-                        EggClasses = dto.OrderEggClasses,
-                        CurrentStocks = stocks,
-                        Width = blockWidth,
-                        Height = blockHeight
-                    });
+                    var orderControl = new UcOrderBlock()
+                                       {
+                                           OrderId = dto.Id,
+                                           CreatedDate = dto.CreatedDate,
+                                           ClientName = dto.ClientName,
+                                           Address = dto.ClientAddress,
+                                           OrderStatusId = dto.OrderStatusId,
+                                           Status = dto.OrderStatusName,
+                                           EggClasses = dto.OrderEggClasses,
+                                           CurrentStocks = stocks,
+                                           Width = blockWidth,
+                                           Height = blockHeight
+                                       };
+
+                    orderControl.MessageBoxDisplayService = MessageBoxDisplayService;
+                    orderControl.OrderFinished += OrderControl_OrderFinished;
+
+                    flpCurrentOrders.Controls.Add(orderControl);
                 }
             }
-            
+        }
+
+        private void OrderControl_OrderFinished(object sender, Guid orderId)
+        {
+            using (var orderService = _serviceFactory.Create<IOrderService>())
+            {
+                orderService.FinishOrder(orderId);
+
+                RefreshDashboard();
+            }
         }
     }
 }

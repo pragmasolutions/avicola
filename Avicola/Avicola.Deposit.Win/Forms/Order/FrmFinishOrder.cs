@@ -40,7 +40,8 @@ namespace Avicola.Deposit.Win.Forms
                 {
                     using (var service = _serviceFactory.Create<IOrderService>())
                     {
-                        service.FinishOrder(Order.Id, ucEggsAmount.Boxes, ucEggsAmount.Mapples, ucEggsAmount.Eggs);
+                        //service.FinishOrder(Order.Id, ucEggsAmount.Boxes, ucEggsAmount.Mapples, ucEggsAmount.Eggs);
+                        service.FinishOrder(Order.Id);
 
                         TransitionManager.LoadOrdersManagerView();
                     }

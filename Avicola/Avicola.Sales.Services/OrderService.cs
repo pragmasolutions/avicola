@@ -109,13 +109,13 @@ namespace Avicola.Sales.Services
             Uow.Commit();
         }
 
-        public void FinishOrder(Guid orderId, int boxes, int mapples, int eggsUnits)
+        public void FinishOrder(Guid orderId)
         {
             var order = InternalGet(orderId);
 
-            var totalEggs = (boxes * DepositStock.EggsPerBox + mapples * DepositStock.EggsPerMapple + eggsUnits);
+            //var totalEggs = (boxes * DepositStock.EggsPerBox + mapples * DepositStock.EggsPerMapple + eggsUnits);
 
-            var totalDozens = totalEggs / 12M;
+            //var totalDozens = totalEggs / 12M;
 
             //TODO: arreglar esta idiotez con todas las eggClasses
             //if (totalDozens != order.Dozens)
