@@ -217,5 +217,10 @@ namespace Avicola.Sales.Win.Forms.Sales
 
             ddlClient_SelectedIndexChanged(null, null);
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadSalesManagerView();
+        }
     }
 }
