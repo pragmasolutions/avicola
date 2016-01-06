@@ -85,6 +85,7 @@
             this.ucEggsAmount.Name = "ucEggsAmount";
             this.ucEggsAmount.Size = new System.Drawing.Size(384, 314);
             this.ucEggsAmount.TabIndex = 16;
+            this.ucEggsAmount.Visible = false;
             // 
             // btnBackToDepositManager
             // 

@@ -29,11 +29,11 @@ namespace Avicola.Deposit.Win.Forms
 
         private void btnFinishOrder_Click(object sender, EventArgs e)
         {
-            if (ucEggsAmount.TotalDozens != Order.Dozens)
-            {
-                _messageBoxDisplayService.ShowError("El total de docenas debe ser igual al solicitado en el pedido");
-                return;
-            }
+            //if (ucEggsAmount.TotalDozens != Order.Dozens)
+            //{
+            //    _messageBoxDisplayService.ShowError("El total de docenas debe ser igual al solicitado en el pedido");
+            //    return;
+            //}
 
             _messageBoxDisplayService.ShowConfirmationDialog("Esta seguro que desea finalizar el armado este pedido?", "Finalizar Pedido",
                 () =>
