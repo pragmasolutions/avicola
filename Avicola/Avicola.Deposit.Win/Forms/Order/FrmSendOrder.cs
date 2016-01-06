@@ -80,10 +80,21 @@ namespace Avicola.Deposit.Win.Forms
 
                     SaveTemporalPdf(rptOrderDispatcNote, orderDispatchNoteData);
 
-                    //Send the pdf to the printer
-                    DirectPrintHelper.SendToPrinter(string.Format(@"{0}\" + OrderDispatchNoteTemporalFileName, Application.StartupPath));
-
-                    RemoveTemporalPdf();
+                    try
+                    {
+                        //Send the pdf to the printer
+                        DirectPrintHelper.SendToPrinter(string.Format(@"{0}\" + OrderDispatchNoteTemporalFileName,
+                            Application.StartupPath));
+                    }
+                    catch (Exception ex)
+                    {
+                        _messageBoxDisplayService.ShowError(
+                            "Ha ocurrido un error al intentar imprimir el remito de envío. Por favor verifique que la impresora este correctamente conectada y configurada");
+                    }
+                    finally
+                    {
+                        RemoveTemporalPdf();
+                    }
                 }
             }
         }
