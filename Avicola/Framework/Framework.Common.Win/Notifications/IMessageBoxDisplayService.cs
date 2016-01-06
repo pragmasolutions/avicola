@@ -16,5 +16,6 @@ namespace Framework.WinForm.Comun.Notification
         void ShowSuccess(string message);
         void ShowInfo(string message);
         void ShowConfirmationDialog(string message, string title, Action okAction);
+        void ShowConfirmationDialog(string message, string title, Action okAction, Action cancelAction);
     }
 }

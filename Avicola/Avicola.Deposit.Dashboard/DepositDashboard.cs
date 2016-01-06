@@ -106,7 +106,10 @@ namespace Avicola.Deposit.Dashboard
         {
             foreach (UcOrderBlock orderControl in flpCurrentOrders.Controls)
             {
-                orderControl.OrderFinished -= OrderControl_OrderFinished;
+                if (!orderControl.IsConfirmationPending)
+                {
+                    orderControl.OrderFinished -= OrderControl_OrderFinished;
+                }
             }
 
             flpCurrentOrders.Controls.Clear();
@@ -170,6 +173,13 @@ namespace Avicola.Deposit.Dashboard
 
         private void OrderControl_OrderFinished(object sender, Guid orderId)
         {
+            var orderControl = sender as UcOrderBlock;
+
+            if (orderControl != null)
+            {
+                orderControl.OrderFinished -= OrderControl_OrderFinished;
+            }
+
             using (var orderService = _serviceFactory.Create<IOrderService>())
             {
                 orderService.FinishOrder(orderId);

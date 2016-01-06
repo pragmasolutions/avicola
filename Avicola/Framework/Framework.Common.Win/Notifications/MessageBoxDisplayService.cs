@@ -14,7 +14,7 @@ namespace Framework.WinForm.Comun.Notification
     {
         public MessageBoxDisplayService()
         {
-            
+
         }
 
         public void Show(string message, string title)
@@ -26,7 +26,7 @@ namespace Framework.WinForm.Comun.Notification
         {
             RadMessageBox.Instance.ThemeName = "TelerikMetroBlue";
             RadMessageBox.Instance.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RadMessageBox.Show(owner, message,title);
+            RadMessageBox.Show(owner, message, title);
         }
 
         public void ShowError(string message)
@@ -39,7 +39,7 @@ namespace Framework.WinForm.Comun.Notification
             };
             using (var form = new FrmGenericMessage(msjerror))
             {
-                form.ShowDialog(); 
+                form.ShowDialog();
             }
         }
 
@@ -73,6 +73,11 @@ namespace Framework.WinForm.Comun.Notification
 
         public void ShowConfirmationDialog(string message, string title, Action okAction)
         {
+            ShowConfirmationDialog(message, title, okAction, null);
+        }
+
+        public void ShowConfirmationDialog(string message, string title, Action okAction, Action cancelAction)
+        {
             RadMessageBox.Instance.ThemeName = "TelerikMetroBlue";
             RadMessageBox.Instance.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             var result = RadMessageBox.Show(Form.ActiveForm, message, title, MessageBoxButtons.OKCancel);
@@ -82,6 +87,13 @@ namespace Framework.WinForm.Comun.Notification
                 if (okAction != null)
                 {
                     okAction();
+                }
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                if (cancelAction != null)
+                {
+                    cancelAction();
                 }
             }
         }

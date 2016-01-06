@@ -25,6 +25,8 @@ namespace Avicola.Deposit.Dashboard.UserControls
         public string ClientName { get; set; }
         public string Address { get; set; }
 
+        public bool IsConfirmationPending { get; set; }
+
         public List<OrderEggClassDto> EggClasses { get; set; }
         public List<EggClassStock> CurrentStocks { get; set; }
 
@@ -100,10 +102,18 @@ namespace Avicola.Deposit.Dashboard.UserControls
 
         private void btnFinishOrder_Click(object sender, EventArgs e)
         {
+            IsConfirmationPending = true;
+
             MessageBoxDisplayService.ShowConfirmationDialog("¿Esta Seguro que desea finalizar este Pedído?", "Finalizar Pedído",
                 () =>
                 {
+                    IsConfirmationPending = false;
+
                     OnOrderFinished(OrderId);
+                },
+                () =>
+                {
+                    IsConfirmationPending = false;
                 });
         }
     }
