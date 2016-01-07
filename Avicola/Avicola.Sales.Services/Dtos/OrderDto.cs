@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Avicola.Sales.Entities;
 using Framework.Common.Mapping;
 
 namespace Avicola.Sales.Services.Dtos
 {
-    public class OrderDto : IMapFrom<Order>
+    public class OrderDto : IHaveCustomMappings 
     {
         public System.Guid Id { get; set; }
         public string Address { get; set; }
@@ -30,5 +31,12 @@ namespace Avicola.Sales.Services.Dtos
         public int? Eggs { get; set; }
         public string ClientAddress { get; set; }
         public List<OrderEggClassDto> OrderEggClasses { get; set; }
+
+        public void CreateMappings(IConfiguration configuration)
+        {
+            Mapper.CreateMap<Order, OrderDto>()
+                .ForMember(x => x.Dozens,
+                    opt => opt.ResolveUsing(x => x.OrderEggClasses.Select(y => y.Dozens).DefaultIfEmpty(0).Sum()));
+        }
     }
 }
