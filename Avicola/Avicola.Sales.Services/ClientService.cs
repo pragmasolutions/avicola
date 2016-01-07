@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using AutoMapper.QueryableExtensions;
 using Avicola.Sales.Data.Interfaces;
 using Avicola.Sales.Entities;
@@ -27,7 +29,7 @@ namespace Avicola.Sales.Services
             return Uow.Clients.GetAll();
         }
 
-        public List<ClientDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)
+        public Task<List<ClientDto>> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize, out int pageTotal)
         {
             var pagingCriteria = new PagingCriteria();
 
@@ -45,7 +47,7 @@ namespace Avicola.Sales.Services
 
             pageTotal = results.PagedMetadata.TotalItemCount;
 
-            return results.Entities.Project().To<ClientDto>().ToList();
+            return results.Entities.Project().To<ClientDto>().ToListAsync();
         }
 
         public Client GetById(Guid id)

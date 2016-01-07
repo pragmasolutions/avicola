@@ -78,21 +78,21 @@
             // 
             this.txtAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(40, 232);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAddress.Location = new System.Drawing.Point(30, 188);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAddress.MaxLength = 50;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(252, 33);
+            this.txtAddress.Size = new System.Drawing.Size(189, 28);
             this.txtAddress.TabIndex = 3;
             this.txtAddress.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel11
             // 
             this.radLabel11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel11.Location = new System.Drawing.Point(42, 201);
-            this.radLabel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radLabel11.Location = new System.Drawing.Point(32, 163);
+            this.radLabel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radLabel11.Name = "radLabel11";
-            this.radLabel11.Size = new System.Drawing.Size(89, 29);
+            this.radLabel11.Size = new System.Drawing.Size(71, 24);
             this.radLabel11.TabIndex = 98;
             this.radLabel11.Text = "Dirección";
             this.radLabel11.ThemeName = "TelerikMetroBlue";
@@ -101,11 +101,11 @@
             // 
             this.txtReferent.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtReferent.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReferent.Location = new System.Drawing.Point(353, 322);
-            this.txtReferent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtReferent.Location = new System.Drawing.Point(265, 262);
+            this.txtReferent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtReferent.MaxLength = 50;
             this.txtReferent.Name = "txtReferent";
-            this.txtReferent.Size = new System.Drawing.Size(236, 33);
+            this.txtReferent.Size = new System.Drawing.Size(177, 28);
             this.txtReferent.TabIndex = 9;
             this.txtReferent.ThemeName = "TelerikMetroBlue";
             // 
@@ -113,21 +113,21 @@
             // 
             this.txtWebsite.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtWebsite.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWebsite.Location = new System.Drawing.Point(40, 405);
-            this.txtWebsite.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtWebsite.Location = new System.Drawing.Point(30, 329);
+            this.txtWebsite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtWebsite.MaxLength = 50;
             this.txtWebsite.Name = "txtWebsite";
-            this.txtWebsite.Size = new System.Drawing.Size(252, 33);
+            this.txtWebsite.Size = new System.Drawing.Size(189, 28);
             this.txtWebsite.TabIndex = 5;
             this.txtWebsite.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel8
             // 
             this.radLabel8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel8.Location = new System.Drawing.Point(355, 291);
-            this.radLabel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radLabel8.Location = new System.Drawing.Point(266, 236);
+            this.radLabel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radLabel8.Name = "radLabel8";
-            this.radLabel8.Size = new System.Drawing.Size(91, 29);
+            this.radLabel8.Size = new System.Drawing.Size(73, 24);
             this.radLabel8.TabIndex = 94;
             this.radLabel8.Text = "Referente";
             this.radLabel8.ThemeName = "TelerikMetroBlue";
@@ -136,11 +136,11 @@
             // 
             this.txtCellPhone.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCellPhone.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCellPhone.Location = new System.Drawing.Point(355, 232);
-            this.txtCellPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCellPhone.Location = new System.Drawing.Point(266, 188);
+            this.txtCellPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCellPhone.MaxLength = 50;
             this.txtCellPhone.Name = "txtCellPhone";
-            this.txtCellPhone.Size = new System.Drawing.Size(236, 33);
+            this.txtCellPhone.Size = new System.Drawing.Size(177, 28);
             this.txtCellPhone.TabIndex = 8;
             this.txtCellPhone.ThemeName = "TelerikMetroBlue";
             // 
@@ -148,21 +148,21 @@
             // 
             this.txtCity.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCity.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.Location = new System.Drawing.Point(40, 145);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCity.Location = new System.Drawing.Point(30, 118);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCity.MaxLength = 50;
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(252, 33);
+            this.txtCity.Size = new System.Drawing.Size(189, 28);
             this.txtCity.TabIndex = 2;
             this.txtCity.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel6
             // 
             this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel6.Location = new System.Drawing.Point(42, 374);
-            this.radLabel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radLabel6.Location = new System.Drawing.Point(32, 304);
+            this.radLabel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radLabel6.Name = "radLabel6";
-            this.radLabel6.Size = new System.Drawing.Size(91, 29);
+            this.radLabel6.Size = new System.Drawing.Size(73, 24);
             this.radLabel6.TabIndex = 94;
             this.radLabel6.Text = "Sitio Web";
             this.radLabel6.ThemeName = "TelerikMetroBlue";
@@ -170,10 +170,10 @@
             // radLabel9
             // 
             this.radLabel9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel9.Location = new System.Drawing.Point(42, 114);
-            this.radLabel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radLabel9.Location = new System.Drawing.Point(32, 93);
+            this.radLabel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radLabel9.Name = "radLabel9";
-            this.radLabel9.Size = new System.Drawing.Size(69, 29);
+            this.radLabel9.Size = new System.Drawing.Size(56, 24);
             this.radLabel9.TabIndex = 92;
             this.radLabel9.Text = "Ciudad";
             this.radLabel9.ThemeName = "TelerikMetroBlue";
@@ -181,10 +181,10 @@
             // radLabel4
             // 
             this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.Location = new System.Drawing.Point(357, 201);
-            this.radLabel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radLabel4.Location = new System.Drawing.Point(268, 163);
+            this.radLabel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(68, 29);
+            this.radLabel4.Size = new System.Drawing.Size(55, 24);
             this.radLabel4.TabIndex = 94;
             this.radLabel4.Text = "Celular";
             this.radLabel4.ThemeName = "TelerikMetroBlue";
@@ -193,11 +193,11 @@
             // 
             this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(40, 322);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmail.Location = new System.Drawing.Point(30, 262);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(252, 33);
+            this.txtEmail.Size = new System.Drawing.Size(189, 28);
             this.txtEmail.TabIndex = 4;
             this.txtEmail.ThemeName = "TelerikMetroBlue";
             // 
@@ -205,21 +205,21 @@
             // 
             this.txtPhoneNumber2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPhoneNumber2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber2.Location = new System.Drawing.Point(354, 145);
-            this.txtPhoneNumber2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPhoneNumber2.Location = new System.Drawing.Point(266, 118);
+            this.txtPhoneNumber2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPhoneNumber2.MaxLength = 50;
             this.txtPhoneNumber2.Name = "txtPhoneNumber2";
-            this.txtPhoneNumber2.Size = new System.Drawing.Size(237, 33);
+            this.txtPhoneNumber2.Size = new System.Drawing.Size(178, 28);
             this.txtPhoneNumber2.TabIndex = 7;
             this.txtPhoneNumber2.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel7
             // 
             this.radLabel7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel7.Location = new System.Drawing.Point(42, 291);
-            this.radLabel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radLabel7.Location = new System.Drawing.Point(32, 236);
+            this.radLabel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radLabel7.Name = "radLabel7";
-            this.radLabel7.Size = new System.Drawing.Size(54, 29);
+            this.radLabel7.Size = new System.Drawing.Size(44, 24);
             this.radLabel7.TabIndex = 92;
             this.radLabel7.Text = "Email";
             this.radLabel7.ThemeName = "TelerikMetroBlue";
@@ -227,10 +227,10 @@
             // radLabel5
             // 
             this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(356, 114);
-            this.radLabel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radLabel5.Location = new System.Drawing.Point(267, 93);
+            this.radLabel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(99, 29);
+            this.radLabel5.Size = new System.Drawing.Size(80, 24);
             this.radLabel5.TabIndex = 92;
             this.radLabel5.Text = "Teléfono 2";
             this.radLabel5.ThemeName = "TelerikMetroBlue";
@@ -239,21 +239,21 @@
             // 
             this.txtPhoneNumber1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPhoneNumber1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber1.Location = new System.Drawing.Point(354, 59);
-            this.txtPhoneNumber1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPhoneNumber1.Location = new System.Drawing.Point(266, 48);
+            this.txtPhoneNumber1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPhoneNumber1.MaxLength = 50;
             this.txtPhoneNumber1.Name = "txtPhoneNumber1";
-            this.txtPhoneNumber1.Size = new System.Drawing.Size(237, 33);
+            this.txtPhoneNumber1.Size = new System.Drawing.Size(178, 28);
             this.txtPhoneNumber1.TabIndex = 6;
             this.txtPhoneNumber1.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(356, 28);
-            this.radLabel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radLabel3.Location = new System.Drawing.Point(267, 23);
+            this.radLabel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(99, 29);
+            this.radLabel3.Size = new System.Drawing.Size(80, 24);
             this.radLabel3.TabIndex = 90;
             this.radLabel3.Text = "Teléfono 1";
             this.radLabel3.ThemeName = "TelerikMetroBlue";
@@ -262,21 +262,21 @@
             // 
             this.txtName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(40, 59);
-            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtName.Location = new System.Drawing.Point(30, 48);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(252, 33);
+            this.txtName.Size = new System.Drawing.Size(189, 28);
             this.txtName.TabIndex = 1;
             this.txtName.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(42, 28);
-            this.radLabel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radLabel1.Location = new System.Drawing.Point(32, 23);
+            this.radLabel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(79, 29);
+            this.radLabel1.Size = new System.Drawing.Size(64, 24);
             this.radLabel1.TabIndex = 86;
             this.radLabel1.Text = "Nombre";
             this.radLabel1.ThemeName = "TelerikMetroBlue";
@@ -285,10 +285,10 @@
             // 
             this.BtnGuardar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardar.Location = new System.Drawing.Point(376, 489);
-            this.BtnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnGuardar.Location = new System.Drawing.Point(239, 397);
+            this.BtnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.Size = new System.Drawing.Size(100, 30);
+            this.BtnGuardar.Size = new System.Drawing.Size(100, 24);
             this.BtnGuardar.TabIndex = 10;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.ThemeName = "TelerikMetroBlue";
@@ -298,10 +298,10 @@
             // 
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(489, 489);
-            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnCancelar.Location = new System.Drawing.Point(343, 397);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(100, 30);
+            this.BtnCancelar.Size = new System.Drawing.Size(100, 24);
             this.BtnCancelar.TabIndex = 11;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.ThemeName = "TelerikMetroBlue";
@@ -313,9 +313,9 @@
             // 
             // FrmCreateEditClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 564);
+            this.ClientSize = new System.Drawing.Size(474, 438);
             this.ControlBox = false;
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.radLabel11);
@@ -338,7 +338,7 @@
             this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.BtnCancelar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "FrmCreateEditClient";
             // 

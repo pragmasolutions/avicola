@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
 
@@ -14,7 +15,7 @@ namespace Avicola.Sales.Services.Interfaces
 
         Client GetByName(string name);
 
-        List<ClientDto> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize,
+        Task<List<ClientDto>> GetAll(string sortBy, string sortDirection, string criteria, int pageIndex, int pageSize,
             out int pageTotal);
 
         void Create(Client geneticLine);

@@ -43,14 +43,16 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnBack = new Telerik.WinControls.UI.RadButton();
-            this.lbTitle = new Telerik.WinControls.UI.RadLabel();
             this.BtnAgregar = new Telerik.WinControls.UI.RadButton();
+            this.lbTitle = new Telerik.WinControls.UI.RadLabel();
+            this.wbClients = new Telerik.WinControls.UI.RadWaitingBar();
             this.gvClients = new Telerik.WinControls.UI.RadGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnAgregar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbClients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClients.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -66,72 +68,87 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1189, 534);
             this.tableLayoutPanel1.TabIndex = 85;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(this.btnBack, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lbTitle, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.BtnAgregar, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.BtnAgregar, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lbTitle, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.wbClients, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1183, 44);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1183, 74);
             this.tableLayoutPanel2.TabIndex = 86;
             // 
             // btnBack
             // 
             this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(2, 10);
+            this.btnBack.Location = new System.Drawing.Point(2, 25);
             this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 24);
+            this.btnBack.Size = new System.Drawing.Size(100, 24);
             this.btnBack.TabIndex = 83;
             this.btnBack.Text = "Volver";
             this.btnBack.ThemeName = "TelerikMetroBlue";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // lbTitle
-            // 
-            this.lbTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(161, 3);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(115, 38);
-            this.lbTitle.TabIndex = 83;
-            this.lbTitle.Text = "Clientes";
-            // 
             // BtnAgregar
             // 
             this.BtnAgregar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnAgregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAgregar.Location = new System.Drawing.Point(81, 10);
+            this.BtnAgregar.Location = new System.Drawing.Point(1081, 25);
             this.BtnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(75, 24);
+            this.BtnAgregar.Size = new System.Drawing.Size(100, 24);
             this.BtnAgregar.TabIndex = 82;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.ThemeName = "TelerikMetroBlue";
             this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
+            // lbTitle
+            // 
+            this.lbTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(107, 16);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(115, 41);
+            this.lbTitle.TabIndex = 83;
+            this.lbTitle.Text = "Clientes";
+            // 
+            // wbClients
+            // 
+            this.wbClients.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.wbClients.Location = new System.Drawing.Point(948, 25);
+            this.wbClients.Name = "wbClients";
+            this.wbClients.Size = new System.Drawing.Size(128, 24);
+            this.wbClients.TabIndex = 84;
+            this.wbClients.Text = "radWaitingBar1";
+            this.wbClients.Visible = false;
+            this.wbClients.WaitingSpeed = 100;
+            this.wbClients.WaitingStep = 10;
+            // 
             // gvClients
             // 
             this.gvClients.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gvClients.Location = new System.Drawing.Point(3, 53);
+            this.gvClients.Location = new System.Drawing.Point(3, 83);
             // 
             // 
             // 
             this.gvClients.MasterTemplate.AllowAddNewRow = false;
+            this.gvClients.MasterTemplate.AllowColumnReorder = false;
             this.gvClients.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.FieldName = "Name";
             gridViewTextBoxColumn1.HeaderText = "Nombre";
@@ -215,12 +232,13 @@
             gridViewTextBoxColumn9,
             gridViewCommandColumn1,
             gridViewCommandColumn2});
+            this.gvClients.MasterTemplate.EnableFiltering = true;
             this.gvClients.MasterTemplate.EnablePaging = true;
             this.gvClients.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gvClients.Name = "gvClients";
             this.gvClients.ReadOnly = true;
             this.gvClients.ShowGroupPanel = false;
-            this.gvClients.Size = new System.Drawing.Size(1183, 478);
+            this.gvClients.Size = new System.Drawing.Size(1183, 448);
             this.gvClients.TabIndex = 84;
             this.gvClients.PageChanged += new System.EventHandler<System.EventArgs>(this.gvClients_PageChanged);
             this.gvClients.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvClients_CommandCellClick);
@@ -245,8 +263,9 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnAgregar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbClients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClients.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -262,5 +281,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Telerik.WinControls.UI.RadButton btnBack;
         private Telerik.WinControls.UI.RadLabel lbTitle;
+        private Telerik.WinControls.UI.RadWaitingBar wbClients;
     }
 }

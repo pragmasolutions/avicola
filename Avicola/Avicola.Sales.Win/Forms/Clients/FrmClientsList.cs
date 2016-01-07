@@ -32,19 +32,27 @@ namespace Avicola.Sales.Win.Forms
             this.gvClients.CellFormatting += Grilla_CellFormatting;
         }
 
-        private void FrmBatchMedicineList_Load(object sender, EventArgs e)
+        private async void FrmBatchMedicineList_Load(object sender, EventArgs e)
         {
             LoadClients();
         }
 
-        private void LoadClients()
+        private async void LoadClients()
         {
+            wbClients.Visible = true;
+
+            wbClients.StartWaiting();
+
             using (var service = _serviceFactory.Create<IClientService>())
             {
                 int pageTotal;
-                var clients = service.GetAll("Name", "ASC", null, 1, gvClients.PageSize, out pageTotal);
+                var clients = await service.GetAll("Name", "ASC", null, 1, gvClients.PageSize, out pageTotal);
                 gvClients.DataSource = clients;
             }
+
+            wbClients.StopWaiting();
+
+            wbClients.Visible = false;
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
