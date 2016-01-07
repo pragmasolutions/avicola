@@ -211,7 +211,7 @@ namespace Avicola.Deposit.Win.Forms.Order
             else
             {
                 var frm = FormFactory.Create<FrmCreateEditClient>(Guid.Empty);
-                frm.ClientCreated += new EventHandler<Client>(ClientCreated);
+                frm.ClientSaved += new EventHandler<Client>(ClientCreated);
                 frm.ShowDialog();
             }
         }

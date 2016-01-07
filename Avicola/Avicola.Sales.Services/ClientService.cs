@@ -76,6 +76,7 @@ namespace Avicola.Sales.Services
             currentClient.Tel2 = client.Tel2;
             currentClient.CellPhone = client.CellPhone;
             currentClient.Email = client.Email;
+            currentClient.WebSite = client.WebSite;
 
             Uow.Clients.Edit(currentClient);
             Uow.Commit();

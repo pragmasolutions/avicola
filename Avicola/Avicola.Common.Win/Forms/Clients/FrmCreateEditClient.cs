@@ -27,6 +27,17 @@ namespace Avicola.Common.Win.Forms.Clients
                 using (var service = _serviceFactory.Create<IClientService>())
                 {
                     _client = service.GetById(_clientId);
+
+                    txtAddress.Text = _client.Address;
+                    txtCellPhone.Text = _client.CellPhone;
+                    txtCity.Text = _client.City;
+                    Name = txtName.Text = _client.Name;
+                    txtEmail.Text = _client.Email;
+                    txtReferent.Text = _client.Referent;
+                    txtPhoneNumber1.Text = _client.Tel1;
+                    txtPhoneNumber2.Text = _client.Tel2;
+                    txtWebsite.Text = _client.WebSite;
+
                     this.Text = "Editar Cliente";
                 }
             }
@@ -39,6 +50,7 @@ namespace Avicola.Common.Win.Forms.Clients
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             var esValido = this.ValidarForm();
+
             if (!esValido)
             {
                 this.DialogResult = DialogResult.None;
@@ -47,37 +59,34 @@ namespace Avicola.Common.Win.Forms.Clients
             {
                 using (var service = _serviceFactory.Create<IClientService>())
                 {
-                    
+
+                    var model = GetClientCreate();
+
+                    var client = model.ToClient();
+
                     if (_clientId == Guid.Empty)
                     {
-                        var model = GetClientCreate();
-                        var client = model.ToClient();
                         service.Create(client);
 
-                        OnClientCreated(client);
+                        OnClientSaved(client);
                     }
                     else
                     {
-                        GetClientEdit();
-                        service.Edit(_client);
-                        OnClientCreated(_client);
+                        service.Edit(client);
+
+                        OnClientSaved(client);
                     }
                     this.Close();
-                    
+
                 }
             }
-        }
-
-        private void GetClientEdit()
-        {
-            //_client.Date = dtpDate.Value.ToZeroTime();
         }
 
         private ClientModel GetClientCreate()
         {
             var client = new ClientModel()
             {
-                Id = Guid.NewGuid(),
+                Id = _clientId == Guid.Empty ? Guid.NewGuid() : _clientId,
                 Address = txtAddress.Text,
                 CellPhone = txtCellPhone.Text,
                 City = txtCity.Text,
@@ -110,12 +119,12 @@ namespace Avicola.Common.Win.Forms.Clients
             return GetClientCreate();
         }
 
-        public event EventHandler<Client> ClientCreated;
-        private void OnClientCreated(Client Client)
+        public event EventHandler<Client> ClientSaved;
+        private void OnClientSaved(Client client)
         {
-            if (ClientCreated != null)
+            if (ClientSaved != null)
             {
-                ClientCreated(this, Client);
+                ClientSaved(this, client);
             }
         }
         private void BtnCancelar_Click(object sender, EventArgs e)

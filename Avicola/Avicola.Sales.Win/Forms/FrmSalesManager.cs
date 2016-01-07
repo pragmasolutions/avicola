@@ -36,5 +36,9 @@ namespace Avicola.Sales.Win.Forms
             TransitionManager.LoadHistoryManagerView();
         }
 
+        private void btnClients_Click(object sender, EventArgs e)
+        {
+            TransitionManager.LoadClientsView();
+        }
     }
 }

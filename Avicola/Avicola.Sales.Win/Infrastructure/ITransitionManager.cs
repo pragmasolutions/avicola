@@ -7,5 +7,7 @@ namespace Avicola.Sales.Win.Infrastructure
         void LoadSalesManagerView();
         void LoadNewSaleView();
         void LoadHistoryManagerView();
+
+        void LoadClientsView();
     }
 }

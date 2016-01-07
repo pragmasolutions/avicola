@@ -87,5 +87,11 @@ namespace Avicola.Sales.Win.Forms
             var view = FormFactory.Create<FrmNewSale>();
             LoadView(view);
         }
+
+        public void LoadClientsView()
+        {
+            var view = FormFactory.Create<FrmClientsList>();
+            LoadView(view);
+        }
     }
 }
