@@ -46,6 +46,10 @@ namespace Avicola.Sales.Win.UserControls
                 var driver = ddlDrivers.SelectedItem.DataBoundItem as Driver;
                 return driver != null && driver.Id != Guid.Empty ? driver : null;
             }
+            set
+            {
+                ddlDrivers.SelectedValue = value != null ? value.Id : Guid.Empty;
+            }
         }
 
         protected void OnDriverSelected(Driver item)

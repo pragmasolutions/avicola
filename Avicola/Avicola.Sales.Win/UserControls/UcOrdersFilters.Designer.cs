@@ -37,6 +37,7 @@
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
+            this.btnClearFilters = new Telerik.WinControls.UI.RadButton();
             this.ucTruckSelection = new Avicola.Sales.Win.UserControls.UcTruckSelection();
             this.ucDriverSelection = new Avicola.Sales.Win.UserControls.UcDriverSelection();
             this.ucOrderStatusSelection = new Avicola.Sales.Win.UserControls.UcOrderStatusSelection();
@@ -49,12 +50,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClearFilters)).BeginInit();
             this.SuspendLayout();
             // 
             // txtClient
             // 
             this.txtClient.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClient.Location = new System.Drawing.Point(16, 39);
+            this.txtClient.Location = new System.Drawing.Point(0, 39);
             this.txtClient.Name = "txtClient";
             this.txtClient.Size = new System.Drawing.Size(224, 28);
             this.txtClient.TabIndex = 1;
@@ -63,7 +65,7 @@
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(16, 12);
+            this.radLabel2.Location = new System.Drawing.Point(0, 12);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(55, 24);
             this.radLabel2.TabIndex = 4;
@@ -72,7 +74,7 @@
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(16, 73);
+            this.radLabel3.Location = new System.Drawing.Point(0, 73);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(53, 24);
             this.radLabel3.TabIndex = 4;
@@ -81,7 +83,7 @@
             // radLabel4
             // 
             this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.Location = new System.Drawing.Point(260, 12);
+            this.radLabel4.Location = new System.Drawing.Point(247, 12);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(50, 24);
             this.radLabel4.TabIndex = 6;
@@ -91,7 +93,7 @@
             // 
             this.dtpFromDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFromDate.Location = new System.Drawing.Point(260, 39);
+            this.dtpFromDate.Location = new System.Drawing.Point(247, 39);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(103, 28);
             this.dtpFromDate.TabIndex = 7;
@@ -103,7 +105,7 @@
             // 
             this.dtpToDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpToDate.Location = new System.Drawing.Point(381, 39);
+            this.dtpToDate.Location = new System.Drawing.Point(368, 39);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(103, 28);
             this.dtpToDate.TabIndex = 9;
@@ -114,7 +116,7 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(381, 12);
+            this.radLabel1.Location = new System.Drawing.Point(368, 12);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(46, 24);
             this.radLabel1.TabIndex = 8;
@@ -123,7 +125,7 @@
             // radLabel5
             // 
             this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(505, 12);
+            this.radLabel5.Location = new System.Drawing.Point(492, 12);
             this.radLabel5.Name = "radLabel5";
             this.radLabel5.Size = new System.Drawing.Size(79, 24);
             this.radLabel5.TabIndex = 5;
@@ -132,32 +134,45 @@
             // radLabel6
             // 
             this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel6.Location = new System.Drawing.Point(260, 73);
+            this.radLabel6.Location = new System.Drawing.Point(249, 73);
             this.radLabel6.Name = "radLabel6";
             this.radLabel6.Size = new System.Drawing.Size(60, 24);
             this.radLabel6.TabIndex = 6;
             this.radLabel6.Text = "Camión";
             // 
+            // btnClearFilters
+            // 
+            this.btnClearFilters.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearFilters.Location = new System.Drawing.Point(0, 140);
+            this.btnClearFilters.Name = "btnClearFilters";
+            this.btnClearFilters.Size = new System.Drawing.Size(110, 28);
+            this.btnClearFilters.TabIndex = 13;
+            this.btnClearFilters.Text = "Limpiar Filtros";
+            this.btnClearFilters.Click += new System.EventHandler(this.btnClearFilters_Click);
+            // 
             // ucTruckSelection
             // 
-            this.ucTruckSelection.Location = new System.Drawing.Point(260, 99);
+            this.ucTruckSelection.Location = new System.Drawing.Point(247, 99);
             this.ucTruckSelection.Name = "ucTruckSelection";
+            this.ucTruckSelection.SelectedTruck = null;
             this.ucTruckSelection.Size = new System.Drawing.Size(224, 28);
             this.ucTruckSelection.TabIndex = 12;
             this.ucTruckSelection.TruckSelected += new System.EventHandler<Avicola.Sales.Entities.Truck>(this.ucTruckSelection_TruckSelected);
             // 
             // ucDriverSelection
             // 
-            this.ucDriverSelection.Location = new System.Drawing.Point(505, 39);
+            this.ucDriverSelection.Location = new System.Drawing.Point(492, 39);
             this.ucDriverSelection.Name = "ucDriverSelection";
+            this.ucDriverSelection.SelectedDriver = null;
             this.ucDriverSelection.Size = new System.Drawing.Size(224, 28);
             this.ucDriverSelection.TabIndex = 11;
             this.ucDriverSelection.DriverSelected += new System.EventHandler<Avicola.Sales.Entities.Driver>(this.ucDriverSelection_DriverSelected);
             // 
             // ucOrderStatusSelection
             // 
-            this.ucOrderStatusSelection.Location = new System.Drawing.Point(16, 99);
+            this.ucOrderStatusSelection.Location = new System.Drawing.Point(0, 99);
             this.ucOrderStatusSelection.Name = "ucOrderStatusSelection";
+            this.ucOrderStatusSelection.SelectedOrderStatus = null;
             this.ucOrderStatusSelection.Size = new System.Drawing.Size(224, 28);
             this.ucOrderStatusSelection.TabIndex = 10;
             this.ucOrderStatusSelection.OrderStatusSelected += new System.EventHandler<Avicola.Sales.Entities.OrderStatus>(this.ucOrderStatusSelection_OrderStatusSelected);
@@ -166,6 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnClearFilters);
             this.Controls.Add(this.ucTruckSelection);
             this.Controls.Add(this.radLabel6);
             this.Controls.Add(this.ucDriverSelection);
@@ -179,7 +195,7 @@
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.txtClient);
             this.Name = "UcOrdersFilters";
-            this.Size = new System.Drawing.Size(862, 137);
+            this.Size = new System.Drawing.Size(719, 168);
             ((System.ComponentModel.ISupportInitialize)(this.txtClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
@@ -189,6 +205,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClearFilters)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,6 +225,7 @@
         private UcDriverSelection ucDriverSelection;
         private Telerik.WinControls.UI.RadLabel radLabel6;
         private UcTruckSelection ucTruckSelection;
+        private Telerik.WinControls.UI.RadButton btnClearFilters;
 
     }
 }

@@ -46,6 +46,10 @@ namespace Avicola.Sales.Win.UserControls
                 var orderStatus = ddlOrderStatus.SelectedItem.DataBoundItem as OrderStatus;
                 return orderStatus != null && orderStatus.Id != Guid.Empty ? orderStatus : null;
             }
+            set
+            {
+                ddlOrderStatus.SelectedValue = value != null ? value.Id : Guid.Empty;
+            }
         }
 
         protected void OnOrderStatusSelected(OrderStatus item)

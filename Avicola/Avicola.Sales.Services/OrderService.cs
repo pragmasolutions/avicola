@@ -40,6 +40,8 @@ namespace Avicola.Sales.Services
 
             Expression<Func<Order, bool>> where = x => (!filterByStatus || statusId.Any(y => y == x.OrderStatusId))
                                                        && (string.IsNullOrEmpty(clientName) || x.Client.Name.Contains(clientName))
+                                                       && (!driverId.HasValue || x.DriverId == driverId)
+                                                       && (!truckId.HasValue || x.TruckId == truckId)
                                                        && (!from.HasValue || x.CreatedDate >= from)
                                                        && (!to.HasValue || x.CreatedDate <= to);
 

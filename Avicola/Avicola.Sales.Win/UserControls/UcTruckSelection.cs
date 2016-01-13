@@ -46,6 +46,10 @@ namespace Avicola.Sales.Win.UserControls
                 var driver = ddlTrucks.SelectedItem.DataBoundItem as Truck;
                 return driver != null && driver.Id != Guid.Empty ? driver : null;
             }
+            set
+            {
+                ddlTrucks.SelectedValue = value != null ? value.Id : Guid.Empty;
+            }
         }
 
         protected void OnTruckSelected(Truck item)

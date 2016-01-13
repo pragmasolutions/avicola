@@ -14,6 +14,8 @@ namespace Avicola.Sales.Win.UserControls
 {
     public partial class UcOrdersFilters : UserControl
     {
+        private bool _clearingFilters;
+
         public UcOrdersFilters()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace Avicola.Sales.Win.UserControls
 
         public Guid? OrderStatusId
         {
-            get { return ucOrderStatusSelection.SelectedOrderStatus != null ? ucOrderStatusSelection.SelectedOrderStatus.Id : (Guid?) null; }
+            get { return ucOrderStatusSelection.SelectedOrderStatus != null ? ucOrderStatusSelection.SelectedOrderStatus.Id : (Guid?)null; }
         }
 
         public Guid? DriverId
@@ -76,30 +78,60 @@ namespace Avicola.Sales.Win.UserControls
 
         private void txtClient_TextChanged(object sender, EventArgs e)
         {
+            if (_clearingFilters) return;
+
             OnFiltersChanged();
         }
 
         private void dtpFromDate_ValueChanged(object sender, EventArgs e)
         {
+            if (_clearingFilters) return;
+
             OnFiltersChanged();
         }
 
         private void dtpToDate_ValueChanged(object sender, EventArgs e)
         {
+            if (_clearingFilters) return;
+
             OnFiltersChanged();
         }
 
         private void ucOrderStatusSelection_OrderStatusSelected(object sender, OrderStatus e)
         {
+            if (_clearingFilters) return;
+
             OnFiltersChanged();
         }
 
         private void ucDriverSelection_DriverSelected(object sender, Driver e)
         {
+            if (_clearingFilters) return;
+
             OnFiltersChanged();
         }
         private void ucTruckSelection_TruckSelected(object sender, Truck e)
         {
+            if (_clearingFilters) return;
+
+            OnFiltersChanged();
+        }
+
+        private void btnClearFilters_Click(object sender, EventArgs e)
+        {
+            _clearingFilters = true;
+
+            txtClient.Text = string.Empty;
+            ucOrderStatusSelection.SelectedOrderStatus = null;
+
+            dtpFromDate.NullableValue = null;
+            dtpToDate.NullableValue = null;
+
+            ucDriverSelection.SelectedDriver = null;
+            ucTruckSelection.SelectedTruck = null;
+
+            _clearingFilters = false;
+
             OnFiltersChanged();
         }
     }
