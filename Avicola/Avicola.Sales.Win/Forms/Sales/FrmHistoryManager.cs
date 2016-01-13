@@ -5,11 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Avicola.Common.Win.Forms;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
 using Avicola.Sales.Services.Interfaces;
+using Framework.WinForm.Comun.Notification;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using IServiceFactory = Avicola.Services.Common.Interfaces.IServiceFactory;
@@ -18,42 +20,53 @@ namespace Avicola.Sales.Win.Forms
 {
     public partial class FrmHistoryManager : FrmSalesBase
     {
+        private RadWaitingBar loadingOverlay;
+
+        private const string DeleteColumnName = "Delete";
         private readonly IServiceFactory _serviceFactory;
         private IList<OrderStatus> _orderStatuses;
         private IDictionary<Guid, IList<OrderDto>> _ordersCached;
 
-        public FrmHistoryManager(IServiceFactory serviceFactory)
+        public FrmHistoryManager(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService)
         {
             _serviceFactory = serviceFactory;
+
+            MessageBoxDisplayService = messageBoxDisplayService;
+
             InitializeComponent();
 
-            gvOrders.TableElement.RowHeight = Avicola.Common.Win.GlobalConstants.DefaultRowHeight;
+            gvOrders.CellFormatting += base.Grilla_CellFormatting;
+
+            CreateLoadingOverlay();
+
+            UcGridPager.RefreshActionAsync = LoadOrders;
+
+            SortColumnMappings = new Dictionary<string, string>();
+
+            SortColumnMappings["ClientName"] = "Client.Name";
+            SortColumnMappings["OrderStatusName"] = "OrderStatus.Name";
+            SortColumnMappings["DriverName"] = "Driver.Name";
+            SortColumnMappings["Truck"] = "Truck.NumberPlate";
+
+            MainGrid = gvOrders;
+            MainPager = UcGridPager;
+            LoadingOverlay = loadingOverlay;
         }
 
-        public IList<OrderStatus> OrderStatuses
+        private void CreateLoadingOverlay()
         {
-            get
-            {
-                if (_orderStatuses == null)
-                {
-                    LoadOrderStatus();
-                }
+            this.loadingOverlay = new RadWaitingBar();
 
-                return _orderStatuses;
-            }
+            this.loadingOverlay.Parent = gvOrders;
+            this.loadingOverlay.Dock = DockStyle.None;
+            this.loadingOverlay.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.Dash;
+            this.loadingOverlay.ThemeName = this.ThemeName;
+            this.loadingOverlay.Visible = false;
         }
 
-        public IDictionary<Guid, IList<OrderDto>> OrderCached
+        private void gvOrders_PageChanged(object sender, EventArgs e)
         {
-            get
-            {
-                if (_ordersCached == null)
-                {
-                    LoadOrders();
-                }
-
-                return _ordersCached;
-            }
+            LoadOrders();
         }
 
         private void btnBackToSalesManager_Click(object sender, EventArgs e)
@@ -61,48 +74,80 @@ namespace Avicola.Sales.Win.Forms
             TransitionManager.LoadSalesManagerView();
         }
 
-        private void FrmPendingOrders_Load(object sender, EventArgs e)
+        private async void FrmPendingOrders_Load(object sender, EventArgs e)
         {
-            LoadOrderStatus();
+            LoadFiltersData();
 
             LoadOrders();
-
-            LoadOrdersByStatus(OrderStatus.SENT);
         }
 
-        private void LoadOrdersByStatus(Guid status)
+        public override Task<int> RefreshList()
         {
-            gvOrders.DataSource = OrderCached[status];
-
-            lbTitle.Text = OrderStatuses.First(x => x.Id == status).Name;
+            return LoadOrders();
         }
 
-        private void LoadOrders()
+        private async void LoadFiltersData()
         {
-            _ordersCached = new Dictionary<Guid, IList<OrderDto>>();
+            var orderStatus = await Task.Run(() =>
+                           {
+                               using (var orderStatusService = _serviceFactory.Create<IOrderStatusService>())
+                               {
+                                   return orderStatusService.GetActiveStatus();
+                               }
+                           });
+
+            var drivers = await Task.Run(() =>
+                          {
+                              using (var driverService = _serviceFactory.Create<IDriverService>())
+                              {
+                                  return driverService.GetAll();
+                              }
+                          });
+
+            var trucks = await Task.Run(() =>
+                           {
+                               using (var truckService = _serviceFactory.Create<ITruckService>())
+                               {
+                                   return truckService.GetAll();
+                               }
+                           });
+
+            ucOrdersFilters.OrderStatus = orderStatus;
+            ucOrdersFilters.Drivers = drivers;
+            ucOrdersFilters.Trucks = trucks;
+        }
+
+        private async Task<int> LoadOrders()
+        {
+            StartWaiting();
+
+            int pageTotal = 0;
 
             using (var service = _serviceFactory.Create<IOrderService>())
             {
-                var orders = service.GetActiveOrders();
+                var orders = await Task.Run(() =>
+                        service.GetAll(SortColumn, 
+                                        SortDirection,
+                                        ucOrdersFilters.Client,
+                                        ucOrdersFilters.OrderStatusId.HasValue
+                                            ? new Guid[] {ucOrdersFilters.OrderStatusId.Value}
+                                            : new Guid[] {},
+                                        ucOrdersFilters.From,
+                                        ucOrdersFilters.To,
+                                        ucOrdersFilters.DriverId,
+                                        ucOrdersFilters.TruckId,
+                                        UcGridPager.CurrentPage,
+                                        UcGridPager.PageSize, 
+                                        out pageTotal));
 
-                foreach (var status in OrderStatuses)
-                {
-                    if (!_ordersCached.ContainsKey(status.Id))
-                    {
-                        _ordersCached.Add(status.Id, orders.Where(x => x.OrderStatusId == status.Id).ToList());
-                    }
-                }
+                gvOrders.DataSource = orders;
             }
+
+            StopWaiting();
+
+            return pageTotal;
         }
 
-        private void LoadOrderStatus()
-        {
-            using (var service = _serviceFactory.Create<IOrderStatusService>())
-            {
-                _orderStatuses = service.GetActiveStatus();
-            }
-        }
-        
         private void gvOrders_CommandCellClick(object sender, EventArgs e)
         {
             var commandCell = (GridCommandCellElement)sender;
@@ -117,6 +162,19 @@ namespace Avicola.Sales.Win.Forms
             if (order == null)
                 return;
 
+            if (commandCell.ColumnInfo.Name == DeleteColumnName)
+            {
+                MessageBoxDisplayService.ShowConfirmationDialog("¿Esta seguro que desea eliminar este pedído?", "Eliminar Pedído",
+                    () =>
+                    {
+                        using (var service = _serviceFactory.Create<IOrderService>())
+                        {
+                            service.Delete(order.Id);
+
+                            LoadOrders();
+                        }
+                    });
+            }
         }
 
         private void gvOrders_CellFormatting(object sender, CellFormattingEventArgs e)
@@ -125,21 +183,26 @@ namespace Avicola.Sales.Win.Forms
 
             if (order != null)
             {
-                if (e.CellElement.ColumnInfo.Name == GlobalConstants.BuildOrderColumnName)
+                if (e.CellElement.ColumnInfo.Name == DeleteColumnName)
                 {
-                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.PENDING;
-                }
-
-                if (e.CellElement.ColumnInfo.Name == GlobalConstants.FinishOrderColumnName)
-                {
-                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.IN_PROGESS;
-                }
-
-                if (e.CellElement.ColumnInfo.Name == GlobalConstants.SendOrderColumnName)
-                {
-                    e.CellElement.ColumnInfo.IsVisible = order.OrderStatusId == OrderStatus.FINISHED;
+                    e.CellElement.Enabled = order.OrderStatusId == OrderStatus.PENDING;
                 }
             }
+        }
+
+        private void gvOrders_SortChanged(object sender, GridViewCollectionChangedEventArgs e)
+        {
+
+        }
+
+        private void gvOrders_FilterChanged(object sender, GridViewCollectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ucOrdersFilters_FiltersChanged(object sender, EventArgs e)
+        {
+            LoadOrders();
         }
     }
 }

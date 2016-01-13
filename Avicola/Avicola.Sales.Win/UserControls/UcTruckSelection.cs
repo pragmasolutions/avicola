@@ -19,7 +19,7 @@ namespace Avicola.Sales.Win.UserControls
             InitializeComponent();
         }
 
-        public EventHandler<Truck> TruckSelected;
+        public event EventHandler<Truck> TruckSelected;
 
         public IList<Truck> Trucks
         {
@@ -27,13 +27,25 @@ namespace Avicola.Sales.Win.UserControls
             {
                 ddlTrucks.ValueMember = "Id";
                 ddlTrucks.DisplayMember = "Name";
+
+                value.Insert(0, new Truck() { Description = "SELECCIONE CAMIÓN", Id = Guid.Empty });
+
                 ddlTrucks.DataSource = value;
             }
         }
 
         public Truck SelectedTruck
         {
-            get { return ddlTrucks.SelectedItem != null ? ddlTrucks.SelectedItem.DataBoundItem as Truck : null; }
+            get
+            {
+                if (ddlTrucks.SelectedItem == null)
+                {
+                    return null;
+                }
+
+                var driver = ddlTrucks.SelectedItem.DataBoundItem as Truck;
+                return driver != null && driver.Id != Guid.Empty ? driver : null;
+            }
         }
 
         protected void OnTruckSelected(Truck item)

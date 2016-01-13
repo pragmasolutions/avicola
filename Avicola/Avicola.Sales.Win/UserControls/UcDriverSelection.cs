@@ -19,7 +19,7 @@ namespace Avicola.Sales.Win.UserControls
             InitializeComponent();
         }
 
-        public EventHandler<Driver> DriverSelected;
+        public event EventHandler<Driver> DriverSelected;
 
         public IList<Driver> Drivers
         {
@@ -27,13 +27,25 @@ namespace Avicola.Sales.Win.UserControls
             {
                 ddlDrivers.ValueMember = "Id";
                 ddlDrivers.DisplayMember = "Name";
+
+                value.Insert(0, new Driver() { Name = "SELECCIONE CONDUCTOR", Id = Guid.Empty });
+
                 ddlDrivers.DataSource = value;
             }
         }
 
         public Driver SelectedDriver
         {
-            get { return ddlDrivers.SelectedItem != null ? ddlDrivers.SelectedItem.DataBoundItem as Driver : null; }
+            get
+            {
+                if (ddlDrivers.SelectedItem == null)
+                {
+                    return null;
+                }
+
+                var driver = ddlDrivers.SelectedItem.DataBoundItem as Driver;
+                return driver != null && driver.Id != Guid.Empty ? driver : null;
+            }
         }
 
         protected void OnDriverSelected(Driver item)

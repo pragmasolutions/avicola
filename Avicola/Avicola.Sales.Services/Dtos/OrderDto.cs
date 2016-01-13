@@ -34,9 +34,7 @@ namespace Avicola.Sales.Services.Dtos
 
         public void CreateMappings(IConfiguration configuration)
         {
-            Mapper.CreateMap<Order, OrderDto>()
-                .ForMember(x => x.Dozens,
-                    opt => opt.ResolveUsing(x => x.OrderEggClasses.Select(y => y.Dozens).DefaultIfEmpty(0).Sum()));
+            Mapper.CreateMap<Order, OrderDto>();
         }
     }
 }

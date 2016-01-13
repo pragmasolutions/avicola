@@ -11,7 +11,9 @@ namespace Avicola.Sales.Entities
     {
         public override string ToString()
         {
-            return string.Format("{0} - {1}", this.NumberPlate, this.Description);
+            return !string.IsNullOrEmpty(this.NumberPlate)
+                ? string.Format("{0} - {1}", this.NumberPlate, this.Description)
+                : this.Description;
         }
     }
 }

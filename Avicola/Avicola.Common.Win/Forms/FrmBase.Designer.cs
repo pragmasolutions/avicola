@@ -45,6 +45,7 @@
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "FrmBase";
             this.ThemeName = "TelerikMetroBlue";
+            this.Load += new System.EventHandler(this.FrmBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

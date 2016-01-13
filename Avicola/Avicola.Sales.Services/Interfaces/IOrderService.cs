@@ -9,7 +9,7 @@ namespace Avicola.Sales.Services.Interfaces
 {
     public interface IOrderService : IService
     {
-        List<OrderDto> GetAll(string sortBy, string sortDirection, Guid[] statusId,DateTime? from, DateTime? to, int pageIndex, int pageSize, out int pageTotal);
+        List<OrderDto> GetAll(string sortBy, string sortDirection, string clientName, Guid[] statusId, DateTime? from, DateTime? to, Guid? driverId, Guid? truckId, int pageIndex, int pageSize, out int pageTotal);
         List<OrderDto> GetPendingOrders();
         List<OrderDto> GetOrdersByStatus(Guid statusId);
         List<OrderDto> GetOrdersByStatus(Guid[] statusIds);

@@ -160,11 +160,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UcOrderStatusSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcOrderStatusSelection.Designer.cs">
+      <DependentUpon>UcOrderStatusSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcEggClassSale.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UcEggClassSale.Designer.cs">
       <DependentUpon>UcEggClassSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcOrdersFilters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcOrdersFilters.Designer.cs">
+      <DependentUpon>UcOrdersFilters.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UcSalesSelection.cs">
       <SubType>UserControl</SubType>
@@ -223,8 +235,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcOrderStatusSelection.resx">
+      <DependentUpon>UcOrderStatusSelection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcEggClassSale.resx">
       <DependentUpon>UcEggClassSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcOrdersFilters.resx">
+      <DependentUpon>UcOrdersFilters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UcSalesSelection.resx">
       <DependentUpon>UcSalesSelection.cs</DependentUpon>
