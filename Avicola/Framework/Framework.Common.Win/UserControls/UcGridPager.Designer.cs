@@ -29,10 +29,10 @@ namespace Framework.Common.Win.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcGridPager));
             this.CbxPageSize = new Telerik.WinControls.UI.RadDropDownList();
             this.LblOf = new Telerik.WinControls.UI.RadLabel();
@@ -57,14 +57,14 @@ namespace Framework.Common.Win.UserControls
             // 
             this.CbxPageSize.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.CbxPageSize.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            radListDataItem5.Text = "10";
-            radListDataItem6.Text = "20";
-            radListDataItem7.Text = "50";
-            radListDataItem8.Text = "100";
-            this.CbxPageSize.Items.Add(radListDataItem5);
-            this.CbxPageSize.Items.Add(radListDataItem6);
-            this.CbxPageSize.Items.Add(radListDataItem7);
-            this.CbxPageSize.Items.Add(radListDataItem8);
+            radListDataItem1.Text = "10";
+            radListDataItem2.Text = "20";
+            radListDataItem3.Text = "50";
+            radListDataItem4.Text = "100";
+            this.CbxPageSize.Items.Add(radListDataItem1);
+            this.CbxPageSize.Items.Add(radListDataItem2);
+            this.CbxPageSize.Items.Add(radListDataItem3);
+            this.CbxPageSize.Items.Add(radListDataItem4);
             this.CbxPageSize.Location = new System.Drawing.Point(312, 0);
             this.CbxPageSize.Margin = new System.Windows.Forms.Padding(0);
             this.CbxPageSize.Name = "CbxPageSize";
@@ -173,6 +173,7 @@ namespace Framework.Common.Win.UserControls
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UcGridPager";
             this.Size = new System.Drawing.Size(370, 29);
+            this.Load += new System.EventHandler(this.UcGridPager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CbxPageSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LblOf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtPageTotal)).EndInit();

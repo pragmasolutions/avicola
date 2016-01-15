@@ -10,7 +10,8 @@ namespace Framework.Common.Win.UserControls
     {
         private const int DefaultPageSize = 20;
 
-        private bool _isCurrentPageTextChangedEnable;
+        private bool _isCurrentPageTextChangedEnable; 
+        private bool _isPagerLoaded;
 
         public UcGridPager()
         {
@@ -55,7 +56,7 @@ namespace Framework.Common.Win.UserControls
             }
             set
             {
-                CbxPageSize.Text = value.ToString();
+                CbxPageSize.SelectedValue = value.ToString();
             }
         }
 
@@ -115,6 +116,11 @@ namespace Framework.Common.Win.UserControls
 
         private async void CbxPageSizeOnSelectedValueChanged(object sender, EventArgs eventArgs)
         {
+            if (!_isPagerLoaded)
+            {
+                return;
+            }
+
             CurrentPage = 1;
             var total = await InvokeRefreshAction();
             UpdateState(total);
@@ -189,6 +195,11 @@ namespace Framework.Common.Win.UserControls
             {
                 return RefreshActionAsync();
             }
+        }
+
+        private void UcGridPager_Load(object sender, EventArgs e)
+        {
+            _isPagerLoaded = true;
         }
     }
 }
