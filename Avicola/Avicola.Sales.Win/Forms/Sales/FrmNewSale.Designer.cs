@@ -41,7 +41,7 @@
             this.lblClient = new Telerik.WinControls.UI.RadLabel();
             this.btnCancelar = new Telerik.WinControls.UI.RadButton();
             this.btnAceptar = new Telerik.WinControls.UI.RadButton();
-            this.btnAddClient = new System.Windows.Forms.Button();
+            this.btnAddClient = new Telerik.WinControls.UI.RadButton();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.radGroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
             this.flpProducts = new System.Windows.Forms.FlowLayoutPanel();
@@ -58,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancelar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAceptar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
             this.radGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).BeginInit();
@@ -180,12 +181,12 @@
             // btnAddClient
             // 
             this.btnAddClient.Image = global::Avicola.Sales.Win.Properties.Resources.plus;
+            this.btnAddClient.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnAddClient.Location = new System.Drawing.Point(255, 72);
             this.btnAddClient.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(28, 28);
             this.btnAddClient.TabIndex = 49;
-            this.btnAddClient.UseVisualStyleBackColor = true;
             this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // radGroupBox1
@@ -283,6 +284,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancelar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAceptar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
             this.radGroupBox1.ResumeLayout(false);
             this.radGroupBox1.PerformLayout();
@@ -309,7 +311,7 @@
         private Telerik.WinControls.UI.RadLabel lblClient;
         private Telerik.WinControls.UI.RadButton btnCancelar;
         private Telerik.WinControls.UI.RadButton btnAceptar;
-        private System.Windows.Forms.Button btnAddClient;
+        private Telerik.WinControls.UI.RadButton btnAddClient;
         private Telerik.WinControls.UI.RadGroupBox radGroupBox1;
         private Telerik.WinControls.UI.RadGroupBox radGroupBox2;
         private System.Windows.Forms.FlowLayoutPanel flpProducts;
