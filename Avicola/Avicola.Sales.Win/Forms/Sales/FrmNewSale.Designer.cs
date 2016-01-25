@@ -73,7 +73,7 @@
             // lbTitle
             // 
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(116, 19);
+            this.lbTitle.Location = new System.Drawing.Point(134, 19);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(179, 41);
             this.lbTitle.TabIndex = 42;
@@ -82,7 +82,7 @@
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(31, 288);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(253, 24);
             this.txtPhone.TabIndex = 39;
@@ -90,7 +90,7 @@
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(31, 216);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(2);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(253, 24);
             this.txtCity.TabIndex = 37;
@@ -98,7 +98,7 @@
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(31, 145);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(253, 24);
             this.txtAddress.TabIndex = 38;
@@ -137,7 +137,7 @@
             // 
             this.ddlClient.AutoSize = false;
             this.ddlClient.Location = new System.Drawing.Point(29, 72);
-            this.ddlClient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ddlClient.Margin = new System.Windows.Forms.Padding(2);
             this.ddlClient.Name = "ddlClient";
             this.ddlClient.Size = new System.Drawing.Size(202, 27);
             this.ddlClient.TabIndex = 36;
@@ -181,7 +181,7 @@
             // 
             this.btnAddClient.Image = global::Avicola.Sales.Win.Properties.Resources.plus;
             this.btnAddClient.Location = new System.Drawing.Point(255, 72);
-            this.btnAddClient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddClient.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(28, 28);
             this.btnAddClient.TabIndex = 49;
@@ -202,12 +202,13 @@
             this.radGroupBox1.Controls.Add(this.txtAddress);
             this.radGroupBox1.HeaderText = "Información de Cliente";
             this.radGroupBox1.Location = new System.Drawing.Point(28, 70);
-            this.radGroupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radGroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.radGroupBox1.Name = "radGroupBox1";
             this.radGroupBox1.Padding = new System.Windows.Forms.Padding(2, 15, 2, 2);
             this.radGroupBox1.Size = new System.Drawing.Size(322, 353);
             this.radGroupBox1.TabIndex = 50;
             this.radGroupBox1.Text = "Información de Cliente";
+            ((Telerik.WinControls.UI.RadGroupBoxElement)(this.radGroupBox1.GetChildAt(0))).Padding = new System.Windows.Forms.Padding(2, 15, 2, 2);
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.radGroupBox1.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Text = "Información de Cliente";
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.radGroupBox1.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.radGroupBox1.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -218,12 +219,13 @@
             this.radGroupBox2.Controls.Add(this.flpProducts);
             this.radGroupBox2.HeaderText = "Productos";
             this.radGroupBox2.Location = new System.Drawing.Point(371, 70);
-            this.radGroupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radGroupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.radGroupBox2.Name = "radGroupBox2";
             this.radGroupBox2.Padding = new System.Windows.Forms.Padding(2, 15, 2, 2);
             this.radGroupBox2.Size = new System.Drawing.Size(487, 354);
             this.radGroupBox2.TabIndex = 51;
             this.radGroupBox2.Text = "Productos";
+            ((Telerik.WinControls.UI.RadGroupBoxElement)(this.radGroupBox2.GetChildAt(0))).Padding = new System.Windows.Forms.Padding(2, 15, 2, 2);
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.radGroupBox2.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Text = "Productos";
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.radGroupBox2.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.radGroupBox2.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -232,7 +234,7 @@
             // 
             this.flpProducts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpProducts.Location = new System.Drawing.Point(24, 33);
-            this.flpProducts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flpProducts.Margin = new System.Windows.Forms.Padding(2);
             this.flpProducts.Name = "flpProducts";
             this.flpProducts.Size = new System.Drawing.Size(438, 317);
             this.flpProducts.TabIndex = 0;
@@ -242,7 +244,7 @@
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.Location = new System.Drawing.Point(28, 29);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(84, 24);
+            this.btnBack.Size = new System.Drawing.Size(100, 24);
             this.btnBack.TabIndex = 47;
             this.btnBack.Text = "Volver";
             this.btnBack.ThemeName = "TelerikMetroBlue";
@@ -260,7 +262,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.Name = "FrmNewSale";
             // 

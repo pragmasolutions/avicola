@@ -70,7 +70,7 @@
             // 
             // ucOrderDetails
             // 
-            this.ucOrderDetails.Location = new System.Drawing.Point(0, 105);
+            this.ucOrderDetails.Location = new System.Drawing.Point(0, 59);
             this.ucOrderDetails.Name = "ucOrderDetails";
             this.ucOrderDetails.Size = new System.Drawing.Size(260, 460);
             this.ucOrderDetails.TabIndex = 2;
@@ -78,7 +78,7 @@
             // ucDriverSelection
             // 
             this.ucDriverSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucDriverSelection.Location = new System.Drawing.Point(278, 133);
+            this.ucDriverSelection.Location = new System.Drawing.Point(278, 87);
             this.ucDriverSelection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucDriverSelection.Name = "ucDriverSelection";
             this.ucDriverSelection.Size = new System.Drawing.Size(284, 28);
@@ -87,7 +87,7 @@
             // ucTruckSelection
             // 
             this.ucTruckSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucTruckSelection.Location = new System.Drawing.Point(278, 190);
+            this.ucTruckSelection.Location = new System.Drawing.Point(278, 144);
             this.ucTruckSelection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucTruckSelection.Name = "ucTruckSelection";
             this.ucTruckSelection.Size = new System.Drawing.Size(284, 28);
@@ -96,7 +96,7 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(278, 109);
+            this.radLabel1.Location = new System.Drawing.Point(278, 63);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(79, 21);
             this.radLabel1.TabIndex = 5;
@@ -105,7 +105,7 @@
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(279, 167);
+            this.radLabel2.Location = new System.Drawing.Point(279, 121);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(61, 21);
             this.radLabel2.TabIndex = 6;
@@ -114,7 +114,7 @@
             // lbTitle
             // 
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(11, 56);
+            this.lbTitle.Location = new System.Drawing.Point(119, 12);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(191, 41);
             this.lbTitle.TabIndex = 16;
@@ -122,10 +122,11 @@
             // 
             // btnBackToDepositManager
             // 
+            this.btnBackToDepositManager.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToDepositManager.Location = new System.Drawing.Point(17, 21);
             this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";
-            this.btnBackToDepositManager.Size = new System.Drawing.Size(87, 24);
+            this.btnBackToDepositManager.Size = new System.Drawing.Size(100, 24);
             this.btnBackToDepositManager.TabIndex = 11;
             this.btnBackToDepositManager.Text = "Volver";
             this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);

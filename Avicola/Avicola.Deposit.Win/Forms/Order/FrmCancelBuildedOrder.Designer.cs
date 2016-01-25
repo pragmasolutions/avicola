@@ -64,7 +64,7 @@
             // 
             // ucOrderDetails
             // 
-            this.ucOrderDetails.Location = new System.Drawing.Point(0, 108);
+            this.ucOrderDetails.Location = new System.Drawing.Point(3, 52);
             this.ucOrderDetails.Name = "ucOrderDetails";
             this.ucOrderDetails.Size = new System.Drawing.Size(260, 222);
             this.ucOrderDetails.TabIndex = 2;
@@ -72,7 +72,7 @@
             // lbTitle
             // 
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(12, 52);
+            this.lbTitle.Location = new System.Drawing.Point(119, 9);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(343, 41);
             this.lbTitle.TabIndex = 15;
@@ -80,10 +80,11 @@
             // 
             // btnBackToDepositManager
             // 
+            this.btnBackToDepositManager.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToDepositManager.Location = new System.Drawing.Point(17, 17);
             this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";
-            this.btnBackToDepositManager.Size = new System.Drawing.Size(87, 24);
+            this.btnBackToDepositManager.Size = new System.Drawing.Size(100, 24);
             this.btnBackToDepositManager.TabIndex = 16;
             this.btnBackToDepositManager.Text = "Volver";
             this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);

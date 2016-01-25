@@ -132,8 +132,8 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.lbTitle, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnBackToDepositManager, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -148,7 +148,7 @@
             // 
             this.lbTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(106, 3);
+            this.lbTitle.Location = new System.Drawing.Point(119, 3);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(363, 41);
             this.lbTitle.TabIndex = 13;
@@ -156,10 +156,11 @@
             // 
             // btnBackToDepositManager
             // 
+            this.btnBackToDepositManager.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToDepositManager.Location = new System.Drawing.Point(8, 12);
             this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";
-            this.btnBackToDepositManager.Size = new System.Drawing.Size(87, 24);
+            this.btnBackToDepositManager.Size = new System.Drawing.Size(100, 24);
             this.btnBackToDepositManager.TabIndex = 10;
             this.btnBackToDepositManager.Text = "Volver";
             this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);

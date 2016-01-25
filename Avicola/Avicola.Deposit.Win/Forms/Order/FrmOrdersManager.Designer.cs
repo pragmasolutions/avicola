@@ -114,7 +114,7 @@
             this.btnBackToDepositManager.Location = new System.Drawing.Point(8, 12);
             this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";
-            this.btnBackToDepositManager.Size = new System.Drawing.Size(87, 24);
+            this.btnBackToDepositManager.Size = new System.Drawing.Size(100, 24);
             this.btnBackToDepositManager.TabIndex = 10;
             this.btnBackToDepositManager.Text = "Volver";
             this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);

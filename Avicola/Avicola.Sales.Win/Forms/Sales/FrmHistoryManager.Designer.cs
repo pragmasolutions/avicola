@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gvOrders = new Telerik.WinControls.UI.RadGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -84,67 +84,67 @@
             this.gvOrders.MasterTemplate.AllowRowReorder = true;
             this.gvOrders.MasterTemplate.AutoGenerateColumns = false;
             this.gvOrders.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn1.FieldName = "OrderId";
-            gridViewTextBoxColumn1.HeaderText = "OrderId";
-            gridViewTextBoxColumn1.IsVisible = false;
-            gridViewTextBoxColumn1.Name = "OrderId";
-            gridViewTextBoxColumn2.FieldName = "ClientName";
-            gridViewTextBoxColumn2.HeaderText = "Cliente";
-            gridViewTextBoxColumn2.MaxWidth = 5000;
-            gridViewTextBoxColumn2.MinWidth = 200;
-            gridViewTextBoxColumn2.Name = "ClientName";
-            gridViewTextBoxColumn2.Width = 279;
-            gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
-            gridViewTextBoxColumn3.FieldName = "CreatedDate";
-            gridViewTextBoxColumn3.FormatString = "{0: dd/M/yyyy H:mm}";
-            gridViewTextBoxColumn3.HeaderText = "Fecha Pedido";
-            gridViewTextBoxColumn3.MinWidth = 80;
-            gridViewTextBoxColumn3.Name = "CreatedDate";
-            gridViewTextBoxColumn3.Width = 111;
-            gridViewTextBoxColumn4.AllowSort = false;
-            gridViewTextBoxColumn4.FieldName = "Dozens";
-            gridViewTextBoxColumn4.HeaderText = "Docenas";
-            gridViewTextBoxColumn4.MinWidth = 60;
-            gridViewTextBoxColumn4.Name = "Dozens";
-            gridViewTextBoxColumn4.Width = 84;
-            gridViewTextBoxColumn5.FieldName = "OrderStatusName";
-            gridViewTextBoxColumn5.HeaderText = "Estado";
-            gridViewTextBoxColumn5.MinWidth = 60;
-            gridViewTextBoxColumn5.Name = "OrderStatusName";
-            gridViewTextBoxColumn5.Width = 84;
-            gridViewDateTimeColumn1.FieldName = "DispatchedDate";
-            gridViewDateTimeColumn1.FormatString = "{0: dd/M/yyyy H:mm}";
-            gridViewDateTimeColumn1.HeaderText = "Fecha Envio";
-            gridViewDateTimeColumn1.MinWidth = 80;
-            gridViewDateTimeColumn1.Name = "DispatchedDate";
-            gridViewDateTimeColumn1.Width = 111;
-            gridViewTextBoxColumn6.FieldName = "DriverName";
-            gridViewTextBoxColumn6.HeaderText = "Conductor";
-            gridViewTextBoxColumn6.MinWidth = 120;
-            gridViewTextBoxColumn6.Name = "DriverName";
-            gridViewTextBoxColumn6.Width = 167;
-            gridViewTextBoxColumn7.FieldName = "Truck";
-            gridViewTextBoxColumn7.HeaderText = "Camión";
-            gridViewTextBoxColumn7.MinWidth = 120;
-            gridViewTextBoxColumn7.Name = "Truck";
-            gridViewTextBoxColumn7.Width = 206;
-            gridViewCommandColumn1.FieldName = "Delete";
-            gridViewCommandColumn1.HeaderText = "";
-            gridViewCommandColumn1.Image = global::Avicola.Sales.Win.Properties.Resources.Garbage_Closed;
-            gridViewCommandColumn1.MaxWidth = 50;
-            gridViewCommandColumn1.MinWidth = 50;
-            gridViewCommandColumn1.Name = "Delete";
+            gridViewTextBoxColumn8.FieldName = "OrderId";
+            gridViewTextBoxColumn8.HeaderText = "OrderId";
+            gridViewTextBoxColumn8.IsVisible = false;
+            gridViewTextBoxColumn8.Name = "OrderId";
+            gridViewTextBoxColumn9.FieldName = "ClientName";
+            gridViewTextBoxColumn9.HeaderText = "Cliente";
+            gridViewTextBoxColumn9.MaxWidth = 5000;
+            gridViewTextBoxColumn9.MinWidth = 200;
+            gridViewTextBoxColumn9.Name = "ClientName";
+            gridViewTextBoxColumn9.Width = 279;
+            gridViewTextBoxColumn10.DataType = typeof(System.DateTime);
+            gridViewTextBoxColumn10.FieldName = "CreatedDate";
+            gridViewTextBoxColumn10.FormatString = "{0: dd/M/yyyy H:mm}";
+            gridViewTextBoxColumn10.HeaderText = "Fecha Pedido";
+            gridViewTextBoxColumn10.MinWidth = 80;
+            gridViewTextBoxColumn10.Name = "CreatedDate";
+            gridViewTextBoxColumn10.Width = 111;
+            gridViewTextBoxColumn11.AllowSort = false;
+            gridViewTextBoxColumn11.FieldName = "Dozens";
+            gridViewTextBoxColumn11.HeaderText = "Docenas";
+            gridViewTextBoxColumn11.MinWidth = 60;
+            gridViewTextBoxColumn11.Name = "Dozens";
+            gridViewTextBoxColumn11.Width = 84;
+            gridViewTextBoxColumn12.FieldName = "OrderStatusName";
+            gridViewTextBoxColumn12.HeaderText = "Estado";
+            gridViewTextBoxColumn12.MinWidth = 60;
+            gridViewTextBoxColumn12.Name = "OrderStatusName";
+            gridViewTextBoxColumn12.Width = 84;
+            gridViewDateTimeColumn2.FieldName = "DispatchedDate";
+            gridViewDateTimeColumn2.FormatString = "{0: dd/M/yyyy H:mm}";
+            gridViewDateTimeColumn2.HeaderText = "Fecha Envio";
+            gridViewDateTimeColumn2.MinWidth = 80;
+            gridViewDateTimeColumn2.Name = "DispatchedDate";
+            gridViewDateTimeColumn2.Width = 111;
+            gridViewTextBoxColumn13.FieldName = "DriverName";
+            gridViewTextBoxColumn13.HeaderText = "Conductor";
+            gridViewTextBoxColumn13.MinWidth = 120;
+            gridViewTextBoxColumn13.Name = "DriverName";
+            gridViewTextBoxColumn13.Width = 167;
+            gridViewTextBoxColumn14.FieldName = "Truck";
+            gridViewTextBoxColumn14.HeaderText = "Camión";
+            gridViewTextBoxColumn14.MinWidth = 120;
+            gridViewTextBoxColumn14.Name = "Truck";
+            gridViewTextBoxColumn14.Width = 206;
+            gridViewCommandColumn2.FieldName = "Delete";
+            gridViewCommandColumn2.HeaderText = "";
+            gridViewCommandColumn2.Image = global::Avicola.Sales.Win.Properties.Resources.Garbage_Closed;
+            gridViewCommandColumn2.MaxWidth = 50;
+            gridViewCommandColumn2.MinWidth = 50;
+            gridViewCommandColumn2.Name = "Delete";
             this.gvOrders.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewDateTimeColumn1,
-            gridViewTextBoxColumn6,
-            gridViewTextBoxColumn7,
-            gridViewCommandColumn1});
-            this.gvOrders.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11,
+            gridViewTextBoxColumn12,
+            gridViewDateTimeColumn2,
+            gridViewTextBoxColumn13,
+            gridViewTextBoxColumn14,
+            gridViewCommandColumn2});
+            this.gvOrders.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.gvOrders.Name = "gvOrders";
             this.gvOrders.ReadOnly = true;
             this.gvOrders.ShowGroupPanelScrollbars = false;
@@ -160,7 +160,7 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 410F));
             this.tableLayoutPanel2.Controls.Add(this.lbTitle, 0, 0);
@@ -192,7 +192,7 @@
             this.btnBackToSalesManager.Location = new System.Drawing.Point(8, 12);
             this.btnBackToSalesManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToSalesManager.Name = "btnBackToSalesManager";
-            this.btnBackToSalesManager.Size = new System.Drawing.Size(84, 24);
+            this.btnBackToSalesManager.Size = new System.Drawing.Size(100, 24);
             this.btnBackToSalesManager.TabIndex = 10;
             this.btnBackToSalesManager.Text = "Volver";
             this.btnBackToSalesManager.Click += new System.EventHandler(this.btnBackToSalesManager_Click);

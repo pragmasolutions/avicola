@@ -96,7 +96,7 @@
             // lbTitle
             // 
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(3, 43);
+            this.lbTitle.Location = new System.Drawing.Point(119, 3);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(245, 41);
             this.lbTitle.TabIndex = 14;
@@ -104,12 +104,11 @@
             // 
             // btnBackToDepositManager
             // 
-            this.btnBackToDepositManager.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnBackToDepositManager.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToDepositManager.Location = new System.Drawing.Point(8, 12);
             this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";
-            this.btnBackToDepositManager.Size = new System.Drawing.Size(87, 20);
+            this.btnBackToDepositManager.Size = new System.Drawing.Size(100, 24);
             this.btnBackToDepositManager.TabIndex = 15;
             this.btnBackToDepositManager.Text = "Volver";
             this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);
@@ -117,6 +116,7 @@
             // radGroupBox1
             // 
             this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.tableLayoutPanel1.SetColumnSpan(this.radGroupBox1, 2);
             this.radGroupBox1.Controls.Add(this.radLabel8);
             this.radGroupBox1.Controls.Add(this.txtBarn);
             this.radGroupBox1.Controls.Add(this.radLabel7);
@@ -135,7 +135,7 @@
             this.radGroupBox1.Controls.Add(this.txtClassificationDate);
             this.radGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGroupBox1.HeaderText = "General";
-            this.radGroupBox1.Location = new System.Drawing.Point(3, 103);
+            this.radGroupBox1.Location = new System.Drawing.Point(3, 50);
             this.radGroupBox1.Name = "radGroupBox1";
             this.radGroupBox1.Size = new System.Drawing.Size(732, 234);
             this.radGroupBox1.TabIndex = 16;
@@ -307,12 +307,13 @@
             // radGroupBox2
             // 
             this.radGroupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.tableLayoutPanel1.SetColumnSpan(this.radGroupBox2, 2);
             this.radGroupBox2.Controls.Add(this.tableLayoutPanel2);
             this.radGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGroupBox2.HeaderText = "Clasificaciónes";
-            this.radGroupBox2.Location = new System.Drawing.Point(3, 343);
+            this.radGroupBox2.Location = new System.Drawing.Point(3, 290);
             this.radGroupBox2.Name = "radGroupBox2";
-            this.radGroupBox2.Size = new System.Drawing.Size(732, 350);
+            this.radGroupBox2.Size = new System.Drawing.Size(732, 403);
             this.radGroupBox2.TabIndex = 17;
             this.radGroupBox2.Text = "Clasificaciónes";
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.radGroupBox2.GetChildAt(0).GetChildAt(1).GetChildAt(2).GetChildAt(1))).Text = "Clasificaciónes";
@@ -333,7 +334,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(728, 313);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(728, 366);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gvClassifications
@@ -386,7 +387,7 @@
             this.gvClassifications.Name = "gvClassifications";
             this.gvClassifications.ReadOnly = true;
             this.gvClassifications.ShowGroupPanelScrollbars = false;
-            this.gvClassifications.Size = new System.Drawing.Size(722, 267);
+            this.gvClassifications.Size = new System.Drawing.Size(722, 320);
             this.gvClassifications.TabIndex = 12;
             this.gvClassifications.ThemeName = "TelerikMetroBlue";
             this.gvClassifications.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.gvClassifications_CommandCellClick);
@@ -395,27 +396,27 @@
             // 
             this.btnAddClassification.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddClassification.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddClassification.Location = new System.Drawing.Point(615, 3);
+            this.btnAddClassification.Location = new System.Drawing.Point(621, 3);
             this.btnAddClassification.Name = "btnAddClassification";
-            this.btnAddClassification.Size = new System.Drawing.Size(110, 24);
+            this.btnAddClassification.Size = new System.Drawing.Size(104, 24);
             this.btnAddClassification.TabIndex = 13;
             this.btnAddClassification.Text = "Agregar";
             this.btnAddClassification.Click += new System.EventHandler(this.btnAddClassification_Click);
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.btnBackToDepositManager, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.radGroupBox2, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lbTitle, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.radGroupBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radGroupBox2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radGroupBox1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbTitle, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(738, 696);
