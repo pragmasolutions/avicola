@@ -66,7 +66,7 @@ namespace Avicola.Common.Win.Forms
         {
             if (MainPager == null)
             {
-                throw new Exception("Se debe definir un paginador para la grilla");
+                return;
             }
 
             var sort = gridViewCollectionChangedEventArgs.GridViewTemplate.SortDescriptors.Expression;

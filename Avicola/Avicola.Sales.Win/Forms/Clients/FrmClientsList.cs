@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Avicola.Common.Win;
 using Avicola.Common.Win.Forms.Clients;
@@ -17,6 +18,7 @@ namespace Avicola.Sales.Win.Forms
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly IMessageBoxDisplayService _messageBoxDisplayService;
+        private RadWaitingBar loadingOverlay;
 
         public FrmClientsList(IFormFactory formFactory,
             IServiceFactory serviceFactory,
@@ -30,6 +32,25 @@ namespace Avicola.Sales.Win.Forms
             InitializeComponent();
 
             this.gvClients.CellFormatting += Grilla_CellFormatting;
+
+            CreateLoadingOverlay();
+
+            LoadingOverlay = loadingOverlay;
+
+            MainGrid = gvClients;
+        }
+
+        private void CreateLoadingOverlay()
+        {
+            this.loadingOverlay = new RadWaitingBar();
+
+            this.loadingOverlay.Parent = gvClients;
+            this.loadingOverlay.Dock = DockStyle.None;
+            this.loadingOverlay.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.Dash;
+            this.loadingOverlay.ThemeName = this.ThemeName;
+            this.loadingOverlay.Visible = false;
+
+            
         }
 
         private async void FrmBatchMedicineList_Load(object sender, EventArgs e)
@@ -39,20 +60,18 @@ namespace Avicola.Sales.Win.Forms
 
         private async void LoadClients()
         {
-            wbClients.Visible = true;
-
-            wbClients.StartWaiting();
+            StartWaiting();
 
             using (var service = _serviceFactory.Create<IClientService>())
             {
                 int pageTotal;
-                var clients = await service.GetAll("Name", "ASC", null, 1, gvClients.PageSize, out pageTotal);
+
+                var clients = await Task.Run(() => service.GetAll("Name", "ASC", null, 1, gvClients.PageSize, out pageTotal));
+
                 gvClients.DataSource = clients;
             }
 
-            wbClients.StopWaiting();
-
-            wbClients.Visible = false;
+            StopWaiting();
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
