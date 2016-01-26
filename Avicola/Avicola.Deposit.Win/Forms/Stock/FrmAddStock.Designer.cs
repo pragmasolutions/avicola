@@ -34,7 +34,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lbTitle = new Telerik.WinControls.UI.RadLabel();
             this.btnBackToDepositManager = new Telerik.WinControls.UI.RadButton();
-            this.rdlBarn = new Telerik.WinControls.UI.RadDropDownList();
+            this.ddlBarn = new Telerik.WinControls.UI.RadDropDownList();
             this.ddlProducts = new Telerik.WinControls.UI.RadDropDownList();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
@@ -54,7 +54,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBackToDepositManager)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdlBarn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlBarn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
@@ -85,7 +85,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.rdlBarn);
+            this.splitContainer1.Panel2.Controls.Add(this.ddlBarn);
             this.splitContainer1.Panel2.Controls.Add(this.ddlProducts);
             this.splitContainer1.Panel2.Controls.Add(this.radLabel6);
             this.splitContainer1.Panel2.Controls.Add(this.radLabel5);
@@ -139,15 +139,15 @@
             this.btnBackToDepositManager.Text = "Volver";
             this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);
             // 
-            // rdlBarn
+            // ddlBarn
             // 
-            this.rdlBarn.AutoSize = false;
-            this.rdlBarn.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.rdlBarn.Location = new System.Drawing.Point(16, 37);
-            this.rdlBarn.Name = "rdlBarn";
-            this.rdlBarn.Size = new System.Drawing.Size(284, 27);
-            this.rdlBarn.TabIndex = 0;
-            this.rdlBarn.ThemeName = "TelerikMetroBlue";
+            this.ddlBarn.AutoSize = false;
+            this.ddlBarn.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.ddlBarn.Location = new System.Drawing.Point(16, 37);
+            this.ddlBarn.Name = "ddlBarn";
+            this.ddlBarn.Size = new System.Drawing.Size(284, 27);
+            this.ddlBarn.TabIndex = 0;
+            this.ddlBarn.ThemeName = "TelerikMetroBlue";
             // 
             // ddlProducts
             // 
@@ -291,7 +291,7 @@
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lbTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBackToDepositManager)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdlBarn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlBarn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
@@ -325,6 +325,6 @@
         private UserControls.UcEggsAmount ucEggsAmount;
         private Telerik.WinControls.UI.RadLabel lbTitle;
         private Telerik.WinControls.UI.RadButton btnBackToDepositManager;
-        private Telerik.WinControls.UI.RadDropDownList rdlBarn;
+        private Telerik.WinControls.UI.RadDropDownList ddlBarn;
     }
 }

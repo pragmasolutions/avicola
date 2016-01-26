@@ -43,9 +43,9 @@ namespace Avicola.Deposit.Win.Forms.Stock
             {
                 var barns = barnService.GetAll().Where(x => x.StageId == Stage.POSTURE).OrderBy(x => x.Name).ToList();
                 barns.Insert(0, new Barn(){ Id = Guid.Empty, Name = "Seleccione galpón.."});
-                rdlBarn.ValueMember = "Id";
-                rdlBarn.DisplayMember = "Name";
-                rdlBarn.DataSource = barns;
+                ddlBarn.ValueMember = "Id";
+                ddlBarn.DisplayMember = "Name";
+                ddlBarn.DataSource = barns;
             }
 
             using (var productService = _serviceFactory.Create<IProductService>())
@@ -131,6 +131,7 @@ namespace Avicola.Deposit.Win.Forms.Stock
         private void ResetControls()
         {
             ucEggsAmount.ResetControls();
+            ddlBarn.SelectedIndex = 0;
             ddlProducts.SelectedIndex = 0;
             ddlProviders.SelectedIndex = 0;
             ddlShifts.SelectedIndex = 0;
@@ -151,7 +152,7 @@ namespace Avicola.Deposit.Win.Forms.Stock
                 ProviderId = ckdOwn.IsChecked
                                 ? (Guid?)null
                                 : Guid.Parse(ddlProviders.SelectedValue.ToString()),
-                BarnId = Guid.Parse(rdlBarn.SelectedValue.ToString())
+                BarnId = Guid.Parse(ddlBarn.SelectedValue.ToString())
             };
 
             return stockEntry;
@@ -162,9 +163,9 @@ namespace Avicola.Deposit.Win.Forms.Stock
             this.FormErrorProvider.Dispose();
             var result = true;
 
-            if (Guid.Parse(rdlBarn.SelectedValue.ToString()) == Guid.Empty)
+            if (Guid.Parse(ddlBarn.SelectedValue.ToString()) == Guid.Empty)
             {
-                this.FormErrorProvider.SetError(rdlBarn, "El campo galpón es requerido");
+                this.FormErrorProvider.SetError(ddlBarn, "El campo galpón es requerido");
                 result = false;
             }
 
