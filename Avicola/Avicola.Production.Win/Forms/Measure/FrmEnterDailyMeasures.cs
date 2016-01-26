@@ -111,7 +111,7 @@ namespace Avicola.Production.Win.Forms.Measure
                 var invalid = ucLoadDailyMeasures.LoadDailyStandardMeasures.SelectMany(x => x.DailyStandardMeasures).Any(x => x.Value != null && x.FoodClassId == null);
                 if (invalid)
                 {
-                    RadMessageBox.Show(this, "Falta ingresar la clase de alimento para uno o más valores ingresados", "Error", MessageBoxButtons.OK, RadMessageIcon.Error);
+                    _messageBoxDisplayService.ShowWarning("Falta ingresar la clase de alimento para uno o más valores ingresados");
                     return;
                 }
             }

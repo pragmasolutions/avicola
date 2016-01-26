@@ -125,13 +125,13 @@ namespace Avicola.Production.Win.Forms.Batchs
 
             if (!ucAssignBarns.BarnsAssigned.Any())
             {
-                MessageBoxDisplayService.ShowError("Debe asignar al menos un galpón para pasar a la siguiente etapa");
+                MessageBoxDisplayService.ShowWarning("Debe asignar al menos un galpón para pasar a la siguiente etapa");
                 return false;
             }
 
             if (_currentBirdsAmount != ucAssignBarns.BirdsAmountDecimal)
             {
-                MessageBoxDisplayService.ShowError(
+                MessageBoxDisplayService.ShowWarning(
                     "La cantidad de aves del lote no puede ser diferente a la asiganada a los galpones");
                 return false;
             }

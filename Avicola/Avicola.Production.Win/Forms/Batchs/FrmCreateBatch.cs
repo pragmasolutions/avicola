@@ -216,7 +216,7 @@ namespace Avicola.Production.Win.Forms.Batchs
 
             if (!ucAssignBarns.BarnsAssigned.Any())
             {
-                MessageBoxDisplayService.ShowError("Debe asignar al menos un galpón al lote");
+                MessageBoxDisplayService.ShowWarning("Debe asignar al menos un galpón al lote");
                 return false;
             }
 
@@ -227,7 +227,7 @@ namespace Avicola.Production.Win.Forms.Batchs
 
             if (txtInitialBirds.Value != ucAssignBarns.BirdsAmountDecimal)
             {
-                MessageBoxDisplayService.ShowError(
+                MessageBoxDisplayService.ShowWarning(
                     "La cantidad de aves del lote no puede ser diferente a la asiganada a los galpones");
                 return false;
             }
