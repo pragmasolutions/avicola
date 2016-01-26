@@ -437,7 +437,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Avicola.Common.Win\Avicola.Common.Win.csproj">
       <Project>{FFD31016-B795-4D15-90BB-59C09D02CE95}</Project>
