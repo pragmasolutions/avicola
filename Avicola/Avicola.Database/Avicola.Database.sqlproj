@@ -64,6 +64,7 @@
     <Folder Include="dbo\Functions\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="ReferenceData" />
+    <Folder Include="Snapshots" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Barn.sql" />
@@ -122,6 +123,7 @@
     <None Include="Avicola.Database.publish.xml" />
     <None Include="ReferenceData\EggClass.Data.sql" />
     <None Include="ReferenceData\EggEquivalence.Data.sql" />
+    <None Include="Snapshots\Avicola.Database_20160126_10-27-15.dacpac" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="ReferenceData\Script.PostDeployment.sql" />

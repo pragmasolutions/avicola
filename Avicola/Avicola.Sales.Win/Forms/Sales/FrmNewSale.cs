@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Avicola.Common.Win;
+using Avicola.Common.Win.Forms.Clients;
 using Avicola.Sales.Services.Interfaces;
 using Avicola.Sales.Win.Model;
 using Avicola.Sales.Entities;
 using Avicola.Sales.Services;
-using Avicola.Sales.Win.Forms.Clients;
 using Avicola.Sales.Win.UserControls;
 using Framework.Data.Repository;
 using Framework.WinForm.Comun.Notification;
@@ -202,12 +202,9 @@ namespace Avicola.Sales.Win.Forms.Sales
             else
             {
                 var frm = FormFactory.Create<FrmCreateEditClient>(Guid.Empty);
-                frm.ClientCreated += new EventHandler<Client>(ClientCreated);
+                frm.ClientSaved += new EventHandler<Client>(ClientCreated);
                 frm.ShowDialog();
             }
-
-            //UpdateGrid();
-        
         }
 
         private void ClientCreated(object sender, Client client)
