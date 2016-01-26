@@ -100,6 +100,7 @@
             this.splitContainer1.Size = new System.Drawing.Size(1004, 605);
             this.splitContainer1.SplitterDistance = 69;
             this.splitContainer1.TabIndex = 0;
+            this.splitContainer1.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
@@ -134,7 +135,7 @@
             this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";
             this.btnBackToDepositManager.Size = new System.Drawing.Size(100, 24);
-            this.btnBackToDepositManager.TabIndex = 15;
+            this.btnBackToDepositManager.TabIndex = 0;
             this.btnBackToDepositManager.Text = "Volver";
             this.btnBackToDepositManager.Click += new System.EventHandler(this.btnBackToDepositManager_Click);
             // 
@@ -145,7 +146,7 @@
             this.rdlBarn.Location = new System.Drawing.Point(16, 37);
             this.rdlBarn.Name = "rdlBarn";
             this.rdlBarn.Size = new System.Drawing.Size(284, 27);
-            this.rdlBarn.TabIndex = 30;
+            this.rdlBarn.TabIndex = 0;
             this.rdlBarn.ThemeName = "TelerikMetroBlue";
             // 
             // ddlProducts
@@ -155,7 +156,7 @@
             this.ddlProducts.Location = new System.Drawing.Point(15, 95);
             this.ddlProducts.Name = "ddlProducts";
             this.ddlProducts.Size = new System.Drawing.Size(284, 27);
-            this.ddlProducts.TabIndex = 15;
+            this.ddlProducts.TabIndex = 1;
             this.ddlProducts.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel6
@@ -185,7 +186,7 @@
             this.ddlProviders.Location = new System.Drawing.Point(14, 236);
             this.ddlProviders.Name = "ddlProviders";
             this.ddlProviders.Size = new System.Drawing.Size(284, 27);
-            this.ddlProviders.TabIndex = 16;
+            this.ddlProviders.TabIndex = 5;
             this.ddlProviders.ThemeName = "TelerikMetroBlue";
             this.ddlProviders.Visible = false;
             // 
@@ -195,7 +196,7 @@
             this.ckdProvider.Location = new System.Drawing.Point(15, 211);
             this.ckdProvider.Name = "ckdProvider";
             this.ckdProvider.Size = new System.Drawing.Size(95, 21);
-            this.ckdProvider.TabIndex = 27;
+            this.ckdProvider.TabIndex = 4;
             this.ckdProvider.TabStop = false;
             this.ckdProvider.Text = "Proveedor";
             this.ckdProvider.ThemeName = "TelerikMetroBlue";
@@ -208,7 +209,7 @@
             this.ckdOwn.Location = new System.Drawing.Point(15, 186);
             this.ckdOwn.Name = "ckdOwn";
             this.ckdOwn.Size = new System.Drawing.Size(109, 21);
-            this.ckdOwn.TabIndex = 25;
+            this.ckdOwn.TabIndex = 3;
             this.ckdOwn.Text = "Stock propio";
             this.ckdOwn.ThemeName = "TelerikMetroBlue";
             this.ckdOwn.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
@@ -221,7 +222,7 @@
             this.ddlShifts.Location = new System.Drawing.Point(15, 152);
             this.ddlShifts.Name = "ddlShifts";
             this.ddlShifts.Size = new System.Drawing.Size(284, 27);
-            this.ddlShifts.TabIndex = 19;
+            this.ddlShifts.TabIndex = 2;
             this.ddlShifts.ThemeName = "TelerikMetroBlue";
             // 
             // radLabel4
@@ -240,7 +241,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(578, 306);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(96, 24);
-            this.btnCancelar.TabIndex = 26;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.ThemeName = "TelerikMetroBlue";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -251,7 +252,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(476, 306);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(96, 24);
-            this.btnAceptar.TabIndex = 24;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.ThemeName = "TelerikMetroBlue";
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -259,10 +260,10 @@
             // ucEggsAmount
             // 
             this.ucEggsAmount.Location = new System.Drawing.Point(338, 7);
-            this.ucEggsAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ucEggsAmount.Margin = new System.Windows.Forms.Padding(4);
             this.ucEggsAmount.Name = "ucEggsAmount";
             this.ucEggsAmount.Size = new System.Drawing.Size(363, 292);
-            this.ucEggsAmount.TabIndex = 29;
+            this.ucEggsAmount.TabIndex = 6;
             // 
             // FrmAddStock
             // 
@@ -271,7 +272,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.Name = "FrmAddStock";
             // 

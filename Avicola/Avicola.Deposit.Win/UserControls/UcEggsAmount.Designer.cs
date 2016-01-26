@@ -38,9 +38,9 @@
             this.txtTotalEggs = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.BottomContentContainer = new Telerik.WinControls.UI.RadPanel();
+            this.txtEggsUnits = new Framework.Common.Win.Controls.CustomSpinEditor();
             this.DozensContainer = new Telerik.WinControls.UI.RadPanel();
             this.txtDozens = new Framework.Common.Win.Controls.CustomSpinEditor();
-            this.txtEggsUnits = new Framework.Common.Win.Controls.CustomSpinEditor();
             this.txtMapples = new Framework.Common.Win.Controls.CustomSpinEditor();
             this.txtBoxes = new Framework.Common.Win.Controls.CustomSpinEditor();
             ((System.ComponentModel.ISupportInitialize)(this.radSeparator1)).BeginInit();
@@ -54,10 +54,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomContentContainer)).BeginInit();
             this.BottomContentContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DozensContainer)).BeginInit();
             this.DozensContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDozens)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMapples)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxes)).BeginInit();
             this.SuspendLayout();
@@ -70,6 +70,7 @@
             this.radSeparator1.ShowShadow = false;
             this.radSeparator1.Size = new System.Drawing.Size(316, 10);
             this.radSeparator1.TabIndex = 2;
+            this.radSeparator1.TabStop = false;
             this.radSeparator1.Text = "radSeparator1";
             this.radSeparator1.ThemeName = "TelerikMetroBlue";
             // 
@@ -107,6 +108,7 @@
             this.txtTotalDozens.Name = "txtTotalDozens";
             this.txtTotalDozens.Size = new System.Drawing.Size(148, 24);
             this.txtTotalDozens.TabIndex = 6;
+            this.txtTotalDozens.TabStop = false;
             // 
             // radLabel4
             // 
@@ -133,6 +135,7 @@
             this.txtTotalEggs.Name = "txtTotalEggs";
             this.txtTotalEggs.Size = new System.Drawing.Size(148, 24);
             this.txtTotalEggs.TabIndex = 8;
+            this.txtTotalEggs.TabStop = false;
             // 
             // radLabel6
             // 
@@ -156,12 +159,25 @@
             this.BottomContentContainer.Name = "BottomContentContainer";
             this.BottomContentContainer.Size = new System.Drawing.Size(325, 112);
             this.BottomContentContainer.TabIndex = 9;
+            this.BottomContentContainer.TabStop = false;
             ((Telerik.WinControls.UI.RadPanelElement)(this.BottomContentContainer.GetChildAt(0))).Text = "";
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BottomContentContainer.GetChildAt(0).GetChildAt(1))).Width = 0F;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BottomContentContainer.GetChildAt(0).GetChildAt(1))).LeftWidth = 0F;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BottomContentContainer.GetChildAt(0).GetChildAt(1))).TopWidth = 0F;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BottomContentContainer.GetChildAt(0).GetChildAt(1))).RightWidth = 0F;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.BottomContentContainer.GetChildAt(0).GetChildAt(1))).BottomWidth = 0F;
+            // 
+            // txtEggsUnits
+            // 
+            this.txtEggsUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEggsUnits.Location = new System.Drawing.Point(0, 29);
+            this.txtEggsUnits.Name = "txtEggsUnits";
+            this.txtEggsUnits.NullableValue = null;
+            this.txtEggsUnits.Size = new System.Drawing.Size(148, 25);
+            this.txtEggsUnits.TabIndex = 0;
+            this.txtEggsUnits.TabStop = false;
+            this.txtEggsUnits.ValueChanged += new System.EventHandler(this.txtEggsUnits_ValueChanged);
+            this.txtEggsUnits.TextChanged += new System.EventHandler(this.txtEggsUnits_ValueChanged);
             // 
             // DozensContainer
             // 
@@ -185,22 +201,10 @@
             this.txtDozens.Name = "txtDozens";
             this.txtDozens.NullableValue = null;
             this.txtDozens.Size = new System.Drawing.Size(148, 25);
-            this.txtDozens.TabIndex = 6;
+            this.txtDozens.TabIndex = 0;
             this.txtDozens.TabStop = false;
             this.txtDozens.ValueChanged += new System.EventHandler(this.txtDozens_ValueChanged);
             this.txtDozens.TextChanged += new System.EventHandler(this.txtDozens_ValueChanged);
-            // 
-            // txtEggsUnits
-            // 
-            this.txtEggsUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEggsUnits.Location = new System.Drawing.Point(0, 29);
-            this.txtEggsUnits.Name = "txtEggsUnits";
-            this.txtEggsUnits.NullableValue = null;
-            this.txtEggsUnits.Size = new System.Drawing.Size(148, 25);
-            this.txtEggsUnits.TabIndex = 1;
-            this.txtEggsUnits.TabStop = false;
-            this.txtEggsUnits.ValueChanged += new System.EventHandler(this.txtEggsUnits_ValueChanged);
-            this.txtEggsUnits.TextChanged += new System.EventHandler(this.txtEggsUnits_ValueChanged);
             // 
             // txtMapples
             // 
@@ -250,11 +254,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomContentContainer)).EndInit();
             this.BottomContentContainer.ResumeLayout(false);
             this.BottomContentContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DozensContainer)).EndInit();
             this.DozensContainer.ResumeLayout(false);
             this.DozensContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDozens)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEggsUnits)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMapples)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxes)).EndInit();
             this.ResumeLayout(false);
