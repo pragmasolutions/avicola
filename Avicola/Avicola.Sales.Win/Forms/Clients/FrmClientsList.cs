@@ -49,8 +49,6 @@ namespace Avicola.Sales.Win.Forms
             this.loadingOverlay.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.Dash;
             this.loadingOverlay.ThemeName = this.ThemeName;
             this.loadingOverlay.Visible = false;
-
-            
         }
 
         private async void FrmBatchMedicineList_Load(object sender, EventArgs e)

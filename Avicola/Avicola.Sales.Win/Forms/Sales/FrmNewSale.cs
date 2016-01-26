@@ -52,7 +52,6 @@ namespace Avicola.Sales.Win.Forms.Sales
                     });
                 }
             }
-            
         }
 
         private void RefreshClientsDropdown()
@@ -93,7 +92,7 @@ namespace Avicola.Sales.Win.Forms.Sales
                 }
                 if (eggsCount == 0)
                 {
-                    _messageBoxDisplayService.ShowError("Debe ingresar cantidades al menos para una clase");
+                    _messageBoxDisplayService.ShowWarning("Debe ingresar cantidades al menos para una clase");
                 }
                 else
                 {
@@ -157,7 +156,6 @@ namespace Avicola.Sales.Win.Forms.Sales
         }
         protected override void ValidateControls()
         {
-            //this.ValidateControl(txtDozens, "Dozens");
             this.ValidateControl(txtCity, "City");
             this.ValidateControl(txtAddress, "Address");
             this.ValidateControl(txtPhone, "PhoneNumber");
@@ -172,8 +170,6 @@ namespace Avicola.Sales.Win.Forms.Sales
             return GetOrder();
         }
         
-
-
         private void ddlClient_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
             if (ddlClient.SelectedValue != null)
