@@ -10,6 +10,8 @@
 
 </head>
 <body>
+@if (this.Request.QueryString["app"] != "dashboard")
+{
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -19,44 +21,44 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/" style="margin: 6px 16px 0 5px; padding: 0;">
-                    <img src="/Content/Images/logo.png" style="width: 40px;" />
+                    <img src="/Content/Images/logo.png" style="width: 40px;"/>
                 </a>
-                
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Producción <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Líneas Genéticas", "Index", new { controller = "GeneticLine" })</li>
-                            <li>@Html.ActionLink("Estándares", "Index", new { controller = "Standard" })</li>
-                            <li>@Html.ActionLink("Galpones", "Index", new { controller = "Barn" })</li>
-                            <li>@Html.ActionLink("Clases de Alimento", "Index", new { controller = "FoodClass" })</li>
-                            <li>@Html.ActionLink("Vacunas", "Index", new { controller = "Vaccine" })</li>
-                            <li>@Html.ActionLink("Medicamentos", "Index", new { controller = "Medicine" })</li>
+                            <li>@Html.ActionLink("Líneas Genéticas", "Index", new {controller = "GeneticLine"})</li>
+                            <li>@Html.ActionLink("Estándares", "Index", new {controller = "Standard"})</li>
+                            <li>@Html.ActionLink("Galpones", "Index", new {controller = "Barn"})</li>
+                            <li>@Html.ActionLink("Clases de Alimento", "Index", new {controller = "FoodClass"})</li>
+                            <li>@Html.ActionLink("Vacunas", "Index", new {controller = "Vaccine"})</li>
+                            <li>@Html.ActionLink("Medicamentos", "Index", new {controller = "Medicine"})</li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logística <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Conductores", "Index", new { controller = "Driver" })</li>
-                            <li>@Html.ActionLink("Camiones", "Index", new { controller = "Truck" })</li>
+                            <li>@Html.ActionLink("Conductores", "Index", new {controller = "Driver"})</li>
+                            <li>@Html.ActionLink("Camiones", "Index", new {controller = "Truck"})</li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ventas y Pedidos <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Clientes", "Index", new { controller = "Client" })</li>
-                            <li>@Html.ActionLink("Depósitos", "Index", new { controller = "Deposit" })</li>
-                            <li>@Html.ActionLink("Proveedores", "Index", new { controller = "Provider" })</li>
+                            <li>@Html.ActionLink("Clientes", "Index", new {controller = "Client"})</li>
+                            <li>@Html.ActionLink("Depósitos", "Index", new {controller = "Deposit"})</li>
+                            <li>@Html.ActionLink("Proveedores", "Index", new {controller = "Provider"})</li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <span class="report-group">Producción</span>
-                            <li>@Html.ActionLink("Seguimiento de Medidas", "MeasuresFollowUp", new { controller = "Report" })</li>
-                            <li>@Html.ActionLink("Estándar Individual por Lote", "BatchStandardFollowUp", new { controller = "Report" })</li>
+                            <li>@Html.ActionLink("Seguimiento de Medidas", "MeasuresFollowUp", new {controller = "Report"})</li>
+                            <li>@Html.ActionLink("Estándar Individual por Lote", "BatchStandardFollowUp", new {controller = "Report"})</li>
                         </ul>
                     </li>
                 </ul>
@@ -65,18 +67,19 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderSection("banner", required: false)
-        <div class="container alert-container" style="padding-left: 0 !important;"></div>
-        @RenderBody()
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/globalize")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/lib")
-    @Scripts.Render("~/bundles/app")
-    @RenderSection("scripts", required: false)
-    @Html.Partial("_Alerts")
+}
+<div class="container body-content">
+    @RenderSection("banner", required: false)
+    <div class="container alert-container" style="padding-left: 0 !important;"></div>
+    @RenderBody()
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/globalize")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/lib")
+@Scripts.Render("~/bundles/app")
+@RenderSection("scripts", required: false)
+@Html.Partial("_Alerts")
 </body>
 </html>

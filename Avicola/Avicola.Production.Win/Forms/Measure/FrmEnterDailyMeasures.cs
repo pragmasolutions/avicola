@@ -142,7 +142,6 @@ namespace Avicola.Production.Win.Forms.Measure
                         batchService.RecalculateBirds(_stateController.CurrentSelectedBatch.Id);
                     }
                 }
-                
             }
 
             TransitionManager.LoadStandardSelectionView();

@@ -8,10 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Avicola.Common.Win.Forms;
+using Telerik.WinControls.UI;
 
 namespace Avicola.Production.Dashboard
 {
-    public partial class Form1 : Form
+    public partial class Form1 : FrmBase
     {
         public Form1()
         {

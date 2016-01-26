@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Avicola.Sales.Services.Dtos;
 using Avicola.Sales.Services.Interfaces;
@@ -17,11 +18,11 @@ namespace Avicola.Web.Controllers
             _clientService = clientService;
         }
 
-        public ActionResult Index(ClientListFiltersModel filters)
+        public async Task<ActionResult> Index(ClientListFiltersModel filters)
         {
             int pageTotal;
 
-            var clients = _clientService.GetAll("CreatedDate", "DESC", filters.Criteria, filters.Page, DefaultPageSize, out pageTotal);
+            var clients = await _clientService.GetAll("CreatedDate", "DESC", filters.Criteria, filters.Page, DefaultPageSize, out pageTotal);
 
             var pagedList = new StaticPagedList<ClientDto>(clients, filters.Page, DefaultPageSize, pageTotal);
 
