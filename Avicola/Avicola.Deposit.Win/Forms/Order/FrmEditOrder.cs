@@ -110,7 +110,7 @@ namespace Avicola.Deposit.Win.Forms.Order
                 }
                 if (eggsCount == 0)
                 {
-                    _messageBoxDisplayService.ShowError("Debe ingresar cantidades al menos para una clase");
+                    _messageBoxDisplayService.ShowWarning("Debe ingresar cantidades al menos para una clase");
                 }
                 else
                 {
