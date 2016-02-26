@@ -109,6 +109,7 @@ namespace Avicola.Deposit.Dashboard
                 if (!orderControl.IsConfirmationPending)
                 {
                     orderControl.OrderFinished -= OrderControl_OrderFinished;
+                    orderControl.OrderBuilt -= OrderControl_OrderBuilt;
                 }
             }
 
@@ -165,6 +166,7 @@ namespace Avicola.Deposit.Dashboard
 
                     orderControl.MessageBoxDisplayService = MessageBoxDisplayService;
                     orderControl.OrderFinished += OrderControl_OrderFinished;
+                    orderControl.OrderBuilt += OrderControl_OrderBuilt;
 
                     flpCurrentOrders.Controls.Add(orderControl);
                 }
@@ -183,6 +185,23 @@ namespace Avicola.Deposit.Dashboard
             using (var orderService = _serviceFactory.Create<IOrderService>())
             {
                 orderService.FinishOrder(orderId);
+
+                RefreshDashboard();
+            }
+        }
+
+        private void OrderControl_OrderBuilt(object sender, Guid orderId)
+        {
+            var orderControl = sender as UcOrderBlock;
+
+            if (orderControl != null)
+            {
+                orderControl.OrderBuilt -= OrderControl_OrderBuilt;
+            }
+
+            using (var orderService = _serviceFactory.Create<IOrderService>())
+            {
+                orderService.BuildOrder(orderId, AppSettings.DepositId);
 
                 RefreshDashboard();
             }
