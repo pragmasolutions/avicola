@@ -59,7 +59,7 @@ namespace Avicola.Deposit.Dashboard
             using (var stockService = _serviceFactory.Create<IStockService>())
             {
                 //TODO: get egg classes stock
-                var stocks = stockService.GetByEggClass(Configuration.AppSettings.DepositId);
+                var stocks = stockService.GetByEggClass(Configuration.AppSettings.DepositId).Where(x => x.Id != EggClass.BROKEN).ToList();
                 flpStock.Controls.Clear();
                 foreach (var stock in stocks)
                 {
@@ -148,12 +148,12 @@ namespace Avicola.Deposit.Dashboard
                     blockHeight = mainHeight / 3 - 4;
                 }
 
-                foreach (var dto in currentOrders)
+                foreach (var dto in currentOrders.OrderBy(x => x.LoadDate))
                 {
                     var orderControl = new UcOrderBlock()
                                        {
                                            OrderId = dto.Id,
-                                           CreatedDate = dto.CreatedDate,
+                                           LoadDate = dto.LoadDate,
                                            ClientName = dto.ClientName,
                                            Address = dto.ClientAddress,
                                            OrderStatusId = dto.OrderStatusId,

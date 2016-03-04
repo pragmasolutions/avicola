@@ -71,6 +71,7 @@
     <Compile Include="Extensions\Driver.cs" />
     <Compile Include="Extensions\Order.cs" />
     <Compile Include="Extensions\EggEquivalence.cs" />
+    <Compile Include="Extensions\EggClass.cs" />
     <Compile Include="Extensions\OrderStatus.cs" />
     <Compile Include="Extensions\Product.cs" />
     <Compile Include="Extensions\Provider.cs" />

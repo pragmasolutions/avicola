@@ -38,6 +38,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
+            this.flpCurrentOrders = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flpStock = new System.Windows.Forms.FlowLayoutPanel();
@@ -46,7 +47,6 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvPreparedOrders = new Telerik.WinControls.UI.RadGridView();
-            this.flpCurrentOrders = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -110,6 +110,14 @@
             this.label6.Size = new System.Drawing.Size(345, 32);
             this.label6.TabIndex = 6;
             this.label6.Text = "PEDIDOS PENDIENTES";
+            // 
+            // flpCurrentOrders
+            // 
+            this.flpCurrentOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpCurrentOrders.Location = new System.Drawing.Point(3, 80);
+            this.flpCurrentOrders.Name = "flpCurrentOrders";
+            this.flpCurrentOrders.Size = new System.Drawing.Size(620, 621);
+            this.flpCurrentOrders.TabIndex = 7;
             // 
             // tableLayoutPanel2
             // 
@@ -208,7 +216,7 @@
             gridViewTextBoxColumn2.FieldName = "ClientName";
             gridViewTextBoxColumn2.HeaderText = "Cliente";
             gridViewTextBoxColumn2.MaxWidth = 5000;
-            gridViewTextBoxColumn2.MinWidth = 1;
+            gridViewTextBoxColumn2.MinWidth = 200;
             gridViewTextBoxColumn2.Name = "ClientName";
             gridViewTextBoxColumn2.Width = 200;
             gridViewTextBoxColumn3.DataType = typeof(System.DateTime);
@@ -242,14 +250,6 @@
             this.dgvPreparedOrders.TabIndex = 2;
             this.dgvPreparedOrders.Text = "radGridView1";
             this.dgvPreparedOrders.ThemeName = "TelerikMetroBlue";
-            // 
-            // flpCurrentOrders
-            // 
-            this.flpCurrentOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpCurrentOrders.Location = new System.Drawing.Point(3, 80);
-            this.flpCurrentOrders.Name = "flpCurrentOrders";
-            this.flpCurrentOrders.Size = new System.Drawing.Size(620, 621);
-            this.flpCurrentOrders.TabIndex = 7;
             // 
             // DepositDashboard
             // 

@@ -106,6 +106,7 @@
           <Property Name="DispatchedDate" Type="datetime2" Precision="7" />
           <Property Name="TruckId" Type="uniqueidentifier" />
           <Property Name="DriverId" Type="uniqueidentifier" />
+          <Property Name="LoadDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderEggClass">
@@ -795,7 +796,7 @@
           <Parameter Name="DepositId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="ReportOrderDispatchNote" ReturnType="Collection(Avicola.SalesModel.ReportOrderDispatchNoteRow)">
-            <Parameter Name="OrderId" Mode="In" Type="Guid" />
+          <Parameter Name="OrderId" Mode="In" Type="Guid" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Order">
@@ -822,6 +823,7 @@
           <Property Name="City" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="OrderEggClasses" Relationship="Avicola.SalesModel.FK_OrderEggClass_Order" FromRole="Order" ToRole="OrderEggClass" />
           <Property Name="DispatchNoteNumber" Type="Int32" />
+          <Property Name="LoadDate" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -1185,6 +1187,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Avicola.SalesModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
                 <ScalarProperty Name="DispatchNoteNumber" ColumnName="DispatchNoteNumber" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />

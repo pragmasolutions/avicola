@@ -25,9 +25,22 @@ namespace Avicola.Sales.Win.Model
 
         [Required]
         public string PhoneNumber { get; set; }
+
+        [Required]
+        public DateTime LoadDate { get; set; }
+
+        [Required]
+        public DateTime LoadTime { get; set; }
         
         public Order ToOrder()
         {
+            var loadDate = new DateTime(this.LoadDate.Year,
+                                        this.LoadDate.Month,
+                                        this.LoadDate.Day,
+                                        this.LoadTime.Hour,
+                                        this.LoadTime.Minute,
+                                        0);
+            
             var order = new Order
             {
                 Id = Guid.NewGuid(),
@@ -37,7 +50,8 @@ namespace Avicola.Sales.Win.Model
                 Address = this.Address,
                 PhoneNumber = this.PhoneNumber,
                 IsDeleted = false,
-                OrderStatusId = OrderStatus.PENDING
+                OrderStatusId = OrderStatus.PENDING,
+                LoadDate = loadDate
             };
             return order;
         }

@@ -68,7 +68,7 @@ namespace Avicola.Deposit.Win.Forms
         {
             using (var classificationEggClassService = _serviceFactory.Create<IEggClassService>())
             {
-                var classificationEggClasses = classificationEggClassService.GetAll();
+                var classificationEggClasses = classificationEggClassService.GetAll().OrderBy(x => x.Sequence);
 
                 using (var eggEquivalenceService = _serviceFactory.Create<IEggEquivalenceService>())
                 {

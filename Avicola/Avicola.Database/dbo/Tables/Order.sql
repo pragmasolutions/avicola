@@ -12,6 +12,7 @@
     [DispatchedDate] DATETIME2 (7)    NULL,
     [TruckId]        UNIQUEIDENTIFIER NULL,
     [DriverId]       UNIQUEIDENTIFIER NULL,
+	[LoadDate]    DATETIME2 (7)    NOT NULL,
     [IsDeleted]      BIT              DEFAULT ((0)) NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_Order_Client] FOREIGN KEY ([ClientId]) REFERENCES [dbo].[Client] ([Id]),

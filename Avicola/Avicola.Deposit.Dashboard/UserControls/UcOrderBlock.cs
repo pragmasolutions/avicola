@@ -19,7 +19,7 @@ namespace Avicola.Deposit.Dashboard.UserControls
         #region Properties
 
         public Guid OrderId { get; set; }
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? LoadDate { get; set; }
         public string Status { get; set; }
         public Guid OrderStatusId { get; set; }
         public string ClientName { get; set; }
@@ -61,7 +61,7 @@ namespace Avicola.Deposit.Dashboard.UserControls
 
         private void UcOrderBlock_Load(object sender, EventArgs e)
         {
-            lblCreatedDateValue.Text = CreatedDate.GetValueOrDefault().ToShortDateString();
+            lblLoadDateValue.Text = LoadDate.GetValueOrDefault().ToShortDateString();
             lblStatusValue.Text = Status;
             lblClientNameValue.Text = ClientName;
             lblAddressValue.Text = Address;
@@ -80,7 +80,8 @@ namespace Avicola.Deposit.Dashboard.UserControls
                 {
                     EggClassName = dto.EggClassName,
                     Amount = dto.Dozens,
-                    CurrentStock = currentStock
+                    CurrentStock = currentStock,
+                    ShowDifference = OrderStatusId != OrderStatus.IN_PROGESS
                 };
                 flpOrderEggClasses.Controls.Add(uc);
 
@@ -93,7 +94,7 @@ namespace Avicola.Deposit.Dashboard.UserControls
                 flpOrderEggClasses.SetFlowBreak(flpOrderEggClasses.Controls[flpOrderEggClasses.Controls.Count - 1], true);
             }
 
-            if (completed)
+            if (completed && OrderStatusId != OrderStatus.IN_PROGESS)
             {
                 this.BackColor = Color.FromArgb(193, 193, 190, 255);
 
@@ -116,6 +117,7 @@ namespace Avicola.Deposit.Dashboard.UserControls
                 btnFinishOrder.Text = "Finalizar Pedido";
                 btnFinishOrder.Click += btnFinishOrder_Click;
                 btnFinishOrder.Anchor = AnchorStyles.Right;
+                this.BackColor = Color.FromArgb(255, 193, 190, 255);
 
                 flpOrderEggClasses.Controls.Add(btnFinishOrder);
             }

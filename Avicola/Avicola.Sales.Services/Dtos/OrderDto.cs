@@ -19,6 +19,7 @@ namespace Avicola.Sales.Services.Dtos
         public string OrderStatusName { get; set; }
         public DateTime? PreparedDate { get; set; }
         public DateTime CreatedDate { get; set; }
+        public DateTime LoadDate { get; set; }
         public int Dozens { get; set; }
         public DateTime? DispatchedDate { get; set; }
         public string DriverName { get; set; }

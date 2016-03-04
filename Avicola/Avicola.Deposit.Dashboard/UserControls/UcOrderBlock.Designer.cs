@@ -35,7 +35,7 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblClientNameValue = new System.Windows.Forms.Label();
-            this.lblCreatedDateValue = new System.Windows.Forms.Label();
+            this.lblLoadDateValue = new System.Windows.Forms.Label();
             this.lblAddressValue = new System.Windows.Forms.Label();
             this.lblStatusValue = new System.Windows.Forms.Label();
             this.flpOrderEggClasses = new System.Windows.Forms.FlowLayoutPanel();
@@ -68,7 +68,7 @@
             this.tableLayoutPanel2.Controls.Add(this.lblStatus, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.lblAddress, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.lblClientNameValue, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lblCreatedDateValue, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblLoadDateValue, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblAddressValue, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.lblStatusValue, 1, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -86,7 +86,7 @@
             // 
             this.lblClientName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblClientName.AutoSize = true;
-            this.lblClientName.Location = new System.Drawing.Point(3, 9);
+            this.lblClientName.Location = new System.Drawing.Point(3, 5);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Size = new System.Drawing.Size(51, 17);
             this.lblClientName.TabIndex = 0;
@@ -96,17 +96,17 @@
             // 
             this.lblCreatedDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblCreatedDate.AutoSize = true;
-            this.lblCreatedDate.Location = new System.Drawing.Point(344, 9);
+            this.lblCreatedDate.Location = new System.Drawing.Point(344, 5);
             this.lblCreatedDate.Name = "lblCreatedDate";
-            this.lblCreatedDate.Size = new System.Drawing.Size(47, 17);
+            this.lblCreatedDate.Size = new System.Drawing.Size(89, 17);
             this.lblCreatedDate.TabIndex = 1;
-            this.lblCreatedDate.Text = "Fecha";
+            this.lblCreatedDate.Text = "Fecha Carga";
             // 
             // lblStatus
             // 
             this.lblStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(344, 81);
+            this.lblStatus.Location = new System.Drawing.Point(344, 61);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(52, 17);
             this.lblStatus.TabIndex = 2;
@@ -116,7 +116,7 @@
             // 
             this.lblAddress.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(3, 81);
+            this.lblAddress.Location = new System.Drawing.Point(3, 61);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(67, 17);
             this.lblAddress.TabIndex = 3;
@@ -126,27 +126,27 @@
             // 
             this.lblClientNameValue.AutoSize = true;
             this.lblClientNameValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientNameValue.Location = new System.Drawing.Point(3, 36);
+            this.lblClientNameValue.Location = new System.Drawing.Point(3, 28);
             this.lblClientNameValue.Name = "lblClientNameValue";
             this.lblClientNameValue.Size = new System.Drawing.Size(129, 17);
             this.lblClientNameValue.TabIndex = 4;
             this.lblClientNameValue.Text = "{{CLIENTNAME}}";
             // 
-            // lblCreatedDateValue
+            // lblLoadDateValue
             // 
-            this.lblCreatedDateValue.AutoSize = true;
-            this.lblCreatedDateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatedDateValue.Location = new System.Drawing.Point(344, 36);
-            this.lblCreatedDateValue.Name = "lblCreatedDateValue";
-            this.lblCreatedDateValue.Size = new System.Drawing.Size(139, 34);
-            this.lblCreatedDateValue.TabIndex = 5;
-            this.lblCreatedDateValue.Text = "{{CREATEDDATE}}";
+            this.lblLoadDateValue.AutoSize = true;
+            this.lblLoadDateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoadDateValue.Location = new System.Drawing.Point(344, 28);
+            this.lblLoadDateValue.Name = "lblLoadDateValue";
+            this.lblLoadDateValue.Size = new System.Drawing.Size(115, 17);
+            this.lblLoadDateValue.TabIndex = 5;
+            this.lblLoadDateValue.Text = "{{LOADDATE}}";
             // 
             // lblAddressValue
             // 
             this.lblAddressValue.AutoSize = true;
             this.lblAddressValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddressValue.Location = new System.Drawing.Point(3, 108);
+            this.lblAddressValue.Location = new System.Drawing.Point(3, 84);
             this.lblAddressValue.Name = "lblAddressValue";
             this.lblAddressValue.Size = new System.Drawing.Size(105, 17);
             this.lblAddressValue.TabIndex = 6;
@@ -156,7 +156,7 @@
             // 
             this.lblStatusValue.AutoSize = true;
             this.lblStatusValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatusValue.Location = new System.Drawing.Point(344, 108);
+            this.lblStatusValue.Location = new System.Drawing.Point(344, 84);
             this.lblStatusValue.Name = "lblStatusValue";
             this.lblStatusValue.Size = new System.Drawing.Size(93, 17);
             this.lblStatusValue.TabIndex = 7;
@@ -196,7 +196,7 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblClientNameValue;
-        private System.Windows.Forms.Label lblCreatedDateValue;
+        private System.Windows.Forms.Label lblLoadDateValue;
         private System.Windows.Forms.Label lblAddressValue;
         private System.Windows.Forms.Label lblStatusValue;
         private System.Windows.Forms.FlowLayoutPanel flpOrderEggClasses;

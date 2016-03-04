@@ -41,7 +41,7 @@ namespace Avicola.Sales.Win.Forms.Sales
         {
             using (var service = _serviceFactory.Create<IEggClassService>())
             {
-                var classes = service.GetAll().OrderBy(x => x.Sequence);
+                var classes = service.GetAll().OrderBy(x => x.Sequence).Where(x => x.Id != EggClass.BROKEN);
                 foreach (var eggClass in classes)
                 {
                     flpProducts.Controls.Add(new UcEggClassSale()
@@ -144,12 +144,21 @@ namespace Avicola.Sales.Win.Forms.Sales
         
         private CreateOrderModel GetOrder()
         {
+            var loadDate = new DateTime(dtpLoadDate.Value.Year,
+                                        dtpLoadDate.Value.Month,
+                                        dtpLoadDate.Value.Day,
+                                        tpLoadDate.Value.GetValueOrDefault().Hour,
+                                        tpLoadDate.Value.GetValueOrDefault().Minute,
+                                        0);
+            
+            
             var order = new CreateOrderModel
             {
                 ClientId = Guid.Parse(ddlClient.SelectedValue.ToString()),
                 Address = txtAddress.Text,
                 City = txtCity.Text,
-                PhoneNumber = txtPhone.Text
+                PhoneNumber = txtPhone.Text,
+                LoadDate = loadDate
             };
 
             return order;
@@ -159,6 +168,8 @@ namespace Avicola.Sales.Win.Forms.Sales
             this.ValidateControl(txtCity, "City");
             this.ValidateControl(txtAddress, "Address");
             this.ValidateControl(txtPhone, "PhoneNumber");
+            this.ValidateControl(dtpLoadDate, "LoadDate");
+            this.ValidateControl(tpLoadDate, "LoadTime");
             if (ddlClient.SelectedValue.ToString() == Guid.Empty.ToString())
             {
                 this.FormErrorProvider.SetError(ddlClient, "Debe seleccionar un cliente.");
