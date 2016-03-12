@@ -35,6 +35,7 @@ namespace Avicola.Sales.Entities
         public string PhoneNumber { get; set; }
         public string City { get; set; }
         public Nullable<int> DispatchNoteNumber { get; set; }
+        public System.DateTime LoadDate { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Driver Driver { get; set; }

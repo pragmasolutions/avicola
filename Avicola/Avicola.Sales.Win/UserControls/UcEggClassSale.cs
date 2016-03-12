@@ -22,7 +22,7 @@ namespace Avicola.Sales.Win.UserControls
         public int Dozens
         {
             get { return (int)(txtDozens.NullableValue ?? 0); }
-            set { txtDozens.Value = value; }
+            set { txtDozens.NullableValue = value; }
         }
 
         public string Name

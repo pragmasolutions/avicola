@@ -36,6 +36,7 @@
                             count += measure.Value;
                         }
 
+
                         acum += (count * 100) / remainingBirds;
 
                         item.Measures = [
@@ -44,12 +45,14 @@
                             }
                         ];
                         remainingBirds -= count;
+
+                        if (item.Sequence == 17) {
+                            acum = 0;
+                        }
                     }
                 }
             }
-            
-
-        }
+        },
         getContainer = function (width, height) {
             var widthCol = 0;
             switch (width) {

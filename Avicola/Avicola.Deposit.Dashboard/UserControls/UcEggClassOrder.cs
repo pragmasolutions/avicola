@@ -54,6 +54,8 @@ namespace Avicola.Deposit.Dashboard.UserControls
             }
         }
 
+        public bool ShowDifference { get; set; }
+
         private void UcEggClassStock_Load(object sender, EventArgs e)
         {
             lblName.Text = EggClassName;
@@ -79,6 +81,8 @@ namespace Avicola.Deposit.Dashboard.UserControls
             {
                 this.Width = lblMissingStock.Location.X + lblMissingStock.Width + 15;
             }
+
+            lblMissingStock.Visible = ShowDifference;
         }
     }
 }

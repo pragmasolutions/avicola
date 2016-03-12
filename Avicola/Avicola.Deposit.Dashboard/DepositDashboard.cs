@@ -59,7 +59,7 @@ namespace Avicola.Deposit.Dashboard
             using (var stockService = _serviceFactory.Create<IStockService>())
             {
                 //TODO: get egg classes stock
-                var stocks = stockService.GetByEggClass(Configuration.AppSettings.DepositId);
+                var stocks = stockService.GetByEggClass(Configuration.AppSettings.DepositId).Where(x => x.Id != EggClass.BROKEN).ToList();
                 flpStock.Controls.Clear();
                 foreach (var stock in stocks)
                 {
@@ -109,6 +109,7 @@ namespace Avicola.Deposit.Dashboard
                 if (!orderControl.IsConfirmationPending)
                 {
                     orderControl.OrderFinished -= OrderControl_OrderFinished;
+                    orderControl.OrderBuilt -= OrderControl_OrderBuilt;
                 }
             }
 
@@ -147,12 +148,12 @@ namespace Avicola.Deposit.Dashboard
                     blockHeight = mainHeight / 3 - 4;
                 }
 
-                foreach (var dto in currentOrders)
+                foreach (var dto in currentOrders.OrderBy(x => x.LoadDate))
                 {
                     var orderControl = new UcOrderBlock()
                                        {
                                            OrderId = dto.Id,
-                                           CreatedDate = dto.CreatedDate,
+                                           LoadDate = dto.LoadDate,
                                            ClientName = dto.ClientName,
                                            Address = dto.ClientAddress,
                                            OrderStatusId = dto.OrderStatusId,
@@ -165,6 +166,7 @@ namespace Avicola.Deposit.Dashboard
 
                     orderControl.MessageBoxDisplayService = MessageBoxDisplayService;
                     orderControl.OrderFinished += OrderControl_OrderFinished;
+                    orderControl.OrderBuilt += OrderControl_OrderBuilt;
 
                     flpCurrentOrders.Controls.Add(orderControl);
                 }
@@ -183,6 +185,23 @@ namespace Avicola.Deposit.Dashboard
             using (var orderService = _serviceFactory.Create<IOrderService>())
             {
                 orderService.FinishOrder(orderId);
+
+                RefreshDashboard();
+            }
+        }
+
+        private void OrderControl_OrderBuilt(object sender, Guid orderId)
+        {
+            var orderControl = sender as UcOrderBlock;
+
+            if (orderControl != null)
+            {
+                orderControl.OrderBuilt -= OrderControl_OrderBuilt;
+            }
+
+            using (var orderService = _serviceFactory.Create<IOrderService>())
+            {
+                orderService.BuildOrder(orderId, AppSettings.DepositId);
 
                 RefreshDashboard();
             }

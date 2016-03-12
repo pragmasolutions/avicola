@@ -19,7 +19,7 @@ namespace Avicola.Deposit.Dashboard.UserControls
         #region Properties
 
         public Guid OrderId { get; set; }
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? LoadDate { get; set; }
         public string Status { get; set; }
         public Guid OrderStatusId { get; set; }
         public string ClientName { get; set; }
@@ -41,6 +41,7 @@ namespace Avicola.Deposit.Dashboard.UserControls
         }
 
         public event EventHandler<Guid> OrderFinished;
+        public event EventHandler<Guid> OrderBuilt;
 
         private void OnOrderFinished(Guid orderId)
         {
@@ -50,9 +51,17 @@ namespace Avicola.Deposit.Dashboard.UserControls
             }
         }
 
+        private void OnOrderBuilt(Guid orderId)
+        {
+            if (OrderBuilt != null)
+            {
+                OrderBuilt(this, OrderId);
+            }
+        }
+
         private void UcOrderBlock_Load(object sender, EventArgs e)
         {
-            lblCreatedDateValue.Text = CreatedDate.GetValueOrDefault().ToShortDateString();
+            lblLoadDateValue.Text = LoadDate.GetValueOrDefault().ToShortDateString();
             lblStatusValue.Text = Status;
             lblClientNameValue.Text = ClientName;
             lblAddressValue.Text = Address;
@@ -71,7 +80,8 @@ namespace Avicola.Deposit.Dashboard.UserControls
                 {
                     EggClassName = dto.EggClassName,
                     Amount = dto.Dozens,
-                    CurrentStock = currentStock
+                    CurrentStock = currentStock,
+                    ShowDifference = OrderStatusId != OrderStatus.IN_PROGESS
                 };
                 flpOrderEggClasses.Controls.Add(uc);
 
@@ -84,17 +94,30 @@ namespace Avicola.Deposit.Dashboard.UserControls
                 flpOrderEggClasses.SetFlowBreak(flpOrderEggClasses.Controls[flpOrderEggClasses.Controls.Count - 1], true);
             }
 
-            if (completed)
+            if (completed && OrderStatusId != OrderStatus.IN_PROGESS)
             {
-                this.BackColor = Color.FromArgb(255, 196, 255, 178);
+                this.BackColor = Color.FromArgb(193, 193, 190, 255);
+
+                if (OrderStatusId != OrderStatus.IN_PROGESS)
+                {
+                    this.BackColor = Color.FromArgb(255, 196, 255, 178);
+                    RadButton btnBuildOrder = new RadButton();
+                    btnBuildOrder.Text = "Armar Pedido";
+                    btnBuildOrder.Click += btnBuildOrder_Click;
+                    btnBuildOrder.Anchor = AnchorStyles.Right;
+
+                    flpOrderEggClasses.Controls.Add(btnBuildOrder);
+                }
+                
             }
 
             if (OrderStatusId == OrderStatus.IN_PROGESS)
             {
                 RadButton btnFinishOrder = new RadButton();
-                btnFinishOrder.Text = "Finalizar Pedído";
+                btnFinishOrder.Text = "Finalizar Pedido";
                 btnFinishOrder.Click += btnFinishOrder_Click;
                 btnFinishOrder.Anchor = AnchorStyles.Right;
+                this.BackColor = Color.FromArgb(255, 193, 190, 255);
 
                 flpOrderEggClasses.Controls.Add(btnFinishOrder);
             }
@@ -104,12 +127,29 @@ namespace Avicola.Deposit.Dashboard.UserControls
         {
             IsConfirmationPending = true;
 
-            MessageBoxDisplayService.ShowConfirmationDialog("¿Esta Seguro que desea finalizar este Pedído?", "Finalizar Pedído",
+            MessageBoxDisplayService.ShowConfirmationDialog("¿Esta Seguro que desea finalizar este pedido?", "Finalizar pedido",
                 () =>
                 {
                     IsConfirmationPending = false;
 
                     OnOrderFinished(OrderId);
+                },
+                () =>
+                {
+                    IsConfirmationPending = false;
+                });
+        }
+
+        private void btnBuildOrder_Click(object sender, EventArgs e)
+        {
+            IsConfirmationPending = true;
+
+            MessageBoxDisplayService.ShowConfirmationDialog("¿Esta seguro que desea armar este pedido?", "Armar pedido",
+                () =>
+                {
+                    IsConfirmationPending = false;
+
+                    OnOrderBuilt(OrderId);
                 },
                 () =>
                 {

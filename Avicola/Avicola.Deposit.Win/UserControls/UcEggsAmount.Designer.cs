@@ -65,10 +65,11 @@
             // radSeparator1
             // 
             this.radSeparator1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radSeparator1.Location = new System.Drawing.Point(3, 53);
+            this.radSeparator1.Location = new System.Drawing.Point(4, 65);
+            this.radSeparator1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radSeparator1.Name = "radSeparator1";
             this.radSeparator1.ShowShadow = false;
-            this.radSeparator1.Size = new System.Drawing.Size(316, 10);
+            this.radSeparator1.Size = new System.Drawing.Size(421, 12);
             this.radSeparator1.TabIndex = 2;
             this.radSeparator1.TabStop = false;
             this.radSeparator1.Text = "radSeparator1";
@@ -77,72 +78,80 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(16, 4);
+            this.radLabel1.Location = new System.Drawing.Point(21, 5);
+            this.radLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(47, 21);
+            this.radLabel1.Size = new System.Drawing.Size(58, 26);
             this.radLabel1.TabIndex = 3;
             this.radLabel1.Text = "Cajas";
             // 
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(16, 60);
+            this.radLabel2.Location = new System.Drawing.Point(21, 74);
+            this.radLabel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(66, 21);
+            this.radLabel2.Size = new System.Drawing.Size(82, 26);
             this.radLabel2.TabIndex = 4;
             this.radLabel2.Text = "Mapples";
             // 
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(0, 3);
+            this.radLabel3.Location = new System.Drawing.Point(0, 4);
+            this.radLabel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(121, 21);
+            this.radLabel3.Size = new System.Drawing.Size(150, 26);
             this.radLabel3.TabIndex = 5;
             this.radLabel3.Text = "Huevos (unidad)";
             // 
             // txtTotalDozens
             // 
             this.txtTotalDozens.Enabled = false;
-            this.txtTotalDozens.Location = new System.Drawing.Point(171, 83);
+            this.txtTotalDozens.Location = new System.Drawing.Point(228, 102);
+            this.txtTotalDozens.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTotalDozens.Name = "txtTotalDozens";
-            this.txtTotalDozens.Size = new System.Drawing.Size(148, 24);
+            this.txtTotalDozens.Size = new System.Drawing.Size(197, 28);
             this.txtTotalDozens.TabIndex = 6;
             this.txtTotalDozens.TabStop = false;
             // 
             // radLabel4
             // 
             this.radLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.Location = new System.Drawing.Point(171, 60);
+            this.radLabel4.Location = new System.Drawing.Point(228, 74);
+            this.radLabel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(133, 21);
+            this.radLabel4.Size = new System.Drawing.Size(165, 26);
             this.radLabel4.TabIndex = 6;
             this.radLabel4.Text = "Total de Docenas";
             // 
             // radLabel5
             // 
             this.radLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(0, 60);
+            this.radLabel5.Location = new System.Drawing.Point(0, 74);
+            this.radLabel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(124, 21);
+            this.radLabel5.Size = new System.Drawing.Size(154, 26);
             this.radLabel5.TabIndex = 7;
             this.radLabel5.Text = "Total de Huevos";
             // 
             // txtTotalEggs
             // 
             this.txtTotalEggs.Enabled = false;
-            this.txtTotalEggs.Location = new System.Drawing.Point(0, 83);
+            this.txtTotalEggs.Location = new System.Drawing.Point(0, 102);
+            this.txtTotalEggs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTotalEggs.Name = "txtTotalEggs";
-            this.txtTotalEggs.Size = new System.Drawing.Size(148, 24);
+            this.txtTotalEggs.Size = new System.Drawing.Size(197, 28);
             this.txtTotalEggs.TabIndex = 8;
             this.txtTotalEggs.TabStop = false;
             // 
             // radLabel6
             // 
             this.radLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel6.Location = new System.Drawing.Point(3, 0);
+            this.radLabel6.Location = new System.Drawing.Point(4, 0);
+            this.radLabel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel6.Name = "radLabel6";
-            this.radLabel6.Size = new System.Drawing.Size(68, 21);
+            this.radLabel6.Size = new System.Drawing.Size(85, 26);
             this.radLabel6.TabIndex = 7;
             this.radLabel6.Text = "Docenas";
             // 
@@ -155,9 +164,10 @@
             this.BottomContentContainer.Controls.Add(this.txtTotalDozens);
             this.BottomContentContainer.Controls.Add(this.txtTotalEggs);
             this.BottomContentContainer.Controls.Add(this.radLabel4);
-            this.BottomContentContainer.Location = new System.Drawing.Point(16, 169);
+            this.BottomContentContainer.Location = new System.Drawing.Point(21, 208);
+            this.BottomContentContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BottomContentContainer.Name = "BottomContentContainer";
-            this.BottomContentContainer.Size = new System.Drawing.Size(325, 112);
+            this.BottomContentContainer.Size = new System.Drawing.Size(433, 138);
             this.BottomContentContainer.TabIndex = 9;
             this.BottomContentContainer.TabStop = false;
             ((Telerik.WinControls.UI.RadPanelElement)(this.BottomContentContainer.GetChildAt(0))).Text = "";
@@ -170,10 +180,16 @@
             // txtEggsUnits
             // 
             this.txtEggsUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEggsUnits.Location = new System.Drawing.Point(0, 29);
+            this.txtEggsUnits.Location = new System.Drawing.Point(0, 36);
+            this.txtEggsUnits.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEggsUnits.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.txtEggsUnits.Name = "txtEggsUnits";
             this.txtEggsUnits.NullableValue = null;
-            this.txtEggsUnits.Size = new System.Drawing.Size(148, 25);
+            this.txtEggsUnits.Size = new System.Drawing.Size(197, 30);
             this.txtEggsUnits.TabIndex = 0;
             this.txtEggsUnits.TabStop = false;
             this.txtEggsUnits.ValueChanged += new System.EventHandler(this.txtEggsUnits_ValueChanged);
@@ -183,9 +199,10 @@
             // 
             this.DozensContainer.Controls.Add(this.radLabel6);
             this.DozensContainer.Controls.Add(this.txtDozens);
-            this.DozensContainer.Location = new System.Drawing.Point(16, 113);
+            this.DozensContainer.Location = new System.Drawing.Point(21, 139);
+            this.DozensContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DozensContainer.Name = "DozensContainer";
-            this.DozensContainer.Size = new System.Drawing.Size(151, 53);
+            this.DozensContainer.Size = new System.Drawing.Size(201, 65);
             this.DozensContainer.TabIndex = 10;
             ((Telerik.WinControls.UI.RadPanelElement)(this.DozensContainer.GetChildAt(0))).Text = "";
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.DozensContainer.GetChildAt(0).GetChildAt(1))).Width = 0F;
@@ -197,10 +214,16 @@
             // txtDozens
             // 
             this.txtDozens.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDozens.Location = new System.Drawing.Point(0, 26);
+            this.txtDozens.Location = new System.Drawing.Point(0, 32);
+            this.txtDozens.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDozens.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.txtDozens.Name = "txtDozens";
             this.txtDozens.NullableValue = null;
-            this.txtDozens.Size = new System.Drawing.Size(148, 25);
+            this.txtDozens.Size = new System.Drawing.Size(197, 30);
             this.txtDozens.TabIndex = 0;
             this.txtDozens.TabStop = false;
             this.txtDozens.ValueChanged += new System.EventHandler(this.txtDozens_ValueChanged);
@@ -209,10 +232,16 @@
             // txtMapples
             // 
             this.txtMapples.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMapples.Location = new System.Drawing.Point(16, 86);
+            this.txtMapples.Location = new System.Drawing.Point(21, 106);
+            this.txtMapples.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMapples.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.txtMapples.Name = "txtMapples";
             this.txtMapples.NullableValue = null;
-            this.txtMapples.Size = new System.Drawing.Size(148, 25);
+            this.txtMapples.Size = new System.Drawing.Size(197, 30);
             this.txtMapples.TabIndex = 1;
             this.txtMapples.TabStop = false;
             this.txtMapples.ValueChanged += new System.EventHandler(this.txtMapples_ValueChanged);
@@ -221,10 +250,16 @@
             // txtBoxes
             // 
             this.txtBoxes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxes.Location = new System.Drawing.Point(16, 30);
+            this.txtBoxes.Location = new System.Drawing.Point(21, 37);
+            this.txtBoxes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBoxes.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.txtBoxes.Name = "txtBoxes";
             this.txtBoxes.NullableValue = null;
-            this.txtBoxes.Size = new System.Drawing.Size(148, 25);
+            this.txtBoxes.Size = new System.Drawing.Size(197, 30);
             this.txtBoxes.TabIndex = 0;
             this.txtBoxes.TabStop = false;
             this.txtBoxes.ValueChanged += new System.EventHandler(this.txtBoxes_ValueChanged);
@@ -232,7 +267,7 @@
             // 
             // UcEggsAmount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.DozensContainer);
             this.Controls.Add(this.BottomContentContainer);
@@ -240,8 +275,9 @@
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.txtMapples);
             this.Controls.Add(this.txtBoxes);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UcEggsAmount";
-            this.Size = new System.Drawing.Size(344, 289);
+            this.Size = new System.Drawing.Size(459, 356);
             ((System.ComponentModel.ISupportInitialize)(this.radSeparator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
