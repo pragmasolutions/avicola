@@ -33,7 +33,13 @@
                                 <td>
                                     @Html.LabelFor(model => model.StandardId, new {@class = "label-inline"})
                                     <div class="form-group date-container">
-                                        @Html.DropDownListFor(model => model.StandardId, (SelectList)ViewBag.Standards, new { @class = "form-control select2-control" })
+                                        @Html.DropDownListFor(model => model.StandardId, (SelectList) ViewBag.Standards, new {@class = "form-control select2-control"})
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.StageGroupId, new { @class = "label-inline" })
+                                    <div class="form-group date-container">
+                                        @Html.EditorFor(model => model.StageGroupId)
                                     </div>
                                 </td>
                                 <td>

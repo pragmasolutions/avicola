@@ -37,10 +37,10 @@ namespace Avicola.Office.Entities
         public string Clase { get; set; }
         public Nullable<int> AvesAlInicio { get; set; }
         public Nullable<decimal> AlimentoAlInicio { get; set; }
-        public Nullable<decimal> ConsumoRealPorAve { get; set; }
         public Nullable<decimal> AlimentoInicialMes { get; set; }
         public Nullable<decimal> ConsumoTotalMes { get; set; }
         public Nullable<decimal> ConsumoDiario { get; set; }
         public string Stage { get; set; }
+        public Nullable<decimal> ConsumoTotalPorDiaPerido { get; set; }
     }
 }

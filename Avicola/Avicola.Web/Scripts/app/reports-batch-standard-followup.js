@@ -2,7 +2,7 @@
     var $formRefreshReport = $("#ReportContainer"),
     _lastData,
     init = function () {
-        $('#StandardId').attr('disabled', 'disabled');
+        $('#StandardId, #StageGroupId').attr('disabled', 'disabled');
 
         $('#BatchStatus').change(getBatches);
         $('#BatchId').change(getBatchStandards);
@@ -27,18 +27,27 @@
         var batchId = $batch.val();
 
         if (batchId != '') {
-            $.getJSON('/Report/GetStandards/' + batchId, function (standards) {
+            $.getJSON('/Report/GetStandards/' + batchId, function (response) {
                 var $standard = $('#StandardId');
                 $standard.removeAttr('disabled');
+                $('#StageGroupId').removeAttr('disabled');
                 
                 $standard.html('<option value="">Seleccione Estándar</option>');
-                for (var i = 0; i < standards.length; i++) {
-                    $standard.append('<option value="' + standards[i].Id + '">' + standards[i].Name + '</option>');
+                for (var i = 0; i < response.Standards.length; i++) {
+                    $standard.append('<option value="' + response.Standards[i].Id + '">' + response.Standards[i].Name + '</option>');
                 }
-                
+
+                var option = $.grep($('#StageGroupId option'), function(x) { return $(x).val() == 2;})[0];
+                if (response.HidePosture) {
+                    if (option) {
+                        $(option).remove();
+                    } 
+                } else if (!option) {
+                        $('#StageGroupId').append('<option value="2">Postura</option>');
+                }
             });
         } else {
-            $('#StandardId').attr('disabled', 'disabled');
+            $('#StandardId, #StageGroupId').attr('disabled', 'disabled');
         }
         
     },
@@ -51,7 +60,8 @@
         var url = '/Report/GenerateBatchStandardFollowUp?' + data;
 
         $.getJSON(url, function (data) {
-            _lastData = data;
+            _lastData = mergeFatalitiesAndDiscarded(data);
+            convertFatalitiesToPercentage();
             generateChart(data);
         });
         return false;
@@ -74,21 +84,39 @@
             if (value == standardItem.Value1) {
                 result += '<span><b style="color: green;">Valor óptimo</b></span>';
             } else if (value > standardItem.Value1) {
-                result += '<span><b style="color: red;">' + (value - standardItem.Value1) + ' ' + standard.MeasureUnity + '</b> por encima del valor óptimo</span>';
+                result += '<span><b style="color: red;">' + Highcharts.numberFormat((value - standardItem.Value1), 2) + ' ' + standard.MeasureUnity + '</b> por encima del valor óptimo</span>';
             } else {
-                result += '<span><b style="color: red;">' + (standardItem.Value1 - value) + ' ' + standard.MeasureUnity + '</b> por debajo del valor óptimo</span>';
+                result += '<span><b style="color: red;">' + Highcharts.numberFormat((standardItem.Value1 - value), 2) + ' ' + standard.MeasureUnity + '</b> por debajo del valor óptimo</span>';
             }
         }
         return result;
     },
     generateChart = function (batch) {
-        var categories = [],
+        var weeks = [],
             series = [],
             colors = [],
             availableColors = [
                 '#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce',
                 '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
             ];
+
+        var stageGroupId = $('#StageGroupId').val();
+
+        var maxSequence = stageGroupId == '1' ? 17 : 120;
+        var batchSequence = 0;
+        for (var l = 0; l < batch.GeneticLine.Standards.length; l++) {
+            var s = batch.GeneticLine.Standards[l];
+            for (var m = 0; m < s.StandardItems.length; m++) {
+                var x = s.StandardItems[m];
+                if (x.Sequence > batchSequence) {
+                    batchSequence = x.Sequence;
+                }
+            }
+        }
+
+        if (batchSequence < maxSequence) {
+            maxSequence = batchSequence;
+        }
 
         for (var j = 0; j < batch.GeneticLine.Standards.length; j++) {
             var color = availableColors.pop();
@@ -109,10 +137,22 @@
                 lineWidth: 3
             }
 
-            for (var i = 0; i < standard.StandardItems.length; i++) {
-                var item = standard.StandardItems[i];
+            var items;
+            switch (stageGroupId) {
+                case '':
+                    items = standard.StandardItems;
+                    break;
+                case '1':
+                    items = $.grep(standard.StandardItems, function(x) { return x.Sequence < 18; });
+                    break;
+                case '2':
+                    items = $.grep(standard.StandardItems, function(x) { return x.Sequence >= 16; });
+                    break;
+            }
 
-                categories.push(i + 1);
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+
                 firstSerie.data.push(item.Value1);
 
                 if (item.Measures.length > 0) {
@@ -146,14 +186,20 @@
                     lineWidth: 1.5,
                     showInLegend: false
                 }
-                for (i = 0; i < standard.StandardItems.length; i++) {
-                    item = standard.StandardItems[i];
+                for (i = 0; i < items.length; i++) {
+                    item = items[i];
 
                     secondSerie.data.push(item.Value2);
                 }
                 series.push(secondSerie);
                 colors.push(color);
             }
+        }
+
+        
+        var minSequence = stageGroupId == '2' ? 15 : 0;
+        for (i = minSequence; i < maxSequence; i++) {
+            weeks.push(i + 1);
         }
 
 
@@ -168,7 +214,7 @@
                 x: -20
             },
             xAxis: {
-                categories: categories
+                categories: weeks
             },
             yAxis: {
                 title: {
@@ -187,7 +233,7 @@
                     var standard = this.series.name.split('(')[0].trim();
                     var measure = this.series.name.split('(')[1].split(')')[0];
 
-                    var firstPart = 'Semana <b>' + this.x + '</b><br/>' + standard + ': <b>' + this.y + '</b> ' + measure;
+                    var firstPart = 'Semana <b>' + this.x + '</b><br/>' + standard + ': <b>' + Highcharts.numberFormat(this.y, 2) + '</b> ' + measure;
 
                     if (this.series.name.indexOf('[*]') == -1) {
                         return firstPart;
@@ -203,6 +249,54 @@
             },
             series: series
         });
+    },
+    mergeFatalitiesAndDiscarded = function (batch) {
+        
+        var fatalities = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name == 'Mortandad' })[0];
+        var discarded = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name == 'Descarte' })[0];
+
+        if (fatalities && discarded) {
+            for (var j = 0; j < discarded.StandardItems.length; j++) {
+                var discardedItem = discarded.StandardItems[j];
+                var fatalityItem = fatalities.StandardItems[j];
+
+                for (var k = 0; k < discardedItem.Measures.length; k++) {
+                    var measure = discardedItem.Measures[k];
+                    fatalityItem.Measures.push({ Value: measure.Value });
+                }
+            }
+
+            batch.GeneticLine.Standards = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name != 'Descarte' });
+        }
+       
+        return batch;
+    },
+    convertFatalitiesToPercentage = function () {
+        var standard = _lastData.GeneticLine.Standards[0];
+        if (standard.Name == 'Mortandad') {
+            standard.MeasureUnity = '% aves';
+            var remainingBirds = _lastData.InitialBirds;
+            var acum = 0;
+            for (var i = 0; i < standard.StandardItems.length; i++) {
+                var item = standard.StandardItems[i];
+
+                var count = 0;
+                for (var j = 0; j < item.Measures.length; j++) {
+                    var measure = item.Measures[j];
+                    count += measure.Value;
+                }
+
+                acum += (count * 100) / remainingBirds;
+
+                item.Measures = [
+                    {
+                        Value: acum
+                    }
+                ];
+                remainingBirds -= count;
+            }
+        }
+
     }
 
     init();

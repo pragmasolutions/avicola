@@ -116,7 +116,7 @@ namespace Avicola.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dataset = _reportService.BreedingMeasuresFollowUp(model.BatchId, null, null);
+                var dataset = _reportService.BreedingMeasuresFollowUp(model.BatchId, null, DateTime.Today.AbsoluteEnd());
 
                 var reportFactory = new ReportFactory();
 
@@ -152,7 +152,12 @@ namespace Avicola.Web.Controllers
             var batch = _batchService.GetById(id.GetValueOrDefault());
             var result = batch.GeneticLine.StandardGeneticLines.Where(sgl => !sgl.IsDeleted)
                             .Select(sgl => sgl.Standard).Select(x => new { x.Id, x.Name });
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var response = new
+            {
+                Standards = result,
+                HidePosture = batch.StageId != Stage.POSTURE
+            };
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -161,14 +166,19 @@ namespace Avicola.Web.Controllers
             var batch = _batchService.GetByIdComplete(batchId);
 
             var weeksAge = Math.Ceiling(DateTime.Now.Subtract(batch.DateOfBirth).Days / (double)7);
+            var standardIds = standardId == Standard.Death
+                ? new List<Guid> {Standard.Death, Standard.Remove}
+                : new List<Guid> {standardId};
             var obj = new
             {
                 batch.Id,
                 Name = String.Format("Lote {0}", batch.Number),
+                batch.InitialBirds,
+                FirstHalf = batch.StageId == Stage.BREEDING || batch.StageId == Stage.REBREEDING,
                 GeneticLine = new
                 {
                     batch.GeneticLine.Name,
-                    Standards = batch.GeneticLine.StandardGeneticLines.Where(sql => !sql.IsDeleted & sql.StandardId == standardId).Select(sgl => new
+                    Standards = batch.GeneticLine.StandardGeneticLines.Where(sql => !sql.IsDeleted & standardIds.Contains(sql.StandardId)).Select(sgl => new
                     {
                         sgl.Standard.Name,
                         ShowSecondValue = sgl.Standard.StandardTypeId == StandardType.VALUES_RANGE,

@@ -106,7 +106,7 @@ namespace Avicola.Production.Win.Forms.Measure
 
         private void ucLoadDailyMeasures_SaveClick(object sender, EventArgs e)
         {
-            if (_stateController.CurrentSelectedStandard.Id == Office.Entities.Standard.FoodEntry)
+            if (_stateController.CurrentSelectedStandard.Id == Standard.FoodEntry)
             {
                 var invalid = ucLoadDailyMeasures.LoadDailyStandardMeasures.SelectMany(x => x.DailyStandardMeasures).Any(x => x.Value != null && x.FoodClassId == null);
                 if (invalid)
@@ -129,6 +129,20 @@ namespace Avicola.Production.Win.Forms.Measure
                                  });
 
                 measureService.UpdateMeasures(measures);
+
+                var standardId = _stateController.CurrentSelectedStandard.Id;
+                using (var batchService = _serviceFactory.Create<IBatchService>())
+                {
+                    if (standardId == Standard.FoodEntry)
+                    {
+                        batchService.RecalculateFoodEntry(_stateController.CurrentSelectedBatch.Id);
+                    }
+                    else if (standardId == Standard.Remove || standardId == Standard.Death)
+                    {
+                        batchService.RecalculateBirds(_stateController.CurrentSelectedBatch.Id);
+                    }
+                }
+                
             }
 
             TransitionManager.LoadStandardSelectionView();

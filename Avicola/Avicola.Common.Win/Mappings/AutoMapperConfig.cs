@@ -74,6 +74,7 @@ namespace Avicola.Common.Win.Mappings
             foreach (var map in maps)
             {
                 Mapper.CreateMap(map.Source, map.Destination);
+                Mapper.CreateMap(map.Destination, map.Source);
             }
         }
     }
