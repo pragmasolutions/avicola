@@ -33,6 +33,24 @@ namespace Framework.Sync
             _logger = logger;
         }
 
+        public void Deprovision()
+        {
+            SqlConnection sqlServerConn = null;
+            try
+            {
+                sqlServerConn = new SqlConnection(_sqllocalConnectionString);
+                DbSyncScopeDescription myScope = new DbSyncScopeDescription(scopeName);
+                SqlSyncScopeDeprovisioning sqlServerProv = new SqlSyncScopeDeprovisioning(sqlServerConn);
+
+                sqlServerProv.DeprovisionScope(scopeName);
+            }
+            finally
+            {
+                if (sqlServerConn != null) sqlServerConn.Close();
+            }
+            
+        }
+
         public void Setup(string tableNames)
         {
             if (string.IsNullOrEmpty(tableNames))
@@ -114,10 +132,15 @@ namespace Framework.Sync
                 sqlAzureConn = new SqlConnection(_sqlazureConnectionString);
                 SyncOrchestrator orch = new SyncOrchestrator
                                         {
-                                            LocalProvider = new SqlSyncProvider(scopeName, sqlAzureConn),
-                                            RemoteProvider = new SqlSyncProvider(scopeName, sqlServerConn),
+                                            LocalProvider = new SqlSyncProvider(scopeName, sqlServerConn),
+                                            RemoteProvider = new SqlSyncProvider(scopeName, sqlAzureConn),
                                             Direction = SyncDirectionOrder.UploadAndDownload
                                         };
+
+                ((SqlSyncProvider) orch.LocalProvider).ApplyChangeFailed +=
+                    new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
+                ((SqlSyncProvider)orch.RemoteProvider).ApplyChangeFailed +=
+                    new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
 
                 orch.SessionProgress += (sender, args) =>
                                         {
@@ -128,7 +151,7 @@ namespace Framework.Sync
                 _logger.Log(string.Format("Starting Sync " + DateTime.Now));
 
                 var stat = await Task.Run(() => orch.Synchronize());
-
+                
                 LogStatistics(stat);
             }
             finally
@@ -136,6 +159,15 @@ namespace Framework.Sync
                 if (sqlAzureConn != null) sqlAzureConn.Close();
                 if (sqlServerConn != null) sqlServerConn.Close();
             }
+        }
+
+        public void Program_ApplyChangeFailed(object sender, DbApplyChangeFailedEventArgs e)
+        {
+            // display conflict type
+            Console.WriteLine(e.Conflict.Type);
+
+            // display error message 
+            Console.WriteLine(e.Error);
         }
 
         public void LogStatistics(SyncOperationStatistics syncStats)

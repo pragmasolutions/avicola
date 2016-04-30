@@ -57,6 +57,7 @@ namespace Avicola.Production.Win
 
                 //SyncManager syncManager = new SyncManager(kernel.Get<Framework.Logging.ILogger>());
                 //syncManager.Setup(AppSettings.SyncTables);    
+                //syncManager.Deprovision();
 
                 //Config log4net
                 //log4net.Config.DOMConfigurator.Configure();
