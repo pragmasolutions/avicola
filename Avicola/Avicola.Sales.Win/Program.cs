@@ -51,7 +51,7 @@ namespace Avicola.Sales.Win
                 //Set global container.
                 Ioc.Container = new NinjectIocContainer(kernel);
 
-                //SyncManager syncManager = new SyncManager();
+                //SyncManager syncManager = new SyncManager(kernel.Get<Framework.Logging.ILogger>());
                 //syncManager.Setup(AppSettings.SyncTables);
 
                 var mainForm = kernel.Get<FrmMain>();
