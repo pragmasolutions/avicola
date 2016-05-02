@@ -377,6 +377,7 @@
     <Content Include="Reports\BatchStagesSummary.rdl" />
     <None Include="Properties\PublishProfiles\avicola.local.pubxml" />
     <None Include="Properties\PublishProfiles\avicola.pubxml" />
+    <None Include="Properties\PublishProfiles\AvicolaWeb.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
@@ -437,6 +438,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />

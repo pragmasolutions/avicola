@@ -124,6 +124,7 @@
     <None Include="ReferenceData\EggClass.Data.sql" />
     <None Include="ReferenceData\EggEquivalence.Data.sql" />
     <None Include="Snapshots\Avicola.Database_20160126_10-27-15.dacpac" />
+    <None Include="Avicola_Azure.Database.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="ReferenceData\Script.PostDeployment.sql" />
