@@ -59,7 +59,7 @@ namespace Avicola.Sales.Win.Forms
 
             btnSync.Enabled = false;
 
-            await syncManager.Sync();
+            await syncManager.Sync(AppSettings.ScopeName);
 
             btnSync.Enabled = true;
 

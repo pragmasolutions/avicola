@@ -52,7 +52,7 @@ namespace Avicola.Sales.Win
                 Ioc.Container = new NinjectIocContainer(kernel);
 
                 SyncManager syncManager = new SyncManager(kernel.Get<Framework.Logging.ILogger>());
-                syncManager.Setup(AppSettings.SyncTables);
+                syncManager.Setup(AppSettings.SyncTables, AppSettings.ScopeName);
 
                 var mainForm = kernel.Get<FrmMain>();
 

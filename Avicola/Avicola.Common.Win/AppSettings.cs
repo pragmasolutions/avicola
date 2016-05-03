@@ -10,6 +10,11 @@ namespace Avicola.Common.Win
             get { return ConfigurationManager.AppSettings["syncTables"]; }
         }
 
+        public static string ScopeName
+        {
+            get { return ConfigurationManager.AppSettings["ScopeName"]; }
+        }
+
         public static int RefreshOrdersInterval
         {
             get

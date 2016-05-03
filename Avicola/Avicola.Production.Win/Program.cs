@@ -55,9 +55,9 @@ namespace Avicola.Production.Win
                 //Set global container.
                 Ioc.Container = new NinjectIocContainer(kernel);
 
-                //SyncManager syncManager = new SyncManager(kernel.Get<Framework.Logging.ILogger>());
-                //syncManager.Setup(AppSettings.SyncTables);    
-                //syncManager.Deprovision();
+                SyncManager syncManager = new SyncManager(kernel.Get<Framework.Logging.ILogger>());
+                syncManager.Setup(AppSettings.SyncTables, AppSettings.ScopeName);
+                //syncManager.Deprovision(AppSettings.ScopeName);
 
                 //Config log4net
                 //log4net.Config.DOMConfigurator.Configure();

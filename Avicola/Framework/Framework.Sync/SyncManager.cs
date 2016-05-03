@@ -17,7 +17,7 @@ namespace Framework.Sync
         private readonly string _sqllocalConnectionString;
         private readonly string _sqlazureConnectionString;
         private readonly ILogger _logger;
-        public static readonly string scopeName = "alltablesyncgroup";
+        //public static readonly string scopeName = "alltablesyncgroup";
 
         public SyncManager(ILogger logger)
             : this(ConfigurationManager.AppSettings["sqllocalConnectionString"],
@@ -33,7 +33,7 @@ namespace Framework.Sync
             _logger = logger;
         }
 
-        public void Deprovision()
+        public void Deprovision(string scopeName)
         {
             SqlConnection sqlServerConn = null;
             try
@@ -51,7 +51,7 @@ namespace Framework.Sync
             
         }
 
-        public void Setup(string tableNames)
+        public void Setup(string tableNames, string scopeName)
         {
             if (string.IsNullOrEmpty(tableNames))
             {
@@ -60,10 +60,10 @@ namespace Framework.Sync
 
             var names = tableNames.Split(',').Select(x => x.Trim());
 
-            Setup(names);
+            Setup(names, scopeName);
         }
 
-        public void Setup(IEnumerable<string> tableNames)
+        public void Setup(IEnumerable<string> tableNames, string scopeName)
         {
             SqlConnection sqlServerConn = null;
             SqlConnection sqlAzureConn = null;
@@ -121,7 +121,7 @@ namespace Framework.Sync
             }
         }
 
-        public async Task Sync()
+        public async Task Sync(string scopeName)
         {
             SqlConnection sqlServerConn = null;
             SqlConnection sqlAzureConn = null;

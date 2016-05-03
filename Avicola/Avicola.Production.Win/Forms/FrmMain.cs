@@ -100,7 +100,7 @@ namespace Avicola.Production.Win.Forms
 
             btnSync.Enabled = false;
 
-            await syncManager.Sync();
+            await syncManager.Sync(Avicola.Common.Win.AppSettings.ScopeName);
 
             btnSync.Enabled = true;
 

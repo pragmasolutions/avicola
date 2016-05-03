@@ -123,11 +123,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Avicola.Sales.Entities\Avicola.Sales.Entities.csproj">
-      <Project>{8C6CDBD9-F5DE-4FE9-B7C5-178967C2B5AB}</Project>
+      <Project>{8c6cdbd9-f5de-4fe9-b7c5-178967c2b5ab}</Project>
       <Name>Avicola.Sales.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Avicola.Sales.Services\Avicola.Sales.Services.csproj">
-      <Project>{B72272A4-AB34-4F49-BFBC-75C0C600B120}</Project>
+      <Project>{b72272a4-ab34-4f49-bfbc-75c0c600b120}</Project>
       <Name>Avicola.Sales.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Common.Win\Framework.Common.Win.csproj">
@@ -139,7 +139,7 @@
       <Name>Framework.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Data\Framework.Data.csproj">
-      <Project>{CB41F702-99FB-49AE-8BC0-1B7F0193EFAB}</Project>
+      <Project>{cb41f702-99fb-49ae-8bc0-1b7f0193efab}</Project>
       <Name>Framework.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.Ioc.Ninject\Framework.Ioc.Ninject.csproj">
