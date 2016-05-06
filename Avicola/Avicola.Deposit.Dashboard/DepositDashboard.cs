@@ -15,9 +15,11 @@ using Avicola.Sales.Entities;
 using Avicola.Sales.Services.Dtos;
 using Avicola.Sales.Services.Interfaces;
 using Framework.Data.Repository;
+using Framework.Logging;
 using Framework.WinForm.Comun.Notification;
 using Ninject.Infrastructure.Language;
 using Telerik.WinControls.UI;
+using Framework.Sync;
 
 namespace Avicola.Deposit.Dashboard
 {
@@ -25,12 +27,14 @@ namespace Avicola.Deposit.Dashboard
     {
         private IServiceFactory _serviceFactory;
         private Timer _refreshTimer;
+        private readonly ILogger _logger;
 
-        public DepositDashboard(IServiceFactory serviceFactory,IMessageBoxDisplayService messageBoxDisplayService)
+        public DepositDashboard(IServiceFactory serviceFactory, IMessageBoxDisplayService messageBoxDisplayService, ILogger logger)
         {
             InitializeComponent();
 
             _serviceFactory = serviceFactory;
+            _logger = logger;
 
             MessageBoxDisplayService = messageBoxDisplayService;
         }
@@ -40,6 +44,9 @@ namespace Avicola.Deposit.Dashboard
             this.dgvPreparedOrders.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             this.dgvPreparedOrders.Columns[1].BestFit();
             this.dgvPreparedOrders.ShowGroupPanel = false;
+
+            timSynchronization.Interval = AppSettings.SyncPeriod;
+            timSynchronization.Start();
 
             _refreshTimer = new Timer();
             _refreshTimer.Interval = 10000; //One minute
@@ -205,6 +212,23 @@ namespace Avicola.Deposit.Dashboard
 
                 RefreshDashboard();
             }
+        }
+
+        private void bgwSynchronization_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timSynchronization.Start();
+        }
+
+        private void bgwSynchronization_DoWork(object sender, DoWorkEventArgs e)
+        {
+            timSynchronization.Stop();
+            SyncManager syncManager = new SyncManager(_logger);
+            syncManager.Sync(AppSettings.ScopeName);
+        }
+
+        private void timSynchronization_Tick(object sender, EventArgs e)
+        {
+            bgwSynchronization.RunWorkerAsync();
         }
     }
 }

@@ -36,17 +36,21 @@ namespace Framework.Sync
         public void Deprovision(string scopeName)
         {
             SqlConnection sqlServerConn = null;
+            SqlConnection sqlAzureConn = null;
             try
             {
                 sqlServerConn = new SqlConnection(_sqllocalConnectionString);
+                sqlAzureConn = new SqlConnection(_sqlazureConnectionString);
                 DbSyncScopeDescription myScope = new DbSyncScopeDescription(scopeName);
                 SqlSyncScopeDeprovisioning sqlServerProv = new SqlSyncScopeDeprovisioning(sqlServerConn);
-
-                sqlServerProv.DeprovisionScope(scopeName);
+                SqlSyncScopeDeprovisioning sqlAzureProv = new SqlSyncScopeDeprovisioning(sqlAzureConn);
+                sqlAzureProv.DeprovisionScope(scopeName);
+                sqlAzureProv.DeprovisionStore();
             }
             finally
             {
                 if (sqlServerConn != null) sqlServerConn.Close();
+                if (sqlAzureConn != null) sqlAzureConn.Close();
             }
             
         }
@@ -74,7 +78,7 @@ namespace Framework.Sync
                 sqlAzureConn = new SqlConnection(_sqlazureConnectionString);
 
                 DbSyncScopeDescription myScope = new DbSyncScopeDescription(scopeName);
-
+                
                 foreach (var tableName in tableNames)
                 {
                     DbSyncTableDescription tableDescription = SqlSyncDescriptionBuilder.GetDescriptionForTable(
@@ -95,6 +99,7 @@ namespace Framework.Sync
 
                 // Setup SQL Azure for sync
                 SqlSyncScopeProvisioning sqlAzureProv = new SqlSyncScopeProvisioning(sqlAzureConn, myScope);
+                sqlAzureProv.ObjectSchema = "DataSync";
                 if (!sqlAzureProv.ScopeExists(scopeName))
                 {
                     _logger.Log("Provisioning SQL Azure for sync " + DateTime.Now);
@@ -125,19 +130,19 @@ namespace Framework.Sync
         {
             SqlConnection sqlServerConn = null;
             SqlConnection sqlAzureConn = null;
-
+            
             try
             {
                 sqlServerConn = new SqlConnection(_sqllocalConnectionString);
                 sqlAzureConn = new SqlConnection(_sqlazureConnectionString);
                 SyncOrchestrator orch = new SyncOrchestrator
                                         {
-                                            LocalProvider = new SqlSyncProvider(scopeName, sqlServerConn),
-                                            RemoteProvider = new SqlSyncProvider(scopeName, sqlAzureConn),
+                                            LocalProvider = new SqlSyncProvider(scopeName, sqlServerConn, null, "DataSync"),
+                                            RemoteProvider = new SqlSyncProvider(scopeName, sqlAzureConn, null, "DataSync"),
                                             Direction = SyncDirectionOrder.UploadAndDownload
                                         };
 
-                ((SqlSyncProvider) orch.LocalProvider).ApplyChangeFailed +=
+                ((SqlSyncProvider)orch.LocalProvider).ApplyChangeFailed +=
                     new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
                 ((SqlSyncProvider)orch.RemoteProvider).ApplyChangeFailed +=
                     new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
@@ -151,7 +156,7 @@ namespace Framework.Sync
                 _logger.Log(string.Format("Starting Sync " + DateTime.Now));
 
                 var stat = await Task.Run(() => orch.Synchronize());
-                
+
                 LogStatistics(stat);
             }
             finally

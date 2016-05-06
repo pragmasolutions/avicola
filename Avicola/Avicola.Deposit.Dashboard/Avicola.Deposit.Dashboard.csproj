@@ -218,6 +218,14 @@
       <Project>{9f222811-5858-42ed-958f-96c228d67808}</Project>
       <Name>Framework.Ioc</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Logging\Framework.Logging.csproj">
+      <Project>{f307cee1-72c8-491f-8867-0f3ebe3f7dbf}</Project>
+      <Name>Framework.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Sync\Framework.Sync.csproj">
+      <Project>{f98f1b54-2795-4d67-927f-d4c05b0d34f4}</Project>
+      <Name>Framework.Sync</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

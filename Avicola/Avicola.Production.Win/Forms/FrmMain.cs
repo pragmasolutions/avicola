@@ -22,6 +22,7 @@ namespace Avicola.Production.Win.Forms
     public partial class FrmMain : FrmProductionBase, ITransitionManager
     {
         private readonly ILogger _logger;
+        private bool isSyncRunning = false;
 
         public FrmMain(IFormFactory formFactory,IMessageBoxDisplayService messageBoxDisplayService,ILogger logger)
         {
@@ -35,6 +36,8 @@ namespace Avicola.Production.Win.Forms
         private void FrmMain_Load(object sender, EventArgs e)
         {
             LoadBatchSelectionView();
+            timSynchronization.Interval = Avicola.Production.Win.Infrastructure.AppSettings.SyncPeriod;
+            timSynchronization.Start();
         }
 
         public void LoadView(FrmProductionBase form)
@@ -92,23 +95,60 @@ namespace Avicola.Production.Win.Forms
 
         private async void btnSync_Click(object sender, EventArgs e)
         {
+            if (!isSyncRunning)
+            {
+                isSyncRunning = true;
+
+                timSynchronization.Stop();
+
+                SyncManager syncManager = new SyncManager(_logger);
+
+                WaitingBar.Visible = true;
+
+                WaitingBar.StartWaiting();
+
+                btnSync.Enabled = false;
+
+                await syncManager.Sync(Avicola.Production.Win.Infrastructure.AppSettings.ScopeName);
+
+                isSyncRunning = false;
+                
+                btnSync.Enabled = true;
+
+                WaitingBar.StopWaiting();
+
+                WaitingBar.Visible = false;
+
+                MessageBoxDisplayService.ShowSuccess("Sincronizacion Finalizada con Exito");
+
+                timSynchronization.Start();
+            }
+            else
+            {
+                MessageBoxDisplayService.ShowInfo("Actualmente se está realizando la sincronización automática.");
+            }
+        }
+
+        private void bgwSynchronization_DoWork(object sender, DoWorkEventArgs e)
+        {
+            timSynchronization.Stop();
             SyncManager syncManager = new SyncManager(_logger);
+            syncManager.Sync(Avicola.Common.Win.AppSettings.ScopeName);
+        }
 
-            WaitingBar.Visible = true;
+        private void timSynchronization_Tick(object sender, EventArgs e)
+        {
+            if (!isSyncRunning)
+            {
+                isSyncRunning = true;
+                bgwSynchronization.RunWorkerAsync();
+            }
+        }
 
-            WaitingBar.StartWaiting();
-
-            btnSync.Enabled = false;
-
-            await syncManager.Sync(Avicola.Common.Win.AppSettings.ScopeName);
-
-            btnSync.Enabled = true;
-
-            WaitingBar.StopWaiting();
-
-            WaitingBar.Visible = false;
-            
-            MessageBoxDisplayService.ShowSuccess("Sincronizacion Finalizada con Exito");
+        private void bgwSynchronization_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            isSyncRunning = false;
+            timSynchronization.Start();
         }
     }
 }

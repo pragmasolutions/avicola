@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.MainContenPanel = new Telerik.WinControls.UI.RadPanel();
             this.WaitingBar = new Telerik.WinControls.UI.RadWaitingBar();
             this.btnSync = new Telerik.WinControls.UI.RadButton();
+            this.timSynchronization = new System.Windows.Forms.Timer(this.components);
+            this.bgwSynchronization = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.MainContenPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaitingBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSync)).BeginInit();
@@ -68,6 +71,15 @@
             this.btnSync.Text = "Sincronizar";
             this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
             // 
+            // timSynchronization
+            // 
+            this.timSynchronization.Tick += new System.EventHandler(this.timSynchronization_Tick);
+            // 
+            // bgwSynchronization
+            // 
+            this.bgwSynchronization.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwSynchronization_DoWork);
+            this.bgwSynchronization.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwSynchronization_RunWorkerCompleted);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,5 +109,7 @@
         private Telerik.WinControls.UI.RadPanel MainContenPanel;
         private Telerik.WinControls.UI.RadWaitingBar WaitingBar;
         private Telerik.WinControls.UI.RadButton btnSync;
+        private System.Windows.Forms.Timer timSynchronization;
+        private System.ComponentModel.BackgroundWorker bgwSynchronization;
     }
 }

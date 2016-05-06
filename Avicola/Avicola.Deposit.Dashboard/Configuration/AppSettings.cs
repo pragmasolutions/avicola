@@ -13,5 +13,20 @@ namespace Avicola.Deposit.Dashboard.Configuration
         {
             get { return Guid.Parse(ConfigurationManager.AppSettings["DepositId"]); }
         }
+
+        public static string SyncTables
+        {
+            get { return ConfigurationManager.AppSettings["syncTables"]; }
+        }
+
+        public static string ScopeName
+        {
+            get { return ConfigurationManager.AppSettings["ScopeName"]; }
+        }
+
+        public static int SyncPeriod
+        {
+            get { return Convert.ToInt32(ConfigurationManager.AppSettings["SyncPeriod"]); }
+        }
     }
 }

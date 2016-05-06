@@ -18,6 +18,7 @@ namespace Avicola.Deposit.Win.Forms
     {
         private readonly IServiceFactory _serviceFactory;
         private readonly ILogger _logger;
+        private bool isSyncRunning = false;
 
         public FrmMain(IFormFactory formFactory, IMessageBoxDisplayService messageBoxDisplayService, IServiceFactory serviceFactory,ILogger logger)
         {
@@ -53,23 +54,38 @@ namespace Avicola.Deposit.Win.Forms
 
         private async void btnSync_Click(object sender, EventArgs e)
         {
-            SyncManager syncManager = new SyncManager(_logger);
+            if (!isSyncRunning)
+            {
+                isSyncRunning = true;
 
-            WaitingBar.Visible = true;
+                timSynchronization.Stop();
 
-            WaitingBar.StartWaiting();
+                SyncManager syncManager = new SyncManager(_logger);
 
-            btnSync.Enabled = false;
+                WaitingBar.Visible = true;
 
-            await syncManager.Sync(AppSettings.ScopeName);
+                WaitingBar.StartWaiting();
 
-            btnSync.Enabled = true;
+                btnSync.Enabled = false;
 
-            WaitingBar.StopWaiting();
+                await syncManager.Sync(AppSettings.ScopeName);
 
-            WaitingBar.Visible = false;
+                isSyncRunning = false;
 
-            MessageBoxDisplayService.ShowSuccess("Sincronizacion Finalizada con Exito");
+                btnSync.Enabled = true;
+
+                WaitingBar.StopWaiting();
+
+                WaitingBar.Visible = false;
+
+                MessageBoxDisplayService.ShowSuccess("Sincronizacion Finalizada con Exito");
+
+                timSynchronization.Start();
+            }
+            else
+            {
+                MessageBoxDisplayService.ShowInfo("Actualmente se está realizando la sincronización automática.");
+            }
         }
 
         public void LoadDepositManagerView()
@@ -142,6 +158,28 @@ namespace Avicola.Deposit.Win.Forms
             var view = FormFactory.Create<FrmEditOrder>();
             view.OrderId = order.Id;
             LoadView(view);
+        }
+
+        private void bgwSynchronization_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            isSyncRunning = false;
+            timSynchronization.Start();
+        }
+
+        private void bgwSynchronization_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            timSynchronization.Stop();
+            SyncManager syncManager = new SyncManager(_logger);
+            syncManager.Sync(AppSettings.ScopeName);
+        }
+
+        private void timSynchronization_Tick(object sender, EventArgs e)
+        {
+            if (!isSyncRunning)
+            {
+                isSyncRunning = true;
+                bgwSynchronization.RunWorkerAsync();
+            }
         }
     }
 }

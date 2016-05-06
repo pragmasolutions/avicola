@@ -18,5 +18,10 @@ namespace Avicola.Production.Win.Infrastructure
         {
             get { return ConfigurationManager.AppSettings["ScopeName"]; }
         }
+
+        public static int SyncPeriod
+        {
+            get { return Convert.ToInt32(ConfigurationManager.AppSettings["SyncPeriod"]); }
+        }
     }
 }

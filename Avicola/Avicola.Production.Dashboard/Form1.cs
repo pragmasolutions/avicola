@@ -9,14 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Avicola.Common.Win.Forms;
+using Framework.Sync;
 using Telerik.WinControls.UI;
+using Framework.Logging;
 
 namespace Avicola.Production.Dashboard
 {
     public partial class Form1 : FrmBase
     {
-        public Form1()
+        private readonly ILogger _logger;
+
+        public Form1(ILogger logger)
         {
+            _logger = logger;
             InitializeComponent();
         }
 
@@ -24,6 +29,24 @@ namespace Avicola.Production.Dashboard
         {
             HtmlDocument doc = this.webBrowser.Document;
             webBrowser.Navigate(new Uri(ConfigurationManager.AppSettings["ProductionDashboardUrl"]));
+        }
+
+        private void bgwSynchronization_DoWork(object sender, DoWorkEventArgs e)
+        {
+            timSynchronization.Stop();
+            SyncManager syncManager = new SyncManager(_logger);
+            syncManager.Sync(AppSettings.ScopeName);
+        }
+
+        private void bgwSynchronization_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            webBrowser.Refresh();
+            timSynchronization.Start();
+        }
+
+        private void timSynchronization_Tick(object sender, EventArgs e)
+        {
+            bgwSynchronization.RunWorkerAsync();
         }
     }
 }
