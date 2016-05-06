@@ -273,12 +273,16 @@
             // 
             // ddlFoodClass
             // 
+            this.ddlFoodClass.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.ddlFoodClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlFoodClass.Location = new System.Drawing.Point(568, 120);
             this.ddlFoodClass.Margin = new System.Windows.Forms.Padding(2);
             this.ddlFoodClass.Name = "ddlFoodClass";
             this.ddlFoodClass.Size = new System.Drawing.Size(150, 25);
             this.ddlFoodClass.TabIndex = 101;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.ddlFoodClass.GetChildAt(0))).DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            ((Telerik.WinControls.UI.RadDropDownTextBoxElement)(this.ddlFoodClass.GetChildAt(0).GetChildAt(2).GetChildAt(0).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Hidden;
+            ((Telerik.WinControls.UI.RadTextBoxItem)(this.ddlFoodClass.GetChildAt(0).GetChildAt(2).GetChildAt(0).GetChildAt(0).GetChildAt(0))).TextOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // radLabel5
             // 
