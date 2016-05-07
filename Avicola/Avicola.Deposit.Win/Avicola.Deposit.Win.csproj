@@ -416,6 +416,10 @@
       <Project>{F307CEE1-72C8-491F-8867-0F3EBE3F7DBF}</Project>
       <Name>Framework.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Sync\Framework.Sync.csproj">
+      <Project>{f98f1b54-2795-4d67-927f-d4c05b0d34f4}</Project>
+      <Name>Framework.Sync</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Image\orders.png" />

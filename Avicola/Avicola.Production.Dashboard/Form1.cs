@@ -35,7 +35,7 @@ namespace Avicola.Production.Dashboard
         {
             timSynchronization.Stop();
             SyncManager syncManager = new SyncManager(_logger);
-            syncManager.Sync(AppSettings.ScopeName);
+            syncManager.Sync(AppSettings.ScopeName, AppSettings.Schema);
         }
 
         private void bgwSynchronization_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

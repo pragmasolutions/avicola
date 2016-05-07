@@ -28,5 +28,10 @@ namespace Avicola.Deposit.Dashboard.Configuration
         {
             get { return Convert.ToInt32(ConfigurationManager.AppSettings["SyncPeriod"]); }
         }
+
+        public static string Schema
+        {
+            get { return ConfigurationManager.AppSettings["Schema"]; }
+        }
     }
 }

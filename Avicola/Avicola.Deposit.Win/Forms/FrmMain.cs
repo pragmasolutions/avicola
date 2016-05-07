@@ -68,7 +68,7 @@ namespace Avicola.Deposit.Win.Forms
 
                 btnSync.Enabled = false;
 
-                await syncManager.Sync(AppSettings.ScopeName);
+                await syncManager.Sync(AppSettings.ScopeName, AppSettings.Schema);
 
                 isSyncRunning = false;
 
@@ -170,7 +170,7 @@ namespace Avicola.Deposit.Win.Forms
         {
             timSynchronization.Stop();
             SyncManager syncManager = new SyncManager(_logger);
-            syncManager.Sync(AppSettings.ScopeName);
+            syncManager.Sync(AppSettings.ScopeName, AppSettings.Schema);
         }
 
         private void timSynchronization_Tick(object sender, EventArgs e)

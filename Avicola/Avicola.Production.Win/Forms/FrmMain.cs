@@ -109,7 +109,7 @@ namespace Avicola.Production.Win.Forms
 
                 btnSync.Enabled = false;
 
-                await syncManager.Sync(Avicola.Production.Win.Infrastructure.AppSettings.ScopeName);
+                await syncManager.Sync(Avicola.Production.Win.Infrastructure.AppSettings.ScopeName, Avicola.Production.Win.Infrastructure.AppSettings.Schema);
 
                 isSyncRunning = false;
                 
@@ -133,7 +133,7 @@ namespace Avicola.Production.Win.Forms
         {
             timSynchronization.Stop();
             SyncManager syncManager = new SyncManager(_logger);
-            syncManager.Sync(Avicola.Common.Win.AppSettings.ScopeName);
+            syncManager.Sync(Avicola.Production.Win.Infrastructure.AppSettings.ScopeName, Avicola.Production.Win.Infrastructure.AppSettings.Schema);
         }
 
         private void timSynchronization_Tick(object sender, EventArgs e)

@@ -125,7 +125,7 @@ namespace Framework.Sync
             }
         }
 
-        public async Task Sync(string scopeName)
+        public async Task Sync(string scopeName, string schema)
         {
             SqlConnection sqlServerConn = null;
             SqlConnection sqlAzureConn = null;
@@ -136,8 +136,8 @@ namespace Framework.Sync
                 sqlAzureConn = new SqlConnection(_sqlazureConnectionString);
                 SyncOrchestrator orch = new SyncOrchestrator
                                         {
-                                            LocalProvider = new SqlSyncProvider(scopeName, sqlServerConn),
-                                            RemoteProvider = new SqlSyncProvider(scopeName, sqlAzureConn),
+                                            LocalProvider = new SqlSyncProvider(scopeName, sqlServerConn, null, schema),
+                                            RemoteProvider = new SqlSyncProvider(scopeName, sqlAzureConn, null, schema),
                                             Direction = SyncDirectionOrder.UploadAndDownload
                                         };
 

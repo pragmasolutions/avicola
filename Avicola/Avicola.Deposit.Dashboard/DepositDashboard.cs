@@ -223,7 +223,7 @@ namespace Avicola.Deposit.Dashboard
         {
             timSynchronization.Stop();
             SyncManager syncManager = new SyncManager(_logger);
-            syncManager.Sync(AppSettings.ScopeName);
+            syncManager.Sync(AppSettings.ScopeName, AppSettings.Schema);
         }
 
         private void timSynchronization_Tick(object sender, EventArgs e)
