@@ -10,27 +10,21 @@ using Microsoft.Synchronization;
 using Microsoft.Synchronization.Data;
 using Microsoft.Synchronization.Data.SqlServer;
 
-namespace Framework.Sync
+namespace De.Provision.Databases
 {
     public class SyncManager
     {
         private readonly string _sqllocalConnectionString;
         private readonly string _sqlazureConnectionString;
-        private readonly ILogger _logger;
-        //public static readonly string scopeName = "alltablesyncgroup";
-
-        public SyncManager(ILogger logger)
-            : this(ConfigurationManager.AppSettings["sqllocalConnectionString"],
-                   ConfigurationManager.AppSettings["sqlazureConnectionString"],
-                   logger)
+        
+        public SyncManager()
         {
         }
 
-        public SyncManager(string sqllocalConnectionString, string sqlazureConnectionString, ILogger logger)
+        public SyncManager(string sqllocalConnectionString, string sqlazureConnectionString)
         {
             _sqllocalConnectionString = sqllocalConnectionString;
             _sqlazureConnectionString = sqlazureConnectionString;
-            _logger = logger;
         }
 
         public void Deprovision(string scopeName)
@@ -44,8 +38,8 @@ namespace Framework.Sync
                 DbSyncScopeDescription myScope = new DbSyncScopeDescription(scopeName);
                 SqlSyncScopeDeprovisioning sqlServerProv = new SqlSyncScopeDeprovisioning(sqlServerConn);
                 SqlSyncScopeDeprovisioning sqlAzureProv = new SqlSyncScopeDeprovisioning(sqlAzureConn);
+                sqlServerProv.DeprovisionScope(scopeName);
                 sqlAzureProv.DeprovisionScope(scopeName);
-                sqlAzureProv.DeprovisionStore();
             }
             finally
             {
@@ -90,23 +84,15 @@ namespace Framework.Sync
                 SqlSyncScopeProvisioning sqlServerProv = new SqlSyncScopeProvisioning(sqlServerConn, myScope);
                 if (!sqlServerProv.ScopeExists(scopeName))
                 {
-                    _logger.Log("Provisioning SQL Server for sync " + DateTime.Now);
                     sqlServerProv.Apply();
-                    _logger.Log("Done Provisioning SQL Server for sync " + DateTime.Now);
                 }
-                else
-                    _logger.Log("SQL Server Database server already provisioned for sync " + DateTime.Now);
 
                 // Setup SQL Azure for sync
-                SqlSyncScopeProvisioning sqlAzureProv = new SqlSyncScopeProvisioning(sqlAzureConn, myScope);
+                SqlSyncScopeProvisioning sqlAzureProv = new SqlSyncScopeProvisioning(sqlAzureConn, myScope);                
                 if (!sqlAzureProv.ScopeExists(scopeName))
                 {
-                    _logger.Log("Provisioning SQL Azure for sync " + DateTime.Now);
                     sqlAzureProv.Apply();
-                    _logger.Log("Done Provisioning SQL Azure for sync " + DateTime.Now);
                 }
-                else
-                    _logger.Log("SQL Azure Database server already provisioned for sync " + DateTime.Now);
             }
             finally
             {
@@ -136,8 +122,8 @@ namespace Framework.Sync
                 sqlAzureConn = new SqlConnection(_sqlazureConnectionString);
                 SyncOrchestrator orch = new SyncOrchestrator
                                         {
-                                            LocalProvider = new SqlSyncProvider(scopeName, sqlServerConn),
-                                            RemoteProvider = new SqlSyncProvider(scopeName, sqlAzureConn),
+                                            LocalProvider = new SqlSyncProvider(scopeName, sqlServerConn, null, "DataSync"),
+                                            RemoteProvider = new SqlSyncProvider(scopeName, sqlAzureConn, null, "DataSync"),
                                             Direction = SyncDirectionOrder.UploadAndDownload
                                         };
 
@@ -148,12 +134,10 @@ namespace Framework.Sync
 
                 orch.SessionProgress += (sender, args) =>
                                         {
-                                            OnProgressChange(new SyncProgressEventArgs((int)args.CompletedWork, (int)args.TotalWork));
+                                            OnProgressChange(new SyncProgressEventArgs((int) args.CompletedWork,
+                                                (int) args.TotalWork));
                                         };
-
-                _logger.Log(string.Format("ScopeName={0} ", scopeName.ToUpper()));
-                _logger.Log(string.Format("Starting Sync " + DateTime.Now));
-
+              
                 var stat = await Task.Run(() => orch.Synchronize());
 
                 LogStatistics(stat);
@@ -178,22 +162,22 @@ namespace Framework.Sync
         {
             string message;
 
-            message = "\tSync Start Time :" + syncStats.SyncStartTime.ToString();
-            _logger.Log(message);
-            message = "\tSync End Time   :" + syncStats.SyncEndTime.ToString();
-            _logger.Log(message);
-            message = "\tUpload Changes Applied :" + syncStats.UploadChangesApplied.ToString();
-            _logger.Log(message);
-            message = "\tUpload Changes Failed  :" + syncStats.UploadChangesFailed.ToString();
-            _logger.Log(message);
-            message = "\tUpload Changes Total   :" + syncStats.UploadChangesTotal.ToString();
-            _logger.Log(message);
-            message = "\tDownload Changes Applied :" + syncStats.DownloadChangesApplied.ToString();
-            _logger.Log(message);
-            message = "\tDownload Changes Failed  :" + syncStats.DownloadChangesFailed.ToString();
-            _logger.Log(message);
-            message = "\tDownload Changes Total   :" + syncStats.DownloadChangesTotal.ToString();
-            _logger.Log(message);
+            //message = "\tSync Start Time :" + syncStats.SyncStartTime.ToString();
+            //_logger.Log(message);
+            //message = "\tSync End Time   :" + syncStats.SyncEndTime.ToString();
+            //_logger.Log(message);
+            //message = "\tUpload Changes Applied :" + syncStats.UploadChangesApplied.ToString();
+            //_logger.Log(message);
+            //message = "\tUpload Changes Failed  :" + syncStats.UploadChangesFailed.ToString();
+            //_logger.Log(message);
+            //message = "\tUpload Changes Total   :" + syncStats.UploadChangesTotal.ToString();
+            //_logger.Log(message);
+            //message = "\tDownload Changes Applied :" + syncStats.DownloadChangesApplied.ToString();
+            //_logger.Log(message);
+            //message = "\tDownload Changes Failed  :" + syncStats.DownloadChangesFailed.ToString();
+            //_logger.Log(message);
+            //message = "\tDownload Changes Total   :" + syncStats.DownloadChangesTotal.ToString();
+            //_logger.Log(message);
         }
     }
 }
