@@ -33,6 +33,7 @@ namespace Avicola.Sales.Win.Forms.Sales
 
         private void FrmNewSale_Load(object sender, EventArgs e)
         {
+            dtpLoadDate.Value = DateTime.Today;
             RefreshClientsDropdown();
             LoadEggClasses();
         }
