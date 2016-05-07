@@ -318,6 +318,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\back.png" />
+    <None Include="Resources\Image\back.png" />
     <Content Include="Resources\Image\customers.png" />
     <Content Include="Resources\Image\Data-Edit.png" />
     <Content Include="Resources\Image\Garbage-Closed.png" />

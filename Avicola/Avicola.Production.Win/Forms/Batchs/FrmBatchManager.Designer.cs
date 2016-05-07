@@ -123,6 +123,7 @@
             // 
             // btnShowBatchSelectionView
             // 
+            this.btnShowBatchSelectionView.Image = global::Avicola.Production.Win.Properties.Resources.back;
             this.btnShowBatchSelectionView.Location = new System.Drawing.Point(3, 3);
             this.btnShowBatchSelectionView.Name = "btnShowBatchSelectionView";
             this.btnShowBatchSelectionView.Size = new System.Drawing.Size(177, 36);
@@ -135,7 +136,7 @@
             this.lbBatchTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbBatchTitle.Location = new System.Drawing.Point(203, 3);
             this.lbBatchTitle.Name = "lbBatchTitle";
-            this.lbBatchTitle.Size = new System.Drawing.Size(192, 41);
+            this.lbBatchTitle.Size = new System.Drawing.Size(192, 38);
             this.lbBatchTitle.TabIndex = 12;
             this.lbBatchTitle.Text = "{{Batch Title}}";
             // 
@@ -331,7 +332,7 @@
             this.btnMoveNextStage.Image = ((System.Drawing.Image)(resources.GetObject("btnMoveNextStage.Image")));
             this.btnMoveNextStage.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnMoveNextStage.Location = new System.Drawing.Point(754, 35);
-            this.btnMoveNextStage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMoveNextStage.Margin = new System.Windows.Forms.Padding(2);
             this.btnMoveNextStage.Name = "btnMoveNextStage";
             this.btnMoveNextStage.Size = new System.Drawing.Size(230, 158);
             this.btnMoveNextStage.TabIndex = 14;
@@ -433,7 +434,7 @@
             this.ClientSize = new System.Drawing.Size(1034, 634);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmBatchManager";
             // 
             // 

@@ -421,6 +421,7 @@
     <None Include="Resources\Image\orders.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Image\back.png" />
     <Content Include="Resources\Image\plus.png" />
     <Content Include="Resources\Print-16x16.png" />
     <None Include="Resources\167-128.png" />

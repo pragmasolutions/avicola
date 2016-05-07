@@ -111,6 +111,7 @@
             // btnBackToDepositManager
             // 
             this.btnBackToDepositManager.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackToDepositManager.Image = global::Avicola.Deposit.Win.Properties.Resources.back;
             this.btnBackToDepositManager.Location = new System.Drawing.Point(8, 12);
             this.btnBackToDepositManager.Margin = new System.Windows.Forms.Padding(8, 12, 8, 8);
             this.btnBackToDepositManager.Name = "btnBackToDepositManager";

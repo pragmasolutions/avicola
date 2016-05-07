@@ -57,7 +57,7 @@ namespace Avicola.Deposit.Win
                 Ioc.Container = new NinjectIocContainer(kernel);
 
                 SyncManager syncManager = new SyncManager(kernel.Get<ILogger>());
-                syncManager.Setup(AppSettings.SyncTables, AppSettings.ScopeName);
+                //syncManager.Setup(AppSettings.SyncTables, AppSettings.ScopeName);
 
                 var mainForm = kernel.Get<FrmMain>();
 

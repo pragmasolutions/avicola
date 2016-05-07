@@ -491,6 +491,7 @@
     <Content Include="Resources\Images\Arrow-Left.png" />
     <Content Include="Resources\Images\Arrow-Right-Medium.png" />
     <Content Include="Resources\Images\Arrow-Right.png" />
+    <None Include="Resources\Images\back.png" />
     <Content Include="Resources\Images\barn.png" />
     <Content Include="Resources\Images\delete-icon.png" />
     <Content Include="Resources\Images\edit.ico" />

@@ -92,6 +92,7 @@
             // 
             // btnShowBatchManagerView
             // 
+            this.btnShowBatchManagerView.Image = global::Avicola.Production.Win.Properties.Resources.back;
             this.btnShowBatchManagerView.Location = new System.Drawing.Point(3, 3);
             this.btnShowBatchManagerView.Name = "btnShowBatchManagerView";
             this.btnShowBatchManagerView.Size = new System.Drawing.Size(177, 36);

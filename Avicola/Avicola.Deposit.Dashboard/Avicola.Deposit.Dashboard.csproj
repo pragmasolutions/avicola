@@ -148,6 +148,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControls\UcEggClassOrder.resx">
       <DependentUpon>UcEggClassOrder.cs</DependentUpon>
@@ -176,6 +177,7 @@
     <Content Include="Images\huevo.jpg" />
     <Content Include="Images\huevoSinCascara.jpg" />
     <Content Include="Images\huevo_roto.jpg" />
+    <None Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Avicola.Common.Win\Avicola.Common.Win.csproj">
