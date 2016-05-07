@@ -38,6 +38,10 @@ namespace De.Provision.Databases
                 DbSyncScopeDescription myScope = new DbSyncScopeDescription(scopeName);
                 SqlSyncScopeDeprovisioning sqlServerProv = new SqlSyncScopeDeprovisioning(sqlServerConn);
                 SqlSyncScopeDeprovisioning sqlAzureProv = new SqlSyncScopeDeprovisioning(sqlAzureConn);
+
+                sqlServerProv.ObjectSchema = "DataSync";
+                sqlAzureProv.ObjectSchema = "DataSync";
+
                 sqlServerProv.DeprovisionScope(scopeName);
                 sqlAzureProv.DeprovisionScope(scopeName);
             }
@@ -82,13 +86,19 @@ namespace De.Provision.Databases
 
                 // Setup SQL Server for sync
                 SqlSyncScopeProvisioning sqlServerProv = new SqlSyncScopeProvisioning(sqlServerConn, myScope);
+
+                sqlServerProv.ObjectSchema = "DataSync";
+
                 if (!sqlServerProv.ScopeExists(scopeName))
                 {
                     sqlServerProv.Apply();
                 }
 
                 // Setup SQL Azure for sync
-                SqlSyncScopeProvisioning sqlAzureProv = new SqlSyncScopeProvisioning(sqlAzureConn, myScope);                
+                SqlSyncScopeProvisioning sqlAzureProv = new SqlSyncScopeProvisioning(sqlAzureConn, myScope);
+
+                sqlAzureProv.ObjectSchema = "DataSync";
+                    
                 if (!sqlAzureProv.ScopeExists(scopeName))
                 {
                     sqlAzureProv.Apply();
