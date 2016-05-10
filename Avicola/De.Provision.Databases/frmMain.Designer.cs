@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTables = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtProvisionScopeName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnProvision = new System.Windows.Forms.Button();
@@ -49,15 +52,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.bgwProvisionProgress = new System.ComponentModel.BackgroundWorker();
             this.bgwDeprovisionProgress = new System.ComponentModel.BackgroundWorker();
-            this.txtTables = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.txtDeprovisionSchema = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtProvisionSchema = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.errorSync = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSync)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtProvisionSchema);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtTables);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtProvisionScopeName);
@@ -69,10 +78,27 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(2, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(730, 237);
+            this.groupBox1.Size = new System.Drawing.Size(730, 284);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Provision";
+            // 
+            // txtTables
+            // 
+            this.txtTables.Location = new System.Drawing.Point(104, 159);
+            this.txtTables.Multiline = true;
+            this.txtTables.Name = "txtTables";
+            this.txtTables.Size = new System.Drawing.Size(463, 45);
+            this.txtTables.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 175);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Tablas:";
             // 
             // txtProvisionScopeName
             // 
@@ -92,7 +118,7 @@
             // 
             // btnProvision
             // 
-            this.btnProvision.Location = new System.Drawing.Point(649, 208);
+            this.btnProvision.Location = new System.Drawing.Point(649, 255);
             this.btnProvision.Name = "btnProvision";
             this.btnProvision.Size = new System.Drawing.Size(75, 23);
             this.btnProvision.TabIndex = 4;
@@ -139,7 +165,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblProgress,
             this.tspProgress});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 420);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 506);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(748, 22);
             this.statusStrip1.TabIndex = 1;
@@ -159,6 +185,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtDeprovisionSchema);
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtDeprovisionScopeName);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.btnDeprovision);
@@ -166,9 +194,9 @@
             this.groupBox2.Controls.Add(this.txtDeprovisionLocalDatabase);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(2, 247);
+            this.groupBox2.Location = new System.Drawing.Point(6, 306);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(730, 167);
+            this.groupBox2.Size = new System.Drawing.Size(730, 185);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Deprovision";
@@ -191,7 +219,7 @@
             // 
             // btnDeprovision
             // 
-            this.btnDeprovision.Location = new System.Drawing.Point(649, 138);
+            this.btnDeprovision.Location = new System.Drawing.Point(649, 153);
             this.btnDeprovision.Name = "btnDeprovision";
             this.btnDeprovision.Size = new System.Drawing.Size(75, 23);
             this.btnDeprovision.TabIndex = 8;
@@ -245,28 +273,48 @@
             this.bgwDeprovisionProgress.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwDeprovisionProgress_ProgressChanged);
             this.bgwDeprovisionProgress.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwDeprovisionProgress_RunWorkerCompleted);
             // 
-            // txtTables
+            // txtDeprovisionSchema
             // 
-            this.txtTables.Location = new System.Drawing.Point(104, 159);
-            this.txtTables.Multiline = true;
-            this.txtTables.Name = "txtTables";
-            this.txtTables.Size = new System.Drawing.Size(463, 45);
-            this.txtTables.TabIndex = 12;
+            this.txtDeprovisionSchema.Location = new System.Drawing.Point(100, 155);
+            this.txtDeprovisionSchema.Name = "txtDeprovisionSchema";
+            this.txtDeprovisionSchema.Size = new System.Drawing.Size(248, 20);
+            this.txtDeprovisionSchema.TabIndex = 12;
             // 
-            // label7
+            // label8
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 175);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Tablas:";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 159);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Schema:";
+            // 
+            // txtProvisionSchema
+            // 
+            this.txtProvisionSchema.Location = new System.Drawing.Point(104, 211);
+            this.txtProvisionSchema.Name = "txtProvisionSchema";
+            this.txtProvisionSchema.Size = new System.Drawing.Size(248, 20);
+            this.txtProvisionSchema.TabIndex = 14;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(10, 215);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(49, 13);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Schema:";
+            // 
+            // errorSync
+            // 
+            this.errorSync.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorSync.ContainerControl = this;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 442);
+            this.ClientSize = new System.Drawing.Size(748, 528);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
@@ -278,6 +326,7 @@
             this.statusStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSync)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,6 +357,11 @@
         private System.ComponentModel.BackgroundWorker bgwDeprovisionProgress;
         private System.Windows.Forms.TextBox txtTables;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtProvisionSchema;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtDeprovisionSchema;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ErrorProvider errorSync;
     }
 }
 
