@@ -65,6 +65,7 @@ namespace Avicola.Deposit.Dashboard
 
         private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
+            _logger.LogError("Error", (Exception)e.ExceptionObject);
         }
 
         private static void ApplicationOnThreadException(object sender, ThreadExceptionEventArgs e)
