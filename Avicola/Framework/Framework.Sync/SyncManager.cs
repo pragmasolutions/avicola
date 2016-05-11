@@ -129,7 +129,7 @@ namespace Framework.Sync
         {
             SqlConnection sqlServerConn = null;
             SqlConnection sqlAzureConn = null;
-            
+
             try
             {
                 sqlServerConn = new SqlConnection(_sqllocalConnectionString);
@@ -141,14 +141,15 @@ namespace Framework.Sync
                                             Direction = SyncDirectionOrder.UploadAndDownload
                                         };
 
-                ((SqlSyncProvider)orch.LocalProvider).ApplyChangeFailed +=
+                ((SqlSyncProvider) orch.LocalProvider).ApplyChangeFailed +=
                     new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
-                ((SqlSyncProvider)orch.RemoteProvider).ApplyChangeFailed +=
+                ((SqlSyncProvider) orch.RemoteProvider).ApplyChangeFailed +=
                     new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
 
                 orch.SessionProgress += (sender, args) =>
                                         {
-                                            OnProgressChange(new SyncProgressEventArgs((int)args.CompletedWork, (int)args.TotalWork));
+                                            OnProgressChange(new SyncProgressEventArgs((int) args.CompletedWork,
+                                                (int) args.TotalWork));
                                         };
 
                 _logger.Log(string.Format("ScopeName={0} ", scopeName.ToUpper()));
@@ -157,6 +158,10 @@ namespace Framework.Sync
                 var stat = await Task.Run(() => orch.Synchronize());
 
                 LogStatistics(stat);
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(string.Format("ERROR: " + ex.Message));
             }
             finally
             {
@@ -168,10 +173,11 @@ namespace Framework.Sync
         public void Program_ApplyChangeFailed(object sender, DbApplyChangeFailedEventArgs e)
         {
             // display conflict type
-            Console.WriteLine(e.Conflict.Type);
+            //Console.WriteLine(e.Conflict.Type);
 
             // display error message 
-            Console.WriteLine(e.Error);
+            //Console.WriteLine(e.Error);
+            _logger.Log(string.Format(e.Conflict.Type + ": " + e.Error));
         }
 
         public void LogStatistics(SyncOperationStatistics syncStats)

@@ -9,11 +9,6 @@ namespace Avicola.Production.Dashboard
 {
     public class AppSettings
     {
-        public static string SyncTables
-        {
-            get { return ConfigurationManager.AppSettings["syncTables"]; }
-        }
-
         public static string ScopeName
         {
             get { return ConfigurationManager.AppSettings["ScopeName"]; }

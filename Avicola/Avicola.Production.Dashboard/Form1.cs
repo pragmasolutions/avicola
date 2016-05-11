@@ -29,6 +29,8 @@ namespace Avicola.Production.Dashboard
         {
             HtmlDocument doc = this.webBrowser.Document;
             webBrowser.Navigate(new Uri(ConfigurationManager.AppSettings["ProductionDashboardUrl"]));
+            timSynchronization.Interval = AppSettings.SyncPeriod;
+            timSynchronization.Start();
         }
 
         private void bgwSynchronization_DoWork(object sender, DoWorkEventArgs e)

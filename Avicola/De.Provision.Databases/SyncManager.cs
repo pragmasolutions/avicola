@@ -30,26 +30,27 @@ namespace De.Provision.Databases
 
         public void Deprovision(string scopeName)
         {
-            SqlConnection sqlServerConn = null;
-            //SqlConnection sqlAzureConn = null;
+            //SqlConnection sqlServerConn = null;
+            SqlConnection sqlAzureConn = null;
             try
             {
-                sqlServerConn = new SqlConnection(_sqllocalConnectionString);
-                //sqlAzureConn = new SqlConnection(_sqlazureConnectionString);
+                //sqlServerConn = new SqlConnection(_sqllocalConnectionString);
+                sqlAzureConn = new SqlConnection(_sqlazureConnectionString);
                 DbSyncScopeDescription myScope = new DbSyncScopeDescription(scopeName);
-                SqlSyncScopeDeprovisioning sqlServerProv = new SqlSyncScopeDeprovisioning(sqlServerConn);
-                //SqlSyncScopeDeprovisioning sqlAzureProv = new SqlSyncScopeDeprovisioning(sqlAzureConn);
+                //SqlSyncScopeDeprovisioning sqlServerProv = new SqlSyncScopeDeprovisioning(sqlServerConn);
+                SqlSyncScopeDeprovisioning sqlAzureProv = new SqlSyncScopeDeprovisioning(sqlAzureConn);
 
                 //sqlServerProv.ObjectSchema = "DataSync";
-                //sqlAzureProv.ObjectSchema = "DataSync";
+                sqlAzureProv.ObjectSchema = "DataSync";
 
-                sqlServerProv.DeprovisionScope(scopeName);
-                //sqlAzureProv.DeprovisionScope(scopeName);
+                //sqlServerProv.DeprovisionScope(scopeName);
+                sqlAzureProv.DeprovisionScope(scopeName);
+                
             }
             finally
             {
-                if (sqlServerConn != null) sqlServerConn.Close();
-                //if (sqlAzureConn != null) sqlAzureConn.Close();
+                //if (sqlServerConn != null) sqlServerConn.Close();
+                if (sqlAzureConn != null) sqlAzureConn.Close();
             }
             
         }
