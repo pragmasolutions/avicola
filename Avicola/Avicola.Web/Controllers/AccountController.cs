@@ -5,6 +5,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Avicola.Sales.Data.Interfaces;
+using Avicola.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -17,15 +19,17 @@ namespace Avicola.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ISalesUow _uow;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ISalesUow salesUow)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _uow = salesUow;
         }
 
         public ApplicationSignInManager SignInManager
@@ -34,9 +38,9 @@ namespace Avicola.Web.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -73,20 +77,47 @@ namespace Avicola.Web.Controllers
                 return View(model);
             }
 
+            // Require the user to have a confirmed email before they can log on.
+            var appuUser = await UserManager.FindByNameAsync(model.Email);
+            if (appuUser != null)
+            {
+                if (appuUser.IsDeleted)
+                {
+                    ModelState.AddModelError("", "Intento de ingreso inválido.");
+                    return View(model);
+                }
+
+
+                if (string.IsNullOrEmpty(appuUser.PasswordHash))
+                {
+                    return RedirectToAction("SetPassword", new { userId = appuUser.Id });
+                }
+            }
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+
+                    var user = _uow.Users.Get(u => u.UserName == model.Email, u => u.Roles);
+
+                    AvicolaContext.SetIdentity(user);
+
+                    if (!string.IsNullOrEmpty(returnUrl))
+                        return RedirectToLocal(returnUrl);
+
+                    return RedirectToAction("Index", "Home");
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Intento de ingreso inválido.");
                     return View(model);
             }
         }

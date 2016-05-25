@@ -38,6 +38,9 @@
         <EntityTypeShape EntityType="Avicola.SalesModel.OrderEggClass" Width="1.5" PointX="12.5" PointY="11.125" />
         <AssociationConnector Association="Avicola.SalesModel.FK_Order_EggClass" />
         <AssociationConnector Association="Avicola.SalesModel.FK_OrderEggClass_Order" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.Role" Width="1.5" PointX="12.375" PointY="2.125" />
+        <EntityTypeShape EntityType="Avicola.SalesModel.User" Width="1.5" PointX="14.625" PointY="1" />
+        <AssociationConnector Association="Avicola.SalesModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

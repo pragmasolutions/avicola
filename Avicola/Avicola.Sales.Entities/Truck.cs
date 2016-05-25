@@ -13,7 +13,7 @@ namespace Avicola.Sales.Entities
     using System.Collections.Generic;
     
     using Framework.Data.Interfaces;
-    public partial class Truck : IEntity
+    public partial class Truck
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Truck()

@@ -66,6 +66,9 @@
     <Compile Include="EggEquivalence.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Classification.cs" />
+    <Compile Include="Extensions\ClassificationEggClass.cs" />
+    <Compile Include="Extensions\OrderEggClass.cs" />
     <Compile Include="Extensions\Deposit.cs" />
     <Compile Include="Extensions\DepositStock.cs" />
     <Compile Include="Extensions\Driver.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="Extensions\OrderStatus.cs" />
     <Compile Include="Extensions\Product.cs" />
     <Compile Include="Extensions\Provider.cs" />
+    <Compile Include="Extensions\Role.cs" />
     <Compile Include="Extensions\Shift.cs" />
     <Compile Include="Extensions\Stock.cs" />
     <Compile Include="Extensions\StockEntry.cs" />
@@ -99,6 +103,9 @@
     <Compile Include="ReportOrderDispatchNoteRow.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SalesModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -114,6 +121,9 @@
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Truck.cs">
+      <DependentUpon>SalesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
       <DependentUpon>SalesModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

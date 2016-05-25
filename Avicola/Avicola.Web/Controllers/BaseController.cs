@@ -9,6 +9,7 @@ using Framework.Common.Web.ActionResults;
 
 namespace Avicola.Web.Controllers
 {
+    [Authorize]
     public abstract class BaseController : Controller
     {
         public const int DefaultPageSize = 50;
