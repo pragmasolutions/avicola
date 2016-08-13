@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Framework.Logging;
 using Microsoft.Synchronization;
 using Microsoft.Synchronization.Data;
@@ -29,25 +30,26 @@ namespace De.Provision.Databases
 
         public void Deprovision(string scopeName)
         {
-            SqlConnection sqlServerConn = null;
+            //SqlConnection sqlServerConn = null;
             SqlConnection sqlAzureConn = null;
             try
             {
-                sqlServerConn = new SqlConnection(_sqllocalConnectionString);
+                //sqlServerConn = new SqlConnection(_sqllocalConnectionString);
                 sqlAzureConn = new SqlConnection(_sqlazureConnectionString);
                 DbSyncScopeDescription myScope = new DbSyncScopeDescription(scopeName);
-                SqlSyncScopeDeprovisioning sqlServerProv = new SqlSyncScopeDeprovisioning(sqlServerConn);
+                //SqlSyncScopeDeprovisioning sqlServerProv = new SqlSyncScopeDeprovisioning(sqlServerConn);
                 SqlSyncScopeDeprovisioning sqlAzureProv = new SqlSyncScopeDeprovisioning(sqlAzureConn);
 
-                sqlServerProv.ObjectSchema = "DataSync";
+                //sqlServerProv.ObjectSchema = "DataSync";
                 sqlAzureProv.ObjectSchema = "DataSync";
 
-                sqlServerProv.DeprovisionScope(scopeName);
+                //sqlServerProv.DeprovisionScope(scopeName);
                 sqlAzureProv.DeprovisionScope(scopeName);
+                
             }
             finally
             {
-                if (sqlServerConn != null) sqlServerConn.Close();
+                //if (sqlServerConn != null) sqlServerConn.Close();
                 if (sqlAzureConn != null) sqlAzureConn.Close();
             }
             
@@ -91,7 +93,15 @@ namespace De.Provision.Databases
 
                 if (!sqlServerProv.ScopeExists(scopeName))
                 {
-                    sqlServerProv.Apply();
+                    try
+                    {
+                        sqlServerProv.Apply();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    
                 }
 
                 // Setup SQL Azure for sync
@@ -101,7 +111,14 @@ namespace De.Provision.Databases
                     
                 if (!sqlAzureProv.ScopeExists(scopeName))
                 {
-                    sqlAzureProv.Apply();
+                    try
+                    {
+                        sqlAzureProv.Apply();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
             finally

@@ -101,6 +101,11 @@ namespace Framework.Data.EntityFramework.Helpers
             return GetRepositoryFactory<T>() ?? DefaultEntityRepositoryFactory<T>();
         }
 
+        public Func<DbContext, object> GetSimpleRepositoryFactoryForEntityType<T>() where T : class
+        {
+            return GetRepositoryFactory<T>() ?? DefaultEntitySimpleRepositoryFactory<T>();
+        }
+
         /// <summary>
         /// Default factory for a <see cref="IRepository{T}"/> where T is an entity.
         /// </summary>
@@ -108,6 +113,11 @@ namespace Framework.Data.EntityFramework.Helpers
         protected virtual Func<DbContext, object> DefaultEntityRepositoryFactory<T>() where T : class, IEntity
         {
             return dbContext => new EFRepository<T>(dbContext);
+        }
+
+        protected virtual Func<DbContext, object> DefaultEntitySimpleRepositoryFactory<T>() where T : class
+        {
+            return dbContext => new EFSimpleRepository<T>(dbContext);
         }
 
         /// <summary>

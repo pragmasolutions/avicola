@@ -13,7 +13,7 @@ namespace Avicola.Sales.Entities
     using System.Collections.Generic;
     
     using Framework.Data.Interfaces;
-    public partial class OrderEggClass : IEntity
+    public partial class OrderEggClass
     {
         public System.Guid Id { get; set; }
         public System.DateTime CreatedDate { get; set; }

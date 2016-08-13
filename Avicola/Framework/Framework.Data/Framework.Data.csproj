@@ -55,6 +55,7 @@
     <Compile Include="Helpers\SortHelper.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ISimpleRepository.cs" />
     <Compile Include="Repository\IUow.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IUowFactory.cs" />

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Avicola.Production.Dashboard.App_Start;
 using Framework.Ioc;
+using log4net.Config;
 using Ninject;
 
 namespace Avicola.Production.Dashboard
@@ -19,7 +20,9 @@ namespace Avicola.Production.Dashboard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+            //Config log4net
+            XmlConfigurator.Configure();
+
             using (var kernel = new StandardKernel())
             {
                 //Configurar bindings

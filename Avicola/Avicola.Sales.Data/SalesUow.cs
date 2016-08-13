@@ -36,6 +36,7 @@ namespace Avicola.Sales.Data
         public IRepository<Classification> Classifications { get { return GetStandardRepo<Classification>(); } }
         public IRepository<ClassificationEggClass> ClassificationEggClasses { get { return GetStandardRepo<ClassificationEggClass>(); } }
         public IRepository<EggEquivalence> EggEquivalences { get { return GetStandardRepo<EggEquivalence>(); } }
+        public ISimpleRepository<User> Users { get { return GetSimpleRepo<User>(); } }
 
         public string ConnectionString
         {   
@@ -86,6 +87,11 @@ namespace Avicola.Sales.Data
         private IRepository<T> GetStandardRepo<T>() where T : class, IEntity
         {
             return RepositoryProvider.GetRepositoryForEntityType<T>();
+        }
+
+        private ISimpleRepository<T> GetSimpleRepo<T>() where T : class
+        {
+            return RepositoryProvider.GetSimpleRepositoryForEntityType<T>();
         }
 
         private T GetRepo<T>() where T : class, IEntity

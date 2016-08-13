@@ -20,3 +20,4 @@ Post-Deployment Script Template
 :r .\Product.Data.sql	
 :r .\Shifts.Data.sql	
 :r .\OrderStatus.Data.sql	
+:r .\Users.Data.sql	

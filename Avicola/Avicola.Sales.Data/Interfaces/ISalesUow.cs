@@ -22,6 +22,7 @@ namespace Avicola.Sales.Data.Interfaces
         IRepository<Classification> Classifications { get; }
         IRepository<ClassificationEggClass> ClassificationEggClasses { get; }
         IRepository<EggEquivalence> EggEquivalences { get; }
+        ISimpleRepository<User> Users { get; }
 
         SalesEntities DbContext { get; }
     }

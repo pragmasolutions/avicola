@@ -33,6 +33,8 @@ namespace Avicola.Deposit.Win.Forms
         private void FrmMain_Load(object sender, EventArgs e)
         {
             LoadDepositManagerView();
+            timSynchronization.Interval = AppSettings.SyncPeriod;
+            timSynchronization.Start();
         }
 
         public void LoadView(FrmDepositBase form)

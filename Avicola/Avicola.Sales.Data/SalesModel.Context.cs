@@ -45,6 +45,8 @@ namespace Avicola.Sales.Data
         public virtual DbSet<EggClass> EggClasses { get; set; }
         public virtual DbSet<EggEquivalence> EggEquivalences { get; set; }
         public virtual DbSet<OrderEggClass> OrderEggClasses { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     
         public virtual ObjectResult<DepositStock> StockGetByDeposit(Nullable<System.Guid> depositId)
         {

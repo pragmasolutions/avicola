@@ -42,6 +42,11 @@ namespace Framework.Data.EntityFramework.Helpers
                 _repositoryFactories.GetRepositoryFactoryForEntityType<T>());
         }
 
+
+        public ISimpleRepository<T> GetSimpleRepositoryForEntityType<T>() where T : class
+        {
+            return GetRepository<ISimpleRepository<T>>(_repositoryFactories.GetSimpleRepositoryFactoryForEntityType<T>());
+        }
         /// <summary>
         /// Get or create-and-cache a repository of type T.
         /// </summary>
@@ -124,5 +129,7 @@ namespace Framework.Data.EntityFramework.Helpers
         /// Should be initialized by constructor injection
         /// </remarks>
         private RepositoryFactories _repositoryFactories;
+
+
     }
 }

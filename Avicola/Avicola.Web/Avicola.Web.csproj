@@ -239,6 +239,7 @@
     <Compile Include="Models\Deposits\DepositForm.cs" />
     <Compile Include="Models\Deposits\DepositListFiltersModel.cs" />
     <Compile Include="Models\Deposits\DepositListModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Medicines\MedicineForm.cs" />
     <Compile Include="Models\Medicines\MedicineListFiltersModel.cs" />
     <Compile Include="Models\Medicines\MedicineListModel.cs" />
@@ -273,7 +274,6 @@
     <Compile Include="Models\GeneticLines\GeneticLineForm.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineListFiltersModel.cs" />
     <Compile Include="Models\GeneticLines\GeneticLineListModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\List\FilterBaseModel.cs" />
     <Compile Include="Models\List\IFilter.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -622,6 +622,10 @@
     <ProjectReference Include="..\Avicola.Sales.Services\Avicola.Sales.Services.csproj">
       <Project>{b72272a4-ab34-4f49-bfbc-75c0c600b120}</Project>
       <Name>Avicola.Sales.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avicola.Security\Avicola.Security.csproj">
+      <Project>{218d008b-8761-432a-a871-d044f1859dc7}</Project>
+      <Name>Avicola.Security</Name>
     </ProjectReference>
     <ProjectReference Include="..\Avicola.Services.Common\Avicola.Services.Common.csproj">
       <Project>{d99a9f23-dbbf-4a12-a9d7-a4b6380c9fa4}</Project>

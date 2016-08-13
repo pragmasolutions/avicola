@@ -57,5 +57,7 @@ namespace Framework.Data.EntityFramework.Helpers
         /// implementation of the object returned by a repository of type T.
         /// </remarks>
         void SetRepository<T>(T repository);
+
+        ISimpleRepository<T> GetSimpleRepositoryForEntityType<T>() where T : class;
     }
 }
