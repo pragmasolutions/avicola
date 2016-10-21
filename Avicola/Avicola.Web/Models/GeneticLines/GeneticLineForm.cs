@@ -31,7 +31,7 @@ namespace Avicola.Web.Models.GeneticLines
         public GeneticLine ToGeneticLine()
         {
             var geneticLine = Mapper.Map<GeneticLineForm, GeneticLine>(this);
-            geneticLine.ProductionWeeks = 120;
+            //geneticLine.ProductionWeeks = 120;
             return geneticLine;
         }
 
