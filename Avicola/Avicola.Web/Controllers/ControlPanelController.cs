@@ -8,7 +8,7 @@ using Avicola.Web.Extensions;
 
 namespace Avicola.Web.Controllers
 {
-    public class ControlPanelController : BaseController
+    public class ControlPanelController : Controller
     {
         private readonly IBatchService _batchService;
 

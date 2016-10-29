@@ -91,6 +91,8 @@ namespace Avicola.Office.Services
             currentStandard.Name = standard.Name;
             currentStandard.DataLoadTypeId = standard.DataLoadTypeId;
             currentStandard.YAxis = standard.YAxis;
+            currentStandard.StandardTypeId = standard.StandardTypeId;
+            currentStandard.AllowDecimal = standard.AllowDecimal;
 
             Uow.Standards.Edit(currentStandard);
             Uow.Commit();

@@ -1,6 +1,6 @@
 ﻿@model Avicola.Web.Models.GeneticLines.StandardItemModel
 
-<tr>
+<tr class="st-item" data-sequence="@Model.Sequence">
     <td style="text-align: center;" class="item-sequence">@Model.Sequence</td>
     <td>
         @Html.HiddenFor(model => model.Sequence)

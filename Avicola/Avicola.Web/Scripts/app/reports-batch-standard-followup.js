@@ -49,7 +49,6 @@
         } else {
             $('#StandardId, #StageGroupId').attr('disabled', 'disabled');
         }
-        
     },
     submit = function () {
         if ($('#StandardId').val() == '') {
@@ -66,10 +65,11 @@
         });
         return false;
     },
-    getDifferences = function (batchName, standardName, week, value) {
+    getDifferences = function (week, value) {
         var result = '<br/><br/>';
         var batch = _lastData;
-        var standard = $.grep(batch.GeneticLine.Standards, function (x) { return x.Name == standardName })[0];
+        
+        var standard = batch.GeneticLine.Standards[0];
         var standardItem = $.grep(standard.StandardItems, function (x) { return x.Sequence == week })[0];
 
         if (standard.ShowSecondValue) {
@@ -93,12 +93,7 @@
     },
     generateChart = function (batch) {
         var weeks = [],
-            series = [],
-            colors = [],
-            availableColors = [
-                '#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce',
-                '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
-            ];
+            series = [];
 
         var stageGroupId = $('#StageGroupId').val();
 
@@ -119,7 +114,6 @@
         }
 
         for (var j = 0; j < batch.GeneticLine.Standards.length; j++) {
-            var color = availableColors.pop();
             var standard = batch.GeneticLine.Standards[j];
 
             var name = standard.Name + ' (' + standard.MeasureUnity + ')';
@@ -170,11 +164,9 @@
                 }
             }
             series.push(firstSerie);
-            colors.push(color);
 
             if ($.grep(measureSerie.data, function (x) { return x != null }).length > 0) {
                 series.push(measureSerie);
-                colors.push(color);
             }
 
             if (standard.ShowSecondValue) {
@@ -192,7 +184,6 @@
                     secondSerie.data.push(item.Value2);
                 }
                 series.push(secondSerie);
-                colors.push(color);
             }
         }
 
@@ -204,7 +195,6 @@
 
 
         $('#ReportContainer').highcharts({
-            colors: colors,
             title: {
                 text: batch.GeneticLine.Standards[0].Name.toUpperCase(),
                 x: -20 //center
@@ -230,19 +220,30 @@
             },
             tooltip: {
                 formatter: function () {
-                    var standard = this.series.name.split('(')[0].trim();
                     var measure = this.series.name.split('(')[1].split(')')[0];
 
-                    var firstPart = 'Semana <b>' + this.x + '</b><br/>' + standard + ': <b>' + Highcharts.numberFormat(this.y, 2) + '</b> ' + measure;
+                    var standard = _lastData.GeneticLine.Standards[0];
+                    var week = this.x;
+                    var standardItem = $.grep(standard.StandardItems, function (x) { return x.Sequence == week })[0];
+                    
+                    var firstPart = 'Semana <b>' + this.x + '</b><br/>';
+                    if (standard.ShowSecondValue) {
+                        firstPart += '<span style="color: #7CB5EC">Estandar Inferior: </span> <b>' + standardItem.Value1.toFixed(2) + '</b><br/>'
+                                    + '<span style="color: #7CB5EC">Estandar Superior: </span><b> ' + standardItem.Value2.toFixed(2) + '</b><br/><br/><br/>';
+                    } else {
+                        firstPart += '<span style="color: #7CB5EC">Estandar: </span><b>' + standardItem.Value1.toFixed(2) + '</b><br/><br/><br/>';
+                    }
+
+                    firstPart += 'Valor Real: <b>' + Highcharts.numberFormat(this.y, 2) + '</b> ' + measure;
 
                     if (this.series.name.indexOf('[*]') == -1) {
                         return firstPart;
                     }
-                    var batchName = this.series.chart.title.textStr;
-                    var standardName = standard.replace('[*] ', '');
-                    var secondPart = getDifferences(batchName, standardName, this.x, this.y);
+                    var secondPart = getDifferences(this.x, this.y);
                     return firstPart + secondPart;
-                }
+                },
+                //shared: true,
+                //crosshairs: true
             },
             legend: {
                 enabled: false

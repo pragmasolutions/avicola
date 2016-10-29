@@ -30,15 +30,17 @@
                         }
                         else
                         {
-                             @Html.EditorFor(model => model.IntegerStandardItems)
+                            @Html.EditorFor(model => model.IntegerStandardItems)
                         }
-                    
+
                     </tbody>
                 </table>
             </div>
         </td>
         <td style="vertical-align: top;">
             <div id="chart-container"></div>
+            <br/>
+            <div id="second-chart-container" style="display: none;"></div>
         </td>
     </tr>
 </table>
@@ -48,6 +50,7 @@
     .standard-item-container {
         padding: 15px 35px;
         border: 1px solid black;
+        display: none;
         /*width: 300px;*/
     }
 
@@ -55,7 +58,7 @@
         display: none;
     }
 
-    #chart-container {
+    #chart-container, #second-chart-container {
         height: 550px;
         border: 1px solid black;
         padding: 10px;

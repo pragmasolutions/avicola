@@ -179,6 +179,8 @@
           <Property Name="AllowDecimal" Type="bit" Nullable="false" />
           <Property Name="AggregateOperation" Type="varchar" MaxLength="5" />
           <Property Name="YAxis" Type="int" Nullable="false" />
+          <Property Name="DivideChartWeek" Type="int" />
+          <Property Name="StartingWeek" Type="int" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StandardGeneticLine">
@@ -732,6 +734,8 @@
           <Property Name="AllowDecimal" Type="Boolean" Nullable="false" />
           <Property Name="AggregateOperation" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="YAxis" Type="Int32" Nullable="false" />
+          <Property Name="DivideChartWeek" Type="Int32" />
+          <Property Name="StartingWeek" Type="Int32" />
         </EntityType>
         <EntityType Name="StandardGeneticLine">
           <Key>
@@ -956,7 +960,7 @@
             <End Role="SiloEmptying" EntitySet="SiloEmptyings" />
           </AssociationSet>
           <FunctionImport Name="ReportOrderDispatchNote" ReturnType="Collection(Avicola.OfficeModel.ReportOrderDispatchNoteRow)">
-            <Parameter Name="OrderId" Mode="In" Type="Guid" />
+          <Parameter Name="OrderId" Mode="In" Type="Guid" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="BatchVaccine">
@@ -1461,6 +1465,8 @@
           <EntitySetMapping Name="Standards">
             <EntityTypeMapping TypeName="Avicola.OfficeModel.Standard">
               <MappingFragment StoreEntitySet="Standard">
+                <ScalarProperty Name="StartingWeek" ColumnName="StartingWeek" />
+                <ScalarProperty Name="DivideChartWeek" ColumnName="DivideChartWeek" />
                 <ScalarProperty Name="YAxis" ColumnName="YAxis" />
                 <ScalarProperty Name="AggregateOperation" ColumnName="AggregateOperation" />
                 <ScalarProperty Name="AllowDecimal" ColumnName="AllowDecimal" />

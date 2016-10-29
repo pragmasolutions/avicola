@@ -19,6 +19,7 @@
     @Html.HiddenFor(model => model.StandardGeneticLine.GeneticLine.Id)
     @Html.HiddenFor(model => model.StandardGeneticLine.Standard.Id)
     @Html.HiddenFor(model => model.StandardGeneticLine.Standard.AllowDecimal)
+    @Html.HiddenFor(model => model.StandardGeneticLine.Standard.StartingWeek)
     <div class="form-group">
         <div class="col-md-10">
             <input type="submit" value="@(ViewBag.Operation == "Edit" ? "Editar" : "Crear")" class="btn btn-default"/>
@@ -40,7 +41,9 @@
             standardName: '@Model.StandardGeneticLine.Standard.Name',
             geneticLineName: '@Model.StandardGeneticLine.GeneticLine.Name',
             measureUnity: '@Model.StandardGeneticLine.Standard.MeasureUnity',
-            allowDecimal: '@Model.StandardGeneticLine.Standard.AllowDecimal' == 'True'
+            allowDecimal: '@Model.StandardGeneticLine.Standard.AllowDecimal' == 'True',
+            divideWeek : @(Model.StandardGeneticLine.Standard.DivideChartWeek == null ? "null" : Model.StandardGeneticLine.Standard.DivideChartWeek.ToString()),
+            startingWeek : @(Model.StandardGeneticLine.Standard.StartingWeek == null ? "null" : Model.StandardGeneticLine.Standard.StartingWeek.ToString())
         }
 
         $(function () {

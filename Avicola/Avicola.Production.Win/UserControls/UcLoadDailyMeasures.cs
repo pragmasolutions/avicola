@@ -172,6 +172,13 @@ namespace Avicola.Production.Win.UserControls
             dropdown.DataSource = FoodClasses;
             dropdown.ValueMember = "Id";
             dropdown.DisplayMember = "Name";
+
+            dropdown.PropertyChanged += dropdown_PropertyChanged;
+        }
+
+        private void dropdown_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            
         }
 
         private void gvDailyMeasures_RowFormatting(object sender, RowFormattingEventArgs e)
@@ -204,8 +211,45 @@ namespace Avicola.Production.Win.UserControls
 
                 if (!CanEditMeasure(measure))
                 {
-                    e.ToolTipText =
-                        Resources.MeasureNotEditable;
+                    e.ToolTipText = Resources.MeasureNotEditable;
+                }
+            }
+        }
+
+        private void gvDailyMeasures_CellEndEdit(object sender, GridViewCellEventArgs e)
+        {
+            if (e.Column.Name == "Value")
+            {
+                if (gvDailyMeasures.Columns["FoodClassId"].IsVisible)
+                {
+                    var nextCell = gvDailyMeasures.Rows[e.RowIndex].Cells["FoodClassId"];
+                    nextCell.BeginEdit();
+
+                    if (this.gvDailyMeasures.ActiveEditor is RadDropDownListEditor)
+                    {
+                        //((RadDropDownListEditor)this.gvDailyMeasures.ActiveEditor).
+                        ((RadDropDownListEditor)this.gvDailyMeasures.ActiveEditor).BeginEdit();
+                    }  
+                }
+                else if (e.RowIndex < 6)
+                {
+                    var nextRow = gvDailyMeasures.Rows[e.RowIndex + 1];
+                    var measure = nextRow.DataBoundItem as DailyStandardMeasure;
+                    if (CanEditMeasure(measure))
+                    {
+                        var nextCell = nextRow.Cells["Value"];
+                        nextCell.BeginEdit();
+                    }
+                }
+            }
+            else if (e.Column.Name == "FoodClassId" && e.RowIndex < 6)
+            {
+                var nextRow = gvDailyMeasures.Rows[e.RowIndex + 1];
+                var measure = nextRow.DataBoundItem as DailyStandardMeasure;
+                if (CanEditMeasure(measure))
+                {
+                    var nextCell = nextRow.Cells["Value"];
+                    nextCell.BeginEdit();
                 }
             }
         }
